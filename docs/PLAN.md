@@ -34,7 +34,7 @@
 
 ## Phase 1 — Domain core (M1)
 
-- [ ] **1.1** Models dạng record trong `MamCom.Core`: `Member`, `Household`, `Ingredient`, `Dish`, `DishIngredient`, `Step`, `MealTray`, `SlotResult`, `SpinResult`, `ShoppingItem`, `NutritionFacts`, `CookPlan`, `CookPlanStep`. Thêm `IRandomSource` (có seed) và `IClock`.
+- [x] **1.1** Models dạng record trong `MamCom.Core`: `Member`, `Household`, `Ingredient`, `Dish`, `DishIngredient`, `Step`, `MealTray`, `SlotResult`, `SpinResult`, `ShoppingItem`, `NutritionFacts`, `CookPlan`, `CookPlanStep`. Thêm `IRandomSource` (có seed) và `IClock`.
   - Xong khi: model khớp schema ở §7.1–7.2; có test serialize/deserialize JSON mẫu.
 - [ ] **1.2** `PortionCalculator` và nạp `data/config/portion-defaults.json` (§4.2). `→ 1.1`
   - Xong khi: test gia đình mẫu ra 3,79 ± 0,01 suất và 320g gạo; test tag MoreProtein/MoreVeg; test cỡ chén.
@@ -138,3 +138,4 @@
 | 2026-10-18 | 0.3 | `ci.yml` đã viết (restore, build, test; bước validate tắt tới task 2.2). Chưa tick: repo chưa có remote nên chưa xác nhận được "pipeline xanh trên nhánh main". Cần tạo repo GitHub, thêm remote và push `main` |
 | 2026-10-18 | 0.4 | ADR-001..003 trong `docs/decisions/` và `README.md` quick start |
 | 2026-10-18 | 0.5 | Chủ dự án xác nhận dùng mặc định: tên `MamCom`, hosting Azure Static Web Apps |
+| 2026-10-19 | 1.1 | Record domain trong `MamCom.Core` (13 kiểu theo PLAN cùng `MarketUnit`, `ImageRef`, `NutritionSource`, `Provenance`), `IRandomSource` (SplitMix64 tự cài để cùng seed ra cùng chuỗi trên mọi runtime), `IClock`. JSON qua source generator: enum chỉ nhận đúng một tên, thiếu trường bắt buộc thì lỗi; test round-trip bằng mẫu SPEC §7.1–7.2. SPEC §5.6 thêm `ActiveMinutes` và id `com` (ADR-004). Việc mở cho task sau: vùng Trung chưa có quy tắc fallback cho `marketUnit` và chưa rõ khi nào hiện "(~Ng)" trong text chia sẻ (1.5, 2.2); luật nới `AvailableMinutes` của 1.6 cần mealTime từ 1.7; ghi file JSON phải thêm `\n` cuối (2.2, 2.5) |
