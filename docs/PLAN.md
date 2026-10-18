@@ -22,13 +22,13 @@
 
 ## Phase 0 — Nền móng (M0)
 
-- [ ] **0.1** Tạo solution `MamCom.sln` và các project theo cấu trúc trong CLAUDE.md. Thêm `Directory.Build.props` (Nullable, TreatWarningsAsErrors, LangVersion latest) và `.editorconfig`.
+- [x] **0.1** Tạo solution `MamCom.sln` và các project theo cấu trúc trong CLAUDE.md. Thêm `Directory.Build.props` (Nullable, TreatWarningsAsErrors, LangVersion latest) và `.editorconfig`.
   - Xong khi: `dotnet build` xanh, không warning.
-- [ ] **0.2** Tạo các project test (xUnit, Shouldly, bUnit), mỗi project có 1 test mẫu. `→ 0.1`
+- [x] **0.2** Tạo các project test (xUnit, Shouldly, bUnit), mỗi project có 1 test mẫu. `→ 0.1`
   - Xong khi: `dotnet test` xanh.
 - [ ] **0.3** GitHub Actions `ci.yml`: restore → build → test → `DataBuilder validate` (bước validate tạm skip cho tới khi 2.2 xong). `→ 0.2`
   - Xong khi: pipeline xanh trên nhánh main.
-- [ ] **0.4** Viết ADR-001 (JSON bundle thay SQLite), ADR-002 (Blazor WASM PWA trước), ADR-003 (không backend ở v1) theo §9. Viết README quick start.
+- [x] **0.4** Viết ADR-001 (JSON bundle thay SQLite), ADR-002 (Blazor WASM PWA trước), ADR-003 (không backend ở v1) theo §9. Viết README quick start.
   - Xong khi: ADR và README có trong repo.
 - [ ] **0.5** `[QUYẾT ĐỊNH]` Tên app và hosting. Mặc định: `MamCom` và Azure Static Web Apps. Không chặn các task khác.
 
@@ -133,3 +133,8 @@
 | Ngày | Task | Ghi chú |
 |---|---|---|
 | 2026-10-18 | — | Tạo SPEC/PLAN từ phần phân tích ban đầu |
+| 2026-10-18 | 0.1 | Solution `MamCom.sln` 13 project (4 src, 5 tools, 4 tests), `Directory.Build.props`, `.editorconfig`, `global.json`, central package management. Build 0 warning. Tool project mới là khung, thoát mã 1 cho tới task của chúng |
+| 2026-10-18 | 0.2 | xunit.v3 (chạy qua Microsoft.Testing.Platform, bật bằng `test.runner` trong `global.json`), Shouldly, bUnit, Playwright; 4 test mẫu xanh. Đã sửa `.gitignore`: dòng `*.e2e` của mẫu Visual Studio làm `tests/MamCom.E2E` không vào git, clone sạch fail ở restore |
+| 2026-10-18 | 0.3 | `ci.yml` đã viết (restore, build, test; bước validate tắt tới task 2.2). Chưa tick: repo chưa có remote nên chưa xác nhận được "pipeline xanh trên nhánh main". Cần tạo repo GitHub, thêm remote và push `main` |
+| 2026-10-18 | 0.4 | ADR-001..003 trong `docs/decisions/` và `README.md` quick start |
+| 2026-10-18 | 0.5 | Chưa có xác nhận của chủ dự án. Tạm dùng mặc định: tên `MamCom`, hosting Azure Static Web Apps; không chặn task nào |
