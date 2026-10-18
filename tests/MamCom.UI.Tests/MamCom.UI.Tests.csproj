@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="bunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\MamCom.UI\MamCom.UI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Bunit" />
+  </ItemGroup>
+
+</Project>

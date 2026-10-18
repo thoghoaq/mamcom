@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\MamCom.Core\MamCom.Core.csproj" />
+  </ItemGroup>
+
+</Project>
