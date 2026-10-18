@@ -156,7 +156,9 @@ Bộ lập lịch mô phỏng **một người nấu**:
 - **Thứ tự món:** món có tổng thời gian dài nhất bắt đầu trước.
 - **Món `serveHot`** (xào, rau) được đẩy về cuối để kết thúc trong 10 phút cuối.
 - **Không bao giờ có 2 bước active chồng lên nhau.** Khi bước hiện tại là passive (tay rảnh), lấy bước active kế tiếp của món khác.
-- **Output:** danh sách `CookPlanStep { StartMinute, DishId, Text, TimerMinutes? }`.
+- **Output:** danh sách `CookPlanStep { StartMinute, DishId, Text, ActiveMinutes, TimerMinutes? }`.
+  - `ActiveMinutes` là phần cần tay người; có nó mới kiểm tra được hai bước active không chồng nhau.
+  - Cơm là món giả với `DishId = "com"`. Id này dành riêng, món thật không được dùng.
 - **`mealTime`** = thời điểm bước cuối cùng kết thúc. Đây là con số "Thời gian cả mâm" trên UI. Thời gian cả mâm không phải tổng thời gian các món.
 
 ---
