@@ -30,7 +30,7 @@
   - Xong khi: pipeline xanh trên nhánh main.
 - [x] **0.4** Viết ADR-001 (JSON bundle thay SQLite), ADR-002 (Blazor WASM PWA trước), ADR-003 (không backend ở v1) theo §9. Viết README quick start.
   - Xong khi: ADR và README có trong repo.
-- [ ] **0.5** `[QUYẾT ĐỊNH]` Tên app và hosting. Mặc định: `MamCom` và Azure Static Web Apps. Không chặn các task khác.
+- [x] **0.5** `[QUYẾT ĐỊNH]` Tên app và hosting. Mặc định: `MamCom` và Azure Static Web Apps. Không chặn các task khác.
 
 ## Phase 1 — Domain core (M1)
 
@@ -137,4 +137,4 @@
 | 2026-10-18 | 0.2 | xunit.v3 (chạy qua Microsoft.Testing.Platform, bật bằng `test.runner` trong `global.json`), Shouldly, bUnit, Playwright; 4 test mẫu xanh. Đã sửa `.gitignore`: dòng `*.e2e` của mẫu Visual Studio làm `tests/MamCom.E2E` không vào git, clone sạch fail ở restore |
 | 2026-10-18 | 0.3 | `ci.yml` đã viết (restore, build, test; bước validate tắt tới task 2.2). Chưa tick: repo chưa có remote nên chưa xác nhận được "pipeline xanh trên nhánh main". Cần tạo repo GitHub, thêm remote và push `main` |
 | 2026-10-18 | 0.4 | ADR-001..003 trong `docs/decisions/` và `README.md` quick start |
-| 2026-10-18 | 0.5 | Chưa có xác nhận của chủ dự án. Tạm dùng mặc định: tên `MamCom`, hosting Azure Static Web Apps; không chặn task nào |
+| 2026-10-18 | 0.5 | Chủ dự án xác nhận dùng mặc định: tên `MamCom`, hosting Azure Static Web Apps |
