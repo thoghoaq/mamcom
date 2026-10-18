@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\MamCom.UI\MamCom.UI.csproj" />
+    <ProjectReference Include="..\..\src\MamCom.Data\MamCom.Data.csproj" />
+    <ProjectReference Include="..\..\src\MamCom.Core\MamCom.Core.csproj" />
+  </ItemGroup>
+
+</Project>
