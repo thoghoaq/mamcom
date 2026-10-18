@@ -173,7 +173,7 @@ public class CoreJsonTests
               "ingredientId": "thit-ba-chi",
               "name": "Thịt ba rọi",
               "aisle": "thit-ca",
-              "quantity": 3,
+              "quantity": 2.5,
               "unitDisplay": "lạng",
               "purchaseGrams": 275.5,
               "isPantry": false
@@ -267,6 +267,21 @@ public class CoreJsonTests
         Should.Throw<JsonException>(() => Read<Dish>(numericSlot));
     }
 
+    // The built-in enum converter would turn these into Main, an undefined value, or a padded match.
+    [Theory]
+    [InlineData("canh,man")]
+    [InlineData("man,rau")]
+    [InlineData(" canh")]
+    [InlineData("canh ")]
+    [InlineData("")]
+    [InlineData("Canh")]
+    [InlineData("1")]
+    public void An_enum_value_that_is_not_exactly_one_member_name_fails(string value)
+    {
+        Should.Throw<JsonException>(() =>
+            JsonSerializer.Deserialize<DishSlot>($"\"{value}\"", CoreJson.Options));
+    }
+
     [Fact]
     public void A_duplicate_property_fails()
     {
@@ -312,16 +327,51 @@ public class CoreJsonTests
     }
 
     [Fact]
-    public void Properties_are_written_in_the_order_the_SPEC_lists_them()
+    public void Ingredient_properties_are_written_in_SPEC_order_at_every_level()
     {
-        var dish = Read<Dish>(SpecSamples.Dish);
-
-        var names = JsonNode.Parse(Write(dish))!.AsObject().Select(p => p.Key).ToArray();
-
-        names.ShouldBe(
-        [
-            "id", "name", "slot", "regions", "seasons", "spicy", "cookingMethod", "proteinSource",
-            "serveHot", "ingredients", "steps", "status", "provenance", "image",
-        ]);
+        ShouldKeepKeyOrder<Ingredient>(SpecSamples.Ingredient);
     }
+
+    [Fact]
+    public void Dish_properties_are_written_in_SPEC_order_at_every_level()
+    {
+        ShouldKeepKeyOrder<Dish>(SpecSamples.Dish);
+    }
+
+    [Fact]
+    public void A_fully_populated_dish_round_trips()
+    {
+        var node = JsonNode.Parse(SpecSamples.Dish)!.AsObject();
+        node["status"] = "cooktested";
+        node["provenance"] = JsonNode.Parse("""
+            { "draftedBy": "human", "reviewedBy": "Mẹ", "reviewedAt": "2026-10-19", "cookTestedAt": "2026-10-20", "measuredTotalMinutes": 47 }
+            """);
+        node["image"] = JsonNode.Parse("""
+            { "thumb": "images/out/canh-chua-ca-loc.200.webp", "full": "images/out/canh-chua-ca-loc.800.webp", "source": "own photo", "license": "own work", "isIllustration": false }
+            """);
+        var json = node.ToJsonString();
+
+        var dish = Read<Dish>(json);
+
+        dish.Status.ShouldBe(DishStatus.CookTested);
+        dish.Provenance.ShouldBe(new Provenance(DraftAuthor.Human, "Mẹ", new DateOnly(2026, 10, 19), new DateOnly(2026, 10, 20), 47));
+        dish.Image.ShouldBe(new ImageRef("images/out/canh-chua-ca-loc.200.webp", "images/out/canh-chua-ca-loc.800.webp", "own photo", "own work", false));
+        ShouldRoundTrip<Dish>(json);
+    }
+
+    [Fact]
+    public void Options_are_read_only_so_nobody_changes_them_at_runtime()
+    {
+        CoreJson.Options.IsReadOnly.ShouldBeTrue();
+    }
+
+    private static void ShouldKeepKeyOrder<T>(string sample) =>
+        KeyOrder(JsonNode.Parse(Write(Read<T>(sample)))).ShouldBe(KeyOrder(JsonNode.Parse(sample)));
+
+    private static string[] KeyOrder(JsonNode? node, string path = "$") => node switch
+    {
+        JsonObject obj => obj.SelectMany(p => KeyOrder(p.Value, $"{path}.{p.Key}").Prepend($"{path}.{p.Key}")).ToArray(),
+        JsonArray array => array.SelectMany((item, i) => KeyOrder(item, $"{path}[{i}]")).ToArray(),
+        _ => [],
+    };
 }
