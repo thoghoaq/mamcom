@@ -198,6 +198,14 @@ RAU: 1 mớ rau muống · 2 quả cà chua · 1 mớ bạc hà
 KHÁC: 4 quả trứng
 ```
 
+Quy tắc chi tiết (ADR-007):
+- **Gộp rồi mới làm tròn.** Cộng `gramsEdible` của mọi dòng cùng nguyên liệu (dòng `integer` đã tính theo số đơn vị nguyên), chia cho `1 − wasteRatio`, rồi mới đổi sang đơn vị chợ. Cơm vào danh sách từ lượng gạo sống đã làm tròn (§4.2) và gộp như mọi nguyên liệu.
+- **Một công thức cho cả hai loại đơn vị:** `số lượng = ceil((purchaseGrams / gramsPerUnit) / step) × step`. Đơn vị đếm có `step` bằng 1 nên ra đúng `ceil(purchaseGrams / gramsPerUnit)`. Sai số dấu phẩy động không làm tăng thêm một đơn vị.
+- **Thứ tự:** theo quầy (thứ tự ở trên), trong quầy theo lần dùng đầu tiên: cơm trước, rồi các món theo thứ tự đưa vào.
+- **Nguyên liệu không cần mua** (lượng bằng 0) không có trong danh sách.
+- **"(~Ng)"** chỉ hiện khi `marketUnit.showApproxGrams` là `true` (§7.1), với N bằng số lượng nhân `gramsPerUnit`, làm tròn đến gam.
+- **Dòng trong text chia sẻ:** nhóm `trung-dau-phu`, `kho-gia-vi` và `khac` cùng nằm dòng `KHÁC`, như ví dụ trên. Số dùng dấu phẩy thập phân (`2,5 lạng`), tên viết thường, ngày viết `d/M` không thêm số 0 đầu, thứ viết `T2`..`T7` và `CN`. Các dòng cách nhau bằng LF, không có dòng trống ở cuối. Hết đồ cần mua thì chỉ còn dòng đầu. Đồ có sẵn chỉ vào text khi bật "Hiện đồ có sẵn".
+
 ### 6.3 Dinh dưỡng (`NutritionCalculator`)
 
 **Dữ liệu nguyên liệu**, tính trên 100g phần ăn được: `Kcal`, `ProteinG`, `FatG`, `CarbG`, `FiberG`, `SodiumMg`.
@@ -258,6 +266,8 @@ Mỗi nguyên liệu lưu `nutritionSource` (db, mã gốc, tên khớp, ngườ
 ```
 
 `names` và `marketUnit` là đối tượng khoá theo vùng (`north`, `central`, `south`). Có thể thêm khoá `default` cho mọi vùng không có khoá riêng. Nếu thiếu cả hai, `names` rơi về `id`, còn `marketUnit` coi là không có đơn vị chợ (lỗi dữ liệu với nguyên liệu dùng `integer` hoặc xuất hiện trong danh sách đi chợ).
+
+Mỗi `marketUnit` có thêm trường tuỳ chọn `showApproxGrams` (mặc định `false`, không ghi ra file khi `false`). Bật cho đơn vị đếm mà kích cỡ khác nhau nhiều, như `con` cá, để text đi chợ ghi `(~500g)`.
 
 ### 7.2 Món: `data/dishes/<id>.json`
 
