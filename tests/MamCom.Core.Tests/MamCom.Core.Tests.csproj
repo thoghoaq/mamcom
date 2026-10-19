@@ -7,6 +7,9 @@
   <ItemGroup>
     <!-- The real config files, so a test fails when the file and the code drift apart. -->
     <None Include="..\..\data\config\*.json" Link="config\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <!-- The dev seed (PLAN 1.8), so the real data files are exercised by the real code. -->
+    <None Include="..\..\data\ingredients\*.json" Link="ingredients\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\data\dishes\*.json" Link="dishes\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
