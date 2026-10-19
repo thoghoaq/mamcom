@@ -1,0 +1,28 @@
+@using MamCom.Core.Models
+@using MamCom.UI.Formatting
+
+<section class="nutrition" aria-label="@Strings.Nutrition_Heading">
+    <p class="nutrition__kcal">@NutritionFormat.Kcal(Facts?.Kcal)</p>
+    <dl class="nutrition__facts">
+        <div class="nutrition__fact"><dt>@Strings.Nutrition_Protein</dt><dd>@NutritionFormat.Grams(Facts?.ProteinG)</dd></div>
+        <div class="nutrition__fact"><dt>@Strings.Nutrition_Fat</dt><dd>@NutritionFormat.Grams(Facts?.FatG)</dd></div>
+        <div class="nutrition__fact"><dt>@Strings.Nutrition_Carb</dt><dd>@NutritionFormat.Grams(Facts?.CarbG)</dd></div>
+        <div class="nutrition__fact"><dt>@Strings.Nutrition_Fiber</dt><dd>@NutritionFormat.Grams(Facts?.FiberG)</dd></div>
+        <div class="nutrition__fact"><dt>@Strings.Nutrition_Sodium</dt><dd>@NutritionFormat.Milligrams(Facts?.SodiumMg)</dd></div>
+    </dl>
+    @if (MissingIngredientNames.Count > 0)
+    {
+        <p class="nutrition__missing">@string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.Nutrition_MissingFormat, string.Join(", ", MissingIngredientNames))</p>
+    }
+    <p class="nutrition__note">@Strings.Nutrition_EstimateNote</p>
+</section>
+
+@code {
+    /// <summary>Nutrients of whatever is shown (one serving, a dish, a meal); null shows every number as unknown.</summary>
+    [Parameter]
+    public NutritionFacts? Facts { get; set; }
+
+    /// <summary>Names of the ingredients whose nutrition data is missing, so the sums above are not complete.</summary>
+    [Parameter]
+    public IReadOnlyList<string> MissingIngredientNames { get; set; } = [];
+}

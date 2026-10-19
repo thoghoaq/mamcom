@@ -13,4 +13,22 @@
     <ProjectReference Include="..\MamCom.Data\MamCom.Data.csproj" />
   </ItemGroup>
 
+  <!--
+    Every Vietnamese string of the UI lives in Strings.vi.resx (CLAUDE.md). It is the language the app is written in, not a
+    translation, so it is the neutral resource of this assembly: WithCulture="false" keeps MSBuild from treating the ".vi" as a
+    satellite assembly that nothing would load. The strongly typed class (MamCom.UI.Strings) is generated at build time.
+  -->
+  <ItemGroup>
+    <EmbeddedResource Update="Strings.vi.resx"
+                      WithCulture="false"
+                      ManifestResourceName="MamCom.UI.Strings"
+                      PublicClass="true"
+                      StronglyTypedFileName="$(IntermediateOutputPath)Strings.Designer.cs"
+                      StronglyTypedLanguage="CSharp"
+                      StronglyTypedNamespace="MamCom.UI"
+                      StronglyTypedClassName="Strings"
+                      StronglyTypedManifestPrefix="MamCom.UI"
+                      Generator="MSBuild:Compile" />
+  </ItemGroup>
+
 </Project>

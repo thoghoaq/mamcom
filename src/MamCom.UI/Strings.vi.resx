@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <!-- Dinh dưỡng -->
+  <data name="Nutrition_Heading" xml:space="preserve"><value>Dinh dưỡng một suất</value></data>
+  <data name="Nutrition_Unknown" xml:space="preserve"><value>chưa đủ số liệu</value></data>
+  <data name="Nutrition_EstimateFormat" xml:space="preserve"><value>≈ {0} {1}</value></data>
+  <data name="Nutrition_Protein" xml:space="preserve"><value>Đạm</value></data>
+  <data name="Nutrition_Fat" xml:space="preserve"><value>Béo</value></data>
+  <data name="Nutrition_Carb" xml:space="preserve"><value>Bột đường</value></data>
+  <data name="Nutrition_Fiber" xml:space="preserve"><value>Chất xơ</value></data>
+  <data name="Nutrition_Sodium" xml:space="preserve"><value>Natri</value></data>
+  <data name="Nutrition_MissingFormat" xml:space="preserve"><value>Chưa có số liệu dinh dưỡng của: {0}.</value></data>
+  <data name="Nutrition_EstimateNote" xml:space="preserve"><value>Các con số chỉ là ước tính.</value></data>
+
+  <!-- Studio: khung trang -->
+  <data name="Studio_Name" xml:space="preserve"><value>MâmCơm Studio</value></data>
+  <data name="Studio_NavLabel" xml:space="preserve"><value>Điều hướng chính</value></data>
+  <data name="Studio_NavHome" xml:space="preserve"><value>Tổng quan</value></data>
+  <data name="Studio_NavDishes" xml:space="preserve"><value>Món ăn</value></data>
+  <data name="Studio_ErrorBar" xml:space="preserve"><value>Có lỗi xảy ra.</value></data>
+  <data name="Studio_Reload" xml:space="preserve"><value>Tải lại</value></data>
+  <data name="Studio_Dismiss" xml:space="preserve"><value>Đóng</value></data>
+  <data name="Studio_Reconnect_First" xml:space="preserve"><value>Đang kết nối lại với máy chủ…</value></data>
+  <data name="Studio_Reconnect_RepeatedBefore" xml:space="preserve"><value>Chưa kết nối lại được. Thử lại sau</value></data>
+  <data name="Studio_Reconnect_RepeatedAfter" xml:space="preserve"><value>giây.</value></data>
+  <data name="Studio_Reconnect_Failed" xml:space="preserve"><value>Không kết nối lại được. Hãy thử lại hoặc tải lại trang.</value></data>
+  <data name="Studio_Reconnect_Retry" xml:space="preserve"><value>Thử lại</value></data>
+  <data name="Studio_Reconnect_Paused" xml:space="preserve"><value>Máy chủ đã tạm dừng phiên làm việc.</value></data>
+  <data name="Studio_Reconnect_ResumeFailed" xml:space="preserve"><value>Không tiếp tục được phiên làm việc. Hãy thử lại hoặc tải lại trang.</value></data>
+  <data name="Studio_Reconnect_Resume" xml:space="preserve"><value>Tiếp tục</value></data>
+  <data name="Studio_Error_Title" xml:space="preserve"><value>Có lỗi</value></data>
+  <data name="Studio_Error_Message" xml:space="preserve"><value>Có lỗi khi xử lý yêu cầu.</value></data>
+  <data name="Studio_Error_RequestId" xml:space="preserve"><value>Mã yêu cầu</value></data>
+  <data name="Studio_Error_Hint" xml:space="preserve"><value>Đặt biến môi trường ASPNETCORE_ENVIRONMENT=Development rồi chạy lại để xem chi tiết lỗi.</value></data>
+  <data name="Studio_NotFound_Title" xml:space="preserve"><value>Không tìm thấy trang</value></data>
+  <data name="Studio_NotFound_Text" xml:space="preserve"><value>Trang bạn tìm không có.</value></data>
+  <data name="Studio_DataFolderMissing" xml:space="preserve"><value>Không tìm thấy thư mục dữ liệu: {0}</value></data>
+
+  <!-- Studio: trạng thái, loại món và các giá trị chọn -->
+  <data name="Studio_Status_Draft" xml:space="preserve"><value>Nháp</value></data>
+  <data name="Studio_Status_Validated" xml:space="preserve"><value>Đã qua máy kiểm</value></data>
+  <data name="Studio_Status_Reviewed" xml:space="preserve"><value>Đã duyệt</value></data>
+  <data name="Studio_Status_CookTested" xml:space="preserve"><value>Đã nấu thử</value></data>
+  <data name="Studio_Slot_Soup" xml:space="preserve"><value>Canh</value></data>
+  <data name="Studio_Slot_Main" xml:space="preserve"><value>Món mặn</value></data>
+  <data name="Studio_Slot_Vegetable" xml:space="preserve"><value>Rau</value></data>
+  <data name="Studio_Region_North" xml:space="preserve"><value>Bắc</value></data>
+  <data name="Studio_Region_Central" xml:space="preserve"><value>Trung</value></data>
+  <data name="Studio_Region_South" xml:space="preserve"><value>Nam</value></data>
+  <data name="Studio_Season_spring" xml:space="preserve"><value>Xuân</value></data>
+  <data name="Studio_Season_summer" xml:space="preserve"><value>Hè</value></data>
+  <data name="Studio_Season_autumn" xml:space="preserve"><value>Thu</value></data>
+  <data name="Studio_Season_winter" xml:space="preserve"><value>Đông</value></data>
+  <data name="Studio_Season_all" xml:space="preserve"><value>Quanh năm</value></data>
+  <data name="Studio_Spicy_None" xml:space="preserve"><value>Không cay</value></data>
+  <data name="Studio_Spicy_Optional" xml:space="preserve"><value>Cay tuỳ chọn</value></data>
+  <data name="Studio_Spicy_Required" xml:space="preserve"><value>Cay</value></data>
+  <data name="Studio_Method_Boil" xml:space="preserve"><value>Luộc</value></data>
+  <data name="Studio_Method_Steam" xml:space="preserve"><value>Hấp</value></data>
+  <data name="Studio_Method_Simmer" xml:space="preserve"><value>Nấu</value></data>
+  <data name="Studio_Method_Braise" xml:space="preserve"><value>Kho</value></data>
+  <data name="Studio_Method_StirFry" xml:space="preserve"><value>Xào</value></data>
+  <data name="Studio_Method_Fry" xml:space="preserve"><value>Chiên</value></data>
+  <data name="Studio_Method_Grill" xml:space="preserve"><value>Nướng</value></data>
+  <data name="Studio_Method_Toss" xml:space="preserve"><value>Trộn</value></data>
+  <data name="Studio_Scale_Linear" xml:space="preserve"><value>Tăng đều theo số suất</value></data>
+  <data name="Studio_Scale_Sublinear" xml:space="preserve"><value>Tăng chậm hơn số suất</value></data>
+  <data name="Studio_Scale_Integer" xml:space="preserve"><value>Theo số cái nguyên</value></data>
+  <data name="Studio_Scale_Fixed" xml:space="preserve"><value>Cố định, không nhân</value></data>
+  <data name="Studio_Protein_none" xml:space="preserve"><value>Không có</value></data>
+  <data name="Studio_Protein_chay" xml:space="preserve"><value>Đạm chay</value></data>
+  <data name="Studio_Protein_ca" xml:space="preserve"><value>Cá</value></data>
+  <data name="Studio_Protein_heo" xml:space="preserve"><value>Heo</value></data>
+  <data name="Studio_Protein_bo" xml:space="preserve"><value>Bò</value></data>
+  <data name="Studio_Protein_ga" xml:space="preserve"><value>Gà</value></data>
+  <data name="Studio_Protein_tom" xml:space="preserve"><value>Tôm</value></data>
+  <data name="Studio_Protein_trung" xml:space="preserve"><value>Trứng</value></data>
+  <data name="Studio_Author_Llm" xml:space="preserve"><value>Máy soạn (Claude)</value></data>
+  <data name="Studio_Author_Human" xml:space="preserve"><value>Người soạn</value></data>
+  <data name="Studio_Severity_Error" xml:space="preserve"><value>Lỗi</value></data>
+  <data name="Studio_Severity_Warning" xml:space="preserve"><value>Cảnh báo</value></data>
+  <data name="Studio_Note_valid" xml:space="preserve"><value>Hợp lệ</value></data>
+  <data name="Studio_Note_warnings" xml:space="preserve"><value>Có cảnh báo</value></data>
+  <data name="Studio_Note_invalid" xml:space="preserve"><value>Vi phạm luật</value></data>
+  <data name="Studio_Note_failed" xml:space="preserve"><value>Soạn lỗi</value></data>
+
+  <!-- Studio: tổng quan -->
+  <data name="Studio_Home_Title" xml:space="preserve"><value>Duyệt món</value></data>
+  <data name="Studio_Home_Intro" xml:space="preserve"><value>Xem, sửa và duyệt các món trước khi đưa vào app. Chỉ bạn bấm Duyệt thì món mới thành đã duyệt.</value></data>
+  <data name="Studio_Home_ByStatus" xml:space="preserve"><value>Số món theo trạng thái</value></data>
+  <data name="Studio_Home_Drafts" xml:space="preserve"><value>Bản nháp từ RecipeDrafter chờ duyệt</value></data>
+  <data name="Studio_Home_FailedDrafts" xml:space="preserve"><value>Soạn lỗi, chưa có bản nháp (lần chạy sau sẽ thử lại): {0}</value></data>
+  <data name="Studio_Home_OpenList" xml:space="preserve"><value>Mở danh sách món</value></data>
+  <data name="Studio_Home_DataFolder" xml:space="preserve"><value>Thư mục dữ liệu: {0}</value></data>
+  <data name="Studio_Kitchen_NotUsable" xml:space="preserve"><value>Chưa đọc được dữ liệu nên chưa kiểm, lưu hay duyệt được món. Sửa các vấn đề sau rồi tải lại trang.</value></data>
+  <data name="Studio_Kitchen_HasProblems" xml:space="preserve"><value>Thư mục dữ liệu có vấn đề. Việc duyệt món vẫn làm được, nhưng nên sửa sớm vì có thể làm kết quả kiểm sai.</value></data>
+  <data name="Studio_Kitchen_ProblemFormat" xml:space="preserve"><value>{0}: {1}</value></data>
+
+  <!-- Studio: danh sách món -->
+  <data name="Studio_List_Title" xml:space="preserve"><value>Món ăn</value></data>
+  <data name="Studio_List_Filter" xml:space="preserve"><value>Lọc theo trạng thái</value></data>
+  <data name="Studio_List_All" xml:space="preserve"><value>Tất cả</value></data>
+  <data name="Studio_List_Empty" xml:space="preserve"><value>Không có món nào ở trạng thái này.</value></data>
+  <data name="Studio_List_Draft" xml:space="preserve"><value>Bản nháp</value></data>
+  <data name="Studio_List_Clean" xml:space="preserve"><value>Máy kiểm không báo gì</value></data>
+  <data name="Studio_List_ErrorsFormat" xml:space="preserve"><value>{0} lỗi</value></data>
+  <data name="Studio_List_WarningsFormat" xml:space="preserve"><value>{0} cảnh báo</value></data>
+  <data name="Studio_List_Broken" xml:space="preserve"><value>File không đọc được</value></data>
+
+  <!-- Studio: một món -->
+  <data name="Studio_Dish_Back" xml:space="preserve"><value>← Danh sách món</value></data>
+  <data name="Studio_Dish_NotFound" xml:space="preserve"><value>Không tìm thấy món này.</value></data>
+  <data name="Studio_Dish_Broken" xml:space="preserve"><value>File này không đọc được thành một món. Sửa file bằng tay, rồi tải lại trang.</value></data>
+  <data name="Studio_Dish_File" xml:space="preserve"><value>File: {0}</value></data>
+  <data name="Studio_Dish_LockedReviewed" xml:space="preserve"><value>Món đã duyệt nên chỉ xem được. Bấm "Mở lại để sửa" nếu cần sửa.</value></data>
+  <data name="Studio_Dish_LockedCookTested" xml:space="preserve"><value>Món đã nấu thử nên chỉ xem được.</value></data>
+  <data name="Studio_Dish_Unsaved" xml:space="preserve"><value>Có thay đổi chưa lưu.</value></data>
+  <data name="Studio_Field_Name" xml:space="preserve"><value>Tên món</value></data>
+  <data name="Studio_Field_Slot" xml:space="preserve"><value>Loại</value></data>
+  <data name="Studio_Field_Regions" xml:space="preserve"><value>Vùng</value></data>
+  <data name="Studio_Field_Seasons" xml:space="preserve"><value>Mùa</value></data>
+  <data name="Studio_Field_Spicy" xml:space="preserve"><value>Độ cay</value></data>
+  <data name="Studio_Field_Method" xml:space="preserve"><value>Cách nấu</value></data>
+  <data name="Studio_Field_Protein" xml:space="preserve"><value>Nguồn đạm</value></data>
+  <data name="Studio_Field_ServeHot" xml:space="preserve"><value>Cần ăn nóng</value></data>
+  <data name="Studio_Lines_Title" xml:space="preserve"><value>Nguyên liệu cho một suất</value></data>
+  <data name="Studio_Lines_Ingredient" xml:space="preserve"><value>Nguyên liệu</value></data>
+  <data name="Studio_Lines_Grams" xml:space="preserve"><value>Gram ăn được</value></data>
+  <data name="Studio_Lines_Scale" xml:space="preserve"><value>Cách nhân khi nấu nhiều suất</value></data>
+  <data name="Studio_Lines_Ratio" xml:space="preserve"><value>Phần ăn hết (0 đến 1)</value></data>
+  <data name="Studio_Lines_Note" xml:space="preserve"><value>Ghi chú</value></data>
+  <data name="Studio_Lines_Add" xml:space="preserve"><value>Thêm nguyên liệu</value></data>
+  <data name="Studio_Lines_AddChoose" xml:space="preserve"><value>Chọn nguyên liệu để thêm</value></data>
+  <data name="Studio_Lines_Remove" xml:space="preserve"><value>Bỏ dòng này</value></data>
+  <data name="Studio_Steps_Title" xml:space="preserve"><value>Các bước</value></data>
+  <data name="Studio_Steps_NumberFormat" xml:space="preserve"><value>Bước {0}</value></data>
+  <data name="Studio_Steps_Text" xml:space="preserve"><value>Cách làm</value></data>
+  <data name="Studio_Steps_Active" xml:space="preserve"><value>Phút phải đứng bếp</value></data>
+  <data name="Studio_Steps_Passive" xml:space="preserve"><value>Phút để đó</value></data>
+  <data name="Studio_Steps_Uses" xml:space="preserve"><value>Nguyên liệu dùng ở bước này</value></data>
+  <data name="Studio_Steps_Add" xml:space="preserve"><value>Thêm bước</value></data>
+  <data name="Studio_Steps_Remove" xml:space="preserve"><value>Bỏ bước này</value></data>
+  <data name="Studio_Steps_Up" xml:space="preserve"><value>Đưa lên</value></data>
+  <data name="Studio_Steps_Down" xml:space="preserve"><value>Đưa xuống</value></data>
+  <data name="Studio_Nutrition_Source" xml:space="preserve"><value>Do chương trình cộng từ số liệu của từng nguyên liệu. Nguyên liệu chưa có số liệu thì chưa tính được.</value></data>
+  <data name="Studio_Nutrition_Problem" xml:space="preserve"><value>Chưa cộng được dinh dưỡng: {0}</value></data>
+  <data name="Studio_Findings_Title" xml:space="preserve"><value>Máy kiểm</value></data>
+  <data name="Studio_Findings_None" xml:space="preserve"><value>Máy kiểm không thấy gì để báo.</value></data>
+  <data name="Studio_Findings_Errors" xml:space="preserve"><value>Món còn lỗi nên chưa lưu hay duyệt được.</value></data>
+  <data name="Studio_Note_Title" xml:space="preserve"><value>Ghi chú của RecipeDrafter</value></data>
+  <data name="Studio_Note_ModelFormat" xml:space="preserve"><value>Soạn bằng {0}</value></data>
+  <data name="Studio_Note_DateFormat" xml:space="preserve"><value>ngày {0}</value></data>
+  <data name="Studio_Note_Missing" xml:space="preserve"><value>Công thức cần mà kho nguyên liệu chưa có:</value></data>
+  <data name="Studio_Note_MissingFormat" xml:space="preserve"><value>{0}, khoảng {1} g mỗi suất</value></data>
+  <data name="Studio_Prov_Title" xml:space="preserve"><value>Nguồn gốc</value></data>
+  <data name="Studio_Prov_DraftedByFormat" xml:space="preserve"><value>Soạn bởi: {0}</value></data>
+  <data name="Studio_Prov_NotReviewed" xml:space="preserve"><value>Chưa ai duyệt.</value></data>
+  <data name="Studio_Prov_ReviewedFormat" xml:space="preserve"><value>Duyệt bởi {0}, ngày {1}.</value></data>
+  <data name="Studio_Prov_CookTestedFormat" xml:space="preserve"><value>Nấu thử ngày {0}.</value></data>
+  <data name="Studio_Action_Save" xml:space="preserve"><value>Lưu</value></data>
+  <data name="Studio_Action_Discard" xml:space="preserve"><value>Bỏ thay đổi</value></data>
+  <data name="Studio_Action_Approve" xml:space="preserve"><value>Duyệt</value></data>
+  <data name="Studio_Action_Reopen" xml:space="preserve"><value>Mở lại để sửa</value></data>
+  <data name="Studio_Action_Reviewer" xml:space="preserve"><value>Người duyệt</value></data>
+  <data name="Studio_Action_ReviewerHint" xml:space="preserve"><value>Tên này được ghi vào file món.</value></data>
+  <data name="Studio_Action_NeedSave" xml:space="preserve"><value>Lưu thay đổi trước khi duyệt.</value></data>
+  <data name="Studio_Action_NeedReviewer" xml:space="preserve"><value>Nhập tên người duyệt.</value></data>
+  <data name="Studio_Action_NeedNoErrors" xml:space="preserve"><value>Sửa hết lỗi trước khi duyệt.</value></data>
+  <data name="Studio_Review_Saved" xml:space="preserve"><value>Đã lưu. Máy kiểm không thấy lỗi nên món ở trạng thái "đã qua máy kiểm".</value></data>
+  <data name="Studio_Review_Unchanged" xml:space="preserve"><value>Không có gì thay đổi.</value></data>
+  <data name="Studio_Review_Approved" xml:space="preserve"><value>Đã duyệt. File món đã ghi trạng thái, người duyệt và ngày duyệt.</value></data>
+  <data name="Studio_Review_Reopened" xml:space="preserve"><value>Đã mở lại món về nháp để sửa.</value></data>
+  <data name="Studio_Review_NotFound" xml:space="preserve"><value>Không còn món này trong thư mục dữ liệu.</value></data>
+  <data name="Studio_Review_Conflict" xml:space="preserve"><value>File món đã bị đổi ở chỗ khác sau khi bạn mở nó, nên chưa ghi gì. Đã tải lại bản mới; xem lại rồi làm lại.</value></data>
+  <data name="Studio_Review_NotEditable" xml:space="preserve"><value>Món đã duyệt hoặc đã nấu thử, không sửa trực tiếp được.</value></data>
+  <data name="Studio_Review_NotApprovable" xml:space="preserve"><value>Món này không duyệt được nữa.</value></data>
+  <data name="Studio_Review_NotReopenable" xml:space="preserve"><value>Chỉ mở lại được món đã duyệt mà chưa nấu thử.</value></data>
+  <data name="Studio_Review_ReviewerMissing" xml:space="preserve"><value>Nhập tên người duyệt trước khi duyệt.</value></data>
+  <data name="Studio_Review_HasErrors" xml:space="preserve"><value>Món còn lỗi nên chưa lưu hay duyệt được. Xem phần "Máy kiểm".</value></data>
+  <data name="Studio_Review_FinalExists" xml:space="preserve"><value>Đã có món cùng mã trong data/dishes nên bản nháp này không đè lên được.</value></data>
+  <data name="Studio_Review_DataNotUsable" xml:space="preserve"><value>Chưa đọc được dữ liệu nên chưa lưu hay duyệt được.</value></data>
+</root>

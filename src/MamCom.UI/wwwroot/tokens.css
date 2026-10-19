@@ -1,0 +1,92 @@
+/*
+ * Design tokens of MâmCơm. Components never write a colour, a size or a spacing of their own: they use these variables,
+ * so dark mode and the cooking-mode sizes are decided in one place.
+ */
+:root {
+    color-scheme: light dark;
+
+    /* Colour: a warm kitchen. Cream paper, brick-red accent, banana-leaf green. */
+    --color-bg: #fbf5ea;
+    --color-surface: #fffdf8;
+    --color-surface-raised: #f4ebdc;
+    --color-text: #2b2118;
+    --color-text-muted: #66574a;
+    --color-border: #dccdb6;
+    --color-focus: #1f5fbf;
+
+    --color-accent: #a42f1c;
+    --color-accent-strong: #84230f;
+    --color-on-accent: #ffffff;
+    --color-accent-soft: #f6dcd4;
+
+    --color-leaf: #2d6a39;
+    --color-leaf-soft: #dcecd8;
+    --color-warning: #7d5200;
+    --color-warning-soft: #fbebc4;
+    --color-danger: #a8231a;
+    --color-danger-soft: #fbdfdb;
+    --color-info: #1f5a85;
+    --color-info-soft: #dbeaf5;
+
+    /* One colour per part of the meal, so a dish is recognised before it is read. */
+    --color-slot-soup: #1f5a85;
+    --color-slot-main: #a8501a;
+    --color-slot-veg: #2d6a39;
+
+    /* Type. The base size is 18px, the smallest text 16px, the cooking mode 24px. */
+    --font-family: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-size-small: 1rem;
+    --font-size-base: 1.125rem;
+    --font-size-large: 1.375rem;
+    --font-size-title: 1.75rem;
+    --font-size-cooking: 1.5rem;
+    --font-weight-normal: 400;
+    --font-weight-strong: 600;
+    --line-height: 1.6;
+    --line-height-tight: 1.5;
+
+    /* Space, shape and touch. A target is never smaller than 48px. */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --radius: 0.75rem;
+    --radius-small: 0.5rem;
+    --tap-size: 3rem;
+    --content-width: 64rem;
+    --shadow: 0 1px 2px rgb(43 33 24 / 12%);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #1b1612;
+        --color-surface: #251e18;
+        --color-surface-raised: #30271f;
+        --color-text: #f2e9dd;
+        --color-text-muted: #c4b6a5;
+        --color-border: #4a3d31;
+        --color-focus: #8ab8f5;
+
+        --color-accent: #f08b73;
+        --color-accent-strong: #f7a995;
+        --color-on-accent: #2a0e07;
+        --color-accent-soft: #4a2219;
+
+        --color-leaf: #8fd09b;
+        --color-leaf-soft: #1f3a25;
+        --color-warning: #f0c565;
+        --color-warning-soft: #44330f;
+        --color-danger: #ff9a90;
+        --color-danger-soft: #4d1f1b;
+        --color-info: #93c4ee;
+        --color-info-soft: #1b3447;
+
+        --color-slot-soup: #93c4ee;
+        --color-slot-main: #f0a56b;
+        --color-slot-veg: #8fd09b;
+
+        --shadow: 0 1px 2px rgb(0 0 0 / 50%);
+    }
+}
