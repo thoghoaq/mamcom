@@ -373,6 +373,13 @@ Làm rõ khi hiện thực (ADR-011):
 6. **[NGƯỜI]** Mẹ hoặc bà duyệt trong Studio (khoảng 4–5 phút mỗi món). Studio hiện số dinh dưỡng do code tính và các cảnh báo.
 7. **[NGƯỜI]** Nấu thử top 30 món trong bữa tối hằng ngày. Một lần nấu cho ra cùng lúc: công thức đã kiểm định, thời gian thật, ảnh món, cân thành phẩm.
 
+Làm rõ khi hiện thực bước 3 (ADR-012):
+- **Lệnh:** `MamCom.FdcImporter suggest [--ids] [--top] [--refresh] [--delay-ms] [--max-requests] [--max-wait-seconds]`. Tên tiếng Anh để tìm nằm trong `data/plan/ingredient-names-en.csv` (cột `id`, `english`); đó là từ khoá, không phải dữ liệu.
+- **Kết quả** ghi vào `data/_suggestions/nutrition/<id>.json` (schema `nutrition-suggestion`): ba ứng viên (mặc định) từ Foundation và SR Legacy của USDA, mỗi ứng viên có `fdcId`, `detailsUrl`, số liệu trên 100g đúng như FDC nêu (`per100g`, cùng tên trường với `nutritionPer100gEdible`), các chất còn thiếu và lý do xếp hạng bằng tiếng Việt. Công cụ **không bao giờ sửa file nguyên liệu**; chỉ khi người chọn trong Studio thì số mới vào dữ liệu.
+- **Thứ tự xếp hạng:** mô tả nói "raw" trước, rồi ít chất thiếu, rồi khớp nhiều từ khoá, rồi Foundation trước SR Legacy, rồi điểm của FDC.
+- **Năng lượng:** `Energy`, không có thì `Energy (Atwater Specific Factors)`, rồi `Energy (Atwater General Factors)`; kJ không bao giờ đọc thành kcal.
+- **Khoá API:** `dotnet user-secrets set "Fdc:ApiKey" "<khoá>" --project tools/MamCom.FdcImporter`; không có thì dùng `DEMO_KEY`. Khoá nằm trong header, không in ra. Công cụ đọc hạn mức còn lại, nghỉ giữa các lần gọi, giới hạn số lần gọi mỗi lượt và dừng sạch khi hết hạn mức hoặc bị giới hạn lâu.
+
 ### 7.5 Ảnh
 
 - **Nguyên liệu:** tự chụp. Nền kem đồng nhất, tỷ lệ 1:1, cùng góc, cùng ánh sáng. Ở đây độ đúng quan trọng hơn độ đẹp, vì ảnh dùng để nhận diện ngoài chợ.
