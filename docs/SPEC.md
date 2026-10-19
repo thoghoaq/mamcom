@@ -147,6 +147,17 @@ region:  khớp vùng hộ × 1.2
 6. Lưu 5 mâm gần nhất (`SpinHistory`) để có nút "Mâm trước".
 7. Kết quả phải tái lập được: cùng seed và cùng input thì ra cùng mâm.
 
+Làm rõ khi hiện thực (ADR-008):
+- **Khung mâm:** thứ tự canh, mặn, (mặn thứ hai), rau. Ngưỡng `baseServings ≥ 5` so sau khi làm tròn đến 9 chữ số thập phân, để tổng 5,0 không bị coi là 4,999… theo thứ tự cộng. Mỗi món chỉ xuất hiện một lần trong mâm.
+- **Khớp mùa và vùng (§5.4):** món khớp mùa khi liệt kê đúng mã mùa hiện tại; mã `all` không tính là khớp. Món khớp vùng khi liệt kê vùng của hộ; danh sách vùng rỗng là không khớp. Mã mùa và bảng tháng sang mùa nằm trong `data/config/spinner-defaults.json`.
+- **Thứ tự quay:** ô ít ứng viên nhất quay trước, hoà thì theo thứ tự trong mâm. Ứng viên xếp theo `id` để kết quả không phụ thuộc thứ tự danh mục.
+- **Không đủ món:** mâm không có ô đó và `UnfilledSlots` ghi loại ô còn thiếu. Không ném lỗi.
+- **`RelaxedRules`** gồm trọng số mùa và vùng khi đã bỏ (chỉ khi có món mà hệ số khác 1), và từng luật cấp mâm mà mâm trả về thực sự vi phạm, theo thứ tự nới. Luật thời gian chỉ áp dụng khi hộ có `AvailableMinutes`.
+- **Món đã khoá:** luật nào riêng các món đã khoá đã phá thì bỏ ngay từ đầu, không tốn các luật đứng trước. Mâm khoá hết thì không quay và không nới gì. Ô khoá khớp theo loại và vị trí; món khoá không còn trong danh mục thì quay lại như ô thường.
+- **Đổi một món:** món đang có không được đưa lại, trừ khi là ứng viên duy nhất; các ô khác giữ nguyên.
+- **Thời gian cả mâm** (luật `AvailableMinutes`) đi qua `IMealTimeEstimator`; `CookPlanScheduler` (§5.6) là bản hiện thực. Thêm món không bao giờ làm thời gian ngắn đi.
+- **Ngày ăn lần cuối ở tương lai** (đồng hồ sai) coi như vừa ăn.
+
 ### 5.6 `CookPlanScheduler`: thời gian mâm và trình tự nấu
 
 Mỗi bước (`Step`) có `ActiveMinutes` (cần tay người) và `PassiveMinutes` (ninh, ướp, nồi chạy).
