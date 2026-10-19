@@ -177,7 +177,7 @@ public sealed class MealSpinner
         // A rule the fixed dishes already break on their own cannot be met by drawing more dishes, so it is given up
         // from the start instead of costing the rules before it in the order.
         var fixedDishes = plan.Select(p => p.Fixed).OfType<Dish>().ToArray();
-        var relaxed = relaxable.Where(rule => Violates(rule, fixedDishes, state)).ToHashSet();
+        var relaxed = relaxable.Where(rule => CannotBeMetBy(rule, fixedDishes, state)).ToHashSet();
         var toRelaxInTurn = relaxable.Where(rule => !relaxed.Contains(rule)).ToArray();
         Dish?[] drawn = [];
 
@@ -268,6 +268,17 @@ public sealed class MealSpinner
                 .GroupBy(d => d.ProteinSource, StringComparer.Ordinal)
                 .Any(group => group.Count() > 1),
         _ => false,
+    };
+
+    /// <summary>
+    /// Whether the fixed dishes alone already make a rule impossible, whatever else is drawn. Counting rules only get
+    /// worse as dishes are added; for time the estimator's lower bound is used, because its estimate can shrink.
+    /// </summary>
+    private bool CannotBeMetBy(RelaxedRule rule, Dish[] fixedDishes, SpinState state) => rule switch
+    {
+        RelaxedRule.AvailableMinutes =>
+            state.Context.Household.AvailableMinutes is { } limit && _mealTime.MinimumMealMinutes(fixedDishes) > limit,
+        _ => Violates(rule, fixedDishes, state),
     };
 
     private SpinResult Result(SlotPlan[] plan, Dish?[] drawn, RelaxedRule[] relaxed, SpinState state)

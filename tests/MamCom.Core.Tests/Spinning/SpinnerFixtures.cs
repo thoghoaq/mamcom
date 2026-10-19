@@ -17,6 +17,19 @@ internal sealed class SumOfStepsEstimator : IMealTimeEstimator
 {
     public int EstimateMealMinutes(IReadOnlyList<Dish> dishes) =>
         dishes.Sum(d => d.Steps.Sum(s => s.ActiveMinutes + s.PassiveMinutes));
+
+    // A sum only grows as dishes are added, so it is its own lower bound.
+    public int MinimumMealMinutes(IReadOnlyList<Dish> dishes) => EstimateMealMinutes(dishes);
+}
+
+/// <summary>Same estimate as the sum, but a lower bound of zero: the spinner can never prove a limit is lost early.</summary>
+internal sealed class SumWithNoBoundEstimator : IMealTimeEstimator
+{
+    private readonly SumOfStepsEstimator _sum = new();
+
+    public int EstimateMealMinutes(IReadOnlyList<Dish> dishes) => _sum.EstimateMealMinutes(dishes);
+
+    public int MinimumMealMinutes(IReadOnlyList<Dish> dishes) => 0;
 }
 
 /// <summary>Returns the given values in turn, then 0 forever: lets a test decide exactly which candidate is picked.</summary>
