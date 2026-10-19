@@ -24,7 +24,7 @@ SPEC §5 mô tả luật và thuật toán nhưng để ngỏ nhiều chi tiết
 - **Thứ tự:** ô ít ứng viên nhất quay trước, hoà theo thứ tự trong mâm; ứng viên xếp theo `id`; mỗi lần chọn luôn dùng một số ngẫu nhiên. Nhờ vậy cùng seed và cùng dữ liệu cho cùng mâm, kể cả khi đổi thứ tự danh mục.
 - **Khung mâm:** canh, mặn, (mặn thứ hai), rau. Ngưỡng 5 suất so sau khi làm tròn 9 chữ số, vì tổng suất cộng theo thứ tự thành viên có thể ra 4,999999999999999.
 - **Đổi một món** không đưa lại món đang có trừ khi đó là ứng viên duy nhất.
-- **Thời gian cả mâm** đi qua `IMealTimeEstimator`. `CookPlanScheduler` (PLAN 1.7) sẽ hiện thực nó và phải bảo đảm thêm món không làm thời gian ngắn đi.
+- **Thời gian cả mâm** đi qua `IMealTimeEstimator`, do `CookPlanScheduler` (PLAN 1.7) hiện thực. Ban đầu tôi giả định ước lượng không bao giờ ngắn lại khi thêm món, để bỏ luật thời gian sớm; khi làm 1.7 fuzz cho thấy thuật toán tham lam không đảm bảo điều đó, nên spinner dùng cận dưới `MinimumMealMinutes` thay thế ([ADR-009](009-lap-lich-nau-mot-nguoi-va-can-duoi-thoi-gian.md)).
 - **Tuỳ chọn người dùng** vào qua `SpinContext`: món chặn, ngày ăn lần cuối, đánh giá thích/không thích (`DishPreference`).
 
 ## Phương án đã cân nhắc

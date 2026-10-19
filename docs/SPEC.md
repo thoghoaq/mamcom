@@ -155,7 +155,7 @@ Làm rõ khi hiện thực (ADR-008):
 - **`RelaxedRules`** gồm trọng số mùa và vùng khi đã bỏ (chỉ khi có món mà hệ số khác 1), và từng luật cấp mâm mà mâm trả về thực sự vi phạm, theo thứ tự nới. Luật thời gian chỉ áp dụng khi hộ có `AvailableMinutes`.
 - **Món đã khoá:** luật nào riêng các món đã khoá đã phá thì bỏ ngay từ đầu, không tốn các luật đứng trước. Mâm khoá hết thì không quay và không nới gì. Ô khoá khớp theo loại và vị trí; món khoá không còn trong danh mục thì quay lại như ô thường.
 - **Đổi một món:** món đang có không được đưa lại, trừ khi là ứng viên duy nhất; các ô khác giữ nguyên.
-- **Thời gian cả mâm** (luật `AvailableMinutes`) đi qua `IMealTimeEstimator`; `CookPlanScheduler` (§5.6) là bản hiện thực. Thêm món không bao giờ làm thời gian ngắn đi.
+- **Thời gian cả mâm** (luật `AvailableMinutes`) đi qua `IMealTimeEstimator`; `CookPlanScheduler` (§5.6) là bản hiện thực. Để biết các món đã khoá làm mất giới hạn thời gian hay chưa, spinner dùng cận dưới `MinimumMealMinutes` của estimator (không giảm khi thêm món), không dùng ước lượng, vì ước lượng tham lam có thể ngắn lại khi thêm món (ADR-009).
 - **Ngày ăn lần cuối ở tương lai** (đồng hồ sai) coi như vừa ăn.
 
 ### 5.6 `CookPlanScheduler`: thời gian mâm và trình tự nấu
@@ -171,6 +171,13 @@ Bộ lập lịch mô phỏng **một người nấu**:
   - `ActiveMinutes` là phần cần tay người; có nó mới kiểm tra được hai bước active không chồng nhau.
   - Cơm là món giả với `DishId = "com"`. Id này dành riêng, món thật không được dùng.
 - **`mealTime`** = thời điểm bước cuối cùng kết thúc. Đây là con số "Thời gian cả mâm" trên UI. Thời gian cả mâm không phải tổng thời gian các món.
+
+Làm rõ khi hiện thực (ADR-009):
+- **Trong một món** các bước chạy lần lượt: bước sau bắt đầu khi bước trước đã xong cả phần thụ động. Mỗi bước làm phần cần tay trước, rồi đến phần thụ động. Bước chỉ có thời gian thụ động (`ActiveMinutes = 0`) không cần tay: nó bắt đầu ngay khi bước trước xong và chạy song song với việc khác.
+- **Món thường** xếp trước. Khi tay rảnh, người nấu lấy bước đã sẵn sàng của món có tổng thời gian dài nhất (hoà thì theo `id`); chưa có bước nào sẵn sàng thì đợi bước sớm nhất. Kết quả không phụ thuộc thứ tự món đưa vào.
+- **Món `serveHot`** xếp sau cùng, mỗi món nhắm kết thúc đúng lúc mâm kết thúc. Món dài nhất xếp trước nên món ngắn nhất kết thúc cuối. Một người nấu chỉ xong từng món một: một món `serveHot` kết thúc cách `mealTime` không quá tổng thời gian của các món `serveHot` kết thúc sau nó, nên "trong 10 phút cuối" đúng khi tổng đó không quá 10 phút. Món `serveHot` không bao giờ kết thúc trước phần còn lại của mâm.
+- **Cơm:** vo gạo 5 phút và nồi cơm 30 phút cùng câu hướng dẫn nằm trong `data/config/cooking-defaults.json`.
+- **`mealTime` là kết quả của một thuật toán tham lam**, không phải tối ưu, và có thể ngắn lại khi thêm một món. Vì vậy có thêm cận dưới `MinimumMealMinutes`: lớn nhất của thời gian cơm, thời gian món dài nhất và tổng thời gian cần tay. Cận dưới không bao giờ giảm khi thêm món và mọi lịch đều không ngắn hơn nó. `MealSpinner` (§5.5) dùng cận dưới để biết giới hạn thời gian đã mất.
 
 ---
 
