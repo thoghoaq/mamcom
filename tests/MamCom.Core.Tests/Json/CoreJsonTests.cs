@@ -176,12 +176,43 @@ public class CoreJsonTests
               "quantity": 2.5,
               "unitDisplay": "lạng",
               "purchaseGrams": 275.5,
-              "isPantry": false
+              "isPantry": false,
+              "approxGrams": null
             }
             """;
 
         Read<ShoppingItem>(json).Aisle.ShouldBe(Aisle.MeatAndFish);
         ShouldRoundTrip<ShoppingItem>(json);
+    }
+
+    [Fact]
+    public void Shopping_item_with_approximate_grams_round_trips()
+    {
+        const string json = """
+            {
+              "ingredientId": "ca-loc",
+              "name": "Cá lóc",
+              "aisle": "thit-ca",
+              "quantity": 1,
+              "unitDisplay": "con",
+              "purchaseGrams": 324.5,
+              "isPantry": false,
+              "approxGrams": 500
+            }
+            """;
+
+        Read<ShoppingItem>(json).ApproxGrams.ShouldBe(500);
+        ShouldRoundTrip<ShoppingItem>(json);
+    }
+
+    [Fact]
+    public void Market_unit_omits_the_approximate_grams_flag_when_false_and_keeps_it_when_true()
+    {
+        Write(new MarketUnit("g", 1, 50)).ShouldNotContain("showApproxGrams");
+        Write(new MarketUnit("con", 500, 1, ShowApproxGrams: true)).ShouldContain("\"showApproxGrams\": true");
+
+        Read<MarketUnit>("""{ "display": "con", "gramsPerUnit": 500, "step": 1, "showApproxGrams": true }""").ShowApproxGrams.ShouldBeTrue();
+        Read<MarketUnit>("""{ "display": "g", "gramsPerUnit": 1, "step": 50 }""").ShowApproxGrams.ShouldBeFalse();
     }
 
     [Fact]

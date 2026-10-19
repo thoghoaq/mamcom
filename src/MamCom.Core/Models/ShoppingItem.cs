@@ -5,6 +5,7 @@ namespace MamCom.Core.Models;
 /// <param name="UnitDisplay">The market unit label, for example lạng or quả.</param>
 /// <param name="PurchaseGrams">Grams to buy including waste, before rounding to market units.</param>
 /// <param name="IsPantry">Pantry items are hidden from the list unless the user asks to see them.</param>
+/// <param name="ApproxGrams">Grams the rounded quantity weighs, set only when the market unit asks for it (<see cref="MarketUnit.ShowApproxGrams"/>).</param>
 public sealed record ShoppingItem(
     string IngredientId,
     string Name,
@@ -12,4 +13,5 @@ public sealed record ShoppingItem(
     double Quantity,
     string UnitDisplay,
     double PurchaseGrams,
-    bool IsPantry);
+    bool IsPantry,
+    double? ApproxGrams = null);
