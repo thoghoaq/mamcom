@@ -1,0 +1,32 @@
+{
+  "secondMainMinBaseServings": 5,
+  "attemptsPerLevel": 50,
+  "historySize": 5,
+  "recency": {
+    "excludeWithinDays": 2,
+    "reducedUntilDays": 6,
+    "reducedWeight": 0.3
+  },
+  "preference": {
+    "liked": 2,
+    "neutral": 1,
+    "disliked": 0.2
+  },
+  "seasonMatchWeight": 1.3,
+  "regionMatchWeight": 1.2,
+  "maxFriedDishes": 1,
+  "seasonByMonth": [
+    "winter",
+    "winter",
+    "spring",
+    "spring",
+    "spring",
+    "summer",
+    "summer",
+    "summer",
+    "autumn",
+    "autumn",
+    "autumn",
+    "winter"
+  ]
+}

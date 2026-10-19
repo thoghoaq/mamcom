@@ -20,7 +20,7 @@ public class EnumJsonTests
     {
         ModelEnums.Select(t => t.Name).Order().ShouldBe(
         [
-            "AgeGroup", "Aisle", "BowlSize", "CookingMethod", "DishSlot", "DishStatus", "DraftAuthor",
+            "AgeGroup", "Aisle", "BowlSize", "CookingMethod", "DishPreference", "DishSlot", "DishStatus", "DraftAuthor",
             "MemberTag", "Region", "RelaxedRule", "ScaleKind", "SpicyLevel",
         ]);
     }
@@ -50,6 +50,7 @@ public class EnumJsonTests
     [InlineData(typeof(BowlSize), "small,medium,large")]
     [InlineData(typeof(AgeGroup), "toddler,child,teen,adult,senior")]
     [InlineData(typeof(MemberTag), "moreProtein,moreVeg,noSpicy")]
+    [InlineData(typeof(DishPreference), "liked,neutral,disliked")]
     public void Enum_values_serialize_to_the_strings_SPEC_defines(Type enumType, string expectedCsv)
     {
         var actual = Enum.GetValues(enumType).Cast<object>()

@@ -153,7 +153,8 @@ public class CoreJsonTests
                   { "slot": "rau", "dishId": "rau-muong-xao-toi", "isLocked": false }
                 ]
               },
-              "relaxedRules": ["availableMinutes", "distinctProteinSources"]
+              "relaxedRules": ["availableMinutes", "distinctProteinSources"],
+              "unfilledSlots": ["man"]
             }
             """;
 
@@ -162,7 +163,36 @@ public class CoreJsonTests
         result.Tray.Date.ShouldBe(new DateOnly(2026, 10, 18));
         result.Tray.Slots[0].ShouldBe(new SlotResult(DishSlot.Soup, "canh-chua-ca-loc", true));
         result.RelaxedRules.ShouldBe([RelaxedRule.AvailableMinutes, RelaxedRule.DistinctProteinSources]);
+        result.UnfilledSlots.ShouldBe([DishSlot.Main]);
         ShouldRoundTrip<SpinResult>(json);
+    }
+
+    [Fact]
+    public void Spin_history_round_trips_newest_first()
+    {
+        const string json = """
+            {
+              "items": [
+                {
+                  "tray": { "date": "2026-10-19", "slots": [ { "slot": "man", "dishId": "ga-ran", "isLocked": false } ] },
+                  "relaxedRules": [],
+                  "unfilledSlots": []
+                },
+                {
+                  "tray": { "date": "2026-10-18", "slots": [ { "slot": "canh", "dishId": "canh-bi-do", "isLocked": true } ] },
+                  "relaxedRules": ["seasonAndRegionWeights"],
+                  "unfilledSlots": ["rau"]
+                }
+              ]
+            }
+            """;
+
+        var history = Read<MamCom.Core.Spinning.SpinHistory>(json);
+
+        history.Items.Count.ShouldBe(2);
+        history.Items[0].Tray.Slots[0].DishId.ShouldBe("ga-ran");
+        history.Items[1].RelaxedRules.ShouldBe([RelaxedRule.SeasonAndRegionWeights]);
+        ShouldRoundTrip<MamCom.Core.Spinning.SpinHistory>(json);
     }
 
     [Fact]

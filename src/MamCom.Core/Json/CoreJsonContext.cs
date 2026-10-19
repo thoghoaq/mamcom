@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 using MamCom.Core.Models;
 using MamCom.Core.Nutrition;
 using MamCom.Core.Portions;
+using MamCom.Core.Spinning;
 
 namespace MamCom.Core.Json;
 
@@ -28,4 +29,8 @@ namespace MamCom.Core.Json;
 [JsonSerializable(typeof(CookPlan))]
 [JsonSerializable(typeof(PortionConfig))]
 [JsonSerializable(typeof(NutritionConfig))]
+[JsonSerializable(typeof(SpinnerConfig))]
+[JsonSerializable(typeof(SpinHistory))]
+[JsonSerializable(typeof(DishPreference))]
+[JsonSerializable(typeof(IReadOnlyDictionary<string, DishPreference>))]
 public partial class CoreJsonContext : JsonSerializerContext;
