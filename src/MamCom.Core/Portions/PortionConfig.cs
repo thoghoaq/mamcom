@@ -37,6 +37,7 @@ public sealed record BowlSizeValues(double Small, double Medium, double Large)
 /// The serving constants of SPEC §4.2, loaded from <c>data/config/portion-defaults.json</c>.
 /// servings = (<see cref="ServingsBase"/> + <see cref="ServingsPerBowl"/> × bowls) × age modifier.
 /// </summary>
+/// <param name="SublinearExponent">Exponent applied to servings for sublinear ingredients such as spices and oil (SPEC §6.1); above 0 and at most 1.</param>
 /// <param name="GramsRawRicePerBowl">Raw rice grams in one bowl, by bowl size.</param>
 /// <param name="RiceRoundingGrams">Total raw rice is rounded up to a multiple of this.</param>
 /// <param name="DefaultBowlsPerMeal">Pre-filled bowls per meal for a new member of each age group.</param>
@@ -47,6 +48,7 @@ public sealed record PortionConfig(
     AgeGroupValues AgeModifiers,
     double MoreProteinFactor,
     double MoreVegFactor,
+    double SublinearExponent,
     BowlSizeValues GramsRawRicePerBowl,
     double RiceRoundingGrams,
     AgeGroupValues DefaultBowlsPerMeal,
@@ -67,6 +69,7 @@ public sealed record PortionConfig(
         Require(AgeModifiers.All.All(IsPositive), nameof(AgeModifiers), "every age group needs a positive modifier");
         Require(IsPositive(MoreProteinFactor), nameof(MoreProteinFactor), "must be a positive number");
         Require(IsPositive(MoreVegFactor), nameof(MoreVegFactor), "must be a positive number");
+        Require(IsPositive(SublinearExponent) && SublinearExponent <= 1, nameof(SublinearExponent), "must be above 0 and at most 1");
         Require(GramsRawRicePerBowl.All.All(IsPositive), nameof(GramsRawRicePerBowl), "every bowl size needs positive grams");
         Require(IsPositive(RiceRoundingGrams), nameof(RiceRoundingGrams), "must be a positive number");
         Require(IsPositive(MinBowlsPerMeal), nameof(MinBowlsPerMeal), "must be a positive number");

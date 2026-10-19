@@ -42,7 +42,7 @@ public sealed class PortionCalculator
             totalBowls += member.BowlsPerMeal;
         }
 
-        var rawRiceGrams = CeilToMultiple(
+        var rawRiceGrams = Rounding.CeilToMultiple(
             totalBowls * _config.GramsRawRicePerBowl.For(household.BowlSize),
             _config.RiceRoundingGrams);
 
@@ -60,8 +60,4 @@ public sealed class PortionCalculator
                 $"Bowls per meal for '{member.DisplayName}' must be between {_config.MinBowlsPerMeal} and {_config.MaxBowlsPerMeal}.");
         }
     }
-
-    /// <summary>Rounds up to a multiple. The rounding to 9 places stops 320.00000000000006 from becoming 330.</summary>
-    private static double CeilToMultiple(double value, double multiple) =>
-        Math.Ceiling(Math.Round(value / multiple, 9)) * multiple;
 }

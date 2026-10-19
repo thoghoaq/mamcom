@@ -22,7 +22,8 @@ public static class NutritionDbs
     public const string Placeholder = "placeholder";
 }
 
-public static class NameKeys
+public static class RegionKeys
 {
+    /// <summary>Key of a region-keyed object (<c>names</c>, <c>marketUnit</c>) that applies to any region without a key of its own.</summary>
     public const string Default = "default";
 }

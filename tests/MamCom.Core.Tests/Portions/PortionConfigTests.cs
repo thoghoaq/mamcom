@@ -16,6 +16,7 @@ public class PortionConfigTests
         Config.AgeModifiers.ShouldBe(new AgeGroupValues(0.6, 0.85, 1.0, 1.0, 0.9));
         Config.MoreProteinFactor.ShouldBe(1.2);
         Config.MoreVegFactor.ShouldBe(1.2);
+        Config.SublinearExponent.ShouldBe(0.8); // SPEC §6.1
         Config.GramsRawRicePerBowl.ShouldBe(new BowlSizeValues(35, 40, 50));
         Config.RiceRoundingGrams.ShouldBe(10);
         Config.DefaultBowlsPerMeal.ShouldBe(new AgeGroupValues(1, 1.5, 2.5, 2, 1.5));
@@ -88,6 +89,11 @@ public class PortionConfigTests
         { Config with { AgeModifiers = Config.AgeModifiers with { Senior = 0 } }, "AgeModifiers" },
         { Config with { MoreProteinFactor = 0 }, "MoreProteinFactor" },
         { Config with { MoreVegFactor = double.PositiveInfinity }, "MoreVegFactor" },
+        { Config with { SublinearExponent = 0 }, "SublinearExponent" },
+        { Config with { SublinearExponent = -0.5 }, "SublinearExponent" },
+        { Config with { SublinearExponent = 1.01 }, "SublinearExponent" },
+        { Config with { SublinearExponent = double.NaN }, "SublinearExponent" },
+        { Config with { SublinearExponent = double.PositiveInfinity }, "SublinearExponent" },
         { Config with { GramsRawRicePerBowl = Config.GramsRawRicePerBowl with { Small = -1 } }, "GramsRawRicePerBowl" },
         { Config with { GramsRawRicePerBowl = Config.GramsRawRicePerBowl with { Medium = 0 } }, "GramsRawRicePerBowl" },
         { Config with { GramsRawRicePerBowl = Config.GramsRawRicePerBowl with { Large = double.NaN } }, "GramsRawRicePerBowl" },
@@ -109,6 +115,7 @@ public class PortionConfigTests
     {
         // A zero base is allowed (servings then come only from bowls); min == max and defaults on the bounds are allowed.
         var zeroBase = Config with { ServingsBase = 0 };
+        var linearLikeExponent = Config with { SublinearExponent = 1 };
         var pinnedRange = Config with
         {
             MinBowlsPerMeal = 2,
@@ -118,6 +125,7 @@ public class PortionConfigTests
         var defaultsOnBounds = Config with { DefaultBowlsPerMeal = new AgeGroupValues(0.5, 5, 0.5, 5, 0.5) };
 
         Should.NotThrow(() => new PortionCalculator(zeroBase));
+        Should.NotThrow(() => new PortionCalculator(linearLikeExponent));
         Should.NotThrow(() => new PortionCalculator(pinnedRange));
         Should.NotThrow(() => new PortionCalculator(defaultsOnBounds));
     }

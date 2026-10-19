@@ -10,6 +10,7 @@
   },
   "moreProteinFactor": 1.2,
   "moreVegFactor": 1.2,
+  "sublinearExponent": 0.8,
   "gramsRawRicePerBowl": {
     "small": 35,
     "medium": 40,
