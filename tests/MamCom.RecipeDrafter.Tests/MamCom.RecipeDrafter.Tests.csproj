@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\tools\MamCom.RecipeDrafter\MamCom.RecipeDrafter.csproj" />
+    <ProjectReference Include="..\..\tools\MamCom.DataBuilder\MamCom.DataBuilder.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The real data files, laid out like the repo's data folder, so tests exercise what ships. -->
+    <None Include="..\..\data\schemas\*.json" Link="data\schemas\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\data\config\*.json" Link="data\config\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\data\ingredients\*.json" Link="data\ingredients\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\data\dishes\*.json" Link="data\dishes\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\data\plan\*.csv" Link="data\plan\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

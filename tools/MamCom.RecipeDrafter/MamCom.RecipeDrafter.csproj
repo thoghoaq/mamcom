@@ -2,10 +2,22 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
+    <!-- The id of the user-secrets store that keeps Claude:ApiKey and Claude:Model (set them with the dotnet user-secrets command). -->
+    <UserSecretsId>mamcom-recipe-drafter</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Anthropic" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" />
     <ProjectReference Include="..\..\src\MamCom.Core\MamCom.Core.csproj" />
+    <!-- Drafts are checked with the same schema and rules as the data they will join. -->
+    <ProjectReference Include="..\MamCom.DataBuilder\MamCom.DataBuilder.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The prompts live in their own files so a person can edit them; they are copied next to the program. -->
+    <Content Include="prompts\*.md" Link="prompts\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
