@@ -17,6 +17,7 @@
     "large": 50
   },
   "riceRoundingGrams": 10,
+  "riceIngredientId": "gao",
   "defaultBowlsPerMeal": {
     "toddler": 1,
     "child": 1.5,

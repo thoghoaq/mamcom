@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using MamCom.Core.Models;
+using MamCom.Core.Nutrition;
 using MamCom.Core.Portions;
 
 namespace MamCom.Core.Json;
@@ -26,4 +27,5 @@ namespace MamCom.Core.Json;
 [JsonSerializable(typeof(NutritionFacts))]
 [JsonSerializable(typeof(CookPlan))]
 [JsonSerializable(typeof(PortionConfig))]
+[JsonSerializable(typeof(NutritionConfig))]
 public partial class CoreJsonContext : JsonSerializerContext;

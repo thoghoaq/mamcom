@@ -19,6 +19,7 @@ public class PortionConfigTests
         Config.SublinearExponent.ShouldBe(0.8); // SPEC §6.1
         Config.GramsRawRicePerBowl.ShouldBe(new BowlSizeValues(35, 40, 50));
         Config.RiceRoundingGrams.ShouldBe(10);
+        Config.RiceIngredientId.ShouldBe("gao");
         Config.DefaultBowlsPerMeal.ShouldBe(new AgeGroupValues(1, 1.5, 2.5, 2, 1.5));
         Config.MinBowlsPerMeal.ShouldBe(0.5);
         Config.MaxBowlsPerMeal.ShouldBe(5);
@@ -98,6 +99,8 @@ public class PortionConfigTests
         { Config with { GramsRawRicePerBowl = Config.GramsRawRicePerBowl with { Medium = 0 } }, "GramsRawRicePerBowl" },
         { Config with { GramsRawRicePerBowl = Config.GramsRawRicePerBowl with { Large = double.NaN } }, "GramsRawRicePerBowl" },
         { Config with { RiceRoundingGrams = 0 }, "RiceRoundingGrams" },
+        { Config with { RiceIngredientId = "" }, "RiceIngredientId" },
+        { Config with { RiceIngredientId = "   " }, "RiceIngredientId" },
         { Config with { MinBowlsPerMeal = 0 }, "MinBowlsPerMeal" },
         { Config with { MaxBowlsPerMeal = 0.1 }, "MaxBowlsPerMeal" },
         { Config with { MaxBowlsPerMeal = double.PositiveInfinity }, "MaxBowlsPerMeal" },

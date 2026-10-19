@@ -40,6 +40,7 @@ public sealed record BowlSizeValues(double Small, double Medium, double Large)
 /// <param name="SublinearExponent">Exponent applied to servings for sublinear ingredients such as spices and oil (SPEC §6.1); above 0 and at most 1.</param>
 /// <param name="GramsRawRicePerBowl">Raw rice grams in one bowl, by bowl size.</param>
 /// <param name="RiceRoundingGrams">Total raw rice is rounded up to a multiple of this.</param>
+/// <param name="RiceIngredientId">Id of the raw-rice ingredient: rice is a pseudo-dish, so its nutrition and its shopping line come from this ingredient.</param>
 /// <param name="DefaultBowlsPerMeal">Pre-filled bowls per meal for a new member of each age group.</param>
 /// <param name="BowlsStep">Step of the bowls stepper in the UI; not enforced by the calculator.</param>
 public sealed record PortionConfig(
@@ -51,6 +52,7 @@ public sealed record PortionConfig(
     double SublinearExponent,
     BowlSizeValues GramsRawRicePerBowl,
     double RiceRoundingGrams,
+    string RiceIngredientId,
     AgeGroupValues DefaultBowlsPerMeal,
     double MinBowlsPerMeal,
     double MaxBowlsPerMeal,
@@ -72,6 +74,7 @@ public sealed record PortionConfig(
         Require(IsPositive(SublinearExponent) && SublinearExponent <= 1, nameof(SublinearExponent), "must be above 0 and at most 1");
         Require(GramsRawRicePerBowl.All.All(IsPositive), nameof(GramsRawRicePerBowl), "every bowl size needs positive grams");
         Require(IsPositive(RiceRoundingGrams), nameof(RiceRoundingGrams), "must be a positive number");
+        Require(!string.IsNullOrWhiteSpace(RiceIngredientId), nameof(RiceIngredientId), "must name an ingredient");
         Require(IsPositive(MinBowlsPerMeal), nameof(MinBowlsPerMeal), "must be a positive number");
         Require(double.IsFinite(MaxBowlsPerMeal) && MaxBowlsPerMeal >= MinBowlsPerMeal, nameof(MaxBowlsPerMeal), "must be finite and not below the minimum");
         Require(IsPositive(BowlsStep), nameof(BowlsStep), "must be a positive number");
