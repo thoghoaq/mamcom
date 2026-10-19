@@ -36,7 +36,8 @@ jobs:
       - name: Test
         run: dotnet test --solution MamCom.sln --configuration Release --no-build
 
-      # Enable after PLAN 2.2 (DataBuilder validate is implemented).
       - name: Validate data
-        if: ${{ false }}
         run: dotnet run --project tools/MamCom.DataBuilder --configuration Release --no-build -- validate
+
+      - name: Build data bundle (dev)
+        run: dotnet run --project tools/MamCom.DataBuilder --configuration Release --no-build -- build --out dist
