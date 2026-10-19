@@ -176,6 +176,10 @@ Bộ lập lịch mô phỏng **một người nấu**:
 | `integer` | ceil(g × S / gramsPerUnit) đơn vị | trứng, quả cà chua, con cá |
 | `fixed` | g | lá thơm trang trí… |
 
+- Số mũ của `sublinear` nằm trong `data/config/portion-defaults.json` (`sublinearExponent`, lớn hơn 0 và không quá 1).
+- Với `integer`, `gramsPerUnit` lấy từ `marketUnit` của vùng (xem §7.1). Lượng dùng thực tế là số đơn vị nguyên nhân với `gramsPerUnit`, không phải `g × S`.
+- Làm tròn lên bỏ qua sai số dấu phẩy động: 3 × 0,1 vẫn ra 3 đơn vị, không thành 4.
+
 ### 6.2 Danh sách đi chợ (`ShoppingListBuilder`)
 
 - Tính lượng cần mua: `purchaseGrams = Σ gramsEdible / (1 − wasteRatio)`.
@@ -246,6 +250,8 @@ Mỗi nguyên liệu lưu `nutritionSource` (db, mã gốc, tên khớp, ngườ
   "image": { "thumb": null, "full": null, "source": null, "license": null, "isIllustration": false }
 }
 ```
+
+`names` và `marketUnit` là đối tượng khoá theo vùng (`north`, `central`, `south`). Có thể thêm khoá `default` cho mọi vùng không có khoá riêng. Nếu thiếu cả hai, `names` rơi về `id`, còn `marketUnit` coi là không có đơn vị chợ (lỗi dữ liệu với nguyên liệu dùng `integer` hoặc xuất hiện trong danh sách đi chợ).
 
 ### 7.2 Món: `data/dishes/<id>.json`
 

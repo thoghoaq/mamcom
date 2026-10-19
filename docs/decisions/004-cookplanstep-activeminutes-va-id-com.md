@@ -1,6 +1,6 @@
 # ADR-004: CookPlanStep có ActiveMinutes, id "com" dành riêng cho cơm
 
-- Trạng thái: Đã chấp nhận
+- Trạng thái: Đã áp dụng trong code, chờ chủ dự án xác nhận
 - Ngày: 2026-10-19
 - Liên quan: [SPEC §5.6, §10](../SPEC.md), [PLAN 1.1, 1.7](../PLAN.md)
 
