@@ -113,6 +113,64 @@ public class PortionCalculatorTests
         tagged.RawRiceGrams.ShouldBe(plain.RawRiceGrams);
     }
 
+    // ---- every constant comes from the config ------------------------------------------------
+
+    // Every constant differs from the shipped file and from the others, so hard-coding a value or
+    // wiring one config field into the wrong place changes the result. All expected numbers are
+    // worked out by hand from SPEC §4.2 (test-only constants, not production data).
+    private static readonly PortionConfig DistinctConfig = Config with
+    {
+        ServingsBase = 0.5,
+        ServingsPerBowl = 0.25,
+        AgeModifiers = new AgeGroupValues(0.7, 0.8, 1.1, 0.95, 0.85),
+        MoreProteinFactor = 1.3,
+        MoreVegFactor = 1.1,
+        GramsRawRicePerBowl = new BowlSizeValues(33, 44, 57),
+        RiceRoundingGrams = 25,
+    };
+
+    private static Household DistinctHome(BowlSize size) => Home(
+        size,
+        Person("Bố", AgeGroup.Adult, 3, MemberTag.MoreProtein),               // (0.5 + 0.25 × 3) × 0.95 = 1.1875
+        Person("Mẹ", AgeGroup.Adult, 2, MemberTag.MoreVeg),                   // (0.5 + 0.25 × 2) × 0.95 = 0.95
+        Person("Con", AgeGroup.Child, 1.5),                                   // (0.5 + 0.25 × 1.5) × 0.8 = 0.7
+        Person("Teen", AgeGroup.Teen, 2.5),                                   // (0.5 + 0.25 × 2.5) × 1.1 = 1.2375
+        Person("Bé", AgeGroup.Toddler, 1),                                    // (0.5 + 0.25 × 1) × 0.7 = 0.525
+        Person("Bà", AgeGroup.Senior, 1.5, MemberTag.MoreProtein, MemberTag.MoreVeg)); // 0.875 × 0.85 = 0.74375
+
+    [Fact]
+    public void Servings_use_the_configured_constants_and_each_tag_its_own_factor()
+    {
+        var result = new PortionCalculator(DistinctConfig).Calculate(DistinctHome(BowlSize.Medium));
+
+        result.MemberServings.ShouldBe([1.1875, 0.95, 0.7, 1.2375, 0.525, 0.74375], Tolerance);
+        result.BaseServings.ShouldBe(5.34375, Tolerance);
+        // protein: members Bố and Bà get × 1.3, i.e. base + 0.3 × (1.1875 + 0.74375)
+        result.ProteinServings.ShouldBe(5.923125, Tolerance);
+        // vegetables: members Mẹ and Bà get × 1.1, i.e. base + 0.1 × (0.95 + 0.74375)
+        result.VegServings.ShouldBe(5.513125, Tolerance);
+        result.TotalBowls.ShouldBe(11.5);
+    }
+
+    [Theory]
+    [InlineData(BowlSize.Small, 400)]   // 11.5 × 33 = 379.5 g, up to a multiple of 25
+    [InlineData(BowlSize.Medium, 525)]  // 11.5 × 44 = 506 g
+    [InlineData(BowlSize.Large, 675)]   // 11.5 × 57 = 655.5 g
+    public void Rice_uses_the_configured_grams_and_rounding_step(BowlSize size, double expectedGrams)
+    {
+        new PortionCalculator(DistinctConfig).Calculate(DistinctHome(size)).RawRiceGrams.ShouldBe(expectedGrams);
+    }
+
+    [Fact]
+    public void A_real_excess_far_below_a_gram_is_still_rounded_up()
+    {
+        // 8 bowls × 40.0000000125 g = 320.0000001 g, which is 1e-7 g above a multiple of 10: not noise.
+        var config = Config with { GramsRawRicePerBowl = new BowlSizeValues(35, 40.0000000125, 50) };
+        var home = Home(BowlSize.Medium, Father, Mother, Child, Grandma);
+
+        new PortionCalculator(config).Calculate(home).RawRiceGrams.ShouldBe(330);
+    }
+
     // ---- bowl size and rice rounding ---------------------------------------------------------
 
     [Theory]

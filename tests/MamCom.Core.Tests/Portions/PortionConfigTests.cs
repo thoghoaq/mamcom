@@ -80,18 +80,47 @@ public class PortionConfigTests
         { Config with { ServingsBase = double.NaN }, "ServingsBase" },
         { Config with { ServingsPerBowl = 0 }, "ServingsPerBowl" },
         { Config with { ServingsPerBowl = double.PositiveInfinity }, "ServingsPerBowl" },
+        { Config with { ServingsBase = double.PositiveInfinity }, "ServingsBase" },
+        { Config with { AgeModifiers = Config.AgeModifiers with { Toddler = 0 } }, "AgeModifiers" },
+        { Config with { AgeModifiers = Config.AgeModifiers with { Child = 0 } }, "AgeModifiers" },
+        { Config with { AgeModifiers = Config.AgeModifiers with { Teen = double.NaN } }, "AgeModifiers" },
+        { Config with { AgeModifiers = Config.AgeModifiers with { Adult = -1 } }, "AgeModifiers" },
         { Config with { AgeModifiers = Config.AgeModifiers with { Senior = 0 } }, "AgeModifiers" },
         { Config with { MoreProteinFactor = 0 }, "MoreProteinFactor" },
         { Config with { MoreVegFactor = double.PositiveInfinity }, "MoreVegFactor" },
         { Config with { GramsRawRicePerBowl = Config.GramsRawRicePerBowl with { Small = -1 } }, "GramsRawRicePerBowl" },
+        { Config with { GramsRawRicePerBowl = Config.GramsRawRicePerBowl with { Medium = 0 } }, "GramsRawRicePerBowl" },
+        { Config with { GramsRawRicePerBowl = Config.GramsRawRicePerBowl with { Large = double.NaN } }, "GramsRawRicePerBowl" },
         { Config with { RiceRoundingGrams = 0 }, "RiceRoundingGrams" },
         { Config with { MinBowlsPerMeal = 0 }, "MinBowlsPerMeal" },
         { Config with { MaxBowlsPerMeal = 0.1 }, "MaxBowlsPerMeal" },
         { Config with { MaxBowlsPerMeal = double.PositiveInfinity }, "MaxBowlsPerMeal" },
         { Config with { BowlsStep = 0 }, "BowlsStep" },
+        { Config with { DefaultBowlsPerMeal = Config.DefaultBowlsPerMeal with { Toddler = 0.25 } }, "DefaultBowlsPerMeal" },
+        { Config with { DefaultBowlsPerMeal = Config.DefaultBowlsPerMeal with { Child = 0 } }, "DefaultBowlsPerMeal" },
+        { Config with { DefaultBowlsPerMeal = Config.DefaultBowlsPerMeal with { Teen = 5.5 } }, "DefaultBowlsPerMeal" },
         { Config with { DefaultBowlsPerMeal = Config.DefaultBowlsPerMeal with { Adult = 6 } }, "DefaultBowlsPerMeal" },
+        { Config with { DefaultBowlsPerMeal = Config.DefaultBowlsPerMeal with { Senior = -1 } }, "DefaultBowlsPerMeal" },
         { Config with { DefaultBowlsPerMeal = Config.DefaultBowlsPerMeal with { Toddler = double.NaN } }, "DefaultBowlsPerMeal" },
     };
+
+    [Fact]
+    public void Values_on_the_edge_of_the_allowed_range_are_accepted()
+    {
+        // A zero base is allowed (servings then come only from bowls); min == max and defaults on the bounds are allowed.
+        var zeroBase = Config with { ServingsBase = 0 };
+        var pinnedRange = Config with
+        {
+            MinBowlsPerMeal = 2,
+            MaxBowlsPerMeal = 2,
+            DefaultBowlsPerMeal = new AgeGroupValues(2, 2, 2, 2, 2),
+        };
+        var defaultsOnBounds = Config with { DefaultBowlsPerMeal = new AgeGroupValues(0.5, 5, 0.5, 5, 0.5) };
+
+        Should.NotThrow(() => new PortionCalculator(zeroBase));
+        Should.NotThrow(() => new PortionCalculator(pinnedRange));
+        Should.NotThrow(() => new PortionCalculator(defaultsOnBounds));
+    }
 
     [Theory]
     [MemberData(nameof(InvalidConfigs))]
