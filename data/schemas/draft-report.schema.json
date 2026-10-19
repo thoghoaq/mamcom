@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Draft report",
+  "description": "data/dishes/_drafts/<id>.report.json, written by MamCom.RecipeDrafter next to each draft (ADR-013): whether the draft passes the checks the shipped data must pass, what is wrong if not, which ingredients are missing, and what the call cost.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["dishId", "model", "draftedAt", "validation", "stopReason", "problems", "missingIngredients", "usage"],
+  "properties": {
+    "dishId": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 64 },
+    "model": { "type": "string", "minLength": 1 },
+    "draftedAt": { "type": "string", "format": "date" },
+    "validation": {
+      "description": "valid: no finding. warnings: only warnings. invalid: the draft file exists but breaks a rule. failed: the model gave nothing usable, so there is no draft file.",
+      "enum": ["valid", "warnings", "invalid", "failed"]
+    },
+    "stopReason": { "description": "Why the model stopped; empty when no answer arrived.", "type": "string" },
+    "problems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["severity", "code", "location", "message"],
+        "properties": {
+          "severity": { "enum": ["error", "warning"] },
+          "code": { "type": "string", "minLength": 1 },
+          "location": { "description": "JSON Pointer into the draft file; empty for the draft as a whole.", "type": "string" },
+          "message": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "missingIngredients": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "gramsEdiblePerServing", "note"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "gramsEdiblePerServing": { "type": "number", "exclusiveMinimum": 0 },
+          "note": { "type": ["string", "null"], "minLength": 1 }
+        }
+      }
+    },
+    "usage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inputTokens", "outputTokens", "cacheCreationInputTokens", "cacheReadInputTokens"],
+      "properties": {
+        "inputTokens": { "type": "integer", "minimum": 0 },
+        "outputTokens": { "type": "integer", "minimum": 0 },
+        "cacheCreationInputTokens": { "type": "integer", "minimum": 0 },
+        "cacheReadInputTokens": { "type": "integer", "minimum": 0 }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "required": ["validation"], "properties": { "validation": { "const": "valid" } } },
+      "then": { "properties": { "problems": { "maxItems": 0 } } }
+    },
+    {
+      "description": "Warnings means only warnings, and at least one.",
+      "if": { "required": ["validation"], "properties": { "validation": { "const": "warnings" } } },
+      "then": {
+        "properties": {
+          "problems": {
+            "minItems": 1,
+            "items": { "properties": { "severity": { "const": "warning" } } }
+          }
+        }
+      }
+    },
+    {
+      "description": "Invalid and failed both name at least one error.",
+      "if": { "required": ["validation"], "properties": { "validation": { "enum": ["invalid", "failed"] } } },
+      "then": {
+        "properties": {
+          "problems": { "contains": { "properties": { "severity": { "const": "error" } }, "required": ["severity"] } }
+        }
+      }
+    }
+  ]
+}
