@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
+    <!-- The id of the user-secrets store that keeps the setting Fdc:ApiKey (set it with the dotnet user-secrets command). -->
+    <UserSecretsId>mamcom-fdc-importer</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" />
+    <ProjectReference Include="..\..\src\MamCom.Core\MamCom.Core.csproj" />
+  </ItemGroup>
 
 </Project>

@@ -12,6 +12,8 @@
 
   <ItemGroup Label="Data tooling">
     <PackageVersion Include="LateApexEarlySpeed.Json.Schema" Version="4.2.2" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.12" />
   </ItemGroup>
 
   <ItemGroup Label="Testing">
