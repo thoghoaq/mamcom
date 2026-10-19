@@ -48,6 +48,7 @@ public sealed class MealSpinner
     /// <paramref name="current"/> by dish kind and position; a locked dish that is no longer in the catalog is drawn again.
     /// </summary>
     /// <exception cref="InvalidOperationException">A dish uses an ingredient that is not in the ingredient list.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">A member's bowls per meal is outside the range of <see cref="PortionConfig"/>.</exception>
     public SpinResult Spin(SpinContext context, MealTray? current = null)
     {
         ArgumentNullException.ThrowIfNull(context);
@@ -122,8 +123,9 @@ public sealed class MealSpinner
         return state.BaseWeight(dish) * state.SeasonRegionFactor(dish);
     }
 
+    // Servings are summed in member order, so exactly 5 can come out as 4.999999999999999; round off that noise.
     private DishSlot[] LayoutFor(double baseServings) =>
-        baseServings >= _config.SecondMainMinBaseServings
+        Math.Round(baseServings, 9) >= _config.SecondMainMinBaseServings
             ? [DishSlot.Soup, DishSlot.Main, DishSlot.Main, DishSlot.Vegetable]
             : [DishSlot.Soup, DishSlot.Main, DishSlot.Vegetable];
 
@@ -167,17 +169,22 @@ public sealed class MealSpinner
 
         if (order.Length == 0)
         {
-            return Result(plan, plan.Select(p => p.Fixed).ToArray(), []);
+            return Result(plan, plan.Select(p => p.Fixed).ToArray(), relaxed: [], state);
         }
 
         var relaxable = RelaxationOrder.Where(rule => Applies(rule, state, pools)).ToArray();
-        var relaxed = new List<RelaxedRule>();
+
+        // A rule the fixed dishes already break on their own cannot be met by drawing more dishes, so it is given up
+        // from the start instead of costing the rules before it in the order.
+        var fixedDishes = plan.Select(p => p.Fixed).OfType<Dish>().ToArray();
+        var relaxed = relaxable.Where(rule => Violates(rule, fixedDishes, state)).ToHashSet();
+        var toRelaxInTurn = relaxable.Where(rule => !relaxed.Contains(rule)).ToArray();
         Dish?[] drawn = [];
 
         for (var level = 0; ; level++)
         {
             var weightsOn = !relaxed.Contains(RelaxedRule.SeasonAndRegionWeights);
-            var enforced = relaxable.Skip(level).ToArray();
+            var enforced = relaxable.Where(rule => !relaxed.Contains(rule)).ToArray();
 
             for (var attempt = 0; attempt < _config.AttemptsPerLevel; attempt++)
             {
@@ -185,16 +192,16 @@ public sealed class MealSpinner
                 var dishes = drawn.OfType<Dish>().ToArray();
                 if (!enforced.Any(rule => Violates(rule, dishes, state)))
                 {
-                    return Result(plan, drawn, relaxed, state);
+                    return Result(plan, drawn, relaxable.Where(relaxed.Contains).ToArray(), state);
                 }
             }
 
-            if (level == relaxable.Length)
+            if (level == toRelaxInTurn.Length)
             {
-                return Result(plan, drawn, relaxed, state);
+                return Result(plan, drawn, relaxable.Where(relaxed.Contains).ToArray(), state);
             }
 
-            relaxed.Add(relaxable[level]);
+            relaxed.Add(toRelaxInTurn[level]);
         }
     }
 
@@ -263,14 +270,14 @@ public sealed class MealSpinner
         _ => false,
     };
 
-    private SpinResult Result(SlotPlan[] plan, Dish?[] drawn, List<RelaxedRule> relaxed, SpinState? state = null)
+    private SpinResult Result(SlotPlan[] plan, Dish?[] drawn, RelaxedRule[] relaxed, SpinState state)
     {
         var dishes = drawn.OfType<Dish>().ToArray();
 
         // Report what the delivered tray really breaks, so the message to the user is true.
-        var reported = state is null
-            ? []
-            : relaxed.Where(rule => rule == RelaxedRule.SeasonAndRegionWeights || Violates(rule, dishes, state)).ToArray();
+        var reported = relaxed
+            .Where(rule => rule == RelaxedRule.SeasonAndRegionWeights || Violates(rule, dishes, state))
+            .ToArray();
 
         var slots = new List<SlotResult>();
         var unfilled = new List<DishSlot>();
@@ -286,7 +293,7 @@ public sealed class MealSpinner
             }
         }
 
-        return new SpinResult(new MealTray(_clock.Today, slots), reported, unfilled);
+        return new SpinResult(new MealTray(state.Today, slots), reported, unfilled);
     }
 
     private sealed record SlotPlan(DishSlot Kind, Dish? Fixed, bool IsLocked, bool Spin, Dish? Previous);
@@ -320,6 +327,9 @@ public sealed class MealSpinner
         }
 
         public SpinContext Context { get; }
+
+        /// <summary>The date read from the clock once, so the rules and the tray's date always agree.</summary>
+        public DateOnly Today => _today;
 
         public Dish? FindDish(string id) => _byId.GetValueOrDefault(id);
 

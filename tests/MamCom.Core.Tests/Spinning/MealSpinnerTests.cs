@@ -31,6 +31,20 @@ public class MealSpinnerTests
     }
 
     [Fact]
+    public void The_threshold_does_not_depend_on_the_order_of_the_members()
+    {
+        // These five adults total exactly 5.0 base servings. Summed in this order the doubles come to
+        // 4.999999999999999, which a raw comparison with 5 would read as "below the threshold".
+        Member Adult(double bowls) => TestData.Person("A", AgeGroup.Adult, bowls);
+        var unluckyOrder = SmallHome(members: [Adult(1), Adult(2.5), Adult(3.5), Adult(1.5), Adult(1.5)]);
+        var luckyOrder = SmallHome(members: [Adult(1.5), Adult(1.5), Adult(1), Adult(2.5), Adult(3.5)]);
+        new MamCom.Core.Portions.PortionCalculator(PortionSettings).Calculate(unluckyOrder).BaseServings.ShouldNotBe(5.0);   // the premise
+
+        Spinner().Spin(Context(unluckyOrder)).Tray.Slots.Count(s => s.Slot == DishSlot.Main).ShouldBe(2);
+        Spinner().Spin(Context(luckyOrder)).Tray.Slots.Count(s => s.Slot == DishSlot.Main).ShouldBe(2);
+    }
+
+    [Fact]
     public void Just_below_the_threshold_there_is_only_one_main()
     {
         var fourAdults = SmallHome(members: Enumerable.Range(0, 4).Select(i => Person($"P{i}")).ToArray());

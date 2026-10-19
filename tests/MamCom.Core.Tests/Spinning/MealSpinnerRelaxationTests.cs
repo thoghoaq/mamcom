@@ -266,6 +266,90 @@ public class MealSpinnerRelaxationTests
         random.Calls.ShouldBe(3 * 3 + 1 * 3);   // 3 failed attempts with the weights, then one flat attempt that works
     }
 
+    // ---- rules the fixed dishes already break ------------------------------------------------
+
+    private static readonly Dish FastSoup = D("canh-nhanh", DishSlot.Soup, ProteinSources.None, CookingMethod.Simmer, ["bi-do"], minutes: 10);
+
+    private static readonly Dish SlowSoup = D("canh-cham", DishSlot.Soup, ProteinSources.None, CookingMethod.Simmer, ["bi-do"], minutes: 60);
+
+    private static readonly Dish FastVeg = D("rau-nhanh", DishSlot.Vegetable, ProteinSources.None, CookingMethod.Boil, ["cai"], minutes: 10);
+
+    private static readonly Dish SlowVeg = D("rau-cham", DishSlot.Vegetable, ProteinSources.None, CookingMethod.Boil, ["cai"], minutes: 50);
+
+    private static readonly Dish FriedA = MainDish("chien-a", "heo", CookingMethod.Fry, minutes: 10);
+
+    private static readonly Dish FriedB = MainDish("chien-b", "ga", CookingMethod.Fry, minutes: 10);
+
+    [Fact]
+    public void Locking_two_fried_mains_gives_up_the_fried_rule_at_once_and_keeps_the_time_limit()
+    {
+        // The locked mains break the fried rule whatever else is drawn, so relaxing the time limit first would be for nothing.
+        // A tray within 40 minutes exists: the locked 20, plus the fast soup and the fast vegetable.
+        var tray = new MealTray(Today,
+        [
+            new SlotResult(DishSlot.Soup, "canh-cham", false),
+            new SlotResult(DishSlot.Main, "chien-a", true),
+            new SlotResult(DishSlot.Main, "chien-b", true),
+            new SlotResult(DishSlot.Vegetable, "rau-cham", false),
+        ]);
+        var context = Context(BigHome(availableMinutes: 40), [FastSoup, SlowSoup, FriedA, FriedB, FastVeg, SlowVeg]);
+
+        for (ulong seed = 0; seed < 300; seed++)
+        {
+            var result = Spinner(new SeededRandomSource(seed)).Spin(context, tray);
+
+            result.RelaxedRules.ShouldBe([RelaxedRule.SingleFriedDish]);
+            Ids(result).ShouldBe(["canh-nhanh", "chien-a", "chien-b", "rau-nhanh"]);
+        }
+    }
+
+    [Fact]
+    public void A_reroll_beside_two_fried_mains_keeps_the_time_limit_too()
+    {
+        var tray = new MealTray(Today,
+        [
+            new SlotResult(DishSlot.Soup, "canh-cham", false),
+            new SlotResult(DishSlot.Main, "chien-a", false),
+            new SlotResult(DishSlot.Main, "chien-b", false),
+            new SlotResult(DishSlot.Vegetable, "rau-nhanh", false),
+        ]);
+        var context = Context(BigHome(availableMinutes: 40), [FastSoup, SlowSoup, FriedA, FriedB, FastVeg, SlowVeg]);
+
+        for (ulong seed = 0; seed < 100; seed++)
+        {
+            var result = Spinner(new SeededRandomSource(seed)).Reroll(context, tray, 0);
+
+            result.Tray.Slots[0].DishId.ShouldBe("canh-nhanh");
+            result.RelaxedRules.ShouldBe([RelaxedRule.SingleFriedDish]);
+        }
+    }
+
+    [Fact]
+    public void A_time_limit_the_locked_dishes_already_exceed_is_given_up_at_once_and_the_other_rules_still_hold()
+    {
+        // Two locked mains take 100 minutes against a limit of 40, so only the time rule can go. The fried and protein
+        // rules are still satisfiable by the draw and must be kept.
+        var slowA = MainDish("cham-a", "heo", CookingMethod.Braise, minutes: 60);
+        var slowB = MainDish("cham-b", "ga", CookingMethod.Braise, minutes: 40);
+        var tray = new MealTray(Today,
+        [
+            new SlotResult(DishSlot.Soup, "canh-nhanh", false),
+            new SlotResult(DishSlot.Main, "cham-a", true),
+            new SlotResult(DishSlot.Main, "cham-b", true),
+            new SlotResult(DishSlot.Vegetable, "rau-nhanh", false),
+        ]);
+        var soupHeo = D("canh-heo", DishSlot.Soup, "heo", CookingMethod.Simmer, ["thit-heo"], minutes: 10);
+        var context = Context(BigHome(availableMinutes: 40), [FastSoup, soupHeo, slowA, slowB, FastVeg]);
+
+        for (ulong seed = 0; seed < 200; seed++)
+        {
+            var result = Spinner(new SeededRandomSource(seed)).Spin(context, tray);
+
+            result.RelaxedRules.ShouldBe([RelaxedRule.AvailableMinutes]);
+            result.Tray.Slots[0].DishId.ShouldBe("canh-nhanh");   // the soup sharing the locked main's protein is never taken
+        }
+    }
+
     [Fact]
     public void The_number_of_draws_per_level_comes_from_the_config()
     {
