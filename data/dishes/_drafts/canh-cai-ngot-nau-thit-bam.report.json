@@ -1,0 +1,28 @@
+{
+  "dishId": "canh-cai-ngot-nau-thit-bam",
+  "model": "claude-opus-5-5",
+  "draftedAt": "2026-10-19",
+  "validation": "warnings",
+  "stopReason": "end_turn",
+  "problems": [
+    {
+      "severity": "warning",
+      "code": "missing-ingredient",
+      "location": "",
+      "message": "Món cần 'Cải ngọt' (khoảng 100 g mỗi suất) mà data/ingredients chưa có. Thêm nguyên liệu rồi soạn lại bằng --redo, hoặc thêm dòng vào công thức bằng tay."
+    }
+  ],
+  "missingIngredients": [
+    {
+      "name": "Cải ngọt",
+      "gramsEdiblePerServing": 100,
+      "note": "bỏ gốc và lá úa, cắt khúc khoảng 4 cm"
+    }
+  ],
+  "usage": {
+    "inputTokens": 105,
+    "outputTokens": 1637,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 4515
+  }
+}

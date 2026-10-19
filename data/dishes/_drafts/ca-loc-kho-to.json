@@ -1,0 +1,160 @@
+{
+  "id": "ca-loc-kho-to",
+  "name": "Cá lóc kho tộ",
+  "slot": "man",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "kho",
+  "proteinSource": "ca",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "ca-loc",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "làm sạch, cắt khúc dày khoảng 2 cm"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 12,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "một phần để thắng nước màu"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "xay hoặc đập dập"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "để nguyên trái hoặc cắt lát, có thể bỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc ngắn"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Làm sạch cá lóc, khử nhớt rồi cắt khúc vừa ăn.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-loc"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp cá với nước mắm, một nửa lượng đường, nửa phần hành tím, tỏi băm và tiêu.",
+      "activeMinutes": 3,
+      "passiveMinutes": 20,
+      "ingredientIds": [
+        "ca-loc",
+        "nuoc-mam",
+        "duong",
+        "hanh-tim",
+        "toi",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Cho dầu và phần đường còn lại vào tộ, đun lửa nhỏ đến khi đường chuyển màu cánh gián.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "duong"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi thơm phần hành tím còn lại trong nước màu, xếp cá vào, đổ nước dừa và thả ớt.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-tim",
+        "ca-loc",
+        "ot"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Kho liu riu lửa nhỏ đến khi nước sánh lại, thỉnh thoảng rưới nước kho lên cá.",
+      "activeMinutes": 3,
+      "passiveMinutes": 25,
+      "ingredientIds": [
+        "ca-loc"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm lại vừa ăn, rắc hành lá và thêm tiêu rồi tắt bếp.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "draft",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "dishId": "ca-loc-kho-to",
+  "model": "claude-opus-5-5",
+  "draftedAt": "2026-10-19",
+  "validation": "warnings",
+  "stopReason": "end_turn",
+  "problems": [
+    {
+      "severity": "warning",
+      "code": "missing-ingredient",
+      "location": "",
+      "message": "Món cần 'Nước dừa tươi' (khoảng 80 g mỗi suất) mà data/ingredients chưa có. Thêm nguyên liệu rồi soạn lại bằng --redo, hoặc thêm dòng vào công thức bằng tay."
+    }
+  ],
+  "missingIngredients": [
+    {
+      "name": "Nước dừa tươi",
+      "gramsEdiblePerServing": 80,
+      "note": "giúp nước kho ngọt thanh kiểu miền Nam; có thể thay bằng nước lọc"
+    }
+  ],
+  "usage": {
+    "inputTokens": 88,
+    "outputTokens": 1670,
+    "cacheCreationInputTokens": 4515,
+    "cacheReadInputTokens": 0
+  }
+}

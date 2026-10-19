@@ -1,0 +1,161 @@
+{
+  "id": "dau-phu-sot-ca-chua",
+  "name": "Đậu phụ sốt cà chua",
+  "slot": "man",
+  "regions": [
+    "north",
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "chien",
+  "proteinSource": "chay",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "dau-phu",
+      "gramsEdiblePerServing": 150,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt miếng vuông, thấm khô"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 100,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "bỏ cuống, thái múi cau"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Cắt đậu phụ thành miếng vuông, thấm khô; thái cà chua, băm hành tím, thái hành lá.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-phu",
+        "ca-chua",
+        "hanh-tim",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Đun nóng dầu, rán đậu phụ đến khi vàng đều các mặt rồi vớt ra.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "dau-phu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm hành tím với chút dầu còn lại, cho cà chua vào đảo đến khi nhừ thành sốt.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-tim",
+        "ca-chua",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Nêm nước mắm, đường, muối vào sốt, thêm chút nước nếu sốt quá đặc.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "duong",
+        "muoi"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Cho đậu phụ vào sốt, đun nhỏ lửa cho đậu ngấm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 4,
+      "ingredientIds": [
+        "dau-phu"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Rắc hành lá và hạt tiêu, tắt bếp rồi dọn ra ăn nóng.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "draft",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}
