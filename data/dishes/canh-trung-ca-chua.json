@@ -1,0 +1,108 @@
+{
+  "id": "canh-trung-ca-chua",
+  "name": "Canh trứng cà chua",
+  "slot": "canh",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "trung",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "trung-ga",
+      "gramsEdiblePerServing": 55,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "đánh tan"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 60,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "cắt múi"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Đập trứng, đánh tan; cắt cà chua thành múi.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "trung-ga",
+        "ca-chua"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Xào cà chua với chút dầu cho mềm, thêm nước và đun sôi.",
+      "activeMinutes": 4,
+      "passiveMinutes": 4,
+      "ingredientIds": [
+        "ca-chua",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Nêm nước mắm và muối, đổ trứng vào, khuấy nhẹ, rắc hành lá.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "trung-ga",
+        "nuoc-mam",
+        "muoi",
+        "hanh-la"
+      ]
+    }
+  ],
+  "status": "draft",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

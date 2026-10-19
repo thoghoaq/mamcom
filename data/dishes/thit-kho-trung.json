@@ -1,0 +1,126 @@
+{
+  "id": "thit-kho-trung",
+  "name": "Thịt kho trứng",
+  "slot": "man",
+  "regions": [
+    "south",
+    "central"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "kho",
+  "proteinSource": "heo",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "thit-ba-chi",
+      "gramsEdiblePerServing": 90,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt miếng vuông"
+    },
+    {
+      "ingredientId": "trung-ga",
+      "gramsEdiblePerServing": 55,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "luộc, bóc vỏ"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Luộc trứng chín, bóc vỏ.",
+      "activeMinutes": 3,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "trung-ga"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp thịt với hành tím, nước mắm và tiêu.",
+      "activeMinutes": 6,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "thit-ba-chi",
+        "hanh-tim",
+        "nuoc-mam",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Làm nước màu từ đường, cho thịt vào đảo cho săn.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "duong",
+        "dau-an",
+        "thit-ba-chi"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Đổ nước, kho nhỏ lửa, thêm trứng, nấu cho thịt mềm và nước sánh.",
+      "activeMinutes": 5,
+      "passiveMinutes": 40,
+      "ingredientIds": [
+        "thit-ba-chi",
+        "trung-ga"
+      ]
+    }
+  ],
+  "status": "draft",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

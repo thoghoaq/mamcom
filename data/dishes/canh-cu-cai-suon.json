@@ -1,0 +1,116 @@
+{
+  "id": "canh-cu-cai-suon",
+  "name": "Canh củ cải hầm sườn",
+  "slot": "canh",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "autumn",
+    "winter"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "heo",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "suon-heo",
+      "gramsEdiblePerServing": 70,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chặt miếng nhỏ"
+    },
+    {
+      "ingredientId": "cu-cai",
+      "gramsEdiblePerServing": 70,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, cắt khúc"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Chần sườn qua nước sôi, rửa sạch.",
+      "activeMinutes": 5,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "suon-heo"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Cho sườn vào nồi với nước, hầm nhỏ lửa cho mềm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 35,
+      "ingredientIds": [
+        "suon-heo"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Gọt củ cải, cắt khúc, cho vào hầm cùng.",
+      "activeMinutes": 5,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "cu-cai"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Nêm nước mắm và muối, rắc hành lá và tiêu.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "muoi",
+        "hanh-la",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "draft",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

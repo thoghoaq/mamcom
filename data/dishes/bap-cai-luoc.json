@@ -1,0 +1,68 @@
+{
+  "id": "bap-cai-luoc",
+  "name": "Bắp cải luộc",
+  "slot": "rau",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "autumn",
+    "winter"
+  ],
+  "spicy": "none",
+  "cookingMethod": "luoc",
+  "proteinSource": "none",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "bap-cai",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "tách lá, rửa sạch"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Tách lá bắp cải, rửa sạch, cắt miếng.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "bap-cai"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Luộc cải trong nước sôi có muối đến khi mềm, vớt ra.",
+      "activeMinutes": 2,
+      "passiveMinutes": 4,
+      "ingredientIds": [
+        "bap-cai",
+        "muoi"
+      ]
+    }
+  ],
+  "status": "draft",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

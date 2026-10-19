@@ -1,0 +1,109 @@
+{
+  "id": "suon-rim-man-ngot",
+  "name": "Sườn rim mặn ngọt",
+  "slot": "man",
+  "regions": [
+    "north",
+    "central"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "kho",
+  "proteinSource": "heo",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "suon-heo",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chặt miếng nhỏ"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Chần sườn qua nước sôi, rửa sạch, ướp với hành tím, nước mắm và đường.",
+      "activeMinutes": 8,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "suon-heo",
+        "hanh-tim",
+        "nuoc-mam",
+        "duong"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Xào sườn cho săn rồi đổ nước xâm xấp.",
+      "activeMinutes": 6,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "suon-heo",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Rim nhỏ lửa đến khi nước cạn sệt, rắc tiêu.",
+      "activeMinutes": 4,
+      "passiveMinutes": 35,
+      "ingredientIds": [
+        "suon-heo",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "draft",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

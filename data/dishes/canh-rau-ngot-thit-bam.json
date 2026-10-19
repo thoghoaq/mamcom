@@ -1,0 +1,101 @@
+{
+  "id": "canh-rau-ngot-thit-bam",
+  "name": "Canh rau ngót thịt bằm",
+  "slot": "canh",
+  "regions": [
+    "north",
+    "central",
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "heo",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "rau-ngot",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "tuốt lá"
+    },
+    {
+      "ingredientId": "thit-nac-bam",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Tuốt lá rau ngót, rửa sạch, vò nhẹ.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "rau-ngot"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Phi thơm hành tím, xào sơ thịt bằm, thêm nước và đun sôi.",
+      "activeMinutes": 5,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "hanh-tim",
+        "thit-nac-bam"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Cho rau ngót vào, nêm nước mắm và muối, đun thêm vài phút.",
+      "activeMinutes": 2,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "rau-ngot",
+        "nuoc-mam",
+        "muoi"
+      ]
+    }
+  ],
+  "status": "draft",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}
