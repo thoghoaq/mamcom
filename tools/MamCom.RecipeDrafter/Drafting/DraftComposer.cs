@@ -2,6 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using MamCom.Core.Json;
 using MamCom.Core.Models;
+using MamCom.DataBuilder.Loading;
 using MamCom.RecipeDrafter.Plan;
 
 namespace MamCom.RecipeDrafter.Drafting;
@@ -64,7 +65,7 @@ public static class DraftComposer
     }
 
     /// <summary>The file text of a dish: the same canonical format the other dish files have.</summary>
-    public static string Serialize(Dish dish) => JsonSerializer.Serialize(dish, CoreJson.Options) + "\n";
+    public static string Serialize(Dish dish) => DishFile.Serialize(dish);
 
     private static JsonNode Line(LlmIngredient line) => new JsonObject
     {
