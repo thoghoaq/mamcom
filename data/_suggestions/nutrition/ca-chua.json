@@ -1,0 +1,66 @@
+{
+  "ingredientId": "ca-chua",
+  "query": "tomatoes red ripe raw",
+  "retrievedAt": "2026-10-19",
+  "source": "usda-fdc",
+  "totalHits": 1723,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 170457,
+      "description": "Tomatoes, red, ripe, raw, year round average",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170457/nutrients",
+      "per100g": {
+        "kcal": 18,
+        "proteinG": 0.88,
+        "fatG": 0.2,
+        "carbG": 3.89,
+        "fiberG": 1.2,
+        "sodiumMg": 5
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 1105314,
+      "description": "Bananas, ripe and slightly ripe, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Fruits and Fruit Juices",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/1105314/nutrients",
+      "per100g": {
+        "kcal": 97,
+        "proteinG": 0.74,
+        "fatG": 0.29,
+        "carbG": 23,
+        "fiberG": 1.7,
+        "sodiumMg": 0
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 2710817,
+      "description": "Plantains, ripe, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Fruits and Fruit Juices",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2710817/nutrients",
+      "per100g": {
+        "kcal": 123,
+        "proteinG": 1.16,
+        "fatG": 0.893,
+        "carbG": 31,
+        "fiberG": 2.12,
+        "sodiumMg": 0
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/4 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    }
+  ]
+}

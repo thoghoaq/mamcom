@@ -13,7 +13,7 @@ public class SeedSchemaTests
     [Fact]
     public void There_is_a_schema_for_ingredients_dishes_and_each_config_file()
     {
-        DataFiles.Schemas.Names.ShouldBe(["cooking-defaults", "dish", "ingredient", "nutrition-defaults", "portion-defaults", "spinner-defaults", "validation-defaults"]);
+        DataFiles.Schemas.Names.ShouldBe(["cooking-defaults", "dish", "ingredient", "nutrition-defaults", "nutrition-suggestion", "portion-defaults", "spinner-defaults", "validation-defaults"]);
     }
 
     [Fact]

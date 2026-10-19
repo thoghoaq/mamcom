@@ -1,0 +1,66 @@
+{
+  "ingredientId": "trung-ga",
+  "query": "egg whole raw fresh",
+  "retrievedAt": "2026-10-19",
+  "source": "usda-fdc",
+  "totalHits": 2357,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 171287,
+      "description": "Egg, whole, raw, fresh",
+      "dataType": "SR Legacy",
+      "foodCategory": "Dairy and Egg Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171287/nutrients",
+      "per100g": {
+        "kcal": 143,
+        "proteinG": 12.6,
+        "fatG": 9.51,
+        "carbG": 0.72,
+        "fiberG": 0,
+        "sodiumMg": 142
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 172189,
+      "description": "Egg, duck, whole, fresh, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Dairy and Egg Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172189/nutrients",
+      "per100g": {
+        "kcal": 185,
+        "proteinG": 12.8,
+        "fatG": 13.8,
+        "carbG": 1.45,
+        "fiberG": 0,
+        "sodiumMg": 146
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 172190,
+      "description": "Egg, goose, whole, fresh, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Dairy and Egg Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172190/nutrients",
+      "per100g": {
+        "kcal": 185,
+        "proteinG": 13.9,
+        "fatG": 13.3,
+        "carbG": 1.35,
+        "fiberG": 0,
+        "sodiumMg": 138
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá."
+    }
+  ]
+}

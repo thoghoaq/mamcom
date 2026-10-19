@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Nutrition suggestion",
+  "description": "data/_suggestions/nutrition/<ingredientId>.json, written by MamCom.FdcImporter (ADR-012). FDC's numbers per 100g, unchanged; a person chooses one in MamCom.Studio, and only then does it reach an ingredient file.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ingredientId", "query", "retrievedAt", "source", "totalHits", "candidates"],
+  "properties": {
+    "ingredientId": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 64 },
+    "query": { "description": "The English text sent to FDC.", "type": "string", "minLength": 1 },
+    "retrievedAt": { "type": "string", "format": "date" },
+    "source": { "const": "usda-fdc" },
+    "totalHits": { "description": "How many foods FDC found, before the best few were kept.", "type": "integer", "minimum": 0 },
+    "candidates": {
+      "description": "Best first. Empty when FDC found nothing.",
+      "type": "array",
+      "maxItems": 10,
+      "items": { "$ref": "#/$defs/candidate" }
+    }
+  },
+  "$defs": {
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rank", "fdcId", "description", "dataType", "foodCategory", "detailsUrl", "per100g", "kcalSource", "missing", "reason"],
+      "properties": {
+        "rank": { "type": "integer", "minimum": 1 },
+        "fdcId": { "type": "integer", "minimum": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "dataType": { "enum": ["Foundation", "SR Legacy"] },
+        "foodCategory": { "type": ["string", "null"], "minLength": 1 },
+        "detailsUrl": { "type": "string", "pattern": "^https://fdc\\.nal\\.usda\\.gov/food-details/[0-9]+/nutrients$" },
+        "per100g": {
+          "description": "The six nutrients of an ingredient file; null when the food does not state it. The bounds are physical limits.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kcal", "proteinG", "fatG", "carbG", "fiberG", "sodiumMg"],
+          "properties": {
+            "kcal": { "type": ["number", "null"], "minimum": 0, "maximum": 900 },
+            "proteinG": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+            "fatG": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+            "carbG": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+            "fiberG": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+            "sodiumMg": { "type": ["number", "null"], "minimum": 0, "maximum": 40000 }
+          }
+        },
+        "kcalSource": { "description": "Name of the FDC nutrient the energy came from; null when there is none.", "type": ["string", "null"], "minLength": 1 },
+        "missing": {
+          "type": "array",
+          "items": { "enum": ["kcal", "proteinG", "fatG", "carbG", "fiberG", "sodiumMg"] },
+          "uniqueItems": true
+        },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}
