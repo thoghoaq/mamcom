@@ -1,0 +1,83 @@
+@page "/dishes"
+@using System.Globalization
+@inject DishReviewer Reviewer
+
+<PageTitle>@Strings.Studio_List_Title</PageTitle>
+
+<h1>@Strings.Studio_List_Title</h1>
+
+<KitchenProblems Kitchen="_catalog.Kitchen" />
+
+<div class="chips" role="group" aria-label="@Strings.Studio_List_Filter">
+    <button type="button" class="chip" aria-pressed="@(_filter is null ? "true" : "false")" data-filter="all" @onclick="() => _filter = null">
+        @Strings.Studio_List_All (@_catalog.Entries.Count)
+    </button>
+    @foreach (var status in Enum.GetValues<DishStatus>())
+    {
+        var chosen = status;
+        <button type="button" class="chip" aria-pressed="@(_filter == chosen ? "true" : "false")" data-filter="@chosen.ToString().ToLowerInvariant()" @onclick="() => _filter = chosen">
+            @Labels.Status(chosen) (@_catalog.Entries.Count(e => e.Status == chosen))
+        </button>
+    }
+</div>
+
+@if (Shown.Count == 0)
+{
+    <p class="notice" data-empty>@Strings.Studio_List_Empty</p>
+}
+else
+{
+    <ul class="dish-list">
+        @foreach (var entry in Shown)
+        {
+            <li class="dish-row" data-dish="@entry.Id" data-location="@entry.Location.ToString().ToLowerInvariant()">
+                <a class="dish-row__link" href="@Href(entry)">
+                    <span class="dish-row__name">@(entry.Name ?? entry.Id)</span>
+                    <span class="dish-row__meta">
+                        @if (entry.Slot is { } slot)
+                        {
+                            <span class="dish-row__slot">@Labels.Slot(slot)</span>
+                        }
+                        @if (entry.Status is { } status)
+                        {
+                            <StatusBadge Status="status" />
+                        }
+                        else
+                        {
+                            <span class="badge badge--danger" data-broken>@Strings.Studio_List_Broken</span>
+                        }
+                        @if (entry.Location == DishLocation.Draft)
+                        {
+                            <span class="badge badge--info" data-draft>@Strings.Studio_List_Draft</span>
+                        }
+                        @if (entry.Note is { } note)
+                        {
+                            <span class="badge" data-note="@note.Validation">@Labels.NoteValidation(note.Validation)</span>
+                        }
+                        @if (entry.Errors > 0)
+                        {
+                            <span class="badge badge--danger" data-errors>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_List_ErrorsFormat, entry.Errors)</span>
+                        }
+                        @if (entry.Warnings > 0)
+                        {
+                            <span class="badge badge--warning" data-warnings>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_List_WarningsFormat, entry.Warnings)</span>
+                        }
+                    </span>
+                </a>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private DishCatalog _catalog = default!;
+    private DishStatus? _filter;
+
+    private IReadOnlyList<DishEntry> Shown =>
+        _filter is { } status ? [.. _catalog.Entries.Where(e => e.Status == status)] : _catalog.Entries;
+
+    protected override void OnInitialized() => _catalog = Reviewer.Catalog();
+
+    private static string Href(DishEntry entry) =>
+        entry.Location == DishLocation.Data ? $"/dishes/{entry.Id}" : $"/drafts/{entry.Id}";
+}

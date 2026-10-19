@@ -1,0 +1,96 @@
+using MamCom.Core.Models;
+using MamCom.DataBuilder.Validation;
+using MamCom.Studio.Review;
+
+namespace MamCom.Studio.Tests;
+
+public class LabelsTests
+{
+    private static void EveryValueHasItsOwnWord<T>(Func<T, string> label) where T : struct, Enum
+    {
+        var words = Enum.GetValues<T>().Select(label).ToArray();
+
+        words.ShouldAllBe(w => !string.IsNullOrWhiteSpace(w));
+        words.Distinct().Count().ShouldBe(words.Length, $"every {typeof(T).Name} needs a different word");
+    }
+
+    [Fact] public void Every_status_has_a_word() => EveryValueHasItsOwnWord<DishStatus>(Labels.Status);
+
+    [Fact] public void Every_slot_has_a_word() => EveryValueHasItsOwnWord<DishSlot>(Labels.Slot);
+
+    [Fact] public void Every_region_has_a_word() => EveryValueHasItsOwnWord<Region>(Labels.Region);
+
+    [Fact] public void Every_spicy_level_has_a_word() => EveryValueHasItsOwnWord<SpicyLevel>(Labels.Spicy);
+
+    [Fact] public void Every_cooking_method_has_a_word() => EveryValueHasItsOwnWord<CookingMethod>(Labels.Method);
+
+    [Fact] public void Every_scale_has_a_word() => EveryValueHasItsOwnWord<ScaleKind>(Labels.Scale);
+
+    [Fact] public void Every_author_has_a_word() => EveryValueHasItsOwnWord<DraftAuthor>(Labels.Author);
+
+    [Fact] public void Every_severity_has_a_word() => EveryValueHasItsOwnWord<Severity>(Labels.Severity);
+
+    [Fact] public void Every_review_outcome_has_its_own_message() => EveryValueHasItsOwnWord<ReviewStatus>(Labels.Review);
+
+    [Fact]
+    public void The_words_are_the_ones_of_the_kitchen()
+    {
+        Labels.Status(DishStatus.Reviewed).ShouldBe("Đã duyệt");
+        Labels.Slot(DishSlot.Soup).ShouldBe("Canh");
+        Labels.Slot(DishSlot.Main).ShouldBe("Món mặn");
+        Labels.Slot(DishSlot.Vegetable).ShouldBe("Rau");
+        Labels.Region(Region.South).ShouldBe("Nam");
+        Labels.Method(CookingMethod.Braise).ShouldBe("Kho");
+        Labels.Spicy(SpicyLevel.Optional).ShouldBe("Cay tuỳ chọn");
+        Labels.Severity(Severity.Error).ShouldBe("Lỗi");
+        Labels.Severity(Severity.Warning).ShouldBe("Cảnh báo");
+    }
+
+    [Fact]
+    public void A_value_that_is_not_in_the_enum_is_refused()
+    {
+        Should.Throw<ArgumentOutOfRangeException>(() => Labels.Status((DishStatus)99));
+        Should.Throw<ArgumentOutOfRangeException>(() => Labels.Slot((DishSlot)99));
+        Should.Throw<ArgumentOutOfRangeException>(() => Labels.Region((Region)99));
+        Should.Throw<ArgumentOutOfRangeException>(() => Labels.Spicy((SpicyLevel)99));
+        Should.Throw<ArgumentOutOfRangeException>(() => Labels.Method((CookingMethod)99));
+        Should.Throw<ArgumentOutOfRangeException>(() => Labels.Scale((ScaleKind)99));
+        Should.Throw<ArgumentOutOfRangeException>(() => Labels.Author((DraftAuthor)99));
+        Should.Throw<ArgumentOutOfRangeException>(() => Labels.Severity((Severity)99));
+        Should.Throw<ArgumentOutOfRangeException>(() => Labels.Review((ReviewStatus)99));
+    }
+
+    [Theory]
+    [InlineData("spring", "Xuân")]
+    [InlineData("all", "Quanh năm")]
+    [InlineData("monsoon", "monsoon")]
+    public void A_season_has_a_word_or_is_shown_as_it_is(string id, string expected) => Labels.Season(id).ShouldBe(expected);
+
+    [Theory]
+    [InlineData("none", "Không có")]
+    [InlineData("chay", "Đạm chay")]
+    [InlineData("heo", "Heo")]
+    [InlineData("tom", "Tôm")]
+    [InlineData("nhim", "nhim")]
+    public void A_protein_source_has_a_word_or_is_shown_as_it_is(string id, string expected) => Labels.Protein(id).ShouldBe(expected);
+
+    [Theory]
+    [InlineData("valid", "Hợp lệ")]
+    [InlineData("warnings", "Có cảnh báo")]
+    [InlineData("invalid", "Vi phạm luật")]
+    [InlineData("failed", "Soạn lỗi")]
+    [InlineData("something-new", "something-new")]
+    public void What_the_drafter_said_has_a_word_or_is_shown_as_it_is(string validation, string expected) =>
+        Labels.NoteValidation(validation).ShouldBe(expected);
+
+    [Theory]
+    [InlineData(ReviewStatus.Saved, "ok")]
+    [InlineData(ReviewStatus.Approved, "ok")]
+    [InlineData(ReviewStatus.Reopened, "ok")]
+    [InlineData(ReviewStatus.Unchanged, "info")]
+    [InlineData(ReviewStatus.Conflict, "danger")]
+    [InlineData(ReviewStatus.HasErrors, "danger")]
+    [InlineData(ReviewStatus.ReviewerMissing, "danger")]
+    [InlineData(ReviewStatus.NotFound, "danger")]
+    public void A_message_looks_like_what_happened(ReviewStatus status, string tone) => Labels.ReviewTone(status).ShouldBe(tone);
+}

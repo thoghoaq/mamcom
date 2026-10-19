@@ -1,0 +1,33 @@
+@using MamCom.DataBuilder.Validation
+
+<section class="card" aria-labelledby="findings-title" data-findings>
+    <h2 id="findings-title">@Strings.Studio_Findings_Title</h2>
+
+    @if (Findings.Count == 0)
+    {
+        <p class="notice notice--ok">@Strings.Studio_Findings_None</p>
+    }
+    else
+    {
+        @if (Findings.Any(f => f.Severity == Severity.Error))
+        {
+            <p class="notice notice--danger">@Strings.Studio_Findings_Errors</p>
+        }
+
+        <ul class="findings">
+            @foreach (var finding in Findings.OrderByDescending(f => f.Severity))
+            {
+                <li class="finding" data-severity="@finding.Severity.ToString().ToLowerInvariant()">
+                    <span class="badge @(finding.Severity == Severity.Error ? "badge--danger" : "badge--warning")">@Labels.Severity(finding.Severity)</span>
+                    <span class="finding__text">@finding.Message</span>
+                    <span class="finding__where text-muted"><code>@finding.Code</code>@if (finding.Location.Length > 0) {<text> <code>@finding.Location</code></text>}</span>
+                </li>
+            }
+        </ul>
+    }
+</section>
+
+@code {
+    [Parameter, EditorRequired]
+    public IReadOnlyList<Diagnostic> Findings { get; set; } = [];
+}

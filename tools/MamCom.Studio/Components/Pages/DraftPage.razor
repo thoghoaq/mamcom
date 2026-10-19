@@ -1,0 +1,8 @@
+@page "/drafts/{Id}"
+
+<DishWorkbench Id="@Id" Location="DishLocation.Draft" />
+
+@code {
+    [Parameter]
+    public string Id { get; set; } = string.Empty;
+}

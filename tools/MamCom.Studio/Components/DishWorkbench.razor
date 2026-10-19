@@ -1,0 +1,262 @@
+@using System.Globalization
+@using MamCom.DataBuilder.Loading
+@using MamCom.Core.Nutrition
+@inject DishReviewer Reviewer
+@inject ReviewerIdentity Identity
+@inject NavigationManager Nav
+
+<p><a class="back-link" href="/dishes" data-back>@Strings.Studio_Dish_Back</a></p>
+
+@if (_stored is null)
+{
+    <PageTitle>@Id</PageTitle>
+    <h1>@Id</h1>
+    <p class="notice notice--danger" data-not-found>@Strings.Studio_Dish_NotFound</p>
+}
+else if (_stored.Dish is null)
+{
+    <PageTitle>@Id</PageTitle>
+    <h1>@Id</h1>
+    <p class="notice notice--danger" data-broken>@Strings.Studio_Dish_Broken</p>
+    <pre class="problem">@_stored.Problem</pre>
+}
+else
+{
+    <PageTitle>@_stored.Dish.Name</PageTitle>
+
+    <header class="dish-header">
+        <h1>@_stored.Dish.Name</h1>
+        <p class="dish-header__meta">
+            <StatusBadge Status="_stored.Dish.Status" />
+            @if (_stored.Location == DishLocation.Draft)
+            {
+                <span class="badge badge--info" data-draft>@Strings.Studio_List_Draft</span>
+            }
+            @if (_evaluation.Errors > 0)
+            {
+                <span class="badge badge--danger" data-errors>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_List_ErrorsFormat, _evaluation.Errors)</span>
+            }
+            @if (_evaluation.Warnings > 0)
+            {
+                <span class="badge badge--warning" data-warnings>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_List_WarningsFormat, _evaluation.Warnings)</span>
+            }
+            <span class="text-muted text-small">@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Dish_File, _stored.File)</span>
+        </p>
+    </header>
+
+    <KitchenProblems Kitchen="_kitchen" />
+
+    @if (_message is not null)
+    {
+        <div class="notice notice--@_tone" role="status" data-message>@_message</div>
+    }
+
+    @if (_stored.Dish.Status == DishStatus.Reviewed)
+    {
+        <p class="notice" data-locked>@Strings.Studio_Dish_LockedReviewed</p>
+    }
+    else if (_stored.Dish.Status == DishStatus.CookTested)
+    {
+        <p class="notice" data-locked>@Strings.Studio_Dish_LockedCookTested</p>
+    }
+    else if (_dirty)
+    {
+        <p class="notice notice--warning" data-unsaved>@Strings.Studio_Dish_Unsaved</p>
+    }
+
+    <div class="workbench">
+        <div class="workbench__main">
+            <DishEditor Form="_form" Kitchen="_kitchen" ReadOnly="!Editable" Changed="Recompute" />
+
+            @if (Editable)
+            {
+                <section class="card" aria-labelledby="approve-title" data-approval>
+                    <h2 id="approve-title">@Strings.Studio_Action_Approve</h2>
+                    <div class="field">
+                        <label for="reviewer">@Strings.Studio_Action_Reviewer</label>
+                        <input id="reviewer" class="input" aria-describedby="reviewer-hint" autocomplete="name" @bind="_reviewer" @bind:event="oninput" />
+                        <span class="field__hint" id="reviewer-hint">@Strings.Studio_Action_ReviewerHint</span>
+                    </div>
+                </section>
+            }
+        </div>
+
+        <aside class="workbench__side">
+            <section class="card" aria-labelledby="nutrition-title" data-nutrition>
+                <h2 id="nutrition-title">@Strings.Nutrition_Heading</h2>
+                @if (_evaluation.Nutrition is { } nutrition)
+                {
+                    <NutritionSummary Facts="nutrition.PerServing" MissingIngredientNames="MissingNames(nutrition)" />
+                }
+                else
+                {
+                    <NutritionSummary />
+                    @if (_evaluation.NutritionProblem is { } problem)
+                    {
+                        <p class="notice notice--warning">@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Nutrition_Problem, problem)</p>
+                    }
+                }
+                <p class="text-muted text-small">@Strings.Studio_Nutrition_Source</p>
+            </section>
+
+            <FindingsPanel Findings="_evaluation.Findings" />
+
+            @if (_note is not null)
+            {
+                <DraftNotePanel Note="_note" />
+            }
+
+            <section class="card" aria-labelledby="prov-title" data-provenance>
+                <h2 id="prov-title">@Strings.Studio_Prov_Title</h2>
+                <p>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Prov_DraftedByFormat, Labels.Author(_stored.Dish.Provenance.DraftedBy))</p>
+                @if (_stored.Dish.Provenance is { ReviewedBy: { } by, ReviewedAt: { } at })
+                {
+                    <p data-reviewed>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Prov_ReviewedFormat, by, Date(at))</p>
+                }
+                else
+                {
+                    <p data-not-reviewed>@Strings.Studio_Prov_NotReviewed</p>
+                }
+                @if (_stored.Dish.Provenance.CookTestedAt is { } cooked)
+                {
+                    <p>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Prov_CookTestedFormat, Date(cooked))</p>
+                }
+            </section>
+        </aside>
+    </div>
+
+    <div class="actionbar" role="group">
+        @if (Editable)
+        {
+            <button type="button" class="button" data-save disabled="@(!CanSave)" @onclick="Save">@Strings.Studio_Action_Save</button>
+            <button type="button" class="button button--quiet" data-discard disabled="@(!_dirty)" @onclick="Discard">@Strings.Studio_Action_Discard</button>
+            <button type="button" class="button button--primary" data-approve disabled="@(ApproveBlocker is not null)" @onclick="Approve">@Strings.Studio_Action_Approve</button>
+            @if (ApproveBlocker is { } blocker)
+            {
+                <p class="actionbar__hint text-small text-muted" data-approve-hint>@blocker</p>
+            }
+        }
+        else if (_stored.Dish.Status == DishStatus.Reviewed)
+        {
+            <button type="button" class="button" data-reopen @onclick="Reopen">@Strings.Studio_Action_Reopen</button>
+        }
+    </div>
+}
+
+@code {
+    private Kitchen _kitchen = default!;
+    private StoredDish? _stored;
+    private DraftNote? _note;
+    private DishForm _form = new();
+    private Dish? _candidate;
+    private Evaluation _evaluation = new([], null, null);
+    private bool _dirty;
+    private string _reviewer = string.Empty;
+    private string? _message;
+    private string _tone = "info";
+    private string? _loadedId;
+    private DishLocation _loadedLocation;
+
+    [Parameter, EditorRequired]
+    public string Id { get; set; } = string.Empty;
+
+    [Parameter, EditorRequired]
+    public DishLocation Location { get; set; }
+
+    private bool Editable => _stored?.Dish is { Status: DishStatus.Draft or DishStatus.Validated };
+
+    private bool CanSave => Editable && _dirty && _kitchen.IsUsable && !_evaluation.HasErrors;
+
+    /// <summary>Why the Approve button is off; null when it is on. The reasons are in the order a person fixes them.</summary>
+    private string? ApproveBlocker =>
+        !_kitchen.IsUsable ? Strings.Studio_Review_DataNotUsable
+        : _evaluation.HasErrors ? Strings.Studio_Action_NeedNoErrors
+        : _dirty ? Strings.Studio_Action_NeedSave
+        : string.IsNullOrWhiteSpace(_reviewer) ? Strings.Studio_Action_NeedReviewer
+        : null;
+
+    protected override void OnParametersSet()
+    {
+        if (_loadedId == Id && _loadedLocation == Location)
+        {
+            return;
+        }
+
+        _loadedId = Id;
+        _loadedLocation = Location;
+        _message = null;
+        Load();
+    }
+
+    /// <summary>Reads the kitchen, the dish and its note from disk again and starts the form over from the file.</summary>
+    private void Load()
+    {
+        _kitchen = Reviewer.LoadKitchen();
+        _stored = Reviewer.Store.Read(Location, Id);
+        _note = Location == DishLocation.Draft ? Reviewer.Store.ReadNote(Id) : null;
+        _reviewer = Identity.Name;
+        ResetForm();
+    }
+
+    private void ResetForm()
+    {
+        if (_stored?.Dish is { } dish)
+        {
+            _form = DishForm.From(dish);
+            Recompute();
+        }
+    }
+
+    /// <summary>Checks the dish as the form describes it, and whether it differs from the file.</summary>
+    private void Recompute()
+    {
+        _candidate = _form.ToDish(_stored!.Dish!);
+        _evaluation = DishReviewer.Evaluate(_kitchen, Location, _candidate);
+        _dirty = DishFile.Serialize(_candidate) != _stored.Text;
+    }
+
+    private IReadOnlyList<string> MissingNames(DishNutrition nutrition) =>
+        [.. nutrition.IngredientIdsMissingData.Select(_kitchen.IngredientName)];
+
+    private static string Date(DateOnly date) => date.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+    private void Save() => Apply(Reviewer.Save(Location, Id, _candidate!, _stored!.Version));
+
+    private void Discard()
+    {
+        _message = null;
+        ResetForm();
+    }
+
+    private void Approve()
+    {
+        Identity.Name = _reviewer.Trim();
+        var result = Reviewer.Approve(Location, Id, _reviewer, _stored!.Version);
+        Apply(result);
+        if (result.Status == ReviewStatus.Approved && Location == DishLocation.Draft)
+        {
+            Nav.NavigateTo($"/dishes/{Id}");
+        }
+    }
+
+    private void Reopen() => Apply(Reviewer.Reopen(Location, Id, _stored!.Version));
+
+    private void Apply(ReviewResult result)
+    {
+        _message = Labels.Review(result.Status);
+        _tone = Labels.ReviewTone(result.Status);
+
+        switch (result.Status)
+        {
+            case ReviewStatus.Saved or ReviewStatus.Approved or ReviewStatus.Reopened when result.Stored is not null:
+                _stored = result.Stored;
+                ResetForm();
+                break;
+
+            // What the person saw is no longer what is on disk (or is gone): show what is there now.
+            case ReviewStatus.Conflict or ReviewStatus.NotFound or ReviewStatus.NotEditable or ReviewStatus.NotApprovable or ReviewStatus.NotReopenable:
+                Load();
+                break;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+@using System.Globalization
+@using MamCom.DataBuilder.Validation
+
+@* Shown when the data folder itself has something wrong: stops the review when it cannot be read, only warns when it can. *@
+@if (!Kitchen.IsUsable || Kitchen.Problems.Count > 0)
+{
+    <div class="notice @(Kitchen.IsUsable ? "notice--warning" : "notice--danger")" role="alert" data-kitchen-problems>
+        <p>@(Kitchen.IsUsable ? Strings.Studio_Kitchen_HasProblems : Strings.Studio_Kitchen_NotUsable)</p>
+        <ul>
+            @foreach (var problem in Kitchen.Problems)
+            {
+                <li>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Kitchen_ProblemFormat, ProblemFile(problem), problem.Message)</li>
+            }
+        </ul>
+    </div>
+}
+
+@code {
+    [Parameter, EditorRequired]
+    public Kitchen Kitchen { get; set; } = default!;
+
+    private static string ProblemFile(Diagnostic problem) => string.IsNullOrEmpty(problem.File) ? "data" : problem.File;
+}

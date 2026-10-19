@@ -8,6 +8,7 @@
     <ProjectReference Include="..\..\src\MamCom.UI\MamCom.UI.csproj" />
     <ProjectReference Include="..\..\src\MamCom.Data\MamCom.Data.csproj" />
     <ProjectReference Include="..\..\src\MamCom.Core\MamCom.Core.csproj" />
+    <ProjectReference Include="..\MamCom.DataBuilder\MamCom.DataBuilder.csproj" />
   </ItemGroup>
 
 </Project>

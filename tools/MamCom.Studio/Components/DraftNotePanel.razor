@@ -1,0 +1,39 @@
+@using System.Globalization
+
+<section class="card" aria-labelledby="note-title" data-draft-note>
+    <h2 id="note-title">@Strings.Studio_Note_Title</h2>
+
+    <p>
+        <span class="badge @Tone">@Labels.NoteValidation(Note.Validation)</span>
+        @string.Format(CultureInfo.InvariantCulture, Strings.Studio_Note_ModelFormat, Note.Model)@if (Note.DraftedAt is { } date) {<text>, </text>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Note_DateFormat, date.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture))}
+    </p>
+
+    @if (Note.MissingIngredients.Count > 0)
+    {
+        <p>@Strings.Studio_Note_Missing</p>
+        <ul>
+            @foreach (var missing in Note.MissingIngredients)
+            {
+                <li>
+                    <strong>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Note_MissingFormat, missing.Name, missing.GramsEdiblePerServing)</strong>
+                    @if (!string.IsNullOrWhiteSpace(missing.Note))
+                    {
+                        <span class="text-muted"> — @missing.Note</span>
+                    }
+                </li>
+            }
+        </ul>
+    }
+</section>
+
+@code {
+    [Parameter, EditorRequired]
+    public DraftNote Note { get; set; } = default!;
+
+    private string Tone => Note.Validation switch
+    {
+        "valid" => "badge--ok",
+        "warnings" => "badge--warning",
+        _ => "badge--danger",
+    };
+}

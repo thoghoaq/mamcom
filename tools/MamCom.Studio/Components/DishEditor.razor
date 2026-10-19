@@ -1,0 +1,279 @@
+@using System.Globalization
+
+@* The form for one dish. Every change is reported with Changed so the page can check the dish again. *@
+<fieldset class="editor" disabled="@ReadOnly">
+    <legend class="visually-hidden">@Form.Name</legend>
+
+    <div class="card">
+        <div class="field">
+            <label for="dish-name">@Strings.Studio_Field_Name</label>
+            <input id="dish-name" class="input" @bind="Form.Name" @bind:after="Notify" />
+        </div>
+
+        <div class="form-grid">
+            <div class="field">
+                <label for="dish-slot">@Strings.Studio_Field_Slot</label>
+                <select id="dish-slot" class="select" @bind="Form.Slot" @bind:after="Notify">
+                    @foreach (var slot in Enum.GetValues<DishSlot>())
+                    {
+                        <option value="@slot">@Labels.Slot(slot)</option>
+                    }
+                </select>
+            </div>
+            <div class="field">
+                <label for="dish-method">@Strings.Studio_Field_Method</label>
+                <select id="dish-method" class="select" @bind="Form.CookingMethod" @bind:after="Notify">
+                    @foreach (var method in Enum.GetValues<CookingMethod>())
+                    {
+                        <option value="@method">@Labels.Method(method)</option>
+                    }
+                </select>
+            </div>
+            <div class="field">
+                <label for="dish-spicy">@Strings.Studio_Field_Spicy</label>
+                <select id="dish-spicy" class="select" @bind="Form.Spicy" @bind:after="Notify">
+                    @foreach (var spicy in Enum.GetValues<SpicyLevel>())
+                    {
+                        <option value="@spicy">@Labels.Spicy(spicy)</option>
+                    }
+                </select>
+            </div>
+            <div class="field">
+                <label for="dish-protein">@Strings.Studio_Field_Protein</label>
+                <select id="dish-protein" class="select" @bind="Form.ProteinSource" @bind:after="Notify">
+                    @foreach (var source in ProteinOptions)
+                    {
+                        <option value="@source">@Labels.Protein(source)</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="field" role="group" aria-labelledby="dish-regions">
+            <span class="field__label" id="dish-regions">@Strings.Studio_Field_Regions</span>
+            <div class="checks">
+                @foreach (var region in Enum.GetValues<Region>())
+                {
+                    var chosen = region;
+                    <label class="check">
+                        <input type="checkbox" data-region="@chosen.ToString().ToLowerInvariant()" checked="@Form.Regions.Contains(chosen)" @onchange="() => ToggleRegion(chosen)" />
+                        @Labels.Region(chosen)
+                    </label>
+                }
+            </div>
+        </div>
+
+        <div class="field" role="group" aria-labelledby="dish-seasons">
+            <span class="field__label" id="dish-seasons">@Strings.Studio_Field_Seasons</span>
+            <div class="checks">
+                @foreach (var season in SeasonOptions)
+                {
+                    var chosen = season;
+                    <label class="check">
+                        <input type="checkbox" data-season="@chosen" checked="@Form.Seasons.Contains(chosen)" @onchange="() => ToggleSeason(chosen)" />
+                        @Labels.Season(chosen)
+                    </label>
+                }
+            </div>
+        </div>
+
+        <label class="check">
+            <input type="checkbox" data-serve-hot @bind="Form.ServeHot" @bind:after="Notify" />
+            @Strings.Studio_Field_ServeHot
+        </label>
+    </div>
+
+    <section class="card" aria-labelledby="lines-title">
+        <h2 id="lines-title">@Strings.Studio_Lines_Title</h2>
+
+        @for (var i = 0; i < Form.Lines.Count; i++)
+        {
+            var index = i;
+            var line = Form.Lines[i];
+            <div class="line" data-line="@index">
+                <div class="field">
+                    <label for="line-@index-ingredient">@Strings.Studio_Lines_Ingredient</label>
+                    <select id="line-@index-ingredient" class="select" data-line-ingredient @bind="line.IngredientId" @bind:after="Notify">
+                        @foreach (var (id, label) in IngredientOptions(line.IngredientId))
+                        {
+                            <option value="@id">@label</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="line-@index-grams">@Strings.Studio_Lines_Grams</label>
+                        <input id="line-@index-grams" class="input input--number" type="number" step="any" min="0" inputmode="decimal" data-line-grams @bind="line.GramsEdiblePerServing" @bind:after="Notify" />
+                    </div>
+                    <div class="field">
+                        <label for="line-@index-scale">@Strings.Studio_Lines_Scale</label>
+                        <select id="line-@index-scale" class="select" @bind="line.Scale" @bind:after="Notify">
+                            @foreach (var scale in Enum.GetValues<ScaleKind>())
+                            {
+                                <option value="@scale">@Labels.Scale(scale)</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="line-@index-ratio">@Strings.Studio_Lines_Ratio</label>
+                        <input id="line-@index-ratio" class="input input--number" type="number" step="any" min="0" max="1" inputmode="decimal" @bind="line.ConsumedRatio" @bind:after="Notify" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="line-@index-note">@Strings.Studio_Lines_Note</label>
+                    <input id="line-@index-note" class="input" @bind="line.Note" @bind:after="Notify" />
+                </div>
+                <button type="button" class="button button--quiet" data-line-remove @onclick="() => RemoveLine(index)">@Strings.Studio_Lines_Remove</button>
+            </div>
+        }
+
+        <div class="line line--add">
+            <div class="field">
+                <label for="line-new">@Strings.Studio_Lines_AddChoose</label>
+                <select id="line-new" class="select" data-line-new @bind="_newIngredient">
+                    <option value="">—</option>
+                    @foreach (var (id, label) in IngredientOptions(null))
+                    {
+                        <option value="@id">@label</option>
+                    }
+                </select>
+            </div>
+            <button type="button" class="button" data-line-add disabled="@(_newIngredient.Length == 0)" @onclick="AddLine">@Strings.Studio_Lines_Add</button>
+        </div>
+    </section>
+
+    <section class="card" aria-labelledby="steps-title">
+        <h2 id="steps-title">@Strings.Studio_Steps_Title</h2>
+
+        @for (var i = 0; i < Form.Steps.Count; i++)
+        {
+            var index = i;
+            var step = Form.Steps[i];
+            <div class="step" data-step="@index">
+                <h3>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Steps_NumberFormat, index + 1)</h3>
+                <div class="field">
+                    <label for="step-@index-text">@Strings.Studio_Steps_Text</label>
+                    <textarea id="step-@index-text" class="textarea" data-step-text @bind="step.Text" @bind:after="Notify"></textarea>
+                </div>
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="step-@index-active">@Strings.Studio_Steps_Active</label>
+                        <input id="step-@index-active" class="input input--number" type="number" step="1" min="0" inputmode="numeric" data-step-active @bind="step.ActiveMinutes" @bind:after="Notify" />
+                    </div>
+                    <div class="field">
+                        <label for="step-@index-passive">@Strings.Studio_Steps_Passive</label>
+                        <input id="step-@index-passive" class="input input--number" type="number" step="1" min="0" inputmode="numeric" data-step-passive @bind="step.PassiveMinutes" @bind:after="Notify" />
+                    </div>
+                </div>
+                <div class="field" role="group" aria-labelledby="step-@index-uses">
+                    <span class="field__label" id="step-@index-uses">@Strings.Studio_Steps_Uses</span>
+                    <div class="checks">
+                        @foreach (var id in StepIngredientChoices(step))
+                        {
+                            var chosen = id;
+                            <label class="check">
+                                <input type="checkbox" data-step-ingredient="@chosen" checked="@step.IngredientIds.Contains(chosen)" @onchange="() => ToggleStepIngredient(index, chosen)" />
+                                @Kitchen.IngredientName(chosen)
+                            </label>
+                        }
+                    </div>
+                </div>
+                <div class="step__buttons">
+                    <button type="button" class="button button--quiet" data-step-up disabled="@(index == 0)" @onclick="() => MoveStep(index, -1)">@Strings.Studio_Steps_Up</button>
+                    <button type="button" class="button button--quiet" data-step-down disabled="@(index == Form.Steps.Count - 1)" @onclick="() => MoveStep(index, 1)">@Strings.Studio_Steps_Down</button>
+                    <button type="button" class="button button--quiet" data-step-remove @onclick="() => RemoveStep(index)">@Strings.Studio_Steps_Remove</button>
+                </div>
+            </div>
+        }
+
+        <button type="button" class="button" data-step-add @onclick="AddStep">@Strings.Studio_Steps_Add</button>
+    </section>
+</fieldset>
+
+@code {
+    private string _newIngredient = string.Empty;
+
+    [Parameter, EditorRequired]
+    public DishForm Form { get; set; } = default!;
+
+    [Parameter, EditorRequired]
+    public Kitchen Kitchen { get; set; } = default!;
+
+    /// <summary>True for a dish that is reviewed: it is shown but nothing in it can be changed.</summary>
+    [Parameter]
+    public bool ReadOnly { get; set; }
+
+    [Parameter]
+    public EventCallback Changed { get; set; }
+
+    private IEnumerable<string> ProteinOptions =>
+        Kitchen.ProteinSourceIds.Contains(Form.ProteinSource) ? Kitchen.ProteinSourceIds : [.. Kitchen.ProteinSourceIds, Form.ProteinSource];
+
+    private IEnumerable<string> SeasonOptions =>
+        [.. Kitchen.Seasons, .. Form.Seasons.Except(Kitchen.Seasons)];
+
+    /// <summary>Every ingredient of the kitchen by name, plus the one a line already has even if the kitchen does not know it, so it stays visible.</summary>
+    private IEnumerable<(string Id, string Label)> IngredientOptions(string? current)
+    {
+        var options = Kitchen.Ingredients.Keys
+            .Select(id => (Id: id, Label: Kitchen.IngredientName(id)))
+            .OrderBy(o => o.Label, StringComparer.CurrentCultureIgnoreCase);
+        return current is not null && !Kitchen.Ingredients.ContainsKey(current)
+            ? options.Prepend((current, current))
+            : options;
+    }
+
+    private IEnumerable<string> StepIngredientChoices(StepForm step) =>
+        Form.Lines.Select(l => l.IngredientId).Concat(step.IngredientIds).Distinct();
+
+    private Task Notify() => Changed.InvokeAsync();
+
+    private Task ToggleRegion(Region region)
+    {
+        Form.ToggleRegion(region);
+        return Notify();
+    }
+
+    private Task ToggleSeason(string season)
+    {
+        Form.ToggleSeason(season, Kitchen.Seasons);
+        return Notify();
+    }
+
+    private Task AddLine()
+    {
+        Form.AddLine(_newIngredient);
+        _newIngredient = string.Empty;
+        return Notify();
+    }
+
+    private Task RemoveLine(int index)
+    {
+        Form.RemoveLine(index);
+        return Notify();
+    }
+
+    private Task AddStep()
+    {
+        Form.AddStep();
+        return Notify();
+    }
+
+    private Task RemoveStep(int index)
+    {
+        Form.RemoveStep(index);
+        return Notify();
+    }
+
+    private Task MoveStep(int index, int by)
+    {
+        Form.MoveStep(index, by);
+        return Notify();
+    }
+
+    private Task ToggleStepIngredient(int stepIndex, string ingredientId)
+    {
+        Form.ToggleStepIngredient(stepIndex, ingredientId);
+        return Notify();
+    }
+}

@@ -1,5 +1,41 @@
 @page "/"
+@using System.Globalization
+@inject DishReviewer Reviewer
+@inject DataFolder Folder
 
-<PageTitle>MâmCơm Studio</PageTitle>
+<PageTitle>@Strings.Studio_Name</PageTitle>
 
-<h1>MâmCơm Studio</h1>
+<h1>@Strings.Studio_Home_Title</h1>
+<p>@Strings.Studio_Home_Intro</p>
+
+<KitchenProblems Kitchen="_catalog.Kitchen" />
+
+<section class="card" aria-labelledby="by-status">
+    <h2 id="by-status">@Strings.Studio_Home_ByStatus</h2>
+    <ul class="counts">
+        @foreach (var status in Enum.GetValues<DishStatus>())
+        {
+            <li data-count-status="@status.ToString().ToLowerInvariant()">
+                <StatusBadge Status="status" /> <strong>@_catalog.Entries.Count(e => e.Status == status)</strong>
+            </li>
+        }
+    </ul>
+    <p data-waiting-drafts>
+        @Strings.Studio_Home_Drafts: <strong>@_catalog.Entries.Count(e => e.Location == DishLocation.Draft && e.Status is DishStatus.Draft or DishStatus.Validated)</strong>
+    </p>
+    @if (_catalog.FailedDrafts.Count > 0)
+    {
+        <p class="notice notice--warning" data-failed-drafts>
+            @string.Format(CultureInfo.InvariantCulture, Strings.Studio_Home_FailedDrafts, string.Join(", ", _catalog.FailedDrafts))
+        </p>
+    }
+</section>
+
+<p><a class="button button--primary" href="/dishes">@Strings.Studio_Home_OpenList</a></p>
+<p class="text-muted text-small">@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Home_DataFolder, Folder.Root)</p>
+
+@code {
+    private DishCatalog _catalog = default!;
+
+    protected override void OnInitialized() => _catalog = Reviewer.Catalog();
+}

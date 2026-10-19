@@ -1,0 +1,13 @@
+<span class="badge @Tone" data-status="@Status.ToString().ToLowerInvariant()">@Labels.Status(Status)</span>
+
+@code {
+    [Parameter, EditorRequired]
+    public DishStatus Status { get; set; }
+
+    private string Tone => Status switch
+    {
+        DishStatus.Draft => "badge--warning",
+        DishStatus.Validated => "badge--info",
+        _ => "badge--ok",
+    };
+}
