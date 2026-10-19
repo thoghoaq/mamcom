@@ -380,6 +380,13 @@ Làm rõ khi hiện thực bước 3 (ADR-012):
 - **Năng lượng:** `Energy`, không có thì `Energy (Atwater Specific Factors)`, rồi `Energy (Atwater General Factors)`; kJ không bao giờ đọc thành kcal.
 - **Khoá API:** `dotnet user-secrets set "Fdc:ApiKey" "<khoá>" --project tools/MamCom.FdcImporter`; không có thì dùng `DEMO_KEY`. Khoá nằm trong header, không in ra. Công cụ đọc hạn mức còn lại, nghỉ giữa các lần gọi, giới hạn số lần gọi mỗi lượt và dừng sạch khi hết hạn mức hoặc bị giới hạn lâu.
 
+Làm rõ khi hiện thực bước 4 (ADR-013):
+- **Lệnh:** `MamCom.RecipeDrafter draft [--only] [--limit | --all] [--redo] [--list] [--prompts]`. Danh sách món `data/plan/dish-list.csv` có cột `name,slot,regions` (vùng nối bằng `;`) và cột `id` tuỳ chọn; không có thì id là tên bỏ dấu, nối bằng gạch ngang.
+- **Model và khoá** nằm trong user-secrets: `Claude:ApiKey` (thiếu thì biến môi trường `ANTHROPIC_API_KEY`), `Claude:Model` (mặc định `claude-opus-5-5`), `Claude:Effort` (mặc định `medium`). Mỗi món là một lần gọi API tính phí; mỗi lượt soạn tối đa 5 món trừ khi có `--all`.
+- **Model chỉ quyết định** mùa, độ cay, cách nấu, nguồn đạm, `serveHot`, các dòng công thức, các bước và nguyên liệu còn thiếu. Tên, loại, vùng là của người; bản nháp luôn `draft`, do `llm`, không dấu duyệt, không ảnh. Đầu ra bị ép bằng JSON Schema dựng từ dữ liệu: id nguyên liệu, mùa và nguồn đạm chỉ nhận giá trị đang có, không có chỗ cho số dinh dưỡng. Nguyên liệu chưa có đi vào `missingIngredients`, không thành dòng công thức.
+- **Kết quả** ở `data/dishes/_drafts/<id>.json` và `<id>.report.json` (schema `draft-report`): `valid`, `warnings`, `invalid` (có bản nháp nhưng vi phạm luật của schema hoặc DataBuilder) hoặc `failed` (không có bản nháp). Món đã có file thật không bao giờ bị ghi đè; món đã có bản nháp được bỏ qua trừ khi có `--redo`.
+- **Prompt** nằm ở `tools/MamCom.RecipeDrafter/prompts/` (`system.md`, `dish.md`), sửa không cần đụng code.
+
 ### 7.5 Ảnh
 
 - **Nguyên liệu:** tự chụp. Nền kem đồng nhất, tỷ lệ 1:1, cùng góc, cùng ánh sáng. Ở đây độ đúng quan trọng hơn độ đẹp, vì ảnh dùng để nhận diện ngoài chợ.
