@@ -352,6 +352,13 @@ Làm rõ khi hiện thực (ADR-010):
   - có khoảng giá trị chống gõ nhầm (ví dụ gram mỗi suất không quá 1.000, kcal trên 100g không quá 900).
 - **Việc schema không diễn đạt được là luật riêng của `validate`:** id trùng, `ingredientId` và mã mùa không tồn tại, thứ tự `order` liền nhau, nguyên liệu lặp trong một món, đơn vị chợ thiếu cho nguyên liệu `integer`, file ảnh không có, quan hệ giữa các giá trị config (gọi `Validate` của Core), và các cảnh báo ở trên (nguyên liệu gạo không bị coi là "không xuất hiện ở bước nào").
 
+Làm rõ khi hiện thực (ADR-011):
+- **Lệnh:** `validate [--data] [--release]`, `build [--data] [--out] [--release]`, mặc định `--data data` và `--out dist`. Mã thoát 0 là sạch, 1 là dữ liệu còn lỗi, 2 là gõ sai lệnh.
+- **`--release` từ chối, không lọc:** còn một nguyên liệu `placeholder` hoặc một món dưới `reviewed` thì không ghi bundle, và mọi cảnh báo thành lỗi. Món chưa xong để trong `data/dishes/_drafts/`, thư mục không được đọc.
+- **Ngưỡng của cảnh báo** (kcal mỗi suất theo loại món, gram nguồn đạm của món mặn, natri tối đa) nằm trong `data/config/validation-defaults.json`.
+- Ảnh là tên file nằm trong `data/images/out/`. Tên file phải bằng `id`. Mùa của món phải có trong `seasonByMonth` hoặc là `all`. Số `null` không bao giờ bị xét như 0.
+- Một file nguyên liệu hỏng chỉ báo một lần, ở chính file đó.
+
 ### 7.4 Pipeline nội dung
 
 1. **[NGƯỜI]** Chốt `data/plan/dish-list.csv` (`name, slot, regions`): khoảng 35 canh, 55 món mặn, 30 rau.
@@ -377,6 +384,13 @@ Làm rõ khi hiện thực (ADR-010):
 ### 7.6 Đóng gói và cập nhật
 
 `data-bundle.json` được cache bằng service worker. Khi online, app kiểm tra `version` mới và tải về. Cập nhật dữ liệu không cần phát hành lại app.
+
+Cấu trúc bundle (ADR-011), kiểu `DataBundle` trong `MamCom.Core`:
+- `version`: 16 chữ số hex đầu của SHA-256 trên bundle khi `version` rỗng. Cùng dữ liệu cho cùng từng byte; bundle không có ngày giờ.
+- `isRelease`: `false` với bản dev, để app dán nhãn dữ liệu thử.
+- `config`: bốn file config chạy (`portion`, `nutrition`, `spinner`, `cooking`), nên app không cần thư mục `data`.
+- `ingredients` và `dishes`, mỗi danh sách xếp theo `id`.
+- `dist/data-report.md` luôn được ghi; `dist/data-bundle.json` chỉ khi không có lỗi, và bản cũ bị xoá khi build thất bại.
 
 ---
 

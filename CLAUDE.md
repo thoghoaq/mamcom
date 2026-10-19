@@ -57,7 +57,7 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 ├─ docs/  SPEC.md, PLAN.md, decisions/, beta-notes.md
 ├─ data/
 │  ├─ schemas/        ingredient.schema.json, dish.schema.json, <tên file config>.schema.json
-│  ├─ config/         portion-defaults.json, nutrition-defaults.json, spinner-defaults.json, cooking-defaults.json
+│  ├─ config/         portion-defaults.json, nutrition-defaults.json, spinner-defaults.json, cooking-defaults.json, validation-defaults.json
 │  ├─ ingredients/    <ingredient-id>.json
 │  ├─ dishes/         <dish-id>.json   (_drafts/ cho bản nháp LLM)
 │  ├─ plan/           dish-list.csv (danh sách món cần làm)
@@ -83,7 +83,7 @@ dotnet build
 dotnet test
 dotnet run --project tools/MamCom.DataBuilder -- validate
 dotnet run --project tools/MamCom.DataBuilder -- build            # dev, cho phép placeholder
-dotnet run --project tools/MamCom.DataBuilder -- build --release  # chỉ món reviewed, không placeholder
+dotnet run --project tools/MamCom.DataBuilder -- build --release  # thất bại nếu còn món dưới reviewed hoặc placeholder (ADR-011)
 dotnet run --project tools/MamCom.Studio
 dotnet run --project src/MamCom.Web
 ```
