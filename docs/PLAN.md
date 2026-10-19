@@ -26,7 +26,7 @@
   - Xong khi: `dotnet build` xanh, không warning.
 - [x] **0.2** Tạo các project test (xUnit, Shouldly, bUnit), mỗi project có 1 test mẫu. `→ 0.1`
   - Xong khi: `dotnet test` xanh.
-- [ ] **0.3** GitHub Actions `ci.yml`: restore → build → test → `DataBuilder validate` (bước validate tạm skip cho tới khi 2.2 xong). `→ 0.2`
+- [x] **0.3** GitHub Actions `ci.yml`: restore → build → test → `DataBuilder validate` (bước validate tạm skip cho tới khi 2.2 xong). `→ 0.2`
   - Xong khi: pipeline xanh trên nhánh main.
 - [x] **0.4** Viết ADR-001 (JSON bundle thay SQLite), ADR-002 (Blazor WASM PWA trước), ADR-003 (không backend ở v1) theo §9. Viết README quick start.
   - Xong khi: ADR và README có trong repo.
@@ -140,3 +140,4 @@
 | 2026-10-18 | 0.5 | Chủ dự án xác nhận dùng mặc định: tên `MamCom`, hosting Azure Static Web Apps |
 | 2026-10-19 | 1.1 | Record domain trong `MamCom.Core` (13 kiểu theo PLAN cùng `MarketUnit`, `ImageRef`, `NutritionSource`, `Provenance`), `IRandomSource` (SplitMix64 tự cài để cùng seed ra cùng chuỗi trên mọi runtime), `IClock`. JSON qua source generator: enum chỉ nhận đúng một tên, thiếu trường bắt buộc thì lỗi; test round-trip bằng mẫu SPEC §7.1–7.2. SPEC §5.6 thêm `ActiveMinutes` và id `com` (ADR-004). Việc mở cho task sau: vùng Trung chưa có quy tắc fallback cho `marketUnit` và chưa rõ khi nào hiện "(~Ng)" trong text chia sẻ (1.5, 2.2); luật nới `AvailableMinutes` của 1.6 cần mealTime từ 1.7; ghi file JSON phải thêm `\n` cuối (2.2, 2.5) |
 | 2026-10-19 | 1.2 | `PortionCalculator`, `PortionConfig` và `data/config/portion-defaults.json` (file dữ liệu đầu tiên). Mọi hằng số đọc từ config và được kiểm khi tạo calculator. Gia đình mẫu SPEC §4.2 ra 3,7875 suất và 320g gạo; so với bản tham chiếu độc lập (Fraction) hơn 40.000 ca không lệch. Rice làm tròn có ngưỡng 1e-9 để 320,00000000000006 không thành 330g. `Validate` chỉ kiểm giá trị hữu hạn và dương; kiểm khoảng hợp lý và quan hệ giữa các giá trị thuộc JSON Schema ở 2.1 |
+| 2026-10-19 | 0.3 | Đã push `main` lên GitHub. Run `ci` [39191007838](https://github.com/thoghoaq/mamcom/actions/runs/39191007838) xanh trên commit 530f0d9 (ubuntu-24.04, build 0 warning, 168 test, mất 49 giây). Bước "Validate data" bị bỏ qua theo thiết kế tới task 2.2. GitHub báo `ubuntu-latest` chuyển sang Ubuntu 26 từ 2026-10-19 |
