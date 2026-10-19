@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Validation defaults",
+  "description": "data/config/validation-defaults.json (SPEC 7.3): the thresholds of the DataBuilder warnings. A range with min above max is rejected by ValidationConfig.Validate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kcalPerServing", "mainProteinGramsPerServing", "maxSodiumMgPerServing"],
+  "properties": {
+    "kcalPerServing": {
+      "description": "Plausible energy of one serving of a dish, by slot (canh, man, rau).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canh", "man", "rau"],
+      "properties": {
+        "canh": { "$ref": "#/$defs/range" },
+        "man": { "$ref": "#/$defs/range" },
+        "rau": { "$ref": "#/$defs/range" }
+      }
+    },
+    "mainProteinGramsPerServing": { "$ref": "#/$defs/range" },
+    "maxSodiumMgPerServing": { "type": "number", "exclusiveMinimum": 0, "maximum": 100000 }
+  },
+  "$defs": {
+    "range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max"],
+      "properties": {
+        "min": { "type": "number", "minimum": 0, "maximum": 100000 },
+        "max": { "type": "number", "exclusiveMinimum": 0, "maximum": 100000 }
+      }
+    }
+  }
+}

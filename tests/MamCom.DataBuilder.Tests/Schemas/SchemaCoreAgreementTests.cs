@@ -7,6 +7,7 @@ using MamCom.Core.Models;
 using MamCom.Core.Nutrition;
 using MamCom.Core.Portions;
 using MamCom.Core.Spinning;
+using MamCom.DataBuilder.Validation;
 
 namespace MamCom.DataBuilder.Tests.Schemas;
 
@@ -115,9 +116,13 @@ public class SchemaCoreAgreementTests
         { "nutrition-defaults", "/properties/recommendedEnergyShare", nameof(RecommendedShares) },
         { "nutrition-defaults", "/$defs/shareRange", nameof(ShareRange) },
         { "cooking-defaults", "", nameof(CookingConfig) },
+        { "validation-defaults", "", nameof(ValidationConfig) },
+        { "validation-defaults", "/properties/kcalPerServing", nameof(SlotRanges) },
+        { "validation-defaults", "/$defs/range", nameof(ValueRange) },
     };
 
-    private static Type RecordType(string name) => typeof(Ingredient).Assembly.GetExportedTypes().Single(t => t.Name == name);
+    private static Type RecordType(string name) =>
+        typeof(Ingredient).Assembly.GetExportedTypes().Concat(typeof(ValidationConfig).Assembly.GetExportedTypes()).Single(t => t.Name == name);
 
     [Theory]
     [MemberData(nameof(Records))]

@@ -5,7 +5,7 @@ namespace MamCom.DataBuilder.Tests.Schemas;
 /// <summary>The data that ships must satisfy its schemas (PLAN 2.1).</summary>
 public class SeedSchemaTests
 {
-    private static readonly string[] ConfigNames = ["cooking-defaults", "nutrition-defaults", "portion-defaults", "spinner-defaults"];
+    private static readonly string[] ConfigNames = ["cooking-defaults", "nutrition-defaults", "portion-defaults", "spinner-defaults", "validation-defaults"];
 
     private static string Describe(IEnumerable<SchemaIssue> issues) =>
         string.Join(Environment.NewLine, issues.Select(i => $"  {i.Location} [{i.Keyword}] {i.Message}"));
@@ -13,7 +13,7 @@ public class SeedSchemaTests
     [Fact]
     public void There_is_a_schema_for_ingredients_dishes_and_each_config_file()
     {
-        DataFiles.Schemas.Names.ShouldBe(["cooking-defaults", "dish", "ingredient", "nutrition-defaults", "portion-defaults", "spinner-defaults"]);
+        DataFiles.Schemas.Names.ShouldBe(["cooking-defaults", "dish", "ingredient", "nutrition-defaults", "portion-defaults", "spinner-defaults", "validation-defaults"]);
     }
 
     [Fact]

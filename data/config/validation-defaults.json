@@ -1,0 +1,21 @@
+{
+  "kcalPerServing": {
+    "canh": {
+      "min": 30,
+      "max": 250
+    },
+    "man": {
+      "min": 120,
+      "max": 550
+    },
+    "rau": {
+      "min": 20,
+      "max": 220
+    }
+  },
+  "mainProteinGramsPerServing": {
+    "min": 50,
+    "max": 150
+  },
+  "maxSodiumMgPerServing": 1000
+}

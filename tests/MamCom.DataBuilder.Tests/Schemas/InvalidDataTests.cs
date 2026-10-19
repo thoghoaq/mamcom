@@ -176,6 +176,11 @@ public class InvalidDataTests
         Config("cooking-defaults", "empty rice text", o => o["riceStepText"] = "", "/riceStepText", "minLength");
         Config("cooking-defaults", "negative rice minutes", o => o["riceActiveMinutes"] = -1, "/riceActiveMinutes", "minimum");
         Config("cooking-defaults", "fractional rice minutes", o => o["ricePassiveMinutes"] = 30.5, "/ricePassiveMinutes", "type");
+        Config("validation-defaults", "missing slot range", o => o["kcalPerServing"]!.AsObject().Remove("rau"), "/kcalPerServing", "required");
+        Config("validation-defaults", "negative minimum", o => o["kcalPerServing"]!["canh"]!["min"] = -1, "/kcalPerServing/canh/min", "minimum");
+        Config("validation-defaults", "zero maximum", o => o["mainProteinGramsPerServing"]!["max"] = 0, "/mainProteinGramsPerServing/max", "exclusiveMinimum");
+        Config("validation-defaults", "zero sodium limit", o => o["maxSodiumMgPerServing"] = 0, "/maxSodiumMgPerServing", "exclusiveMinimum");
+        Config("validation-defaults", "unknown slot", o => o["kcalPerServing"]!["main"] = new JsonObject { ["min"] = 1, ["max"] = 2 }, "/kcalPerServing/main", "additionalProperties");
 
         return cases;
     }
