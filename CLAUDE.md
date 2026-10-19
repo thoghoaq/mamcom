@@ -56,7 +56,7 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 ├─ CLAUDE.md
 ├─ docs/  SPEC.md, PLAN.md, decisions/, beta-notes.md
 ├─ data/
-│  ├─ schemas/        ingredient.schema.json, dish.schema.json
+│  ├─ schemas/        ingredient.schema.json, dish.schema.json, <tên file config>.schema.json
 │  ├─ config/         portion-defaults.json, nutrition-defaults.json, spinner-defaults.json, cooking-defaults.json
 │  ├─ ingredients/    <ingredient-id>.json
 │  ├─ dishes/         <dish-id>.json   (_drafts/ cho bản nháp LLM)

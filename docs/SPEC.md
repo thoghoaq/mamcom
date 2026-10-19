@@ -342,6 +342,16 @@ Mỗi `marketUnit` có thêm trường tuỳ chọn `showApproxGrams` (mặc đ�
 - `dist/data-bundle.json`, có `version` = hash nội dung.
 - `dist/data-report.md`: số lượng, cảnh báo, độ phủ ảnh, độ phủ dinh dưỡng.
 
+Làm rõ khi hiện thực (ADR-010):
+- **Schema** nằm trong `data/schemas/`, JSON Schema draft 2020-12, mỗi file tự đứng được: `ingredient`, `dish` và một schema cho mỗi file trong `data/config/` (tên theo file, ví dụ `portion-defaults.schema.json`). Mọi đối tượng cấm trường lạ; một trường viết hai lần trong file cũng là lỗi.
+- **Schema chặt hơn việc đọc dữ liệu:**
+  - nguồn `placeholder` thì mọi giá trị dinh dưỡng và tham chiếu nguồn phải `null`; nguồn thật phải có `ref` và `matchedName`;
+  - `draft` và `validated` không có dấu duyệt hay nấu thử; `reviewed` cần người và ngày duyệt; `cooktested` cần thêm ngày nấu thử;
+  - `names` và `marketUnit` có khoá `default` hoặc đủ ba vùng;
+  - ảnh khai báo phải có `source` và `license`; `consumedRatio` nhỏ hơn 1 phải có `note`;
+  - có khoảng giá trị chống gõ nhầm (ví dụ gram mỗi suất không quá 1.000, kcal trên 100g không quá 900).
+- **Việc schema không diễn đạt được là luật riêng của `validate`:** id trùng, `ingredientId` và mã mùa không tồn tại, thứ tự `order` liền nhau, nguyên liệu lặp trong một món, đơn vị chợ thiếu cho nguyên liệu `integer`, file ảnh không có, quan hệ giữa các giá trị config (gọi `Validate` của Core), và các cảnh báo ở trên (nguyên liệu gạo không bị coi là "không xuất hiện ở bước nào").
+
 ### 7.4 Pipeline nội dung
 
 1. **[NGƯỜI]** Chốt `data/plan/dish-list.csv` (`name, slot, regions`): khoảng 35 canh, 55 món mặn, 30 rau.
