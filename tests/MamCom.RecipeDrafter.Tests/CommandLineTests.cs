@@ -471,6 +471,40 @@ public class CommandLineTests
     }
 
     [Fact]
+    public async Task An_account_with_no_credit_stops_the_run_after_one_call_and_tells_the_owner_what_to_do()
+    {
+        using var data = new TempData();
+        var api = FakeAnthropicApi.Always(_ => FakeAnthropicApi.Error(
+            HttpStatusCode.BadRequest,
+            "invalid_request_error",
+            "Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits."));
+
+        var (code, _, error) = await data.RunAsync(TempData.Env(settings: new() { [CommandLine.ApiKeySetting] = Secret }, handler: api), "draft");
+
+        code.ShouldBe(CommandLine.Incomplete);
+        api.Requests.Count.ShouldBe(1);   // three dishes are due; only one call is made
+        error.ShouldContain("Dừng: tài khoản Anthropic hết tín dụng API");
+        error.ShouldContain("Plans & Billing");
+        error.ShouldContain("các bản nháp đã ghi được giữ và món chưa soạn sẽ được thử lại");
+        error.ShouldNotContain(Secret);
+        error.ShouldNotContain("không soạn được");   // the dish that hit it has no report and no "failed" line
+        data.DraftFiles().ShouldBeEmpty();
+    }
+
+    [Fact]
+    public async Task A_400_about_one_dish_does_not_stop_the_run_and_every_dish_is_tried()
+    {
+        using var data = new TempData();
+        var api = FakeAnthropicApi.Always(_ => FakeAnthropicApi.Error(HttpStatusCode.BadRequest, "invalid_request_error", "schema is too complex"));
+
+        var (code, _, error) = await data.RunAsync(TempData.Env(settings: new() { [CommandLine.ApiKeySetting] = Secret }, handler: api), "draft");
+
+        code.ShouldBe(CommandLine.Incomplete);
+        api.Requests.Count.ShouldBe(3);
+        error.ShouldNotContain("Dừng:");
+    }
+
+    [Fact]
     public async Task Missing_ingredients_show_up_as_warnings_in_the_summary()
     {
         using var data = new TempData();

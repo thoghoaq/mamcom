@@ -47,6 +47,12 @@ public sealed class AnthropicRecipeModel : IRecipeModel
 
     public static IReadOnlyCollection<string> EffortNames => Efforts.Keys;
 
+    /// <summary>
+    /// The API reports an empty account as a 400 ("Your credit balance is too low to access the Anthropic API"), the same
+    /// status as a request it did not like, so the message is what tells them apart.
+    /// </summary>
+    private static bool IsOutOfCredit(string message) => message.Contains("credit balance", StringComparison.OrdinalIgnoreCase);
+
     public string Name { get; }
 
     public async Task<ModelReply> DraftAsync(ModelRequest request, CancellationToken cancellationToken)
@@ -88,6 +94,10 @@ public sealed class AnthropicRecipeModel : IRecipeModel
         catch (Anthropic5xxException ex)
         {
             throw new ModelException(ModelFailure.Unavailable, "The API had a server problem (HTTP 5xx).", ex);
+        }
+        catch (Anthropic4xxException ex) when (IsOutOfCredit(ex.Message))
+        {
+            throw new ModelException(ModelFailure.OutOfCredit, "The account has no API credit left (the credit balance is too low).", ex);
         }
         catch (Anthropic4xxException ex)
         {

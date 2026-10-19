@@ -189,6 +189,67 @@ public class AnthropicRecipeModelTests
         error.Message.ShouldNotContain(Key);
     }
 
+    private const string CreditMessage = "Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.";
+
+    [Fact]
+    public async Task An_account_with_no_credit_is_told_apart_from_a_request_the_api_did_not_like()
+    {
+        var api = FakeAnthropicApi.Returning(FakeAnthropicApi.Error(HttpStatusCode.BadRequest, "invalid_request_error", CreditMessage));
+
+        var error = await Should.ThrowAsync<ModelException>(() => Draft(Model(api)));
+
+        error.Kind.ShouldBe(ModelFailure.OutOfCredit);
+        error.Message.ShouldBe("The account has no API credit left (the credit balance is too low).");   // the API's own text is not repeated
+        error.Message.ShouldNotContain(Key);
+        api.Requests.Count.ShouldBe(1);   // not a case for the SDK's own retries
+    }
+
+    [Theory]
+    [InlineData("YOUR CREDIT BALANCE IS TOO LOW")]
+    [InlineData("credit balance too low")]
+    [InlineData("Please check your Credit Balance.")]
+    public async Task The_words_about_the_credit_balance_are_matched_in_any_case(string message)
+    {
+        var api = FakeAnthropicApi.Returning(FakeAnthropicApi.Error(HttpStatusCode.BadRequest, "invalid_request_error", message));
+
+        var error = await Should.ThrowAsync<ModelException>(() => Draft(Model(api)));
+
+        error.Kind.ShouldBe(ModelFailure.OutOfCredit);
+    }
+
+    [Fact]
+    public async Task The_message_decides_not_the_status_so_another_status_with_the_same_words_is_out_of_credit_too()
+    {
+        var api = FakeAnthropicApi.Returning(FakeAnthropicApi.Error(HttpStatusCode.PaymentRequired, "billing_error", CreditMessage));
+
+        var error = await Should.ThrowAsync<ModelException>(() => Draft(Model(api)));
+
+        error.Kind.ShouldBe(ModelFailure.OutOfCredit);
+    }
+
+    [Theory]
+    [InlineData("schema is too complex")]
+    [InlineData("credit")]
+    [InlineData("the balance of the schema")]
+    public async Task A_400_that_is_not_about_the_credit_balance_is_still_only_a_rejected_request(string message)
+    {
+        var api = FakeAnthropicApi.Returning(FakeAnthropicApi.Error(HttpStatusCode.BadRequest, "invalid_request_error", message));
+
+        var error = await Should.ThrowAsync<ModelException>(() => Draft(Model(api)));
+
+        error.Kind.ShouldBe(ModelFailure.Rejected);
+    }
+
+    [Fact]
+    public async Task A_refused_key_stays_a_refused_key_even_when_the_message_mentions_the_credit_balance()
+    {
+        var api = FakeAnthropicApi.Returning(FakeAnthropicApi.Error(HttpStatusCode.Forbidden, "permission_error", CreditMessage));
+
+        var error = await Should.ThrowAsync<ModelException>(() => Draft(Model(api)));
+
+        error.Kind.ShouldBe(ModelFailure.Auth);
+    }
+
     [Fact]
     public async Task A_rejected_request_says_what_the_api_said()
     {

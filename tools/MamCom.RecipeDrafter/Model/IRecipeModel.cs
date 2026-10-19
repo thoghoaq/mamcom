@@ -20,6 +20,12 @@ public enum ModelFailure
     /// <summary>Over the request limit even after the SDK's retries.</summary>
     RateLimited,
 
+    /// <summary>
+    /// The account has no API credit left (an HTTP 400 whose message is about the credit balance). Like a refused key it is
+    /// not about one dish: every further call would fail the same way and be counted as a call.
+    /// </summary>
+    OutOfCredit,
+
     /// <summary>The request itself was rejected (a bad schema, an unknown model).</summary>
     Rejected,
 

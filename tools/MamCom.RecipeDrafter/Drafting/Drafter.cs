@@ -33,7 +33,7 @@ public enum DraftOutcomeKind
 /// <param name="Validation">For a drafted dish: <c>valid</c>, <c>warnings</c> or <c>invalid</c>.</param>
 public sealed record DishOutcome(string DishId, DraftOutcomeKind Kind, string? Validation, string Message);
 
-/// <param name="StoppedBecause">Why the run ended early for a reason that needs attention (a refused key, a rate limit); null otherwise.</param>
+/// <param name="StoppedBecause">Why the run ended early for a reason that needs attention (a refused key, a rate limit, an account with no credit left); null otherwise.</param>
 /// <param name="LimitReached">The run stopped at <c>--limit</c>; there may be more dishes to draft.</param>
 public sealed record DraftRunResult(IReadOnlyList<DishOutcome> Outcomes, string? StoppedBecause, bool LimitReached, int ModelCalls, TokenUsage Usage);
 
@@ -125,6 +125,10 @@ public sealed class Drafter(IRecipeModel model, IClock clock)
             catch (ModelException ex) when (ex.Kind == ModelFailure.RateLimited)
             {
                 return new DraftRunResult(outcomes, Messages.StoppedRateLimited(), false, calls, total);
+            }
+            catch (ModelException ex) when (ex.Kind == ModelFailure.OutOfCredit)
+            {
+                return new DraftRunResult(outcomes, Messages.StoppedOutOfCredit(), false, calls, total);
             }
             catch (ModelException ex)
             {

@@ -60,6 +60,9 @@ internal static class Messages
 
     public static string StoppedRateLimited() => "Dừng: API đang giới hạn khoá này (429), kể cả sau khi tự thử lại. Chạy lại sau; các bản nháp đã ghi được giữ.";
 
+    public static string StoppedOutOfCredit() =>
+        "Dừng: tài khoản Anthropic hết tín dụng API (\"credit balance is too low\"). Nạp thêm tín dụng ở Plans & Billing rồi chạy lại; các bản nháp đã ghi được giữ và món chưa soạn sẽ được thử lại.";
+
     public static string NoApiKey() =>
         "Chưa có khoá API. Đặt bằng: dotnet user-secrets set \"Claude:ApiKey\" \"<khoá>\" --project tools/MamCom.RecipeDrafter, hoặc đặt biến môi trường ANTHROPIC_API_KEY.";
 

@@ -328,7 +328,8 @@ public class DrafterTests
     [Theory]
     [InlineData(ModelFailure.Auth, "khoá")]
     [InlineData(ModelFailure.RateLimited, "429")]
-    public async Task A_refused_key_or_a_rate_limit_stops_the_run_without_a_report_for_that_dish(ModelFailure kind, string said)
+    [InlineData(ModelFailure.OutOfCredit, "hết tín dụng")]
+    public async Task A_refused_key_a_rate_limit_or_no_credit_stops_the_run_without_a_report_for_that_dish(ModelFailure kind, string said)
     {
         using var data = new TempData();
         var model = new FakeModel((_, n) => n == 1 ? Answers.Reply(Answers.Recipe()) : throw new ModelException(kind, "boom"));
@@ -336,8 +337,28 @@ public class DrafterTests
         var result = await data.DraftAsync(model, [Fish, Tofu, Soup]);
 
         result.StoppedBecause.ShouldNotBeNull().ShouldContain(said);
+        result.LimitReached.ShouldBeFalse();   // it stopped for a reason, not because the limit was reached
+        result.ModelCalls.ShouldBe(2);
+        result.Usage.ShouldBe(Answers.Usage);  // what the first dish cost is still counted
         model.Requests.Count.ShouldBe(2);
         data.DraftFiles().ShouldBe(["ca-loc-kho-to.json", "ca-loc-kho-to.report.json"]);
+    }
+
+    [Fact]
+    public async Task No_credit_on_the_first_dish_stops_the_run_at_once_with_one_call_and_nothing_written()
+    {
+        using var data = new TempData();
+        var model = new FakeModel((_, _) => throw new ModelException(ModelFailure.OutOfCredit, "no credit"));
+        var reported = new List<DishOutcome>();
+
+        var result = await data.DraftAsync(model, [Fish, Tofu, Soup], reported: reported);
+
+        model.Requests.Count.ShouldBe(1);
+        result.ModelCalls.ShouldBe(1);
+        result.StoppedBecause.ShouldNotBeNull().ShouldContain("Plans & Billing");
+        result.LimitReached.ShouldBeFalse();
+        reported.ShouldBeEmpty();
+        data.DraftFiles().ShouldBeEmpty();
     }
 
     [Fact]
