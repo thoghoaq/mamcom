@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Nutrition defaults",
+  "description": "data/config/nutrition-defaults.json (SPEC 6.3). Ranges are fractions of the total energy; min not above max is checked by NutritionConfig.Validate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kcalPerGram", "recommendedEnergyShare"],
+  "properties": {
+    "kcalPerGram": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["protein", "fat", "carb"],
+      "properties": {
+        "protein": { "type": "number", "exclusiveMinimum": 0, "maximum": 20 },
+        "fat": { "type": "number", "exclusiveMinimum": 0, "maximum": 20 },
+        "carb": { "type": "number", "exclusiveMinimum": 0, "maximum": 20 }
+      }
+    },
+    "recommendedEnergyShare": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["protein", "fat", "carb"],
+      "properties": {
+        "protein": { "$ref": "#/$defs/shareRange" },
+        "fat": { "$ref": "#/$defs/shareRange" },
+        "carb": { "$ref": "#/$defs/shareRange" }
+      }
+    }
+  },
+  "$defs": {
+    "shareRange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max"],
+      "properties": {
+        "min": { "type": "number", "minimum": 0, "maximum": 1 },
+        "max": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    }
+  }
+}

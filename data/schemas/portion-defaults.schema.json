@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Portion defaults",
+  "description": "data/config/portion-defaults.json (SPEC 4.2, 6.1). The bounds are guard rails against typos; relations between values (default bowls between min and max) are checked by PortionConfig.Validate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "servingsBase",
+    "servingsPerBowl",
+    "ageModifiers",
+    "moreProteinFactor",
+    "moreVegFactor",
+    "sublinearExponent",
+    "gramsRawRicePerBowl",
+    "riceRoundingGrams",
+    "riceIngredientId",
+    "defaultBowlsPerMeal",
+    "minBowlsPerMeal",
+    "maxBowlsPerMeal",
+    "bowlsStep"
+  ],
+  "properties": {
+    "servingsBase": { "type": "number", "minimum": 0, "maximum": 2 },
+    "servingsPerBowl": { "type": "number", "exclusiveMinimum": 0, "maximum": 2 },
+    "ageModifiers": { "$ref": "#/$defs/perAgeGroup" },
+    "moreProteinFactor": { "type": "number", "minimum": 1, "maximum": 3 },
+    "moreVegFactor": { "type": "number", "minimum": 1, "maximum": 3 },
+    "sublinearExponent": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+    "gramsRawRicePerBowl": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["small", "medium", "large"],
+      "properties": {
+        "small": { "$ref": "#/$defs/riceGrams" },
+        "medium": { "$ref": "#/$defs/riceGrams" },
+        "large": { "$ref": "#/$defs/riceGrams" }
+      }
+    },
+    "riceRoundingGrams": { "type": "number", "exclusiveMinimum": 0, "maximum": 1000 },
+    "riceIngredientId": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "defaultBowlsPerMeal": { "$ref": "#/$defs/bowls" },
+    "minBowlsPerMeal": { "type": "number", "exclusiveMinimum": 0, "maximum": 10 },
+    "maxBowlsPerMeal": { "type": "number", "exclusiveMinimum": 0, "maximum": 10 },
+    "bowlsStep": { "type": "number", "exclusiveMinimum": 0, "maximum": 5 }
+  },
+  "$defs": {
+    "perAgeGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["toddler", "child", "teen", "adult", "senior"],
+      "properties": {
+        "toddler": { "type": "number", "exclusiveMinimum": 0, "maximum": 2 },
+        "child": { "type": "number", "exclusiveMinimum": 0, "maximum": 2 },
+        "teen": { "type": "number", "exclusiveMinimum": 0, "maximum": 2 },
+        "adult": { "type": "number", "exclusiveMinimum": 0, "maximum": 2 },
+        "senior": { "type": "number", "exclusiveMinimum": 0, "maximum": 2 }
+      }
+    },
+    "bowls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["toddler", "child", "teen", "adult", "senior"],
+      "properties": {
+        "toddler": { "type": "number", "exclusiveMinimum": 0, "maximum": 10 },
+        "child": { "type": "number", "exclusiveMinimum": 0, "maximum": 10 },
+        "teen": { "type": "number", "exclusiveMinimum": 0, "maximum": 10 },
+        "adult": { "type": "number", "exclusiveMinimum": 0, "maximum": 10 },
+        "senior": { "type": "number", "exclusiveMinimum": 0, "maximum": 10 }
+      }
+    },
+    "riceGrams": { "type": "number", "exclusiveMinimum": 0, "maximum": 150 }
+  }
+}

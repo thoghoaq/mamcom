@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dish",
+  "description": "One file of data/dishes/<id>.json (SPEC 7.2). Amounts are per serving. Status and review fields are set by a person in MamCom.Studio, never by a tool.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "slot",
+    "regions",
+    "seasons",
+    "spicy",
+    "cookingMethod",
+    "proteinSource",
+    "serveHot",
+    "ingredients",
+    "steps",
+    "status",
+    "provenance",
+    "image"
+  ],
+  "properties": {
+    "id": {
+      "description": "Kebab-case ASCII id. 'com' is reserved for the rice pseudo-dish in the cook plan.",
+      "allOf": [{ "$ref": "#/$defs/id" }, { "not": { "const": "com" } }]
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "slot": { "enum": ["canh", "man", "rau"] },
+    "regions": {
+      "description": "Regions the dish is typical of. Empty means no particular region.",
+      "type": "array",
+      "items": { "enum": ["north", "central", "south"] },
+      "uniqueItems": true
+    },
+    "seasons": {
+      "description": "Season ids from spinner-defaults.json (seasonByMonth), or just 'all'.",
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/id" },
+      "uniqueItems": true,
+      "if": { "contains": { "const": "all" } },
+      "then": { "maxItems": 1 }
+    },
+    "spicy": { "enum": ["none", "optional", "required"] },
+    "cookingMethod": { "enum": ["luoc", "hap", "nau", "kho", "xao", "chien", "nuong", "tron"] },
+    "proteinSource": {
+      "description": "Protein source id; 'none' (no protein) and 'chay' (vegetarian) never count as a duplicate.",
+      "$ref": "#/$defs/id"
+    },
+    "serveHot": { "type": "boolean" },
+    "ingredients": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/dishIngredient" }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/step" }
+    },
+    "status": { "enum": ["draft", "validated", "reviewed", "cooktested"] },
+    "provenance": { "$ref": "#/$defs/provenance" },
+    "image": { "$ref": "#/$defs/image" }
+  },
+  "allOf": [
+    {
+      "description": "A dish nobody has reviewed carries no review or cook-test marks.",
+      "if": { "required": ["status"], "properties": { "status": { "enum": ["draft", "validated"] } } },
+      "then": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "reviewedBy": { "type": "null" },
+              "reviewedAt": { "type": "null" },
+              "cookTestedAt": { "type": "null" },
+              "measuredTotalMinutes": { "type": "null" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "description": "Reviewed means a person and a date, and nobody has cooked it yet.",
+      "if": { "required": ["status"], "properties": { "status": { "const": "reviewed" } } },
+      "then": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "reviewedBy": { "type": "string" },
+              "reviewedAt": { "type": "string" },
+              "cookTestedAt": { "type": "null" },
+              "measuredTotalMinutes": { "type": "null" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "description": "Cook-tested means reviewed and cooked on a date.",
+      "if": { "required": ["status"], "properties": { "status": { "const": "cooktested" } } },
+      "then": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "reviewedBy": { "type": "string" },
+              "reviewedAt": { "type": "string" },
+              "cookTestedAt": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "id": {
+      "description": "Kebab-case ASCII id.",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 64
+    },
+    "dishIngredient": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ingredientId", "gramsEdiblePerServing", "scale"],
+      "properties": {
+        "ingredientId": { "$ref": "#/$defs/id" },
+        "gramsEdiblePerServing": { "type": "number", "exclusiveMinimum": 0, "maximum": 1000 },
+        "scale": { "enum": ["linear", "sublinear", "integer", "fixed"] },
+        "consumedRatio": {
+          "description": "Share actually eaten, for example less than 1 for deep-frying oil. Defaults to 1; a value below 1 needs a note naming its source.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "note": { "type": ["string", "null"], "minLength": 1 }
+      },
+      "if": { "required": ["consumedRatio"], "properties": { "consumedRatio": { "exclusiveMaximum": 1 } } },
+      "then": { "required": ["note"], "properties": { "note": { "type": "string" } } }
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["order", "text", "activeMinutes", "passiveMinutes", "ingredientIds"],
+      "properties": {
+        "order": { "type": "integer", "minimum": 1 },
+        "text": { "type": "string", "minLength": 1 },
+        "activeMinutes": { "description": "Minutes that need the cook's hands.", "type": "integer", "minimum": 0, "maximum": 240 },
+        "passiveMinutes": { "description": "Minutes that run unattended: simmering, marinating, a pot on the stove.", "type": "integer", "minimum": 0, "maximum": 1440 },
+        "ingredientIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/id" },
+          "uniqueItems": true
+        }
+      },
+      "anyOf": [
+        { "properties": { "activeMinutes": { "minimum": 1 } } },
+        { "properties": { "passiveMinutes": { "minimum": 1 } } }
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["draftedBy", "reviewedBy", "reviewedAt", "cookTestedAt", "measuredTotalMinutes"],
+      "properties": {
+        "draftedBy": { "enum": ["llm", "human"] },
+        "reviewedBy": { "type": ["string", "null"], "minLength": 1 },
+        "reviewedAt": { "type": ["string", "null"], "format": "date" },
+        "cookTestedAt": { "type": ["string", "null"], "format": "date" },
+        "measuredTotalMinutes": { "type": ["integer", "null"], "minimum": 1 }
+      }
+    },
+    "image": {
+      "description": "A declared image carries its source and license; AI or stock placeholders say isIllustration.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["thumb", "full", "source", "license", "isIllustration"],
+      "properties": {
+        "thumb": { "type": ["string", "null"], "minLength": 1 },
+        "full": { "type": ["string", "null"], "minLength": 1 },
+        "source": { "type": ["string", "null"], "minLength": 1 },
+        "license": { "type": ["string", "null"], "minLength": 1 },
+        "isIllustration": { "type": "boolean" }
+      },
+      "if": {
+        "anyOf": [
+          { "required": ["thumb"], "properties": { "thumb": { "type": "string" } } },
+          { "required": ["full"], "properties": { "full": { "type": "string" } } }
+        ]
+      },
+      "then": {
+        "properties": {
+          "source": { "type": "string" },
+          "license": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ingredient",
+  "description": "One file of data/ingredients/<id>.json (SPEC 7.1). Nutrition is per 100g edible; a null number means unknown and goes with the placeholder source.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "names",
+    "aliases",
+    "category",
+    "aisle",
+    "proteinSource",
+    "marketUnit",
+    "wasteRatio",
+    "isPantry",
+    "nutritionPer100gEdible",
+    "nutritionSource",
+    "image"
+  ],
+  "properties": {
+    "id": { "$ref": "#/$defs/id" },
+    "names": { "$ref": "#/$defs/regionNames" },
+    "aliases": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "category": { "$ref": "#/$defs/id" },
+    "aisle": { "enum": ["thit-ca", "rau-cu-qua", "trung-dau-phu", "kho-gia-vi", "khac"] },
+    "proteinSource": {
+      "description": "Protein source id, or null when the ingredient is not a protein source. 'none' is for dishes only.",
+      "anyOf": [
+        { "type": "null" },
+        { "allOf": [{ "$ref": "#/$defs/id" }, { "not": { "const": "none" } }] }
+      ]
+    },
+    "marketUnit": { "$ref": "#/$defs/regionMarketUnits" },
+    "wasteRatio": { "type": "number", "minimum": 0, "exclusiveMaximum": 1 },
+    "isPantry": { "type": "boolean" },
+    "nutritionPer100gEdible": { "$ref": "#/$defs/nutrition" },
+    "nutritionSource": { "$ref": "#/$defs/nutritionSource" },
+    "image": { "$ref": "#/$defs/image" }
+  },
+  "if": {
+    "required": ["nutritionSource"],
+    "properties": {
+      "nutritionSource": { "required": ["db"], "properties": { "db": { "const": "placeholder" } } }
+    }
+  },
+  "then": {
+    "description": "No source, no numbers: placeholder data never carries a nutrient value.",
+    "properties": {
+      "nutritionPer100gEdible": {
+        "properties": {
+          "kcal": { "type": "null" },
+          "proteinG": { "type": "null" },
+          "fatG": { "type": "null" },
+          "carbG": { "type": "null" },
+          "fiberG": { "type": "null" },
+          "sodiumMg": { "type": "null" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "description": "Kebab-case ASCII id.",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 64
+    },
+    "regionNames": {
+      "description": "Names keyed by region (north, central, south) plus an optional default for regions without a key. Needs the default or all three regions.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "default": { "type": "string", "minLength": 1 },
+        "north": { "type": "string", "minLength": 1 },
+        "central": { "type": "string", "minLength": 1 },
+        "south": { "type": "string", "minLength": 1 }
+      },
+      "anyOf": [{ "required": ["default"] }, { "required": ["north", "central", "south"] }]
+    },
+    "marketUnit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["display", "gramsPerUnit", "step"],
+      "properties": {
+        "display": { "type": "string", "minLength": 1 },
+        "gramsPerUnit": { "type": "number", "exclusiveMinimum": 0, "maximum": 100000 },
+        "step": { "type": "number", "exclusiveMinimum": 0, "maximum": 1000 },
+        "showApproxGrams": { "type": "boolean" }
+      }
+    },
+    "regionMarketUnits": {
+      "description": "Market unit keyed like the names. Needs the default or all three regions, so every ingredient can be bought everywhere.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "default": { "$ref": "#/$defs/marketUnit" },
+        "north": { "$ref": "#/$defs/marketUnit" },
+        "central": { "$ref": "#/$defs/marketUnit" },
+        "south": { "$ref": "#/$defs/marketUnit" }
+      },
+      "anyOf": [{ "required": ["default"] }, { "required": ["north", "central", "south"] }]
+    },
+    "nutrition": {
+      "description": "Per 100g edible. The bounds are physical limits (grams of a nutrient in 100g, energy of pure fat), not recommendations.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kcal", "proteinG", "fatG", "carbG", "fiberG", "sodiumMg"],
+      "properties": {
+        "kcal": { "type": ["number", "null"], "minimum": 0, "maximum": 900 },
+        "proteinG": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "fatG": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "carbG": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "fiberG": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "sodiumMg": { "type": ["number", "null"], "minimum": 0, "maximum": 40000 }
+      }
+    },
+    "nutritionSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["db", "ref", "matchedName", "verifiedBy", "verifiedAt"],
+      "properties": {
+        "db": { "enum": ["placeholder", "vn-fct-2017", "usda-fdc", "asean-fcd"] },
+        "ref": { "type": ["string", "null"], "minLength": 1 },
+        "matchedName": { "type": ["string", "null"], "minLength": 1 },
+        "verifiedBy": { "type": ["string", "null"], "minLength": 1 },
+        "verifiedAt": { "type": ["string", "null"], "format": "date" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "db": { "const": "placeholder" } } },
+          "then": {
+            "properties": {
+              "ref": { "type": "null" },
+              "matchedName": { "type": "null" },
+              "verifiedBy": { "type": "null" },
+              "verifiedAt": { "type": "null" }
+            }
+          },
+          "else": {
+            "description": "A real source names the entry it took the numbers from.",
+            "properties": {
+              "ref": { "type": "string" },
+              "matchedName": { "type": "string" }
+            }
+          }
+        },
+        {
+          "description": "Who verified and when go together.",
+          "if": { "required": ["verifiedBy"], "properties": { "verifiedBy": { "type": "string" } } },
+          "then": { "properties": { "verifiedAt": { "type": "string" } } },
+          "else": { "properties": { "verifiedAt": { "type": "null" } } }
+        }
+      ]
+    },
+    "image": {
+      "description": "A declared image carries its source and license; AI or stock placeholders say isIllustration.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["thumb", "full", "source", "license", "isIllustration"],
+      "properties": {
+        "thumb": { "type": ["string", "null"], "minLength": 1 },
+        "full": { "type": ["string", "null"], "minLength": 1 },
+        "source": { "type": ["string", "null"], "minLength": 1 },
+        "license": { "type": ["string", "null"], "minLength": 1 },
+        "isIllustration": { "type": "boolean" }
+      },
+      "if": {
+        "anyOf": [
+          { "required": ["thumb"], "properties": { "thumb": { "type": "string" } } },
+          { "required": ["full"], "properties": { "full": { "type": "string" } } }
+        ]
+      },
+      "then": {
+        "properties": {
+          "source": { "type": "string" },
+          "license": { "type": "string" }
+        }
+      }
+    }
+  }
+}
