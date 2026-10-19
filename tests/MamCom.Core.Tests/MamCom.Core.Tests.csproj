@@ -4,4 +4,9 @@
     <ProjectReference Include="..\..\src\MamCom.Core\MamCom.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- The real config files, so a test fails when the file and the code drift apart. -->
+    <None Include="..\..\data\config\*.json" Link="config\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>
