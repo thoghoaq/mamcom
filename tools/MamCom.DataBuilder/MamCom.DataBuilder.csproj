@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="LateApexEarlySpeed.Json.Schema" />
     <ProjectReference Include="..\..\src\MamCom.Core\MamCom.Core.csproj" />
   </ItemGroup>
 

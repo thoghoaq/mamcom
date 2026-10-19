@@ -10,6 +10,10 @@
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.12" />
   </ItemGroup>
 
+  <ItemGroup Label="Data tooling">
+    <PackageVersion Include="LateApexEarlySpeed.Json.Schema" Version="4.2.2" />
+  </ItemGroup>
+
   <ItemGroup Label="Testing">
     <PackageVersion Include="xunit.v3" Version="4.0.2" />
     <PackageVersion Include="Shouldly" Version="4.3.0" />
