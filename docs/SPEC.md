@@ -317,7 +317,7 @@ Mỗi `marketUnit` có thêm trường tuỳ chọn `showApproxGrams` (mặc đ�
 - `spicy`: `none` | `optional` | `required`
 - `cookingMethod`: `luoc` | `hap` | `nau` | `kho` | `xao` | `chien` | `nuong` | `tron`
 
-**Vòng đời món:** `draft` → `validated` (máy kiểm) → `reviewed` (người duyệt) → `cooktested` (đã nấu thử). Bản release chỉ gồm món từ `reviewed` trở lên.
+**Vòng đời món:** `draft` → `validated` (máy kiểm) → `reviewed` (người duyệt) → `cooktested` (đã nấu thử). Bản release chỉ gồm món từ `reviewed` trở lên. Studio (ADR-014) đặt `validated` khi lưu một món mà máy kiểm không còn lỗi; `reviewed` chỉ đặt khi người bấm "Duyệt" (kèm `reviewedBy`, `reviewedAt`); "Mở lại để sửa" đưa `reviewed` về `draft` và xoá dấu duyệt.
 
 ### 7.3 Luật của `DataBuilder validate`
 
@@ -386,6 +386,13 @@ Làm rõ khi hiện thực bước 4 (ADR-013):
 - **Model chỉ quyết định** mùa, độ cay, cách nấu, nguồn đạm, `serveHot`, các dòng công thức, các bước và nguyên liệu còn thiếu. Tên, loại, vùng là của người; bản nháp luôn `draft`, do `llm`, không dấu duyệt, không ảnh. Đầu ra bị ép bằng JSON Schema dựng từ dữ liệu: id nguyên liệu, mùa và nguồn đạm chỉ nhận giá trị đang có, không có chỗ cho số dinh dưỡng. Nguyên liệu chưa có đi vào `missingIngredients`, không thành dòng công thức.
 - **Kết quả** ở `data/dishes/_drafts/<id>.json` và `<id>.report.json` (schema `draft-report`): `valid`, `warnings`, `invalid` (có bản nháp nhưng vi phạm luật của schema hoặc DataBuilder) hoặc `failed` (không có bản nháp). Món đã có file thật không bao giờ bị ghi đè; món đã có bản nháp được bỏ qua trừ khi có `--redo`.
 - **Prompt** nằm ở `tools/MamCom.RecipeDrafter/prompts/` (`system.md`, `dish.md`), sửa không cần đụng code.
+
+Làm rõ khi hiện thực bước 6 (ADR-014):
+- **Chạy:** `dotnet run --project tools/MamCom.Studio`, mở `http://localhost:5194`. Thư mục dữ liệu là `Studio:DataFolder`, không có thì thư mục `data` gần nhất từ thư mục chạy đi lên. `Studio:Reviewer` đặt sẵn tên người duyệt. Mỗi trang đọc lại dữ liệu, nên file sửa bằng tay hay do RecipeDrafter ghi hiện ngay.
+- **Màn hình:** Tổng quan (số món theo trạng thái, bản nháp chờ duyệt, món soạn lỗi); Món ăn (lọc theo trạng thái); một món (`/dishes/<id>`, bản nháp ở `/drafts/<id>`) với form sửa, dinh dưỡng một suất do Core cộng, các phát hiện của máy kiểm (chạy lại mỗi lần đổi), ghi chú của RecipeDrafter, nguồn gốc, và thanh nút Lưu, Bỏ thay đổi, Duyệt.
+- **Lưu** chỉ khi máy kiểm không còn lỗi (cảnh báo không chặn) và đưa món về `validated`. **Duyệt** cần tên người duyệt, không còn lỗi, không còn thay đổi chưa lưu; chỉ đổi `status`, `reviewedBy`, `reviewedAt` (ngày hôm nay). Bản nháp được duyệt chuyển sang `data/dishes/<id>.json` và bị xoá khỏi `_drafts/` cùng báo cáo; không ghi đè món đã có cùng mã.
+- **Món `reviewed` và `cooktested` chỉ xem.** "Mở lại để sửa" chỉ cho `reviewed`. File luôn ghi đúng định dạng chuẩn của `DishFile`, nên diff Git chỉ có các dòng đã đổi; file bị đổi ở chỗ khác sau khi mở thì Studio không ghi đè.
+- Số trên màn hình luôn là ước tính (kcal kèm "≈", làm tròn 10); nguyên liệu chưa có số liệu thì hiện "chưa đủ số liệu" cùng tên nguyên liệu thiếu, không bao giờ là 0.
 
 ### 7.5 Ảnh
 

@@ -66,7 +66,7 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 ├─ src/
 │  ├─ MamCom.Core/    domain + thuật toán thuần (không IO, không UI)
 │  ├─ MamCom.Data/    nạp bundle, IUserStateStore, cấu hình
-│  ├─ MamCom.UI/      Razor Class Library: components + pages
+│  ├─ MamCom.UI/      Razor Class Library: components, Strings.vi.resx (mọi chuỗi UI), wwwroot/tokens.css + base.css
 │  └─ MamCom.Web/     Blazor WASM PWA host, service worker
 ├─ tools/
 │  ├─ MamCom.DataBuilder/   validate | build [--release]
@@ -74,7 +74,7 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 │  ├─ MamCom.RecipeDrafter/ soạn nháp công thức bằng Claude API (prompts/ là file sửa được)
 │  ├─ MamCom.ImageTool/     raw → webp 200/800
 │  └─ MamCom.Studio/        Blazor Server local: sửa/duyệt dữ liệu
-└─ tests/  MamCom.Core.Tests, MamCom.DataBuilder.Tests, MamCom.FdcImporter.Tests, MamCom.RecipeDrafter.Tests, MamCom.UI.Tests, MamCom.E2E
+└─ tests/  MamCom.Core.Tests, MamCom.DataBuilder.Tests, MamCom.FdcImporter.Tests, MamCom.RecipeDrafter.Tests, MamCom.Studio.Tests, MamCom.UI.Tests, MamCom.E2E
 ```
 
 ## Lệnh thường dùng (tạo ở Phase 0–2)
@@ -89,7 +89,7 @@ dotnet run --project tools/MamCom.FdcImporter -- suggest --ids gao,trung-ga   # 
 dotnet user-secrets set "Fdc:ApiKey" "<khoá>" --project tools/MamCom.FdcImporter   # không đặt thì dùng DEMO_KEY
 dotnet run --project tools/MamCom.RecipeDrafter -- draft --limit 3            # soạn nháp từ dish-list.csv, có tính phí (ADR-013)
 dotnet user-secrets set "Claude:ApiKey" "<khoá>" --project tools/MamCom.RecipeDrafter   # hoặc biến môi trường ANTHROPIC_API_KEY
-dotnet run --project tools/MamCom.Studio
+dotnet run --project tools/MamCom.Studio    # http://localhost:5194, duyệt món (ADR-014); --Studio:DataFolder=<thư mục data>, --Studio:Reviewer=<tên>
 dotnet run --project src/MamCom.Web
 ```
 
