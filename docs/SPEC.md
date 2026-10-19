@@ -206,9 +206,15 @@ KHÁC: 4 quả trứng
 - Mỗi suất của món: `Σ gramsEdiblePerServing × consumedRatio × nutrient / 100`.
   - `consumedRatio` mặc định là 1. Dầu chiên ngập dùng giá trị nhỏ hơn, do người nhập và có ghi chú nguồn.
 - Theo người: suất của món × `servings_i`. Riêng cơm tính theo `bowls_i × gramsPerBowl`.
+  - Cơm tính theo gạo sống: `gramsPerBowl` là gam gạo sống mỗi chén, dinh dưỡng lấy từ nguyên liệu có id `riceIngredientId` trong `data/config/portion-defaults.json` (mặc định `gao`).
+  - Mọi món dùng `servings_i` cơ bản, kể cả khi người đó có tag `MoreProtein` hoặc `MoreVeg`. Hai tag chỉ làm tăng lượng nấu (§4.2).
 - Cả mâm: tổng của tất cả.
+- Giá trị `null` (chưa có nguồn) không bao giờ tính là 0: chất nào thiếu ở bất kỳ nguyên liệu nào đóng góp thì kết quả của chất đó là `null`, các chất còn lại vẫn cộng bình thường. Dòng công thức có 0 gam, hoặc `consumedRatio` bằng 0, không đóng góp nên không bị coi là thiếu.
 
 **% năng lượng** tính với hệ số 4/9/4 kcal mỗi gram (đạm/béo/bột đường), so với khuyến nghị: đạm 13–20%, béo 20–25%, bột đường 55–65%.
+- Tỷ lệ là phần năng lượng mỗi chất sinh ra trên tổng năng lượng của ba chất, nên cộng lại đúng 100%. Không lấy theo cột `Kcal` của dữ liệu nguyên liệu.
+- Thiếu một trong ba chất, hoặc tổng năng lượng bằng 0, thì không có tỷ lệ.
+- Các hệ số và khoảng khuyến nghị nằm trong `data/config/nutrition-defaults.json`.
 
 **Hiển thị:**
 - "≈" và làm tròn 10 kcal.
