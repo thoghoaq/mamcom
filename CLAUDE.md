@@ -62,7 +62,7 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 │  ├─ dishes/         <dish-id>.json   (_drafts/ cho bản nháp LLM: <id>.json kèm <id>.report.json)
 │  ├─ plan/           dish-list.csv (danh sách món cần làm, RecipeDrafter đọc), ingredient-names-en.csv (từ khoá tiếng Anh cho FdcImporter)
 │  ├─ _suggestions/   nutrition/<ingredient-id>.json (gợi ý của FdcImporter, không tự áp dụng)
-│  └─ images/         raw/ (gốc, không commit nếu nặng), out/ (webp)
+│  └─ images/         raw/ (gốc, không commit: nặng và mang vị trí GPS), out/ (webp)
 ├─ src/
 │  ├─ MamCom.Core/    domain + thuật toán thuần (không IO, không UI)
 │  ├─ MamCom.Data/    nạp bundle, IUserStateStore, cấu hình
@@ -74,7 +74,7 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 │  ├─ MamCom.RecipeDrafter/ soạn nháp công thức bằng Claude API (prompts/ là file sửa được)
 │  ├─ MamCom.ImageTool/     raw → webp 200/800
 │  └─ MamCom.Studio/        Blazor Server local: sửa/duyệt dữ liệu
-└─ tests/  MamCom.Core.Tests, MamCom.DataBuilder.Tests, MamCom.FdcImporter.Tests, MamCom.RecipeDrafter.Tests, MamCom.Studio.Tests, MamCom.UI.Tests, MamCom.E2E
+└─ tests/  MamCom.Core.Tests, MamCom.DataBuilder.Tests, MamCom.FdcImporter.Tests, MamCom.RecipeDrafter.Tests, MamCom.ImageTool.Tests, MamCom.Studio.Tests, MamCom.UI.Tests, MamCom.E2E
 ```
 
 ## Lệnh thường dùng (tạo ở Phase 0–2)
@@ -90,6 +90,7 @@ dotnet user-secrets set "Fdc:ApiKey" "<khoá>" --project tools/MamCom.FdcImporte
 dotnet run --project tools/MamCom.RecipeDrafter -- draft --limit 3            # soạn nháp từ dish-list.csv, có tính phí (ADR-013)
 dotnet user-secrets set "Claude:ApiKey" "<khoá>" --project tools/MamCom.RecipeDrafter   # hoặc biến môi trường ANTHROPIC_API_KEY
 dotnet run --project tools/MamCom.Studio    # http://localhost:5194, duyệt món (ADR-014), xác nhận dinh dưỡng nguyên liệu (ADR-015) và ghi nhận nấu thử (ADR-016); --Studio:DataFolder=<thư mục data>, --Studio:Reviewer=<tên>
+dotnet run --project tools/MamCom.ImageTool -- process --source "<nguồn>" --license "<giấy phép>"   # ảnh gốc data/images/raw/<id>.jpg → data/images/out/<id>-200.webp và -800.webp, ghi vào JSON (ADR-017)
 dotnet run --project src/MamCom.Web
 ```
 

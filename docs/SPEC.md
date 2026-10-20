@@ -416,13 +416,21 @@ Làm rõ khi hiện thực bước 7 (ADR-016):
 - **Bỏ kết quả nấu thử** (nhập nhầm) đưa món `cooktested` về `reviewed` và xoá ngày, phút, số suất, cân; ảnh và dấu duyệt được giữ. Không chọn ảnh mới thì file về đúng từng byte như trước. Chưa có sửa số đã ghi: bỏ rồi ghi lại.
 - Số đo thật chưa đi vào tính toán: thời gian nấu trong app vẫn là tổng các bước (§5.5); số đo để người đối chiếu và chỉnh các bước (PLAN 4.7).
 
+Làm rõ khi hiện thực ImageTool (ADR-017):
+- **Chạy:** `dotnet run --project tools/MamCom.ImageTool -- process [--data] [--only <id,id>] [--source] [--license] [--illustration | --photo] [--force]`. Mã thoát 0 là xong, 1 là còn ảnh lỗi, 2 là gõ sai lệnh.
+- **Ảnh gốc** nằm phẳng trong `data/images/raw/`, tên `<id>.jpg` (cũng `.jpeg`, `.png`, `.webp`) với `<id>` là mã một nguyên liệu hoặc một món có trong `data/ingredients` hay `data/dishes` (món còn là bản nháp thì chưa nhận). Mã trùng giữa nguyên liệu và món, hay hai ảnh gốc cùng mã, bị từ chối. HEIC của iPhone chưa đọc được: xuất sang JPEG.
+- **Ra** `data/images/out/<id>-200.webp` và `<id>-800.webp`: cạnh dài 200 px và 800 px, không cắt, không phóng to (ảnh gốc nhỏ hơn giữ nguyên cỡ và có lưu ý), WebP chất lượng 80. Ảnh được xoay đúng chiều theo EXIF rồi mã hoá lại, nên file ra không còn EXIF, XMP hay vị trí chụp.
+- **File dữ liệu** của nguyên liệu hay món đó được sửa đúng năm dòng của `image` (`thumb`, `full`, `source`, `license`, `isIllustration`), viết đúng định dạng chuẩn như Studio; chỉ ghi khi máy kiểm không còn lỗi. `source` và `license` lấy từ `--source` và `--license`, nếu không thì từ file dữ liệu; thiếu thì từ chối, công cụ không tự đặt. `--illustration` đặt cờ ảnh minh hoạ, `--photo` bỏ cờ.
+- **Chạy lại được:** ảnh đã mới thì bỏ qua; `--force` làm lại. Lưu ý (không phải lỗi): ảnh gốc cạnh dài dưới 800 px; ảnh nguyên liệu không 1:1; ảnh món không 4:3.
+- `data/images/raw/` nằm trong `.gitignore` (ảnh nặng, và ảnh điện thoại mang vị trí GPS); chỉ `data/images/out/` được commit.
+
 ### 7.5 Ảnh
 
 - **Nguyên liệu:** tự chụp. Nền kem đồng nhất, tỷ lệ 1:1, cùng góc, cùng ánh sáng. Ở đây độ đúng quan trọng hơn độ đẹp, vì ảnh dùng để nhận diện ngoài chợ.
 - **Món:** chụp trong buổi nấu thử, từ trên xuống, tỷ lệ 4:3, chén đĩa đồng bộ.
 - **Ảnh tạm:** AI tạo hoặc ảnh kho có giấy phép, bắt buộc `isIllustration: true`. UI gắn nhãn "Ảnh minh hoạ".
 - **Ảnh kho (Unsplash, Pexels):** chỉ lấy lẻ từng ảnh, kèm source và license. Giấy phép của họ cấm gom ảnh hàng loạt và cấm dùng API để xây dataset.
-- **ImageTool:** chuyển `raw/` → WebP thumb 200px (đóng gói trong app, dùng offline) và full 800px (lazy-load), xoá EXIF.
+- **ImageTool:** chuyển `raw/` → WebP thumb 200px (đóng gói trong app, dùng offline) và full 800px (lazy-load), xoá EXIF (ADR-017).
 
 ### 7.6 Đóng gói và cập nhật
 
