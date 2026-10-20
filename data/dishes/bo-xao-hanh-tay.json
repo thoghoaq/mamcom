@@ -99,11 +99,11 @@
       ]
     }
   ],
-  "status": "draft",
+  "status": "reviewed",
   "provenance": {
     "draftedBy": "llm",
-    "reviewedBy": null,
-    "reviewedAt": null,
+    "reviewedBy": "Hoang Thong",
+    "reviewedAt": "2026-10-20",
     "cookTestedAt": null,
     "measuredTotalMinutes": null
   },
