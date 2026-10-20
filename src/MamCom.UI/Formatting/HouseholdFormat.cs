@@ -36,6 +36,14 @@ public static class HouseholdFormat
         _ => throw new ArgumentOutOfRangeException(nameof(ageGroup), ageGroup, null),
     };
 
+    public static string BowlSizeName(BowlSize bowlSize) => bowlSize switch
+    {
+        BowlSize.Small => Strings.Settings_BowlSmall,
+        BowlSize.Medium => Strings.Settings_BowlMedium,
+        BowlSize.Large => Strings.Settings_BowlLarge,
+        _ => throw new ArgumentOutOfRangeException(nameof(bowlSize), bowlSize, null),
+    };
+
     public static string RegionName(Region region) => region switch
     {
         Region.North => Strings.Region_North,

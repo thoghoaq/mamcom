@@ -124,4 +124,11 @@ public class HouseholdFormatTests
         Should.Throw<ArgumentOutOfRangeException>(() => HouseholdFormat.Age((AgeGroup)99));
         Should.Throw<ArgumentOutOfRangeException>(() => HouseholdFormat.RegionName((Region)99));
     }
+
+    [Fact]
+    public void Every_bowl_size_has_its_name_and_something_that_is_not_one_is_refused()
+    {
+        Enum.GetValues<BowlSize>().Select(HouseholdFormat.BowlSizeName).ShouldBe(["Nhỏ", "Vừa", "To"]);
+        Should.Throw<ArgumentOutOfRangeException>(() => HouseholdFormat.BowlSizeName((BowlSize)99));
+    }
 }

@@ -14,6 +14,12 @@ public static class Routes
     /// <summary>"Nấu mâm": the cooking mode for the tray of the day (SPEC §8.1-5).</summary>
     public const string Cooking = "nau";
 
+    /// <summary>"Cả nhà thích không?": what the household thought of the meal, one tap (SPEC §8.1-6).</summary>
+    public const string AfterMeal = "sau-bua";
+
+    /// <summary>"Cài đặt": the household, the region, the bowls, the blocked dishes, deleting the data (SPEC §8.1-7).</summary>
+    public const string Settings = "cai-dat";
+
     /// <summary>The folder of the detail screens: one page for each dish, <c>mon/&lt;dish id&gt;</c>.</summary>
     public const string DishFolder = "mon";
 

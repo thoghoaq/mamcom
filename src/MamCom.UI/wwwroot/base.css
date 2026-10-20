@@ -1109,6 +1109,110 @@ small,
     flex: 1 0 100%;
 }
 
+/* ---- Feedback after the meal and the settings (components/AfterMealScreen.razor, components/SettingsScreen.razor) ---- */
+
+/* An action or two inside a notice: side by side, one under the other when the phone is too narrow. */
+.notice__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-3);
+    margin-top: var(--space-3);
+}
+
+.notice__actions > .notice__action {
+    margin-top: 0;
+}
+
+/* A button that destroys something is outlined in the colour of danger, not filled: that reads on the light and on the dark surface alike. */
+.button--danger {
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+}
+
+.button--danger:hover:not(:disabled) {
+    background: var(--color-danger-soft);
+    color: var(--color-danger);
+}
+
+.settings__section h2 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--font-size-large);
+}
+
+/* The note under "Món này với nhà mình": whether the dish can be drawn, and what blocking does. */
+.detail__taste-note {
+    margin: 0 0 var(--space-3);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.settings__status {
+    margin: 0 0 var(--space-4);
+    font-weight: var(--font-weight-strong);
+}
+
+/* Three choices of equal width in one row (the answers after a meal, the region, the bowl); a long word wraps inside its chip rather than pushing a chip off the edge. */
+.chips--thirds {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-2);
+}
+
+/* A word that wraps makes a pill into a circle, so the chips of a row of thirds are rounded rectangles. */
+.chips--thirds .chip {
+    padding-inline: var(--space-2);
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+/* The answers sit in a card of their own: no space under the row. The one tap for the whole meal is the larger row. */
+.rate-row .chips,
+.chips--rate-whole {
+    margin-bottom: 0;
+}
+
+.chips--rate-whole .chip {
+    min-height: 3.5rem;
+    font-size: var(--font-size-large);
+}
+
+.rate-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.rate-row + .rate-row {
+    margin-top: var(--space-4);
+}
+
+.rate-row__name {
+    margin: 0 0 var(--space-2);
+    font-weight: var(--font-weight-strong);
+}
+
+.blocked {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.blocked__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: var(--tap-size);
+}
+
+.blocked__item + .blocked__item {
+    margin-top: var(--space-2);
+}
+
+.blocked__name {
+    flex: 1;
+    font-weight: var(--font-weight-strong);
+}
+
 /* ---- Placeholder tile: stands in for a picture that does not exist yet, one look per kind of ingredient or dish ---- */
 
 .tile {

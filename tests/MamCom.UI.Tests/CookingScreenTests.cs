@@ -323,7 +323,7 @@ public class CookingScreenTests : BunitContext
     }
 
     [Fact]
-    public async Task The_last_step_ends_the_cooking_and_leads_back_to_the_tray()
+    public async Task The_last_step_ends_the_cooking_and_leads_to_the_question_how_the_meal_was()
     {
         var cut = Show();
         var last = TheGuide().Steps.Count - 1;
@@ -339,7 +339,8 @@ public class CookingScreenTests : BunitContext
 
         await finish.ClickAsync(new());
 
-        Navigation.History.ShouldHaveSingleItem().Uri.ShouldBe(Routes.Home);
+        Navigation.History.ShouldHaveSingleItem().Uri.ShouldBe(Routes.AfterMeal);
+        Routes.AfterMeal.ShouldBe("sau-bua");
         Words(cut, ".cook__position").ShouldBe($"Bước {last + 1}/{last + 1}");
     }
 
@@ -351,7 +352,7 @@ public class CookingScreenTests : BunitContext
 
         await cut.Find(".cook-zone--next").ClickAsync(new());
 
-        Navigation.History.ShouldHaveSingleItem().Uri.ShouldBe(Routes.Home);
+        Navigation.History.ShouldHaveSingleItem().Uri.ShouldBe(Routes.AfterMeal);
     }
 
     [Fact]

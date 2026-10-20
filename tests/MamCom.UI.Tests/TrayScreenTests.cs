@@ -3,6 +3,7 @@ using Bunit.TestDoubles;
 using MamCom.Core;
 using MamCom.Core.Models;
 using MamCom.Core.Spinning;
+using MamCom.Core.Taste;
 using MamCom.Data;
 using MamCom.Data.Bundles;
 using MamCom.Data.Device;
@@ -20,6 +21,7 @@ public class TrayScreenTests : BunitContext
     private readonly FakeAppData _data = new() { Bundle = TestConfig.SeedBundle };
     private readonly FakeTrayStore _trays = new();
     private readonly FakeEatenLogStore _eaten = new();
+    private readonly FakeTasteStore _taste = new();
     private readonly FakeDeviceFeatures _device = new();
     private readonly FakeSpinPacer _pacer = new();
     private readonly FixedClock _clock = new(Today);
@@ -29,6 +31,7 @@ public class TrayScreenTests : BunitContext
         Services.AddSingleton<IAppData>(_data);
         Services.AddSingleton<ITrayStore>(_trays);
         Services.AddSingleton<IEatenLogStore>(_eaten);
+        Services.AddSingleton<ITasteStore>(_taste);
         Services.AddSingleton<IDeviceFeatures>(_device);
         Services.AddSingleton<ISpinPacer>(_pacer);
         Services.AddSingleton<IClock>(_clock);
@@ -814,5 +817,71 @@ public class TrayScreenTests : BunitContext
     public void The_swipe_is_explained_while_the_tray_can_still_be_changed()
     {
         Show().Find(".tray-hint").TextContent.ShouldBe("Vuốt thẻ sang trái hoặc phải để đổi món đó.");
+    }
+
+    // ---- what the household said about dishes ------------------------------------------------------------------------------
+
+    private async Task<string[]> SoupsOfSpins(int spins)
+    {
+        _trays.Saved = null;
+        var cut = Show();
+        var soups = new HashSet<string>(Names(cut).Take(1));
+        for (var i = 0; i < spins; i++)
+        {
+            await Spin(cut);
+            soups.Add(Names(cut)[0]);
+        }
+
+        return [.. soups];
+    }
+
+    [Fact]
+    public async Task Dishes_the_household_blocked_are_never_drawn_while_without_blocking_the_soup_varies()
+    {
+        var free = await SoupsOfSpins(14);
+        free.Length.ShouldBeGreaterThan(1);   // so a spin that ignored the blocking would show it
+
+        _taste.Saved = new TasteProfile(
+            new Dictionary<string, DishPreference>(),
+            ["canh-bau-tom", "canh-cu-cai-suon", "canh-nam-dau-phu", "canh-rau-cu-thap-cam", "canh-rau-ngot-thit-bam", "canh-trung-ca-chua"]);
+
+        (await SoupsOfSpins(14)).ShouldBe(["Canh chua cá lóc"]);
+    }
+
+    [Fact]
+    public async Task A_dish_the_household_blocked_is_not_the_one_a_swap_brings()
+    {
+        _taste.Saved = new TasteProfile(
+            new Dictionary<string, DishPreference>(),
+            ["canh-bau-tom", "canh-cu-cai-suon", "canh-nam-dau-phu", "canh-rau-cu-thap-cam", "canh-rau-ngot-thit-bam", "canh-trung-ca-chua"]);
+        var cut = Show();
+
+        for (var i = 0; i < 10; i++)
+        {
+            await Swap(cut, 0).ClickAsync(new());
+            Names(cut)[0].ShouldBe("Canh chua cá lóc");
+        }
+    }
+
+    [Fact]
+    public void A_tray_that_was_not_confirmed_has_no_link_to_rate_the_meal()
+    {
+        var cut = Show();
+
+        cut.FindAll(".notice--ok").ShouldBeEmpty();
+        cut.FindAll("a").Select(a => a.GetAttribute("href")).ShouldNotContain(Routes.AfterMeal);
+    }
+
+    [Fact]
+    public void A_confirmed_tray_has_a_link_to_rate_the_meal_beside_the_button_that_reopens_it()
+    {
+        var cut = Show();
+
+        ConfirmButton(cut).Click();
+
+        var actions = cut.Find(".notice--ok .notice__actions");
+        actions.Children.Select(e => (e.TagName, e.TextContent.Words())).ShouldBe([("A", "Chấm bữa này"), ("BUTTON", "Chọn mâm khác")]);
+        actions.QuerySelector("a")!.GetAttribute("href").ShouldBe(Routes.AfterMeal);
+        actions.QuerySelector("button")!.ClassList.ShouldContain("notice__action");
     }
 }

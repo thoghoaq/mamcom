@@ -542,4 +542,46 @@
   <data name="Cook_NoWakeLock" xml:space="preserve"><value>Máy này không giữ được màn hình sáng. Hãy chỉnh thời gian tắt màn hình trong cài đặt máy.</value></data>
   <data name="Cook_NoTray" xml:space="preserve"><value>Chưa có mâm nào để nấu. Hãy quay và chốt một mâm trước.</value></data>
   <data name="Cook_Hint" xml:space="preserve"><value>Chạm nửa phải màn hình để sang bước tiếp, nửa trái để quay lại.</value></data>
+
+  <!-- Phản hồi sau bữa và Cài đặt (SPEC §8.1-6, §8.1-7) -->
+  <data name="App_Settings" xml:space="preserve"><value>Cài đặt</value></data>
+  <data name="Tray_RateMeal" xml:space="preserve"><value>Chấm bữa này</value></data>
+  <data name="AfterMeal_Title" xml:space="preserve"><value>Cả nhà thích không?</value></data>
+  <data name="AfterMeal_Intro" xml:space="preserve"><value>Chạm một lần cho cả mâm, hoặc chấm từng món. App nhớ để lần quay sau hợp khẩu vị nhà mình hơn.</value></data>
+  <data name="AfterMeal_WholeLabel" xml:space="preserve"><value>Cả mâm hôm nay</value></data>
+  <data name="AfterMeal_PerDishHeading" xml:space="preserve"><value>Từng món</value></data>
+  <data name="AfterMeal_Liked" xml:space="preserve"><value>Thích</value></data>
+  <data name="AfterMeal_Neutral" xml:space="preserve"><value>Bình thường</value></data>
+  <data name="AfterMeal_Disliked" xml:space="preserve"><value>Không</value></data>
+  <data name="AfterMeal_SavedLiked" xml:space="preserve"><value>Đã ghi. Món cả nhà thích sẽ hay ra hơn.</value></data>
+  <data name="AfterMeal_SavedNeutral" xml:space="preserve"><value>Đã ghi: bình thường.</value></data>
+  <data name="AfterMeal_SavedDisliked" xml:space="preserve"><value>Đã ghi. Món cả nhà không thích sẽ ít ra hơn.</value></data>
+  <data name="AfterMeal_NoTray" xml:space="preserve"><value>Chưa có mâm nào đã chốt để chấm. Hãy quay và chốt một mâm trước.</value></data>
+  <data name="AfterMeal_Done" xml:space="preserve"><value>Xong</value></data>
+  <data name="Detail_TasteHeading" xml:space="preserve"><value>Món này với nhà mình</value></data>
+  <data name="Detail_BlockHint" xml:space="preserve"><value>Chặn thì món này không ra ở lần quay nào nữa. Bỏ chặn được ở Cài đặt.</value></data>
+  <data name="Detail_BlockedNote" xml:space="preserve"><value>Món này đang bị chặn: sẽ không được quay.</value></data>
+  <data name="Detail_Block" xml:space="preserve"><value>Không bao giờ quay món này</value></data>
+  <data name="Detail_Unblock" xml:space="preserve"><value>Cho quay lại</value></data>
+  <data name="Settings_Title" xml:space="preserve"><value>Cài đặt</value></data>
+  <data name="Settings_HouseholdHeading" xml:space="preserve"><value>Nhà mình</value></data>
+  <data name="Settings_Saved" xml:space="preserve"><value>Đã lưu.</value></data>
+  <data name="Settings_BowlLabel" xml:space="preserve"><value>Chén cơm nhà mình to cỡ nào?</value></data>
+  <data name="Settings_BowlSmall" xml:space="preserve"><value>Nhỏ</value></data>
+  <data name="Settings_BowlMedium" xml:space="preserve"><value>Vừa</value></data>
+  <data name="Settings_BowlLarge" xml:space="preserve"><value>To</value></data>
+  <data name="Settings_BowlHintFormat" xml:space="preserve"><value>Mỗi chén ≈ {0} g gạo sống. Cỡ chén đổi lượng gạo cần nấu và kcal của mỗi người.</value></data>
+  <data name="Settings_BlockedHeading" xml:space="preserve"><value>Món đã chặn</value></data>
+  <data name="Settings_BlockedHint" xml:space="preserve"><value>Món đã chặn không bao giờ được quay.</value></data>
+  <data name="Settings_BlockedEmpty" xml:space="preserve"><value>Chưa chặn món nào. Mở một món và chạm "Không bao giờ quay món này".</value></data>
+  <data name="Settings_BlockedGone" xml:space="preserve"><value>Món không còn trong dữ liệu</value></data>
+  <data name="Settings_Unblock" xml:space="preserve"><value>Bỏ chặn</value></data>
+  <data name="Settings_UnblockAria" xml:space="preserve"><value>Bỏ chặn {0}</value></data>
+  <data name="Settings_Unblocked" xml:space="preserve"><value>Đã bỏ chặn {0}.</value></data>
+  <data name="Settings_ClearHeading" xml:space="preserve"><value>Xoá dữ liệu của tôi</value></data>
+  <data name="Settings_ClearText" xml:space="preserve"><value>Xoá nhà mình, mâm đã quay, danh sách đi chợ, món đã chấm và món đã chặn khỏi máy này. Dữ liệu món ăn của app không bị xoá.</value></data>
+  <data name="Settings_Clear" xml:space="preserve"><value>Xoá dữ liệu của tôi</value></data>
+  <data name="Settings_ClearAsk" xml:space="preserve"><value>Xoá hết? Không lấy lại được.</value></data>
+  <data name="Settings_ClearConfirm" xml:space="preserve"><value>Xoá hết</value></data>
+  <data name="Settings_ClearCancel" xml:space="preserve"><value>Thôi</value></data>
 </root>

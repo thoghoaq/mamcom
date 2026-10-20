@@ -1,0 +1,141 @@
+@page "/sau-bua"
+@using MamCom.Core
+@using MamCom.Core.Models
+@using MamCom.Core.Spinning
+@using MamCom.Core.Taste
+@using MamCom.Data.State
+@inherits AppDataComponentBase
+@inject ITrayStore Trays
+@inject ITasteStore Tastes
+@inject IClock Clock
+@inject IRandomSource RandomSource
+@inject NavigationManager Navigation
+
+@* "Cả nhà thích không?" (SPEC §8.1-6): one tap for the whole meal, or a tap for each dish. What is said is kept at once and the next spin reads it. *@
+<PageTitle>@Strings.AfterMeal_Title</PageTitle>
+
+<BackLink />
+
+<h1>@Strings.AfterMeal_Title</h1>
+
+@if (_ready)
+{
+    @if (_dishes.Count == 0)
+    {
+        <p>@Strings.AfterMeal_NoTray</p>
+    }
+    else
+    {
+        <p>@Strings.AfterMeal_Intro</p>
+
+        <section class="card settings__section" aria-labelledby="aftermeal-whole">
+            <h2 id="aftermeal-whole">@Strings.AfterMeal_WholeLabel</h2>
+            <div class="chips chips--thirds chips--rate-whole" role="radiogroup" aria-labelledby="aftermeal-whole">
+                @foreach (var choice in Choices)
+                {
+                    var current = choice;
+                    <button type="button" class="chip" role="radio" aria-checked="@(IsWholeChosen(current) ? "true" : "false")" @onclick="() => RateAsync(AllIds, current)">
+                        @Label(choice)
+                    </button>
+                }
+            </div>
+        </section>
+
+        <section class="card settings__section" aria-labelledby="aftermeal-dishes">
+            <h2 id="aftermeal-dishes">@Strings.AfterMeal_PerDishHeading</h2>
+            <ul class="rate-list">
+                @foreach (var dish in _dishes)
+                {
+                    var id = dish.Id;
+                    <li class="rate-row" @key="id">
+                        <p class="rate-row__name" id="@($"rate-{id}")">@dish.Name</p>
+                        <div class="chips chips--thirds" role="radiogroup" aria-labelledby="@($"rate-{id}")">
+                            @foreach (var choice in Choices)
+                            {
+                                var current = choice;
+                                <button type="button" class="chip" role="radio" aria-checked="@(IsChosen(id, current) ? "true" : "false")" @onclick="() => RateAsync([id], current)">
+                                    @Label(choice)
+                                </button>
+                            }
+                        </div>
+                    </li>
+                }
+            </ul>
+        </section>
+
+        <p class="settings__status" role="status">@_status</p>
+
+        <div class="app-actions">
+            <a class="button button--primary" href="@Navigation.BaseUri">@Strings.AfterMeal_Done</a>
+        </div>
+    }
+}
+
+@code {
+    private static readonly DishPreference[] Choices = [DishPreference.Liked, DishPreference.Neutral, DishPreference.Disliked];
+
+    private IReadOnlyList<Dish> _dishes = [];
+    private TasteProfile _taste = TasteProfile.Empty;
+    private readonly HashSet<string> _answered = new(StringComparer.Ordinal);
+    private string _status = string.Empty;
+    private bool _ready;
+
+    private string[] AllIds => [.. _dishes.Select(d => d.Id)];
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Data.InitializeAsync();
+        await LoadAsync();
+    }
+
+    // "Dùng ngay" took in a newer bundle: the dishes of the meal may have changed or gone, so the page asks again.
+    protected override Task OnDataChangedAsync() => LoadAsync();
+
+    /// <summary>The dishes of the meal that was confirmed; none when there is no such meal.</summary>
+    private async Task LoadAsync()
+    {
+        _dishes = [];
+
+        if (Data.Bundle is not { } bundle)
+        {
+            return;   // nothing to show yet; the notices above the page say what is going on
+        }
+
+        _taste = await Tastes.LoadAsync();
+        _ready = true;
+
+        var engine = TrayEngine.Create(bundle, RandomSource, Clock);
+        var session = await Trays.LoadAsync();
+        if (session is { IsConfirmed: true } && engine.CanContinue(session) && session.Viewed is { } viewed)
+        {
+            _dishes = engine.DishesOf(viewed.Tray);
+        }
+    }
+
+    private async Task RateAsync(IReadOnlyCollection<string> dishIds, DishPreference preference)
+    {
+        _taste = TasteDesk.Rate(_taste, dishIds, preference);
+        _answered.UnionWith(dishIds);
+        _status = preference switch
+        {
+            DishPreference.Liked => Strings.AfterMeal_SavedLiked,
+            DishPreference.Disliked => Strings.AfterMeal_SavedDisliked,
+            _ => Strings.AfterMeal_SavedNeutral,
+        };
+        await Tastes.SaveAsync(_taste);
+    }
+
+    // "Bình thường" is also what a dish that was never asked about is, so it only shows as chosen once the person chose it.
+    private bool IsChosen(string dishId, DishPreference choice) =>
+        TasteDesk.PreferenceOf(_taste, dishId) == choice && (choice != DishPreference.Neutral || _answered.Contains(dishId));
+
+    private bool IsWholeChosen(DishPreference choice) =>
+        TasteDesk.CommonPreference(_taste, AllIds) == choice && (choice != DishPreference.Neutral || _dishes.All(d => _answered.Contains(d.Id)));
+
+    private static string Label(DishPreference choice) => choice switch
+    {
+        DishPreference.Liked => Strings.AfterMeal_Liked,
+        DishPreference.Disliked => Strings.AfterMeal_Disliked,
+        _ => Strings.AfterMeal_Neutral,
+    };
+}

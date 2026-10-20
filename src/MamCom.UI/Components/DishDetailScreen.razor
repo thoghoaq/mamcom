@@ -1,8 +1,11 @@
 @using System.Globalization
 @using MamCom.Core.Details
 @using MamCom.Core.Models
+@using MamCom.Core.Taste
+@using MamCom.Data.State
 @using MamCom.UI.Formatting
 @inherits AppDataComponentBase
+@inject ITasteStore Tastes
 
 @if (_notFound)
 {
@@ -121,6 +124,19 @@ else if (_detail is { } detail)
             }
         </section>
 
+        <section class="card settings__section" aria-labelledby="detail-taste">
+            <h2 id="detail-taste">@Strings.Detail_TasteHeading</h2>
+            <p class="detail__taste-note" role="status">@(IsBlocked(detail.Dish) ? Strings.Detail_BlockedNote : Strings.Detail_BlockHint)</p>
+            @if (IsBlocked(detail.Dish))
+            {
+                <button type="button" class="button button--quiet" @onclick="() => UnblockAsync(detail.Dish)"><Icon Name="refresh" />@Strings.Detail_Unblock</button>
+            }
+            else
+            {
+                <button type="button" class="button button--quiet" @onclick="() => BlockAsync(detail.Dish)"><Icon Name="x" />@Strings.Detail_Block</button>
+            }
+        </section>
+
         <p class="detail__footer">@Strings.Detail_Footer</p>
     </article>
 }
@@ -129,6 +145,7 @@ else if (_detail is { } detail)
     private DishDetail? _detail;
     private bool _notFound;
     private bool _noSpicyAtTable;
+    private TasteProfile _taste = TasteProfile.Empty;
 
     /// <summary>The household the recipe is scaled to; the gate hands it over once it knows there is one.</summary>
     [Parameter, EditorRequired]
@@ -137,7 +154,11 @@ else if (_detail is { } detail)
     [Parameter, EditorRequired]
     public string DishId { get; set; } = null!;
 
-    protected override async Task OnInitializedAsync() => await Data.InitializeAsync();
+    protected override async Task OnInitializedAsync()
+    {
+        await Data.InitializeAsync();
+        _taste = await Tastes.LoadAsync();
+    }
 
     protected override void OnParametersSet()
     {
@@ -171,6 +192,20 @@ else if (_detail is { } detail)
 
         var ingredients = bundle.Ingredients.ToDictionary(i => i.Id, StringComparer.Ordinal);
         _detail = new DishDetailBuilder(bundle.Config.Portion, bundle.Config.Nutrition).Build(dish, Household, ingredients);
+    }
+
+    private bool IsBlocked(Dish dish) => TasteDesk.IsBlocked(_taste, dish.Id);
+
+    private async Task BlockAsync(Dish dish)
+    {
+        _taste = TasteDesk.Block(_taste, dish.Id);
+        await Tastes.SaveAsync(_taste);
+    }
+
+    private async Task UnblockAsync(Dish dish)
+    {
+        _taste = TasteDesk.Unblock(_taste, dish.Id);
+        await Tastes.SaveAsync(_taste);
     }
 
     private static string SlotClass(DishSlot slot) => slot switch

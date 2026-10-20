@@ -3,6 +3,7 @@ using AngleSharp.Dom;
 using Bunit.TestDoubles;
 using MamCom.Core.Data;
 using MamCom.Core.Models;
+using MamCom.Core.Taste;
 using MamCom.Data;
 using MamCom.Data.Bundles;
 using MamCom.Data.State;
@@ -15,10 +16,12 @@ namespace MamCom.UI.Tests;
 public class DishDetailScreenTests : BunitContext
 {
     private readonly FakeAppData _data = new() { Bundle = TestConfig.SeedBundle };
+    private readonly FakeTasteStore _taste = new();
 
     public DishDetailScreenTests()
     {
         Services.AddSingleton<IAppData>(_data);
+        Services.AddSingleton<ITasteStore>(_taste);
     }
 
     private static Member Adult(string name, params MemberTag[] tags) => new(name, AgeGroup.Adult, 2, tags, []);
@@ -404,7 +407,7 @@ public class DishDetailScreenTests : BunitContext
         sections.Count.ShouldBe(3);
         sections.Select(s => s.QuerySelector("h2")!.TextContent).ShouldBe(["Nguyên liệu", "Cách làm", "Dinh dưỡng"]);
         sections.ShouldAllBe(s => s.GetAttribute("aria-labelledby") == s.QuerySelector("h2")!.Id);
-        cut.Find("article").Children.Select(c => c.TagName).ShouldBe(["DIV", "HEADER", "SECTION", "SECTION", "SECTION", "P"]);
+        cut.Find("article").Children.Select(c => c.TagName).ShouldBe(["DIV", "HEADER", "SECTION", "SECTION", "SECTION", "SECTION", "P"]);   // the fourth is "Món này với nhà mình"
     }
 
     [Fact]
@@ -505,4 +508,86 @@ public class DishDetailScreenTests : BunitContext
         Names = new Dictionary<string, string> { [RegionKeys.Default] = "Món thử" },
         NutritionPer100gEdible = facts,
     };
+
+    // ---- blocking a dish ---------------------------------------------------------------------------------------------------
+
+    private static IElement TasteSection(IRenderedComponent<DishDetailScreen> cut) => cut.Find("section[aria-labelledby=detail-taste]");
+
+    private static string[] ButtonsOf(IElement section) => [.. section.QuerySelectorAll("button").Select(b => b.TextContent.Words())];
+
+    [Fact]
+    public void A_dish_that_can_be_drawn_says_what_blocking_does_and_offers_to_block_it_after_the_three_parts()
+    {
+        var cut = Show();
+        var section = TasteSection(cut);
+
+        section.QuerySelector("h2")!.TextContent.ShouldBe("Món này với nhà mình");
+        section.GetAttribute("aria-labelledby").ShouldBe(section.QuerySelector("h2")!.Id);
+        section.QuerySelector("[role=status]")!.TextContent.Words().ShouldBe("Chặn thì món này không ra ở lần quay nào nữa. Bỏ chặn được ở Cài đặt.");
+        ButtonsOf(section).ShouldBe(["Không bao giờ quay món này"]);
+        section.PreviousElementSibling!.GetAttribute("aria-labelledby").ShouldBe("detail-nutrition");
+        section.NextElementSibling!.ClassList.ShouldContain("detail__footer");
+    }
+
+    [Fact]
+    public async Task Blocking_keeps_the_dish_among_the_blocked_ones_and_the_section_then_offers_to_bring_it_back()
+    {
+        var cut = Show();
+
+        await TasteSection(cut).QuerySelector("button")!.ClickAsync(new());
+
+        _taste.Saved.BlockedDishIds.ShouldBe(["thit-kho-trung"]);
+        _taste.Saves.ShouldBe(1);
+        TasteSection(cut).QuerySelector("[role=status]")!.TextContent.Words().ShouldBe("Món này đang bị chặn: sẽ không được quay.");
+        ButtonsOf(TasteSection(cut)).ShouldBe(["Cho quay lại"]);
+    }
+
+    [Fact]
+    public async Task Blocking_leaves_what_was_said_about_other_dishes_and_the_dishes_blocked_before()
+    {
+        _taste.Saved = new TasteProfile(new Dictionary<string, DishPreference> { ["canh-chua-ca-loc"] = DishPreference.Liked }, ["bap-cai-luoc"]);
+        var cut = Show();
+
+        await TasteSection(cut).QuerySelector("button")!.ClickAsync(new());
+
+        _taste.Saved.BlockedDishIds.ShouldBe(["bap-cai-luoc", "thit-kho-trung"]);
+        _taste.Saved.Preferences["canh-chua-ca-loc"].ShouldBe(DishPreference.Liked);
+    }
+
+    [Fact]
+    public void A_dish_that_was_blocked_before_says_so_when_the_page_opens()
+    {
+        _taste.Saved = new TasteProfile(new Dictionary<string, DishPreference>(), ["thit-kho-trung"]);
+
+        var section = TasteSection(Show());
+
+        section.QuerySelector("[role=status]")!.TextContent.Words().ShouldBe("Món này đang bị chặn: sẽ không được quay.");
+        ButtonsOf(section).ShouldBe(["Cho quay lại"]);
+    }
+
+    [Fact]
+    public async Task Bringing_a_dish_back_takes_only_that_dish_off_the_blocked_ones()
+    {
+        _taste.Saved = new TasteProfile(new Dictionary<string, DishPreference>(), ["bap-cai-luoc", "thit-kho-trung"]);
+        var cut = Show();
+
+        await TasteSection(cut).QuerySelector("button")!.ClickAsync(new());
+
+        _taste.Saved.BlockedDishIds.ShouldBe(["bap-cai-luoc"]);
+        ButtonsOf(TasteSection(cut)).ShouldBe(["Không bao giờ quay món này"]);
+    }
+
+    [Fact]
+    public void Another_dish_being_blocked_does_not_make_this_one_blocked()
+    {
+        _taste.Saved = new TasteProfile(new Dictionary<string, DishPreference>(), ["bap-cai-luoc"]);
+
+        ButtonsOf(TasteSection(Show())).ShouldBe(["Không bao giờ quay món này"]);
+    }
+
+    [Fact]
+    public void A_dish_that_is_not_there_has_no_such_section()
+    {
+        Show("khong-co-mon-nay").FindAll("section").ShouldBeEmpty();
+    }
 }

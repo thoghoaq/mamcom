@@ -1,0 +1,154 @@
+@using System.Globalization
+@using MamCom.Core.Data
+@using MamCom.Core.Models
+@using MamCom.Core.Taste
+@using MamCom.Data.State
+@using MamCom.UI.Formatting
+@inherits AppDataComponentBase
+@inject IHouseholdStore Households
+@inject ITasteStore Tastes
+@inject IUserStateStore UserState
+@inject NavigationManager Navigation
+
+@* "Cài đặt" (SPEC §8.1-7). The people of the house have their own screen (a link to it); the region and the bowl size are a tap each and are kept at once. *@
+<PageTitle>@Strings.Settings_Title</PageTitle>
+
+<BackLink />
+
+<h1>@Strings.Settings_Title</h1>
+
+@if (Data.Bundle is { } bundle && _loaded)
+{
+    <section class="card settings__section" aria-labelledby="settings-household">
+        <h2 id="settings-household">@Strings.Settings_HouseholdHeading</h2>
+        <HouseholdSummary Household="_household" />
+
+        <p class="field__label" id="settings-region-label">@Strings.Household_RegionLabel</p>
+        <div class="chips chips--thirds" role="radiogroup" aria-labelledby="settings-region-label">
+            @foreach (var region in Enum.GetValues<Region>())
+            {
+                var current = region;
+                <button type="button" class="chip" role="radio" aria-checked="@(_household.Region == region ? "true" : "false")" @onclick="() => SetRegionAsync(current)">
+                    @HouseholdFormat.RegionName(region)
+                </button>
+            }
+        </div>
+        <p class="field__hint">@Strings.Household_RegionHint</p>
+
+        <p class="field__label" id="settings-bowl-label">@Strings.Settings_BowlLabel</p>
+        <div class="chips chips--thirds" role="radiogroup" aria-labelledby="settings-bowl-label">
+            @foreach (var size in Enum.GetValues<BowlSize>())
+            {
+                var current = size;
+                <button type="button" class="chip" role="radio" aria-checked="@(_household.BowlSize == size ? "true" : "false")" @onclick="() => SetBowlSizeAsync(current)">
+                    @HouseholdFormat.BowlSizeName(size)
+                </button>
+            }
+        </div>
+        <p class="field__hint">@BowlHint(bundle)</p>
+    </section>
+
+    <section class="card settings__section" aria-labelledby="settings-blocked">
+        <h2 id="settings-blocked">@Strings.Settings_BlockedHeading</h2>
+        <p class="field__hint">@Strings.Settings_BlockedHint</p>
+        @if (_taste.BlockedDishIds.Count == 0)
+        {
+            <p class="text-muted">@Strings.Settings_BlockedEmpty</p>
+        }
+        else
+        {
+            <ul class="blocked">
+                @foreach (var id in _taste.BlockedDishIds)
+                {
+                    var dishId = id;
+                    var name = NameOf(bundle, dishId);
+                    <li class="blocked__item" @key="dishId">
+                        <span class="blocked__name">@name</span>
+                        <button type="button" class="button button--quiet" aria-label="@string.Format(CultureInfo.InvariantCulture, Strings.Settings_UnblockAria, name)" @onclick="() => UnblockAsync(dishId, name)">
+                            @Strings.Settings_Unblock
+                        </button>
+                    </li>
+                }
+            </ul>
+        }
+    </section>
+
+    <section class="card settings__section" aria-labelledby="settings-clear">
+        <h2 id="settings-clear">@Strings.Settings_ClearHeading</h2>
+        <p>@Strings.Settings_ClearText</p>
+        @if (_asking)
+        {
+            <div class="notice notice--danger">
+                <p role="alert">@Strings.Settings_ClearAsk</p>
+                <div class="notice__actions">
+                    <button type="button" class="button button--danger" disabled="@_clearing" @onclick="ClearAsync">@Strings.Settings_ClearConfirm</button>
+                    <button type="button" class="button button--quiet" disabled="@_clearing" @onclick="() => _asking = false">@Strings.Settings_ClearCancel</button>
+                </div>
+            </div>
+        }
+        else
+        {
+            <button type="button" class="button button--danger" @onclick="() => _asking = true">@Strings.Settings_Clear</button>
+        }
+    </section>
+
+    <p class="settings__status" role="status">@_status</p>
+}
+
+@code {
+    private Household _household = null!;
+    private TasteProfile _taste = TasteProfile.Empty;
+    private string _status = string.Empty;
+    private bool _loaded;
+    private bool _asking;
+    private bool _clearing;
+
+    /// <summary>The household of this device; the gate hands it over once it knows there is one.</summary>
+    [Parameter, EditorRequired]
+    public Household Household { get; set; } = null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _household = Household;   // kept here: the region and the bowl size change it
+        await Data.InitializeAsync();
+        _taste = await Tastes.LoadAsync();
+        _loaded = true;
+    }
+
+    private string BowlHint(DataBundle bundle) =>
+        string.Format(CultureInfo.InvariantCulture, Strings.Settings_BowlHintFormat, VietnameseNumber.Whole(bundle.Config.Portion.GramsRawRicePerBowl.For(_household.BowlSize)));
+
+    /// <summary>The name of a dish for the list of blocked ones; a dish that the data no longer has is said to be gone, and can still be unblocked.</summary>
+    private static string NameOf(DataBundle bundle, string dishId) =>
+        bundle.Dishes.FirstOrDefault(d => string.Equals(d.Id, dishId, StringComparison.Ordinal))?.Name ?? Strings.Settings_BlockedGone;
+
+    private Task SetRegionAsync(Region region) => SaveHouseholdAsync(_household with { Region = region });
+
+    private Task SetBowlSizeAsync(BowlSize size) => SaveHouseholdAsync(_household with { BowlSize = size });
+
+    private async Task SaveHouseholdAsync(Household household)
+    {
+        _household = household;
+        await Households.SaveAsync(household);   // whether the browser keeps it is the business of the notice every page carries
+        _status = Strings.Settings_Saved;
+    }
+
+    private async Task UnblockAsync(string dishId, string name)
+    {
+        _taste = TasteDesk.Unblock(_taste, dishId);
+        await Tastes.SaveAsync(_taste);
+        _status = string.Format(CultureInfo.InvariantCulture, Strings.Settings_Unblocked, name);
+    }
+
+    private async Task ClearAsync()
+    {
+        if (_clearing)
+        {
+            return;
+        }
+
+        _clearing = true;
+        await UserState.ClearAsync();
+        Navigation.NavigateTo(Routes.Home, forceLoad: true);   // the whole page starts again, so nothing of what was deleted is still held in memory
+    }
+}

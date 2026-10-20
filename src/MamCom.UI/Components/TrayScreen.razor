@@ -2,12 +2,14 @@
 @using MamCom.Core
 @using MamCom.Core.Models
 @using MamCom.Core.Spinning
+@using MamCom.Core.Taste
 @using MamCom.Data.Device
 @using MamCom.Data.State
 @using MamCom.UI.Formatting
 @inherits AppDataComponentBase
 @inject ITrayStore Trays
 @inject IEatenLogStore EatenLogs
+@inject ITasteStore Tastes
 @inject IDeviceFeatures Device
 @inject ISpinPacer Pacer
 @inject IClock Clock
@@ -26,7 +28,10 @@
     {
         <div class="notice notice--ok">
             <p role="status">@Strings.Tray_Confirmed</p>
-            <button type="button" class="button button--quiet notice__action" @onclick="ReopenAsync">@Strings.Tray_Reopen</button>
+            <div class="notice__actions">
+                <a class="button button--quiet" href="@Routes.AfterMeal">@Strings.Tray_RateMeal</a>
+                <button type="button" class="button button--quiet notice__action" @onclick="ReopenAsync">@Strings.Tray_Reopen</button>
+            </div>
         </div>
     }
 
@@ -113,6 +118,7 @@
     private MamCom.Core.Data.DataBundle? _engineBundle;
     private TraySession _session = TraySession.Empty;
     private EatenLog _eaten = EatenLog.Empty;
+    private TasteProfile _taste = TasteProfile.Empty;
     private IReadOnlyDictionary<string, DishFacts> _facts = new Dictionary<string, DishFacts>();
     private TraySummary? _summary;
     private string _announcement = string.Empty;
@@ -152,6 +158,7 @@
         _engine = TrayEngine.Create(bundle, RandomSource, Clock);
         _engineBundle = bundle;
         _eaten = await EatenLogs.LoadAsync();
+        _taste = await Tastes.LoadAsync();
 
         var saved = await Trays.LoadAsync();
         _session = saved is not null && _engine.CanContinue(saved) ? saved : TraySession.Empty;
@@ -166,7 +173,7 @@
         }
     }
 
-    private SpinContext Context() => _engine!.ContextFor(Household, _eaten);
+    private SpinContext Context() => _engine!.ContextFor(Household, _eaten, _taste);
 
     private async Task SpinAsync(bool animate)
     {

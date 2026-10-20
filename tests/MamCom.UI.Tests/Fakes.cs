@@ -8,6 +8,7 @@ using MamCom.Core.Nutrition;
 using MamCom.Core.Portions;
 using MamCom.Core.Shopping;
 using MamCom.Core.Spinning;
+using MamCom.Core.Taste;
 using MamCom.UI;
 using MamCom.Data;
 using MamCom.Data.Bundles;
@@ -344,4 +345,43 @@ internal static class TestConfig
     private static IEnumerable<T> Seed<T>(string folder) =>
         Directory.GetFiles(Path.Combine(AppContext.BaseDirectory, "seed", folder), "*.json")
             .Select(file => JsonSerializer.Deserialize<T>(File.ReadAllText(file), CoreJson.Options)!);
+}
+
+/// <summary>What the household said about dishes, kept in memory.</summary>
+internal sealed class FakeTasteStore : ITasteStore
+{
+    public TasteProfile Saved { get; set; } = TasteProfile.Empty;
+
+    public int Saves { get; private set; }
+
+    public ValueTask<TasteProfile> LoadAsync() => ValueTask.FromResult(Saved);
+
+    public ValueTask<bool> SaveAsync(TasteProfile profile)
+    {
+        Saves++;
+        Saved = profile;
+        return ValueTask.FromResult(true);
+    }
+}
+
+/// <summary>The user state of the device, which a test only looks at to see that "delete my data" cleared it.</summary>
+internal sealed class FakeUserStateStore : IUserStateStore
+{
+    public int Clears { get; private set; }
+
+    public bool IsPersistent => true;
+
+    public ValueTask<T?> GetAsync<T>(string key)
+        where T : class => ValueTask.FromResult<T?>(null);
+
+    public ValueTask<bool> SetAsync<T>(string key, T value)
+        where T : class => ValueTask.FromResult(true);
+
+    public ValueTask RemoveAsync(string key) => ValueTask.CompletedTask;
+
+    public ValueTask ClearAsync()
+    {
+        Clears++;
+        return ValueTask.CompletedTask;
+    }
 }

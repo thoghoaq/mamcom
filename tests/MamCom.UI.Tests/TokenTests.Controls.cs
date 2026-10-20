@@ -131,4 +131,66 @@ public partial class TokenTests
         PropertyValue(chosen, "font-weight").ShouldBe("var(--font-weight-strong)");
         PropertyValue(Rule(Base, ".chip {"), "border").ShouldContain("var(--color-border-strong)");   // the rest have the strong outline, the chosen one the accent
     }
+
+    [Theory]
+    [InlineData(".app-header__brand {")]
+    [InlineData(".app-header__action {")]
+    public void The_links_of_the_header_are_at_least_the_tap_size_high(string selector)
+    {
+        var layout = File.ReadAllText(Path.Combine(Wwwroot, "layout.css"));
+
+        PropertyValue(Rule(layout, selector), "min-height").ShouldBe("var(--tap-size)");
+    }
+
+    [Fact]
+    public void The_link_to_the_settings_is_a_square_of_at_least_the_tap_size_and_the_name_takes_the_room_before_it()
+    {
+        var layout = File.ReadAllText(Path.Combine(Wwwroot, "layout.css"));
+
+        PropertyValue(Rule(layout, ".app-header__action {"), "min-width").ShouldBe("var(--tap-size)");
+        PropertyValue(Rule(layout, ".app-header__brand {"), "margin-inline-end").ShouldBe("auto");
+    }
+
+    [Fact]
+    public void A_button_that_destroys_is_outlined_in_the_colour_of_danger_which_reads_in_the_light_and_the_dark()
+    {
+        PropertyValue(Rule(Base, ".button--danger {"), "border-color").ShouldBe("var(--color-danger)");
+        PropertyValue(Rule(Base, ".button--danger {"), "color").ShouldBe("var(--color-danger)");
+        PropertyValue(Rule(Base, ".button--danger:hover:not(:disabled) {"), "background").ShouldBe("var(--color-danger-soft)");
+        PropertyValue(Rule(Base, ".button--danger:hover:not(:disabled) {"), "color").ShouldBe("var(--color-danger)");
+    }
+
+    [Fact]
+    public void Three_choices_in_a_row_are_three_columns_of_equal_width_and_the_row_for_the_whole_meal_is_taller_and_larger()
+    {
+        PropertyValue(Rule(Base, ".chips--thirds {"), "display").ShouldBe("grid");
+        PropertyValue(Rule(Base, ".chips--thirds {"), "grid-template-columns").ShouldBe("repeat(3, minmax(0, 1fr))");
+        PropertyValue(Rule(Base, ".rate-row .chips,\n.chips--rate-whole {"), "margin-bottom").ShouldBe("0");
+        PropertyValue(Rule(Base, ".chips--rate-whole .chip {"), "font-size").ShouldBe("var(--font-size-large)");
+        PropertyValue(Rule(Base, ".chips--rate-whole .chip {"), "min-height").ShouldBe("3.5rem");
+    }
+
+    [Fact]
+    public void The_chips_of_a_row_of_thirds_are_rounded_rectangles_with_little_padding_so_a_word_that_wraps_does_not_make_a_circle()
+    {
+        var chip = Rule(Base, ".chips--thirds .chip {");
+
+        PropertyValue(chip, "border-radius").ShouldBe("var(--radius)");
+        PropertyValue(chip, "padding-inline").ShouldBe("var(--space-2)");
+        PropertyValue(chip, "text-align").ShouldBe("center");
+    }
+
+    [Fact]
+    public void The_actions_of_a_notice_wrap_and_the_button_that_already_had_a_margin_does_not_add_one_inside_them()
+    {
+        PropertyValue(Rule(Base, ".notice__actions {"), "flex-wrap").ShouldBe("wrap");
+        PropertyValue(Rule(Base, ".notice__actions > .notice__action {"), "margin-top").ShouldBe("0");
+    }
+
+    [Fact]
+    public void A_row_of_the_blocked_dishes_is_a_target_high_and_the_name_takes_the_room_before_the_button()
+    {
+        PropertyValue(Rule(Base, ".blocked__item {"), "min-height").ShouldBe("var(--tap-size)");
+        PropertyValue(Rule(Base, ".blocked__name {"), "flex").ShouldBe("1");
+    }
 }
