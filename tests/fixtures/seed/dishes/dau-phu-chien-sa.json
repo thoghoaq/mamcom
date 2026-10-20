@@ -1,0 +1,108 @@
+{
+  "id": "dau-phu-chien-sa",
+  "name": "Đậu phụ chiên sả ớt",
+  "slot": "man",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "chien",
+  "proteinSource": "chay",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "dau-phu",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thấm khô"
+    },
+    {
+      "ingredientId": "sa",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm; để riêng nếu có người không ăn cay"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 12,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "dầu chiên; phần dầu thực sự ăn vào cần người nhập"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Cắt đậu phụ miếng vừa, thấm khô, ướp chút muối.",
+      "activeMinutes": 4,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "dau-phu",
+        "muoi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Chiên đậu vàng các mặt, vớt ra giấy thấm dầu.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "dau-phu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi sả ớt băm, trộn đậu vào, thêm chút nước mắm.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "sa",
+        "ot",
+        "nuoc-mam",
+        "dau-phu"
+      ]
+    }
+  ],
+  "status": "draft",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

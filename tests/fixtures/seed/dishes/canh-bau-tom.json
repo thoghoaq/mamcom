@@ -1,0 +1,117 @@
+{
+  "id": "canh-bau-tom",
+  "name": "Canh bầu nấu tôm",
+  "slot": "canh",
+  "regions": [
+    "south",
+    "central"
+  ],
+  "seasons": [
+    "summer"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "tom",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "bau",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, thái lát"
+    },
+    {
+      "ingredientId": "tom",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, bỏ chỉ đen"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Gọt bầu, thái lát; bóc vỏ tôm, bỏ chỉ đen.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "bau",
+        "tom"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Phi thơm hành tím, xào tôm vừa tái.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-tim",
+        "tom"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Đổ nước, đun sôi, cho bầu vào nấu mềm, nêm nước mắm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "bau",
+        "nuoc-mam"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Rắc hành lá và tiêu.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "draft",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

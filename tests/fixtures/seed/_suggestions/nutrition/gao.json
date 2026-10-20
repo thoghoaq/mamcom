@@ -1,0 +1,66 @@
+{
+  "ingredientId": "gao",
+  "query": "rice white long-grain raw",
+  "retrievedAt": "2026-10-19",
+  "source": "usda-fdc",
+  "totalHits": 2026,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 2512381,
+      "description": "Rice, white, long grain, unenriched, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2512381/nutrients",
+      "per100g": {
+        "kcal": 370,
+        "proteinG": 7.04,
+        "fatG": 1.03,
+        "carbG": 80.3,
+        "fiberG": 0.149,
+        "sodiumMg": 0.462
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 5/5 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    },
+    {
+      "rank": 2,
+      "fdcId": 168877,
+      "description": "Rice, white, long-grain, regular, raw, enriched",
+      "dataType": "SR Legacy",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168877/nutrients",
+      "per100g": {
+        "kcal": 365,
+        "proteinG": 7.13,
+        "fatG": 0.66,
+        "carbG": 80,
+        "fiberG": 1.3,
+        "sodiumMg": 5
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 5/5 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 169756,
+      "description": "Rice, white, long-grain, regular, raw, unenriched",
+      "dataType": "SR Legacy",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169756/nutrients",
+      "per100g": {
+        "kcal": 365,
+        "proteinG": 7.13,
+        "fatG": 0.66,
+        "carbG": 80,
+        "fiberG": 1.3,
+        "sodiumMg": 5
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 5/5 từ khoá."
+    }
+  ]
+}

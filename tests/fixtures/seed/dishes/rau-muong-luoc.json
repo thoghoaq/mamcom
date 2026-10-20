@@ -1,0 +1,70 @@
+{
+  "id": "rau-muong-luoc",
+  "name": "Rau muống luộc",
+  "slot": "rau",
+  "regions": [
+    "north",
+    "central",
+    "south"
+  ],
+  "seasons": [
+    "summer",
+    "autumn"
+  ],
+  "spicy": "none",
+  "cookingMethod": "luoc",
+  "proteinSource": "none",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "rau-muong",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt, rửa sạch"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Nhặt và rửa sạch rau muống, cắt khúc.",
+      "activeMinutes": 6,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "rau-muong"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Luộc rau trong nước sôi có chút muối đến khi vừa chín, vớt ra để ráo.",
+      "activeMinutes": 3,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "rau-muong",
+        "muoi"
+      ]
+    }
+  ],
+  "status": "draft",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

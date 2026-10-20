@@ -1,0 +1,12 @@
+<Project>
+
+  <!--
+    The data a test project copies next to itself (CopyToOutputDirectory="PreserveNewest") only ever adds files. When a file leaves
+    the source, say a dish that was promoted out of the seed, its copy would stay in the output folder and the tests would go on
+    seeing it. So the copied folders are removed before each build and the copy items bring back exactly what the project lists.
+  -->
+  <Target Name="RemoveCopiedTestData" BeforeTargets="BeforeBuild">
+    <RemoveDir Directories="$(OutDir)data;$(OutDir)ingredients;$(OutDir)dishes;$(OutDir)config;$(OutDir)samples" />
+  </Target>
+
+</Project>

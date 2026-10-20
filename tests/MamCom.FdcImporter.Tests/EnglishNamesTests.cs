@@ -71,7 +71,7 @@ public class EnglishNamesTests
     }
 
     [Fact]
-    public void The_shipped_file_names_every_seed_ingredient_and_nothing_else()
+    public void The_seed_names_file_names_every_seed_ingredient_and_nothing_else()
     {
         using var data = new TempData();
         var names = EnglishNames.Parse(File.ReadAllText(Path.Combine(data.Root, "plan", "ingredient-names-en.csv")));

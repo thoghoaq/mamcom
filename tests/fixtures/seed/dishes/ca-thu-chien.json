@@ -1,0 +1,84 @@
+{
+  "id": "ca-thu-chien",
+  "name": "Cá thu chiên",
+  "slot": "man",
+  "regions": [
+    "central",
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "chien",
+  "proteinSource": "ca",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "ca-thu",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "dầu chiên; phần dầu thực sự ăn vào cần người nhập"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Rửa cá, thấm khô, ướp muối và tiêu.",
+      "activeMinutes": 5,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "ca-thu",
+        "muoi",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Chiên cá lửa vừa, mỗi mặt đến khi vàng.",
+      "activeMinutes": 12,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "ca-thu"
+      ]
+    }
+  ],
+  "status": "draft",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

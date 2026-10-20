@@ -1,0 +1,66 @@
+{
+  "ingredientId": "ca-rot",
+  "query": "carrots raw",
+  "retrievedAt": "2026-10-19",
+  "source": "usda-fdc",
+  "totalHits": 1578,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 2258586,
+      "description": "Carrots, mature, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2258586/nutrients",
+      "per100g": {
+        "kcal": 45,
+        "proteinG": 0.941,
+        "fatG": 0.351,
+        "carbG": 10.3,
+        "fiberG": 3.1,
+        "sodiumMg": 86.6
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    },
+    {
+      "rank": 2,
+      "fdcId": 2258587,
+      "description": "Carrots, baby, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2258587/nutrients",
+      "per100g": {
+        "kcal": 38.3,
+        "proteinG": 0.805,
+        "fatG": 0.138,
+        "carbG": 9.08,
+        "fiberG": 2.69,
+        "sodiumMg": 62.7
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    },
+    {
+      "rank": 3,
+      "fdcId": 170393,
+      "description": "Carrots, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170393/nutrients",
+      "per100g": {
+        "kcal": 41,
+        "proteinG": 0.93,
+        "fatG": 0.24,
+        "carbG": 9.58,
+        "fiberG": 2.8,
+        "sodiumMg": 69
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    }
+  ]
+}

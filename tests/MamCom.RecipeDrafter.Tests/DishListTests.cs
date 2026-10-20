@@ -117,7 +117,7 @@ public class DishListTests
     }
 
     [Fact]
-    public void The_shipped_starter_list_has_three_dishes_with_clean_ids()
+    public void The_starter_list_of_the_seed_has_three_dishes_with_clean_ids()
     {
         using var data = new TempData();
 

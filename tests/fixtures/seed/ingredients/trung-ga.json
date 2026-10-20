@@ -1,0 +1,43 @@
+{
+  "id": "trung-ga",
+  "names": {
+    "default": "Trứng gà"
+  },
+  "aliases": [
+    "trứng"
+  ],
+  "category": "trung",
+  "aisle": "trung-dau-phu",
+  "proteinSource": "trung",
+  "marketUnit": {
+    "default": {
+      "display": "quả",
+      "gramsPerUnit": 55,
+      "step": 1
+    }
+  },
+  "wasteRatio": 0,
+  "isPantry": false,
+  "nutritionPer100gEdible": {
+    "kcal": null,
+    "proteinG": null,
+    "fatG": null,
+    "carbG": null,
+    "fiberG": null,
+    "sodiumMg": null
+  },
+  "nutritionSource": {
+    "db": "placeholder",
+    "ref": null,
+    "matchedName": null,
+    "verifiedBy": null,
+    "verifiedAt": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

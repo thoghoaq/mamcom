@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\tools\MamCom.DataBuilder\MamCom.DataBuilder.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--
+      The only test project that reads the LIVE data folder, and so the only one whose result follows the real data as people
+      approve dishes and confirm ingredients in Studio (ADR-018). Every other project sees the frozen seed in tests/fixtures/seed.
+    -->
+    <None Include="..\..\data\schemas\*.json" Link="data\schemas\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\data\config\*.json" Link="data\config\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\data\ingredients\*.json" Link="data\ingredients\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\data\dishes\*.json" Link="data\dishes\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\data\dishes\_drafts\*.json" Link="data\dishes\_drafts\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\data\_suggestions\nutrition\*.json" Link="data\_suggestions\nutrition\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

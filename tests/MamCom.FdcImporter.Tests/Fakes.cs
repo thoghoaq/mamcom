@@ -103,7 +103,7 @@ internal sealed class FixedClock(DateOnly today) : IClock
     public DateTimeOffset Now => new(Today.ToDateTime(new TimeOnly(12, 0)), TimeSpan.Zero);
 }
 
-/// <summary>A scratch copy of the shipped data folder (schemas, plan, ingredients). Deleted with the object.</summary>
+/// <summary>A scratch copy of the test data folder (live schemas, frozen seed plan and ingredients). Deleted with the object.</summary>
 internal sealed class TempData : IDisposable
 {
     private readonly DirectoryInfo _directory = Directory.CreateTempSubdirectory("mamcom-fdc");

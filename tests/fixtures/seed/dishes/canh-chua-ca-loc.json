@@ -1,0 +1,131 @@
+{
+  "id": "canh-chua-ca-loc",
+  "name": "Canh chua cá lóc",
+  "slot": "canh",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nau",
+  "proteinSource": "ca",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "ca-loc",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 40,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "cắt múi"
+    },
+    {
+      "ingredientId": "bac-ha",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "tuỳ khẩu vị"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Làm sạch cá, cắt khúc, ướp chút muối.",
+      "activeMinutes": 8,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "ca-loc",
+        "muoi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Phi thơm hành tím, đổ nước, đun sôi rồi cho cà chua và bạc hà vào.",
+      "activeMinutes": 5,
+      "passiveMinutes": 8,
+      "ingredientIds": [
+        "hanh-tim",
+        "ca-chua",
+        "bac-ha"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Cho cá vào nấu chín, nêm nước mắm và đường, thêm ớt, rắc hành lá.",
+      "activeMinutes": 3,
+      "passiveMinutes": 7,
+      "ingredientIds": [
+        "ca-loc",
+        "nuoc-mam",
+        "duong",
+        "ot",
+        "hanh-la"
+      ]
+    }
+  ],
+  "status": "draft",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

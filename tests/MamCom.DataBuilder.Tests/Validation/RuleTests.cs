@@ -3,7 +3,7 @@ using MamCom.DataBuilder.Validation;
 
 namespace MamCom.DataBuilder.Tests.Validation;
 
-/// <summary>One test per rule of SPEC §7.3 and ADR-010: break one thing in the shipped seed and expect that finding, there.</summary>
+/// <summary>One test per rule of SPEC §7.3 and ADR-010: break one thing in the frozen seed (tests/fixtures/seed) and expect that finding, there.</summary>
 public class RuleTests
 {
     private static Diagnostic Only(ValidationReport report, string code)
@@ -26,7 +26,7 @@ public class RuleTests
     // ---- the seed is clean -------------------------------------------------------------------------------------
 
     [Fact]
-    public void The_shipped_seed_has_no_error_and_no_warning_in_a_development_build()
+    public void The_frozen_seed_has_no_error_and_no_warning_in_a_development_build()
     {
         using var data = new TempData();
 

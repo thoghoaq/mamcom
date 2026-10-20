@@ -8,7 +8,7 @@ using MamCom.DataBuilder.Validation;
 namespace MamCom.DataBuilder.Tests;
 
 /// <summary>
-/// A scratch copy of the shipped data folder that a test can break one file at a time. Deleted with the object.
+/// A scratch copy of the test data folder (the frozen seed under the live schemas and config) that a test can break one file at a time. Deleted with the object.
 /// Numbers a test writes into it are test-only, not real data.
 /// </summary>
 internal sealed class TempData : IDisposable

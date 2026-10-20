@@ -7,9 +7,9 @@
   <ItemGroup>
     <!-- The real config files, so a test fails when the file and the code drift apart. -->
     <None Include="..\..\data\config\*.json" Link="config\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
-    <!-- The dev seed (PLAN 1.8), so the real data files are exercised by the real code. -->
-    <None Include="..\..\data\ingredients\*.json" Link="ingredients\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
-    <None Include="..\..\data\dishes\*.json" Link="dishes\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <!-- The frozen dev seed (PLAN 1.8, tests/fixtures/seed), so seed-shaped data files are exercised by the real code even after the real data moves on (ADR-018). -->
+    <None Include="..\fixtures\seed\ingredients\*.json" Link="ingredients\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\fixtures\seed\dishes\*.json" Link="dishes\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

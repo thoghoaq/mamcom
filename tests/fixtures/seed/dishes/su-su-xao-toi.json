@@ -1,0 +1,85 @@
+{
+  "id": "su-su-xao-toi",
+  "name": "Su su xào tỏi",
+  "slot": "rau",
+  "regions": [
+    "north",
+    "south"
+  ],
+  "seasons": [
+    "autumn",
+    "winter"
+  ],
+  "spicy": "none",
+  "cookingMethod": "xao",
+  "proteinSource": "none",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "su-su",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, bỏ lõi, thái sợi"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Gọt su su, bỏ lõi, thái sợi.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "su-su"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Phi thơm tỏi, xào su su lửa lớn, nêm nước mắm.",
+      "activeMinutes": 6,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "toi",
+        "dau-an",
+        "su-su",
+        "nuoc-mam"
+      ]
+    }
+  ],
+  "status": "draft",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

@@ -7,7 +7,7 @@ namespace MamCom.DataBuilder.Tests.Validation;
 public class LoadingTests
 {
     [Fact]
-    public void The_shipped_data_loads_without_a_finding()
+    public void The_frozen_seed_loads_without_a_finding_under_the_live_schemas_and_config()
     {
         using var data = new TempData();
 

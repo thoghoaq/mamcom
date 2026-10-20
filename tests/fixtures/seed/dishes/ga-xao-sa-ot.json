@@ -1,0 +1,117 @@
+{
+  "id": "ga-xao-sa-ot",
+  "name": "Gà xào sả ớt",
+  "slot": "man",
+  "regions": [
+    "south",
+    "central"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "required",
+  "cookingMethod": "xao",
+  "proteinSource": "ga",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "thit-ga",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chặt miếng nhỏ"
+    },
+    {
+      "ingredientId": "sa",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Chặt gà, ướp với sả, tỏi, ớt băm, nước mắm và đường.",
+      "activeMinutes": 10,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "thit-ga",
+        "sa",
+        "ot",
+        "toi",
+        "nuoc-mam",
+        "duong"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Cho dầu vào chảo, xào gà lửa lớn đến khi săn lại.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "thit-ga"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Đậy nắp, om nhỏ lửa cho gà chín, nêm lại cho vừa ăn.",
+      "activeMinutes": 1,
+      "passiveMinutes": 8,
+      "ingredientIds": [
+        "thit-ga"
+      ]
+    }
+  ],
+  "status": "draft",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}
