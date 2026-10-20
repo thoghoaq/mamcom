@@ -29,6 +29,8 @@ internal sealed class StudioData : IDisposable
         Loader = new KitchenLoader(Folder);
         Clock = new FixedClock(Today);
         Reviewer = new DishReviewer(Store, Loader, Clock);
+        Ingredients = new IngredientStore(Folder);
+        IngredientReviewer = new IngredientReviewer(Ingredients, Loader, Clock);
     }
 
     public string Root => _directory.FullName;
@@ -42,6 +44,10 @@ internal sealed class StudioData : IDisposable
     public FixedClock Clock { get; }
 
     public DishReviewer Reviewer { get; }
+
+    public IngredientStore Ingredients { get; }
+
+    public IngredientReviewer IngredientReviewer { get; }
 
     public string PathOf(string relative) => Path.Combine(Root, relative.Replace('/', Path.DirectorySeparatorChar));
 
@@ -92,6 +98,61 @@ internal sealed class StudioData : IDisposable
               "usage": { "inputTokens": 1, "outputTokens": 1, "cacheCreationInputTokens": 0, "cacheReadInputTokens": 0 }
             }
             """);
+    }
+
+    /// <summary>
+    /// Writes a suggestion the way FdcImporter does, with test-only numbers: each candidate is its FDC id and the six numbers
+    /// (kcal, protein, fat, carb, fibre, sodium) per 100g, a null for one FDC does not state.
+    /// </summary>
+    public void WriteSuggestion(string ingredientId, params (long FdcId, double?[] Per100g)[] candidates)
+    {
+        string[] names = ["kcal", "proteinG", "fatG", "carbG", "fiberG", "sodiumMg"];
+        var list = new JsonArray();
+        var rank = 1;
+        foreach (var (fdcId, per100g) in candidates)
+        {
+            var numbers = new JsonObject();
+            var missing = new JsonArray();
+            for (var i = 0; i < names.Length; i++)
+            {
+                numbers[names[i]] = per100g[i];
+                if (per100g[i] is null)
+                {
+                    missing.Add(names[i]);
+                }
+            }
+
+            list.Add(new JsonObject
+            {
+                ["rank"] = rank++,
+                ["fdcId"] = fdcId,
+                ["description"] = $"Test food {fdcId}, raw",
+                ["dataType"] = "Foundation",
+                ["foodCategory"] = "Test foods",
+                ["detailsUrl"] = $"https://fdc.nal.usda.gov/food-details/{fdcId}/nutrients",
+                ["per100g"] = numbers,
+                ["kcalSource"] = per100g[0] is null ? null : "Energy",
+                ["missing"] = missing,
+                ["reason"] = "ứng viên thử",
+            });
+        }
+
+        WriteJson($"_suggestions/nutrition/{ingredientId}.json", new JsonObject
+        {
+            ["ingredientId"] = ingredientId,
+            ["query"] = "test query",
+            ["retrievedAt"] = "2026-10-19",
+            ["source"] = "usda-fdc",
+            ["totalHits"] = 12,
+            ["candidates"] = list,
+        });
+    }
+
+    /// <summary>Puts a file in <c>images/out</c>; the content is one byte, because only the name matters to the checks.</summary>
+    public void WriteImage(string name)
+    {
+        Directory.CreateDirectory(PathOf("images/out"));
+        File.WriteAllBytes(PathOf($"images/out/{name}"), [0]);
     }
 
     /// <summary>Sets one nutrient, per 100g, on every ingredient of a dish so the dish's own value is known. Test-only numbers.</summary>

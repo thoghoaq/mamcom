@@ -32,6 +32,48 @@ public class LabelsTests
 
     [Fact] public void Every_review_outcome_has_its_own_message() => EveryValueHasItsOwnWord<ReviewStatus>(Labels.Review);
 
+    [Fact] public void Every_aisle_has_a_word() => EveryValueHasItsOwnWord<Aisle>(Labels.Aisle);
+
+    [Fact] public void Every_ingredient_outcome_has_its_own_message() => EveryValueHasItsOwnWord<IngredientStatus>(Labels.IngredientReview);
+
+    [Fact]
+    public void The_keys_of_a_region_keyed_object_have_words_and_an_unknown_key_is_shown_as_it_is()
+    {
+        Labels.Key("default").ShouldBe("Mặc định (mọi vùng)");
+        Labels.Key("north").ShouldBe("Bắc");
+        Labels.Key("central").ShouldBe("Trung");
+        Labels.Key("south").ShouldBe("Nam");
+        Labels.Key("west").ShouldBe("west");
+    }
+
+    [Theory]
+    [InlineData("placeholder", "Chưa có nguồn")]
+    [InlineData("usda-fdc", "USDA FoodData Central")]
+    [InlineData("vn-fct-2017", "Bảng thành phần thực phẩm Việt Nam 2017")]
+    [InlineData("asean-fcd", "ASEAN Food Composition Database")]
+    [InlineData("khac", "khac")]
+    public void A_nutrition_database_has_a_word_or_is_shown_as_it_is(string db, string expected) => Labels.Db(db).ShouldBe(expected);
+
+    [Theory]
+    [InlineData(IngredientStatus.Saved, "ok")]
+    [InlineData(IngredientStatus.NutritionChosen, "ok")]
+    [InlineData(IngredientStatus.NutritionCleared, "ok")]
+    [InlineData(IngredientStatus.Unchanged, "info")]
+    [InlineData(IngredientStatus.Conflict, "danger")]
+    [InlineData(IngredientStatus.HasErrors, "danger")]
+    [InlineData(IngredientStatus.VerifierMissing, "danger")]
+    [InlineData(IngredientStatus.NoSuchCandidate, "danger")]
+    [InlineData(IngredientStatus.CandidateHasNoNumbers, "danger")]
+    [InlineData(IngredientStatus.DataNotUsable, "danger")]
+    public void An_ingredient_message_looks_like_what_happened(IngredientStatus status, string tone) => Labels.IngredientTone(status).ShouldBe(tone);
+
+    [Fact]
+    public void An_ingredient_status_that_is_not_in_the_enum_is_refused()
+    {
+        Should.Throw<ArgumentOutOfRangeException>(() => Labels.Aisle((Aisle)99));
+        Should.Throw<ArgumentOutOfRangeException>(() => Labels.IngredientReview((IngredientStatus)99));
+    }
+
     [Fact]
     public void The_words_are_the_ones_of_the_kitchen()
     {

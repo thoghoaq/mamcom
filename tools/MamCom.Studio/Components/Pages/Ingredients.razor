@@ -1,0 +1,91 @@
+@page "/ingredients"
+@using System.Globalization
+@inject IngredientReviewer Reviewer
+
+<PageTitle>@Strings.Studio_Ing_ListTitle</PageTitle>
+
+<h1>@Strings.Studio_Ing_ListTitle</h1>
+
+<KitchenProblems Kitchen="_catalog.Kitchen" />
+
+<div class="chips" role="group" aria-label="@Strings.Studio_List_Filter">
+    @foreach (var option in Filters)
+    {
+        var chosen = option.Key;
+        <button type="button" class="chip" aria-pressed="@(_filter == chosen ? "true" : "false")" data-filter="@chosen" @onclick="() => _filter = chosen">
+            @option.Label (@_catalog.Entries.Count(option.Matches))
+        </button>
+    }
+</div>
+
+@if (Shown.Count == 0)
+{
+    <p class="notice" data-empty>@Strings.Studio_Ing_Empty</p>
+}
+else
+{
+    <ul class="dish-list">
+        @foreach (var entry in Shown)
+        {
+            <li class="dish-row" data-ingredient="@entry.Id">
+                <a class="dish-row__link" href="/ingredients/@entry.Id">
+                    <span class="dish-row__name">@(entry.Name ?? entry.Id)</span>
+                    <span class="dish-row__meta">
+                        @if (entry.NutritionDb is null)
+                        {
+                            <span class="badge badge--danger" data-broken>@Strings.Studio_Ing_Broken</span>
+                        }
+                        else if (entry.IsPlaceholder)
+                        {
+                            <span class="badge badge--warning" data-nutrition="placeholder">@Strings.Studio_Ing_NoData</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge--ok" data-nutrition="verified">@(entry.VerifiedBy is { } by ? string.Format(CultureInfo.InvariantCulture, Strings.Studio_Ing_VerifiedFormat, by) : Labels.Db(entry.NutritionDb))</span>
+                        }
+                        @if (entry.Candidates is { } count)
+                        {
+                            <span class="badge badge--info" data-candidates>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Ing_CandidatesFormat, count)</span>
+                        }
+                        @if (entry.HasImage)
+                        {
+                            <span class="badge" data-has-image>@Strings.Studio_Ing_HasImage</span>
+                        }
+                        @if (entry.Errors > 0)
+                        {
+                            <span class="badge badge--danger" data-errors>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_List_ErrorsFormat, entry.Errors)</span>
+                        }
+                        @if (entry.Warnings > 0)
+                        {
+                            <span class="badge badge--warning" data-warnings>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_List_WarningsFormat, entry.Warnings)</span>
+                        }
+                        @if (entry.NutritionDb is not null)
+                        {
+                            <span class="dish-row__slot" data-used-by>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Ing_UsedByFormat, entry.UsedBy)</span>
+                        }
+                    </span>
+                </a>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private sealed record Filter(string Key, string Label, Func<IngredientEntry, bool> Matches);
+
+    private IngredientCatalog _catalog = default!;
+    private string _filter = "all";
+
+    /// <summary>"Chưa có số liệu" is a placeholder; "có gợi ý" is a placeholder with candidates waiting; the other two are what is done.</summary>
+    private static IReadOnlyList<Filter> Filters =>
+    [
+        new("all", Strings.Studio_List_All, _ => true),
+        new("nodata", Strings.Studio_Ing_FilterNoData, e => e.IsPlaceholder),
+        new("suggested", Strings.Studio_Ing_FilterSuggested, e => e.IsPlaceholder && e.Candidates > 0),
+        new("verified", Strings.Studio_Ing_FilterVerified, e => e.NutritionDb is not null && !e.IsPlaceholder),
+    ];
+
+    private IReadOnlyList<IngredientEntry> Shown => [.. _catalog.Entries.Where(Filters.Single(f => f.Key == _filter).Matches)];
+
+    protected override void OnInitialized() => _catalog = Reviewer.Catalog();
+}

@@ -78,6 +78,32 @@ public static class Labels
         _ => throw new ArgumentOutOfRangeException(nameof(severity), severity, null),
     };
 
+    public static string Aisle(Aisle aisle) => aisle switch
+    {
+        Core.Models.Aisle.MeatAndFish => Strings.Studio_Aisle_MeatAndFish,
+        Core.Models.Aisle.Produce => Strings.Studio_Aisle_Produce,
+        Core.Models.Aisle.EggsAndTofu => Strings.Studio_Aisle_EggsAndTofu,
+        Core.Models.Aisle.DryGoodsAndSpices => Strings.Studio_Aisle_DryGoodsAndSpices,
+        Core.Models.Aisle.Other => Strings.Studio_Aisle_Other,
+        _ => throw new ArgumentOutOfRangeException(nameof(aisle), aisle, null),
+    };
+
+    /// <summary>The key of a region-keyed object: the default for every region, or one region.</summary>
+    public static string Key(string key) => key switch
+    {
+        RegionKeys.Default => Strings.Studio_Ing_Key_default,
+        "north" => Strings.Studio_Region_North,
+        "central" => Strings.Studio_Region_Central,
+        "south" => Strings.Studio_Region_South,
+        _ => key,
+    };
+
+    /// <summary>
+    /// The nutrition database an ingredient's numbers are from; an id that has no word here is shown as it is. The ids have
+    /// dashes (<c>usda-fdc</c>) and the names of the strings have underscores, so that each string is a property of Strings.
+    /// </summary>
+    public static string Db(string db) => Lookup("Studio_Db_" + db.Replace('-', '_')) ?? db;
+
     /// <summary>Season ids are data, so an id that has no word here is shown as it is.</summary>
     public static string Season(string id) => Lookup("Studio_Season_" + id) ?? id;
 
@@ -103,6 +129,30 @@ public static class Labels
         ReviewStatus.FinalExists => Strings.Studio_Review_FinalExists,
         ReviewStatus.DataNotUsable => Strings.Studio_Review_DataNotUsable,
         _ => throw new ArgumentOutOfRangeException(nameof(status), status, null),
+    };
+
+    public static string IngredientReview(IngredientStatus status) => status switch
+    {
+        IngredientStatus.Saved => Strings.Studio_IngReview_Saved,
+        IngredientStatus.Unchanged => Strings.Studio_IngReview_Unchanged,
+        IngredientStatus.NutritionChosen => Strings.Studio_IngReview_NutritionChosen,
+        IngredientStatus.NutritionCleared => Strings.Studio_IngReview_NutritionCleared,
+        IngredientStatus.NotFound => Strings.Studio_IngReview_NotFound,
+        IngredientStatus.Conflict => Strings.Studio_IngReview_Conflict,
+        IngredientStatus.HasErrors => Strings.Studio_IngReview_HasErrors,
+        IngredientStatus.VerifierMissing => Strings.Studio_IngReview_VerifierMissing,
+        IngredientStatus.NoSuchCandidate => Strings.Studio_IngReview_NoSuchCandidate,
+        IngredientStatus.CandidateHasNoNumbers => Strings.Studio_IngReview_CandidateHasNoNumbers,
+        IngredientStatus.DataNotUsable => Strings.Studio_Review_DataNotUsable,
+        _ => throw new ArgumentOutOfRangeException(nameof(status), status, null),
+    };
+
+    /// <summary>The look of the message about an ingredient result: it went well, it changed nothing, or it did not go through.</summary>
+    public static string IngredientTone(IngredientStatus status) => status switch
+    {
+        IngredientStatus.Saved or IngredientStatus.NutritionChosen or IngredientStatus.NutritionCleared => "ok",
+        IngredientStatus.Unchanged => "info",
+        _ => "danger",
     };
 
     /// <summary>The look of the message about a review result: it went well, it changed nothing, or it did not go through.</summary>

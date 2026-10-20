@@ -15,6 +15,7 @@
     <None Include="..\..\data\config\*.json" Link="data\config\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\data\ingredients\*.json" Link="data\ingredients\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\data\dishes\*.json" Link="data\dishes\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\data\_suggestions\nutrition\*.json" Link="data\_suggestions\nutrition\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,7 @@
 @page "/"
 @using System.Globalization
 @inject DishReviewer Reviewer
+@inject IngredientReviewer IngredientReviewer
 @inject DataFolder Folder
 
 <PageTitle>@Strings.Studio_Name</PageTitle>
@@ -31,11 +32,28 @@
     }
 </section>
 
+<section class="card" aria-labelledby="ingredients-title" data-ingredients>
+    <h2 id="ingredients-title">@Strings.Studio_Home_IngredientsTitle</h2>
+    <p data-ingredient-counts>
+        @string.Format(CultureInfo.InvariantCulture, Strings.Studio_Home_IngredientsFormat, _ingredients.Entries.Count(e => e.IsPlaceholder), _ingredients.Entries.Count(e => e.NutritionDb is not null && !e.IsPlaceholder))
+    </p>
+    @if (_ingredients.Entries.Count(e => e.IsPlaceholder && e.Candidates > 0) is > 0 and var suggested)
+    {
+        <p class="notice" data-ingredient-suggested>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Home_IngredientsSuggestedFormat, suggested)</p>
+    }
+    <p><a class="button" href="/ingredients">@Strings.Studio_Home_OpenIngredients</a></p>
+</section>
+
 <p><a class="button button--primary" href="/dishes">@Strings.Studio_Home_OpenList</a></p>
 <p class="text-muted text-small">@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Home_DataFolder, Folder.Root)</p>
 
 @code {
     private DishCatalog _catalog = default!;
+    private IngredientCatalog _ingredients = default!;
 
-    protected override void OnInitialized() => _catalog = Reviewer.Catalog();
+    protected override void OnInitialized()
+    {
+        _catalog = Reviewer.Catalog();
+        _ingredients = IngredientReviewer.Catalog();
+    }
 }

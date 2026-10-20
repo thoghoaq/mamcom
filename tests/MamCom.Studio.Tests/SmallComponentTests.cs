@@ -145,7 +145,7 @@ public class LayoutAndErrorPageTests : BunitContext
 
         cut.Find(".app-brand").TextContent.ShouldBe("MâmCơm Studio");
         cut.Find(".site-header__brand").GetAttribute("href").ShouldBe("/");
-        cut.FindAll(".site-nav a").Select(a => (a.TextContent, a.GetAttribute("href"))).ShouldBe([("Tổng quan", "/"), ("Món ăn", "/dishes")]);
+        cut.FindAll(".site-nav a").Select(a => (a.TextContent, a.GetAttribute("href"))).ShouldBe([("Tổng quan", "/"), ("Món ăn", "/dishes"), ("Nguyên liệu", "/ingredients")]);
         cut.Find("nav").GetAttribute("aria-label").ShouldBe("Điều hướng chính");
         cut.Find("main #inner").TextContent.ShouldBe("nội dung");
     }

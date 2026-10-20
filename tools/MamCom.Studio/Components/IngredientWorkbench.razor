@@ -1,0 +1,292 @@
+@using System.Globalization
+@using MamCom.DataBuilder.Loading
+@inject IngredientReviewer Reviewer
+@inject ReviewerIdentity Identity
+
+<p><a class="back-link" href="/ingredients" data-back>@Strings.Studio_Ing_Back</a></p>
+
+@if (_stored is null)
+{
+    <PageTitle>@Id</PageTitle>
+    <h1>@Id</h1>
+    <p class="notice notice--danger" data-not-found>@Strings.Studio_Ing_NotFound</p>
+}
+else if (_stored.Ingredient is null)
+{
+    <PageTitle>@Id</PageTitle>
+    <h1>@Id</h1>
+    <p class="notice notice--danger" data-broken>@Strings.Studio_Ing_BrokenText</p>
+    <pre class="problem">@_stored.Problem</pre>
+}
+else
+{
+    var source = _stored.Ingredient.NutritionSource;
+    <PageTitle>@Title</PageTitle>
+
+    <header class="dish-header">
+        <h1>@Title</h1>
+        <p class="dish-header__meta">
+            @if (IsPlaceholder(source))
+            {
+                <span class="badge badge--warning" data-nutrition-badge>@Strings.Studio_Ing_NoData</span>
+            }
+            else
+            {
+                <span class="badge badge--ok" data-nutrition-badge>@(source.VerifiedBy is { } by ? string.Format(CultureInfo.InvariantCulture, Strings.Studio_Ing_VerifiedFormat, by) : Labels.Db(source.Db))</span>
+            }
+            @if (_evaluation.Errors > 0)
+            {
+                <span class="badge badge--danger" data-errors>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_List_ErrorsFormat, _evaluation.Errors)</span>
+            }
+            @if (_evaluation.Warnings > 0)
+            {
+                <span class="badge badge--warning" data-warnings>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_List_WarningsFormat, _evaluation.Warnings)</span>
+            }
+            <span class="text-muted text-small">@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Dish_File, _stored.File)</span>
+        </p>
+    </header>
+
+    <KitchenProblems Kitchen="_kitchen" />
+
+    @if (_message is not null)
+    {
+        <div class="notice notice--@_tone" role="status" data-message>@_message</div>
+    }
+
+    @if (_dirty)
+    {
+        <p class="notice notice--warning" data-unsaved>@Strings.Studio_Ing_Unsaved</p>
+    }
+
+    <div class="workbench">
+        <div class="workbench__main">
+            <IngredientEditor Form="_form" Kitchen="_kitchen" ImageFiles="_imageFiles" Changed="Recompute" />
+        </div>
+
+        <aside class="workbench__side">
+            <section class="card" aria-labelledby="ing-nutrition-title" data-nutrition>
+                <h2 id="ing-nutrition-title">@Strings.Studio_Ing_NutritionTitle</h2>
+                <NutritionSummary Facts="_stored.Ingredient.NutritionPer100gEdible" Heading="@Strings.Studio_Ing_NutritionTitle" />
+                @if (IsPlaceholder(source))
+                {
+                    <p data-source-none>@Strings.Studio_Ing_SourceNone</p>
+                }
+                else
+                {
+                    <p data-source>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Ing_SourceFormat, Labels.Db(source.Db), source.Ref, source.MatchedName)</p>
+                    @if (source.Db == "usda-fdc" && source.Ref is { } fdcRef)
+                    {
+                        <p><a class="link-action" data-source-link href="https://fdc.nal.usda.gov/food-details/@Uri.EscapeDataString(fdcRef)/nutrients" target="_blank" rel="noopener noreferrer">@Strings.Studio_Ing_SourceLink</a></p>
+                    }
+
+                    @if (source is { VerifiedBy: { } verifiedBy, VerifiedAt: { } verifiedAt })
+                    {
+                        <p data-verified>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Ing_VerifiedLine, verifiedBy, verifiedAt.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture))</p>
+                    }
+
+                    <button type="button" class="button button--quiet" data-clear disabled="@(StateBlocker is not null)" @onclick="Clear">@Strings.Studio_Ing_Clear</button>
+                }
+            </section>
+
+            <FindingsPanel Findings="_evaluation.Findings" />
+
+            <section class="card" aria-labelledby="ing-candidates-title" data-candidates>
+                <h2 id="ing-candidates-title">@Strings.Studio_Ing_CandidatesTitle</h2>
+
+                <div class="field">
+                    <label for="verifier">@Strings.Studio_Ing_Verifier</label>
+                    <input id="verifier" class="input" aria-describedby="verifier-hint" autocomplete="name" @bind="_verifier" @bind:event="oninput" />
+                    <span class="field__hint" id="verifier-hint">@Strings.Studio_Ing_VerifierHint</span>
+                </div>
+
+                @if (_suggestion is null)
+                {
+                    <p class="notice" data-no-suggestion>@Strings.Studio_Ing_NoSuggestion</p>
+                }
+                else
+                {
+                    <p class="text-small text-muted" data-suggestion-info>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Ing_SuggestionInfoFormat, _suggestion.Query, _suggestion.RetrievedAt.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture), _suggestion.TotalHits, _suggestion.Candidates.Count)</p>
+                    @if (Blocker is { } why)
+                    {
+                        <p class="notice notice--warning" data-choose-hint>@why</p>
+                    }
+
+                    @foreach (var candidate in _suggestion.Candidates)
+                    {
+                        var chosen = candidate;
+                        var inUse = !IsPlaceholder(source) && source.Ref == chosen.FdcId.ToString(CultureInfo.InvariantCulture);
+                        <article class="candidate" data-candidate="@chosen.FdcId">
+                            <h3>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Ing_CandidateRankFormat, chosen.Rank) @if (inUse) {<span class="badge badge--ok" data-in-use>@Strings.Studio_Ing_InUse</span>}</h3>
+                            <p><strong>@chosen.Description</strong></p>
+                            <p class="text-small text-muted">@chosen.DataType@(chosen.FoodCategory is { } category ? $" · {category}" : string.Empty)</p>
+                            <p><a class="link-action" href="@chosen.DetailsUrl" target="_blank" rel="noopener noreferrer">@Strings.Studio_Ing_SourceLink</a></p>
+                            <p class="text-small">@Strings.Studio_Ing_CandidateNumbers:</p>
+                            <dl class="nutrition__facts" data-candidate-numbers>
+                                <div class="nutrition__fact"><dt>kcal</dt><dd>@Exact(chosen.Per100g.Kcal)</dd></div>
+                                <div class="nutrition__fact"><dt>@Strings.Nutrition_Protein (g)</dt><dd>@Exact(chosen.Per100g.ProteinG)</dd></div>
+                                <div class="nutrition__fact"><dt>@Strings.Nutrition_Fat (g)</dt><dd>@Exact(chosen.Per100g.FatG)</dd></div>
+                                <div class="nutrition__fact"><dt>@Strings.Nutrition_Carb (g)</dt><dd>@Exact(chosen.Per100g.CarbG)</dd></div>
+                                <div class="nutrition__fact"><dt>@Strings.Nutrition_Fiber (g)</dt><dd>@Exact(chosen.Per100g.FiberG)</dd></div>
+                                <div class="nutrition__fact"><dt>@Strings.Nutrition_Sodium (mg)</dt><dd>@Exact(chosen.Per100g.SodiumMg)</dd></div>
+                            </dl>
+                            @if (chosen.KcalSource is { } kcalSource)
+                            {
+                                <p class="text-small text-muted">@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Ing_KcalFromFormat, kcalSource)</p>
+                            }
+
+                            @if (chosen.Missing.Count > 0)
+                            {
+                                <p class="text-small nutrition__missing" data-missing>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Ing_MissingFormat, string.Join(", ", chosen.Missing))</p>
+                            }
+
+                            <p class="text-small text-muted">@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Ing_ReasonFormat, chosen.Reason)</p>
+                            @if (chosen.HasNoNumbers)
+                            {
+                                <p class="notice notice--warning" data-no-numbers>@Strings.Studio_Ing_NoNumbers</p>
+                            }
+
+                            <button type="button" class="button button--primary" data-choose disabled="@(Blocker is not null || chosen.HasNoNumbers)" @onclick="() => Choose(chosen.FdcId)">@Strings.Studio_Ing_Choose</button>
+                        </article>
+                    }
+                }
+            </section>
+
+            <section class="card" aria-labelledby="ing-used-title" data-used-by>
+                <h2 id="ing-used-title">@Strings.Studio_Ing_UsedByTitle</h2>
+                @if (_evaluation.UsedBy.Count == 0)
+                {
+                    <p>@Strings.Studio_Ing_UsedByNone</p>
+                }
+                else
+                {
+                    <ul>
+                        @foreach (var dish in _evaluation.UsedBy)
+                        {
+                            <li><a href="/dishes/@dish.Id">@dish.Name</a></li>
+                        }
+                    </ul>
+                }
+            </section>
+        </aside>
+    </div>
+
+    <div class="actionbar" role="group">
+        <button type="button" class="button" data-save disabled="@(!CanSave)" @onclick="Save">@Strings.Studio_Action_Save</button>
+        <button type="button" class="button button--quiet" data-discard disabled="@(!_dirty)" @onclick="Discard">@Strings.Studio_Action_Discard</button>
+    </div>
+}
+
+@code {
+    private Kitchen _kitchen = default!;
+    private StoredIngredient? _stored;
+    private NutritionSuggestion? _suggestion;
+    private IReadOnlyList<string> _imageFiles = [];
+    private IngredientForm _form = new();
+    private Ingredient? _candidate;
+    private IngredientEvaluation _evaluation = new([], []);
+    private bool _dirty;
+    private string _verifier = string.Empty;
+    private string? _message;
+    private string _tone = "info";
+    private string? _loadedId;
+
+    [Parameter, EditorRequired]
+    public string Id { get; set; } = string.Empty;
+
+    private string Title => _stored?.Ingredient is { } ingredient
+        ? ingredient.Names.GetValueOrDefault(RegionKeys.Default) ?? ingredient.Names.Values.FirstOrDefault() ?? Id
+        : Id;
+
+    private bool CanSave => _dirty && _kitchen.IsUsable && !_evaluation.HasErrors;
+
+    /// <summary>Why the numbers cannot be changed now (they would be written next to what is on disk); null when they can.</summary>
+    private string? StateBlocker =>
+        !_kitchen.IsUsable ? Strings.Studio_Review_DataNotUsable
+        : _dirty ? Strings.Studio_Ing_NeedSave
+        : _evaluation.HasErrors ? Strings.Studio_Ing_NeedNoErrors
+        : null;
+
+    /// <summary>Why no candidate can be chosen now; null when one can. Choosing also needs the name of the person who checked.</summary>
+    private string? Blocker => StateBlocker ?? (string.IsNullOrWhiteSpace(_verifier) ? Strings.Studio_Ing_NeedVerifier : null);
+
+    private static bool IsPlaceholder(NutritionSource source) => source.Db == NutritionDbs.Placeholder;
+
+    /// <summary>A number exactly as FDC states it, which is what would be written to the file; an unknown one says so.</summary>
+    private static string Exact(double? value) =>
+        value is { } number ? number.ToString("R", CultureInfo.InvariantCulture) : Strings.Studio_Ing_NotStated;
+
+    protected override void OnParametersSet()
+    {
+        if (_loadedId == Id)
+        {
+            return;
+        }
+
+        _loadedId = Id;
+        _message = null;
+        Load();
+    }
+
+    /// <summary>Reads the kitchen, the ingredient and its suggestion from disk again and starts the form over from the file.</summary>
+    private void Load()
+    {
+        _kitchen = Reviewer.LoadKitchen();
+        _stored = Reviewer.Store.Read(Id);
+        _suggestion = Reviewer.Store.ReadSuggestion(Id);
+        _imageFiles = Reviewer.Store.ImageFiles();
+        _verifier = Identity.Name;
+        ResetForm();
+    }
+
+    private void ResetForm()
+    {
+        if (_stored?.Ingredient is { } ingredient)
+        {
+            _form = IngredientForm.From(ingredient);
+            Recompute();
+        }
+    }
+
+    /// <summary>Checks the ingredient as the form describes it, and whether it differs from the file.</summary>
+    private void Recompute()
+    {
+        _candidate = _form.ToIngredient(_stored!.Ingredient!);
+        _evaluation = IngredientReviewer.Evaluate(_kitchen, _candidate);
+        _dirty = IngredientFile.Serialize(_candidate) != _stored.Text;
+    }
+
+    private void Save() => Apply(Reviewer.Save(Id, _candidate!, _stored!.Version));
+
+    private void Discard()
+    {
+        _message = null;
+        ResetForm();
+    }
+
+    private void Choose(long fdcId)
+    {
+        Identity.Name = _verifier.Trim();
+        Apply(Reviewer.ChooseNutrition(Id, fdcId, _verifier, _stored!.Version));
+    }
+
+    private void Clear() => Apply(Reviewer.ClearNutrition(Id, _stored!.Version));
+
+    private void Apply(IngredientResult result)
+    {
+        _message = Labels.IngredientReview(result.Status);
+        _tone = Labels.IngredientTone(result.Status);
+
+        switch (result.Status)
+        {
+            case IngredientStatus.Saved or IngredientStatus.NutritionChosen or IngredientStatus.NutritionCleared when result.Stored is not null:
+                _stored = result.Stored;
+                ResetForm();
+                break;
+
+            // What the person saw is no longer what is on disk (or is gone): show what is there now.
+            case IngredientStatus.Conflict or IngredientStatus.NotFound:
+                Load();
+                break;
+        }
+    }
+}

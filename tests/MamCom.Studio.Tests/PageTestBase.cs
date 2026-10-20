@@ -19,6 +19,8 @@ public abstract class PageTestBase : BunitContext
         Services.AddSingleton(_data.Store);
         Services.AddSingleton(_data.Loader);
         Services.AddSingleton(_data.Reviewer);
+        Services.AddSingleton(_data.Ingredients);
+        Services.AddSingleton(_data.IngredientReviewer);
         Services.AddSingleton(Identity);
     }
 
@@ -30,6 +32,9 @@ public abstract class PageTestBase : BunitContext
 
     protected IRenderedComponent<DishWorkbench> Open(string id = Id, DishLocation location = DishLocation.Data) =>
         Render<DishWorkbench>(p => p.Add(x => x.Id, id).Add(x => x.Location, location));
+
+    protected IRenderedComponent<IngredientWorkbench> OpenIngredient(string id = "gao") =>
+        Render<IngredientWorkbench>(p => p.Add(x => x.Id, id));
 
     protected static IElement Button(IRenderedComponent<DishWorkbench> cut, string marker) => cut.Find($"[data-{marker}]");
 

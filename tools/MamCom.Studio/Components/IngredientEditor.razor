@@ -1,0 +1,194 @@
+@using System.Globalization
+
+@* The form for one ingredient. Every change is reported with Changed so the page can check the ingredient again. *@
+<fieldset class="editor">
+    <legend class="visually-hidden">@Form.Names["default"]</legend>
+
+    <section class="card" aria-labelledby="ing-names-title">
+        <h2 id="ing-names-title">@Strings.Studio_Ing_Names</h2>
+        <p class="field__hint">@Strings.Studio_Ing_NamesHint</p>
+        <div class="form-grid">
+            @foreach (var key in RegionKeyList.Keys)
+            {
+                var name = key;
+                <div class="field">
+                    <label for="ing-name-@name">@Labels.Key(name)</label>
+                    <input id="ing-name-@name" class="input" data-name="@name" @bind="Form.Names[name]" @bind:after="Notify" />
+                </div>
+            }
+        </div>
+        <div class="field">
+            <label for="ing-aliases">@Strings.Studio_Ing_Aliases</label>
+            <textarea id="ing-aliases" class="textarea" @bind="Form.AliasesText" @bind:after="Notify"></textarea>
+        </div>
+    </section>
+
+    <section class="card" aria-labelledby="ing-about-title">
+        <h2 id="ing-about-title">@Strings.Studio_Ing_Category</h2>
+        <div class="form-grid">
+            <div class="field">
+                <label for="ing-category">@Strings.Studio_Ing_Category</label>
+                <input id="ing-category" class="input" list="ing-categories" @bind="Form.Category" @bind:after="Notify" />
+                <datalist id="ing-categories">
+                    @foreach (var category in Categories)
+                    {
+                        <option value="@category"></option>
+                    }
+                </datalist>
+            </div>
+            <div class="field">
+                <label for="ing-aisle">@Strings.Studio_Ing_Aisle</label>
+                <select id="ing-aisle" class="select" @bind="Form.Aisle" @bind:after="Notify">
+                    @foreach (var aisle in Enum.GetValues<Aisle>())
+                    {
+                        <option value="@aisle">@Labels.Aisle(aisle)</option>
+                    }
+                </select>
+            </div>
+            <div class="field">
+                <label for="ing-protein">@Strings.Studio_Ing_Protein</label>
+                <select id="ing-protein" class="select" @bind="Form.ProteinSource" @bind:after="Notify">
+                    <option value="">@Strings.Studio_Ing_NoProtein</option>
+                    @foreach (var source in ProteinOptions)
+                    {
+                        <option value="@source">@Labels.Protein(source)</option>
+                    }
+                </select>
+            </div>
+            <div class="field">
+                <label for="ing-waste">@Strings.Studio_Ing_Waste</label>
+                <input id="ing-waste" class="input input--number" type="number" step="any" min="0" max="1" inputmode="decimal" @bind="Form.WasteRatio" @bind:after="Notify" />
+            </div>
+        </div>
+        <label class="check">
+            <input type="checkbox" data-pantry @bind="Form.IsPantry" @bind:after="Notify" />
+            @Strings.Studio_Ing_Pantry
+        </label>
+    </section>
+
+    <section class="card" aria-labelledby="ing-units-title">
+        <h2 id="ing-units-title">@Strings.Studio_Ing_Units</h2>
+        <p class="field__hint">@Strings.Studio_Ing_UnitsHint</p>
+        @foreach (var key in RegionKeyList.Keys)
+        {
+            var name = key;
+            var unit = Form.Units[name];
+            <div class="line" data-unit="@name">
+                <label class="check">
+                    <input type="checkbox" data-unit-enabled @bind="unit.Enabled" @bind:after="Notify" />
+                    @string.Format(CultureInfo.InvariantCulture, Strings.Studio_Ing_UnitEnabledFormat, Labels.Key(name))
+                </label>
+                @if (unit.Enabled)
+                {
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="ing-unit-@name-display">@Strings.Studio_Ing_UnitDisplay</label>
+                            <input id="ing-unit-@name-display" class="input" data-unit-display @bind="unit.Display" @bind:after="Notify" />
+                        </div>
+                        <div class="field">
+                            <label for="ing-unit-@name-grams">@Strings.Studio_Ing_UnitGrams</label>
+                            <input id="ing-unit-@name-grams" class="input input--number" type="number" step="any" min="0" inputmode="decimal" data-unit-grams @bind="unit.GramsPerUnit" @bind:after="Notify" />
+                        </div>
+                        <div class="field">
+                            <label for="ing-unit-@name-step">@Strings.Studio_Ing_UnitStep</label>
+                            <input id="ing-unit-@name-step" class="input input--number" type="number" step="any" min="0" inputmode="decimal" data-unit-step @bind="unit.Step" @bind:after="Notify" />
+                        </div>
+                    </div>
+                    <label class="check">
+                        <input type="checkbox" data-unit-approx @bind="unit.ShowApproxGrams" @bind:after="Notify" />
+                        @Strings.Studio_Ing_UnitApprox
+                    </label>
+                }
+            </div>
+        }
+    </section>
+
+    <section class="card" aria-labelledby="ing-image-title">
+        <h2 id="ing-image-title">@Strings.Studio_Ing_Image</h2>
+        <p class="field__hint">@Strings.Studio_Ing_ImageHint</p>
+        @if (ImageFiles.Count == 0 && Form.Image.Thumb.Length == 0 && Form.Image.Full.Length == 0)
+        {
+            <p class="notice" data-no-images>@Strings.Studio_Ing_ImageNoFiles</p>
+        }
+
+        <div class="form-grid">
+            <div class="field">
+                <label for="ing-image-thumb">@Strings.Studio_Ing_ImageThumb</label>
+                <select id="ing-image-thumb" class="select" @bind="Form.Image.Thumb" @bind:after="Notify">
+                    <option value="">@Strings.Studio_Ing_ImageNone</option>
+                    @foreach (var name in ImageOptions(Form.Image.Thumb))
+                    {
+                        <option value="@name">@name</option>
+                    }
+                </select>
+            </div>
+            <div class="field">
+                <label for="ing-image-full">@Strings.Studio_Ing_ImageFull</label>
+                <select id="ing-image-full" class="select" @bind="Form.Image.Full" @bind:after="Notify">
+                    <option value="">@Strings.Studio_Ing_ImageNone</option>
+                    @foreach (var name in ImageOptions(Form.Image.Full))
+                    {
+                        <option value="@name">@name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        @{
+            var shown = Form.Image.Full.Length > 0 ? Form.Image.Full : Form.Image.Thumb;
+        }
+        @if (shown.Length > 0 && ImageFiles.Contains(shown))
+        {
+            <p><img class="picture" data-image-preview src="/data-images/@shown" alt="@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Ing_ImageAltFormat, Form.Names["default"])" /></p>
+        }
+
+        <div class="form-grid">
+            <div class="field">
+                <label for="ing-image-source">@Strings.Studio_Ing_ImageSource</label>
+                <input id="ing-image-source" class="input" @bind="Form.Image.Source" @bind:after="Notify" />
+            </div>
+            <div class="field">
+                <label for="ing-image-license">@Strings.Studio_Ing_ImageLicense</label>
+                <input id="ing-image-license" class="input" @bind="Form.Image.License" @bind:after="Notify" />
+            </div>
+        </div>
+        <label class="check">
+            <input type="checkbox" data-illustration @bind="Form.Image.IsIllustration" @bind:after="Notify" />
+            @Strings.Studio_Ing_ImageIllustration
+        </label>
+    </section>
+</fieldset>
+
+@code {
+    [Parameter, EditorRequired]
+    public IngredientForm Form { get; set; } = default!;
+
+    [Parameter, EditorRequired]
+    public Kitchen Kitchen { get; set; } = default!;
+
+    /// <summary>The names of the files in <c>data/images/out</c>.</summary>
+    [Parameter]
+    public IReadOnlyList<string> ImageFiles { get; set; } = [];
+
+    [Parameter]
+    public EventCallback Changed { get; set; }
+
+    private IEnumerable<string> Categories =>
+        Kitchen.Ingredients.Values.Select(i => i.Category).Append(Form.Category).Where(c => c.Length > 0).Distinct().Order(StringComparer.Ordinal);
+
+    /// <summary>The protein sources an ingredient can have. "None" is for dishes; an ingredient that is no protein source has none at all.</summary>
+    private IEnumerable<string> ProteinOptions
+    {
+        get
+        {
+            var known = Kitchen.ProteinSourceIds.Where(s => s != ProteinSources.None).ToArray();
+            return Form.ProteinSource.Length == 0 || known.Contains(Form.ProteinSource) ? known : [.. known, Form.ProteinSource];
+        }
+    }
+
+    /// <summary>The picture files, plus the one the ingredient names even when there is no such file, so it stays visible.</summary>
+    private IEnumerable<string> ImageOptions(string current) =>
+        current.Length > 0 && !ImageFiles.Contains(current) ? [.. ImageFiles, current] : ImageFiles;
+
+    private Task Notify() => Changed.InvokeAsync();
+}

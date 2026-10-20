@@ -80,7 +80,7 @@ public class HomeTests : PageTestBase
     {
         var cut = Render<Home>();
 
-        cut.Find("a.button").GetAttribute("href").ShouldBe("/dishes");
+        cut.Find("a.button--primary").GetAttribute("href").ShouldBe("/dishes");
         cut.Markup.ShouldContain(Data.Root);
     }
 

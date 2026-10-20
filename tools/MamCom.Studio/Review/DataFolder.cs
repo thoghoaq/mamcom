@@ -38,6 +38,24 @@ public sealed partial class DataFolder
     /// <exception cref="ArgumentException">The id is not a valid dish id.</exception>
     public string ReportPath(string id) => Path.Combine(FolderOf(DishLocation.Draft), CheckedId(id) + ".report.json");
 
+    /// <summary>Where the ingredient files are.</summary>
+    public string IngredientFolder => Path.Combine(Root, "ingredients");
+
+    /// <summary>Where FdcImporter leaves its suggestions of nutrition values, one file per ingredient.</summary>
+    public string SuggestionFolder => Path.Combine(Root, "_suggestions", "nutrition");
+
+    /// <summary>Where the images of the app are (<c>data/images/out</c>); an ingredient or a dish names a file in it.</summary>
+    public string ImageFolder => Path.Combine(Root, "images", "out");
+
+    /// <exception cref="ArgumentException">The id is not a valid ingredient id.</exception>
+    public string IngredientPath(string id) => Path.Combine(IngredientFolder, CheckedId(id) + ".json");
+
+    /// <exception cref="ArgumentException">The id is not a valid ingredient id.</exception>
+    public string SuggestionPath(string id) => Path.Combine(SuggestionFolder, CheckedId(id) + ".json");
+
+    /// <summary>The path of an ingredient file under the data folder, with forward slashes, as the validator names files.</summary>
+    public static string RelativeIngredientFile(string id) => $"ingredients/{id}.json";
+
     /// <summary>The path of a dish file under the data folder, with forward slashes, as the validator names files.</summary>
     public static string RelativeFile(DishLocation location, string id) =>
         location == DishLocation.Data ? $"dishes/{id}.json" : $"dishes/{DraftFolder}/{id}.json";

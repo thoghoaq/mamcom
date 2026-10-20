@@ -33,9 +33,12 @@ builder.Services.AddSingleton(dataFolder);
 builder.Services.AddSingleton<DishStore>();
 builder.Services.AddSingleton<KitchenLoader>();
 builder.Services.AddSingleton<DishReviewer>();
+builder.Services.AddSingleton<IngredientStore>();
+builder.Services.AddSingleton<IngredientReviewer>();
 builder.Services.AddSingleton(new ReviewerIdentity(options.Reviewer));
 
 var app = builder.Build();
+var contentTypes = new Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider();
 
 if (!app.Environment.IsDevelopment())
 {
@@ -46,6 +49,12 @@ app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages:
 app.UseAntiforgery();
 
 app.MapStaticAssets();
+
+// The pictures an ingredient names live in data/images/out, outside the web root; this hands one over by its plain file name.
+app.MapGet("/data-images/{name}", (string name, IngredientStore store) =>
+    store.ImagePath(name) is { } path
+        ? Results.File(path, contentTypes.TryGetContentType(name, out var type) ? type : "application/octet-stream")
+        : Results.NotFound());
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
