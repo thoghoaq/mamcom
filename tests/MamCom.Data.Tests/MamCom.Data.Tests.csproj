@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\MamCom.Data\MamCom.Data.csproj" />
+    <ProjectReference Include="..\..\tools\MamCom.DataBuilder\MamCom.DataBuilder.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The frozen seed (ADR-018): a real bundle to load, built by the real DataBuilder. -->
+    <None Include="..\..\data\schemas\*.json" Link="data\schemas\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\data\config\*.json" Link="data\config\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\fixtures\seed\ingredients\*.json" Link="data\ingredients\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\fixtures\seed\dishes\*.json" Link="data\dishes\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The service worker's data rules and their tests, side by side so Node can run them (ServiceWorkerTests). -->
+    <None Include="..\js\*.mjs" Link="js\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\src\MamCom.Web\wwwroot\service-worker.data.js" Link="js\service-worker.data.js" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\src\MamCom.Web\wwwroot\service-worker.published.js" Link="js\service-worker.published.js" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
