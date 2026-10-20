@@ -1,6 +1,7 @@
 using MamCom.Core.Cooking;
 using MamCom.Core.Data;
 using MamCom.Core.Models;
+using MamCom.Core.Taste;
 
 namespace MamCom.Core.Spinning;
 
@@ -10,9 +11,6 @@ namespace MamCom.Core.Spinning;
 /// </summary>
 public sealed class TrayEngine
 {
-    private static readonly IReadOnlySet<string> NoBlockedDishes = new HashSet<string>();
-    private static readonly IReadOnlyDictionary<string, DishPreference> NoPreferences = new Dictionary<string, DishPreference>();
-
     private readonly DataBundle _bundle;
     private readonly IClock _clock;
 
@@ -54,14 +52,18 @@ public sealed class TrayEngine
             new TraySummaryBuilder(config.Portion, config.Nutrition, scheduler));
     }
 
-    /// <summary>The context for a spin today: the catalog of the bundle, and what this household has eaten (read as of today).</summary>
-    /// <remarks>Blocked dishes and ratings are empty until the settings and the feedback after a meal exist (PLAN 3.8).</remarks>
-    public SpinContext ContextFor(Household household, EatenLog eaten)
+    /// <summary>
+    /// The context for a spin today: the catalog of the bundle, what this household has eaten (read as of today), and what it said about
+    /// dishes: the ones it blocked are never drawn, the ones it liked or did not like weigh more or less (SPEC §5.4).
+    /// </summary>
+    /// <param name="taste">Null when nothing was said yet.</param>
+    public SpinContext ContextFor(Household household, EatenLog eaten, TasteProfile? taste = null)
     {
         ArgumentNullException.ThrowIfNull(household);
         ArgumentNullException.ThrowIfNull(eaten);
 
-        return new SpinContext(household, _bundle.Dishes, IngredientsById, NoBlockedDishes, eaten.Until(_clock.Today), NoPreferences);
+        taste ??= TasteProfile.Empty;
+        return new SpinContext(household, _bundle.Dishes, IngredientsById, TasteDesk.BlockedSet(taste), eaten.Until(_clock.Today), taste.Preferences);
     }
 
     /// <summary>The session of an earlier visit can go on today: it is for today and every dish on its tray is still in the catalog.</summary>

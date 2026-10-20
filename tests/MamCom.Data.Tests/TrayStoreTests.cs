@@ -2,6 +2,7 @@ using MamCom.Core.Cooking;
 using MamCom.Core.Models;
 using MamCom.Core.Shopping;
 using MamCom.Core.Spinning;
+using MamCom.Core.Taste;
 using MamCom.Data.Device;
 using MamCom.Data.State;
 using MamCom.Data.Storage;
@@ -442,5 +443,88 @@ public class CookingStoreTests
     public async Task A_state_is_required()
     {
         await Should.ThrowAsync<ArgumentNullException>(async () => await new CookingStore(Create().State).SaveAsync(null!));
+    }
+}
+
+public class TasteStoreTests
+{
+    private static TasteProfile Profile() =>
+        new(new Dictionary<string, DishPreference> { ["canh-chua"] = DishPreference.Liked, ["ga-ran"] = DishPreference.Disliked }, ["bo-luc-lac", "ca-kho"]);
+
+    private static (UserStateStore State, FakeBrowser Browser) Create(FakeBrowser? browser = null)
+    {
+        browser ??= new FakeBrowser();
+        return (new UserStateStore(new LocalStorageKeyValueStorage(browser)), browser);
+    }
+
+    [Fact]
+    public async Task The_ratings_and_the_blocked_dishes_come_back_in_a_new_visit()
+    {
+        var (state, browser) = Create();
+        (await new TasteStore(state).SaveAsync(Profile())).ShouldBeTrue();
+
+        var back = await new TasteStore(Create(browser).State).LoadAsync();
+
+        back.Preferences["canh-chua"].ShouldBe(DishPreference.Liked);
+        back.Preferences["ga-ran"].ShouldBe(DishPreference.Disliked);
+        back.BlockedDishIds.ShouldBe(["bo-luc-lac", "ca-kho"]);
+    }
+
+    [Fact]
+    public async Task It_lives_under_taste_v1()
+    {
+        var (state, browser) = Create();
+
+        await new TasteStore(state).SaveAsync(Profile());
+
+        TasteStore.Key.ShouldBe("taste.v1");
+        browser.Items.Keys.ShouldContain("mamcom.state.taste.v1");
+    }
+
+    [Fact]
+    public async Task Nothing_saved_and_text_that_is_not_a_profile_are_the_empty_profile()
+    {
+        var (state, browser) = Create();
+        (await new TasteStore(state).LoadAsync()).ShouldBeSameAs(TasteProfile.Empty);
+
+        browser.Items["mamcom.state.taste.v1"] = "not json";
+
+        (await new TasteStore(state).LoadAsync()).ShouldBeSameAs(TasteProfile.Empty);
+    }
+
+    [Fact]
+    public async Task A_profile_edited_by_hand_into_one_that_cannot_be_used_is_the_empty_profile()
+    {
+        var (state, browser) = Create();
+        browser.Items["mamcom.state.taste.v1"] = "{\"preferences\":{\"canh-chua\":\"liked\"},\"blockedDishIds\":[\"a\",\"a\"]}";
+
+        (await new TasteStore(state).LoadAsync()).ShouldBeSameAs(TasteProfile.Empty);
+    }
+
+    [Fact]
+    public async Task A_browser_that_cannot_keep_it_says_so_and_the_page_still_has_it()
+    {
+        var (state, _) = Create(new FakeBrowser { RefuseWrites = true });
+        var store = new TasteStore(state);
+
+        (await store.SaveAsync(Profile())).ShouldBeFalse();
+        (await store.LoadAsync()).BlockedDishIds.ShouldBe(["bo-luc-lac", "ca-kho"]);
+    }
+
+    [Fact]
+    public async Task It_is_cleared_with_the_state_of_the_app()
+    {
+        var (state, _) = Create();
+        await new TasteStore(state).SaveAsync(Profile());
+
+        await state.ClearAsync();
+
+        (await new TasteStore(state).LoadAsync()).ShouldBeSameAs(TasteProfile.Empty);
+    }
+
+    [Fact]
+    public async Task A_profile_is_required()
+    {
+        await Should.ThrowAsync<ArgumentNullException>(async () => await new TasteStore(Create().State).SaveAsync(null!));
     }
 }

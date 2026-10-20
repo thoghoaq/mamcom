@@ -4,6 +4,7 @@ using MamCom.Core.Models;
 using MamCom.Core.Nutrition;
 using MamCom.Core.Portions;
 using MamCom.Core.Spinning;
+using MamCom.Core.Taste;
 using MamCom.Core.Tests.Shopping;
 using static MamCom.Core.Tests.Spinning.SpinnerFixtures;
 
@@ -170,6 +171,35 @@ public class TrayEngineTests
         context.LastEatenOn["ga-ran"].ShouldBe(Today.AddDays(-4));
         context.BlockedDishIds.ShouldBeEmpty();
         context.Preferences.ShouldBeEmpty();
+    }
+
+    [Fact]
+    public void The_context_carries_what_the_household_said_about_dishes_the_blocked_ones_and_how_they_liked_the_rest()
+    {
+        var taste = new TasteProfile(new Dictionary<string, DishPreference> { ["cai-luoc"] = DishPreference.Liked, ["ga-ran"] = DishPreference.Disliked }, ["canh-bi-do", "ga-kho-gung"]);
+
+        var context = Engine().ContextFor(SmallHome(), EatenLog.Empty, taste);
+
+        context.BlockedDishIds.OrderBy(id => id, StringComparer.Ordinal).ShouldBe(["canh-bi-do", "ga-kho-gung"]);
+        context.Preferences["cai-luoc"].ShouldBe(DishPreference.Liked);
+        context.Preferences["ga-ran"].ShouldBe(DishPreference.Disliked);
+        context.Preferences.Count.ShouldBe(2);
+    }
+
+    [Fact]
+    public void A_blocked_dish_is_never_on_a_tray_the_engine_spins()
+    {
+        var engine = Engine();
+        var all = engine.DishesById.Keys.ToArray();
+        var blocked = all.Take(all.Length / 2).ToArray();
+        var taste = new TasteProfile(new Dictionary<string, DishPreference>(), blocked);
+
+        for (var run = 0; run < 20; run++)
+        {
+            var session = engine.Desk.Spin(TraySession.Empty, engine.ContextFor(SmallHome(), EatenLog.Empty, taste));
+
+            session.Viewed!.Tray.Slots.Select(s => s.DishId).ShouldNotContain(id => blocked.Contains(id));
+        }
     }
 
     [Fact]
