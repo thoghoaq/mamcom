@@ -421,6 +421,35 @@ public class CoreJsonTests
     }
 
     [Fact]
+    public void The_cook_test_servings_and_finished_weight_are_read_and_round_trip()
+    {
+        var node = JsonNode.Parse(SpecSamples.Dish)!.AsObject();
+        node["status"] = "cooktested";
+        node["provenance"] = JsonNode.Parse("""
+            { "draftedBy": "human", "reviewedBy": "Mẹ", "reviewedAt": "2026-10-19", "cookTestedAt": "2026-10-20", "measuredTotalMinutes": 47, "measuredServings": 4, "measuredFinishedGrams": 1450 }
+            """);
+        var json = node.ToJsonString();
+
+        var dish = Read<Dish>(json);
+
+        dish.Provenance.ShouldBe(new Provenance(DraftAuthor.Human, "Mẹ", new DateOnly(2026, 10, 19), new DateOnly(2026, 10, 20), 47, 4, 1450));
+        ShouldRoundTrip<Dish>(json);
+    }
+
+    [Fact]
+    public void A_dish_without_the_two_cook_test_members_reads_them_as_null_and_does_not_write_them_back()
+    {
+        var dish = Read<Dish>(SpecSamples.Dish);
+
+        dish.Provenance.MeasuredServings.ShouldBeNull();
+        dish.Provenance.MeasuredFinishedGrams.ShouldBeNull();
+        var written = JsonSerializer.Serialize(dish, CoreJson.Options);
+        written.ShouldNotContain("measuredServings");
+        written.ShouldNotContain("measuredFinishedGrams");
+        written.ShouldContain("\"measuredTotalMinutes\": null");   // the older members are still always written
+    }
+
+    [Fact]
     public void Options_are_read_only_so_nobody_changes_them_at_runtime()
     {
         CoreJson.Options.IsReadOnly.ShouldBeTrue();

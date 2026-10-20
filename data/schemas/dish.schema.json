@@ -74,7 +74,9 @@
               "reviewedBy": { "type": "null" },
               "reviewedAt": { "type": "null" },
               "cookTestedAt": { "type": "null" },
-              "measuredTotalMinutes": { "type": "null" }
+              "measuredTotalMinutes": { "type": "null" },
+              "measuredServings": { "type": "null" },
+              "measuredFinishedGrams": { "type": "null" }
             }
           }
         }
@@ -90,7 +92,9 @@
               "reviewedBy": { "type": "string" },
               "reviewedAt": { "type": "string" },
               "cookTestedAt": { "type": "null" },
-              "measuredTotalMinutes": { "type": "null" }
+              "measuredTotalMinutes": { "type": "null" },
+              "measuredServings": { "type": "null" },
+              "measuredFinishedGrams": { "type": "null" }
             }
           }
         }
@@ -167,8 +171,22 @@
         "reviewedBy": { "type": ["string", "null"], "minLength": 1 },
         "reviewedAt": { "type": ["string", "null"], "format": "date" },
         "cookTestedAt": { "type": ["string", "null"], "format": "date" },
-        "measuredTotalMinutes": { "type": ["integer", "null"], "minimum": 1 }
-      }
+        "measuredTotalMinutes": { "description": "Minutes the cook test took, from the first cut to the table; a day at most.", "type": ["integer", "null"], "minimum": 1, "maximum": 1440 },
+        "measuredServings": { "description": "How many servings the cook test made. Left out of the file while there is no cook test.", "type": ["integer", "null"], "minimum": 1, "maximum": 100 },
+        "measuredFinishedGrams": { "description": "Weight of everything the cook test made, as served. Left out of the file while there is no cook test.", "type": ["integer", "null"], "minimum": 1, "maximum": 50000 }
+      },
+      "allOf": [
+        {
+          "description": "A weight means nothing without the number of servings it is for.",
+          "if": { "required": ["measuredFinishedGrams"], "properties": { "measuredFinishedGrams": { "type": "integer" } } },
+          "then": { "required": ["measuredServings"], "properties": { "measuredServings": { "type": "integer" } } }
+        },
+        {
+          "description": "And a number of servings only comes with the weight of what they were.",
+          "if": { "required": ["measuredServings"], "properties": { "measuredServings": { "type": "integer" } } },
+          "then": { "required": ["measuredFinishedGrams"], "properties": { "measuredFinishedGrams": { "type": "integer" } } }
+        }
+      ]
     },
     "image": {
       "description": "A declared image carries its source and license; AI or stock placeholders say isIllustration.",

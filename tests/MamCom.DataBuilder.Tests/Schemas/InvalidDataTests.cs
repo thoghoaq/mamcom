@@ -147,6 +147,73 @@ public class InvalidDataTests
             o["status"] = "cooktested";
         }, "/provenance/cookTestedAt", "type");
         Dish("unknown drafter", o => o["provenance"]!["draftedBy"] = "robot", "/provenance/draftedBy", "enum");
+        Dish("reviewed dish with a finished weight", o =>
+        {
+            Reviewed(o);
+            o["provenance"]!["measuredServings"] = 4;
+            o["provenance"]!["measuredFinishedGrams"] = 1200;
+        }, "/provenance/measuredFinishedGrams", "type");
+        Dish("reviewed dish with a number of servings", o =>
+        {
+            Reviewed(o);
+            o["provenance"]!["measuredServings"] = 4;
+            o["provenance"]!["measuredFinishedGrams"] = 1200;
+        }, "/provenance/measuredServings", "type");
+        Dish("draft with a number of servings", o =>
+        {
+            o["provenance"]!["measuredServings"] = 4;
+            o["provenance"]!["measuredFinishedGrams"] = 1200;
+        }, "/provenance/measuredServings", "type");
+        Dish("draft with a finished weight", o =>
+        {
+            o["provenance"]!["measuredServings"] = 4;
+            o["provenance"]!["measuredFinishedGrams"] = 1200;
+        }, "/provenance/measuredFinishedGrams", "type");
+        Dish("finished weight without servings", o =>
+        {
+            CookTested(o);
+            o["provenance"]!["measuredFinishedGrams"] = 1200;
+        }, "/provenance", "required");
+        Dish("servings without a finished weight", o =>
+        {
+            CookTested(o);
+            o["provenance"]!["measuredServings"] = 4;
+        }, "/provenance", "required");
+        Dish("servings of zero", o =>
+        {
+            CookTested(o);
+            o["provenance"]!["measuredServings"] = 0;
+            o["provenance"]!["measuredFinishedGrams"] = 1200;
+        }, "/provenance/measuredServings", "minimum");
+        Dish("more than a hundred servings", o =>
+        {
+            CookTested(o);
+            o["provenance"]!["measuredServings"] = 101;
+            o["provenance"]!["measuredFinishedGrams"] = 1200;
+        }, "/provenance/measuredServings", "maximum");
+        Dish("finished weight of zero", o =>
+        {
+            CookTested(o);
+            o["provenance"]!["measuredServings"] = 4;
+            o["provenance"]!["measuredFinishedGrams"] = 0;
+        }, "/provenance/measuredFinishedGrams", "minimum");
+        Dish("finished weight above fifty kilos", o =>
+        {
+            CookTested(o);
+            o["provenance"]!["measuredServings"] = 4;
+            o["provenance"]!["measuredFinishedGrams"] = 50001;
+        }, "/provenance/measuredFinishedGrams", "maximum");
+        Dish("measured time of more than a day", o =>
+        {
+            CookTested(o);
+            o["provenance"]!["measuredTotalMinutes"] = 1441;
+        }, "/provenance/measuredTotalMinutes", "maximum");
+        Dish("a fractional number of servings", o =>
+        {
+            CookTested(o);
+            o["provenance"]!["measuredServings"] = 2.5;
+            o["provenance"]!["measuredFinishedGrams"] = 1200;
+        }, "/provenance/measuredServings", "type");
         Dish("measured time of zero", o => o["provenance"]!["measuredTotalMinutes"] = 0, "/provenance/measuredTotalMinutes", "minimum");
         Dish("missing provenance", o => o.Remove("provenance"), "", "required");
         Dish("image without a license", o =>
@@ -203,6 +270,13 @@ public class InvalidDataTests
         dish["status"] = "reviewed";
         dish["provenance"]!["reviewedBy"] = "Mẹ";
         dish["provenance"]!["reviewedAt"] = "2026-10-19";
+    }
+
+    private static void CookTested(JsonObject dish)
+    {
+        Reviewed(dish);
+        dish["status"] = "cooktested";
+        dish["provenance"]!["cookTestedAt"] = "2026-10-20";
     }
 
     private static string Broken(Case c)
@@ -299,6 +373,32 @@ public class InvalidDataTests
         reviewed["provenance"]!["cookTestedAt"] = "2026-10-20";
         reviewed["provenance"]!["measuredTotalMinutes"] = 95;
         DataFiles.Schemas.Validate("dish", reviewed.ToJsonString()).ShouldBeEmpty();
+
+        reviewed["provenance"]!["measuredServings"] = 4;
+        reviewed["provenance"]!["measuredFinishedGrams"] = 1450;
+        DataFiles.Schemas.Validate("dish", reviewed.ToJsonString()).ShouldBeEmpty();
+    }
+
+    [Fact]
+    public void The_cook_test_numbers_may_be_left_out_or_written_as_null_until_there_is_a_cook_test()
+    {
+        var draft = JsonNode.Parse(DataFiles.Text("dishes", "thit-kho-trung"))!.AsObject();
+        draft["provenance"]!.AsObject().ContainsKey("measuredServings").ShouldBeFalse();   // the seed files do not have the two members
+        DataFiles.Schemas.Validate("dish", draft.ToJsonString()).ShouldBeEmpty();
+
+        draft["provenance"]!["measuredServings"] = null;
+        draft["provenance"]!["measuredFinishedGrams"] = null;
+        DataFiles.Schemas.Validate("dish", draft.ToJsonString()).ShouldBeEmpty();
+    }
+
+    [Fact]
+    public void A_cook_test_with_a_time_but_no_weight_is_valid_because_only_the_weight_needs_its_servings()
+    {
+        var dish = JsonNode.Parse(DataFiles.Text("dishes", "thit-kho-trung"))!.AsObject();
+        CookTested(dish);
+        dish["provenance"]!["measuredTotalMinutes"] = 95;
+
+        DataFiles.Schemas.Validate("dish", dish.ToJsonString()).ShouldBeEmpty();
     }
 
     [Fact]
