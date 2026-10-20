@@ -184,4 +184,97 @@
   <data name="Studio_Review_HasErrors" xml:space="preserve"><value>Món còn lỗi nên chưa lưu hay duyệt được. Xem phần "Máy kiểm".</value></data>
   <data name="Studio_Review_FinalExists" xml:space="preserve"><value>Đã có món cùng mã trong data/dishes nên bản nháp này không đè lên được.</value></data>
   <data name="Studio_Review_DataNotUsable" xml:space="preserve"><value>Chưa đọc được dữ liệu nên chưa lưu hay duyệt được.</value></data>
+
+  <!-- Studio: nguyên liệu -->
+  <data name="Studio_NavIngredients" xml:space="preserve"><value>Nguyên liệu</value></data>
+  <data name="Studio_Home_IngredientsTitle" xml:space="preserve"><value>Nguyên liệu</value></data>
+  <data name="Studio_Home_IngredientsFormat" xml:space="preserve"><value>{0} nguyên liệu chưa có số liệu dinh dưỡng, {1} đã xác nhận.</value></data>
+  <data name="Studio_Home_IngredientsSuggestedFormat" xml:space="preserve"><value>{0} nguyên liệu đã có gợi ý từ USDA chờ bạn chọn.</value></data>
+  <data name="Studio_Home_OpenIngredients" xml:space="preserve"><value>Mở danh sách nguyên liệu</value></data>
+  <data name="Studio_Ing_ListTitle" xml:space="preserve"><value>Nguyên liệu</value></data>
+  <data name="Studio_Ing_FilterNoData" xml:space="preserve"><value>Chưa có số liệu</value></data>
+  <data name="Studio_Ing_FilterSuggested" xml:space="preserve"><value>Có gợi ý chờ chọn</value></data>
+  <data name="Studio_Ing_FilterVerified" xml:space="preserve"><value>Đã xác nhận</value></data>
+  <data name="Studio_Ing_Empty" xml:space="preserve"><value>Không có nguyên liệu nào trong mục này.</value></data>
+  <data name="Studio_Ing_NoData" xml:space="preserve"><value>Chưa có số liệu</value></data>
+  <data name="Studio_Ing_VerifiedFormat" xml:space="preserve"><value>Đã xác nhận bởi {0}</value></data>
+  <data name="Studio_Ing_CandidatesFormat" xml:space="preserve"><value>{0} gợi ý</value></data>
+  <data name="Studio_Ing_UsedByFormat" xml:space="preserve"><value>Dùng trong {0} món</value></data>
+  <data name="Studio_Ing_HasImage" xml:space="preserve"><value>Có ảnh</value></data>
+  <data name="Studio_Ing_Broken" xml:space="preserve"><value>File không đọc được</value></data>
+  <data name="Studio_Ing_Back" xml:space="preserve"><value>← Danh sách nguyên liệu</value></data>
+  <data name="Studio_Ing_NotFound" xml:space="preserve"><value>Không tìm thấy nguyên liệu này.</value></data>
+  <data name="Studio_Ing_BrokenText" xml:space="preserve"><value>File này không đọc được thành một nguyên liệu. Sửa file bằng tay, rồi tải lại trang.</value></data>
+  <data name="Studio_Ing_Unsaved" xml:space="preserve"><value>Có thay đổi chưa lưu. Lưu rồi mới chọn được số liệu dinh dưỡng.</value></data>
+  <data name="Studio_Ing_Names" xml:space="preserve"><value>Tên theo vùng</value></data>
+  <data name="Studio_Ing_NamesHint" xml:space="preserve"><value>Cần tên mặc định, hoặc đủ tên của ba vùng. Để trống thì vùng đó dùng tên mặc định.</value></data>
+  <data name="Studio_Ing_Key_default" xml:space="preserve"><value>Mặc định (mọi vùng)</value></data>
+  <data name="Studio_Ing_Aliases" xml:space="preserve"><value>Tên gọi khác (mỗi dòng một tên)</value></data>
+  <data name="Studio_Ing_Category" xml:space="preserve"><value>Nhóm (mã, ví dụ rau-la)</value></data>
+  <data name="Studio_Ing_Aisle" xml:space="preserve"><value>Quầy đi chợ</value></data>
+  <data name="Studio_Aisle_MeatAndFish" xml:space="preserve"><value>Thịt cá</value></data>
+  <data name="Studio_Aisle_Produce" xml:space="preserve"><value>Rau củ quả</value></data>
+  <data name="Studio_Aisle_EggsAndTofu" xml:space="preserve"><value>Trứng đậu phụ</value></data>
+  <data name="Studio_Aisle_DryGoodsAndSpices" xml:space="preserve"><value>Khô và gia vị</value></data>
+  <data name="Studio_Aisle_Other" xml:space="preserve"><value>Khác</value></data>
+  <data name="Studio_Ing_Protein" xml:space="preserve"><value>Nguồn đạm</value></data>
+  <data name="Studio_Ing_NoProtein" xml:space="preserve"><value>Không phải nguồn đạm</value></data>
+  <data name="Studio_Ing_Waste" xml:space="preserve"><value>Tỷ lệ thải bỏ (từ 0 đến dưới 1)</value></data>
+  <data name="Studio_Ing_Pantry" xml:space="preserve"><value>Đồ có sẵn trong nhà</value></data>
+  <data name="Studio_Ing_Units" xml:space="preserve"><value>Đơn vị đi chợ</value></data>
+  <data name="Studio_Ing_UnitsHint" xml:space="preserve"><value>Cần đơn vị mặc định, hoặc đủ đơn vị của ba vùng.</value></data>
+  <data name="Studio_Ing_UnitEnabledFormat" xml:space="preserve"><value>Có đơn vị cho: {0}</value></data>
+  <data name="Studio_Ing_UnitDisplay" xml:space="preserve"><value>Tên đơn vị (g, kg, lạng, bó, quả…)</value></data>
+  <data name="Studio_Ing_UnitGrams" xml:space="preserve"><value>Gam mỗi đơn vị</value></data>
+  <data name="Studio_Ing_UnitStep" xml:space="preserve"><value>Bước làm tròn</value></data>
+  <data name="Studio_Ing_UnitApprox" xml:space="preserve"><value>Ghi (~Ng) trong danh sách đi chợ</value></data>
+  <data name="Studio_Ing_Image" xml:space="preserve"><value>Ảnh</value></data>
+  <data name="Studio_Ing_ImageHint" xml:space="preserve"><value>Chọn file trong data/images/out. ImageTool (task 2.8) sẽ tạo các file này từ ảnh gốc.</value></data>
+  <data name="Studio_Ing_ImageNone" xml:space="preserve"><value>(không có)</value></data>
+  <data name="Studio_Ing_ImageNoFiles" xml:space="preserve"><value>Chưa có file ảnh nào trong data/images/out.</value></data>
+  <data name="Studio_Ing_ImageThumb" xml:space="preserve"><value>Ảnh nhỏ (200px)</value></data>
+  <data name="Studio_Ing_ImageFull" xml:space="preserve"><value>Ảnh lớn (800px)</value></data>
+  <data name="Studio_Ing_ImageSource" xml:space="preserve"><value>Nguồn ảnh</value></data>
+  <data name="Studio_Ing_ImageLicense" xml:space="preserve"><value>Giấy phép</value></data>
+  <data name="Studio_Ing_ImageIllustration" xml:space="preserve"><value>Ảnh minh hoạ (AI hoặc ảnh tạm)</value></data>
+  <data name="Studio_Ing_ImageAltFormat" xml:space="preserve"><value>Ảnh của {0}</value></data>
+  <data name="Studio_Ing_NutritionTitle" xml:space="preserve"><value>Dinh dưỡng trên 100 g ăn được</value></data>
+  <data name="Studio_Ing_SourceNone" xml:space="preserve"><value>Chưa có nguồn: số liệu đang để trống.</value></data>
+  <data name="Studio_Ing_SourceFormat" xml:space="preserve"><value>Nguồn: {0}, mã {1}, "{2}".</value></data>
+  <data name="Studio_Ing_VerifiedLine" xml:space="preserve"><value>Xác nhận bởi {0}, ngày {1}.</value></data>
+  <data name="Studio_Ing_SourceLink" xml:space="preserve"><value>Xem trên FDC</value></data>
+  <data name="Studio_Db_placeholder" xml:space="preserve"><value>Chưa có nguồn</value></data>
+  <data name="Studio_Db_usda_fdc" xml:space="preserve"><value>USDA FoodData Central</value></data>
+  <data name="Studio_Db_vn_fct_2017" xml:space="preserve"><value>Bảng thành phần thực phẩm Việt Nam 2017</value></data>
+  <data name="Studio_Db_asean_fcd" xml:space="preserve"><value>ASEAN Food Composition Database</value></data>
+  <data name="Studio_Ing_Clear" xml:space="preserve"><value>Bỏ số liệu, về chưa có nguồn</value></data>
+  <data name="Studio_Ing_CandidatesTitle" xml:space="preserve"><value>Ứng viên từ USDA FoodData Central</value></data>
+  <data name="Studio_Ing_NoSuggestion" xml:space="preserve"><value>Chưa có gợi ý cho nguyên liệu này. Chạy MamCom.FdcImporter rồi tải lại trang.</value></data>
+  <data name="Studio_Ing_SuggestionInfoFormat" xml:space="preserve"><value>Tìm bằng "{0}" ngày {1}: FDC có {2} món khớp, giữ {3}.</value></data>
+  <data name="Studio_Ing_CandidateRankFormat" xml:space="preserve"><value>Ứng viên {0}</value></data>
+  <data name="Studio_Ing_CandidateNumbers" xml:space="preserve"><value>Số gốc của FDC trên 100 g, giữ nguyên</value></data>
+  <data name="Studio_Ing_NotStated" xml:space="preserve"><value>FDC không nêu</value></data>
+  <data name="Studio_Ing_KcalFromFormat" xml:space="preserve"><value>Năng lượng lấy từ: {0}.</value></data>
+  <data name="Studio_Ing_MissingFormat" xml:space="preserve"><value>FDC không nêu: {0}.</value></data>
+  <data name="Studio_Ing_ReasonFormat" xml:space="preserve"><value>Xếp hạng: {0}</value></data>
+  <data name="Studio_Ing_Choose" xml:space="preserve"><value>Chọn ứng viên này</value></data>
+  <data name="Studio_Ing_InUse" xml:space="preserve"><value>Đang dùng</value></data>
+  <data name="Studio_Ing_NoNumbers" xml:space="preserve"><value>Ứng viên này không có số nào nên không chọn được.</value></data>
+  <data name="Studio_Ing_Verifier" xml:space="preserve"><value>Người xác nhận</value></data>
+  <data name="Studio_Ing_VerifierHint" xml:space="preserve"><value>Tên này được ghi vào nguyên liệu (verifiedBy), cùng ngày hôm nay.</value></data>
+  <data name="Studio_Ing_NeedVerifier" xml:space="preserve"><value>Nhập tên người xác nhận.</value></data>
+  <data name="Studio_Ing_NeedSave" xml:space="preserve"><value>Lưu thay đổi trước khi chọn số liệu.</value></data>
+  <data name="Studio_Ing_NeedNoErrors" xml:space="preserve"><value>Sửa hết lỗi trước khi chọn số liệu.</value></data>
+  <data name="Studio_Ing_UsedByTitle" xml:space="preserve"><value>Món dùng nguyên liệu này</value></data>
+  <data name="Studio_Ing_UsedByNone" xml:space="preserve"><value>Chưa món nào dùng nguyên liệu này.</value></data>
+  <data name="Studio_IngReview_Saved" xml:space="preserve"><value>Đã lưu.</value></data>
+  <data name="Studio_IngReview_Unchanged" xml:space="preserve"><value>Không có gì thay đổi.</value></data>
+  <data name="Studio_IngReview_NutritionChosen" xml:space="preserve"><value>Đã ghi số liệu dinh dưỡng, nguồn và người xác nhận vào nguyên liệu.</value></data>
+  <data name="Studio_IngReview_NutritionCleared" xml:space="preserve"><value>Đã bỏ số liệu dinh dưỡng; nguyên liệu về chưa có nguồn.</value></data>
+  <data name="Studio_IngReview_NotFound" xml:space="preserve"><value>Không còn nguyên liệu này trong thư mục dữ liệu.</value></data>
+  <data name="Studio_IngReview_Conflict" xml:space="preserve"><value>File nguyên liệu đã bị đổi ở chỗ khác sau khi bạn mở nó, nên chưa ghi gì. Đã tải lại bản mới; xem lại rồi làm lại.</value></data>
+  <data name="Studio_IngReview_HasErrors" xml:space="preserve"><value>Nguyên liệu còn lỗi nên chưa ghi được. Xem phần "Máy kiểm".</value></data>
+  <data name="Studio_IngReview_VerifierMissing" xml:space="preserve"><value>Nhập tên người xác nhận trước khi chọn số liệu.</value></data>
+  <data name="Studio_IngReview_NoSuchCandidate" xml:space="preserve"><value>Không có ứng viên đó trong gợi ý của nguyên liệu này.</value></data>
+  <data name="Studio_IngReview_CandidateHasNoNumbers" xml:space="preserve"><value>Ứng viên này không có số nào nên không chọn được.</value></data>
 </root>

@@ -67,6 +67,13 @@ public class NutritionSummaryTests : BunitContext
     }
 
     [Fact]
+    public void The_section_is_named_for_a_screen_reader_by_serving_unless_told_otherwise()
+    {
+        Render<NutritionSummary>(p => p.Add(x => x.Facts, Known)).Find("section").GetAttribute("aria-label").ShouldBe("Dinh dưỡng một suất");
+        Render<NutritionSummary>(p => p.Add(x => x.Facts, Known).Add(x => x.Heading, "Dinh dưỡng trên 100 g")).Find("section").GetAttribute("aria-label").ShouldBe("Dinh dưỡng trên 100 g");
+    }
+
+    [Fact]
     public void Always_says_the_numbers_are_estimates()
     {
         var cut = Render<NutritionSummary>(p => p.Add(x => x.Facts, Known));
