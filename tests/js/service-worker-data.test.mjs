@@ -480,7 +480,9 @@ test('a server that does not answer cannot hold the installation for longer than
     const started = Date.now();
     assert.equal(await sw.warm(deps, SCOPE, 30), null);
 
-    assert.ok(Date.now() - started < 2000);
+    // Not a tight bound: on a busy machine a 30 ms timer can fire seconds late. It only has to be far from the real limit, so a warm that
+    // waited for the network (which never answers here) or for the default limit would still fail.
+    assert.ok(Date.now() - started < sw.WARM_TIMEOUT_MS / 2);
     assert.ok(sw.WARM_TIMEOUT_MS >= 5000 && sw.WARM_TIMEOUT_MS <= 60000);
 });
 
