@@ -1,0 +1,27 @@
+@using MamCom.Core.Spinning
+@using MamCom.UI.Formatting
+
+@* Under the tray (SPEC §8.1-2): how long the whole meal takes, the energy for one person with the rice, the rice, and what to buy. *@
+<dl class="tray-summary" aria-label="@Strings.Tray_SummaryLabel">
+    <div class="tray-summary__row">
+        <dt><Icon Name="clock" />@Strings.Tray_SummaryTime</dt>
+        <dd>@TrayFormat.Minutes(Summary.MealMinutes)</dd>
+    </div>
+    <div class="tray-summary__row">
+        <dt><Icon Name="flame" />@Strings.Tray_SummaryKcal</dt>
+        <dd>@NutritionFormat.Kcal(Summary.KcalPerPerson)</dd>
+    </div>
+    <div class="tray-summary__row">
+        <dt><Icon Name="wheat" />@Strings.Tray_SummaryRice</dt>
+        <dd>@NutritionFormat.Grams(Summary.RawRiceGrams)</dd>
+    </div>
+    <div class="tray-summary__row">
+        <dt><Icon Name="shopping-cart" />@Strings.Tray_SummaryShop</dt>
+        <dd>@TrayFormat.Items(Summary.ItemsToBuy)</dd>
+    </div>
+</dl>
+
+@code {
+    [Parameter, EditorRequired]
+    public TraySummary Summary { get; set; } = null!;
+}

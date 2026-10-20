@@ -1,8 +1,4 @@
-using System.Text.Json;
 using Bunit.TestDoubles;
-using MamCom.Core.Data;
-using MamCom.Core.Json;
-using MamCom.Core.Models;
 using MamCom.Data;
 using MamCom.Data.Bundles;
 using MamCom.UI.Components;
@@ -193,25 +189,6 @@ public class DataNoticesTests : BunitContext
         _data.Status = BundleLoadStatus.Loaded;
 
         Show().Find("section").GetAttribute("aria-label").ShouldBe(Strings.Data_NoticesLabel);
-    }
-
-    [Fact]
-    public void The_summary_counts_the_dishes_and_the_ingredients_once_there_is_a_bundle()
-    {
-        var cut = Render<DataSummary>();
-        cut.Markup.Trim().ShouldBeEmpty();   // nothing yet
-
-        var seed = Path.Combine(AppContext.BaseDirectory, "seed");
-        var dishes = Directory.GetFiles(Path.Combine(seed, "dishes"), "*.json").Take(2).Select(f => JsonSerializer.Deserialize<Dish>(File.ReadAllText(f), CoreJson.Options)!).ToArray();
-        var ingredients = Directory.GetFiles(Path.Combine(seed, "ingredients"), "*.json").Take(3).Select(f => JsonSerializer.Deserialize<Ingredient>(File.ReadAllText(f), CoreJson.Options)!).ToArray();
-        dishes.Length.ShouldBe(2);
-        ingredients.Length.ShouldBe(3);
-
-        _data.Status = BundleLoadStatus.Loaded;
-        _data.Bundle = new DataBundle("v", false, null!, ingredients, dishes);   // the summary reads only the two lists
-        _data.Raise();
-
-        cut.WaitForAssertion(() => cut.Find(".data-summary").TextContent.ShouldBe("Có 2 món và 3 nguyên liệu."));
     }
 
     private static string Text(string name) => typeof(Strings).GetProperty(name)!.GetValue(null)!.ToString()!;

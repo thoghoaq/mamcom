@@ -1,0 +1,43 @@
+@using MamCom.Core.Models
+@using MamCom.Data.Bundles
+@using MamCom.UI.Placeholders
+
+@* The picture of a dish when it has one, and the tile of its kind when it has none or the file cannot be shown (SPEC §7.5): never a broken image. *@
+@if (Dish.Image.Thumb is { } thumb && !_broken)
+{
+    <figure class="picture">
+        <img class="picture__image" src="@ThumbPreloader.ThumbUrl(thumb)" alt="" loading="lazy" @onerror="OnBroken" />
+        @if (Dish.Image.IsIllustration)
+        {
+            <figcaption class="badge picture__badge">@Strings.Picture_Illustration</figcaption>
+        }
+    </figure>
+}
+else
+{
+    <PlaceholderTile Placeholder="PlaceholderCatalog.ForDish(Dish)" Compact="Compact" />
+}
+
+@code {
+    private bool _broken;
+    private string? _shown;
+
+    [Parameter, EditorRequired]
+    public Dish Dish { get; set; } = null!;
+
+    /// <summary>A small picture, as on a card: the drawing of the placeholder without the words under it (they are still read to a screen reader).</summary>
+    [Parameter]
+    public bool Compact { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        // Another dish, or another file for the same dish, gets its own chance to load.
+        if (_shown != Dish.Image.Thumb)
+        {
+            _shown = Dish.Image.Thumb;
+            _broken = false;
+        }
+    }
+
+    private void OnBroken() => _broken = true;
+}

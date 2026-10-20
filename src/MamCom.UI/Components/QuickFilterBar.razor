@@ -1,0 +1,27 @@
+@using MamCom.Core.Spinning
+@using MamCom.UI.Formatting
+
+@* Offered when several spins went by without a tray being chosen (SPEC §8.1-2). Each chip is a switch; the screen spins again when one is changed. *@
+<section class="tray-filters" aria-labelledby="tray-filters-title">
+    <p class="field__label" id="tray-filters-title">@Strings.Tray_FiltersTitle</p>
+    <div class="chips" role="group" aria-labelledby="tray-filters-title">
+        <button type="button" class="chip" aria-pressed="@(Filters.Short ? "true" : "false")" disabled="@Disabled" @onclick="() => OnToggle.InvokeAsync(QuickFilterKind.Short)">@TrayFormat.ShortFilter(MaxMinutes)</button>
+        <button type="button" class="chip" aria-pressed="@(Filters.NoRedMeat ? "true" : "false")" disabled="@Disabled" @onclick="() => OnToggle.InvokeAsync(QuickFilterKind.NoRedMeat)">@Strings.Tray_FilterNoRedMeat</button>
+        <button type="button" class="chip" aria-pressed="@(Filters.LowFat ? "true" : "false")" disabled="@Disabled" @onclick="() => OnToggle.InvokeAsync(QuickFilterKind.LowFat)">@Strings.Tray_FilterLowFat</button>
+    </div>
+</section>
+
+@code {
+    [Parameter, EditorRequired]
+    public QuickFilters Filters { get; set; } = null!;
+
+    /// <summary>The minutes of the "short" filter, from the config.</summary>
+    [Parameter, EditorRequired]
+    public int MaxMinutes { get; set; }
+
+    [Parameter]
+    public bool Disabled { get; set; }
+
+    [Parameter]
+    public EventCallback<QuickFilterKind> OnToggle { get; set; }
+}

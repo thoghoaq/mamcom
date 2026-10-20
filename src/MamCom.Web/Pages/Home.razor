@@ -1,9 +1,6 @@
 @page "/"
 
-<PageTitle>MâmCơm</PageTitle>
-
+@* The home page is the tray of the day. A device with no household yet is sent to "Nhà mình có ai?" first. *@
 <HouseholdGate Context="household">
-    <h1>@Strings.Home_Title</h1>
-    <DataSummary />
-    <HouseholdSummary Household="household" />
+    <TrayScreen Household="household" />
 </HouseholdGate>

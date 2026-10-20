@@ -40,6 +40,9 @@
     z-index: 10;
     display: flex;
     gap: var(--space-3);
+    /* The bar belongs to a page, and the page has padding of its own: the bar takes that back, so it runs from edge to edge and its buttons keep their width. */
+    margin-inline: calc(-1 * (var(--space-4) + var(--safe-left))) calc(-1 * (var(--space-4) + var(--safe-right)));
+    margin-block-end: calc(-1 * var(--space-5));
     padding: var(--space-3) calc(var(--space-4) + var(--safe-right)) calc(var(--space-3) + var(--safe-bottom)) calc(var(--space-4) + var(--safe-left));
     border-top: 1px solid var(--color-border);
     background: var(--color-surface);
@@ -47,6 +50,12 @@
 
 .app-actions > * {
     flex: 1;
+}
+
+/* Two or three buttons share the width of a phone: a word and its icon stay on one line. */
+.app-actions .button {
+    padding-inline: var(--space-3);
+    white-space: nowrap;
 }
 
 /* Small helpers for laying a page out. */

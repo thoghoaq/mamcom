@@ -1,0 +1,295 @@
+@using System.Globalization
+@using MamCom.Core
+@using MamCom.Core.Models
+@using MamCom.Core.Spinning
+@using MamCom.Data.Device
+@using MamCom.Data.State
+@using MamCom.UI.Formatting
+@inherits AppDataComponentBase
+@inject ITrayStore Trays
+@inject IEatenLogStore EatenLogs
+@inject IDeviceFeatures Device
+@inject ISpinPacer Pacer
+@inject IClock Clock
+@inject IRandomSource RandomSource
+
+<PageTitle>@Strings.Tray_Title</PageTitle>
+
+<h1>@Strings.Tray_Title</h1>
+
+@if (_engine is not null && _session.Viewed is { } viewed)
+{
+    <p class="visually-hidden" role="status">@_announcement</p>
+
+    @if (_session.IsConfirmed)
+    {
+        <div class="notice notice--ok" role="status">@Strings.Tray_Confirmed</div>
+    }
+
+    @if (_session.History.Items.Count > 1)
+    {
+        <nav class="tray-history" aria-label="@Strings.Tray_HistoryLabel">
+            <button type="button" class="button button--quiet" disabled="@(!_session.CanGoPrevious || _busy)" @onclick="PreviousAsync">
+                <Icon Name="chevron-left" />@Strings.Tray_Previous
+            </button>
+            <span class="tray-history__position">@TrayFormat.Position(_session)</span>
+            <button type="button" class="button button--quiet" disabled="@(!_session.CanGoNext || _busy)" @onclick="NextAsync">
+                @Strings.Tray_Next<Icon Name="chevron-left" Class="icon--flip" />
+            </button>
+        </nav>
+    }
+
+    <TrayNotices Result="viewed" />
+
+    @if (viewed.Tray.Slots.Count == 0)
+    {
+        <p class="text-muted">@Strings.Tray_Empty</p>
+    }
+    else
+    {
+        <ul class="tray" aria-label="@Strings.Tray_ListLabel" aria-busy="@(_rolling ? "true" : "false")">
+            @for (var index = 0; index < viewed.Tray.Slots.Count; index++)
+            {
+                var slotIndex = index;
+                var slot = viewed.Tray.Slots[index];
+                var dish = _engine.DishesById[slot.DishId];
+                <DishCard @key="slot.DishId"
+                          Dish="dish"
+                          Facts="_facts[slot.DishId]"
+                          IsLocked="slot.IsLocked"
+                          Rolling="_rolling"
+                          Disabled="@(_busy || _session.IsConfirmed)"
+                          ShowSpicyNote="@(_noSpicyAtTable && dish.Spicy == SpicyLevel.Optional)"
+                          OnToggleLock="() => ToggleLockAsync(slotIndex)"
+                          OnSwap="() => SwapAsync(slotIndex)" />
+            }
+        </ul>
+
+        @if (!_session.IsConfirmed)
+        {
+            <p class="text-muted tray-hint">@Strings.Tray_SwipeHint</p>
+        }
+    }
+
+    @if (_summary is not null)
+    {
+        <TraySummaryPanel Summary="_summary" />
+    }
+
+    @if (!_session.IsConfirmed && _engine.Desk.ShowQuickFilters(_session))
+    {
+        <QuickFilterBar Filters="_session.Filters" MaxMinutes="_engine.QuickFilters.MaxMinutes" Disabled="_busy" OnToggle="ToggleFilterAsync" />
+    }
+
+    <HouseholdSummary Household="Household" />
+
+    <div class="app-actions">
+        @if (_session.IsConfirmed)
+        {
+            <button type="button" class="button" @onclick="ReopenAsync">@Strings.Tray_Reopen</button>
+        }
+        else
+        {
+            <button type="button" class="button" disabled="@_busy" aria-busy="@(_rolling ? "true" : "false")" @onclick="() => SpinAsync(animate: true)">
+                <Icon Name="dice" />@(_rolling ? Strings.Tray_Spinning : Strings.Tray_Spin)
+            </button>
+            <button type="button" class="button button--primary" disabled="@(_busy || viewed.Tray.Slots.Count == 0)" @onclick="ConfirmAsync">
+                <Icon Name="check" />@Strings.Tray_Confirm
+            </button>
+        }
+    </div>
+}
+
+@code {
+    /// <summary>How long the phone buzzes when the dice stop, in milliseconds: a tap, not an alarm.</summary>
+    public const int VibrationMilliseconds = 30;
+
+    private TrayEngine? _engine;
+    private MamCom.Core.Data.DataBundle? _engineBundle;
+    private TraySession _session = TraySession.Empty;
+    private EatenLog _eaten = EatenLog.Empty;
+    private IReadOnlyDictionary<string, DishFacts> _facts = new Dictionary<string, DishFacts>();
+    private TraySummary? _summary;
+    private string _announcement = string.Empty;
+    private bool _busy;
+    private bool _rolling;
+    private bool _noSpicyAtTable;
+
+    /// <summary>The household the tray is for; the gate hands it over once it knows there is one.</summary>
+    [Parameter, EditorRequired]
+    public Household Household { get; set; } = null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Data.InitializeAsync();
+        await StartAsync();
+    }
+
+    protected override async Task OnDataChangedAsync()
+    {
+        // "Dùng ngay" took in a newer bundle: the dishes this screen holds may be gone or changed, so it starts from the new one.
+        if (!_busy && Data.Bundle is { } bundle && !ReferenceEquals(_engineBundle, bundle))
+        {
+            await StartAsync();
+        }
+    }
+
+    protected override void OnParametersSet() => _noSpicyAtTable = Household.Members.Any(m => m.Tags.Contains(MemberTag.NoSpicy));
+
+    /// <summary>Takes up where the last visit left off, or, on a new day, spins the first tray at once so the screen is never empty.</summary>
+    private async Task StartAsync()
+    {
+        if (Data.Bundle is not { } bundle)
+        {
+            return;
+        }
+
+        _engine = TrayEngine.Create(bundle, RandomSource, Clock);
+        _engineBundle = bundle;
+        _eaten = await EatenLogs.LoadAsync();
+
+        var saved = await Trays.LoadAsync();
+        _session = saved is not null && _engine.CanContinue(saved) ? saved : TraySession.Empty;
+
+        if (_session.Viewed is null)
+        {
+            await SpinAsync(animate: false);
+        }
+        else
+        {
+            Refresh();
+        }
+    }
+
+    private SpinContext Context() => _engine!.ContextFor(Household, _eaten);
+
+    private async Task SpinAsync(bool animate)
+    {
+        if (_busy || _engine is null)
+        {
+            return;
+        }
+
+        _busy = true;
+        try
+        {
+            if (animate && _session.Viewed is not null)
+            {
+                _rolling = true;
+                StateHasChanged();
+                await Pacer.WaitAsync();
+            }
+
+            _session = _engine.Desk.Spin(_session, Context());
+            await SaveSessionAsync();
+            Refresh();
+            Announce();
+
+            if (animate)
+            {
+                await Device.VibrateAsync(VibrationMilliseconds);   // the tap of the dice stopping, for a spin the person asked for; not when the app opens
+            }
+        }
+        finally
+        {
+            _rolling = false;
+            _busy = false;
+        }
+    }
+
+    private async Task ToggleLockAsync(int slotIndex)
+    {
+        _session = _engine!.Desk.ToggleLock(_session, slotIndex);
+        await SaveSessionAsync();
+        Refresh();
+    }
+
+    private async Task SwapAsync(int slotIndex)
+    {
+        if (_busy || _session.IsConfirmed || _session.Viewed?.Tray.Slots[slotIndex].IsLocked != false)
+        {
+            return;   // a swipe can land on a card that cannot be swapped: nothing happens
+        }
+
+        _session = _engine!.Desk.Reroll(_session, Context(), slotIndex);
+        await SaveSessionAsync();
+        Refresh();
+        Announce();
+    }
+
+    private async Task PreviousAsync()
+    {
+        _session = _engine!.Desk.Previous(_session);
+        await SaveSessionAsync();
+        Refresh();
+        Announce();
+    }
+
+    private async Task NextAsync()
+    {
+        _session = _engine!.Desk.Next(_session);
+        await SaveSessionAsync();
+        Refresh();
+        Announce();
+    }
+
+    private async Task ConfirmAsync()
+    {
+        var (session, eaten) = _engine!.Desk.Confirm(_session, _eaten);
+        _session = session;
+        _eaten = eaten;
+        await EatenLogs.SaveAsync(_eaten);
+        await SaveSessionAsync();
+        Refresh();
+    }
+
+    private async Task ReopenAsync()
+    {
+        _session = _engine!.Desk.Reopen(_session);
+        await SaveSessionAsync();
+        Refresh();
+    }
+
+    private async Task ToggleFilterAsync(QuickFilterKind kind)
+    {
+        var f = _session.Filters;
+        var next = kind switch
+        {
+            QuickFilterKind.Short => f with { Short = !f.Short },
+            QuickFilterKind.NoRedMeat => f with { NoRedMeat = !f.NoRedMeat },
+            _ => f with { LowFat = !f.LowFat },
+        };
+
+        _session = _engine!.Desk.SetFilters(_session, next);
+        await SpinAsync(animate: true);
+    }
+
+    private async Task SaveSessionAsync() => await Trays.SaveAsync(_session);
+
+    /// <summary>Works out what the cards and the summary say for the tray on the screen.</summary>
+    private void Refresh()
+    {
+        _facts = new Dictionary<string, DishFacts>();
+        _summary = null;
+
+        if (_engine is null || _session.Viewed is not { } viewed)
+        {
+            return;
+        }
+
+        var dishes = _engine.DishesOf(viewed.Tray);
+        _facts = dishes.ToDictionary(d => d.Id, d => _engine.Summary.FactsOf(d, _engine.IngredientsById), StringComparer.Ordinal);
+        _summary = dishes.Count == 0 ? null : _engine.Summary.Build(Household, dishes, _engine.IngredientsById);
+    }
+
+    /// <summary>What a screen reader says after a spin or a swap: the names of the dishes, since the cards change under it.</summary>
+    private void Announce()
+    {
+        if (_engine is null || _session.Viewed is not { } viewed)
+        {
+            return;
+        }
+
+        _announcement = string.Format(CultureInfo.InvariantCulture, Strings.Tray_AnnounceFormat, string.Join(", ", _engine.DishesOf(viewed.Tray).Select(d => d.Name)));
+    }
+}

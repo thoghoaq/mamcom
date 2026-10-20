@@ -17,6 +17,28 @@ public partial class TokenTests
     }
 
     [Fact]
+    public void A_dish_card_leaves_up_and_down_to_the_page_so_a_swipe_along_it_reaches_the_card()
+    {
+        PropertyValue(Rule(Base, ".dish-card {"), "touch-action").ShouldBe("pan-y");
+    }
+
+    [Fact]
+    public void The_rolling_of_the_cards_stops_for_a_person_who_asked_for_less_movement()
+    {
+        var reduced = Rule(Base, "@media (prefers-reduced-motion: reduce)");
+
+        PropertyValue(Rule(reduced, ".dish-card--rolling {"), "animation").ShouldBe("none");
+        PropertyValue(Rule(Base, ".dish-card--rolling {"), "animation").ShouldStartWith("dish-roll");
+    }
+
+    [Fact]
+    public void A_picture_of_a_dish_has_the_shape_of_the_placeholder_it_replaces_so_the_cards_do_not_jump()
+    {
+        PropertyValue(Rule(Base, "\n.picture {"), "aspect-ratio").ShouldBe(PropertyValue(Rule(Base, "\n.tile--dish {"), "aspect-ratio"));
+        PropertyValue(Rule(Base, "\n.picture {"), "inline-size").ShouldBe(PropertyValue(Rule(Base, "\n.tile {"), "inline-size"));
+    }
+
+    [Fact]
     public void The_number_of_bowls_is_set_in_the_large_size_and_stands_out()
     {
         var rule = Rule(Base, ".stepper__value {");

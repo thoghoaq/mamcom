@@ -1,0 +1,105 @@
+@using System.Globalization
+@using MamCom.Core.Models
+@using MamCom.Core.Spinning
+@using MamCom.UI.Formatting
+
+@* One dish of the tray (SPEC §8.1-2): its picture, what kind it is, how long it takes, its energy, a lock and a swap. A swipe along the card swaps it too. *@
+<li class="@CssClass" @onpointerdown="PointerDown" @onpointerup="PointerUp" @onpointercancel="PointerCancel">
+    <DishPicture Dish="Dish" Compact="true" />
+    <div class="dish-card__body">
+        <p class="dish-card__slot @SlotClass">@TrayFormat.Slot(Dish.Slot)</p>
+        <h2 class="dish-card__name">@Dish.Name</h2>
+        <p class="dish-card__facts">
+            <span class="dish-card__fact"><Icon Name="clock" />@TrayFormat.Minutes(Facts.Minutes)</span>
+            <span class="dish-card__fact"><Icon Name="flame" />@KcalText</span>
+        </p>
+        @if (ShowSpicyNote)
+        {
+            <p class="dish-card__aside">@Strings.Tray_SpicyAside</p>
+        }
+    </div>
+    <div class="dish-card__actions">
+        <button type="button" class="button button--quiet button--icon dish-card__lock" aria-pressed="@(IsLocked ? "true" : "false")" aria-label="@string.Format(CultureInfo.InvariantCulture, Strings.Tray_LockFormat, Dish.Name)" disabled="@Disabled" @onclick="() => OnToggleLock.InvokeAsync()">
+            <Icon Name="@(IsLocked ? "lock" : "lock-open")" />
+        </button>
+        <button type="button" class="button button--quiet button--icon dish-card__swap" aria-label="@string.Format(CultureInfo.InvariantCulture, Strings.Tray_SwapFormat, Dish.Name)" disabled="@(Disabled || IsLocked)" @onclick="() => OnSwap.InvokeAsync()">
+            <Icon Name="refresh" />
+        </button>
+    </div>
+</li>
+
+@code {
+    /// <summary>How far along the card a finger or a mouse has to go for it to count as a swipe, in CSS pixels.</summary>
+    public const double SwipeMinimumPixels = 60;
+
+    /// <summary>A swipe goes mostly sideways: at least this many times as far across as up or down, or it is a person scrolling the page.</summary>
+    public const double SwipeSidewaysRatio = 2;
+
+    private double? _startX;
+    private double _startY;
+
+    [Parameter, EditorRequired]
+    public Dish Dish { get; set; } = null!;
+
+    [Parameter, EditorRequired]
+    public DishFacts Facts { get; set; } = null!;
+
+    [Parameter]
+    public bool IsLocked { get; set; }
+
+    /// <summary>The dice are rolling: a dish that is not locked is about to change, and shows it.</summary>
+    [Parameter]
+    public bool Rolling { get; set; }
+
+    /// <summary>Nothing on the card can be changed now: a spin is going on or the tray is confirmed.</summary>
+    [Parameter]
+    public bool Disabled { get; set; }
+
+    /// <summary>Somebody at the table does not eat spicy food and this dish has chilli that can be left out (SPEC §5.2).</summary>
+    [Parameter]
+    public bool ShowSpicyNote { get; set; }
+
+    [Parameter]
+    public EventCallback OnToggleLock { get; set; }
+
+    [Parameter]
+    public EventCallback OnSwap { get; set; }
+
+    private string CssClass => "card dish-card" + (IsLocked ? " dish-card--locked" : string.Empty) + (Rolling && !IsLocked ? " dish-card--rolling" : string.Empty);
+
+    private string SlotClass => Dish.Slot switch
+    {
+        DishSlot.Soup => "slot--soup",
+        DishSlot.Main => "slot--main",
+        _ => "slot--veg",
+    };
+
+    private string KcalText => Facts.KcalPerServing is { } kcal
+        ? string.Format(CultureInfo.InvariantCulture, Strings.Tray_KcalPerServingFormat, NutritionFormat.Kcal(kcal))
+        : Strings.Nutrition_Unknown;
+
+    private void PointerDown(Microsoft.AspNetCore.Components.Web.PointerEventArgs e)
+    {
+        _startX = e.ClientX;
+        _startY = e.ClientY;
+    }
+
+    private async Task PointerUp(Microsoft.AspNetCore.Components.Web.PointerEventArgs e)
+    {
+        if (_startX is not { } startX)
+        {
+            return;
+        }
+
+        _startX = null;
+        var across = Math.Abs(e.ClientX - startX);
+        var along = Math.Abs(e.ClientY - _startY);
+
+        if (!Disabled && !IsLocked && across >= SwipeMinimumPixels && across >= SwipeSidewaysRatio * along)
+        {
+            await OnSwap.InvokeAsync();
+        }
+    }
+
+    private void PointerCancel() => _startX = null;
+}

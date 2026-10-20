@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using MamCom.Core;
 using MamCom.Data;
+using MamCom.Data.Device;
 using MamCom.Data.Bundles;
 using MamCom.Data.State;
 using MamCom.Data.Storage;
+using MamCom.UI;
 using MamCom.Web;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -16,6 +19,12 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddScoped<IKeyValueStorage, LocalStorageKeyValueStorage>();
 builder.Services.AddScoped<IUserStateStore, UserStateStore>();
 builder.Services.AddScoped<IHouseholdStore, HouseholdStore>();
+builder.Services.AddScoped<ITrayStore, TrayStore>();
+builder.Services.AddScoped<IEatenLogStore, EatenLogStore>();
+builder.Services.AddScoped<IDeviceFeatures, BrowserDeviceFeatures>();
+builder.Services.AddScoped<IClock, SystemClock>();
+builder.Services.AddScoped<IRandomSource>(_ => new SeededRandomSource((ulong)Random.Shared.NextInt64()));   // every visit draws differently; tests give a seed
+builder.Services.AddScoped<ISpinPacer, TimerSpinPacer>();
 builder.Services.AddScoped<BundleLoader>();
 builder.Services.AddScoped<ThumbPreloader>();
 builder.Services.AddScoped<AppData>();

@@ -1,0 +1,24 @@
+@using MamCom.Core.Models
+@using MamCom.UI.Formatting
+
+@* What the spinner gave up to fill the tray, and what it could not fill (SPEC §5.3, §5.5 step 4): the person is told, not left to wonder. *@
+@if (Result.RelaxedRules.Count > 0 || Result.UnfilledSlots.Count > 0)
+{
+    <div class="notice notice--warning" role="status">
+        <ul class="tray-notices">
+            @foreach (var rule in Result.RelaxedRules)
+            {
+                <li>@TrayFormat.Relaxed(rule)</li>
+            }
+            @foreach (var slot in Result.UnfilledSlots)
+            {
+                <li>@TrayFormat.Unfilled(slot)</li>
+            }
+        </ul>
+    </div>
+}
+
+@code {
+    [Parameter, EditorRequired]
+    public SpinResult Result { get; set; } = null!;
+}

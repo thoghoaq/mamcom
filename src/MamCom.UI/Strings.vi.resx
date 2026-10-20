@@ -333,7 +333,6 @@
   <data name="Placeholder_Protein_chay" xml:space="preserve"><value>đạm chay</value></data>
 
   <!-- Trang chủ tạm và bảng mẫu giao diện (/styleguide) -->
-  <data name="Home_Title" xml:space="preserve"><value>Hôm nay ăn gì?</value></data>
   <data name="Styleguide_Title" xml:space="preserve"><value>Bảng mẫu giao diện</value></data>
   <data name="Styleguide_Intro" xml:space="preserve"><value>Cùng một bộ mẫu ở hai chế độ để so sánh. App thật theo chế độ sáng hoặc tối của máy.</value></data>
   <data name="Styleguide_Light" xml:space="preserve"><value>Chế độ sáng</value></data>
@@ -392,7 +391,6 @@
   <data name="Data_UpdateReady" xml:space="preserve"><value>Đã tải xong dữ liệu món mới.</value></data>
   <data name="Data_UpdateApply" xml:space="preserve"><value>Dùng ngay</value></data>
   <data name="Data_NotPersistent" xml:space="preserve"><value>Trình duyệt này không giữ dữ liệu giữa các lần mở app (có thể do đang ở chế độ riêng tư). Thông tin gia đình sẽ mất khi đóng trang.</value></data>
-  <data name="Data_SummaryFormat" xml:space="preserve"><value>Có {0} món và {1} nguyên liệu.</value></data>
 
   <!-- Nhà mình có ai? (màn hình đầu tiên, SPEC §8.1-1) -->
   <data name="Household_Title" xml:space="preserve"><value>Nhà mình có ai?</value></data>
@@ -432,4 +430,46 @@
   <data name="Region_North" xml:space="preserve"><value>Bắc</value></data>
   <data name="Region_Central" xml:space="preserve"><value>Trung</value></data>
   <data name="Region_South" xml:space="preserve"><value>Nam</value></data>
+
+  <!-- Mâm hôm nay (SPEC §8.1-2) -->
+  <data name="Tray_Title" xml:space="preserve"><value>Mâm hôm nay</value></data>
+  <data name="Tray_Spin" xml:space="preserve"><value>Quay mâm</value></data>
+  <data name="Tray_Spinning" xml:space="preserve"><value>Đang quay…</value></data>
+  <data name="Tray_Confirm" xml:space="preserve"><value>Chốt mâm</value></data>
+  <data name="Tray_Reopen" xml:space="preserve"><value>Chọn mâm khác</value></data>
+  <data name="Tray_Confirmed" xml:space="preserve"><value>Đã chốt mâm hôm nay.</value></data>
+  <data name="Tray_ListLabel" xml:space="preserve"><value>Các món của mâm</value></data>
+  <data name="Tray_SwipeHint" xml:space="preserve"><value>Vuốt thẻ sang trái hoặc phải để đổi món đó.</value></data>
+  <data name="Tray_AnnounceFormat" xml:space="preserve"><value>Mâm: {0}.</value></data>
+  <data name="Tray_Empty" xml:space="preserve"><value>Chưa có món nào hợp để quay.</value></data>
+  <data name="Tray_HistoryLabel" xml:space="preserve"><value>Các mâm đã quay</value></data>
+  <data name="Tray_Previous" xml:space="preserve"><value>Mâm trước</value></data>
+  <data name="Tray_Next" xml:space="preserve"><value>Mâm sau</value></data>
+  <data name="Tray_PositionFormat" xml:space="preserve"><value>Mâm {0}/{1}</value></data>
+  <data name="Tray_Slot_Soup" xml:space="preserve"><value>Canh</value></data>
+  <data name="Tray_Slot_Main" xml:space="preserve"><value>Món mặn</value></data>
+  <data name="Tray_Slot_Vegetable" xml:space="preserve"><value>Rau</value></data>
+  <data name="Tray_LockFormat" xml:space="preserve"><value>Khoá {0}</value></data>
+  <data name="Tray_SwapFormat" xml:space="preserve"><value>Đổi món {0}</value></data>
+  <data name="Tray_SpicyAside" xml:space="preserve"><value>Để ớt riêng</value></data>
+  <data name="Tray_KcalPerServingFormat" xml:space="preserve"><value>{0}/suất</value></data>
+  <data name="Tray_SummaryLabel" xml:space="preserve"><value>Tóm tắt mâm</value></data>
+  <data name="Tray_SummaryTime" xml:space="preserve"><value>Nấu cả mâm</value></data>
+  <data name="Tray_SummaryKcal" xml:space="preserve"><value>Mỗi người, cả cơm</value></data>
+  <data name="Tray_SummaryRice" xml:space="preserve"><value>Gạo nấu cơm</value></data>
+  <data name="Tray_SummaryShop" xml:space="preserve"><value>Cần mua</value></data>
+  <data name="Tray_ItemsFormat" xml:space="preserve"><value>{0} thứ</value></data>
+  <data name="Tray_FiltersTitle" xml:space="preserve"><value>Chưa ưng? Lọc nhanh:</value></data>
+  <data name="Tray_FilterShortFormat" xml:space="preserve"><value>Dưới {0} phút</value></data>
+  <data name="Tray_FilterNoRedMeat" xml:space="preserve"><value>Không thịt đỏ</value></data>
+  <data name="Tray_FilterLowFat" xml:space="preserve"><value>Ít dầu mỡ</value></data>
+  <data name="Tray_Relaxed_SeasonAndRegionWeights" xml:space="preserve"><value>Chưa có đủ món hợp mùa và miền nên mâm này chọn rộng hơn.</value></data>
+  <data name="Tray_Relaxed_AvailableMinutes" xml:space="preserve"><value>Mâm này nấu lâu hơn thời gian bạn có.</value></data>
+  <data name="Tray_Relaxed_SingleFriedDish" xml:space="preserve"><value>Mâm này có hơn một món chiên.</value></data>
+  <data name="Tray_Relaxed_DistinctProteinSources" xml:space="preserve"><value>Mâm này có hai món cùng loại đạm.</value></data>
+  <data name="Tray_UnfilledFormat" xml:space="preserve"><value>Chưa tìm được {0} hợp. Thử quay lại hoặc bỏ bớt bộ lọc.</value></data>
+  <data name="Picture_Illustration" xml:space="preserve"><value>Ảnh minh hoạ</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} phút</value></data>
+  <data name="Time_Hours" xml:space="preserve"><value>{0} giờ</value></data>
+  <data name="Time_HoursMinutes" xml:space="preserve"><value>{0} giờ {1} phút</value></data>
 </root>
