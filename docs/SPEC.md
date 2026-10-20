@@ -488,12 +488,20 @@ Làm rõ khi hiện thực màn hình đầu tiên (ADR-021):
 
 Làm rõ khi hiện thực màn "Mâm hôm nay" (ADR-022):
 - **Trang chủ là màn này.** Mở app thì tiếp tục mâm hôm nay (khoá `tray.v1`); sang ngày mới, hay khi một món của mâm không còn trong dữ liệu, thì tự quay một mâm mới ngay, không hiệu ứng và không rung. Ô khoá không sang ngày mới và không sang sau lần chốt.
-- **Thẻ món:** ảnh `thumb` nếu có, không thì ô giữ chỗ theo loại (ảnh lỗi cũng thay bằng ô giữ chỗ); tên món; loại món (canh, món mặn, rau) theo màu của ô; tổng thời gian các bước; kcal một suất (chưa đủ số liệu thì nói là chưa đủ); "Để ớt riêng" cho món có ớt tuỳ chọn khi trong nhà có người không ăn cay. Mỗi thẻ có nút khoá và nút đổi món, cao 48px, và vuốt ngang thẻ (ít nhất 60px, xa gấp đôi chiều dọc) cũng đổi món; thẻ đã khoá không đổi.
+- **Thẻ món:** ảnh `thumb` nếu có, không thì ô giữ chỗ theo loại (ảnh lỗi cũng thay bằng ô giữ chỗ); tên món (là liên kết sang chi tiết món, §8.1-3); loại món (canh, món mặn, rau) theo màu của ô; tổng thời gian các bước; kcal một suất (chưa đủ số liệu thì nói là chưa đủ); "Để ớt riêng" cho món có ớt tuỳ chọn khi trong nhà có người không ăn cay. Mỗi thẻ có nút khoá và nút đổi món, cao 48px, và vuốt ngang thẻ (ít nhất 60px, xa gấp đôi chiều dọc) cũng đổi món; thẻ đã khoá không đổi.
 - **Quay** mất khoảng 1 giây (thẻ chưa khoá rung nhẹ và mờ đi, nút bị khoá); người dùng đã xin bớt chuyển động (`prefers-reduced-motion`) thì hiện ngay. Máy rung 30 ms khi kết quả hiện, nếu máy làm được. Quay giữ ô khoá và lấy món theo luật của §5; đổi một món không thêm mâm vào lịch sử.
 - **Tóm tắt:** thời gian cả mâm (§5.6), năng lượng cho một người cả cơm, gạo, và số thứ cần mua không kể đồ có sẵn. Luật đã nới (§5.3) và ô không điền được hiện thành thông báo trên các thẻ.
 - **"Mâm trước" và "Mâm sau"** đi qua 5 mâm gần nhất ("Mâm 4/5"); hiện khi có từ hai mâm.
 - **Lọc nhanh** hiện sau 5 lần quay (kể cả lần tự quay lúc mở) chưa chốt, và ở lại khi còn bật; bật hay tắt thì quay lại ngay. "Không thịt đỏ" bỏ món có đạm heo hoặc bò; "Ít dầu mỡ" bỏ món chiên (theo cách nấu, chưa theo số chất béo vì số dinh dưỡng chưa đủ); **"Dưới 45 phút"** (không phải 30: nồi cơm đã mất 35 phút nên mâm nào cũng từ 35 phút trở lên). Các giá trị nằm trong `data/config/spinner-defaults.json`, mục `quickFilters`. Món đang khoá và món đang có trên mâm không bị bộ lọc loại.
 - **Chốt mâm** ghi các món vào nhật ký đã ăn (`eaten.v1`, cho luật §5.2 và §5.4), đưa mâm lên đầu lịch sử và khoá các nút; "Chọn mâm khác" bỏ chốt nhưng các món vẫn ghi là đã ăn. Ngày ăn lần cuối ở tương lai được đọc là hôm nay. Đi chợ và chế độ nấu nối vào đây ở 3.6 và 3.7.
+
+Làm rõ khi hiện thực màn chi tiết món (ADR-023):
+- **Mỗi món có một trang, `/mon/<mã món>`;** tên món trên thẻ của mâm là liên kết sang đó, và đầu trang có "Về mâm hôm nay" (48px). Trang định lượng cho nhà của máy này nên đứng sau cổng "Nhà mình có ai?" như trang chủ. Món không còn trong dữ liệu thì trang nói rõ và chỉ đường về mâm.
+- **Đầu trang:** ảnh (file `full` nếu có, lỗi thì `thumb`, lỗi nữa thì ô giữ chỗ theo loại có chữ; ảnh minh hoạ ghi "Ảnh minh hoạ"), loại món theo màu, tên, tổng thời gian các bước, kcal một suất, và "Để ớt riêng" như trên thẻ.
+- **Nguyên liệu "cho ≈ 3,8 suất"** là tổng suất của nhà cho loại món đó (§4.2), cùng số với danh sách đi chợ. Gam nguyên từ 10 g, dưới 10 g một chữ số thập phân; dòng tính theo quả ghi số quả và "≈ N g" ở dưới; ghi chú trong ngoặc; tên theo miền.
+- **Cách làm:** các bước theo thứ tự, mỗi bước có "Làm N phút" và "Chờ N phút" khi lớn hơn 0.
+- **Dinh dưỡng một suất:** kcal, đạm, béo, bột đường, chất xơ, natri (§6.3, số nào chưa đủ thì ghi "chưa đủ số liệu" và nêu tên nguyên liệu thiếu). **Thanh tỷ lệ** chia năng lượng thành đạm, béo, bột đường (hệ số 4/9/4); mỗi chất một hàng có "≈ 34%", khoảng "khuyến nghị 13–20%" (từ `nutrition-defaults.json`) và chữ "thấp hơn", "vừa mức" hay "cao hơn" (không chỉ bằng màu). Thiếu số liệu của một trong ba chất thì không có thanh. **Mỗi người ăn từ món này:** năng lượng một suất nhân số suất của người đó, kèm số suất, chưa tính cơm.
+- **Chân trang:** "Số liệu ước tính, không thay tư vấn y tế."
 
 ### 8.2 Ngôn ngữ thị giác
 
