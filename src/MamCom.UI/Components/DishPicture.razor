@@ -3,10 +3,10 @@
 @using MamCom.UI.Placeholders
 
 @* The picture of a dish when it has one, and the tile of its kind when it has none or the file cannot be shown (SPEC §7.5): never a broken image. *@
-@if (Dish.Image.Thumb is { } thumb && !_broken)
+@if (ShownFile is { } file && !_broken)
 {
     <figure class="picture">
-        <img class="picture__image" src="@ThumbPreloader.ThumbUrl(thumb)" alt="" loading="lazy" @onerror="OnBroken" />
+        <img class="picture__image" src="@ThumbPreloader.ThumbUrl(file)" alt="" loading="lazy" @onerror="OnBroken" />
         @if (Dish.Image.IsIllustration)
         {
             <figcaption class="badge picture__badge">@Strings.Picture_Illustration</figcaption>
@@ -20,7 +20,8 @@ else
 
 @code {
     private bool _broken;
-    private string? _shown;
+    private bool _fullFailed;
+    private (string? Thumb, string? Full) _shown;
 
     [Parameter, EditorRequired]
     public Dish Dish { get; set; } = null!;
@@ -29,15 +30,33 @@ else
     [Parameter]
     public bool Compact { get; set; }
 
+    /// <summary>The picture of the detail screen: the large file when the dish has one, and the thumb when it has not or the large file cannot be loaded.</summary>
+    [Parameter]
+    public bool Large { get; set; }
+
+    private string? ShownFile => Large && !_fullFailed && Dish.Image.Full is { } full ? full : Dish.Image.Thumb;
+
     protected override void OnParametersSet()
     {
         // Another dish, or another file for the same dish, gets its own chance to load.
-        if (_shown != Dish.Image.Thumb)
+        if (_shown != (Dish.Image.Thumb, Dish.Image.Full))
         {
-            _shown = Dish.Image.Thumb;
+            _shown = (Dish.Image.Thumb, Dish.Image.Full);
             _broken = false;
+            _fullFailed = false;
         }
     }
 
-    private void OnBroken() => _broken = true;
+    private void OnBroken()
+    {
+        // A large file that fails is not the end of the picture: the thumb is already on the device.
+        if (Large && !_fullFailed && Dish.Image.Full is not null)
+        {
+            _fullFailed = true;
+        }
+        else
+        {
+            _broken = true;
+        }
+    }
 }

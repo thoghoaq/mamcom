@@ -80,4 +80,17 @@ public class NutritionSummaryTests : BunitContext
 
         cut.Find(".nutrition__note").TextContent.ShouldBe("Các con số chỉ là ước tính.");
     }
+
+    [Fact]
+    public void A_screen_with_a_footer_that_says_so_can_leave_the_note_out_and_the_rest_stays()
+    {
+        var cut = Render<NutritionSummary>(p => p
+            .Add(x => x.Facts, Known)
+            .Add(x => x.ShowNote, false)
+            .Add(x => x.MissingIngredientNames, ["Cá lóc"]));
+
+        cut.FindAll(".nutrition__note").ShouldBeEmpty();
+        cut.Find(".nutrition__kcal").TextContent.ShouldBe("≈ 440 kcal");
+        cut.Find(".nutrition__missing").TextContent.ShouldBe("Chưa có số liệu dinh dưỡng của: Cá lóc.");
+    }
 }

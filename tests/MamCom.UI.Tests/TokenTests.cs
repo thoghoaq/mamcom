@@ -134,6 +134,15 @@ public partial class TokenTests
                 data.Add(theme, tone, tone + "-soft", 3);   // the drawing of a placeholder on its tile
                 data.Add(theme, "text", tone + "-soft", 4.5);   // the words of a placeholder on its tile
             }
+
+            // The segments of the bar of shares and the swatches beside it, on the card and on the empty part of the bar.
+            foreach (var macro in new[] { "macro-protein", "macro-fat", "macro-carb" })
+            {
+                foreach (var background in new[] { "bg", "surface", "surface-raised" })
+                {
+                    data.Add(theme, macro, background, 3);
+                }
+            }
         }
 
         return data;

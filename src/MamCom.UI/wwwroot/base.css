@@ -612,6 +612,269 @@ small,
     transform: scaleX(-1);
 }
 
+/* ---- The detail of a dish (components/DishDetailScreen.razor): the picture, a card for ingredients, steps and nutrition, a footer ---- */
+
+.dish-card__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-size);
+}
+
+.detail-back {
+    margin-bottom: var(--space-2);
+}
+
+.detail-back__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: var(--tap-size);
+}
+
+.detail > .picture,
+.detail > .tile {
+    max-inline-size: 28rem;
+    margin: 0 auto var(--space-4);
+}
+
+.detail__head {
+    margin-bottom: var(--space-4);
+}
+
+.detail__slot {
+    margin: 0 0 var(--space-1);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-strong);
+}
+
+.detail__name {
+    margin: 0 0 var(--space-2);
+}
+
+.detail__facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--space-4);
+    margin: 0;
+    color: var(--color-text-muted);
+}
+
+.detail__fact {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.detail__aside {
+    margin: var(--space-2) 0 0;
+    color: var(--color-warning);
+    font-weight: var(--font-weight-strong);
+}
+
+.detail__section h2 {
+    margin: 0 0 var(--space-1);
+    font-size: var(--font-size-large);
+}
+
+.detail__subtitle {
+    margin: 0 0 var(--space-3);
+    color: var(--color-text-muted);
+}
+
+.detail__subheading {
+    margin: var(--space-4) 0 var(--space-1);
+    font-size: var(--font-size-base);
+}
+
+.detail__note {
+    margin: 0 0 var(--space-2);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.detail__footer {
+    margin: 0 0 var(--space-4);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+    text-align: center;
+}
+
+.ingredients {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ingredient {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.ingredient:first-child {
+    border-top: 0;
+}
+
+.ingredient__name {
+    min-inline-size: 0;
+}
+
+.ingredient__note {
+    color: var(--color-text-muted);
+}
+
+.ingredient__amount {
+    flex: none;
+    font-weight: var(--font-weight-strong);
+    text-align: end;
+}
+
+.ingredient__grams {
+    display: block;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-normal);
+}
+
+.steps {
+    margin: 0;
+    padding-inline-start: var(--space-5);
+}
+
+.step {
+    padding: var(--space-2) 0;
+}
+
+.step::marker {
+    font-weight: var(--font-weight-strong);
+}
+
+.step__text {
+    margin: 0 0 var(--space-1);
+}
+
+.step__times {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--space-3);
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.step__time {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.step__time .icon {
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+}
+
+/* ---- Where the energy comes from (components/EnergyShareBar.razor): a bar and a row for each nutrient ---- */
+
+.shares {
+    margin: var(--space-4) 0 0;
+}
+
+.shares__bar {
+    display: flex;
+    gap: 2px;
+    block-size: 1.25rem;
+    border-radius: 999px;
+    background: var(--color-surface-raised);
+    overflow: hidden;
+}
+
+.shares__segment {
+    flex-basis: 0;
+    min-inline-size: 0;
+}
+
+.shares__segment--protein,
+.shares__swatch--protein {
+    background: var(--color-macro-protein);
+}
+
+.shares__segment--fat,
+.shares__swatch--fat {
+    background: var(--color-macro-fat);
+}
+
+.shares__segment--carb,
+.shares__swatch--carb {
+    background: var(--color-macro-carb);
+}
+
+.shares__legend {
+    margin: var(--space-2) 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.shares__row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+        "swatch name value"
+        "range range range";
+    align-items: center;
+    gap: 0 var(--space-2);
+    padding: var(--space-2) 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.shares__swatch {
+    grid-area: swatch;
+    inline-size: 1rem;
+    block-size: 1rem;
+    border-radius: var(--space-1);
+}
+
+.shares__name {
+    grid-area: name;
+    font-weight: var(--font-weight-strong);
+}
+
+.shares__value {
+    grid-area: value;
+    font-weight: var(--font-weight-strong);
+}
+
+.shares__range {
+    grid-area: range;
+    padding-inline-start: calc(1rem + var(--space-2));
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.member-energy {
+    margin: 0;
+}
+
+.member-energy__row {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.member-energy dd {
+    margin: 0;
+    font-weight: var(--font-weight-strong);
+    text-align: end;
+}
+
+.member-energy__servings {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
 /* ---- Placeholder tile: stands in for a picture that does not exist yet, one look per kind of ingredient or dish ---- */
 
 .tile {

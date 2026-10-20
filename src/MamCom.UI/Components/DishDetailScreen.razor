@@ -1,0 +1,189 @@
+@using System.Globalization
+@using MamCom.Core.Details
+@using MamCom.Core.Models
+@using MamCom.UI.Formatting
+@inherits AppDataComponentBase
+@inject NavigationManager Navigation
+
+@if (_notFound)
+{
+    <PageTitle>@Strings.Detail_NotFoundTitle</PageTitle>
+
+    <h1>@Strings.Detail_NotFoundTitle</h1>
+    <p>@Strings.Detail_NotFound</p>
+    <p><a class="detail-back__link" href="@Navigation.BaseUri"><Icon Name="chevron-left" />@Strings.Detail_BackToTray</a></p>
+}
+else if (_detail is { } detail)
+{
+    <PageTitle>@detail.Dish.Name</PageTitle>
+
+    <nav class="detail-back">
+        <a class="detail-back__link" href="@Navigation.BaseUri"><Icon Name="chevron-left" />@Strings.Detail_BackToTray</a>
+    </nav>
+
+    <article class="detail">
+        <DishPicture Dish="detail.Dish" Large="true" />
+
+        <header class="detail__head">
+            <p class="detail__slot @SlotClass(detail.Dish.Slot)">@TrayFormat.Slot(detail.Dish.Slot)</p>
+            <h1 class="detail__name">@detail.Dish.Name</h1>
+            <p class="detail__facts">
+                <span class="detail__fact"><Icon Name="clock" />@TrayFormat.Minutes(detail.TotalMinutes)</span>
+                <span class="detail__fact"><Icon Name="flame" />@KcalText(detail)</span>
+            </p>
+            @if (_noSpicyAtTable && detail.Dish.Spicy == SpicyLevel.Optional)
+            {
+                <p class="detail__aside">@Strings.Tray_SpicyAside</p>
+            }
+        </header>
+
+        <section class="card detail__section" aria-labelledby="detail-ingredients">
+            <h2 id="detail-ingredients">@Strings.Detail_Ingredients</h2>
+            <p class="detail__subtitle">@DishFormat.Servings(detail.Servings)</p>
+            <ul class="ingredients">
+                @foreach (var line in detail.Ingredients)
+                {
+                    <li class="ingredient">
+                        <span class="ingredient__name">
+                            @line.Name
+                            @if (!string.IsNullOrWhiteSpace(line.Note))
+                            {
+                                <span class="ingredient__note"> (@line.Note)</span>
+                            }
+                        </span>
+                        <span class="ingredient__amount">
+                            @DishFormat.Amount(line)
+                            @if (DishFormat.AmountInGrams(line) is { } grams)
+                            {
+                                <span class="ingredient__grams">@grams</span>
+                            }
+                        </span>
+                    </li>
+                }
+            </ul>
+        </section>
+
+        <section class="card detail__section" aria-labelledby="detail-steps">
+            <h2 id="detail-steps">@Strings.Detail_Steps</h2>
+            @if (detail.Dish.Steps.Count == 0)
+            {
+                <p class="text-muted">@Strings.Detail_NoSteps</p>
+            }
+            else
+            {
+                <ol class="steps">
+                    @foreach (var step in detail.Dish.Steps.OrderBy(s => s.Order))
+                    {
+                        <li class="step">
+                            <p class="step__text">@step.Text</p>
+                            @if (step.ActiveMinutes > 0 || step.PassiveMinutes > 0)
+                            {
+                                <p class="step__times">
+                                    @if (step.ActiveMinutes > 0)
+                                    {
+                                        <span class="step__time"><Icon Name="clock" />@DishFormat.StepActive(step.ActiveMinutes)</span>
+                                    }
+                                    @if (step.PassiveMinutes > 0)
+                                    {
+                                        <span class="step__time"><Icon Name="clock" />@DishFormat.StepPassive(step.PassiveMinutes)</span>
+                                    }
+                                </p>
+                            }
+                        </li>
+                    }
+                </ol>
+            }
+        </section>
+
+        <section class="card detail__section" aria-labelledby="detail-nutrition">
+            <h2 id="detail-nutrition">@Strings.Detail_Nutrition</h2>
+            <p class="detail__subtitle">@Strings.Detail_PerServing</p>
+            <NutritionSummary Facts="detail.PerServing" MissingIngredientNames="detail.IngredientNamesMissingData" ShowNote="false" />
+            @if (detail.Macros is { } macros)
+            {
+                <EnergyShareBar Shares="macros" />
+            }
+            else
+            {
+                <p class="text-muted">@Strings.Detail_SharesUnknown</p>
+            }
+
+            @if (detail.PerMember.Count > 0)
+            {
+                <h3 class="detail__subheading">@Strings.Detail_PerMember</h3>
+                <p class="detail__note">@Strings.Detail_PerMemberNote</p>
+                <dl class="member-energy">
+                    @foreach (var member in detail.PerMember)
+                    {
+                        <div class="member-energy__row">
+                            <dt>@member.Name <span class="member-energy__servings">@DishFormat.MemberServings(member.Servings)</span></dt>
+                            <dd>@NutritionFormat.Kcal(member.Kcal)</dd>
+                        </div>
+                    }
+                </dl>
+            }
+        </section>
+
+        <p class="detail__footer">@Strings.Detail_Footer</p>
+    </article>
+}
+
+@code {
+    private DishDetail? _detail;
+    private bool _notFound;
+    private bool _noSpicyAtTable;
+
+    /// <summary>The household the recipe is scaled to; the gate hands it over once it knows there is one.</summary>
+    [Parameter, EditorRequired]
+    public Household Household { get; set; } = null!;
+
+    [Parameter, EditorRequired]
+    public string DishId { get; set; } = null!;
+
+    protected override async Task OnInitializedAsync() => await Data.InitializeAsync();
+
+    protected override void OnParametersSet()
+    {
+        _noSpicyAtTable = Household.Members.Any(m => m.Tags.Contains(MemberTag.NoSpicy));
+        Rebuild();
+    }
+
+    // "Dùng ngay" took in a newer bundle: the dish may have changed or gone, so the page is worked out again from the new one.
+    protected override Task OnDataChangedAsync()
+    {
+        Rebuild();
+        return Task.CompletedTask;
+    }
+
+    private void Rebuild()
+    {
+        _detail = null;
+        _notFound = false;
+
+        if (Data.Bundle is not { } bundle)
+        {
+            return;   // nothing to show yet; the notices above the page say what is going on
+        }
+
+        var dish = bundle.Dishes.FirstOrDefault(d => string.Equals(d.Id, DishId, StringComparison.Ordinal));
+        if (dish is null)
+        {
+            _notFound = true;
+            return;
+        }
+
+        var ingredients = bundle.Ingredients.ToDictionary(i => i.Id, StringComparer.Ordinal);
+        _detail = new DishDetailBuilder(bundle.Config.Portion, bundle.Config.Nutrition).Build(dish, Household, ingredients);
+    }
+
+    private static string SlotClass(DishSlot slot) => slot switch
+    {
+        DishSlot.Soup => "slot--soup",
+        DishSlot.Main => "slot--main",
+        _ => "slot--veg",
+    };
+
+    private static string KcalText(DishDetail detail) => detail.PerServing.Kcal is { } kcal
+        ? string.Format(CultureInfo.InvariantCulture, Strings.Tray_KcalPerServingFormat, NutritionFormat.Kcal(kcal))
+        : Strings.Nutrition_Unknown;
+}

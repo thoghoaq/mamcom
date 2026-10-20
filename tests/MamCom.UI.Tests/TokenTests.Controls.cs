@@ -11,6 +11,8 @@ public partial class TokenTests
     [InlineData(".input,\n.select,\n.textarea {")]
     [InlineData(".check {")]
     [InlineData(".household-home a {")]
+    [InlineData(".dish-card__link {")]
+    [InlineData(".detail-back__link {")]
     public void A_control_the_finger_has_to_hit_is_at_least_the_tap_size_high(string selector)
     {
         PropertyValue(Rule(Base, selector), "min-height").ShouldBe("var(--tap-size)");

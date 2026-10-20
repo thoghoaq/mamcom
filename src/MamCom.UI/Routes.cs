@@ -7,4 +7,15 @@ public static class Routes
 
     /// <summary>"Nhà mình có ai?": the first screen, and where the household is changed later.</summary>
     public const string Household = "nha-minh";
+
+    /// <summary>The folder of the detail screens: one page for each dish, <c>mon/&lt;dish id&gt;</c>.</summary>
+    public const string DishFolder = "mon";
+
+    /// <summary>The detail screen of a dish (SPEC §8.1-3).</summary>
+    public static string Dish(string dishId)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(dishId);
+
+        return $"{DishFolder}/{Uri.EscapeDataString(dishId)}";
+    }
 }

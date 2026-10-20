@@ -472,4 +472,32 @@
   <data name="Time_Minutes" xml:space="preserve"><value>{0} phút</value></data>
   <data name="Time_Hours" xml:space="preserve"><value>{0} giờ</value></data>
   <data name="Time_HoursMinutes" xml:space="preserve"><value>{0} giờ {1} phút</value></data>
+
+  <!-- Chi tiết món (SPEC §8.1-3) -->
+  <data name="Detail_BackToTray" xml:space="preserve"><value>Về mâm hôm nay</value></data>
+  <data name="Detail_NotFoundTitle" xml:space="preserve"><value>Không tìm thấy món</value></data>
+  <data name="Detail_NotFound" xml:space="preserve"><value>Món này không còn trong danh sách. Có thể dữ liệu vừa được cập nhật.</value></data>
+  <data name="Detail_Ingredients" xml:space="preserve"><value>Nguyên liệu</value></data>
+  <data name="Detail_ServingsFormat" xml:space="preserve"><value>cho ≈ {0} suất</value></data>
+  <data name="Detail_GramsFormat" xml:space="preserve"><value>{0} g</value></data>
+  <data name="Detail_UnitsFormat" xml:space="preserve"><value>{0} {1}</value></data>
+  <data name="Detail_UnitsGramsFormat" xml:space="preserve"><value>≈ {0} g</value></data>
+  <data name="Detail_Steps" xml:space="preserve"><value>Cách làm</value></data>
+  <data name="Detail_NoSteps" xml:space="preserve"><value>Món này chưa có các bước làm.</value></data>
+  <data name="Detail_StepActiveFormat" xml:space="preserve"><value>Làm {0}</value></data>
+  <data name="Detail_StepPassiveFormat" xml:space="preserve"><value>Chờ {0}</value></data>
+  <data name="Detail_Nutrition" xml:space="preserve"><value>Dinh dưỡng</value></data>
+  <data name="Detail_PerServing" xml:space="preserve"><value>Một suất</value></data>
+  <data name="Detail_SharesLabel" xml:space="preserve"><value>Năng lượng đến từ đâu</value></data>
+  <data name="Detail_ShareValueFormat" xml:space="preserve"><value>≈ {0}%</value></data>
+  <data name="Detail_ShareRangeFormat" xml:space="preserve"><value>khuyến nghị {0}–{1}%</value></data>
+  <data name="Detail_ShareBarFormat" xml:space="preserve"><value>Đạm {0}, béo {1}, bột đường {2}</value></data>
+  <data name="Detail_Status_Below" xml:space="preserve"><value>thấp hơn</value></data>
+  <data name="Detail_Status_Within" xml:space="preserve"><value>vừa mức</value></data>
+  <data name="Detail_Status_Above" xml:space="preserve"><value>cao hơn</value></data>
+  <data name="Detail_SharesUnknown" xml:space="preserve"><value>Chưa đủ số liệu để chia tỷ lệ đạm, béo và bột đường.</value></data>
+  <data name="Detail_PerMember" xml:space="preserve"><value>Mỗi người ăn từ món này</value></data>
+  <data name="Detail_PerMemberNote" xml:space="preserve"><value>Năng lượng của riêng món này, chưa tính cơm.</value></data>
+  <data name="Detail_MemberServingsFormat" xml:space="preserve"><value>{0} suất</value></data>
+  <data name="Detail_Footer" xml:space="preserve"><value>Số liệu ước tính, không thay tư vấn y tế.</value></data>
 </root>

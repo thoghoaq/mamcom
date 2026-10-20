@@ -55,6 +55,11 @@
     --color-aisle-other: #55595f;
     --color-aisle-other-soft: #e6e6e1;
 
+    /* One colour per nutrient in the bar of where the energy comes from. */
+    --color-macro-protein: #9c2f3a;
+    --color-macro-fat: #a56a00;
+    --color-macro-carb: #1f5a85;
+
     --shadow: 0 1px 2px rgb(43 33 24 / 12%);
 }
 
@@ -103,6 +108,10 @@
         --color-aisle-other: #b7bbc2;
         --color-aisle-other-soft: #33353a;
 
+        --color-macro-protein: #f2a1ab;
+        --color-macro-fat: #f0c565;
+        --color-macro-carb: #93c4ee;
+
         --shadow: 0 1px 2px rgb(0 0 0 / 50%);
     }
 }
@@ -150,6 +159,10 @@
     --color-aisle-dry-soft: #3d2f20;
     --color-aisle-other: #b7bbc2;
     --color-aisle-other-soft: #33353a;
+
+    --color-macro-protein: #f2a1ab;
+    --color-macro-fat: #f0c565;
+    --color-macro-carb: #93c4ee;
 
     --shadow: 0 1px 2px rgb(0 0 0 / 50%);
 }

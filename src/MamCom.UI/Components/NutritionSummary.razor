@@ -14,7 +14,10 @@
     {
         <p class="nutrition__missing">@string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.Nutrition_MissingFormat, string.Join(", ", MissingIngredientNames))</p>
     }
-    <p class="nutrition__note">@Strings.Nutrition_EstimateNote</p>
+    @if (ShowNote)
+    {
+        <p class="nutrition__note">@Strings.Nutrition_EstimateNote</p>
+    }
 </section>
 
 @code {
@@ -29,4 +32,8 @@
     /// <summary>Names of the ingredients whose nutrition data is missing, so the sums above are not complete.</summary>
     [Parameter]
     public IReadOnlyList<string> MissingIngredientNames { get; set; } = [];
+
+    /// <summary>Says under the numbers that they are estimates. A screen with a footer that says so (the detail of a dish) turns it off.</summary>
+    [Parameter]
+    public bool ShowNote { get; set; } = true;
 }

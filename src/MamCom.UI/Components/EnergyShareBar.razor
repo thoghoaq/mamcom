@@ -1,0 +1,33 @@
+@using System.Globalization
+@using MamCom.Core.Details
+@using MamCom.UI.Formatting
+
+@* Where the energy of a serving comes from (SPEC §8.1-3): a bar split into protein, fat and carbohydrate, and under it a row for each with its share, the recommended range and where it stands. The colours help; the words say it all. *@
+<div class="shares">
+    <div class="shares__bar" role="img" aria-label="@DishFormat.ShareBar(Shares)">
+        @foreach (var share in Shares.Where(s => s.Share > 0))
+        {
+            <span class="shares__segment shares__segment--@DishFormat.MacroTone(share.Macro)" style="flex-grow: @share.Share.ToString("0.####", CultureInfo.InvariantCulture)"></span>
+        }
+    </div>
+    <ul class="shares__legend" aria-label="@Strings.Detail_SharesLabel">
+        @foreach (var share in Shares)
+        {
+            <li class="shares__row">
+                <span class="shares__swatch shares__swatch--@DishFormat.MacroTone(share.Macro)" aria-hidden="true"></span>
+                <span class="shares__name">@DishFormat.MacroName(share.Macro)</span>
+                <span class="shares__value">@DishFormat.Percent(share.Share)</span>
+                <span class="shares__range">
+                    @DishFormat.Recommended(share)
+                    <span class="badge @(share.Status == RangeStatus.Within ? "badge--ok" : "badge--warning")">@DishFormat.Status(share.Status)</span>
+                </span>
+            </li>
+        }
+    </ul>
+</div>
+
+@code {
+    /// <summary>Protein, fat and carbohydrate, in that order, with their recommended ranges.</summary>
+    [Parameter, EditorRequired]
+    public IReadOnlyList<MacroShare> Shares { get; set; } = null!;
+}

@@ -62,6 +62,26 @@ public class DishCardTests : BunitContext
         name.ClassList.ShouldContain("dish-card__name");
     }
 
+    [Fact]
+    public void The_name_is_the_way_into_the_detail_of_the_dish()
+    {
+        var link = Show(Main).Find("h2 a.dish-card__link");
+
+        link.GetAttribute("href").ShouldBe(Routes.Dish(Main.Id));
+        link.TextContent.ShouldBe(Main.Name);
+    }
+
+    [Fact]
+    public async Task A_tap_on_the_name_does_not_swap_the_dish()
+    {
+        var cut = Show(Main);
+
+        await cut.Find(".dish-card__link").TriggerEventAsync("onpointerdown", new PointerEventArgs { ClientX = 100, ClientY = 50 });
+        await cut.Find(".dish-card__link").TriggerEventAsync("onpointerup", new PointerEventArgs { ClientX = 100, ClientY = 50 });
+
+        _swaps.ShouldBe(0);
+    }
+
     [Theory]
     [InlineData(0, "0 phút")]
     [InlineData(23, "23 phút")]

@@ -1,0 +1,11 @@
+@page "/mon/{DishId}"
+
+@* The detail of one dish, scaled to the household of this device. A device with no household yet is sent to "Nhà mình có ai?" first. *@
+<HouseholdGate Context="household">
+    <DishDetailScreen Household="household" DishId="@DishId" />
+</HouseholdGate>
+
+@code {
+    [Parameter]
+    public string DishId { get; set; } = string.Empty;
+}

@@ -8,7 +8,7 @@
     <DishPicture Dish="Dish" Compact="true" />
     <div class="dish-card__body">
         <p class="dish-card__slot @SlotClass">@TrayFormat.Slot(Dish.Slot)</p>
-        <h2 class="dish-card__name">@Dish.Name</h2>
+        <h2 class="dish-card__name"><a class="dish-card__link" href="@Routes.Dish(Dish.Id)">@Dish.Name</a></h2>
         <p class="dish-card__facts">
             <span class="dish-card__fact"><Icon Name="clock" />@TrayFormat.Minutes(Facts.Minutes)</span>
             <span class="dish-card__fact"><Icon Name="flame" />@KcalText</span>
