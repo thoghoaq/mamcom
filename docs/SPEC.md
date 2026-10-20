@@ -480,6 +480,12 @@ Cấu trúc bundle (ADR-011), kiểu `DataBundle` trong `MamCom.Core`:
 6. **Sau bữa.** "Cả nhà thích không?" với 3 lựa chọn: thích / bình thường / không. Kết quả cập nhật `pref`.
 7. **Cài đặt.** Thành viên, vùng miền, cỡ chén, món đã chặn, xoá dữ liệu.
 
+Làm rõ khi hiện thực màn hình đầu tiên (ADR-021):
+- **Vai trò chỉ chọn nhóm tuổi ban đầu:** Bố, Mẹ là người lớn; Ông, Bà từ 60 tuổi; Bé 2–5 tuổi; Con trai, Con gái bắt đầu là 6–11 tuổi. Thẻ nào cũng có ô chọn tuổi (năm nhóm của §4.1). Đổi nhóm tuổi thì số chén chưa ai chỉnh đi theo số mặc định của nhóm mới.
+- **Mỗi thẻ có:** tên (sửa được, trùng thì thêm số, tối đa 30 ký tự), tuổi, stepper "Thường ăn mấy chén cơm?" (bước, khoảng và số mặc định lấy từ `portion-defaults.json`), nút bỏ. Tối đa 12 người. Dưới các thẻ có dòng "Mỗi bữa nấu cho ≈ 3,8 suất, gạo ≈ 320 g".
+- **Miền hỏi ngay trên màn hình (ba chip, mặc định Bắc, xem §13);** cỡ chén để Cài đặt, mặc định vừa. Kiêng khem, khẩu vị và `tag` không hỏi ở đây, nhưng sửa một nhà đã lưu thì giữ nguyên `tag` và `avoid`.
+- **Bỏ qua** lưu một nhà hai người lớn (Bố, Mẹ) với miền đã chọn. Trang chủ chưa có nhà dùng được thì chuyển sang `/nha-minh` (thay mục lịch sử); nhà được lưu ở khoá `household.v1`.
+
 ### 8.2 Ngôn ngữ thị giác
 
 - **Màu:** nền kem ấm, màu nhấn đỏ gạch, màu phụ xanh lá chuối. Màu theo ô: canh xanh dương, mặn cam, rau xanh lá. **Dark mode bắt buộc.**
@@ -568,7 +574,7 @@ Test không đọc thư mục `data/` thật, trừ `MamCom.LiveData.Tests`: m�
 - Tên app chính thức. Mặc định: tên tạm "MâmCơm", namespace `MamCom`.
 - Hosting: Azure Static Web Apps *(mặc định)* hay GitHub Pages.
 - Có thương mại hoá không. Ảnh hưởng tới điều khoản dùng dữ liệu của Viện Dinh dưỡng.
-- Vùng miền ưu tiên khi ra mắt.
+- Vùng miền ưu tiên khi ra mắt. Mặc định cho đến khi chốt: Bắc, người dùng chọn lại bằng một chạm ở màn hình đầu tiên (ADR-021).
 
 ## Phụ lục — Nguồn tham khảo đã dùng khi phân tích
 
