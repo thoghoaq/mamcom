@@ -1,4 +1,5 @@
 using MamCom.Core.Models;
+using MamCom.Core.Shopping;
 using MamCom.Core.Spinning;
 using MamCom.Data.Device;
 using MamCom.Data.State;
@@ -202,5 +203,118 @@ public class DeviceFeaturesTests
     public async Task A_vibration_of_no_time_is_refused(int milliseconds)
     {
         await Should.ThrowAsync<ArgumentOutOfRangeException>(async () => await new BrowserDeviceFeatures(new FakeBrowser()).VibrateAsync(milliseconds));
+    }
+
+    [Theory]
+    [InlineData("shared", ShareOutcome.Shared)]
+    [InlineData("copied", ShareOutcome.Copied)]
+    [InlineData("cancelled", ShareOutcome.Cancelled)]
+    [InlineData("failed", ShareOutcome.Failed)]
+    [InlineData("something else", ShareOutcome.Failed)]
+    public async Task A_text_that_is_sent_says_what_became_of_it_and_the_page_is_given_the_text(string answer, ShareOutcome expected)
+    {
+        var browser = new FakeBrowser { ShareAnswer = answer };
+
+        (await new BrowserDeviceFeatures(browser).ShareTextAsync("Đi chợ tối CN 18/10")).ShouldBe(expected);
+
+        browser.Shared.ShouldBe(["Đi chợ tối CN 18/10"]);
+    }
+
+    [Fact]
+    public async Task A_page_without_the_script_cannot_send_a_text_and_does_not_fail()
+    {
+        var browser = new FakeBrowser();   // no mamcomDevice
+
+        (await new BrowserDeviceFeatures(browser).ShareTextAsync("Đi chợ")).ShouldBe(ShareOutcome.Failed);
+    }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData(null)]
+    public async Task An_empty_text_is_refused_before_the_page_is_asked(string? text)
+    {
+        var browser = new FakeBrowser { ShareAnswer = "shared" };
+
+        await Should.ThrowAsync<ArgumentException>(async () => await new BrowserDeviceFeatures(browser).ShareTextAsync(text!));
+
+        browser.Shared.ShouldBeEmpty();
+    }
+}
+
+public class ShoppingStoreTests
+{
+    private static ShoppingState State() => new("2026-10-18|thit-kho-trung,rau-muong-xao", ["ca-chua", "thit-ba-chi"], true);
+
+    private static (UserStateStore State, FakeBrowser Browser) Create(FakeBrowser? browser = null)
+    {
+        browser ??= new FakeBrowser();
+        return (new UserStateStore(new LocalStorageKeyValueStorage(browser)), browser);
+    }
+
+    [Fact]
+    public async Task What_is_ticked_comes_back_in_a_new_visit_in_the_order_it_was_ticked()
+    {
+        var (state, browser) = Create();
+        (await new ShoppingStore(state).SaveAsync(State())).ShouldBeTrue();
+
+        var back = await new ShoppingStore(Create(browser).State).LoadAsync();
+
+        back.ShouldNotBeNull();
+        back.TrayKey.ShouldBe("2026-10-18|thit-kho-trung,rau-muong-xao");
+        back.CheckedIngredientIds.ShouldBe(["ca-chua", "thit-ba-chi"]);
+        back.ShowPantry.ShouldBeTrue();
+    }
+
+    [Fact]
+    public async Task It_lives_under_shopping_v1()
+    {
+        var (state, browser) = Create();
+
+        await new ShoppingStore(state).SaveAsync(State());
+
+        ShoppingStore.Key.ShouldBe("shopping.v1");
+        browser.Items.Keys.ShouldContain("mamcom.state.shopping.v1");
+    }
+
+    [Fact]
+    public async Task Nothing_saved_is_null()
+    {
+        (await new ShoppingStore(Create().State).LoadAsync()).ShouldBeNull();
+    }
+
+    [Fact]
+    public async Task Text_that_is_not_a_state_is_null_and_not_an_error()
+    {
+        var (state, browser) = Create();
+        browser.Items["mamcom.state.shopping.v1"] = "not json";
+
+        (await new ShoppingStore(state).LoadAsync()).ShouldBeNull();
+    }
+
+    [Fact]
+    public async Task A_browser_that_cannot_keep_it_says_so_and_the_page_still_has_it()
+    {
+        var (state, _) = Create(new FakeBrowser { RefuseWrites = true });
+        var store = new ShoppingStore(state);
+
+        (await store.SaveAsync(State())).ShouldBeFalse();
+        (await store.LoadAsync())!.CheckedIngredientIds.ShouldBe(["ca-chua", "thit-ba-chi"]);
+    }
+
+    [Fact]
+    public async Task It_is_cleared_with_the_state_of_the_app()
+    {
+        var (state, _) = Create();
+        await new ShoppingStore(state).SaveAsync(State());
+
+        await state.ClearAsync();
+
+        (await new ShoppingStore(state).LoadAsync()).ShouldBeNull();
+    }
+
+    [Fact]
+    public async Task A_state_is_required()
+    {
+        await Should.ThrowAsync<ArgumentNullException>(async () => await new ShoppingStore(Create().State).SaveAsync(null!));
     }
 }
