@@ -1,4 +1,5 @@
 using System.Text;
+using MamCom.Core.Data;
 using MamCom.DataBuilder.Bundling;
 using MamCom.DataBuilder.Loading;
 using MamCom.DataBuilder.Reporting;
@@ -19,7 +20,8 @@ public static class CommandLine
     public const string DefaultDataFolder = "data";
     public const string DefaultOutFolder = "dist";
 
-    public const string BundleFileName = "data-bundle.json";
+    public const string BundleFileName = BundleFiles.Bundle;
+    public const string VersionFileName = BundleFiles.Version;
     public const string ReportFileName = "data-report.md";
 
     private const string Usage = """
@@ -28,7 +30,8 @@ public static class CommandLine
           MamCom.DataBuilder build    [--data <thư mục>] [--out <thư mục>] [--release]
 
         validate  kiểm dữ liệu (luật SPEC §7.3) và in lỗi, cảnh báo.
-        build     kiểm rồi ghi data-bundle.json và data-report.md vào thư mục --out.
+        build     kiểm rồi ghi vào thư mục --out cả gói dữ liệu của app: data-bundle.json, data-version.json
+                  và images/ (các ảnh bundle nhắc tới, lấy từ data/images/out), cùng data-report.md.
                   Còn lỗi thì chỉ ghi báo cáo, không ghi bundle.
 
         --data     thư mục dữ liệu, mặc định "data".
@@ -120,16 +123,21 @@ public static class CommandLine
         var utf8 = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
 
         var bundlePath = Path.Combine(options.Out, BundleFileName);
-        Core.Data.DataBundle? bundle = null;
+        var versionPath = Path.Combine(options.Out, VersionFileName);
+        DataBundle? bundle = null;
+        var pictures = 0;
         if (report.HasErrors)
         {
             // A bundle left from an earlier build would look like the result of this one to anything that ignores the exit code.
             File.Delete(bundlePath);
+            File.Delete(versionPath);
         }
         else
         {
             bundle = BundleBuilder.Build(report.Data, report.Mode);
             File.WriteAllText(bundlePath, bundle.ToJson(), utf8);
+            File.WriteAllText(versionPath, BundleVersionInfo.Of(bundle).ToJson(), utf8);
+            pictures = ImagePackager.Copy(bundle, report.Data.Root, options.Out).Count;
         }
 
         File.WriteAllText(Path.Combine(options.Out, ReportFileName), ReportWriter.Render(report, bundle), utf8);
@@ -140,7 +148,7 @@ public static class CommandLine
             return DataInvalid;
         }
 
-        output.WriteLine($"Đã ghi {Path.Combine(options.Out, BundleFileName)} (phiên bản {bundle.Version}) và {Path.Combine(options.Out, ReportFileName)}.");
+        output.WriteLine($"Đã ghi {Path.Combine(options.Out, BundleFileName)} (phiên bản {bundle.Version}), {VersionFileName}, {pictures} ảnh trong {BundleFiles.ImagesFolder}/ và {Path.Combine(options.Out, ReportFileName)}.");
         return Success;
     }
 

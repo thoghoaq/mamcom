@@ -34,6 +34,8 @@ namespace MamCom.Core.Json;
 [JsonSerializable(typeof(SpinnerConfig))]
 [JsonSerializable(typeof(CookingConfig))]
 [JsonSerializable(typeof(DataBundle))]
+[JsonSerializable(typeof(BundleVersionInfo))]
+[JsonSerializable(typeof(string[]))]
 [JsonSerializable(typeof(SpinHistory))]
 [JsonSerializable(typeof(DishPreference))]
 [JsonSerializable(typeof(IReadOnlyDictionary<string, DishPreference>))]
