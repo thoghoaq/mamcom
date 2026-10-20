@@ -483,3 +483,9 @@ dist/
 
 # Original photos for ImageTool (PLAN 2.8): large, and a phone photo carries its GPS position in EXIF. Only data/images/out is committed.
 data/images/raw/
+
+# The data package DataBuilder writes next to the app for local runs (ADR-020): generated, never committed.
+src/MamCom.Web/wwwroot/data-bundle.json
+src/MamCom.Web/wwwroot/data-version.json
+src/MamCom.Web/wwwroot/images/
+src/MamCom.Web/wwwroot/data-report.md

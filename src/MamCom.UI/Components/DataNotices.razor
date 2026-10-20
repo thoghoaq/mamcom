@@ -1,0 +1,64 @@
+@using MamCom.Data.Bundles
+@inherits AppDataComponentBase
+@inject NavigationManager Navigation
+
+<section class="data-notices" aria-label="@Strings.Data_NoticesLabel">
+    @if (Data.IsLoading)
+    {
+        <div class="notice" role="status">@Strings.Data_Loading</div>
+    }
+    else if (Data.Status != BundleLoadStatus.Loaded)
+    {
+        <div class="notice @(Data.Status == BundleLoadStatus.NeedsNetwork ? "notice--warning" : "notice--danger")" role="alert">
+            <p>@FailureText()</p>
+            <button type="button" class="button notice__action" @onclick="Retry">@Strings.Data_Retry</button>
+        </div>
+    }
+    else
+    {
+        @if (Data.IsTrialData)
+        {
+            <div class="notice notice--warning" role="status">@Strings.Data_Trial</div>
+        }
+
+        @if (Data.UpdateReady)
+        {
+            <div class="notice" role="status">
+                <p>@Strings.Data_UpdateReady</p>
+                <button type="button" class="button button--primary notice__action" disabled="@_applying" @onclick="ApplyUpdateAsync">@Strings.Data_UpdateApply</button>
+            </div>
+        }
+
+        @if (!Data.IsPersistent)
+        {
+            <div class="notice notice--warning" role="status">@Strings.Data_NotPersistent</div>
+        }
+    }
+</section>
+
+@code {
+    private bool _applying;
+
+    private string FailureText() => Data.Status switch
+    {
+        BundleLoadStatus.NeedsNetwork => Strings.Data_NeedsNetwork,
+        BundleLoadStatus.NotPublished => Strings.Data_NotPublished,
+        _ => Strings.Data_Invalid,
+    };
+
+    // The same page, loaded again from the start: the data is asked for again, as the person expects of "try again".
+    private void Retry() => Navigation.NavigateTo(Navigation.Uri, forceLoad: true);
+
+    private async Task ApplyUpdateAsync()
+    {
+        _applying = true;
+        try
+        {
+            await Data.ApplyUpdateAsync();
+        }
+        finally
+        {
+            _applying = false;
+        }
+    }
+}

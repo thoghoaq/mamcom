@@ -1,0 +1,7 @@
+@using System.Globalization
+@inherits AppDataComponentBase
+
+@if (Data.Bundle is { } bundle)
+{
+    <p class="data-summary text-muted">@string.Format(CultureInfo.InvariantCulture, Strings.Data_SummaryFormat, bundle.Dishes.Count, bundle.Ingredients.Count)</p>
+}

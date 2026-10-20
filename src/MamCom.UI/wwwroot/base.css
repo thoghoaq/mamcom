@@ -252,6 +252,15 @@ small,
     background: var(--color-danger-soft);
 }
 
+/* A notice may carry one action under its text; the notices of the data package (components/DataNotices.razor) do. */
+.notice > p {
+    margin: 0;
+}
+
+.notice__action {
+    margin-top: var(--space-3);
+}
+
 .slot--soup {
     color: var(--color-slot-soup);
 }

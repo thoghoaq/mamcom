@@ -380,4 +380,17 @@
   <data name="Styleguide_NoticeOk" xml:space="preserve"><value>Đã chốt mâm.</value></data>
   <data name="Styleguide_NoticeWarning" xml:space="preserve"><value>Đã nới luật chọn món để đủ mâm.</value></data>
   <data name="Styleguide_NoticeDanger" xml:space="preserve"><value>Chưa đọc được dữ liệu món ăn.</value></data>
+
+  <!-- Dữ liệu món ăn: tải, cập nhật, dữ liệu thử -->
+  <data name="Data_NoticesLabel" xml:space="preserve"><value>Thông báo về dữ liệu món ăn</value></data>
+  <data name="Data_Loading" xml:space="preserve"><value>Đang mở dữ liệu món ăn…</value></data>
+  <data name="Data_NeedsNetwork" xml:space="preserve"><value>Lần đầu mở app cần có mạng để tải dữ liệu món ăn. Hãy bật mạng rồi thử lại.</value></data>
+  <data name="Data_NotPublished" xml:space="preserve"><value>Máy chủ chưa có gói dữ liệu món ăn để tải.</value></data>
+  <data name="Data_Invalid" xml:space="preserve"><value>Dữ liệu món ăn tải về bị hỏng nên app chưa dùng được. Hãy thử lại sau.</value></data>
+  <data name="Data_Retry" xml:space="preserve"><value>Thử lại</value></data>
+  <data name="Data_Trial" xml:space="preserve"><value>Đang dùng dữ liệu thử: món và số liệu chưa được duyệt đầy đủ.</value></data>
+  <data name="Data_UpdateReady" xml:space="preserve"><value>Đã tải xong dữ liệu món mới.</value></data>
+  <data name="Data_UpdateApply" xml:space="preserve"><value>Dùng ngay</value></data>
+  <data name="Data_NotPersistent" xml:space="preserve"><value>Trình duyệt này không giữ dữ liệu giữa các lần mở app (có thể do đang ở chế độ riêng tư). Thông tin gia đình sẽ mất khi đóng trang.</value></data>
+  <data name="Data_SummaryFormat" xml:space="preserve"><value>Có {0} món và {1} nguyên liệu.</value></data>
 </root>

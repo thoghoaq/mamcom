@@ -1,10 +1,17 @@
 @inherits LayoutComponentBase
+@inject IAppData Data
 
 <div class="app">
     <header class="app-header">
         <a class="app-header__brand" href="/"><AppBrand Name="MâmCơm" /></a>
     </header>
     <main class="app-main">
+        <DataNotices />
         @Body
     </main>
 </div>
+
+@code {
+    // Opening the app loads the data the device holds (or fetches it the first time). The page draws at once; the notices above it follow what happens.
+    protected override Task OnInitializedAsync() => Data.InitializeAsync();
+}
