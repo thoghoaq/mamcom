@@ -299,4 +299,85 @@
   <data name="Studio_Cook_NeedMinutes" xml:space="preserve"><value>Nhập số phút nấu thật.</value></data>
   <data name="Studio_Cook_DoneFormat" xml:space="preserve"><value>Đã nấu thử ngày {0}, hết {1} phút.</value></data>
   <data name="Studio_Cook_YieldFormat" xml:space="preserve"><value>Nấu {0} suất, thành phẩm {1} g.</value></data>
+
+  <!-- Ô giữ chỗ cho ảnh chưa có: tên loại nguyên liệu, quầy, loại món, nguồn đạm -->
+  <data name="Placeholder_AriaFormat" xml:space="preserve"><value>Chưa có ảnh: {0}</value></data>
+  <data name="Placeholder_DishFormat" xml:space="preserve"><value>{0} · {1}</value></data>
+  <data name="Placeholder_Cat_rau_cu" xml:space="preserve"><value>Rau củ</value></data>
+  <data name="Placeholder_Cat_rau_la" xml:space="preserve"><value>Rau lá</value></data>
+  <data name="Placeholder_Cat_qua" xml:space="preserve"><value>Quả</value></data>
+  <data name="Placeholder_Cat_thit_heo" xml:space="preserve"><value>Thịt heo</value></data>
+  <data name="Placeholder_Cat_thit_bo" xml:space="preserve"><value>Thịt bò</value></data>
+  <data name="Placeholder_Cat_thit_ga" xml:space="preserve"><value>Thịt gà</value></data>
+  <data name="Placeholder_Cat_ca" xml:space="preserve"><value>Cá</value></data>
+  <data name="Placeholder_Cat_hai_san" xml:space="preserve"><value>Hải sản</value></data>
+  <data name="Placeholder_Cat_trung" xml:space="preserve"><value>Trứng</value></data>
+  <data name="Placeholder_Cat_dau_hu" xml:space="preserve"><value>Đậu phụ</value></data>
+  <data name="Placeholder_Cat_nam" xml:space="preserve"><value>Nấm</value></data>
+  <data name="Placeholder_Cat_gia_vi" xml:space="preserve"><value>Gia vị</value></data>
+  <data name="Placeholder_Cat_ngu_coc" xml:space="preserve"><value>Ngũ cốc</value></data>
+  <data name="Placeholder_Aisle_thit_ca" xml:space="preserve"><value>Thịt cá</value></data>
+  <data name="Placeholder_Aisle_rau_cu_qua" xml:space="preserve"><value>Rau củ quả</value></data>
+  <data name="Placeholder_Aisle_trung_dau_phu" xml:space="preserve"><value>Trứng đậu phụ</value></data>
+  <data name="Placeholder_Aisle_kho_gia_vi" xml:space="preserve"><value>Khô và gia vị</value></data>
+  <data name="Placeholder_Aisle_khac" xml:space="preserve"><value>Khác</value></data>
+  <data name="Placeholder_Slot_canh" xml:space="preserve"><value>Canh</value></data>
+  <data name="Placeholder_Slot_man" xml:space="preserve"><value>Món mặn</value></data>
+  <data name="Placeholder_Slot_rau" xml:space="preserve"><value>Rau</value></data>
+  <data name="Placeholder_Protein_heo" xml:space="preserve"><value>thịt heo</value></data>
+  <data name="Placeholder_Protein_bo" xml:space="preserve"><value>thịt bò</value></data>
+  <data name="Placeholder_Protein_ga" xml:space="preserve"><value>thịt gà</value></data>
+  <data name="Placeholder_Protein_ca" xml:space="preserve"><value>cá</value></data>
+  <data name="Placeholder_Protein_tom" xml:space="preserve"><value>tôm</value></data>
+  <data name="Placeholder_Protein_trung" xml:space="preserve"><value>trứng</value></data>
+  <data name="Placeholder_Protein_chay" xml:space="preserve"><value>đạm chay</value></data>
+
+  <!-- Trang chủ tạm và bảng mẫu giao diện (/styleguide) -->
+  <data name="Home_Title" xml:space="preserve"><value>Hôm nay ăn gì?</value></data>
+  <data name="Styleguide_Title" xml:space="preserve"><value>Bảng mẫu giao diện</value></data>
+  <data name="Styleguide_Intro" xml:space="preserve"><value>Cùng một bộ mẫu ở hai chế độ để so sánh. App thật theo chế độ sáng hoặc tối của máy.</value></data>
+  <data name="Styleguide_Light" xml:space="preserve"><value>Chế độ sáng</value></data>
+  <data name="Styleguide_Dark" xml:space="preserve"><value>Chế độ tối</value></data>
+  <data name="Styleguide_Colors" xml:space="preserve"><value>Màu</value></data>
+  <data name="Styleguide_Type" xml:space="preserve"><value>Chữ</value></data>
+  <data name="Styleguide_Buttons" xml:space="preserve"><value>Nút</value></data>
+  <data name="Styleguide_Fields" xml:space="preserve"><value>Ô nhập</value></data>
+  <data name="Styleguide_Cards" xml:space="preserve"><value>Thẻ, nhãn và thông báo</value></data>
+  <data name="Styleguide_Icons" xml:space="preserve"><value>Icon</value></data>
+  <data name="Styleguide_Placeholders" xml:space="preserve"><value>Ô giữ chỗ cho ảnh chưa có</value></data>
+  <data name="Styleguide_PlaceholdersIngredients" xml:space="preserve"><value>Nguyên liệu: hình theo loại, màu theo quầy</value></data>
+  <data name="Styleguide_PlaceholdersAisles" xml:space="preserve"><value>Loại chưa biết: hình theo quầy</value></data>
+  <data name="Styleguide_PlaceholdersDishes" xml:space="preserve"><value>Món: hình theo nguồn đạm, màu theo loại món</value></data>
+  <data name="Styleguide_PlaceholdersThumbs" xml:space="preserve"><value>Ô nhỏ, cho danh sách đi chợ</value></data>
+  <data name="Styleguide_TypeTitle" xml:space="preserve"><value>Cỡ tiêu đề</value></data>
+  <data name="Styleguide_TypeLarge" xml:space="preserve"><value>Cỡ lớn</value></data>
+  <data name="Styleguide_TypeBase" xml:space="preserve"><value>Cỡ cơ bản, 18px</value></data>
+  <data name="Styleguide_TypeSmall" xml:space="preserve"><value>Cỡ nhỏ nhất, 16px</value></data>
+  <data name="Styleguide_TypeCooking" xml:space="preserve"><value>Cỡ chế độ nấu, 24px</value></data>
+  <data name="Styleguide_TypeStrong" xml:space="preserve"><value>Chữ đậm</value></data>
+  <data name="Styleguide_TypeSample" xml:space="preserve"><value>Cơm tấm sườn bì chả, canh chua cá lóc, rau muống xào tỏi.</value></data>
+  <data name="Styleguide_TypeMarks" xml:space="preserve"><value>Dấu tiếng Việt: ắ ằ ẳ ẵ ặ ầ ẫ ể ễ ệ ố ồ ổ ỗ ộ ơ ờ ở ỡ ợ ư ừ ử ữ ự đ</value></data>
+  <data name="Styleguide_ButtonPrimary" xml:space="preserve"><value>Quay mâm</value></data>
+  <data name="Styleguide_ButtonDefault" xml:space="preserve"><value>Xem công thức</value></data>
+  <data name="Styleguide_ButtonQuiet" xml:space="preserve"><value>Để sau</value></data>
+  <data name="Styleguide_ButtonDisabled" xml:space="preserve"><value>Chưa bấm được</value></data>
+  <data name="Styleguide_ButtonShare" xml:space="preserve"><value>Gửi Zalo</value></data>
+  <data name="Styleguide_ButtonLock" xml:space="preserve"><value>Khoá món</value></data>
+  <data name="Styleguide_ButtonMore" xml:space="preserve"><value>Thêm một chén</value></data>
+  <data name="Styleguide_ButtonLess" xml:space="preserve"><value>Bớt một chén</value></data>
+  <data name="Styleguide_FieldName" xml:space="preserve"><value>Tên người ăn</value></data>
+  <data name="Styleguide_FieldHint" xml:space="preserve"><value>Ví dụ: Bà, Bố, Bé Na.</value></data>
+  <data name="Styleguide_FieldSlot" xml:space="preserve"><value>Loại món</value></data>
+  <data name="Styleguide_FieldNote" xml:space="preserve"><value>Ghi chú</value></data>
+  <data name="Styleguide_FieldCheck" xml:space="preserve"><value>Hiện đồ có sẵn trong bếp</value></data>
+  <data name="Styleguide_CardTitle" xml:space="preserve"><value>Canh chua cá lóc</value></data>
+  <data name="Styleguide_CardBody" xml:space="preserve"><value>45 phút nấu, ≈ 340 kcal một suất.</value></data>
+  <data name="Styleguide_BadgeInfo" xml:space="preserve"><value>Mới</value></data>
+  <data name="Styleguide_BadgeOk" xml:space="preserve"><value>Đã nấu thử</value></data>
+  <data name="Styleguide_BadgeWarning" xml:space="preserve"><value>Chờ xem</value></data>
+  <data name="Styleguide_BadgeDanger" xml:space="preserve"><value>Có lỗi</value></data>
+  <data name="Styleguide_NoticeInfo" xml:space="preserve"><value>Mâm hôm nay có 4 món.</value></data>
+  <data name="Styleguide_NoticeOk" xml:space="preserve"><value>Đã chốt mâm.</value></data>
+  <data name="Styleguide_NoticeWarning" xml:space="preserve"><value>Đã nới luật chọn món để đủ mâm.</value></data>
+  <data name="Styleguide_NoticeDanger" xml:space="preserve"><value>Chưa đọc được dữ liệu món ăn.</value></data>
 </root>

@@ -1,0 +1,167 @@
+@using MamCom.Core.Models
+@using MamCom.UI.Placeholders
+
+@* The page /styleguide of the app: every token, type size, control, icon and placeholder, once in each theme. *@
+<h1>@Strings.Styleguide_Title</h1>
+<p>@Strings.Styleguide_Intro</p>
+
+@* The same specimen twice, each in its own theme, so light and dark can be compared on one screen. *@
+<div class="stack">
+    @foreach (var (theme, title) in Themes)
+    {
+        <section class="theme-panel stack" data-theme="@theme" data-specimen="@theme" aria-labelledby="@($"panel-{theme}")">
+            <h2 id="@($"panel-{theme}")">@title</h2>
+
+            <div>
+                <h3>@Strings.Styleguide_Colors</h3>
+                <div class="grid-tiles">
+                    @foreach (var name in ColorNames)
+                    {
+                        <div>
+                            <div class="swatch" style="background: var(--color-@name)" data-swatch="@name"></div>
+                            <code class="text-small">@name</code>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div>
+                <h3>@Strings.Styleguide_Type</h3>
+                <p class="type type--title">@Strings.Styleguide_TypeTitle</p>
+                <p class="type type--large">@Strings.Styleguide_TypeLarge</p>
+                <p>@Strings.Styleguide_TypeBase</p>
+                <p class="text-small">@Strings.Styleguide_TypeSmall</p>
+                <p class="type type--cooking">@Strings.Styleguide_TypeCooking</p>
+                <p><strong>@Strings.Styleguide_TypeStrong:</strong> @Strings.Styleguide_TypeSample</p>
+                <p>@Strings.Styleguide_TypeMarks</p>
+            </div>
+
+            <div>
+                <h3>@Strings.Styleguide_Buttons</h3>
+                <div class="cluster">
+                    <button type="button" class="button button--primary"><Icon Name="dice" />@Strings.Styleguide_ButtonPrimary</button>
+                    <button type="button" class="button">@Strings.Styleguide_ButtonDefault</button>
+                    <button type="button" class="button button--quiet">@Strings.Styleguide_ButtonQuiet</button>
+                    <button type="button" class="button" disabled>@Strings.Styleguide_ButtonDisabled</button>
+                    <button type="button" class="button"><Icon Name="share" />@Strings.Styleguide_ButtonShare</button>
+                    <button type="button" class="button button--icon" aria-label="@Strings.Styleguide_ButtonLock"><Icon Name="lock" /></button>
+                    <button type="button" class="button button--icon button--quiet" aria-label="@Strings.Styleguide_ButtonLess"><Icon Name="minus" /></button>
+                    <button type="button" class="button button--icon button--quiet" aria-label="@Strings.Styleguide_ButtonMore"><Icon Name="plus" /></button>
+                </div>
+            </div>
+
+            <div>
+                <h3>@Strings.Styleguide_Fields</h3>
+                <div class="field">
+                    <label for="@($"name-{theme}")">@Strings.Styleguide_FieldName</label>
+                    <input id="@($"name-{theme}")" class="input" />
+                    <span class="field__hint">@Strings.Styleguide_FieldHint</span>
+                </div>
+                <div class="field">
+                    <label for="@($"slot-{theme}")">@Strings.Styleguide_FieldSlot</label>
+                    <select id="@($"slot-{theme}")" class="select">
+                        <option>@PlaceholderCatalog.ForDish(DishSlot.Soup, null).Name</option>
+                        <option>@PlaceholderCatalog.ForDish(DishSlot.Main, null).Name</option>
+                        <option>@PlaceholderCatalog.ForDish(DishSlot.Vegetable, null).Name</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="@($"note-{theme}")">@Strings.Styleguide_FieldNote</label>
+                    <textarea id="@($"note-{theme}")" class="textarea"></textarea>
+                </div>
+                <label class="check"><input type="checkbox" checked />@Strings.Styleguide_FieldCheck</label>
+            </div>
+
+            <div>
+                <h3>@Strings.Styleguide_Cards</h3>
+                <div class="card">
+                    <h3>@Strings.Styleguide_CardTitle</h3>
+                    <p>@Strings.Styleguide_CardBody</p>
+                    <span class="badge badge--info">@Strings.Styleguide_BadgeInfo</span>
+                    <span class="badge badge--ok">@Strings.Styleguide_BadgeOk</span>
+                    <span class="badge badge--warning">@Strings.Styleguide_BadgeWarning</span>
+                    <span class="badge badge--danger">@Strings.Styleguide_BadgeDanger</span>
+                </div>
+                <div class="notice">@Strings.Styleguide_NoticeInfo</div>
+                <div class="notice notice--ok">@Strings.Styleguide_NoticeOk</div>
+                <div class="notice notice--warning">@Strings.Styleguide_NoticeWarning</div>
+                <div class="notice notice--danger">@Strings.Styleguide_NoticeDanger</div>
+            </div>
+
+            <div>
+                <h3>@Strings.Styleguide_Icons</h3>
+                <div class="cluster">
+                    @foreach (var name in IconCatalog.Names)
+                    {
+                        <span class="icon-cell"><Icon Name="@name" Class="icon--large" /><code class="text-small">@name</code></span>
+                    }
+                </div>
+            </div>
+
+            <div>
+                <h3>@Strings.Styleguide_Placeholders</h3>
+
+                <h3 class="text-muted">@Strings.Styleguide_PlaceholdersIngredients</h3>
+                <div class="grid-tiles" data-grid="ingredients">
+                    @foreach (var category in PlaceholderCatalog.KnownCategories)
+                    {
+                        <PlaceholderTile Placeholder="PlaceholderCatalog.ForIngredient(category, TypicalAisle(category))" />
+                    }
+                </div>
+
+                <h3 class="text-muted">@Strings.Styleguide_PlaceholdersAisles</h3>
+                <div class="grid-tiles" data-grid="aisles">
+                    @foreach (var aisle in Enum.GetValues<Aisle>())
+                    {
+                        <PlaceholderTile Placeholder="PlaceholderCatalog.ForIngredient(string.Empty, aisle)" />
+                    }
+                </div>
+
+                <h3 class="text-muted">@Strings.Styleguide_PlaceholdersDishes</h3>
+                <div class="grid-tiles grid-tiles--wide" data-grid="dishes">
+                    @foreach (var slot in Enum.GetValues<DishSlot>())
+                    {
+                        <PlaceholderTile Placeholder="PlaceholderCatalog.ForDish(slot, null)" />
+                        @foreach (var protein in PlaceholderCatalog.KnownProteinSources)
+                        {
+                            <PlaceholderTile Placeholder="PlaceholderCatalog.ForDish(slot, protein)" />
+                        }
+                    }
+                </div>
+
+                <h3 class="text-muted">@Strings.Styleguide_PlaceholdersThumbs</h3>
+                <div class="cluster" data-grid="thumbs">
+                    @foreach (var category in PlaceholderCatalog.KnownCategories)
+                    {
+                        <span class="thumb"><PlaceholderTile Placeholder="PlaceholderCatalog.ForIngredient(category, TypicalAisle(category))" Compact="true" /></span>
+                    }
+                </div>
+            </div>
+        </section>
+    }
+</div>
+
+@code {
+    private static readonly (string Theme, string Title)[] Themes =
+    [
+        ("light", Strings.Styleguide_Light),
+        ("dark", Strings.Styleguide_Dark),
+    ];
+
+    private static readonly string[] ColorNames =
+    [
+        "bg", "surface", "surface-raised", "text", "text-muted", "border", "border-strong", "focus",
+        "accent", "accent-strong", "accent-soft", "leaf", "warning", "danger", "info",
+        "slot-soup", "slot-main", "slot-veg",
+        "aisle-meat", "aisle-produce", "aisle-egg", "aisle-dry", "aisle-other",
+    ];
+
+    /// <summary>The aisle an ingredient of this category is usually filed in, to colour the specimen.</summary>
+    private static Aisle TypicalAisle(string category) => category switch
+    {
+        "thit-heo" or "thit-bo" or "thit-ga" or "ca" or "hai-san" => Aisle.MeatAndFish,
+        "trung" or "dau-hu" => Aisle.EggsAndTofu,
+        "gia-vi" or "ngu-coc" => Aisle.DryGoodsAndSpices,
+        _ => Aisle.Produce,
+    };
+}

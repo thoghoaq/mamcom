@@ -46,6 +46,11 @@ p {
     margin: 0 0 var(--space-3);
 }
 
+strong,
+b {
+    font-weight: var(--font-weight-strong);
+}
+
 a {
     color: var(--color-accent);
 }
@@ -114,7 +119,7 @@ small,
 }
 
 .button--quiet {
-    border-color: var(--color-border);
+    border-color: var(--color-border-strong);
     color: var(--color-text);
 }
 
@@ -148,7 +153,7 @@ small,
     width: 100%;
     min-height: var(--tap-size);
     padding: var(--space-2) var(--space-3);
-    border: 2px solid var(--color-border);
+    border: 2px solid var(--color-border-strong);
     border-radius: var(--radius-small);
     background: var(--color-surface);
     color: var(--color-text);
@@ -296,4 +301,125 @@ small,
 
 .nutrition__note {
     color: var(--color-text-muted);
+}
+
+/* ---- Icons: one SVG sprite (icons/icons.svg), drawn with the text colour ---- */
+
+.icon {
+    flex: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.icon--large {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+/* A button that is only an icon keeps the 48px target. */
+.button--icon {
+    padding: var(--space-2);
+}
+
+/* ---- Placeholder tile: stands in for a picture that does not exist yet, one look per kind of ingredient or dish ---- */
+
+.tile {
+    --tile-fg: var(--color-aisle-other);
+    --tile-bg: var(--color-aisle-other-soft);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    inline-size: var(--tile-width, 100%);
+    padding: var(--space-2);
+    border-radius: var(--radius);
+    background: var(--tile-bg);
+    color: var(--tile-fg);
+    overflow: hidden;
+    text-align: center;
+}
+
+.tile--ingredient {
+    aspect-ratio: 1 / 1;
+}
+
+.tile--dish {
+    aspect-ratio: 4 / 3;
+}
+
+/* The drawing takes the room the words leave, so a name that wraps to two lines never pushes it out of the tile. */
+.tile__icon {
+    flex: 1 1 0;
+    min-block-size: 0;
+    inline-size: 100%;
+    max-block-size: 8rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* The words of a tile are in the text colour, so they read as well as any other text; only the drawing takes the tone. */
+.tile__label {
+    color: var(--color-text);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-strong);
+    line-height: var(--line-height-tight);
+    text-wrap: balance;
+}
+
+/* A thumbnail has no room for words; its name is for the screen reader. */
+.tile--compact .tile__label {
+    display: none;
+}
+
+.tile--compact {
+    padding: 0;
+}
+
+.tile--aisle-meat {
+    --tile-fg: var(--color-aisle-meat);
+    --tile-bg: var(--color-aisle-meat-soft);
+}
+
+.tile--aisle-produce {
+    --tile-fg: var(--color-aisle-produce);
+    --tile-bg: var(--color-aisle-produce-soft);
+}
+
+.tile--aisle-egg {
+    --tile-fg: var(--color-aisle-egg);
+    --tile-bg: var(--color-aisle-egg-soft);
+}
+
+.tile--aisle-dry {
+    --tile-fg: var(--color-aisle-dry);
+    --tile-bg: var(--color-aisle-dry-soft);
+}
+
+.tile--aisle-other {
+    --tile-fg: var(--color-aisle-other);
+    --tile-bg: var(--color-aisle-other-soft);
+}
+
+.tile--slot-soup {
+    --tile-fg: var(--color-slot-soup);
+    --tile-bg: var(--color-slot-soup-soft);
+}
+
+.tile--slot-main {
+    --tile-fg: var(--color-slot-main);
+    --tile-bg: var(--color-slot-main-soft);
+}
+
+.tile--slot-veg {
+    --tile-fg: var(--color-slot-veg);
+    --tile-bg: var(--color-slot-veg-soft);
 }

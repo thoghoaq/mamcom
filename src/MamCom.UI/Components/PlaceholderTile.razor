@@ -1,0 +1,19 @@
+@using MamCom.UI.Placeholders
+
+@* Stands in for a picture that does not exist yet. It is a drawing on a tinted tile with the name of its type, so nobody takes it for a photo. *@
+<div class="@CssClass" role="img" aria-label="@PlaceholderCatalog.Describe(Placeholder)">
+    <Icon Name="@Placeholder.Icon" Class="tile__icon" />
+    <span class="tile__label" aria-hidden="true">@Placeholder.Name</span>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public Placeholder Placeholder { get; set; } = default!;
+
+    /// <summary>A thumbnail: only the drawing, no words under it (the name is still read to a screen reader).</summary>
+    [Parameter]
+    public bool Compact { get; set; }
+
+    private string CssClass =>
+        $"tile tile--{(Placeholder.Kind == PlaceholderKind.Dish ? "dish" : "ingredient")} tile--{Placeholder.Tone}" + (Compact ? " tile--compact" : string.Empty);
+}

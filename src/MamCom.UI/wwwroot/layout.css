@@ -1,0 +1,116 @@
+/*
+ * The frame of the app, phone first (360px wide and up): a header, the page, and an optional bar of actions at the thumb.
+ * The page keeps clear of the notch and the home bar (the safe-area variables of tokens.css; the page opts in with
+ * viewport-fit=cover). On a wider screen the page stops at --content-width and is centred.
+ */
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+.app-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: var(--tap-size);
+    padding: calc(var(--space-2) + var(--safe-top)) calc(var(--space-4) + var(--safe-right)) var(--space-2) calc(var(--space-4) + var(--safe-left));
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-surface);
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-strong);
+}
+
+.app-main {
+    flex: 1;
+    inline-size: 100%;
+    max-inline-size: var(--content-width);
+    margin-inline: auto;
+    padding: var(--space-4) calc(var(--space-4) + var(--safe-right)) var(--space-5) calc(var(--space-4) + var(--safe-left));
+}
+
+/* The actions of a screen stay in reach of the thumb, above the home bar. */
+.app-actions {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    display: flex;
+    gap: var(--space-3);
+    padding: var(--space-3) calc(var(--space-4) + var(--safe-right)) calc(var(--space-3) + var(--safe-bottom)) calc(var(--space-4) + var(--safe-left));
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+}
+
+.app-actions > * {
+    flex: 1;
+}
+
+/* Small helpers for laying a page out. */
+.stack > * + * {
+    margin-top: var(--space-4);
+}
+
+.cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.grid-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+    gap: var(--space-3);
+}
+
+.grid-tiles--wide {
+    grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+}
+
+/* ---- The styleguide (components/Styleguide.razor) ---- */
+
+/* A panel that shows its children in one theme whatever the page uses. */
+.theme-panel {
+    padding: var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.swatch {
+    block-size: 3rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-small);
+}
+
+.type--title {
+    font-size: var(--font-size-title);
+}
+
+.type--large {
+    font-size: var(--font-size-large);
+}
+
+.type--cooking {
+    font-size: var(--font-size-cooking);
+    line-height: var(--line-height);
+}
+
+.icon-cell {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    inline-size: 6rem;
+    text-align: center;
+}
+
+.thumb {
+    --tile-width: 3rem;
+    display: block;
+    inline-size: 3rem;
+}

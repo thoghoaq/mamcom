@@ -1,0 +1,27 @@
+@* One icon of icons/icons.svg, drawn in the colour of the text around it. An icon with no Label is decoration and is hidden from a screen reader. *@
+<svg class="@CssClass"
+     focusable="false"
+     aria-hidden="@(Label is null ? "true" : null)"
+     role="@(Label is null ? null : "img")"
+     aria-label="@Label">
+    <use href="@(SpriteUrl + "#" + Name)" />
+</svg>
+
+@code {
+    /// <summary>Where the sprite is served from: a Razor class library's files live under _content/&lt;assembly&gt;.</summary>
+    public const string SpriteUrl = "_content/MamCom.UI/icons/icons.svg";
+
+    /// <summary>The id of a symbol in the sprite, for example "dice".</summary>
+    [Parameter, EditorRequired]
+    public string Name { get; set; } = string.Empty;
+
+    /// <summary>What the icon says, when it is not next to words that say it (an icon-only button). Null for a decoration.</summary>
+    [Parameter]
+    public string? Label { get; set; }
+
+    /// <summary>More classes after <c>icon</c>, for example <c>icon--large</c> or <c>tile__icon</c>.</summary>
+    [Parameter]
+    public string? Class { get; set; }
+
+    private string CssClass => string.IsNullOrWhiteSpace(Class) ? "icon" : "icon " + Class;
+}

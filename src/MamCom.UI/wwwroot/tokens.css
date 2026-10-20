@@ -1,9 +1,15 @@
 /*
  * Design tokens of MâmCơm. Components never write a colour, a size or a spacing of their own: they use these variables,
  * so dark mode and the cooking-mode sizes are decided in one place.
+ *
+ * Light and dark. The page follows the system (prefers-color-scheme). An element can force one with data-theme="light" or
+ * data-theme="dark": on <html> for the whole page (a setting, later), or on one element to show both side by side (the
+ * styleguide). The dark values therefore appear twice below: once for the system, once for the attribute. A test keeps the
+ * two blocks identical.
  */
-:root {
-    color-scheme: light dark;
+:root,
+[data-theme="light"] {
+    color-scheme: light;
 
     /* Colour: a warm kitchen. Cream paper, brick-red accent, banana-leaf green. */
     --color-bg: #fbf5ea;
@@ -12,6 +18,7 @@
     --color-text: #2b2118;
     --color-text-muted: #66574a;
     --color-border: #dccdb6;
+    --color-border-strong: #8a7a66;
     --color-focus: #1f5fbf;
 
     --color-accent: #a42f1c;
@@ -30,9 +37,125 @@
 
     /* One colour per part of the meal, so a dish is recognised before it is read. */
     --color-slot-soup: #1f5a85;
-    --color-slot-main: #a8501a;
+    --color-slot-soup-soft: #dbeaf5;
+    --color-slot-main: #9a4616;
+    --color-slot-main-soft: #f9e3d0;
     --color-slot-veg: #2d6a39;
+    --color-slot-veg-soft: #dcecd8;
 
+    /* One colour per aisle of the market, for an ingredient. */
+    --color-aisle-meat: #9c2f3a;
+    --color-aisle-meat-soft: #f8dde0;
+    --color-aisle-produce: #2d6a39;
+    --color-aisle-produce-soft: #dcecd8;
+    --color-aisle-egg: #7d5200;
+    --color-aisle-egg-soft: #fbebc4;
+    --color-aisle-dry: #6b4a2b;
+    --color-aisle-dry-soft: #eadcc8;
+    --color-aisle-other: #55595f;
+    --color-aisle-other-soft: #e6e6e1;
+
+    --shadow: 0 1px 2px rgb(43 33 24 / 12%);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+
+        --color-bg: #1b1612;
+        --color-surface: #251e18;
+        --color-surface-raised: #30271f;
+        --color-text: #f2e9dd;
+        --color-text-muted: #c4b6a5;
+        --color-border: #4a3d31;
+        --color-border-strong: #8c7c6a;
+        --color-focus: #8ab8f5;
+
+        --color-accent: #f08b73;
+        --color-accent-strong: #f7a995;
+        --color-on-accent: #2a0e07;
+        --color-accent-soft: #4a2219;
+
+        --color-leaf: #8fd09b;
+        --color-leaf-soft: #1f3a25;
+        --color-warning: #f0c565;
+        --color-warning-soft: #44330f;
+        --color-danger: #ff9a90;
+        --color-danger-soft: #4d1f1b;
+        --color-info: #93c4ee;
+        --color-info-soft: #1b3447;
+
+        --color-slot-soup: #93c4ee;
+        --color-slot-soup-soft: #1b3447;
+        --color-slot-main: #f0a56b;
+        --color-slot-main-soft: #4a2e18;
+        --color-slot-veg: #8fd09b;
+        --color-slot-veg-soft: #1f3a25;
+
+        --color-aisle-meat: #f2a1ab;
+        --color-aisle-meat-soft: #4a2328;
+        --color-aisle-produce: #8fd09b;
+        --color-aisle-produce-soft: #1f3a25;
+        --color-aisle-egg: #f0c565;
+        --color-aisle-egg-soft: #44330f;
+        --color-aisle-dry: #d9b48a;
+        --color-aisle-dry-soft: #3d2f20;
+        --color-aisle-other: #b7bbc2;
+        --color-aisle-other-soft: #33353a;
+
+        --shadow: 0 1px 2px rgb(0 0 0 / 50%);
+    }
+}
+
+[data-theme="dark"] {
+    color-scheme: dark;
+
+    --color-bg: #1b1612;
+    --color-surface: #251e18;
+    --color-surface-raised: #30271f;
+    --color-text: #f2e9dd;
+    --color-text-muted: #c4b6a5;
+    --color-border: #4a3d31;
+    --color-border-strong: #8c7c6a;
+    --color-focus: #8ab8f5;
+
+    --color-accent: #f08b73;
+    --color-accent-strong: #f7a995;
+    --color-on-accent: #2a0e07;
+    --color-accent-soft: #4a2219;
+
+    --color-leaf: #8fd09b;
+    --color-leaf-soft: #1f3a25;
+    --color-warning: #f0c565;
+    --color-warning-soft: #44330f;
+    --color-danger: #ff9a90;
+    --color-danger-soft: #4d1f1b;
+    --color-info: #93c4ee;
+    --color-info-soft: #1b3447;
+
+    --color-slot-soup: #93c4ee;
+    --color-slot-soup-soft: #1b3447;
+    --color-slot-main: #f0a56b;
+    --color-slot-main-soft: #4a2e18;
+    --color-slot-veg: #8fd09b;
+    --color-slot-veg-soft: #1f3a25;
+
+    --color-aisle-meat: #f2a1ab;
+    --color-aisle-meat-soft: #4a2328;
+    --color-aisle-produce: #8fd09b;
+    --color-aisle-produce-soft: #1f3a25;
+    --color-aisle-egg: #f0c565;
+    --color-aisle-egg-soft: #44330f;
+    --color-aisle-dry: #d9b48a;
+    --color-aisle-dry-soft: #3d2f20;
+    --color-aisle-other: #b7bbc2;
+    --color-aisle-other-soft: #33353a;
+
+    --shadow: 0 1px 2px rgb(0 0 0 / 50%);
+}
+
+/* What does not change with the theme: type, space, shape, touch and the safe area. */
+:root {
     /* Type. The base size is 18px, the smallest text 16px, the cooking mode 24px. */
     --font-family: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-size-small: 1rem;
@@ -56,37 +179,10 @@
     --radius-small: 0.5rem;
     --tap-size: 3rem;
     --content-width: 64rem;
-    --shadow: 0 1px 2px rgb(43 33 24 / 12%);
-}
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color-bg: #1b1612;
-        --color-surface: #251e18;
-        --color-surface-raised: #30271f;
-        --color-text: #f2e9dd;
-        --color-text-muted: #c4b6a5;
-        --color-border: #4a3d31;
-        --color-focus: #8ab8f5;
-
-        --color-accent: #f08b73;
-        --color-accent-strong: #f7a995;
-        --color-on-accent: #2a0e07;
-        --color-accent-soft: #4a2219;
-
-        --color-leaf: #8fd09b;
-        --color-leaf-soft: #1f3a25;
-        --color-warning: #f0c565;
-        --color-warning-soft: #44330f;
-        --color-danger: #ff9a90;
-        --color-danger-soft: #4d1f1b;
-        --color-info: #93c4ee;
-        --color-info-soft: #1b3447;
-
-        --color-slot-soup: #93c4ee;
-        --color-slot-main: #f0a56b;
-        --color-slot-veg: #8fd09b;
-
-        --shadow: 0 1px 2px rgb(0 0 0 / 50%);
-    }
+    /* The parts of the screen a phone covers (notch, home bar, rounded corners). Zero where there is none. */
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-right: env(safe-area-inset-right, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-left: env(safe-area-inset-left, 0px);
 }
