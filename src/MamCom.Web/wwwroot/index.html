@@ -3,10 +3,18 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- viewport-fit=cover lets the page use the whole screen of a phone; layout.css keeps it clear of the notch and the home bar. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#fffdf8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#251e18" media="(prefers-color-scheme: dark)" />
     <title>MâmCơm</title>
     <base href="/" />
     <link rel="preload" id="webassembly" />
+    <link rel="stylesheet" href="_content/MamCom.UI/fonts.css" />
+    <link rel="stylesheet" href="_content/MamCom.UI/tokens.css" />
+    <link rel="stylesheet" href="_content/MamCom.UI/base.css" />
+    <link rel="stylesheet" href="_content/MamCom.UI/layout.css" />
     <link rel="stylesheet" href="css/app.css" />
     <!-- If you add any scoped CSS files, uncomment the following to load them
     <link href="MamCom.Web.styles.css" rel="stylesheet" /> -->
