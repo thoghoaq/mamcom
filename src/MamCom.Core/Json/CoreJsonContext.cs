@@ -4,6 +4,7 @@ using MamCom.Core.Data;
 using MamCom.Core.Models;
 using MamCom.Core.Nutrition;
 using MamCom.Core.Portions;
+using MamCom.Core.Shopping;
 using MamCom.Core.Spinning;
 
 namespace MamCom.Core.Json;
@@ -39,6 +40,7 @@ namespace MamCom.Core.Json;
 [JsonSerializable(typeof(SpinHistory))]
 [JsonSerializable(typeof(TraySession))]
 [JsonSerializable(typeof(EatenLog))]
+[JsonSerializable(typeof(ShoppingState))]
 [JsonSerializable(typeof(DishPreference))]
 [JsonSerializable(typeof(IReadOnlyDictionary<string, DishPreference>))]
 public partial class CoreJsonContext : JsonSerializerContext;
