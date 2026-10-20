@@ -89,7 +89,7 @@ dotnet run --project tools/MamCom.FdcImporter -- suggest --ids gao,trung-ga   # 
 dotnet user-secrets set "Fdc:ApiKey" "<khoá>" --project tools/MamCom.FdcImporter   # không đặt thì dùng DEMO_KEY
 dotnet run --project tools/MamCom.RecipeDrafter -- draft --limit 3            # soạn nháp từ dish-list.csv, có tính phí (ADR-013)
 dotnet user-secrets set "Claude:ApiKey" "<khoá>" --project tools/MamCom.RecipeDrafter   # hoặc biến môi trường ANTHROPIC_API_KEY
-dotnet run --project tools/MamCom.Studio    # http://localhost:5194, duyệt món (ADR-014); --Studio:DataFolder=<thư mục data>, --Studio:Reviewer=<tên>
+dotnet run --project tools/MamCom.Studio    # http://localhost:5194, duyệt món (ADR-014) và xác nhận dinh dưỡng nguyên liệu (ADR-015); --Studio:DataFolder=<thư mục data>, --Studio:Reviewer=<tên>
 dotnet run --project src/MamCom.Web
 ```
 

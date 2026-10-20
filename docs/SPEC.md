@@ -395,6 +395,13 @@ Làm rõ khi hiện thực bước 6 (ADR-014):
 - **Món `reviewed` và `cooktested` chỉ xem.** "Mở lại để sửa" chỉ cho `reviewed`. File luôn ghi đúng định dạng chuẩn của `DishFile`, nên diff Git chỉ có các dòng đã đổi; file bị đổi ở chỗ khác sau khi mở thì Studio không ghi đè.
 - Số trên màn hình luôn là ước tính (kcal kèm "≈", làm tròn 10); nguyên liệu chưa có số liệu thì hiện "chưa đủ số liệu" cùng tên nguyên liệu thiếu, không bao giờ là 0.
 
+Làm rõ khi hiện thực bước 3, phần người chọn trong Studio (ADR-015):
+- **Màn hình:** Nguyên liệu (`/ingredients`, lọc theo chưa có số liệu, có gợi ý chờ chọn, đã xác nhận) và một nguyên liệu (`/ingredients/<id>`): form sửa tên theo vùng, tên gọi khác, nhóm, quầy, nguồn đạm, tỷ lệ thải bỏ, đồ có sẵn, đơn vị đi chợ theo vùng và ảnh; dinh dưỡng trên 100 g và nguồn; các ứng viên của FdcImporter; máy kiểm; các món dùng nguyên liệu. Tổng quan đếm nguyên liệu theo trạng thái số liệu.
+- **Chọn ứng viên:** người nhập tên rồi bấm "Chọn ứng viên này". Studio đọc lại file gợi ý, chép sáu số của ứng viên nguyên văn (số FDC không nêu vẫn là `null`) và ghi `nutritionSource`: `db` = `usda-fdc`, `ref` = mã FDC, `matchedName` = mô tả FDC, `verifiedBy` = tên người, `verifiedAt` = hôm nay. Không có ô để gõ số. Ứng viên không nêu số nào bị từ chối. Chọn hoặc bỏ số liệu chỉ khi không còn thay đổi chưa lưu và không còn lỗi.
+- **Bỏ số liệu** đưa nguyên liệu về `placeholder` và file về đúng như trước khi chọn. Lưu một chỉnh sửa không bao giờ đụng vào số hay nguồn.
+- **Ảnh:** chọn ảnh nhỏ và ảnh lớn trong các file có sẵn ở `data/images/out`, kèm `source`, `license` và cờ `isIllustration`. Studio không tạo hay đổi cỡ ảnh; đó là việc của ImageTool (task 2.8).
+- Chưa có: nhập tay số từ Bảng thành phần thực phẩm Việt Nam (sửa file bằng tay, schema và validator vẫn kiểm).
+
 ### 7.5 Ảnh
 
 - **Nguyên liệu:** tự chụp. Nền kem đồng nhất, tỷ lệ 1:1, cùng góc, cùng ánh sáng. Ở đây độ đúng quan trọng hơn độ đẹp, vì ảnh dùng để nhận diện ngoài chợ.
