@@ -81,16 +81,16 @@
 
 ## Phase 3 — UI MVP PWA (M2)
 
-- [ ] **3.1** Design tokens CSS (light và dark), self-host font Be Vietnam Pro, Tabler Icons, layout mobile-first, safe area (§8.2).
-  - Xong khi: có trang "styleguide" hiển thị token, chữ và nút ở cả 2 mode.
+- [ ] **3.1** Design tokens CSS (light và dark), self-host font Be Vietnam Pro, Tabler Icons, layout mobile-first, safe area (§8.2). Gồm bộ ô giữ chỗ cho ảnh theo loại (SPEC §7.5): màu theo quầy hoặc loại món, hình theo `category` hoặc nguồn đạm, vì ảnh thật chỉ có sau khi sản phẩm xong và chủ dự án không muốn một ô chung cho tất cả.
+  - Xong khi: có trang "styleguide" hiển thị token, chữ, nút và mọi ô giữ chỗ ở cả 2 mode.
 - [ ] **3.2** `BundleLoader`, `IUserStateStore` (localStorage), service worker cache bundle và ảnh thumb, kiểm tra version bundle khi online. `→ 2.2`
   - Xong khi: app chạy offline sau lần tải đầu; đổi bundle thì app nhận bản mới.
 - [ ] **3.3** Onboarding "Nhà mình có ai?" (§8.1-1). `→ 3.1, 3.2, 1.2`
   - Xong khi: tạo được hồ sơ 4 người trong ≤ 60 giây; bỏ qua được; có bUnit test cho stepper.
-- [ ] **3.4** Màn "Mâm hôm nay": thẻ món, khoá, vuốt đổi, quay có hiệu ứng khoảng 1 giây, rung nhẹ (feature-detect), tóm tắt, "Mâm trước", gợi ý lọc sau 5 lần quay, thông báo luật đã nới, nút "Chốt mâm". `→ 1.6, 1.7, 3.3`
+- [ ] **3.4** Màn "Mâm hôm nay": thẻ món (ảnh, hoặc ô giữ chỗ theo loại khi chưa có), khoá, vuốt đổi, quay có hiệu ứng khoảng 1 giây, rung nhẹ (feature-detect), tóm tắt, "Mâm trước", gợi ý lọc sau 5 lần quay, thông báo luật đã nới, nút "Chốt mâm". `→ 1.6, 1.7, 3.3`
   - Xong khi: luồng quay → khoá → quay → chốt chạy được trên viewport 360×740.
-- [ ] **3.5** Chi tiết món: ảnh (nhãn "Ảnh minh hoạ" nếu cần), nguyên liệu "cho X suất", cách làm, dinh dưỡng có thanh tỷ lệ và kcal theo từng người, chân trang "Số liệu ước tính…". `→ 1.4`
-- [ ] **3.6** Đi chợ: nhóm theo quầy, thumbnail, checkbox 48px giữ trạng thái, toggle "Hiện đồ có sẵn", nút "Gửi Zalo" (Web Share API, nếu không có thì copy). `→ 1.5`
+- [ ] **3.5** Chi tiết món: ảnh (ô giữ chỗ theo loại khi chưa có ảnh; nhãn "Ảnh minh hoạ" nếu cần), nguyên liệu "cho X suất", cách làm, dinh dưỡng có thanh tỷ lệ và kcal theo từng người, chân trang "Số liệu ước tính…". `→ 1.4`
+- [ ] **3.6** Đi chợ: nhóm theo quầy, thumbnail (ô giữ chỗ theo loại khi chưa có ảnh), checkbox 48px giữ trạng thái, toggle "Hiện đồ có sẵn", nút "Gửi Zalo" (Web Share API, nếu không có thì copy). `→ 1.5`
   - Xong khi: chạy offline; text chia sẻ khớp golden test.
 - [ ] **3.7** Chế độ nấu: 1 bước mỗi màn hình, chữ ≥ 22px, hẹn giờ trong bước, chip hẹn giờ song song, Screen Wake Lock (feature-detect và có thông báo), chạm nửa phải để sang bước tiếp, âm báo hoặc rung khi hết giờ. `→ 1.7`
 - [ ] **3.8** Phản hồi sau bữa và Cài đặt (thành viên, vùng, cỡ chén, món đã chặn, xoá dữ liệu). Phản hồi cập nhật `pref` cho lần quay sau. `→ 3.4`

@@ -430,6 +430,11 @@ Làm rõ khi hiện thực ImageTool (ADR-017):
 - **Món:** chụp trong buổi nấu thử, từ trên xuống, tỷ lệ 4:3, chén đĩa đồng bộ.
 - **Ảnh tạm:** AI tạo hoặc ảnh kho có giấy phép, bắt buộc `isIllustration: true`. UI gắn nhãn "Ảnh minh hoạ".
 - **Ảnh kho (Unsplash, Pexels):** chỉ lấy lẻ từng ảnh, kèm source và license. Giấy phép của họ cấm gom ảnh hàng loạt và cấm dùng API để xây dataset.
+- **Ảnh giữ chỗ (khi chưa có ảnh):** app không dùng một hình chung cho mọi thứ. Nguyên liệu hay món chưa có ảnh hiện một ô giữ chỗ theo loại của nó, lấy từ các trường dữ liệu đã có, không thêm trường mới:
+  - **Nguyên liệu:** màu theo quầy đi chợ (`aisle`), hình theo `category` (rau củ, rau lá, quả, thịt heo, thịt bò, thịt gà, cá, hải sản, trứng, đậu hũ, nấm, gia vị, ngũ cốc). `category` chưa biết thì dùng hình của quầy.
+  - **Món:** màu theo loại món (`slot`: canh, mặn, rau), hình theo nguồn đạm (`proteinSource`: heo, bò, gà, cá, tôm, trứng, chay). Món không có nguồn đạm dùng hình của loại món (bát canh, đĩa rau).
+  - Là hình vẽ đơn giản (Tabler Icons khi có hình hợp, tự vẽ khi không) trên ô màu lấy từ token, có dark mode, kèm tên loại bằng chữ ("Thịt heo", "Canh") và nhãn đọc cho trình đọc màn hình ("Chưa có ảnh: thịt heo"). Không giả làm ảnh thật và không mang nhãn "Ảnh minh hoạ" (nhãn đó dành cho ảnh tạm có file); không bao giờ là `<img>` hỏng.
+  - Có test: mọi quầy, mọi loại món, mọi nguồn đạm và mọi `category` của seed có ô riêng; ô dự phòng chỉ dành cho giá trị chưa biết. Có `image.thumb` thì ảnh thật thay ô giữ chỗ.
 - **ImageTool:** chuyển `raw/` → WebP thumb 200px (đóng gói trong app, dùng offline) và full 800px (lazy-load), xoá EXIF (ADR-017).
 
 ### 7.6 Đóng gói và cập nhật
