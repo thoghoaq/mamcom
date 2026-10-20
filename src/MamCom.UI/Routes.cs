@@ -8,6 +8,9 @@ public static class Routes
     /// <summary>"Nhà mình có ai?": the first screen, and where the household is changed later.</summary>
     public const string Household = "nha-minh";
 
+    /// <summary>"Đi chợ": the shopping list of the tray of the day (SPEC §8.1-4).</summary>
+    public const string Shopping = "di-cho";
+
     /// <summary>The folder of the detail screens: one page for each dish, <c>mon/&lt;dish id&gt;</c>.</summary>
     public const string DishFolder = "mon";
 

@@ -1,4 +1,5 @@
 using AngleSharp.Dom;
+using Bunit.TestDoubles;
 using MamCom.Core;
 using MamCom.Core.Models;
 using MamCom.Core.Spinning;
@@ -50,6 +51,8 @@ public class TrayScreenTests : BunitContext
     private static IElement SpinButton(IRenderedComponent<TrayScreen> cut) => cut.FindAll(".app-actions button")[0];
 
     private static IElement ConfirmButton(IRenderedComponent<TrayScreen> cut) => cut.FindAll(".app-actions button")[1];
+
+    private BunitNavigationManager Navigation => Services.GetRequiredService<BunitNavigationManager>();
 
     private static Dish DishNamed(string name) => TestConfig.SeedBundle.Dishes.Single(d => d.Name == name);
 
@@ -477,6 +480,33 @@ public class TrayScreenTests : BunitContext
         _eaten.Saves.ShouldBe(1);
         _eaten.Saved.LastEatenOn.Count.ShouldBe(3);
         _eaten.Saved.LastEatenOn.Values.ShouldAllBe(d => d == Today);
+    }
+
+    [Fact]
+    public void Confirming_opens_the_shopping_list_and_the_way_back_finds_the_tray_confirmed_with_a_way_to_the_list_again()
+    {
+        var cut = Show();
+        Navigation.History.ShouldBeEmpty();
+
+        ConfirmButton(cut).Click();
+
+        Navigation.History.ShouldHaveSingleItem().Uri.ShouldBe(Routes.Shopping);
+        Routes.Shopping.ShouldBe("di-cho");
+        var again = Show();
+        again.Find(".notice--ok").TextContent.ShouldBe("Đã chốt mâm hôm nay.");
+        var link = again.Find(".app-actions a");
+        link.GetAttribute("href").ShouldBe(Routes.Shopping);
+        link.TextContent.Trim().ShouldBe("Đi chợ");
+    }
+
+    [Fact]
+    public async Task A_tray_still_being_chosen_has_no_shopping_link_and_spinning_does_not_open_the_list()
+    {
+        var cut = Show();
+        await Spin(cut);
+
+        cut.FindAll(".app-actions a").ShouldBeEmpty();
+        Navigation.History.ShouldBeEmpty();
     }
 
     [Fact]

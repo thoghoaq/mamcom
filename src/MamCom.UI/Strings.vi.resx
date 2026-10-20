@@ -500,4 +500,25 @@
   <data name="Detail_PerMemberNote" xml:space="preserve"><value>Năng lượng của riêng món này, chưa tính cơm.</value></data>
   <data name="Detail_MemberServingsFormat" xml:space="preserve"><value>{0} suất</value></data>
   <data name="Detail_Footer" xml:space="preserve"><value>Số liệu ước tính, không thay tư vấn y tế.</value></data>
+
+  <!-- Đi chợ (SPEC §8.1-4) -->
+  <data name="Tray_Shopping" xml:space="preserve"><value>Đi chợ</value></data>
+  <data name="Shop_Title" xml:space="preserve"><value>Đi chợ</value></data>
+  <data name="Shop_MetaFormat" xml:space="preserve"><value>Mâm hôm nay, cho {0} người.</value></data>
+  <data name="Shop_ProgressFormat" xml:space="preserve"><value>Đã mua {0}/{1}</value></data>
+  <data name="Shop_ShowPantry" xml:space="preserve"><value>Hiện đồ có sẵn</value></data>
+  <data name="Shop_PantryBadge" xml:space="preserve"><value>Có sẵn</value></data>
+  <data name="Shop_Share" xml:space="preserve"><value>Gửi Zalo</value></data>
+  <data name="Shop_Copied" xml:space="preserve"><value>Đã chép danh sách. Mở Zalo và dán vào để gửi.</value></data>
+  <data name="Shop_ShareFailed" xml:space="preserve"><value>Chưa gửi được danh sách. Bạn thử lại nhé.</value></data>
+  <data name="Shop_NoTray" xml:space="preserve"><value>Chưa có mâm nào để đi chợ. Hãy quay và chốt một mâm trước.</value></data>
+  <data name="Shop_NothingToBuy" xml:space="preserve"><value>Không cần mua gì thêm: mọi thứ bếp nhà đã có.</value></data>
+  <data name="Shop_GroupsLabel" xml:space="preserve"><value>Danh sách đi chợ</value></data>
+  <data name="Shop_AmountFormat" xml:space="preserve"><value>{0} {1}</value></data>
+  <data name="Shop_ApproxFormat" xml:space="preserve"><value>≈ {0} g</value></data>
+  <data name="Shop_Aisle_MeatAndFish" xml:space="preserve"><value>Thịt cá</value></data>
+  <data name="Shop_Aisle_Produce" xml:space="preserve"><value>Rau củ quả</value></data>
+  <data name="Shop_Aisle_EggsAndTofu" xml:space="preserve"><value>Trứng đậu phụ</value></data>
+  <data name="Shop_Aisle_DryGoodsAndSpices" xml:space="preserve"><value>Khô và gia vị</value></data>
+  <data name="Shop_Aisle_Other" xml:space="preserve"><value>Khác</value></data>
 </root>

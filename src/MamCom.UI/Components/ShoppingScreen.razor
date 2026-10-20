@@ -1,0 +1,188 @@
+@using MamCom.Core
+@using MamCom.Core.Models
+@using MamCom.Core.Shopping
+@using MamCom.Core.Spinning
+@using MamCom.Data.Device
+@using MamCom.Data.State
+@using MamCom.UI.Formatting
+@inherits AppDataComponentBase
+@inject ITrayStore Trays
+@inject IShoppingStore Shopping
+@inject IDeviceFeatures Device
+@inject IClock Clock
+@inject IRandomSource RandomSource
+
+@* What to buy for the tray on the screen (SPEC §8.1-4): by aisle, a thumbnail and a tick for each, the things a kitchen always has hidden until asked for, and the list sent to Zalo. *@
+@if (_ready)
+{
+    <PageTitle>@Strings.Shop_Title</PageTitle>
+
+    <BackLink />
+
+    <h1>@Strings.Shop_Title</h1>
+
+    @if (_sheet is null || _desk is null)
+    {
+        <p>@Strings.Shop_NoTray</p>
+    }
+    else
+    {
+        var groups = _desk.Groups(_sheet, _state);
+        var progress = _desk.Progress(_sheet, _state);
+
+        <p class="text-muted">@ShoppingFormat.Meta(_sheet.MemberCount)</p>
+        <p class="shop-progress" role="status">@ShoppingFormat.Progress(progress)</p>
+
+        <div class="chips">
+            <button type="button" class="chip" aria-pressed="@(_state.ShowPantry ? "true" : "false")" @onclick="TogglePantryAsync">@Strings.Shop_ShowPantry</button>
+        </div>
+
+        @if (groups.Count == 0)
+        {
+            <p>@Strings.Shop_NothingToBuy</p>
+        }
+        else
+        {
+            <div class="shop" role="group" aria-label="@Strings.Shop_GroupsLabel">
+                @foreach (var group in groups)
+                {
+                    var headingId = $"shop-aisle-{(int)group.Aisle}";
+                    <section class="card shop-group" aria-labelledby="@headingId">
+                        <h2 id="@headingId">@ShoppingFormat.AisleName(group.Aisle)</h2>
+                        <ul class="shop-items">
+                            @foreach (var item in group.Items)
+                            {
+                                var done = _state.CheckedIngredientIds.Contains(item.IngredientId);
+                                var ingredientId = item.IngredientId;
+                                <li class="@(done ? "shop-item shop-item--done" : "shop-item")" @key="ingredientId">
+                                    <label class="shop-item__label">
+                                        <input type="checkbox" class="shop-item__check" checked="@done" @onchange="() => ToggleAsync(ingredientId)" />
+                                        <IngredientPicture Ingredient="_ingredients[ingredientId]" />
+                                        <span class="shop-item__text">
+                                            <span class="shop-item__amount">@ShoppingFormat.Amount(item)</span>
+                                            <span class="shop-item__name">@item.Name</span>
+                                            @if (ShoppingFormat.Approx(item) is { } approx)
+                                            {
+                                                <span class="shop-item__approx"> (@approx)</span>
+                                            }
+                                            @if (item.IsPantry)
+                                            {
+                                                @(" ")<span class="badge">@Strings.Shop_PantryBadge</span>
+                                            }
+                                        </span>
+                                    </label>
+                                </li>
+                            }
+                        </ul>
+                    </section>
+                }
+            </div>
+        }
+
+        <div class="app-actions">
+            @if (_notice is { } notice)
+            {
+                <p class="@("notice app-actions__status " + (notice.Failed ? "notice--danger" : "notice--ok"))" role="status">@notice.Text</p>
+            }
+
+            <button type="button" class="button button--primary" disabled="@(_sharing || groups.Count == 0)" @onclick="ShareAsync">
+                <Icon Name="share" />@Strings.Shop_Share
+            </button>
+        </div>
+    }
+}
+
+@code {
+    private sealed record Notice(string Text, bool Failed);
+
+    private ShoppingDesk? _desk;
+    private ShoppingSheet? _sheet;
+    private ShoppingState _state = ShoppingState.Empty;
+    private IReadOnlyDictionary<string, Ingredient> _ingredients = new Dictionary<string, Ingredient>();
+    private MamCom.Core.Data.DataBundle? _bundle;
+    private Notice? _notice;
+    private bool _ready;
+    private bool _sharing;
+
+    /// <summary>The household the list is for; the gate hands it over once it knows there is one.</summary>
+    [Parameter, EditorRequired]
+    public Household Household { get; set; } = null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Data.InitializeAsync();
+        await LoadAsync();
+    }
+
+    // "Dùng ngay" took in a newer bundle: the dishes and the market units may have changed, so the list is worked out again from the new one.
+    protected override async Task OnDataChangedAsync()
+    {
+        if (!_sharing && Data.Bundle is { } bundle && !ReferenceEquals(_bundle, bundle))
+        {
+            await LoadAsync();
+        }
+    }
+
+    /// <summary>The list of the tray the "Mâm hôm nay" screen shows; none when there is no tray of today to shop for.</summary>
+    private async Task LoadAsync()
+    {
+        _sheet = null;
+
+        if (Data.Bundle is not { } bundle)
+        {
+            return;   // nothing to show yet; the notices above the page say what is going on
+        }
+
+        var engine = TrayEngine.Create(bundle, RandomSource, Clock);
+        _bundle = bundle;
+        _desk = new ShoppingDesk(bundle.Config.Portion);
+        _ingredients = engine.IngredientsById;
+        _ready = true;
+
+        var session = await Trays.LoadAsync();
+        if (session is null || !engine.CanContinue(session) || session.Viewed is not { } viewed || viewed.Tray.Slots.Count == 0)
+        {
+            return;
+        }
+
+        _sheet = _desk.Sheet(Household, viewed.Tray, engine.DishesOf(viewed.Tray), engine.IngredientsById);
+        _state = _desk.Open(await Shopping.LoadAsync(), viewed.Tray, _sheet);
+    }
+
+    private async Task ToggleAsync(string ingredientId)
+    {
+        _state = _desk!.Toggle(_state, ingredientId);
+        await Shopping.SaveAsync(_state);
+    }
+
+    private async Task TogglePantryAsync()
+    {
+        _state = _desk!.SetShowPantry(_state, !_state.ShowPantry);
+        await Shopping.SaveAsync(_state);
+    }
+
+    private async Task ShareAsync()
+    {
+        if (_sharing || _desk is null || _sheet is null)
+        {
+            return;
+        }
+
+        _sharing = true;
+        _notice = null;
+        try
+        {
+            var outcome = await Device.ShareTextAsync(_desk.ShareText(_sheet, _state));
+            _notice = outcome switch
+            {
+                ShareOutcome.Copied => new Notice(Strings.Shop_Copied, Failed: false),
+                ShareOutcome.Failed => new Notice(Strings.Shop_ShareFailed, Failed: true),
+                _ => null,   // shared: the share sheet said so; cancelled: the person knows
+            };
+        }
+        finally
+        {
+            _sharing = false;
+        }
+    }
+}

@@ -6,6 +6,7 @@ using MamCom.Core.Json;
 using MamCom.Core.Models;
 using MamCom.Core.Nutrition;
 using MamCom.Core.Portions;
+using MamCom.Core.Shopping;
 using MamCom.Core.Spinning;
 using MamCom.UI;
 using MamCom.Data;
@@ -123,6 +124,23 @@ internal sealed class FakeTrayStore : ITrayStore
     }
 }
 
+/// <summary>The ticks of the shopping list, kept in memory.</summary>
+internal sealed class FakeShoppingStore : IShoppingStore
+{
+    public ShoppingState? Saved { get; set; }
+
+    public int Saves { get; private set; }
+
+    public ValueTask<ShoppingState?> LoadAsync() => ValueTask.FromResult(Saved);
+
+    public ValueTask<bool> SaveAsync(ShoppingState state)
+    {
+        Saves++;
+        Saved = state;
+        return ValueTask.FromResult(true);
+    }
+}
+
 /// <summary>The log of what was eaten, kept in memory.</summary>
 internal sealed class FakeEatenLogStore : IEatenLogStore
 {
@@ -156,6 +174,26 @@ internal sealed class FakeDeviceFeatures : IDeviceFeatures
     }
 
     public ValueTask<bool> PrefersReducedMotionAsync() => ValueTask.FromResult(ReducedMotion);
+
+    /// <summary>What becomes of a text that is sent.</summary>
+    public ShareOutcome ShareResult { get; set; } = ShareOutcome.Shared;
+
+    /// <summary>The texts that were sent.</summary>
+    public List<string> Shared { get; } = [];
+
+    /// <summary>When set, sending waits for it, so a test can tap twice while the first send is going on.</summary>
+    public TaskCompletionSource? ShareGate { get; set; }
+
+    public async ValueTask<ShareOutcome> ShareTextAsync(string text)
+    {
+        Shared.Add(text);
+        if (ShareGate is not null)
+        {
+            await ShareGate.Task;
+        }
+
+        return ShareResult;
+    }
 }
 
 /// <summary>The roll of the dice, held for as long as the test wants: not at all, or until <see cref="Gate"/> is opened.</summary>

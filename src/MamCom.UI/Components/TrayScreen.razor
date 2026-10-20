@@ -12,6 +12,7 @@
 @inject ISpinPacer Pacer
 @inject IClock Clock
 @inject IRandomSource RandomSource
+@inject NavigationManager Navigation
 
 <PageTitle>@Strings.Tray_Title</PageTitle>
 
@@ -87,6 +88,7 @@
         @if (_session.IsConfirmed)
         {
             <button type="button" class="button" @onclick="ReopenAsync">@Strings.Tray_Reopen</button>
+            <a class="button button--primary" href="@Routes.Shopping"><Icon Name="shopping-cart" />@Strings.Tray_Shopping</a>
         }
         else
         {
@@ -241,6 +243,7 @@
         await EatenLogs.SaveAsync(_eaten);
         await SaveSessionAsync();
         Refresh();
+        Navigation.NavigateTo(Routes.Shopping);   // a confirmed tray is one to shop for (SPEC §8.1-2); the way back finds it confirmed
     }
 
     private async Task ReopenAsync()

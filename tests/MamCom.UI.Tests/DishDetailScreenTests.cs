@@ -143,7 +143,7 @@ public class DishDetailScreenTests : BunitContext
     [Fact]
     public void A_way_back_to_the_tray_comes_first_and_is_a_target_the_finger_can_hit()
     {
-        var link = Show().Find(".detail-back__link");
+        var link = Show().Find(".back__link");
 
         link.GetAttribute("href").ShouldBe(Navigation.BaseUri);
         link.TextContent.ShouldBe("Về mâm hôm nay");
@@ -432,7 +432,7 @@ public class DishDetailScreenTests : BunitContext
 
         cut.Find("h1").TextContent.ShouldBe("Không tìm thấy món");
         cut.Find("p").TextContent.ShouldBe("Món này không còn trong danh sách. Có thể dữ liệu vừa được cập nhật.");
-        cut.Find(".detail-back__link").GetAttribute("href").ShouldBe(Navigation.BaseUri);
+        cut.Find(".back__link").GetAttribute("href").ShouldBe(Navigation.BaseUri);
         cut.FindAll("article").ShouldBeEmpty();
     }
 

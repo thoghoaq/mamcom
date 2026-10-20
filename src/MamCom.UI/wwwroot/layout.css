@@ -39,6 +39,7 @@
     bottom: 0;
     z-index: 10;
     display: flex;
+    flex-wrap: wrap;
     gap: var(--space-3);
     /* The bar belongs to a page, and the page has padding of its own: the bar takes that back, so it runs from edge to edge and its buttons keep their width. */
     margin-inline: calc(-1 * (var(--space-4) + var(--safe-left))) calc(-1 * (var(--space-4) + var(--safe-right)));
@@ -50,6 +51,12 @@
 
 .app-actions > * {
     flex: 1;
+}
+
+/* What a button just did (the list was copied) is said on a row of its own above the buttons. */
+.app-actions__status {
+    flex: 1 0 100%;
+    margin: 0;
 }
 
 /* Two or three buttons share the width of a phone: a word and its icon stay on one line. */

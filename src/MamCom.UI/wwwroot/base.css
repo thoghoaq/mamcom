@@ -620,11 +620,11 @@ small,
     min-height: var(--tap-size);
 }
 
-.detail-back {
+.back {
     margin-bottom: var(--space-2);
 }
 
-.detail-back__link {
+.back__link {
     display: inline-flex;
     align-items: center;
     gap: var(--space-1);
@@ -873,6 +873,84 @@ small,
 .member-energy__servings {
     color: var(--color-text-muted);
     font-size: var(--font-size-small);
+}
+
+/* ---- The shopping list (components/ShoppingScreen.razor): a card for each aisle, a row with a thumbnail and a tick for each item ---- */
+
+.shop-progress {
+    margin: 0 0 var(--space-2);
+    font-weight: var(--font-weight-strong);
+}
+
+.shop-group h2 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--font-size-large);
+}
+
+.shop-items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.shop-item {
+    border-top: 1px solid var(--color-border);
+}
+
+.shop-item:first-child {
+    border-top: 0;
+}
+
+/* The whole row is the label of the tick, so the target is as big as the row, not the little box. */
+.shop-item__label {
+    display: grid;
+    grid-template-columns: 1.75rem 3.5rem 1fr;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: var(--tap-size);
+    padding: var(--space-2) 0;
+    cursor: pointer;
+}
+
+.shop-item__check {
+    inline-size: 1.75rem;
+    block-size: 1.75rem;
+    margin: 0;
+    accent-color: var(--color-accent);
+}
+
+.shop-item__label > .picture,
+.shop-item__label > .tile {
+    --tile-width: 3.5rem;
+}
+
+/* A thumbnail of an ingredient is square, like the tile of its kind that stands in for it. */
+.picture--ingredient {
+    aspect-ratio: 1 / 1;
+}
+
+.shop-item__text {
+    min-inline-size: 0;
+}
+
+.shop-item__amount {
+    font-weight: var(--font-weight-strong);
+}
+
+.shop-item__approx {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+/* A ticked item stays where it is, struck through and quieter: the words still read and the list does not jump under a thumb. */
+.shop-item--done .shop-item__text {
+    color: var(--color-text-muted);
+    text-decoration: line-through;
+}
+
+.shop-item--done .picture,
+.shop-item--done .tile {
+    opacity: 0.55;
 }
 
 /* ---- Placeholder tile: stands in for a picture that does not exist yet, one look per kind of ingredient or dish ---- */

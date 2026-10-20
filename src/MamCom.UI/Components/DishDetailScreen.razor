@@ -3,7 +3,6 @@
 @using MamCom.Core.Models
 @using MamCom.UI.Formatting
 @inherits AppDataComponentBase
-@inject NavigationManager Navigation
 
 @if (_notFound)
 {
@@ -11,15 +10,13 @@
 
     <h1>@Strings.Detail_NotFoundTitle</h1>
     <p>@Strings.Detail_NotFound</p>
-    <p><a class="detail-back__link" href="@Navigation.BaseUri"><Icon Name="chevron-left" />@Strings.Detail_BackToTray</a></p>
+    <BackLink />
 }
 else if (_detail is { } detail)
 {
     <PageTitle>@detail.Dish.Name</PageTitle>
 
-    <nav class="detail-back">
-        <a class="detail-back__link" href="@Navigation.BaseUri"><Icon Name="chevron-left" />@Strings.Detail_BackToTray</a>
-    </nav>
+    <BackLink />
 
     <article class="detail">
         <DishPicture Dish="detail.Dish" Large="true" />

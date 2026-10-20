@@ -1,0 +1,6 @@
+@inject NavigationManager Navigation
+
+@* The way back to the tray, first on a page that opens from it (the detail of a dish, the shopping list): 48px, the same everywhere. *@
+<nav class="back">
+    <a class="back__link" href="@Navigation.BaseUri"><Icon Name="chevron-left" />@Strings.Detail_BackToTray</a>
+</nav>

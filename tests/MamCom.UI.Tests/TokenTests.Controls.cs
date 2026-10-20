@@ -12,7 +12,8 @@ public partial class TokenTests
     [InlineData(".check {")]
     [InlineData(".household-home a {")]
     [InlineData(".dish-card__link {")]
-    [InlineData(".detail-back__link {")]
+    [InlineData(".back__link {")]
+    [InlineData(".shop-item__label {")]
     public void A_control_the_finger_has_to_hit_is_at_least_the_tap_size_high(string selector)
     {
         PropertyValue(Rule(Base, selector), "min-height").ShouldBe("var(--tap-size)");
@@ -38,6 +39,40 @@ public partial class TokenTests
     {
         PropertyValue(Rule(Base, "\n.picture {"), "aspect-ratio").ShouldBe(PropertyValue(Rule(Base, "\n.tile--dish {"), "aspect-ratio"));
         PropertyValue(Rule(Base, "\n.picture {"), "inline-size").ShouldBe(PropertyValue(Rule(Base, "\n.tile {"), "inline-size"));
+    }
+
+    [Fact]
+    public void A_thumbnail_of_an_ingredient_has_the_shape_of_the_placeholder_it_replaces_so_the_rows_do_not_jump()
+    {
+        PropertyValue(Rule(Base, "\n.picture--ingredient {"), "aspect-ratio").ShouldBe(PropertyValue(Rule(Base, "\n.tile--ingredient {"), "aspect-ratio"));
+    }
+
+    [Fact]
+    public void A_tick_that_was_made_strikes_the_words_through_and_is_not_told_by_colour_alone()
+    {
+        var done = Rule(Base, ".shop-item--done .shop-item__text {");
+
+        PropertyValue(done, "text-decoration").ShouldBe("line-through");
+        PropertyValue(done, "color").ShouldBe("var(--color-text-muted)");
+    }
+
+    [Fact]
+    public void The_row_of_the_shopping_list_is_a_grid_of_a_tick_a_thumbnail_and_the_words_with_the_thumbnail_the_size_of_a_target()
+    {
+        var row = Rule(Base, ".shop-item__label {");
+
+        PropertyValue(row, "display").ShouldBe("grid");
+        PropertyValue(row, "grid-template-columns").ShouldStartWith("1.75rem 3.5rem");
+        PropertyValue(Rule(Base, ".shop-item__label > .picture,\n.shop-item__label > .tile {"), "--tile-width").ShouldBe("3.5rem");
+    }
+
+    [Fact]
+    public void The_bar_of_actions_can_say_what_a_button_just_did_on_a_row_of_its_own()
+    {
+        var layout = File.ReadAllText(Path.Combine(Wwwroot, "layout.css"));
+
+        PropertyValue(Rule(layout, ".app-actions {"), "flex-wrap").ShouldBe("wrap");
+        PropertyValue(Rule(layout, ".app-actions__status {"), "flex").ShouldBe("1 0 100%");
     }
 
     [Fact]
