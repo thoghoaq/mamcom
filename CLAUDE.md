@@ -53,7 +53,7 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 
 ```
 /
-├─ CLAUDE.md
+├─ CLAUDE.md, THIRD-PARTY-NOTICES.md (font, icon và giấy phép của chúng)
 ├─ docs/  SPEC.md, PLAN.md, decisions/, beta-notes.md
 ├─ data/
 │  ├─ schemas/        ingredient.schema.json, dish.schema.json, <tên file config>.schema.json
@@ -66,7 +66,7 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 ├─ src/
 │  ├─ MamCom.Core/    domain + thuật toán thuần (không IO, không UI)
 │  ├─ MamCom.Data/    nạp bundle, IUserStateStore, cấu hình
-│  ├─ MamCom.UI/      Razor Class Library: components, Strings.vi.resx (mọi chuỗi UI), wwwroot/tokens.css + base.css
+│  ├─ MamCom.UI/      Razor Class Library: components, Strings.vi.resx (mọi chuỗi UI), wwwroot/: tokens.css, base.css, layout.css, fonts.css, fonts/, icons/icons.svg (ADR-019)
 │  └─ MamCom.Web/     Blazor WASM PWA host, service worker
 ├─ tools/
 │  ├─ MamCom.DataBuilder/   validate | build [--release]
@@ -103,7 +103,8 @@ dotnet run --project src/MamCom.Web
 - **Đơn vị nằm trong tên biến:** gram, phút, kcal, mg. Ví dụ `GramsEdible`, `ActiveMinutes`, `SodiumMg`.
 - **Hằng số nghiệp vụ** (hệ số khẩu phần, trọng số quay) nằm trong `data/config/*.json`, không hard-code.
 - **Chuỗi UI:** tiếng Việt có dấu đầy đủ, gom vào một chỗ (`MamCom.UI/Strings.vi.resx`). Code, tên biến và comment bằng tiếng Anh.
-- **Không hard-code màu hay cỡ chữ** trong component; dùng CSS variables và hỗ trợ dark mode.
+- **Không hard-code màu hay cỡ chữ** trong component; dùng CSS variables và hỗ trợ dark mode (có test canh `base.css` và `layout.css`).
+- **Ảnh chưa có thì dùng ô giữ chỗ theo loại** (`PlaceholderTile`, SPEC §7.5), không bao giờ một ô chung cho tất cả. Icon qua component `Icon` và sprite `icons.svg`.
 - **Test không đọc `data/` thật** (nó đổi mỗi khi duyệt món hay xác nhận nguyên liệu): dùng `tests/fixtures/seed`. Chỉ `MamCom.LiveData.Tests` đọc dữ liệu thật (ADR-018).
 
 ## Definition of Done

@@ -480,6 +480,13 @@ Cấu trúc bundle (ADR-011), kiểu `DataBundle` trong `MamCom.Core`:
 - **Gamification nhẹ:** không streak, không thông báo gây áp lực.
 - **Lời văn:** tiếng Việt ngắn, thân mật, động từ đứng đầu ("Quay mâm", "Chốt mâm", "Gửi Zalo").
 
+Làm rõ khi hiện thực (ADR-019):
+- **Token** nằm trong `MamCom.UI/wwwroot/tokens.css`; component chỉ dùng biến, không viết màu hay cỡ chữ riêng (có test). Chế độ sáng là mặc định; chế độ tối theo hệ thống (`prefers-color-scheme`), hoặc theo `data-theme="dark"` (`"light"`) đặt trên trang hay trên một phần tử.
+- **Tương phản được đo** bằng test cho cả hai chế độ: chữ 4,5:1; nét vẽ của ô giữ chỗ, màu focus và viền ô nhập 3:1. Viền ô nhập dùng `--color-border-strong`, không dùng `--color-border` (chỉ để kẻ đường).
+- **Font** Be Vietnam Pro 400 và 600, bộ `latin` và `vietnamese`, tự host trong `wwwroot/fonts` (OFL 1.1), `font-display: swap`. **Icon** là một sprite SVG `wwwroot/icons/icons.svg` (Tabler Icons, MIT, cùng vài icon tự vẽ), vẽ bằng `currentColor`; nguồn và giấy phép ở `THIRD-PARTY-NOTICES.md`.
+- **Khung màn hình** (`layout.css`): đầu trang 48 px, trang giữa dừng ở `--content-width`, thanh nút dính đáy, chừa vùng an toàn của điện thoại (`viewport-fit=cover`, biến `--safe-*`).
+- **Trang `/styleguide`** của app hiện màu, chữ, nút, ô nhập, thẻ, nhãn, thông báo, icon và mọi ô giữ chỗ, mỗi thứ hai lần: một trong khung sáng, một trong khung tối.
+
 ---
 
 ## 9. Kiến trúc kỹ thuật
