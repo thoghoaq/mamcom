@@ -493,7 +493,7 @@ Làm rõ khi hiện thực màn "Mâm hôm nay" (ADR-022):
 - **Tóm tắt:** thời gian cả mâm (§5.6), năng lượng cho một người cả cơm, gạo, và số thứ cần mua không kể đồ có sẵn. Luật đã nới (§5.3) và ô không điền được hiện thành thông báo trên các thẻ.
 - **"Mâm trước" và "Mâm sau"** đi qua 5 mâm gần nhất ("Mâm 4/5"); hiện khi có từ hai mâm.
 - **Lọc nhanh** hiện sau 5 lần quay (kể cả lần tự quay lúc mở) chưa chốt, và ở lại khi còn bật; bật hay tắt thì quay lại ngay. "Không thịt đỏ" bỏ món có đạm heo hoặc bò; "Ít dầu mỡ" bỏ món chiên (theo cách nấu, chưa theo số chất béo vì số dinh dưỡng chưa đủ); **"Dưới 45 phút"** (không phải 30: nồi cơm đã mất 35 phút nên mâm nào cũng từ 35 phút trở lên). Các giá trị nằm trong `data/config/spinner-defaults.json`, mục `quickFilters`. Món đang khoá và món đang có trên mâm không bị bộ lọc loại.
-- **Chốt mâm** ghi các món vào nhật ký đã ăn (`eaten.v1`, cho luật §5.2 và §5.4), đưa mâm lên đầu lịch sử và khoá các nút; "Chọn mâm khác" bỏ chốt nhưng các món vẫn ghi là đã ăn. Ngày ăn lần cuối ở tương lai được đọc là hôm nay. Chốt xong thì mở **Đi chợ** (§8.1-4, ADR-024); khi quay lại trang này, mâm đã chốt có thêm nút "Đi chợ". Chế độ nấu nối vào ở 3.7.
+- **Chốt mâm** ghi các món vào nhật ký đã ăn (`eaten.v1`, cho luật §5.2 và §5.4), đưa mâm lên đầu lịch sử và khoá các nút; "Chọn mâm khác" bỏ chốt nhưng các món vẫn ghi là đã ăn. Ngày ăn lần cuối ở tương lai được đọc là hôm nay. Chốt xong thì mở **Đi chợ** (§8.1-4, ADR-024); khi quay lại trang này, mâm đã chốt có thanh nút "Đi chợ" và "Nấu" (§8.1-5, ADR-025), còn "Chọn mâm khác" nằm trong khung "Đã chốt mâm hôm nay."
 
 Làm rõ khi hiện thực màn chi tiết món (ADR-023):
 - **Mỗi món có một trang, `/mon/<mã món>`;** tên món trên thẻ của mâm là liên kết sang đó, và đầu trang có "Về mâm hôm nay" (48px). Trang định lượng cho nhà của máy này nên đứng sau cổng "Nhà mình có ai?" như trang chủ. Món không còn trong dữ liệu thì trang nói rõ và chỉ đường về mâm.
@@ -507,7 +507,14 @@ Làm rõ khi hiện thực màn đi chợ (ADR-024):
 - **Trang `/di-cho`** là danh sách của mâm đang hiện trên màn "Mâm hôm nay" (mâm của hôm nay, đủ món); chưa có mâm thì trang nói vậy và không có nút gửi. "Chốt mâm" mở trang này; không đòi mâm phải đã chốt.
 - **Mỗi quầy một thẻ** (Thịt cá, Rau củ quả, Trứng đậu phụ, Khô và gia vị, Khác), mỗi dòng là một nhãn cao 72px bọc ô tick, thumbnail 56px (ô giữ chỗ theo loại khi chưa có ảnh), số lượng đậm rồi tên, "(≈ N g)" cho thứ có `showApproxGrams`, nhãn "Có sẵn" cho đồ bếp luôn có. Dòng đã tick ở nguyên chỗ, gạch ngang và nhạt. "Đã mua 2/7" đếm các dòng đang hiện.
 - **Tick giữ theo mâm** (khoá `shopping.v1`): tên mâm là ngày và các món theo thứ tự ô; mâm khác thì không có tick; chỉ giữ mâm gần nhất. Nút **"Hiện đồ có sẵn"** (ẩn mặc định) được nhớ qua các mâm.
-- **"Gửi Zalo"** gửi text của §6.2 cho cả danh sách (tick không đổi text; đồ có sẵn chỉ có khi đang hiện) qua bảng chia sẻ của máy; không có bảng thì chép vào bộ nhớ tạm và nói "Đã chép danh sách. Mở Zalo và dán vào để gửi."; người dùng đóng bảng thì không chép gì; không gửi được thì nói rõ. Chạy offline như mọi màn khác.
+- **"Gửi Zalo"** gửi text của §6.2 cho cả danh sách (tick không đổi text; đồ có sẵn chỉ có khi đang hiện) qua bảng chia sẻ của máy; không có bảng thì chép vào bộ nhớ tạm và nói "Đã chép danh sách. Mở Zalo và dán vào để gửi."; người dùng đóng bảng thì không chép gì; không gửi được thì nói rõ. Chạy offline như mọi màn khác. Thanh nút của màn này có thêm "Bắt đầu nấu" (§8.1-5).
+
+Làm rõ khi hiện thực chế độ nấu (ADR-025):
+- **Trang `/nau`** nấu mâm đang hiện trên màn "Mâm hôm nay" (của hôm nay, đủ món), không đòi đã chốt; chưa có mâm thì trang nói vậy. Các màn là các bước theo thứ tự của `CookPlanScheduler` (§5.6; cơm trước), mỗi bước một màn, không hiện phút bắt đầu của lịch mô phỏng.
+- **Một màn:** loại món theo màu và tên ("Cơm" cho nồi cơm), lời của bước (24px), "Làm N phút" và "Chờ N phút", các nguyên liệu bước đó dùng (lượng cho đúng số suất của nhà, chỉ ghi ở lần đầu món nhắc đến; bước cơm ghi số gạo sống), và đồng hồ đếm. Mọi chữ khác của chế độ này từ 22px.
+- **Hẹn giờ** do người nấu bắt đầu ("Hẹn giờ N phút" ở bước có phần chờ), nhiều hẹn giờ chạy cùng lúc, mỗi cái một chip (cái sắp hết đứng trước, bấm chip để sang bước đó). Lưu bằng giờ kết thúc nên đúng cả khi rời màn hình hay mở lại trang (`cooking.v1`). Hết giờ: rung, ba tiếng bíp (cần một lần chạm trước, nên chuẩn bị ở lần bắt đầu hẹn giờ), chip và dòng chữ "Hết giờ", kêu một lần; "Đã xong" tắt chip.
+- **Giữ màn hình sáng** bằng Screen Wake Lock (xin lại khi trang trở về phía trước, nhả khi rời màn hình); máy không có hoặc từ chối thì có thông báo.
+- **Chạm nửa phải sang bước tiếp, nửa trái quay lại;** thanh dưới đáy có "Trước" và "Tiếp" cho bàn phím và trình đọc màn hình. Bước cuối có "Xong bữa" về trang chủ.
 
 ### 8.2 Ngôn ngữ thị giác
 
