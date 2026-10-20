@@ -317,7 +317,13 @@ Mỗi `marketUnit` có thêm trường tuỳ chọn `showApproxGrams` (mặc đ�
 - `spicy`: `none` | `optional` | `required`
 - `cookingMethod`: `luoc` | `hap` | `nau` | `kho` | `xao` | `chien` | `nuong` | `tron`
 
-**Vòng đời món:** `draft` → `validated` (máy kiểm) → `reviewed` (người duyệt) → `cooktested` (đã nấu thử). Bản release chỉ gồm món từ `reviewed` trở lên. Studio (ADR-014) đặt `validated` khi lưu một món mà máy kiểm không còn lỗi; `reviewed` chỉ đặt khi người bấm "Duyệt" (kèm `reviewedBy`, `reviewedAt`); "Mở lại để sửa" đưa `reviewed` về `draft` và xoá dấu duyệt.
+**Vòng đời món:** `draft` → `validated` (máy kiểm) → `reviewed` (người duyệt) → `cooktested` (đã nấu thử). Bản release chỉ gồm món từ `reviewed` trở lên. Studio (ADR-014) đặt `validated` khi lưu một món mà máy kiểm không còn lỗi; `reviewed` chỉ đặt khi người bấm "Duyệt" (kèm `reviewedBy`, `reviewedAt`); "Mở lại để sửa" đưa `reviewed` về `draft` và xoá dấu duyệt. `cooktested` chỉ đặt khi người ghi nhận một lần nấu thử cho món `reviewed` (ADR-016).
+
+`provenance` còn hai trường **tuỳ chọn**, chỉ có trong file khi món có nấu thử và không ghi ra khi chưa có: `measuredServings` (số suất đã nấu, 1–100) và `measuredFinishedGrams` (cân cả mẻ như dọn ra, gồm cả nước canh, 1–50.000 g). Hai trường đi cùng nhau. Ví dụ món đã nấu thử:
+
+```json
+"provenance": { "draftedBy": "llm", "reviewedBy": "Mẹ Lan", "reviewedAt": "2026-10-20", "cookTestedAt": "2026-10-22", "measuredTotalMinutes": 47, "measuredServings": 4, "measuredFinishedGrams": 1450 }
+```
 
 ### 7.3 Luật của `DataBuilder validate`
 
@@ -347,6 +353,7 @@ Làm rõ khi hiện thực (ADR-010):
 - **Schema chặt hơn việc đọc dữ liệu:**
   - nguồn `placeholder` thì mọi giá trị dinh dưỡng và tham chiếu nguồn phải `null`; nguồn thật phải có `ref` và `matchedName`;
   - `draft` và `validated` không có dấu duyệt hay nấu thử; `reviewed` cần người và ngày duyệt; `cooktested` cần thêm ngày nấu thử;
+  - số đo của lần nấu thử: `measuredTotalMinutes` từ 1 đến 1.440; `measuredServings` và `measuredFinishedGrams` có cái này thì phải có cái kia, và chỉ có khi món `cooktested` (ADR-016);
   - `names` và `marketUnit` có khoá `default` hoặc đủ ba vùng;
   - ảnh khai báo phải có `source` và `license`; `consumedRatio` nhỏ hơn 1 phải có `note`;
   - có khoảng giá trị chống gõ nhầm (ví dụ gram mỗi suất không quá 1.000, kcal trên 100g không quá 900).
@@ -401,6 +408,13 @@ Làm rõ khi hiện thực bước 3, phần người chọn trong Studio (ADR-0
 - **Bỏ số liệu** đưa nguyên liệu về `placeholder` và file về đúng như trước khi chọn. Lưu một chỉnh sửa không bao giờ đụng vào số hay nguồn.
 - **Ảnh:** chọn ảnh nhỏ và ảnh lớn trong các file có sẵn ở `data/images/out`, kèm `source`, `license` và cờ `isIllustration`. Studio không tạo hay đổi cỡ ảnh; đó là việc của ImageTool (task 2.8).
 - Chưa có: nhập tay số từ Bảng thành phần thực phẩm Việt Nam (sửa file bằng tay, schema và validator vẫn kiểm).
+
+Làm rõ khi hiện thực bước 7 (ADR-016):
+- **Ghi nhận nấu thử:** trang một món `reviewed` có phần "Nấu thử": ngày nấu (mặc định hôm nay, không được là ngày mai trở đi), số phút nấu thật (bắt buộc), số suất và cân thành phẩm cả mẻ (nhập cả hai hoặc để trống cả hai), và ảnh món. Bấm "Ghi nhận đã nấu thử" thì món thành `cooktested`. Chỉ món `reviewed` mới ghi nhận được; Studio không bao giờ tự đặt trạng thái này.
+- **File chỉ đổi những dòng cần đổi:** `status`, `cookTestedAt`, `measuredTotalMinutes`, và nếu có thì `measuredServings`, `measuredFinishedGrams` và ảnh. Không có số suất và cân thì diff Git đúng ba dòng. Chỉ ghi khi máy kiểm không còn lỗi; lý do từ chối người sửa được tại chỗ (ngày ở tương lai, số ngoài khoảng, ảnh thiếu nguồn) hiện ngay dưới nút, số đã gõ vẫn còn.
+- **Ảnh món** chọn trong các file có sẵn ở `data/images/out`, kèm nguồn, giấy phép và cờ ảnh minh hoạ, như ảnh nguyên liệu; chọn thì thay ảnh của món, không chọn thì giữ ảnh đang có.
+- **Bỏ kết quả nấu thử** (nhập nhầm) đưa món `cooktested` về `reviewed` và xoá ngày, phút, số suất, cân; ảnh và dấu duyệt được giữ. Không chọn ảnh mới thì file về đúng từng byte như trước. Chưa có sửa số đã ghi: bỏ rồi ghi lại.
+- Số đo thật chưa đi vào tính toán: thời gian nấu trong app vẫn là tổng các bước (§5.5); số đo để người đối chiếu và chỉnh các bước (PLAN 4.7).
 
 ### 7.5 Ảnh
 
