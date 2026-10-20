@@ -85,9 +85,10 @@
                 <p class="@("notice app-actions__status " + (notice.Failed ? "notice--danger" : "notice--ok"))" role="status">@notice.Text</p>
             }
 
-            <button type="button" class="button button--primary" disabled="@(_sharing || groups.Count == 0)" @onclick="ShareAsync">
+            <button type="button" class="button" disabled="@(_sharing || groups.Count == 0)" @onclick="ShareAsync">
                 <Icon Name="share" />@Strings.Shop_Share
             </button>
+            <a class="button button--primary" href="@Routes.Cooking"><Icon Name="tools-kitchen-2" />@Strings.Shop_Cook</a>
         </div>
     }
 }

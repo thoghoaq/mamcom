@@ -24,7 +24,10 @@
 
     @if (_session.IsConfirmed)
     {
-        <div class="notice notice--ok" role="status">@Strings.Tray_Confirmed</div>
+        <div class="notice notice--ok">
+            <p role="status">@Strings.Tray_Confirmed</p>
+            <button type="button" class="button button--quiet notice__action" @onclick="ReopenAsync">@Strings.Tray_Reopen</button>
+        </div>
     }
 
     @if (_session.History.Items.Count > 1)
@@ -87,8 +90,8 @@
     <div class="app-actions">
         @if (_session.IsConfirmed)
         {
-            <button type="button" class="button" @onclick="ReopenAsync">@Strings.Tray_Reopen</button>
-            <a class="button button--primary" href="@Routes.Shopping"><Icon Name="shopping-cart" />@Strings.Tray_Shopping</a>
+            <a class="button" href="@Routes.Shopping"><Icon Name="shopping-cart" />@Strings.Tray_Shopping</a>
+            <a class="button button--primary" href="@Routes.Cooking"><Icon Name="tools-kitchen-2" />@Strings.Tray_Cook</a>
         }
         else
         {

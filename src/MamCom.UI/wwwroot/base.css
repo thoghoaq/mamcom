@@ -953,6 +953,162 @@ small,
     opacity: 0.55;
 }
 
+/* ---- The cooking mode (components/CookingScreen.razor): one step at a time in large type, its timer, and the timers that run beside it ---- */
+
+.cook {
+    display: flex;
+    flex-direction: column;
+}
+
+.cook__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.cook__position {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-strong);
+}
+
+.cook-timers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0 0 var(--space-3);
+    padding: 0;
+    list-style: none;
+}
+
+.cook-chip {
+    max-inline-size: 100%;
+}
+
+.cook-chip__name {
+    min-inline-size: 0;
+    max-inline-size: 9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cook-chip__time {
+    font-size: var(--font-size-large);
+    font-variant-numeric: tabular-nums;
+    font-weight: var(--font-weight-strong);
+}
+
+/* A timer that ran out says so in words and stands out from the ones still running. */
+.cook-chip--done {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+}
+
+.cook__stage {
+    position: relative;
+    min-block-size: 50vh;
+    padding: var(--space-3) 0;
+}
+
+.cook__dish {
+    margin: 0 0 var(--space-2);
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-strong);
+}
+
+.cook__dish--rice {
+    color: var(--color-text-muted);
+}
+
+.cook__text {
+    margin: 0 0 var(--space-4);
+    font-size: var(--font-size-cooking);
+    line-height: var(--line-height-tight);
+}
+
+.cook__times {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--space-4);
+    margin: 0 0 var(--space-4);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-large);
+}
+
+.cook__time {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.cook__countdown {
+    margin: 0 0 var(--space-4);
+    font-size: var(--font-size-title);
+    font-variant-numeric: tabular-nums;
+    font-weight: var(--font-weight-strong);
+}
+
+.cook__countdown--done {
+    color: var(--color-accent);
+}
+
+.cook__ingredients {
+    margin: 0 0 var(--space-4);
+    padding: 0;
+    font-size: var(--font-size-large);
+    list-style: none;
+}
+
+.cook__ingredients li {
+    padding: var(--space-1) 0;
+}
+
+.cook__ingredient-amount {
+    font-weight: var(--font-weight-strong);
+}
+
+.cook__ingredient-note {
+    color: var(--color-text-muted);
+}
+
+/* A tap on the right half of the stage is "next" and on the left half "back" (SPEC §8.1-5); the buttons of the bar below do the same for a keyboard. */
+.cook-zone {
+    position: absolute;
+    inset-block: 0;
+    inline-size: 50%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.cook-zone--back {
+    inset-inline-start: 0;
+}
+
+.cook-zone--next {
+    inset-inline-end: 0;
+}
+
+.cook__hint {
+    font-size: var(--font-size-small);
+}
+
+.cook-actions .button {
+    font-size: var(--font-size-large);
+}
+
+/* The timer button has a row of its own above the two that move; the more specific selector is what beats the "flex: 1" of every child of the bar. */
+.cook-actions > .cook-actions__timer {
+    flex: 1 0 100%;
+}
+
 /* ---- Placeholder tile: stands in for a picture that does not exist yet, one look per kind of ingredient or dish ---- */
 
 .tile {

@@ -1,0 +1,311 @@
+@using MamCom.Core
+@using MamCom.Core.Cooking
+@using MamCom.Core.Models
+@using MamCom.Core.Spinning
+@using MamCom.Data.Device
+@using MamCom.Data.State
+@using MamCom.UI.Formatting
+@implements IAsyncDisposable
+@inherits AppDataComponentBase
+@inject ITrayStore Trays
+@inject ICookingStore Cooking
+@inject IDeviceFeatures Device
+@inject IClock Clock
+@inject IRandomSource RandomSource
+@inject ITicker Ticker
+@inject NavigationManager Navigation
+
+@* Cooking the tray on the screen, one step at a time (SPEC §8.1-5): large words, a timer inside the step, the timers that run side by side as chips, the screen kept lit, a tap on the right half for the next step. *@
+@if (_ready)
+{
+    <PageTitle>@Strings.Cook_Title</PageTitle>
+
+    @if (_guide is null || _desk is null)
+    {
+        <BackLink />
+        <h1>@Strings.Cook_Title</h1>
+        <p>@Strings.Cook_NoTray</p>
+    }
+    else
+    {
+        var step = _guide.Steps[_state.StepIndex];
+        var isFirst = _state.StepIndex == 0;
+        var isLast = _state.StepIndex == _guide.Steps.Count - 1;
+        var timers = _desk.Timers(_state, _guide, Clock.Now);
+        var ownTimer = timers.FirstOrDefault(t => t.StepIndex == step.Index);
+        var position = CookingFormat.Position(_state.StepIndex, _guide.Steps.Count);
+
+        <div class="cook">
+            <div class="cook__head">
+                <BackLink />
+                <p class="cook__position">@position</p>
+            </div>
+            <h1 class="visually-hidden">@Strings.Cook_Title</h1>
+
+            <p class="visually-hidden" role="status">@_stepNote</p>
+            <p class="visually-hidden" role="alert">@_timerNote</p>
+
+            @if (_wake is { } wake && wake != WakeLockOutcome.Active)
+            {
+                <div class="notice notice--warning" role="status">@Strings.Cook_NoWakeLock</div>
+            }
+
+            @if (timers.Count > 0)
+            {
+                <ul class="cook-timers" aria-label="@Strings.Cook_TimersLabel">
+                    @foreach (var timer in timers)
+                    {
+                        var index = timer.StepIndex;
+                        <li @key="index">
+                            <button type="button" class="@(timer.IsDone ? "chip cook-chip cook-chip--done" : "chip cook-chip")" @onclick="() => GoToAsync(index)">
+                                <span class="cook-chip__name">@CookingFormat.DishLabel(timer.DishName, timer.IsRice)</span>
+                                <span class="cook-chip__time">@(timer.IsDone ? Strings.Cook_TimerDone : CookingFormat.Countdown(timer.RemainingSeconds))</span>
+                            </button>
+                        </li>
+                    }
+                </ul>
+            }
+
+            <section class="cook__stage" aria-label="@position">
+                <p class="@DishClass(step)">@CookingFormat.DishLabel(step.DishName, step.IsRice)</p>
+                <p class="cook__text">@step.Text</p>
+
+                @if (step.ActiveMinutes > 0 || step.TimerMinutes > 0)
+                {
+                    <p class="cook__times">
+                        @if (step.ActiveMinutes > 0)
+                        {
+                            <span class="cook__time"><Icon Name="clock" />@DishFormat.StepActive(step.ActiveMinutes)</span>
+                        }
+                        @if (step.TimerMinutes > 0)
+                        {
+                            <span class="cook__time"><Icon Name="clock" />@DishFormat.StepPassive(step.TimerMinutes)</span>
+                        }
+                    </p>
+                }
+
+                @if (ownTimer is not null)
+                {
+                    <p class="@(ownTimer.IsDone ? "cook__countdown cook__countdown--done" : "cook__countdown")" role="timer">@(ownTimer.IsDone ? Strings.Cook_TimerDone : CookingFormat.Countdown(ownTimer.RemainingSeconds))</p>
+                }
+
+                @if (step.Ingredients.Count > 0)
+                {
+                    <ul class="cook__ingredients" aria-label="@Strings.Cook_IngredientsLabel">
+                        @foreach (var ingredient in step.Ingredients)
+                        {
+                            <li>
+                                <span class="cook__ingredient-name">@ingredient.Line.Name</span>@(" ")
+                                @if (ingredient.ShowAmount)
+                                {
+                                    <strong class="cook__ingredient-amount">@DishFormat.Amount(ingredient.Line)</strong>
+                                    @if (!string.IsNullOrWhiteSpace(ingredient.Line.Note))
+                                    {
+                                        <span class="cook__ingredient-note"> (@ingredient.Line.Note)</span>
+                                    }
+                                }
+                            </li>
+                        }
+                    </ul>
+                }
+
+                @* A tap on a half of the stage moves; the buttons below do the same for a keyboard and a screen reader, so these stay out of both. *@
+                <button type="button" class="cook-zone cook-zone--back" tabindex="-1" aria-hidden="true" @onclick="PreviousAsync"></button>
+                <button type="button" class="cook-zone cook-zone--next" tabindex="-1" aria-hidden="true" @onclick="NextOrFinishAsync"></button>
+            </section>
+
+            <p class="text-muted cook__hint">@Strings.Cook_Hint</p>
+
+            <div class="app-actions cook-actions">
+                @if (step.TimerMinutes > 0)
+                {
+                    @if (ownTimer is null)
+                    {
+                        <button type="button" class="button button--primary cook-actions__timer" @onclick="() => StartTimerAsync(step.Index)">
+                            <Icon Name="clock" />@CookingFormat.StartTimer(step.TimerMinutes)
+                        </button>
+                    }
+                    else if (ownTimer.IsDone)
+                    {
+                        <button type="button" class="button button--primary cook-actions__timer" @onclick="() => CancelTimerAsync(step.Index)">
+                            <Icon Name="check" />@Strings.Cook_DismissTimer
+                        </button>
+                    }
+                    else
+                    {
+                        <button type="button" class="button button--quiet cook-actions__timer" @onclick="() => CancelTimerAsync(step.Index)">
+                            <Icon Name="x" />@Strings.Cook_CancelTimer
+                        </button>
+                    }
+                }
+
+                <button type="button" class="button button--quiet" disabled="@isFirst" @onclick="PreviousAsync">
+                    <Icon Name="chevron-left" />@Strings.Cook_Previous
+                </button>
+                <button type="button" class="button @(isLast ? "button--primary" : string.Empty)" @onclick="NextOrFinishAsync">
+                    @if (isLast)
+                    {
+                        <Icon Name="check" />@Strings.Cook_Finish
+                    }
+                    else
+                    {
+                        @Strings.Cook_Next<Icon Name="chevron-left" Class="icon--flip" />
+                    }
+                </button>
+            </div>
+        </div>
+    }
+}
+
+@code {
+    /// <summary>How often the countdowns are drawn again.</summary>
+    public static readonly TimeSpan TickPeriod = TimeSpan.FromSeconds(1);
+
+    private CookingDesk? _desk;
+    private CookingGuide? _guide;
+    private CookingState _state = CookingState.Empty;
+    private MamCom.Core.Data.DataBundle? _bundle;
+    private IDisposable? _tick;
+    private WakeLockOutcome? _wake;
+    private string _stepNote = string.Empty;
+    private string _timerNote = string.Empty;
+    private bool _ready;
+    private bool _disposed;
+
+    /// <summary>The household the quantities are for; the gate hands it over once it knows there is one.</summary>
+    [Parameter, EditorRequired]
+    public Household Household { get; set; } = null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Data.InitializeAsync();
+        await LoadAsync();
+    }
+
+    // "Dùng ngay" took in a newer bundle: the steps may have changed, so the guide is worked out again from the new one.
+    protected override async Task OnDataChangedAsync()
+    {
+        if (Data.Bundle is { } bundle && !ReferenceEquals(_bundle, bundle))
+        {
+            await LoadAsync();
+        }
+    }
+
+    /// <summary>The guide of the tray the "Mâm hôm nay" screen shows; none when there is no tray of today to cook.</summary>
+    private async Task LoadAsync()
+    {
+        _guide = null;
+
+        if (Data.Bundle is not { } bundle)
+        {
+            return;   // nothing to show yet; the notices above the page say what is going on
+        }
+
+        var engine = TrayEngine.Create(bundle, RandomSource, Clock);
+        _bundle = bundle;
+        _desk = new CookingDesk(bundle.Config.Portion, bundle.Config.Cooking);
+        _ready = true;
+
+        var session = await Trays.LoadAsync();
+        if (session is null || !engine.CanContinue(session) || session.Viewed is not { } viewed || viewed.Tray.Slots.Count == 0)
+        {
+            return;
+        }
+
+        _guide = _desk.Guide(Household, engine.DishesOf(viewed.Tray), engine.IngredientsById);
+        _state = _desk.Open(await Cooking.LoadAsync(), viewed.Tray, _guide);
+        AnnounceStep();
+
+        _tick ??= Ticker.Every(TickPeriod, OnTickAsync);
+        _wake ??= await Device.KeepScreenOnAsync();
+    }
+
+    private async Task OnTickAsync()
+    {
+        await InvokeAsync(async () =>
+        {
+            if (_disposed || _desk is null || _guide is null)
+            {
+                return;
+            }
+
+            try
+            {
+                var due = _desk.Due(_state, Clock.Now);
+                if (due.Count > 0)
+                {
+                    var labels = due.Select(index => CookingFormat.DishLabel(_guide.Steps[index].DishName, _guide.Steps[index].IsRice));
+                    _timerNote = CookingFormat.AnnounceDone(labels);
+                    _state = _desk.MarkAlerted(_state, due);
+                    await Cooking.SaveAsync(_state);
+                    await Device.AlertAsync();
+                }
+
+                if (due.Count > 0 || _state.Timers.Count > 0)
+                {
+                    StateHasChanged();   // the countdowns move
+                }
+            }
+            catch (Exception exception)
+            {
+                await DispatchExceptionAsync(exception);   // not lost: the app's error display gets it
+            }
+        });
+    }
+
+    private async Task GoToAsync(int index)
+    {
+        _state = _desk!.GoTo(_state, _guide!, index);
+        await Cooking.SaveAsync(_state);
+        AnnounceStep();
+    }
+
+    private Task PreviousAsync() => GoToAsync(_state.StepIndex - 1);
+
+    private async Task NextOrFinishAsync()
+    {
+        if (_state.StepIndex >= _guide!.Steps.Count - 1)
+        {
+            Navigation.NavigateTo(Routes.Home);   // the last step is done: back to the tray
+            return;
+        }
+
+        await GoToAsync(_state.StepIndex + 1);
+    }
+
+    private async Task StartTimerAsync(int stepIndex)
+    {
+        await Device.PrepareAlertAsync();   // a page may only make a sound after a tap, and this is the tap
+        _state = _desk!.StartTimer(_state, _guide!, stepIndex, Clock.Now);
+        await Cooking.SaveAsync(_state);
+    }
+
+    private async Task CancelTimerAsync(int stepIndex)
+    {
+        _state = _desk!.CancelTimer(_state, stepIndex);
+        await Cooking.SaveAsync(_state);
+    }
+
+    private void AnnounceStep()
+    {
+        var step = _guide!.Steps[_state.StepIndex];
+        _stepNote = CookingFormat.Announce(CookingFormat.Position(_state.StepIndex, _guide.Steps.Count), CookingFormat.DishLabel(step.DishName, step.IsRice), step.Text);
+    }
+
+    private static string DishClass(CookingStep step) => "cook__dish " + step.Slot switch
+    {
+        DishSlot.Soup => "slot--soup",
+        DishSlot.Main => "slot--main",
+        DishSlot.Vegetable => "slot--veg",
+        _ => "cook__dish--rice",
+    };
+
+    public async ValueTask DisposeAsync()
+    {
+        _disposed = true;
+        Dispose();   // the base: stop listening for new data
+        _tick?.Dispose();
+        await Device.ReleaseScreenAsync();
+        GC.SuppressFinalize(this);
+    }
+}

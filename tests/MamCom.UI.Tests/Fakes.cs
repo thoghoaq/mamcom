@@ -194,6 +194,45 @@ internal sealed class FakeDeviceFeatures : IDeviceFeatures
 
         return ShareResult;
     }
+
+    /// <summary>Whether the screen can be kept lit.</summary>
+    public WakeLockOutcome WakeResult { get; set; } = WakeLockOutcome.Active;
+
+    public int KeepScreenOnCalls { get; private set; }
+
+    public int Releases { get; private set; }
+
+    public bool PrepareResult { get; set; } = true;
+
+    public int Prepares { get; private set; }
+
+    public bool AlertResult { get; set; } = true;
+
+    public int Alerts { get; private set; }
+
+    public ValueTask<WakeLockOutcome> KeepScreenOnAsync()
+    {
+        KeepScreenOnCalls++;
+        return ValueTask.FromResult(WakeResult);
+    }
+
+    public ValueTask ReleaseScreenAsync()
+    {
+        Releases++;
+        return ValueTask.CompletedTask;
+    }
+
+    public ValueTask<bool> PrepareAlertAsync()
+    {
+        Prepares++;
+        return ValueTask.FromResult(PrepareResult);
+    }
+
+    public ValueTask<bool> AlertAsync()
+    {
+        Alerts++;
+        return ValueTask.FromResult(AlertResult);
+    }
 }
 
 /// <summary>The roll of the dice, held for as long as the test wants: not at all, or until <see cref="Gate"/> is opened.</summary>
@@ -215,9 +254,64 @@ internal sealed class FakeSpinPacer : ISpinPacer
 
 internal sealed class FixedClock(DateOnly today) : IClock
 {
+    private DateTimeOffset? _now;
+
     public DateOnly Today { get; set; } = today;
 
-    public DateTimeOffset Now => new(Today.ToDateTime(new TimeOnly(18, 0)), TimeSpan.Zero);
+    /// <summary>Six in the evening of <see cref="Today"/> unless a test sets the time; a timer test moves it on.</summary>
+    public DateTimeOffset Now
+    {
+        get => _now ?? new(Today.ToDateTime(new TimeOnly(18, 0)), TimeSpan.Zero);
+        set => _now = value;
+    }
+}
+
+/// <summary>The cooking mode as it was left, kept in memory.</summary>
+internal sealed class FakeCookingStore : ICookingStore
+{
+    public CookingState? Saved { get; set; }
+
+    public int Saves { get; private set; }
+
+    public ValueTask<CookingState?> LoadAsync() => ValueTask.FromResult(Saved);
+
+    public ValueTask<bool> SaveAsync(CookingState state)
+    {
+        Saves++;
+        Saved = state;
+        return ValueTask.FromResult(true);
+    }
+}
+
+/// <summary>A ticker that goes off when the test says so.</summary>
+internal sealed class FakeTicker : ITicker
+{
+    private Func<Task>? _onTick;
+
+    public int Starts { get; private set; }
+
+    public TimeSpan? Period { get; private set; }
+
+    public bool Stopped { get; private set; }
+
+    public IDisposable Every(TimeSpan period, Func<Task> onTick)
+    {
+        Starts++;
+        Period = period;
+        _onTick = onTick;
+        return new Handle(this);
+    }
+
+    /// <summary>One tick, as the clock would make it; nothing once the screen stopped it.</summary>
+    public Task FireAsync() => _onTick is null || Stopped ? Task.CompletedTask : _onTick();
+
+    /// <summary>A tick that was already on its way when the screen stopped the ticker, as a real timer can make one.</summary>
+    public Task FireLateAsync() => _onTick is null ? Task.CompletedTask : _onTick();
+
+    private sealed class Handle(FakeTicker ticker) : IDisposable
+    {
+        public void Dispose() => ticker.Stopped = true;
+    }
 }
 
 /// <summary>The real config files of <c>data/config</c>, which the project links next to the tests, and a bundle that carries them.</summary>

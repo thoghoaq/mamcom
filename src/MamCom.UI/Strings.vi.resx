@@ -521,4 +521,25 @@
   <data name="Shop_Aisle_EggsAndTofu" xml:space="preserve"><value>Trứng đậu phụ</value></data>
   <data name="Shop_Aisle_DryGoodsAndSpices" xml:space="preserve"><value>Khô và gia vị</value></data>
   <data name="Shop_Aisle_Other" xml:space="preserve"><value>Khác</value></data>
+
+  <!-- Chế độ nấu (SPEC §8.1-5) -->
+  <data name="Tray_Cook" xml:space="preserve"><value>Nấu</value></data>
+  <data name="Shop_Cook" xml:space="preserve"><value>Bắt đầu nấu</value></data>
+  <data name="Cook_Title" xml:space="preserve"><value>Nấu mâm</value></data>
+  <data name="Cook_StepFormat" xml:space="preserve"><value>Bước {0}/{1}</value></data>
+  <data name="Cook_Rice" xml:space="preserve"><value>Cơm</value></data>
+  <data name="Cook_StartTimerFormat" xml:space="preserve"><value>Hẹn giờ {0}</value></data>
+  <data name="Cook_CancelTimer" xml:space="preserve"><value>Huỷ hẹn giờ</value></data>
+  <data name="Cook_TimerDone" xml:space="preserve"><value>Hết giờ</value></data>
+  <data name="Cook_DismissTimer" xml:space="preserve"><value>Đã xong</value></data>
+  <data name="Cook_Previous" xml:space="preserve"><value>Trước</value></data>
+  <data name="Cook_Next" xml:space="preserve"><value>Tiếp</value></data>
+  <data name="Cook_Finish" xml:space="preserve"><value>Xong bữa</value></data>
+  <data name="Cook_TimersLabel" xml:space="preserve"><value>Các hẹn giờ</value></data>
+  <data name="Cook_IngredientsLabel" xml:space="preserve"><value>Nguyên liệu của bước này</value></data>
+  <data name="Cook_AnnounceFormat" xml:space="preserve"><value>{0}, {1}. {2}</value></data>
+  <data name="Cook_AnnounceDoneFormat" xml:space="preserve"><value>Hết giờ: {0}.</value></data>
+  <data name="Cook_NoWakeLock" xml:space="preserve"><value>Máy này không giữ được màn hình sáng. Hãy chỉnh thời gian tắt màn hình trong cài đặt máy.</value></data>
+  <data name="Cook_NoTray" xml:space="preserve"><value>Chưa có mâm nào để nấu. Hãy quay và chốt một mâm trước.</value></data>
+  <data name="Cook_Hint" xml:space="preserve"><value>Chạm nửa phải màn hình để sang bước tiếp, nửa trái để quay lại.</value></data>
 </root>

@@ -11,6 +11,9 @@ public static class Routes
     /// <summary>"Đi chợ": the shopping list of the tray of the day (SPEC §8.1-4).</summary>
     public const string Shopping = "di-cho";
 
+    /// <summary>"Nấu mâm": the cooking mode for the tray of the day (SPEC §8.1-5).</summary>
+    public const string Cooking = "nau";
+
     /// <summary>The folder of the detail screens: one page for each dish, <c>mon/&lt;dish id&gt;</c>.</summary>
     public const string DishFolder = "mon";
 

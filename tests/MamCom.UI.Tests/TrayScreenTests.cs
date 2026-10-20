@@ -162,8 +162,8 @@ public class TrayScreenTests : BunitContext
 
         var again = Show();
 
-        again.Find(".notice--ok").TextContent.ShouldBe("Đã chốt mâm hôm nay.");
-        again.FindAll(".app-actions button").Select(b => b.TextContent.Trim()).ShouldBe(["Chọn mâm khác"]);
+        again.Find(".notice--ok p").TextContent.ShouldBe("Đã chốt mâm hôm nay.");
+        again.FindAll(".notice--ok button").Select(b => b.TextContent.Trim()).ShouldBe(["Chọn mâm khác"]);
     }
 
     [Fact]
@@ -473,8 +473,10 @@ public class TrayScreenTests : BunitContext
 
         ConfirmButton(cut).Click();
 
-        cut.Find(".notice--ok").TextContent.ShouldBe("Đã chốt mâm hôm nay.");
-        cut.FindAll(".app-actions button").Select(b => b.TextContent.Trim()).ShouldBe(["Chọn mâm khác"]);
+        cut.Find(".notice--ok p").TextContent.ShouldBe("Đã chốt mâm hôm nay.");
+        cut.Find(".notice--ok p").GetAttribute("role").ShouldBe("status");
+        cut.FindAll(".notice--ok button").Select(b => b.TextContent.Trim()).ShouldBe(["Chọn mâm khác"]);
+        cut.FindAll(".app-actions button").ShouldBeEmpty();   // the bar leads on: to the list and to the cooking
         Cards(cut).ShouldAllBe(c => c.QuerySelector(".dish-card__lock")!.HasAttribute("disabled") && c.QuerySelector(".dish-card__swap")!.HasAttribute("disabled"));
         cut.FindAll(".tray-hint").ShouldBeEmpty();
         _eaten.Saves.ShouldBe(1);
@@ -493,10 +495,10 @@ public class TrayScreenTests : BunitContext
         Navigation.History.ShouldHaveSingleItem().Uri.ShouldBe(Routes.Shopping);
         Routes.Shopping.ShouldBe("di-cho");
         var again = Show();
-        again.Find(".notice--ok").TextContent.ShouldBe("Đã chốt mâm hôm nay.");
-        var link = again.Find(".app-actions a");
-        link.GetAttribute("href").ShouldBe(Routes.Shopping);
-        link.TextContent.Trim().ShouldBe("Đi chợ");
+        again.Find(".notice--ok p").TextContent.ShouldBe("Đã chốt mâm hôm nay.");
+        var links = again.FindAll(".app-actions a");
+        links.Select(l => (l.GetAttribute("href"), l.TextContent.Trim())).ShouldBe([(Routes.Shopping, "Đi chợ"), (Routes.Cooking, "Nấu")]);
+        links[1].ClassList.ShouldContain("button--primary");   // cooking is what comes next
     }
 
     [Fact]
@@ -516,7 +518,7 @@ public class TrayScreenTests : BunitContext
         var names = Names(cut);
         ConfirmButton(cut).Click();
 
-        cut.Find(".app-actions button").Click();
+        cut.Find(".notice--ok button").Click();
 
         cut.FindAll(".notice--ok").ShouldBeEmpty();
         cut.FindAll(".app-actions button").Select(b => b.TextContent.Trim()).ShouldBe(["Quay mâm", "Chốt mâm"]);
@@ -532,7 +534,7 @@ public class TrayScreenTests : BunitContext
         await Spin(cut);
         ConfirmButton(cut).Click();
         var eaten = _eaten.Saved.LastEatenOn.Keys.ToHashSet();
-        cut.Find(".app-actions button").Click();
+        cut.Find(".notice--ok button").Click();
 
         for (var i = 0; i < 4; i++)
         {

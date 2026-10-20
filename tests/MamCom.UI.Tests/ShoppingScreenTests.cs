@@ -334,6 +334,18 @@ public class ShoppingScreenTests : BunitContext
     // ---- sending the list --------------------------------------------------------------------------------------------------
 
     [Fact]
+    public void The_bar_leads_on_to_the_cooking_and_sending_the_list_is_the_quieter_of_the_two()
+    {
+        var cut = Show();
+
+        var link = cut.Find(".app-actions a");
+        link.GetAttribute("href").ShouldBe(Routes.Cooking);
+        link.TextContent.Words().ShouldBe("Bắt đầu nấu");
+        link.ClassList.ShouldContain("button--primary");
+        ShareButton(cut).ClassList.ShouldNotContain("button--primary");
+    }
+
+    [Fact]
     public void The_button_sends_the_text_of_the_list_to_the_share_sheet()
     {
         var cut = Show();

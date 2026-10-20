@@ -75,6 +75,42 @@ public partial class TokenTests
         PropertyValue(Rule(layout, ".app-actions__status {"), "flex").ShouldBe("1 0 100%");
     }
 
+    [Theory]
+    [InlineData(".cook__text {", "var(--font-size-cooking)")]
+    [InlineData(".cook__dish {", "var(--font-size-large)")]
+    [InlineData(".cook__times {", "var(--font-size-large)")]
+    [InlineData(".cook__ingredients {", "var(--font-size-large)")]
+    [InlineData(".cook__position {", "var(--font-size-large)")]
+    [InlineData(".cook-chip__time {", "var(--font-size-large)")]
+    [InlineData(".cook-actions .button {", "var(--font-size-large)")]
+    public void The_words_of_the_cooking_mode_are_set_in_the_large_sizes_which_are_at_least_22_pixels(string selector, string size)
+    {
+        PropertyValue(Rule(Base, selector), "font-size").ShouldBe(size);
+        var root = Variables(Rule(Tokens, ":root {\n    /* Type."));
+        Px(root["--font-size-large"]).ShouldBeGreaterThanOrEqualTo(22);
+        Px(root["--font-size-cooking"]).ShouldBeGreaterThanOrEqualTo(22);
+    }
+
+    [Fact]
+    public void The_halves_of_the_cooking_stage_are_the_left_and_the_right_half_of_it()
+    {
+        PropertyValue(Rule(Base, ".cook__stage {"), "position").ShouldBe("relative");
+        PropertyValue(Rule(Base, ".cook-zone {"), "position").ShouldBe("absolute");
+        PropertyValue(Rule(Base, ".cook-zone {"), "inline-size").ShouldBe("50%");
+        PropertyValue(Rule(Base, ".cook-zone--back {"), "inset-inline-start").ShouldBe("0");
+        PropertyValue(Rule(Base, ".cook-zone--next {"), "inset-inline-end").ShouldBe("0");
+    }
+
+    [Fact]
+    public void A_timer_that_ran_out_is_a_chip_in_the_accent_with_the_colour_that_reads_on_it_and_the_timer_button_has_a_row_of_its_own()
+    {
+        var done = Rule(Base, ".cook-chip--done {");
+
+        PropertyValue(done, "background").ShouldBe("var(--color-accent)");
+        PropertyValue(done, "color").ShouldBe("var(--color-on-accent)");
+        PropertyValue(Rule(Base, ".cook-actions > .cook-actions__timer {"), "flex").ShouldBe("1 0 100%");
+    }
+
     [Fact]
     public void The_number_of_bowls_is_set_in_the_large_size_and_stands_out()
     {
