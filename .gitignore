@@ -480,3 +480,6 @@ $RECYCLE.BIN/
 
 # DataBuilder output
 dist/
+
+# Original photos for ImageTool (PLAN 2.8): large, and a phone photo carries its GPS position in EXIF. Only data/images/out is committed.
+data/images/raw/

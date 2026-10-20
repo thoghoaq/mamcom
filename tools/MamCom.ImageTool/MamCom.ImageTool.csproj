@@ -4,4 +4,13 @@
     <OutputType>Exe</OutputType>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp" />
+    <!-- The Linux build of Skia without the system libraries it would otherwise need (fontconfig), so CI and any plain Linux box can run the tool. -->
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" />
+    <ProjectReference Include="..\..\src\MamCom.Core\MamCom.Core.csproj" />
+    <!-- The schemas, the single-item checks and the canonical file formats that Studio writes with. -->
+    <ProjectReference Include="..\MamCom.DataBuilder\MamCom.DataBuilder.csproj" />
+  </ItemGroup>
+
 </Project>
