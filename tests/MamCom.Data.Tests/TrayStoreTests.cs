@@ -1,3 +1,4 @@
+using MamCom.Core.Cooking;
 using MamCom.Core.Models;
 using MamCom.Core.Shopping;
 using MamCom.Core.Spinning;
@@ -229,6 +230,55 @@ public class DeviceFeaturesTests
     }
 
     [Theory]
+    [InlineData("active", WakeLockOutcome.Active)]
+    [InlineData("denied", WakeLockOutcome.Denied)]
+    [InlineData("unsupported", WakeLockOutcome.Unsupported)]
+    [InlineData("something else", WakeLockOutcome.Unsupported)]
+    public async Task Keeping_the_screen_lit_says_whether_the_browser_did_it(string answer, WakeLockOutcome expected)
+    {
+        var browser = new FakeBrowser { WakeAnswer = answer };
+
+        (await new BrowserDeviceFeatures(browser).KeepScreenOnAsync()).ShouldBe(expected);
+
+        browser.Calls.ShouldContain("mamcomDevice.keepScreenOn");
+    }
+
+    [Fact]
+    public async Task A_page_without_the_script_cannot_keep_the_screen_lit_ready_a_sound_or_sound_an_alarm_and_none_of_it_fails()
+    {
+        var device = new BrowserDeviceFeatures(new FakeBrowser());   // no mamcomDevice
+
+        (await device.KeepScreenOnAsync()).ShouldBe(WakeLockOutcome.Unsupported);
+        await device.ReleaseScreenAsync();
+        (await device.PrepareAlertAsync()).ShouldBeFalse();
+        (await device.AlertAsync()).ShouldBeFalse();
+    }
+
+    [Fact]
+    public async Task Giving_the_screen_back_asks_the_page_to_release_the_lock()
+    {
+        var browser = new FakeBrowser { ReleaseAnswer = true };
+
+        await new BrowserDeviceFeatures(browser).ReleaseScreenAsync();
+
+        browser.Calls.ShouldBe(["mamcomDevice.releaseScreen"]);
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public async Task Readying_the_sound_and_sounding_the_alarm_say_whether_the_page_could(bool answer)
+    {
+        var browser = new FakeBrowser { PrepareAnswer = answer, AlertAnswer = answer };
+        var device = new BrowserDeviceFeatures(browser);
+
+        (await device.PrepareAlertAsync()).ShouldBe(answer);
+        (await device.AlertAsync()).ShouldBe(answer);
+
+        browser.Calls.ShouldBe(["mamcomDevice.prepareAlert", "mamcomDevice.alertUser"]);
+    }
+
+    [Theory]
     [InlineData("")]
     [InlineData(null)]
     public async Task An_empty_text_is_refused_before_the_page_is_asked(string? text)
@@ -316,5 +366,81 @@ public class ShoppingStoreTests
     public async Task A_state_is_required()
     {
         await Should.ThrowAsync<ArgumentNullException>(async () => await new ShoppingStore(Create().State).SaveAsync(null!));
+    }
+}
+
+public class CookingStoreTests
+{
+    private static readonly DateTimeOffset Noon = new(2026, 10, 21, 12, 0, 0, TimeSpan.FromHours(7));
+
+    private static CookingState State() => new("2026-10-21|thit-kho-trung,rau-muong-xao", 3, [new CookTimer(0, Noon.AddMinutes(30), false), new CookTimer(2, Noon, true)]);
+
+    private static (UserStateStore State, FakeBrowser Browser) Create(FakeBrowser? browser = null)
+    {
+        browser ??= new FakeBrowser();
+        return (new UserStateStore(new LocalStorageKeyValueStorage(browser)), browser);
+    }
+
+    [Fact]
+    public async Task The_step_and_the_timers_come_back_in_a_new_visit_with_the_minute_each_ends()
+    {
+        var (state, browser) = Create();
+        (await new CookingStore(state).SaveAsync(State())).ShouldBeTrue();
+
+        var back = await new CookingStore(Create(browser).State).LoadAsync();
+
+        back.ShouldNotBeNull();
+        back.TrayKey.ShouldBe("2026-10-21|thit-kho-trung,rau-muong-xao");
+        back.StepIndex.ShouldBe(3);
+        back.Timers.Select(t => (t.StepIndex, t.EndsAt, t.Alerted)).ShouldBe([(0, Noon.AddMinutes(30), false), (2, Noon, true)]);
+    }
+
+    [Fact]
+    public async Task It_lives_under_cooking_v1()
+    {
+        var (state, browser) = Create();
+
+        await new CookingStore(state).SaveAsync(State());
+
+        CookingStore.Key.ShouldBe("cooking.v1");
+        browser.Items.Keys.ShouldContain("mamcom.state.cooking.v1");
+    }
+
+    [Fact]
+    public async Task Nothing_saved_and_text_that_is_not_a_state_are_null_and_not_an_error()
+    {
+        var (state, browser) = Create();
+        (await new CookingStore(state).LoadAsync()).ShouldBeNull();
+
+        browser.Items["mamcom.state.cooking.v1"] = "not json";
+
+        (await new CookingStore(state).LoadAsync()).ShouldBeNull();
+    }
+
+    [Fact]
+    public async Task A_browser_that_cannot_keep_it_says_so_and_the_page_still_has_it()
+    {
+        var (state, _) = Create(new FakeBrowser { RefuseWrites = true });
+        var store = new CookingStore(state);
+
+        (await store.SaveAsync(State())).ShouldBeFalse();
+        (await store.LoadAsync())!.StepIndex.ShouldBe(3);
+    }
+
+    [Fact]
+    public async Task It_is_cleared_with_the_state_of_the_app()
+    {
+        var (state, _) = Create();
+        await new CookingStore(state).SaveAsync(State());
+
+        await state.ClearAsync();
+
+        (await new CookingStore(state).LoadAsync()).ShouldBeNull();
+    }
+
+    [Fact]
+    public async Task A_state_is_required()
+    {
+        await Should.ThrowAsync<ArgumentNullException>(async () => await new CookingStore(Create().State).SaveAsync(null!));
     }
 }

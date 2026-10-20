@@ -154,6 +154,18 @@ internal sealed class FakeBrowser : IJSRuntime
     /// <summary>The texts that were offered to the share sheet.</summary>
     public List<string> Shared { get; } = [];
 
+    /// <summary>What <c>mamcomDevice.keepScreenOn</c> answers; null when the page has no device.js.</summary>
+    public string? WakeAnswer { get; set; }
+
+    /// <summary>What <c>mamcomDevice.releaseScreen</c> answers; null when the page has no device.js.</summary>
+    public bool? ReleaseAnswer { get; set; }
+
+    /// <summary>What <c>mamcomDevice.prepareAlert</c> answers; null when the page has no device.js.</summary>
+    public bool? PrepareAnswer { get; set; }
+
+    /// <summary>What <c>mamcomDevice.alertUser</c> answers; null when the page has no device.js.</summary>
+    public bool? AlertAnswer { get; set; }
+
     public ValueTask<TValue> InvokeAsync<TValue>(string identifier, object?[]? args)
     {
         Calls.Add(identifier);
@@ -190,6 +202,18 @@ internal sealed class FakeBrowser : IJSRuntime
             case "mamcomDevice.shareText":
                 Shared.Add((string)args![0]!);
                 return ShareAnswer is { } shared ? ValueTask.FromResult((TValue)(object)shared) : throw new JSException("mamcomDevice is not defined");
+
+            case "mamcomDevice.keepScreenOn":
+                return WakeAnswer is { } wake ? ValueTask.FromResult((TValue)(object)wake) : throw new JSException("mamcomDevice is not defined");
+
+            case "mamcomDevice.releaseScreen":
+                return ReleaseAnswer is { } released ? ValueTask.FromResult((TValue)(object)released) : throw new JSException("mamcomDevice is not defined");
+
+            case "mamcomDevice.prepareAlert":
+                return PrepareAnswer is { } prepared ? ValueTask.FromResult((TValue)(object)prepared) : throw new JSException("mamcomDevice is not defined");
+
+            case "mamcomDevice.alertUser":
+                return AlertAnswer is { } alerted ? ValueTask.FromResult((TValue)(object)alerted) : throw new JSException("mamcomDevice is not defined");
 
             case "navigator.storage.persist":
                 return PersistAnswer is { } answer ? ValueTask.FromResult((TValue)(object)answer) : throw new JSException("storage is not defined");
