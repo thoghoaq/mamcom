@@ -65,7 +65,7 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 │  └─ images/         raw/ (gốc, không commit: nặng và mang vị trí GPS), out/ (webp)
 ├─ src/
 │  ├─ MamCom.Core/    domain + thuật toán thuần (không IO, không UI)
-│  ├─ MamCom.Data/    BundleLoader, ThumbPreloader, AppData, IUserStateStore và IKeyValueStorage (localStorage), IHouseholdStore, cấu hình
+│  ├─ MamCom.Data/    BundleLoader, ThumbPreloader, AppData, IUserStateStore và IKeyValueStorage (localStorage), IHouseholdStore, ITrayStore, IEatenLogStore, IDeviceFeatures (rung, bớt chuyển động), cấu hình
 │  ├─ MamCom.UI/      Razor Class Library: components, Strings.vi.resx (mọi chuỗi UI), wwwroot/: tokens.css, base.css, layout.css, fonts.css, fonts/, icons/icons.svg (ADR-019)
 │  └─ MamCom.Web/     Blazor WASM PWA host, service worker
 ├─ tools/

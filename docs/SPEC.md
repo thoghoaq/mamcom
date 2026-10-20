@@ -486,6 +486,15 @@ Làm rõ khi hiện thực màn hình đầu tiên (ADR-021):
 - **Miền hỏi ngay trên màn hình (ba chip, mặc định Bắc, xem §13);** cỡ chén để Cài đặt, mặc định vừa. Kiêng khem, khẩu vị và `tag` không hỏi ở đây, nhưng sửa một nhà đã lưu thì giữ nguyên `tag` và `avoid`.
 - **Bỏ qua** lưu một nhà hai người lớn (Bố, Mẹ) với miền đã chọn. Trang chủ chưa có nhà dùng được thì chuyển sang `/nha-minh` (thay mục lịch sử); nhà được lưu ở khoá `household.v1`.
 
+Làm rõ khi hiện thực màn "Mâm hôm nay" (ADR-022):
+- **Trang chủ là màn này.** Mở app thì tiếp tục mâm hôm nay (khoá `tray.v1`); sang ngày mới, hay khi một món của mâm không còn trong dữ liệu, thì tự quay một mâm mới ngay, không hiệu ứng và không rung. Ô khoá không sang ngày mới và không sang sau lần chốt.
+- **Thẻ món:** ảnh `thumb` nếu có, không thì ô giữ chỗ theo loại (ảnh lỗi cũng thay bằng ô giữ chỗ); tên món; loại món (canh, món mặn, rau) theo màu của ô; tổng thời gian các bước; kcal một suất (chưa đủ số liệu thì nói là chưa đủ); "Để ớt riêng" cho món có ớt tuỳ chọn khi trong nhà có người không ăn cay. Mỗi thẻ có nút khoá và nút đổi món, cao 48px, và vuốt ngang thẻ (ít nhất 60px, xa gấp đôi chiều dọc) cũng đổi món; thẻ đã khoá không đổi.
+- **Quay** mất khoảng 1 giây (thẻ chưa khoá rung nhẹ và mờ đi, nút bị khoá); người dùng đã xin bớt chuyển động (`prefers-reduced-motion`) thì hiện ngay. Máy rung 30 ms khi kết quả hiện, nếu máy làm được. Quay giữ ô khoá và lấy món theo luật của §5; đổi một món không thêm mâm vào lịch sử.
+- **Tóm tắt:** thời gian cả mâm (§5.6), năng lượng cho một người cả cơm, gạo, và số thứ cần mua không kể đồ có sẵn. Luật đã nới (§5.3) và ô không điền được hiện thành thông báo trên các thẻ.
+- **"Mâm trước" và "Mâm sau"** đi qua 5 mâm gần nhất ("Mâm 4/5"); hiện khi có từ hai mâm.
+- **Lọc nhanh** hiện sau 5 lần quay (kể cả lần tự quay lúc mở) chưa chốt, và ở lại khi còn bật; bật hay tắt thì quay lại ngay. "Không thịt đỏ" bỏ món có đạm heo hoặc bò; "Ít dầu mỡ" bỏ món chiên (theo cách nấu, chưa theo số chất béo vì số dinh dưỡng chưa đủ); **"Dưới 45 phút"** (không phải 30: nồi cơm đã mất 35 phút nên mâm nào cũng từ 35 phút trở lên). Các giá trị nằm trong `data/config/spinner-defaults.json`, mục `quickFilters`. Món đang khoá và món đang có trên mâm không bị bộ lọc loại.
+- **Chốt mâm** ghi các món vào nhật ký đã ăn (`eaten.v1`, cho luật §5.2 và §5.4), đưa mâm lên đầu lịch sử và khoá các nút; "Chọn mâm khác" bỏ chốt nhưng các món vẫn ghi là đã ăn. Ngày ăn lần cuối ở tương lai được đọc là hôm nay. Đi chợ và chế độ nấu nối vào đây ở 3.6 và 3.7.
+
 ### 8.2 Ngôn ngữ thị giác
 
 - **Màu:** nền kem ấm, màu nhấn đỏ gạch, màu phụ xanh lá chuối. Màu theo ô: canh xanh dương, mặn cam, rau xanh lá. **Dark mode bắt buộc.**
