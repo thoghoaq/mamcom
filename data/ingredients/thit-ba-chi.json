@@ -31,19 +31,19 @@
   "wasteRatio": 0,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 518,
+    "proteinG": 9.34,
+    "fatG": 53,
+    "carbG": 0,
+    "fiberG": 0,
+    "sodiumMg": 32
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "167812",
+    "matchedName": "Pork, fresh, belly, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-20"
   },
   "image": {
     "thumb": null,

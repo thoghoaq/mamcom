@@ -19,19 +19,19 @@
   "wasteRatio": 0,
   "isPantry": true,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 370,
+    "proteinG": 7.04,
+    "fatG": 1.03,
+    "carbG": 80.3,
+    "fiberG": 0.149,
+    "sodiumMg": 0.462
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "2512381",
+    "matchedName": "Rice, white, long grain, unenriched, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-20"
   },
   "image": {
     "thumb": null,

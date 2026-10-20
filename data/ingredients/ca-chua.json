@@ -17,19 +17,19 @@
   "wasteRatio": 0.05,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 18,
+    "proteinG": 0.88,
+    "fatG": 0.2,
+    "carbG": 3.89,
+    "fiberG": 1.2,
+    "sodiumMg": 5
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "170457",
+    "matchedName": "Tomatoes, red, ripe, raw, year round average",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-20"
   },
   "image": {
     "thumb": null,

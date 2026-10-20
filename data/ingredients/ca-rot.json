@@ -17,19 +17,19 @@
   "wasteRatio": 0.15,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 45,
+    "proteinG": 0.941,
+    "fatG": 0.351,
+    "carbG": 10.3,
+    "fiberG": 3.1,
+    "sodiumMg": 86.6
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "2258586",
+    "matchedName": "Carrots, mature, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-20"
   },
   "image": {
     "thumb": null,

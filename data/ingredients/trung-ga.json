@@ -19,19 +19,19 @@
   "wasteRatio": 0,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 143,
+    "proteinG": 12.6,
+    "fatG": 9.51,
+    "carbG": 0.72,
+    "fiberG": 0,
+    "sodiumMg": 142
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "171287",
+    "matchedName": "Egg, whole, raw, fresh",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-20"
   },
   "image": {
     "thumb": null,
