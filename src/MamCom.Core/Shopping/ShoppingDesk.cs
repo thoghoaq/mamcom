@@ -1,4 +1,3 @@
-using System.Globalization;
 using System.Text.Json.Serialization;
 using MamCom.Core.Models;
 using MamCom.Core.Portions;
@@ -57,9 +56,7 @@ public sealed class ShoppingDesk
     /// <summary>Names a tray, so ticks made for one tray are not shown on another: the day and the dishes in the order of the slots.</summary>
     public static string TrayKeyOf(MealTray tray)
     {
-        ArgumentNullException.ThrowIfNull(tray);
-
-        return string.Create(CultureInfo.InvariantCulture, $"{tray.Date:yyyy-MM-dd}|{string.Join(',', tray.Slots.Select(slot => slot.DishId))}");
+        return TrayKeys.Of(tray);
     }
 
     /// <exception cref="InvalidOperationException">A dish uses an unknown ingredient, or an ingredient has no market unit for the region of the household (a data error).</exception>

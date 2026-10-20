@@ -174,7 +174,8 @@ public sealed class CookPlanScheduler : IMealTimeEstimator
                 dishId,
                 step.Text,
                 step.ActiveMinutes,
-                step.PassiveMinutes > 0 ? step.PassiveMinutes : null);
+                step.PassiveMinutes > 0 ? step.PassiveMinutes : null,
+                step.IngredientIds);
 
             _steps.Add(placed);
             if (step.ActiveMinutes > 0)
