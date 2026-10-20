@@ -228,16 +228,16 @@
   <data name="Studio_Ing_UnitGrams" xml:space="preserve"><value>Gam mỗi đơn vị</value></data>
   <data name="Studio_Ing_UnitStep" xml:space="preserve"><value>Bước làm tròn</value></data>
   <data name="Studio_Ing_UnitApprox" xml:space="preserve"><value>Ghi (~Ng) trong danh sách đi chợ</value></data>
-  <data name="Studio_Ing_Image" xml:space="preserve"><value>Ảnh</value></data>
-  <data name="Studio_Ing_ImageHint" xml:space="preserve"><value>Chọn file trong data/images/out. ImageTool (task 2.8) sẽ tạo các file này từ ảnh gốc.</value></data>
-  <data name="Studio_Ing_ImageNone" xml:space="preserve"><value>(không có)</value></data>
-  <data name="Studio_Ing_ImageNoFiles" xml:space="preserve"><value>Chưa có file ảnh nào trong data/images/out.</value></data>
-  <data name="Studio_Ing_ImageThumb" xml:space="preserve"><value>Ảnh nhỏ (200px)</value></data>
-  <data name="Studio_Ing_ImageFull" xml:space="preserve"><value>Ảnh lớn (800px)</value></data>
-  <data name="Studio_Ing_ImageSource" xml:space="preserve"><value>Nguồn ảnh</value></data>
-  <data name="Studio_Ing_ImageLicense" xml:space="preserve"><value>Giấy phép</value></data>
-  <data name="Studio_Ing_ImageIllustration" xml:space="preserve"><value>Ảnh minh hoạ (AI hoặc ảnh tạm)</value></data>
-  <data name="Studio_Ing_ImageAltFormat" xml:space="preserve"><value>Ảnh của {0}</value></data>
+  <data name="Studio_Image_Title" xml:space="preserve"><value>Ảnh</value></data>
+  <data name="Studio_Image_Hint" xml:space="preserve"><value>Chọn file trong data/images/out. ImageTool (task 2.8) sẽ tạo các file này từ ảnh gốc.</value></data>
+  <data name="Studio_Image_None" xml:space="preserve"><value>(không có)</value></data>
+  <data name="Studio_Image_NoFiles" xml:space="preserve"><value>Chưa có file ảnh nào trong data/images/out.</value></data>
+  <data name="Studio_Image_Thumb" xml:space="preserve"><value>Ảnh nhỏ (200px)</value></data>
+  <data name="Studio_Image_Full" xml:space="preserve"><value>Ảnh lớn (800px)</value></data>
+  <data name="Studio_Image_Source" xml:space="preserve"><value>Nguồn ảnh</value></data>
+  <data name="Studio_Image_License" xml:space="preserve"><value>Giấy phép</value></data>
+  <data name="Studio_Image_Illustration" xml:space="preserve"><value>Ảnh minh hoạ (AI hoặc ảnh tạm)</value></data>
+  <data name="Studio_Image_AltFormat" xml:space="preserve"><value>Ảnh của {0}</value></data>
   <data name="Studio_Ing_NutritionTitle" xml:space="preserve"><value>Dinh dưỡng trên 100 g ăn được</value></data>
   <data name="Studio_Ing_SourceNone" xml:space="preserve"><value>Chưa có nguồn: số liệu đang để trống.</value></data>
   <data name="Studio_Ing_SourceFormat" xml:space="preserve"><value>Nguồn: {0}, mã {1}, "{2}".</value></data>
@@ -277,4 +277,26 @@
   <data name="Studio_IngReview_VerifierMissing" xml:space="preserve"><value>Nhập tên người xác nhận trước khi chọn số liệu.</value></data>
   <data name="Studio_IngReview_NoSuchCandidate" xml:space="preserve"><value>Không có ứng viên đó trong gợi ý của nguyên liệu này.</value></data>
   <data name="Studio_IngReview_CandidateHasNoNumbers" xml:space="preserve"><value>Ứng viên này không có số nào nên không chọn được.</value></data>
+
+  <!-- Studio: nấu thử -->
+  <data name="Studio_Review_CookTested" xml:space="preserve"><value>Đã ghi nhận nấu thử. Món ở trạng thái "đã nấu thử".</value></data>
+  <data name="Studio_Review_CookTestUndone" xml:space="preserve"><value>Đã bỏ kết quả nấu thử; món về "đã duyệt".</value></data>
+  <data name="Studio_Review_NotCookTestable" xml:space="preserve"><value>Chỉ ghi nhận nấu thử cho món đã duyệt mà chưa nấu thử.</value></data>
+  <data name="Studio_Review_NotCookTested" xml:space="preserve"><value>Món này chưa có kết quả nấu thử để bỏ.</value></data>
+  <data name="Studio_Review_MinutesMissing" xml:space="preserve"><value>Nhập số phút nấu thật trước khi ghi nhận.</value></data>
+  <data name="Studio_Review_CookDateInFuture" xml:space="preserve"><value>Ngày nấu không thể là ngày mai trở đi.</value></data>
+  <data name="Studio_Cook_Title" xml:space="preserve"><value>Nấu thử</value></data>
+  <data name="Studio_Cook_Intro" xml:space="preserve"><value>Nấu món này một lần ngoài đời: bấm giờ, cân thành phẩm, chụp ảnh, rồi ghi lại ở đây. Chỉ số phút là bắt buộc.</value></data>
+  <data name="Studio_Cook_Date" xml:space="preserve"><value>Ngày nấu</value></data>
+  <data name="Studio_Cook_Minutes" xml:space="preserve"><value>Số phút nấu thật (từ lúc cắt đến lúc dọn)</value></data>
+  <data name="Studio_Cook_Servings" xml:space="preserve"><value>Số suất đã nấu</value></data>
+  <data name="Studio_Cook_Grams" xml:space="preserve"><value>Cân thành phẩm cả mẻ, tính cả nước canh (gam)</value></data>
+  <data name="Studio_Cook_WeightHint" xml:space="preserve"><value>Số suất và cân đi cùng nhau: nhập cả hai, hoặc để trống cả hai.</value></data>
+  <data name="Studio_Cook_Photo" xml:space="preserve"><value>Ảnh món</value></data>
+  <data name="Studio_Cook_Record" xml:space="preserve"><value>Ghi nhận đã nấu thử</value></data>
+  <data name="Studio_Cook_Undo" xml:space="preserve"><value>Bỏ kết quả nấu thử</value></data>
+  <data name="Studio_Cook_HasErrors" xml:space="preserve"><value>Chưa ghi nhận được. Sửa các lỗi ngay dưới nút rồi bấm lại.</value></data>
+  <data name="Studio_Cook_NeedMinutes" xml:space="preserve"><value>Nhập số phút nấu thật.</value></data>
+  <data name="Studio_Cook_DoneFormat" xml:space="preserve"><value>Đã nấu thử ngày {0}, hết {1} phút.</value></data>
+  <data name="Studio_Cook_YieldFormat" xml:space="preserve"><value>Nấu {0} suất, thành phẩm {1} g.</value></data>
 </root>

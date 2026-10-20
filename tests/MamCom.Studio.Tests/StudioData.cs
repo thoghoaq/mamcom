@@ -30,6 +30,7 @@ internal sealed class StudioData : IDisposable
         Clock = new FixedClock(Today);
         Reviewer = new DishReviewer(Store, Loader, Clock);
         Ingredients = new IngredientStore(Folder);
+        Images = new ImageLibrary(Folder);
         IngredientReviewer = new IngredientReviewer(Ingredients, Loader, Clock);
     }
 
@@ -46,6 +47,8 @@ internal sealed class StudioData : IDisposable
     public DishReviewer Reviewer { get; }
 
     public IngredientStore Ingredients { get; }
+
+    public ImageLibrary Images { get; }
 
     public IngredientReviewer IngredientReviewer { get; }
 

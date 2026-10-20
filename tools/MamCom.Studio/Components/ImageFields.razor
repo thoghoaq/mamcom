@@ -1,0 +1,80 @@
+@using System.Globalization
+
+@* The picture of an ingredient or a dish: two files chosen among the ones in data/images/out, where they come from, and a preview. *@
+<p class="field__hint">@Strings.Studio_Image_Hint</p>
+@if (Files.Count == 0 && Image.Thumb.Length == 0 && Image.Full.Length == 0)
+{
+    <p class="notice" data-no-images>@Strings.Studio_Image_NoFiles</p>
+}
+
+<div class="form-grid">
+    <div class="field">
+        <label for="@Prefix-thumb">@Strings.Studio_Image_Thumb</label>
+        <select id="@Prefix-thumb" class="select" @bind="Image.Thumb" @bind:after="Notify">
+            <option value="">@Strings.Studio_Image_None</option>
+            @foreach (var name in Options(Image.Thumb))
+            {
+                <option value="@name">@name</option>
+            }
+        </select>
+    </div>
+    <div class="field">
+        <label for="@Prefix-full">@Strings.Studio_Image_Full</label>
+        <select id="@Prefix-full" class="select" @bind="Image.Full" @bind:after="Notify">
+            <option value="">@Strings.Studio_Image_None</option>
+            @foreach (var name in Options(Image.Full))
+            {
+                <option value="@name">@name</option>
+            }
+        </select>
+    </div>
+</div>
+
+@{
+    var shown = Image.Full.Length > 0 ? Image.Full : Image.Thumb;
+}
+@if (shown.Length > 0 && Files.Contains(shown))
+{
+    <p><img class="picture" data-image-preview src="/data-images/@shown" alt="@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Image_AltFormat, Alt)" /></p>
+}
+
+<div class="form-grid">
+    <div class="field">
+        <label for="@Prefix-source">@Strings.Studio_Image_Source</label>
+        <input id="@Prefix-source" class="input" @bind="Image.Source" @bind:after="Notify" />
+    </div>
+    <div class="field">
+        <label for="@Prefix-license">@Strings.Studio_Image_License</label>
+        <input id="@Prefix-license" class="input" @bind="Image.License" @bind:after="Notify" />
+    </div>
+</div>
+<label class="check">
+    <input type="checkbox" data-illustration @bind="Image.IsIllustration" @bind:after="Notify" />
+    @Strings.Studio_Image_Illustration
+</label>
+
+@code {
+    [Parameter, EditorRequired]
+    public ImageForm Image { get; set; } = default!;
+
+    /// <summary>The names of the files in <c>data/images/out</c>.</summary>
+    [Parameter]
+    public IReadOnlyList<string> Files { get; set; } = [];
+
+    /// <summary>The start of the ids of the fields, so a page with two pictures has no two fields with one id.</summary>
+    [Parameter, EditorRequired]
+    public string Prefix { get; set; } = string.Empty;
+
+    /// <summary>What the picture shows, for a screen reader.</summary>
+    [Parameter]
+    public string Alt { get; set; } = string.Empty;
+
+    [Parameter]
+    public EventCallback Changed { get; set; }
+
+    /// <summary>The picture files, plus the one the form names even when there is no such file, so it stays visible.</summary>
+    private IEnumerable<string> Options(string current) =>
+        current.Length > 0 && !Files.Contains(current) ? [.. Files, current] : Files;
+
+    private Task Notify() => Changed.InvokeAsync();
+}

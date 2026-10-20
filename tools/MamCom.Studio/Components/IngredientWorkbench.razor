@@ -2,6 +2,7 @@
 @using MamCom.DataBuilder.Loading
 @inject IngredientReviewer Reviewer
 @inject ReviewerIdentity Identity
+@inject ImageLibrary Images
 
 <p><a class="back-link" href="/ingredients" data-back>@Strings.Studio_Ing_Back</a></p>
 
@@ -233,7 +234,7 @@ else
         _kitchen = Reviewer.LoadKitchen();
         _stored = Reviewer.Store.Read(Id);
         _suggestion = Reviewer.Store.ReadSuggestion(Id);
-        _imageFiles = Reviewer.Store.ImageFiles();
+        _imageFiles = Images.Files();
         _verifier = Identity.Name;
         ResetForm();
     }

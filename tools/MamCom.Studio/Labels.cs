@@ -128,6 +128,12 @@ public static class Labels
         ReviewStatus.HasErrors => Strings.Studio_Review_HasErrors,
         ReviewStatus.FinalExists => Strings.Studio_Review_FinalExists,
         ReviewStatus.DataNotUsable => Strings.Studio_Review_DataNotUsable,
+        ReviewStatus.CookTested => Strings.Studio_Review_CookTested,
+        ReviewStatus.CookTestUndone => Strings.Studio_Review_CookTestUndone,
+        ReviewStatus.NotCookTestable => Strings.Studio_Review_NotCookTestable,
+        ReviewStatus.NotCookTested => Strings.Studio_Review_NotCookTested,
+        ReviewStatus.MinutesMissing => Strings.Studio_Review_MinutesMissing,
+        ReviewStatus.CookDateInFuture => Strings.Studio_Review_CookDateInFuture,
         _ => throw new ArgumentOutOfRangeException(nameof(status), status, null),
     };
 
@@ -158,7 +164,7 @@ public static class Labels
     /// <summary>The look of the message about a review result: it went well, it changed nothing, or it did not go through.</summary>
     public static string ReviewTone(ReviewStatus status) => status switch
     {
-        ReviewStatus.Saved or ReviewStatus.Approved or ReviewStatus.Reopened => "ok",
+        ReviewStatus.Saved or ReviewStatus.Approved or ReviewStatus.Reopened or ReviewStatus.CookTested or ReviewStatus.CookTestUndone => "ok",
         ReviewStatus.Unchanged => "info",
         _ => "danger",
     };

@@ -104,58 +104,8 @@
     </section>
 
     <section class="card" aria-labelledby="ing-image-title">
-        <h2 id="ing-image-title">@Strings.Studio_Ing_Image</h2>
-        <p class="field__hint">@Strings.Studio_Ing_ImageHint</p>
-        @if (ImageFiles.Count == 0 && Form.Image.Thumb.Length == 0 && Form.Image.Full.Length == 0)
-        {
-            <p class="notice" data-no-images>@Strings.Studio_Ing_ImageNoFiles</p>
-        }
-
-        <div class="form-grid">
-            <div class="field">
-                <label for="ing-image-thumb">@Strings.Studio_Ing_ImageThumb</label>
-                <select id="ing-image-thumb" class="select" @bind="Form.Image.Thumb" @bind:after="Notify">
-                    <option value="">@Strings.Studio_Ing_ImageNone</option>
-                    @foreach (var name in ImageOptions(Form.Image.Thumb))
-                    {
-                        <option value="@name">@name</option>
-                    }
-                </select>
-            </div>
-            <div class="field">
-                <label for="ing-image-full">@Strings.Studio_Ing_ImageFull</label>
-                <select id="ing-image-full" class="select" @bind="Form.Image.Full" @bind:after="Notify">
-                    <option value="">@Strings.Studio_Ing_ImageNone</option>
-                    @foreach (var name in ImageOptions(Form.Image.Full))
-                    {
-                        <option value="@name">@name</option>
-                    }
-                </select>
-            </div>
-        </div>
-
-        @{
-            var shown = Form.Image.Full.Length > 0 ? Form.Image.Full : Form.Image.Thumb;
-        }
-        @if (shown.Length > 0 && ImageFiles.Contains(shown))
-        {
-            <p><img class="picture" data-image-preview src="/data-images/@shown" alt="@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Ing_ImageAltFormat, Form.Names["default"])" /></p>
-        }
-
-        <div class="form-grid">
-            <div class="field">
-                <label for="ing-image-source">@Strings.Studio_Ing_ImageSource</label>
-                <input id="ing-image-source" class="input" @bind="Form.Image.Source" @bind:after="Notify" />
-            </div>
-            <div class="field">
-                <label for="ing-image-license">@Strings.Studio_Ing_ImageLicense</label>
-                <input id="ing-image-license" class="input" @bind="Form.Image.License" @bind:after="Notify" />
-            </div>
-        </div>
-        <label class="check">
-            <input type="checkbox" data-illustration @bind="Form.Image.IsIllustration" @bind:after="Notify" />
-            @Strings.Studio_Ing_ImageIllustration
-        </label>
+        <h2 id="ing-image-title">@Strings.Studio_Image_Title</h2>
+        <ImageFields Image="Form.Image" Files="ImageFiles" Prefix="ing-image" Alt="@Form.Names["default"]" Changed="Changed" />
     </section>
 </fieldset>
 
@@ -185,10 +135,6 @@
             return Form.ProteinSource.Length == 0 || known.Contains(Form.ProteinSource) ? known : [.. known, Form.ProteinSource];
         }
     }
-
-    /// <summary>The picture files, plus the one the ingredient names even when there is no such file, so it stays visible.</summary>
-    private IEnumerable<string> ImageOptions(string current) =>
-        current.Length > 0 && !ImageFiles.Contains(current) ? [.. ImageFiles, current] : ImageFiles;
 
     private Task Notify() => Changed.InvokeAsync();
 }

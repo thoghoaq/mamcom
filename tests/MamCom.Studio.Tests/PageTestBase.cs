@@ -20,7 +20,9 @@ public abstract class PageTestBase : BunitContext
         Services.AddSingleton(_data.Loader);
         Services.AddSingleton(_data.Reviewer);
         Services.AddSingleton(_data.Ingredients);
+        Services.AddSingleton(_data.Images);
         Services.AddSingleton(_data.IngredientReviewer);
+        Services.AddSingleton<MamCom.Core.IClock>(_data.Clock);
         Services.AddSingleton(Identity);
     }
 

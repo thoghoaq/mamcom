@@ -37,6 +37,13 @@ public sealed class ImageForm
     public string License { get; set; } = string.Empty;
 
     public bool IsIllustration { get; set; }
+
+    /// <summary>True when no picture file is named; source and license alone are not a picture.</summary>
+    public bool IsEmpty => Thumb.Length == 0 && Full.Length == 0;
+
+    public ImageRef ToImageRef() => new(NullIfBlank(Thumb), NullIfBlank(Full), NullIfBlank(Source), NullIfBlank(License), IsIllustration);
+
+    private static string? NullIfBlank(string text) => string.IsNullOrWhiteSpace(text) ? null : text.Trim();
 }
 
 /// <summary>
@@ -125,7 +132,7 @@ public sealed class IngredientForm
                 .ToDictionary(k => k, k => new MarketUnit(Units[k].Display.Trim(), Units[k].GramsPerUnit, Units[k].Step, Units[k].ShowApproxGrams)),
             WasteRatio = WasteRatio,
             IsPantry = IsPantry,
-            Image = new ImageRef(NullIfBlank(Image.Thumb), NullIfBlank(Image.Full), NullIfBlank(Image.Source), NullIfBlank(Image.License), Image.IsIllustration),
+            Image = Image.ToImageRef(),
         };
     }
 

@@ -129,10 +129,16 @@ public class LabelsTests
     [InlineData(ReviewStatus.Saved, "ok")]
     [InlineData(ReviewStatus.Approved, "ok")]
     [InlineData(ReviewStatus.Reopened, "ok")]
+    [InlineData(ReviewStatus.CookTested, "ok")]
+    [InlineData(ReviewStatus.CookTestUndone, "ok")]
     [InlineData(ReviewStatus.Unchanged, "info")]
     [InlineData(ReviewStatus.Conflict, "danger")]
     [InlineData(ReviewStatus.HasErrors, "danger")]
     [InlineData(ReviewStatus.ReviewerMissing, "danger")]
     [InlineData(ReviewStatus.NotFound, "danger")]
+    [InlineData(ReviewStatus.NotCookTestable, "danger")]
+    [InlineData(ReviewStatus.NotCookTested, "danger")]
+    [InlineData(ReviewStatus.MinutesMissing, "danger")]
+    [InlineData(ReviewStatus.CookDateInFuture, "danger")]
     public void A_message_looks_like_what_happened(ReviewStatus status, string tone) => Labels.ReviewTone(status).ShouldBe(tone);
 }

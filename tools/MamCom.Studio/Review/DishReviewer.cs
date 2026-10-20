@@ -36,6 +36,24 @@ public enum ReviewStatus
 
     /// <summary>The data folder cannot be read well enough to check a dish (see <see cref="Kitchen.Problems"/>).</summary>
     DataNotUsable,
+
+    /// <summary>A cook test was recorded: the dish is <c>cooktested</c>.</summary>
+    CookTested,
+
+    /// <summary>The cook test was taken back: the dish is <c>reviewed</c> again.</summary>
+    CookTestUndone,
+
+    /// <summary>A cook test can only be recorded for a dish that is reviewed and not yet cook-tested.</summary>
+    NotCookTestable,
+
+    /// <summary>There is no cook test to take back: the dish is not <c>cooktested</c>.</summary>
+    NotCookTested,
+
+    /// <summary>The time of the cook test is the one thing every cook test must have.</summary>
+    MinutesMissing,
+
+    /// <summary>The dish cannot have been cooked tomorrow.</summary>
+    CookDateInFuture,
 }
 
 /// <param name="Stored">The file as it is after the call; the current one on <see cref="ReviewStatus.Conflict"/> and <see cref="ReviewStatus.HasErrors"/>; null when there is none.</param>
@@ -52,6 +70,14 @@ public sealed record Evaluation(IReadOnlyList<Diagnostic> Findings, DishNutritio
 
     public bool HasErrors => Errors > 0;
 }
+
+/// <summary>What a person typed in for one cook test.</summary>
+/// <param name="CookedAt">The day the dish was cooked.</param>
+/// <param name="Minutes">The minutes the cooking really took, from the first cut to the table.</param>
+/// <param name="Servings">How many servings that cook made; goes with <paramref name="FinishedGrams"/> or neither is given.</param>
+/// <param name="FinishedGrams">The weight of everything that cook made, as it went to the table.</param>
+/// <param name="Photo">The picture of the dish; null keeps the picture the dish has.</param>
+public sealed record CookTestEntry(DateOnly CookedAt, int? Minutes, int? Servings, int? FinishedGrams, ImageRef? Photo);
 
 /// <param name="Name">Null when the file is not a dish (see <paramref name="Problem"/>).</param>
 /// <param name="Note">What RecipeDrafter said about the draft; null for a dish that was not drafted or has no note.</param>
@@ -278,6 +304,116 @@ public sealed class DishReviewer(DishStore store, KitchenLoader loader, IClock c
 
             Store.Write(location, id, DishFile.Serialize(reopened));
             return new ReviewResult(ReviewStatus.Reopened, Store.Read(location, id), []);
+        }
+    }
+
+    /// <summary>
+    /// A person's record of one real cook test of a <c>reviewed</c> dish: the dish becomes <c>cooktested</c> with the day, the
+    /// minutes, and when given the servings and weight, and the picture when one is given. Nothing else about the dish changes.
+    /// </summary>
+    public ReviewResult RecordCookTest(DishLocation location, string id, CookTestEntry entry, string expectedVersion)
+    {
+        ArgumentNullException.ThrowIfNull(entry);
+        ArgumentNullException.ThrowIfNull(expectedVersion);
+
+        lock (_gate)
+        {
+            var kitchen = loader.Load();
+            if (!kitchen.IsUsable)
+            {
+                return new ReviewResult(ReviewStatus.DataNotUsable, null, []);
+            }
+
+            var current = Store.Read(location, id);
+            if (current is null)
+            {
+                return new ReviewResult(ReviewStatus.NotFound, null, []);
+            }
+
+            if (current.Version != expectedVersion)
+            {
+                return new ReviewResult(ReviewStatus.Conflict, current, []);
+            }
+
+            if (current.Dish is not { Status: DishStatus.Reviewed } onDisk)
+            {
+                return new ReviewResult(ReviewStatus.NotCookTestable, current, []);
+            }
+
+            if (entry.Minutes is null)
+            {
+                return new ReviewResult(ReviewStatus.MinutesMissing, current, []);
+            }
+
+            if (entry.CookedAt > clock.Today)
+            {
+                return new ReviewResult(ReviewStatus.CookDateInFuture, current, []);
+            }
+
+            var tested = onDisk with
+            {
+                Status = DishStatus.CookTested,
+                Provenance = onDisk.Provenance with
+                {
+                    CookTestedAt = entry.CookedAt,
+                    MeasuredTotalMinutes = entry.Minutes,
+                    MeasuredServings = entry.Servings,
+                    MeasuredFinishedGrams = entry.FinishedGrams,
+                },
+                Image = entry.Photo ?? onDisk.Image,
+            };
+
+            var findings = Evaluate(kitchen, location, tested).Findings;
+            if (findings.Any(f => f.Severity == Severity.Error))
+            {
+                return new ReviewResult(ReviewStatus.HasErrors, current, findings);
+            }
+
+            Store.Write(location, id, DishFile.Serialize(tested));
+            return new ReviewResult(ReviewStatus.CookTested, Store.Read(location, id), findings);
+        }
+    }
+
+    /// <summary>
+    /// Takes a cook test back (it was entered by mistake): the dish is <c>reviewed</c> again and the day, minutes, servings and
+    /// weight are cleared. The picture stays: Studio never removes a picture, and the person who reviewed it may well have chosen it.
+    /// </summary>
+    public ReviewResult UndoCookTest(DishLocation location, string id, string expectedVersion)
+    {
+        ArgumentNullException.ThrowIfNull(expectedVersion);
+
+        lock (_gate)
+        {
+            var current = Store.Read(location, id);
+            if (current is null)
+            {
+                return new ReviewResult(ReviewStatus.NotFound, null, []);
+            }
+
+            if (current.Version != expectedVersion)
+            {
+                return new ReviewResult(ReviewStatus.Conflict, current, []);
+            }
+
+            if (current.Dish is not { Status: DishStatus.CookTested } onDisk)
+            {
+                return new ReviewResult(ReviewStatus.NotCookTested, current, []);
+            }
+
+            var reviewed = onDisk with
+            {
+                Status = DishStatus.Reviewed,
+                Provenance = onDisk.Provenance with
+                {
+                    CookTestedAt = null,
+                    MeasuredTotalMinutes = null,
+                    MeasuredServings = null,
+                    MeasuredFinishedGrams = null,
+                },
+            };
+
+            Store.Write(location, id, DishFile.Serialize(reviewed));
+            return new ReviewResult(ReviewStatus.CookTestUndone, Store.Read(location, id), []);
         }
     }
 

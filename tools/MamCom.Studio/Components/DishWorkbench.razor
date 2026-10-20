@@ -1,8 +1,11 @@
 @using System.Globalization
 @using MamCom.DataBuilder.Loading
+@using MamCom.DataBuilder.Validation
 @using MamCom.Core.Nutrition
 @inject DishReviewer Reviewer
 @inject ReviewerIdentity Identity
+@inject MamCom.Core.IClock Clock
+@inject ImageLibrary Images
 @inject NavigationManager Nav
 
 <p><a class="back-link" href="/dishes" data-back>@Strings.Studio_Dish_Back</a></p>
@@ -77,6 +80,72 @@ else
                         <input id="reviewer" class="input" aria-describedby="reviewer-hint" autocomplete="name" @bind="_reviewer" @bind:event="oninput" />
                         <span class="field__hint" id="reviewer-hint">@Strings.Studio_Action_ReviewerHint</span>
                     </div>
+                </section>
+            }
+
+            @if (_stored.Dish.Status == DishStatus.Reviewed)
+            {
+                <section class="card" aria-labelledby="cook-title" data-cooktest>
+                    <h2 id="cook-title">@Strings.Studio_Cook_Title</h2>
+                    <p>@Strings.Studio_Cook_Intro</p>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="cook-date">@Strings.Studio_Cook_Date</label>
+                            <input id="cook-date" class="input" type="date" @bind="_cook.CookedAt" />
+                        </div>
+                        <div class="field">
+                            <label for="cook-minutes">@Strings.Studio_Cook_Minutes</label>
+                            <input id="cook-minutes" class="input input--number" type="number" step="1" min="1" max="1440" inputmode="numeric" @bind="_cook.Minutes" @bind:event="oninput" />
+                        </div>
+                        <div class="field">
+                            <label for="cook-servings">@Strings.Studio_Cook_Servings</label>
+                            <input id="cook-servings" class="input input--number" type="number" step="1" min="1" max="100" inputmode="numeric" @bind="_cook.Servings" @bind:event="oninput" />
+                        </div>
+                        <div class="field">
+                            <label for="cook-grams">@Strings.Studio_Cook_Grams</label>
+                            <input id="cook-grams" class="input input--number" type="number" step="1" min="1" max="50000" inputmode="numeric" @bind="_cook.FinishedGrams" @bind:event="oninput" />
+                        </div>
+                    </div>
+                    <p class="field__hint">@Strings.Studio_Cook_WeightHint</p>
+                    <h3>@Strings.Studio_Cook_Photo</h3>
+                    <ImageFields Image="_cook.Photo" Files="_imageFiles" Prefix="cook-image" Alt="@_stored.Dish.Name" Changed="CookChanged" />
+                    <button type="button" class="button button--primary" data-record disabled="@(_cook.Minutes is null)" @onclick="RecordCookTest">@Strings.Studio_Cook_Record</button>
+                    @if (_cook.Minutes is null)
+                    {
+                        <p class="text-small text-muted" data-cook-hint>@Strings.Studio_Cook_NeedMinutes</p>
+                    }
+                    @if (_cookNote is not null)
+                    {
+                        <p class="notice notice--danger" role="alert" data-cook-note>@_cookNote</p>
+                    }
+                    @if (_cookProblems.Count > 0)
+                    {
+                        <ul class="findings" data-cook-problems>
+                            @foreach (var problem in _cookProblems)
+                            {
+                                <li class="finding">
+                                    <span class="badge badge--danger">@Labels.Severity(problem.Severity)</span>
+                                    <span class="finding__text">@problem.Message</span>
+                                    @if (problem.Location.Length > 0)
+                                    {
+                                        <span class="finding__where text-muted"><code>@problem.Location</code></span>
+                                    }
+                                </li>
+                            }
+                        </ul>
+                    }
+                </section>
+            }
+            else if (_stored.Dish is { Status: DishStatus.CookTested, Provenance: { CookTestedAt: { } cookedAt } provenance })
+            {
+                <section class="card" aria-labelledby="cook-title" data-cooktest-done>
+                    <h2 id="cook-title">@Strings.Studio_Cook_Title</h2>
+                    <p data-cook-done>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Cook_DoneFormat, Date(cookedAt), provenance.MeasuredTotalMinutes)</p>
+                    @if (provenance is { MeasuredServings: { } servings, MeasuredFinishedGrams: { } grams })
+                    {
+                        <p data-cook-yield>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Cook_YieldFormat, servings, grams)</p>
+                    }
+                    <button type="button" class="button button--quiet" data-undo-cook @onclick="UndoCookTest">@Strings.Studio_Cook_Undo</button>
                 </section>
             }
         </div>
@@ -155,6 +224,10 @@ else
     private string? _message;
     private string _tone = "info";
     private string? _loadedId;
+    private CookForm _cook = new(default);
+    private IReadOnlyList<Diagnostic> _cookProblems = [];
+    private string? _cookNote;
+    private IReadOnlyList<string> _imageFiles = [];
     private DishLocation _loadedLocation;
 
     [Parameter, EditorRequired]
@@ -195,11 +268,15 @@ else
         _stored = Reviewer.Store.Read(Location, Id);
         _note = Location == DishLocation.Draft ? Reviewer.Store.ReadNote(Id) : null;
         _reviewer = Identity.Name;
+        _imageFiles = Images.Files();
         ResetForm();
     }
 
     private void ResetForm()
     {
+        _cook = new CookForm(Clock.Today);
+        _cookProblems = [];
+        _cookNote = null;
         if (_stored?.Dish is { } dish)
         {
             _form = DishForm.From(dish);
@@ -241,6 +318,37 @@ else
 
     private void Reopen() => Apply(Reviewer.Reopen(Location, Id, _stored!.Version));
 
+    private void RecordCookTest()
+    {
+        var result = Reviewer.RecordCookTest(Location, Id, _cook.ToEntry(), _stored!.Version);
+        Apply(result);
+
+        // What the person typed can be fixed on the spot, so the typed values stay and the reason is said right under
+        // the button (the notice at the top of the page is out of sight there).
+        _cookNote = null;
+        _cookProblems = [];
+        switch (result.Status)
+        {
+            case ReviewStatus.HasErrors:
+                _cookNote = Strings.Studio_Cook_HasErrors;
+                _cookProblems = [.. result.Findings.Where(f => f.Severity == Severity.Error)];
+                _message = null;
+                break;
+
+            case ReviewStatus.CookDateInFuture:
+                _cookNote = Labels.Review(result.Status);
+                _message = null;
+                break;
+        }
+    }
+
+    private void UndoCookTest() => Apply(Reviewer.UndoCookTest(Location, Id, _stored!.Version));
+
+    /// <summary>A field of the cook test changed; there is nothing to check yet, the page only needs to draw again.</summary>
+    private void CookChanged()
+    {
+    }
+
     private void Apply(ReviewResult result)
     {
         _message = Labels.Review(result.Status);
@@ -248,13 +356,13 @@ else
 
         switch (result.Status)
         {
-            case ReviewStatus.Saved or ReviewStatus.Approved or ReviewStatus.Reopened when result.Stored is not null:
+            case ReviewStatus.Saved or ReviewStatus.Approved or ReviewStatus.Reopened or ReviewStatus.CookTested or ReviewStatus.CookTestUndone when result.Stored is not null:
                 _stored = result.Stored;
                 ResetForm();
                 break;
 
             // What the person saw is no longer what is on disk (or is gone): show what is there now.
-            case ReviewStatus.Conflict or ReviewStatus.NotFound or ReviewStatus.NotEditable or ReviewStatus.NotApprovable or ReviewStatus.NotReopenable:
+            case ReviewStatus.Conflict or ReviewStatus.NotFound or ReviewStatus.NotEditable or ReviewStatus.NotApprovable or ReviewStatus.NotReopenable or ReviewStatus.NotCookTestable or ReviewStatus.NotCookTested:
                 Load();
                 break;
         }
