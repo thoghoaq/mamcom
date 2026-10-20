@@ -237,6 +237,13 @@ public class InvalidDataTests
         Config("spinner-defaults", "a weight of a hundred", o => o["regionMatchWeight"] = 100, "/regionMatchWeight", "maximum");
         Config("spinner-defaults", "fractional history size", o => o["historySize"] = 2.5, "/historySize", "type");
         Config("spinner-defaults", "missing recency weight", o => o["recency"]!.AsObject().Remove("reducedWeight"), "/recency", "required");
+        Config("spinner-defaults", "no quick filters", o => o.Remove("quickFilters"), "", "required");
+        Config("spinner-defaults", "zero spins before the filters", o => o["quickFilters"]!["suggestAfterSpins"] = 0, "/quickFilters/suggestAfterSpins", "minimum");
+        Config("spinner-defaults", "a quick filter of a day", o => o["quickFilters"]!["maxMinutes"] = 1440, "/quickFilters/maxMinutes", "maximum");
+        Config("spinner-defaults", "no red meat listed", o => o["quickFilters"]!["redMeatProteinSources"] = new JsonArray(), "/quickFilters/redMeatProteinSources", "minItems");
+        Config("spinner-defaults", "red meat listed twice", o => o["quickFilters"]!["redMeatProteinSources"] = new JsonArray("heo", "heo"), "/quickFilters/redMeatProteinSources", "uniqueItems");
+        Config("spinner-defaults", "a method that does not exist", o => o["quickFilters"]!["lowFatExcludedMethods"] = new JsonArray("om"), "/quickFilters/lowFatExcludedMethods/0", "enum");
+        Config("spinner-defaults", "unknown quick filter", o => o["quickFilters"]!["vegan"] = true, "/quickFilters/vegan", "additionalProperties");
         Config("nutrition-defaults", "zero energy per gram", o => o["kcalPerGram"]!["fat"] = 0, "/kcalPerGram/fat", "exclusiveMinimum");
         Config("nutrition-defaults", "share above one", o => o["recommendedEnergyShare"]!["carb"]!["max"] = 1.5, "/recommendedEnergyShare/carb/max", "maximum");
         Config("nutrition-defaults", "missing macro", o => o["kcalPerGram"]!.AsObject().Remove("carb"), "/kcalPerGram", "required");

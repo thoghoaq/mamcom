@@ -22,6 +22,24 @@ public class SpinnerConfigTests
     }
 
     [Fact]
+    public void The_shipped_quick_filters_are_the_ones_of_SPEC_8_1_2()
+    {
+        Config.QuickFilters.SuggestAfterSpins.ShouldBe(5);
+        Config.QuickFilters.MaxMinutes.ShouldBe(45);   // rice alone takes 35 minutes, so 30 could never be met (ADR-022)
+        Config.QuickFilters.RedMeatProteinSources.ShouldBe(["heo", "bo"]);
+        Config.QuickFilters.LowFatExcludedMethods.ShouldBe([CookingMethod.Fry]);
+    }
+
+    [Fact]
+    public void A_config_without_quick_filters_fails_to_parse()
+    {
+        var text = System.Text.RegularExpressions.Regex.Replace(TestFiles.Config("spinner-defaults.json"), @"""quickFilters""\s*:\s*\{[^}]*\},", string.Empty);
+
+        text.ShouldNotContain("quickFilters");
+        Should.Throw<JsonException>(() => SpinnerConfig.Parse(text));
+    }
+
+    [Fact]
     public void The_shipped_config_file_is_valid()
     {
         Should.NotThrow(Config.Validate);
@@ -56,6 +74,14 @@ public class SpinnerConfigTests
         { Config with { SeasonMatchWeight = 0 }, "SeasonMatchWeight" },
         { Config with { RegionMatchWeight = double.PositiveInfinity }, "RegionMatchWeight" },
         { Config with { MaxFriedDishes = -1 }, "MaxFriedDishes" },
+        { Config with { QuickFilters = Config.QuickFilters with { SuggestAfterSpins = 0 } }, "QuickFilters" },
+        { Config with { QuickFilters = Config.QuickFilters with { MaxMinutes = 0 } }, "QuickFilters" },
+        { Config with { QuickFilters = Config.QuickFilters with { RedMeatProteinSources = [] } }, "QuickFilters" },
+        { Config with { QuickFilters = Config.QuickFilters with { RedMeatProteinSources = ["heo", " "] } }, "QuickFilters" },
+        { Config with { QuickFilters = Config.QuickFilters with { RedMeatProteinSources = ["heo", "heo"] } }, "QuickFilters" },
+        { Config with { QuickFilters = Config.QuickFilters with { LowFatExcludedMethods = [] } }, "QuickFilters" },
+        { Config with { QuickFilters = Config.QuickFilters with { LowFatExcludedMethods = [CookingMethod.Fry, CookingMethod.Fry] } }, "QuickFilters" },
+        { Config with { QuickFilters = Config.QuickFilters with { LowFatExcludedMethods = [(CookingMethod)99] } }, "QuickFilters" },
         { Config with { SeasonByMonth = ["winter"] }, "SeasonByMonth" },
         { Config with { SeasonByMonth = [.. Config.SeasonByMonth.Take(11), " "] }, "SeasonByMonth" },
     };
