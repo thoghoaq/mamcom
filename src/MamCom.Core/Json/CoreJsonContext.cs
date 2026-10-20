@@ -37,6 +37,8 @@ namespace MamCom.Core.Json;
 [JsonSerializable(typeof(BundleVersionInfo))]
 [JsonSerializable(typeof(string[]))]
 [JsonSerializable(typeof(SpinHistory))]
+[JsonSerializable(typeof(TraySession))]
+[JsonSerializable(typeof(EatenLog))]
 [JsonSerializable(typeof(DishPreference))]
 [JsonSerializable(typeof(IReadOnlyDictionary<string, DishPreference>))]
 public partial class CoreJsonContext : JsonSerializerContext;
