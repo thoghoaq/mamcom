@@ -441,12 +441,20 @@ Làm rõ khi hiện thực ImageTool (ADR-017):
 
 `data-bundle.json` được cache bằng service worker. Khi online, app kiểm tra `version` mới và tải về. Cập nhật dữ liệu không cần phát hành lại app.
 
+Làm rõ khi hiện thực (ADR-020):
+- **Gói dữ liệu là một thư mục triển khai riêng với app:** `DataBuilder build --out <thư mục>` ghi `data-bundle.json`, `data-version.json` (`{ "version", "isRelease" }`), `images/` (thumb và full mà bundle nhắc tới, chép từ `data/images/out`) và `data-report.md`.
+- **Mỗi phiên bản là một địa chỉ bất biến** `data-bundle.json?v=<version>`; `data-version.json` thì hỏi mạng trước.
+- **Mở app không chờ mạng:** `BundleLoader` mở phiên bản đã nhớ (`mamcom.data.current`) từ cache. Máy chưa có bản nào mới hỏi máy chủ. Sau khi màn hình đầu đã vẽ, ở nền: xin trình duyệt giữ dữ liệu, kiểm tra bản mới và tải về làm bản chờ (`mamcom.data.pending`), nạp trước thumb. Bản chờ được dùng ở lần mở sau, hay khi người dùng bấm "Dùng ngay"; **dữ liệu không đổi giữa lúc đang lên mâm**.
+- **Cache (service worker):** version mạng trước; bundle cache trước, giữ hai phiên bản mới nhất; ảnh trả ngay rồi làm mới. Chỉ giữ câu trả lời tốt (không phải 404, lỗi máy chủ hay trang `index.html` của host SPA). Khi cài worker còn tải sẵn bundle mới nhất, để lần ghé đầu đủ cho offline.
+- **Thông báo trên mọi trang:** đang mở dữ liệu; dữ liệu thử (`isRelease: false`); có bản mới; trình duyệt không lưu được giữa các lần mở; không có gói (cần mạng lần đầu, máy chủ chưa phát hành, hay gói hỏng) kèm nút "Thử lại".
+- **`IUserStateStore`:** JSON dưới `mamcom.state.<khoá>`, kèm chỉ mục khoá để "xoá dữ liệu của tôi" chỉ xoá khoá của app.
+
 Cấu trúc bundle (ADR-011), kiểu `DataBundle` trong `MamCom.Core`:
 - `version`: 16 chữ số hex đầu của SHA-256 trên bundle khi `version` rỗng. Cùng dữ liệu cho cùng từng byte; bundle không có ngày giờ.
 - `isRelease`: `false` với bản dev, để app dán nhãn dữ liệu thử.
 - `config`: bốn file config chạy (`portion`, `nutrition`, `spinner`, `cooking`), nên app không cần thư mục `data`.
 - `ingredients` và `dishes`, mỗi danh sách xếp theo `id`.
-- `dist/data-report.md` luôn được ghi; `dist/data-bundle.json` chỉ khi không có lỗi, và bản cũ bị xoá khi build thất bại.
+- `dist/data-report.md` luôn được ghi; `dist/data-bundle.json`, `dist/data-version.json` và `dist/images/` chỉ khi không có lỗi, và bản cũ của bundle và file version bị xoá khi build thất bại.
 
 ---
 
@@ -492,7 +500,8 @@ Làm rõ khi hiện thực (ADR-019):
 ## 9. Kiến trúc kỹ thuật
 
 ```
-data/*.json ──► DataBuilder ──► dist/data-bundle.json ──┐
+data/*.json ──► DataBuilder ──► gói dữ liệu (data-bundle.json,
+                                data-version.json, images/) ──┐
                                                         ▼
 MamCom.Web (Blazor WASM PWA, service worker)  ──►  MamCom.UI (RCL)
                                                         │
@@ -509,6 +518,7 @@ MamCom.Core: PortionCalculator · MealSpinner · IngredientScaler ·
 | 001 | Dữ liệu dạng JSON bundle, không dùng SQLite ở v1 | Dữ liệu nhỏ (dưới 2MB). SQLite trong WebAssembly phức tạp. Thay thế cho đề xuất SQLite ban đầu. |
 | 002 | Làm Blazor WASM PWA trước, MAUI Blazor Hybrid sau | Chia sẻ bằng link qua Zalo, không cần lên store. Tái dùng RCL cho MAUI. Đổi lại: lần tải đầu nặng hơn app JS, nên phải bật trimming, nén và cache, và đo thời gian tải đầu trên 4G. |
 | 003 | Không có backend ở v1 | Mọi tính toán chạy trên máy. Beta dùng event log cục bộ có nút xuất. |
+| 020 | Gói dữ liệu triển khai riêng với app, địa chỉ bundle theo phiên bản | Cập nhật dữ liệu không cần phát hành lại app; cache đúng bằng cấu trúc; mở app không chờ mạng và chạy offline từ lần mở đầu. |
 
 Zalo Mini App là phương án phân phối **sau v1**. Trước khi chọn cần kiểm chứng Mini App có hỗ trợ Wake Lock và chạy offline hay không.
 

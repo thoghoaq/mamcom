@@ -46,7 +46,7 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 - **Trạng thái người dùng** (gia đình, lịch sử, yêu thích): localStorage qua interface `IUserStateStore`.
 - **Công cụ nội dung:** `MamCom.Studio` là Blazor Server chạy local, đọc/ghi trực tiếp `/data`.
 - **Ảnh:** SkiaSharp (MIT) để resize và encode WebP. Không dùng ImageSharp vì vướng giấy phép.
-- **Test:** xUnit, Shouldly, bUnit, Playwright for .NET.
+- **Test:** xUnit, Shouldly, bUnit, Playwright for .NET. Luật cache của service worker (`service-worker.data.js`) là JavaScript và được test bằng `node:test` trong `tests/js`; `dotnet test` chạy chúng qua `MamCom.Data.Tests` (bỏ qua và nói rõ nếu máy chưa cài Node).
 - **CI và host:** GitHub Actions; host Azure Static Web Apps, gói free.
 
 ## Cấu trúc repo
@@ -65,7 +65,7 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 │  └─ images/         raw/ (gốc, không commit: nặng và mang vị trí GPS), out/ (webp)
 ├─ src/
 │  ├─ MamCom.Core/    domain + thuật toán thuần (không IO, không UI)
-│  ├─ MamCom.Data/    nạp bundle, IUserStateStore, cấu hình
+│  ├─ MamCom.Data/    BundleLoader, ThumbPreloader, AppData, IUserStateStore và IKeyValueStorage (localStorage), cấu hình
 │  ├─ MamCom.UI/      Razor Class Library: components, Strings.vi.resx (mọi chuỗi UI), wwwroot/: tokens.css, base.css, layout.css, fonts.css, fonts/, icons/icons.svg (ADR-019)
 │  └─ MamCom.Web/     Blazor WASM PWA host, service worker
 ├─ tools/
@@ -74,7 +74,7 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 │  ├─ MamCom.RecipeDrafter/ soạn nháp công thức bằng Claude API (prompts/ là file sửa được)
 │  ├─ MamCom.ImageTool/     raw → webp 200/800
 │  └─ MamCom.Studio/        Blazor Server local: sửa/duyệt dữ liệu
-└─ tests/  MamCom.Core.Tests, MamCom.DataBuilder.Tests, MamCom.FdcImporter.Tests, MamCom.RecipeDrafter.Tests, MamCom.ImageTool.Tests, MamCom.Studio.Tests, MamCom.UI.Tests, MamCom.E2E,
+└─ tests/  MamCom.Core.Tests, MamCom.Data.Tests, js/ (service worker, Node), MamCom.DataBuilder.Tests, MamCom.FdcImporter.Tests, MamCom.RecipeDrafter.Tests, MamCom.ImageTool.Tests, MamCom.Studio.Tests, MamCom.UI.Tests, MamCom.E2E,
            MamCom.LiveData.Tests (đọc data/ thật), fixtures/seed/ (seed đóng băng cho mọi test khác, ADR-018)
 ```
 
@@ -86,6 +86,7 @@ dotnet test
 dotnet run --project tools/MamCom.DataBuilder -- validate
 dotnet run --project tools/MamCom.DataBuilder -- build            # dev, cho phép placeholder
 dotnet run --project tools/MamCom.DataBuilder -- build --release  # thất bại nếu còn món dưới reviewed hoặc placeholder (ADR-011)
+dotnet run --project tools/MamCom.DataBuilder -- build --out src/MamCom.Web/wwwroot  # gói dữ liệu cạnh app để chạy thử (ADR-020); các file sinh ra nằm trong .gitignore
 dotnet run --project tools/MamCom.FdcImporter -- suggest --ids gao,trung-ga   # gợi ý dinh dưỡng từ USDA (ADR-012)
 dotnet user-secrets set "Fdc:ApiKey" "<khoá>" --project tools/MamCom.FdcImporter   # không đặt thì dùng DEMO_KEY
 dotnet run --project tools/MamCom.RecipeDrafter -- draft --limit 3            # soạn nháp từ dish-list.csv, có tính phí (ADR-013)
