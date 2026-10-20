@@ -139,6 +139,15 @@ internal sealed class FakeBrowser : IJSRuntime
     /// <summary>What <c>navigator.storage.persist()</c> answers; null when the browser has no storage manager.</summary>
     public bool? PersistAnswer { get; set; }
 
+    /// <summary>What <c>mamcomDevice.vibrate</c> answers; null when the page has no device.js.</summary>
+    public bool? VibrateAnswer { get; set; }
+
+    /// <summary>What <c>mamcomDevice.prefersReducedMotion</c> answers; null when the page has no device.js.</summary>
+    public bool? ReducedMotionAnswer { get; set; }
+
+    /// <summary>The lengths, in milliseconds, of the vibrations that were asked for.</summary>
+    public List<int> Vibrations { get; } = [];
+
     public ValueTask<TValue> InvokeAsync<TValue>(string identifier, object?[]? args)
     {
         Calls.Add(identifier);
@@ -164,6 +173,13 @@ internal sealed class FakeBrowser : IJSRuntime
             case "localStorage.removeItem":
                 Items.Remove((string)args![0]!);
                 return ValueTask.FromResult(default(TValue)!);
+
+            case "mamcomDevice.vibrate":
+                Vibrations.Add((int)args![0]!);
+                return VibrateAnswer is { } vibrated ? ValueTask.FromResult((TValue)(object)vibrated) : throw new JSException("mamcomDevice is not defined");
+
+            case "mamcomDevice.prefersReducedMotion":
+                return ReducedMotionAnswer is { } reduced ? ValueTask.FromResult((TValue)(object)reduced) : throw new JSException("mamcomDevice is not defined");
 
             case "navigator.storage.persist":
                 return PersistAnswer is { } answer ? ValueTask.FromResult((TValue)(object)answer) : throw new JSException("storage is not defined");

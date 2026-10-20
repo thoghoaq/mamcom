@@ -77,6 +77,18 @@ public partial class ServiceWorkerTests
         install.ShouldContain("Promise.all([precache, warm])");   // beside the app's precache, and both must have finished
     }
 
+    [Fact]
+    public void The_start_page_loads_the_device_script_before_blazor_so_the_app_can_buzz_and_ask_about_movement()
+    {
+        var page = File.ReadAllText(Path.Combine(JsFolder, "index.html"));
+
+        var device = page.IndexOf("<script src=\"device.js\"></script>", StringComparison.Ordinal);
+        var blazor = page.IndexOf("_framework/blazor.webassembly", StringComparison.Ordinal);
+
+        device.ShouldBeGreaterThan(0);
+        blazor.ShouldBeGreaterThan(device);
+    }
+
     private sealed record NodeResult(int ExitCode, string Output);
 
     /// <summary>Runs node with the arguments; null when there is no node to run.</summary>
