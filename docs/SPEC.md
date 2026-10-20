@@ -514,7 +514,13 @@ Làm rõ khi hiện thực chế độ nấu (ADR-025):
 - **Một màn:** loại món theo màu và tên ("Cơm" cho nồi cơm), lời của bước (24px), "Làm N phút" và "Chờ N phút", các nguyên liệu bước đó dùng (lượng cho đúng số suất của nhà, chỉ ghi ở lần đầu món nhắc đến; bước cơm ghi số gạo sống), và đồng hồ đếm. Mọi chữ khác của chế độ này từ 22px.
 - **Hẹn giờ** do người nấu bắt đầu ("Hẹn giờ N phút" ở bước có phần chờ), nhiều hẹn giờ chạy cùng lúc, mỗi cái một chip (cái sắp hết đứng trước, bấm chip để sang bước đó). Lưu bằng giờ kết thúc nên đúng cả khi rời màn hình hay mở lại trang (`cooking.v1`). Hết giờ: rung, ba tiếng bíp (cần một lần chạm trước, nên chuẩn bị ở lần bắt đầu hẹn giờ), chip và dòng chữ "Hết giờ", kêu một lần; "Đã xong" tắt chip.
 - **Giữ màn hình sáng** bằng Screen Wake Lock (xin lại khi trang trở về phía trước, nhả khi rời màn hình); máy không có hoặc từ chối thì có thông báo.
-- **Chạm nửa phải sang bước tiếp, nửa trái quay lại;** thanh dưới đáy có "Trước" và "Tiếp" cho bàn phím và trình đọc màn hình. Bước cuối có "Xong bữa" về trang chủ.
+- **Chạm nửa phải sang bước tiếp, nửa trái quay lại;** thanh dưới đáy có "Trước" và "Tiếp" cho bàn phím và trình đọc màn hình. Bước cuối có "Xong bữa" sang màn sau bữa (ADR-026).
+
+Làm rõ khi hiện thực phản hồi sau bữa và Cài đặt (ADR-026):
+- **Khẩu vị** là một hồ sơ ở khoá `taste.v1`: các món thích hoặc không thích và danh sách món đã chặn. "Bình thường" là không có mục nào, bằng chưa từng hỏi. Bộ quay đọc cả hai: món chặn bị loại hẳn, món thích ×2,0, món không thích ×0,2 (§5.4).
+- **Sau bữa (`/sau-bua`)** hỏi **mâm đã chốt hôm nay** (không có thì nói vậy): một hàng "Thích / Bình thường / Không" cho cả mâm và một hàng cho từng món. Ghi ngay khi chạm, không có nút Lưu; "Bình thường" chỉ hiện đã chọn sau khi người dùng chạm vào nó. Vào từ "Xong bữa" của chế độ nấu và từ "Chấm bữa này" trong khung "Đã chốt mâm hôm nay".
+- **Chặn món** ở cuối trang chi tiết món ("Không bao giờ quay món này", rồi "Cho quay lại"); chỉ ảnh hưởng lần quay sau, món chặn đang nằm trên mâm hay đang khoá thì ở nguyên đến khi bị đổi.
+- **Cài đặt (`/cai-dat`, bánh răng ở đầu mọi trang):** tóm tắt nhà mình kèm "Sửa nhà mình" (sang màn hình đầu); miền và cỡ chén (Nhỏ, Vừa, To, kèm số gam gạo sống mỗi chén) là chip lưu ngay, giữ nguyên người trong nhà; danh sách món đã chặn kèm "Bỏ chặn" (món không còn trong dữ liệu vẫn bỏ chặn được); "Xoá dữ liệu của tôi" hai bước, xoá mọi khoá `mamcom.state.*` (không xoá gói dữ liệu món) rồi tải lại trang để mở màn hình đầu.
 
 ### 8.2 Ngôn ngữ thị giác
 
