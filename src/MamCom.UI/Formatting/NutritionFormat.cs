@@ -1,5 +1,4 @@
 using System.Globalization;
-using System.Text;
 
 namespace MamCom.UI.Formatting;
 
@@ -23,24 +22,6 @@ public static class NutritionFormat
         }
 
         var rounded = Math.Round(amount / step, MidpointRounding.AwayFromZero) * step;
-        return string.Format(CultureInfo.InvariantCulture, Strings.Nutrition_EstimateFormat, Group(rounded), unit);
-    }
-
-    /// <summary>Whole number with a dot between thousands, as Vietnamese writes it, without depending on the culture data of the platform.</summary>
-    private static string Group(double whole)
-    {
-        var digits = whole.ToString("F0", CultureInfo.InvariantCulture);
-        var grouped = new StringBuilder(digits.Length + digits.Length / 3);
-        for (var i = 0; i < digits.Length; i++)
-        {
-            if (i > 0 && (digits.Length - i) % 3 == 0)
-            {
-                grouped.Append('.');
-            }
-
-            grouped.Append(digits[i]);
-        }
-
-        return grouped.ToString();
+        return string.Format(CultureInfo.InvariantCulture, Strings.Nutrition_EstimateFormat, VietnameseNumber.Whole(rounded), unit);
     }
 }

@@ -213,7 +213,7 @@ public partial class TokenTests
     }
 
     private static string PropertyValue(string block, string property) =>
-        Regex.Match(block, property + @":\s*([^;]+);").Groups[1].Value;
+        Regex.Match(block, @"(?<![\w-])" + property + @":\s*([^;]+);").Groups[1].Value;   // not "border-color" when asked for "color"
 
     // ---- the arithmetic ------------------------------------------------------------------------------------------------------
 

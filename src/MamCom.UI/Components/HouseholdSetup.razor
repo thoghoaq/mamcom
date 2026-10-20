@@ -1,0 +1,175 @@
+@using System.Globalization
+@using MamCom.Core.Households
+@using MamCom.Core.Models
+@using MamCom.Core.Portions
+@using MamCom.UI.Formatting
+
+@* "Nhà mình có ai?" (SPEC §8.1-1): chips add people, a card each, one question per card, nothing else. Skipping is allowed. *@
+<p>@Strings.Household_Intro</p>
+
+<p class="field__label" id="household-add-label">@Strings.Household_AddLabel</p>
+<div class="chips" role="group" aria-labelledby="household-add-label">
+    @foreach (var role in MemberRoles.InChipOrder)
+    {
+        var current = role;
+        <button type="button" class="chip" disabled="@(!_editor.CanAdd)" @onclick="() => Add(current)">
+            <Icon Name="plus" />@HouseholdFormat.Role(role)
+        </button>
+    }
+</div>
+
+@if (!_editor.CanAdd)
+{
+    <p class="text-muted">@Strings.Household_Full</p>
+}
+
+@if (_editor.Members.Count == 0)
+{
+    <p class="text-muted">@Strings.Household_Empty</p>
+}
+else
+{
+    <ul class="members" aria-label="@Strings.Household_MembersLabel">
+        @for (var index = 0; index < _editor.Members.Count; index++)
+        {
+            var member = _editor.Members[index];
+            var number = index + 1;
+            <li class="card member-card" @key="member.Id">
+                <div class="member-card__head">
+                    <input class="input member-card__name"
+                           @key="(member.Id, NameVersion(member.Id))"
+                           value="@member.Name"
+                           maxlength="@HouseholdEditor.MaxNameLength"
+                           aria-label="@string.Format(CultureInfo.InvariantCulture, Strings.Household_NameAria, number)"
+                           @onchange="e => Rename(member.Id, e.Value?.ToString())" />
+                    <button type="button" class="button button--quiet button--icon" aria-label="@string.Format(CultureInfo.InvariantCulture, Strings.Household_Remove, member.Name)" @onclick="() => Remove(member.Id)">
+                        <Icon Name="x" />
+                    </button>
+                </div>
+                <div class="field">
+                    <label for="@($"household-age-{member.Id}")">@Strings.Household_AgeLabel</label>
+                    <select id="@($"household-age-{member.Id}")" class="select" @onchange="e => SetAge(member.Id, e.Value?.ToString())">
+                        @foreach (var age in Enum.GetValues<AgeGroup>())
+                        {
+                            <option value="@age" selected="@(member.AgeGroup == age)">@HouseholdFormat.Age(age)</option>
+                        }
+                    </select>
+                </div>
+                <p class="field__label">@Strings.Household_BowlsQuestion</p>
+                <BowlStepper Value="member.BowlsPerMeal"
+                             Step="Portion.BowlsStep"
+                             PersonName="@member.Name"
+                             CanDecrease="_editor.CanStep(member.Id, -1)"
+                             CanIncrease="_editor.CanStep(member.Id, +1)"
+                             OnStep="steps => Step(member.Id, steps)" />
+            </li>
+        }
+    </ul>
+
+    <p class="household-summary" role="status">@SummaryText()</p>
+}
+
+<p class="field__label" id="household-region-label">@Strings.Household_RegionLabel</p>
+<div class="chips" role="radiogroup" aria-labelledby="household-region-label">
+    @foreach (var region in Enum.GetValues<Region>())
+    {
+        var current = region;
+        <button type="button" class="chip" role="radio" aria-checked="@(_editor.Region == region ? "true" : "false")" @onclick="() => _editor.Region = current">
+            @HouseholdFormat.RegionName(region)
+        </button>
+    }
+</div>
+<p class="field__hint">@Strings.Household_RegionHint</p>
+
+@if (IsFirstRun)
+{
+    <p class="text-muted">@Strings.Household_SkipHint</p>
+}
+
+<div class="app-actions">
+    @if (IsFirstRun)
+    {
+        <button type="button" class="button button--quiet" disabled="@Busy" @onclick="SkipAsync">@Strings.Household_Skip</button>
+    }
+    <button type="button" class="button button--primary" disabled="@(!_editor.IsComplete || Busy)" @onclick="DoneAsync">@(IsFirstRun ? Strings.Household_Start : Strings.Household_Save)</button>
+</div>
+
+@code {
+    private HouseholdEditor _editor = null!;
+    private PortionCalculator _calculator = null!;
+    private readonly Dictionary<int, int> _nameVersions = [];
+
+    /// <summary>The serving constants: the usual bowls for each age group, the limits and the step of the stepper.</summary>
+    [Parameter, EditorRequired]
+    public PortionConfig Portion { get; set; } = null!;
+
+    /// <summary>A household that was saved, when this is the screen to change it; null for the first time.</summary>
+    [Parameter]
+    public Household? Initial { get; set; }
+
+    /// <summary>The first time shows "Bắt đầu" and "Bỏ qua"; changing a saved household shows "Lưu".</summary>
+    [Parameter]
+    public bool IsFirstRun { get; set; } = true;
+
+    /// <summary>Set while the household is being saved, so a second tap does nothing.</summary>
+    [Parameter]
+    public bool Busy { get; set; }
+
+    [Parameter]
+    public EventCallback<Household> OnDone { get; set; }
+
+    /// <summary>The person skipped: a household of two grown-ups, with the region and bowl size the person chose.</summary>
+    [Parameter]
+    public EventCallback<Household> OnSkip { get; set; }
+
+    protected override void OnInitialized()
+    {
+        _calculator = new PortionCalculator(Portion);
+        _editor = (Initial is { } saved ? HouseholdEditor.From(saved, Portion) : null) ?? new HouseholdEditor(Portion);
+    }
+
+    private int NameVersion(int id) => _nameVersions.GetValueOrDefault(id);
+
+    private void Add(MemberRole role) => _editor.Add(role, HouseholdFormat.Role(role));
+
+    private void Remove(int id) => _editor.Remove(id);
+
+    private void Step(int id, int steps) => _editor.StepBowls(id, steps);
+
+    private void SetAge(int id, string? value)
+    {
+        if (Enum.TryParse<AgeGroup>(value, out var age))
+        {
+            _editor.SetAgeGroup(id, age);
+        }
+    }
+
+    private void Rename(int id, string? text)
+    {
+        var accepted = _editor.Rename(id, text);
+
+        // The box shows what the person typed. When the name that was kept is another text (blank, trimmed, numbered, cut), the box is
+        // made again so it shows the name the card has.
+        var kept = _editor.Members.FirstOrDefault(m => m.Id == id)?.Name;
+        if (!accepted || !string.Equals(kept, text, StringComparison.Ordinal))
+        {
+            _nameVersions[id] = NameVersion(id) + 1;
+        }
+    }
+
+    private string SummaryText()
+    {
+        var result = _calculator.Calculate(_editor.ToHousehold());
+        return string.Format(CultureInfo.InvariantCulture, Strings.Household_SummaryFormat, HouseholdFormat.Servings(result.BaseServings), VietnameseNumber.Whole(result.RawRiceGrams));
+    }
+
+    private Task DoneAsync() => _editor.IsComplete ? OnDone.InvokeAsync(_editor.ToHousehold()) : Task.CompletedTask;
+
+    private Task SkipAsync()
+    {
+        var skipped = HouseholdEditor.Default(Portion, HouseholdFormat.Role);
+        skipped.Region = _editor.Region;
+        skipped.BowlSize = _editor.BowlSize;
+        return OnSkip.InvokeAsync(skipped.ToHousehold());
+    }
+}

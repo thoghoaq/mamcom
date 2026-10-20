@@ -13,6 +13,8 @@
     <None Include="..\..\src\MamCom.UI\wwwroot\*.css" Link="wwwroot\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\src\MamCom.UI\wwwroot\icons\*.svg" Link="wwwroot\icons\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\src\MamCom.UI\wwwroot\fonts\*" Link="wwwroot\fonts\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <!-- The config files the household screens and the bundle need: from data/config, as every project links them (ADR-018). -->
+    <None Include="..\..\data\config\*.json" Link="config\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <!-- The frozen seed (ADR-018): which categories and protein sources the placeholders must know. -->
     <None Include="..\fixtures\seed\ingredients\*.json" Link="seed\ingredients\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\fixtures\seed\dishes\*.json" Link="seed\dishes\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />

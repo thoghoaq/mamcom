@@ -77,24 +77,6 @@ h1:focus {
     margin-bottom: var(--space-4);
 }
 
-.chip {
-    min-height: var(--tap-size);
-    padding: 0 var(--space-4);
-    border: 2px solid var(--color-border-strong);
-    border-radius: 999px;
-    background: var(--color-surface);
-    color: var(--color-text);
-    font: inherit;
-    cursor: pointer;
-}
-
-.chip[aria-pressed="true"] {
-    border-color: var(--color-accent);
-    background: var(--color-accent-soft);
-    color: var(--color-accent-strong);
-    font-weight: var(--font-weight-strong);
-}
-
 .dish-list {
     margin: 0;
     padding: 0;

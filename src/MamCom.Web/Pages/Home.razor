@@ -2,6 +2,8 @@
 
 <PageTitle>MâmCơm</PageTitle>
 
-<h1>@Strings.Home_Title</h1>
-
-<DataSummary />
+<HouseholdGate Context="household">
+    <h1>@Strings.Home_Title</h1>
+    <DataSummary />
+    <HouseholdSummary Household="household" />
+</HouseholdGate>

@@ -393,4 +393,43 @@
   <data name="Data_UpdateApply" xml:space="preserve"><value>Dùng ngay</value></data>
   <data name="Data_NotPersistent" xml:space="preserve"><value>Trình duyệt này không giữ dữ liệu giữa các lần mở app (có thể do đang ở chế độ riêng tư). Thông tin gia đình sẽ mất khi đóng trang.</value></data>
   <data name="Data_SummaryFormat" xml:space="preserve"><value>Có {0} món và {1} nguyên liệu.</value></data>
+
+  <!-- Nhà mình có ai? (màn hình đầu tiên, SPEC §8.1-1) -->
+  <data name="Household_Title" xml:space="preserve"><value>Nhà mình có ai?</value></data>
+  <data name="Household_Intro" xml:space="preserve"><value>Chạm vào người trong nhà để thêm. Mỗi người chọn số chén cơm thường ăn.</value></data>
+  <data name="Household_AddLabel" xml:space="preserve"><value>Thêm người</value></data>
+  <data name="Household_Empty" xml:space="preserve"><value>Chưa có ai. Chạm vào một người ở trên.</value></data>
+  <data name="Household_Full" xml:space="preserve"><value>Nhà đã đủ người, không thêm được nữa.</value></data>
+  <data name="Household_MembersLabel" xml:space="preserve"><value>Người trong nhà</value></data>
+  <data name="Household_NameAria" xml:space="preserve"><value>Tên của người thứ {0}</value></data>
+  <data name="Household_AgeLabel" xml:space="preserve"><value>Tuổi</value></data>
+  <data name="Household_BowlsQuestion" xml:space="preserve"><value>Thường ăn mấy chén cơm?</value></data>
+  <data name="Household_BowlsFormat" xml:space="preserve"><value>{0} chén</value></data>
+  <data name="Household_BowlsLess" xml:space="preserve"><value>Bớt {0} chén của {1}</value></data>
+  <data name="Household_BowlsMore" xml:space="preserve"><value>Thêm {0} chén cho {1}</value></data>
+  <data name="Household_Remove" xml:space="preserve"><value>Bỏ {0}</value></data>
+  <data name="Household_RegionLabel" xml:space="preserve"><value>Nhà mình ở miền nào?</value></data>
+  <data name="Household_RegionHint" xml:space="preserve"><value>Miền ảnh hưởng tên nguyên liệu và đơn vị đi chợ.</value></data>
+  <data name="Household_SummaryFormat" xml:space="preserve"><value>Mỗi bữa nấu cho ≈ {0} suất, gạo ≈ {1} g.</value></data>
+  <data name="Household_Start" xml:space="preserve"><value>Bắt đầu</value></data>
+  <data name="Household_Save" xml:space="preserve"><value>Lưu</value></data>
+  <data name="Household_Skip" xml:space="preserve"><value>Bỏ qua</value></data>
+  <data name="Household_SkipHint" xml:space="preserve"><value>Bỏ qua thì app tính cho hai người lớn. Sửa lại được sau.</value></data>
+  <data name="Household_HomeFormat" xml:space="preserve"><value>Nhà mình: {0} người, ≈ {1} suất mỗi bữa.</value></data>
+  <data name="Household_Edit" xml:space="preserve"><value>Sửa nhà mình</value></data>
+  <data name="Role_Father" xml:space="preserve"><value>Bố</value></data>
+  <data name="Role_Mother" xml:space="preserve"><value>Mẹ</value></data>
+  <data name="Role_Grandfather" xml:space="preserve"><value>Ông</value></data>
+  <data name="Role_Grandmother" xml:space="preserve"><value>Bà</value></data>
+  <data name="Role_Son" xml:space="preserve"><value>Con trai</value></data>
+  <data name="Role_Daughter" xml:space="preserve"><value>Con gái</value></data>
+  <data name="Role_Baby" xml:space="preserve"><value>Bé</value></data>
+  <data name="Age_Toddler" xml:space="preserve"><value>2–5 tuổi</value></data>
+  <data name="Age_Child" xml:space="preserve"><value>6–11 tuổi</value></data>
+  <data name="Age_Teen" xml:space="preserve"><value>12–17 tuổi</value></data>
+  <data name="Age_Adult" xml:space="preserve"><value>18–59 tuổi</value></data>
+  <data name="Age_Senior" xml:space="preserve"><value>Từ 60 tuổi</value></data>
+  <data name="Region_North" xml:space="preserve"><value>Bắc</value></data>
+  <data name="Region_Central" xml:space="preserve"><value>Trung</value></data>
+  <data name="Region_South" xml:space="preserve"><value>Nam</value></data>
 </root>

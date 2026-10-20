@@ -1,0 +1,19 @@
+@using System.Globalization
+@using MamCom.Core.Models
+@using MamCom.Core.Portions
+@using MamCom.UI.Formatting
+@inherits AppDataComponentBase
+
+@if (Data.Bundle is { } bundle)
+{
+    var result = new PortionCalculator(bundle.Config.Portion).Calculate(Household);
+    <p class="household-home">
+        @string.Format(CultureInfo.InvariantCulture, Strings.Household_HomeFormat, Household.Members.Count, HouseholdFormat.Servings(result.BaseServings))
+        <a href="@Routes.Household">@Strings.Household_Edit</a>
+    </p>
+}
+
+@code {
+    [Parameter, EditorRequired]
+    public Household Household { get; set; } = null!;
+}

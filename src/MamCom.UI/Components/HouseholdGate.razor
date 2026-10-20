@@ -1,0 +1,41 @@
+@using MamCom.Core.Households
+@using MamCom.Core.Models
+@using MamCom.Data.State
+@inherits AppDataComponentBase
+@inject IHouseholdStore Households
+@inject NavigationManager Navigation
+
+@* Shows its content only once the household is known. A device with no usable household goes to "Nhà mình có ai?" first. *@
+@if (_household is { } household)
+{
+    @ChildContent(household)
+}
+
+@code {
+    private Household? _household;
+
+    /// <summary>What to show for the household that is known.</summary>
+    [Parameter, EditorRequired]
+    public RenderFragment<Household> ChildContent { get; set; } = null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Data.InitializeAsync();
+
+        // Without the bundle there is no portion config to judge a household by; the notices explain what is wrong.
+        if (Data.Bundle is not { } bundle)
+        {
+            return;
+        }
+
+        var saved = await Households.LoadAsync();
+        if (saved is not null && HouseholdEditor.IsUsable(saved, bundle.Config.Portion))
+        {
+            _household = saved;
+        }
+        else
+        {
+            Navigation.NavigateTo(Routes.Household, replace: true);
+        }
+    }
+}

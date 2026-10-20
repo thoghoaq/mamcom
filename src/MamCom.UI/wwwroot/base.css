@@ -335,6 +335,98 @@ small,
     padding: var(--space-2);
 }
 
+/* ---- The household: chips to add a person, a card for each, a stepper for the bowls (components/HouseholdSetup.razor) ---- */
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0 0 var(--space-3);
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: var(--tap-size);
+    padding: var(--space-2) var(--space-4);
+    border: 2px solid var(--color-border-strong);
+    border-radius: 999px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+    line-height: var(--line-height-tight);
+    cursor: pointer;
+}
+
+.chip:hover:not(:disabled) {
+    background: var(--color-surface-raised);
+}
+
+/* A chip is a choice: one of a row (role="radio", aria-checked) or a toggle (aria-pressed). The chosen one has the accent and a heavier weight. */
+.chip[aria-checked="true"],
+.chip[aria-pressed="true"] {
+    border-color: var(--color-accent);
+    background: var(--color-accent-soft);
+    color: var(--color-accent-strong);
+    font-weight: var(--font-weight-strong);
+}
+
+.chip:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.members {
+    margin: 0 0 var(--space-3);
+    padding: 0;
+    list-style: none;
+}
+
+.member-card__head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+}
+
+.member-card__name {
+    flex: 1;
+    font-weight: var(--font-weight-strong);
+}
+
+.stepper {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.stepper__value {
+    min-width: 6rem;
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-strong);
+    text-align: center;
+}
+
+.household-summary {
+    margin: 0 0 var(--space-4);
+    font-weight: var(--font-weight-strong);
+}
+
+.household-home {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-4);
+}
+
+.household-home a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-size);
+}
+
 /* ---- Placeholder tile: stands in for a picture that does not exist yet, one look per kind of ingredient or dish ---- */
 
 .tile {

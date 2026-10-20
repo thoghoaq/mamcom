@@ -1,0 +1,39 @@
+@using MamCom.UI.Formatting
+
+@* "Thường ăn mấy chén cơm?": two 48px buttons around the number. It only reports a step; the household editor decides what the number becomes (limits, grid). *@
+<div class="stepper" role="group" aria-label="@Strings.Household_BowlsQuestion">
+    <button type="button" class="button button--quiet button--icon" aria-label="@LessLabel" disabled="@(!CanDecrease)" @onclick="() => OnStep.InvokeAsync(-1)">
+        <Icon Name="minus" />
+    </button>
+    <span class="stepper__value" role="status">@HouseholdFormat.Bowls(Value)</span>
+    <button type="button" class="button button--quiet button--icon" aria-label="@MoreLabel" disabled="@(!CanIncrease)" @onclick="() => OnStep.InvokeAsync(+1)">
+        <Icon Name="plus" />
+    </button>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public double Value { get; set; }
+
+    /// <summary>The size of one step, said in the labels of the buttons ("Bớt 0,5 chén của Bố").</summary>
+    [Parameter]
+    public double Step { get; set; } = 0.5;
+
+    [Parameter]
+    public bool CanDecrease { get; set; } = true;
+
+    [Parameter]
+    public bool CanIncrease { get; set; } = true;
+
+    /// <summary>Whose bowls these are, so a screen reader hears it in the label of each button.</summary>
+    [Parameter, EditorRequired]
+    public string PersonName { get; set; } = string.Empty;
+
+    /// <summary>-1 for the minus button, +1 for the plus button.</summary>
+    [Parameter]
+    public EventCallback<int> OnStep { get; set; }
+
+    private string LessLabel => string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.Household_BowlsLess, VietnameseNumber.Decimal(Step, 2), PersonName);
+
+    private string MoreLabel => string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.Household_BowlsMore, VietnameseNumber.Decimal(Step, 2), PersonName);
+}
