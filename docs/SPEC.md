@@ -511,11 +511,14 @@ Zalo Mini App là phương án phân phối **sau v1**. Trước khi chọn cầ
 | MealSpinner | Property, 10.000 seed | Không bao giờ vi phạm ràng buộc cứng; khoá giữ nguyên; tái lập theo seed; luật nới đúng thứ tự |
 | CookPlanScheduler | Unit, property | Cơm bắt đầu đầu tiên; không chồng bước active; serveHot kết thúc trong 10 phút cuối; mealTime ≥ món dài nhất |
 | DataBuilder | Unit, fixture | Fixture đúng/sai cho từng luật; chế độ release |
+| Dữ liệu thật | Unit, đọc `data/` | `validate` dev không lỗi; file đúng định dạng chuẩn; nguồn dinh dưỡng thật có người xác nhận; bản nháp chưa ai duyệt (`MamCom.LiveData.Tests`) |
 | UI components | bUnit | Thẻ món, stepper chén, checkbox đi chợ |
 | Luồng chính | Playwright E2E, 360×740 | Onboarding → quay → khoá → quay → chốt → đi chợ → chế độ nấu |
 | Accessibility | Kiểm tay + E2E | Contrast, vùng chạm, nhãn cho icon-only button |
 
 Mục tiêu coverage: `MamCom.Core` ≥ 85% line.
+
+Test không đọc thư mục `data/` thật, trừ `MamCom.LiveData.Tests`: mọi test khác dùng seed đóng băng ở `tests/fixtures/seed` (cùng schemas và config lấy từ `data/`), để duyệt món hay xác nhận nguyên liệu trong Studio không làm test của code đổi kết quả (ADR-018).
 
 ## 11. Chỉ số và beta
 

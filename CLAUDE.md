@@ -74,7 +74,8 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 │  ├─ MamCom.RecipeDrafter/ soạn nháp công thức bằng Claude API (prompts/ là file sửa được)
 │  ├─ MamCom.ImageTool/     raw → webp 200/800
 │  └─ MamCom.Studio/        Blazor Server local: sửa/duyệt dữ liệu
-└─ tests/  MamCom.Core.Tests, MamCom.DataBuilder.Tests, MamCom.FdcImporter.Tests, MamCom.RecipeDrafter.Tests, MamCom.ImageTool.Tests, MamCom.Studio.Tests, MamCom.UI.Tests, MamCom.E2E
+└─ tests/  MamCom.Core.Tests, MamCom.DataBuilder.Tests, MamCom.FdcImporter.Tests, MamCom.RecipeDrafter.Tests, MamCom.ImageTool.Tests, MamCom.Studio.Tests, MamCom.UI.Tests, MamCom.E2E,
+           MamCom.LiveData.Tests (đọc data/ thật), fixtures/seed/ (seed đóng băng cho mọi test khác, ADR-018)
 ```
 
 ## Lệnh thường dùng (tạo ở Phase 0–2)
@@ -103,6 +104,7 @@ dotnet run --project src/MamCom.Web
 - **Hằng số nghiệp vụ** (hệ số khẩu phần, trọng số quay) nằm trong `data/config/*.json`, không hard-code.
 - **Chuỗi UI:** tiếng Việt có dấu đầy đủ, gom vào một chỗ (`MamCom.UI/Strings.vi.resx`). Code, tên biến và comment bằng tiếng Anh.
 - **Không hard-code màu hay cỡ chữ** trong component; dùng CSS variables và hỗ trợ dark mode.
+- **Test không đọc `data/` thật** (nó đổi mỗi khi duyệt món hay xác nhận nguyên liệu): dùng `tests/fixtures/seed`. Chỉ `MamCom.LiveData.Tests` đọc dữ liệu thật (ADR-018).
 
 ## Definition of Done
 
