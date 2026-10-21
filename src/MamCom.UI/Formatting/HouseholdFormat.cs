@@ -11,6 +11,9 @@ public static class HouseholdFormat
     public static string Bowls(double bowls) =>
         string.Format(CultureInfo.InvariantCulture, Strings.Household_BowlsFormat, VietnameseNumber.Decimal(bowls));
 
+    /// <summary>"2 bếp", with the number and the word on one line.</summary>
+    public static string Stoves(int stoves) => string.Format(CultureInfo.InvariantCulture, Strings.Household_StovesFormat, stoves);
+
     /// <summary>The servings with one decimal, "3,8"; the screen writes the "≈" and "suất" around it.</summary>
     public static string Servings(double servings) => VietnameseNumber.Decimal(servings, 1);
 

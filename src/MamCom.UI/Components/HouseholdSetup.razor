@@ -1,4 +1,5 @@
 @using System.Globalization
+@using MamCom.Core.Cooking
 @using MamCom.Core.Households
 @using MamCom.Core.Models
 @using MamCom.Core.Portions
@@ -81,6 +82,18 @@ else
 </div>
 <p class="field__hint">@Strings.Household_RegionHint</p>
 
+<p class="field__label" id="household-stoves-label">@Strings.Household_StovesLabel</p>
+<div class="chips" role="radiogroup" aria-labelledby="household-stoves-label">
+    @for (var stoves = 1; stoves <= Cooking.MaxStoves; stoves++)
+    {
+        var current = stoves;
+        <button type="button" class="chip" role="radio" aria-checked="@(StovesShown == current ? "true" : "false")" @onclick="() => _editor.Stoves = current">
+            @HouseholdFormat.Stoves(current)
+        </button>
+    }
+</div>
+<p class="field__hint">@Strings.Household_StovesHint</p>
+
 @if (IsFirstRun)
 {
     <p class="text-muted">@Strings.Household_SkipHint</p>
@@ -102,6 +115,10 @@ else
     /// <summary>The serving constants: the usual bowls for each age group, the limits and the step of the stepper.</summary>
     [Parameter, EditorRequired]
     public PortionConfig Portion { get; set; } = null!;
+
+    /// <summary>The cooking constants: how many stoves can be chosen, and the usual number while none was.</summary>
+    [Parameter, EditorRequired]
+    public CookingConfig Cooking { get; set; } = null!;
 
     /// <summary>A household that was saved, when this is the screen to change it; null for the first time.</summary>
     [Parameter]
@@ -129,6 +146,9 @@ else
     }
 
     private int NameVersion(int id) => _nameVersions.GetValueOrDefault(id);
+
+    // A household that has not said yet has the usual number: it is the one shown as chosen, and kept only once tapped.
+    private int StovesShown => _editor.Stoves ?? Cooking.DefaultStoves;
 
     private void Add(MemberRole role) => _editor.Add(role, HouseholdFormat.Role(role));
 
@@ -170,6 +190,7 @@ else
         var skipped = HouseholdEditor.Default(Portion, HouseholdFormat.Role);
         skipped.Region = _editor.Region;
         skipped.BowlSize = _editor.BowlSize;
+        skipped.Stoves = _editor.Stoves;
         return OnSkip.InvokeAsync(skipped.ToHousehold());
     }
 }

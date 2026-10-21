@@ -15,6 +15,7 @@ public class HouseholdSetupTests : BunitContext
     private IRenderedComponent<HouseholdSetup> Show(Household? initial = null, bool firstRun = true, bool busy = false) =>
         Render<HouseholdSetup>(p => p
             .Add(s => s.Portion, TestConfig.Portion)
+            .Add(s => s.Cooking, TestConfig.Bundle.Config.Cooking)
             .Add(s => s.Initial, initial)
             .Add(s => s.IsFirstRun, firstRun)
             .Add(s => s.Busy, busy)
@@ -380,7 +381,7 @@ public class HouseholdSetupTests : BunitContext
     {
         var cut = Show();
 
-        var radios = cut.FindAll("[role=radiogroup] button");
+        var radios = cut.FindAll("[aria-labelledby=household-region-label] button");
         radios.Select(r => r.TextContent.Trim()).ShouldBe(["Bắc", "Trung", "Nam"]);
         radios.Select(r => r.GetAttribute("aria-checked")).ShouldBe(["true", "false", "false"]);
         cut.Find("[role=radiogroup]").GetAttribute("aria-labelledby").ShouldBe("household-region-label");
@@ -393,9 +394,9 @@ public class HouseholdSetupTests : BunitContext
         var cut = Show();
         AddChip(cut, "Bố").Click();
 
-        cut.FindAll("[role=radiogroup] button")[2].Click();
+        cut.FindAll("[aria-labelledby=household-region-label] button")[2].Click();
 
-        cut.FindAll("[role=radiogroup] button").Select(r => r.GetAttribute("aria-checked")).ShouldBe(["false", "false", "true"]);
+        cut.FindAll("[aria-labelledby=household-region-label] button").Select(r => r.GetAttribute("aria-checked")).ShouldBe(["false", "false", "true"]);
         Start(cut).Click();
         _done.Single().Region.ShouldBe(Region.South);
     }
@@ -422,7 +423,7 @@ public class HouseholdSetupTests : BunitContext
     public void Skipping_hands_over_two_grown_ups_with_the_usual_bowls_and_the_region_that_was_chosen()
     {
         var cut = Show();
-        cut.FindAll("[role=radiogroup] button")[1].Click();   // Trung
+        cut.FindAll("[aria-labelledby=household-region-label] button")[1].Click();   // Trung
 
         Skip(cut).Click();
 
@@ -489,7 +490,7 @@ public class HouseholdSetupTests : BunitContext
 
         Cards(cut).Select(c => c.QuerySelector("input")!.GetAttribute("value")).ShouldBe(["Ba", "Mẹ"]);
         Bowls(cut, 0).ShouldBe("3 chén");
-        cut.FindAll("[role=radiogroup] button").Select(r => r.GetAttribute("aria-checked")).ShouldBe(["false", "false", "true"]);
+        cut.FindAll("[aria-labelledby=household-region-label] button").Select(r => r.GetAttribute("aria-checked")).ShouldBe(["false", "false", "true"]);
         Start(cut).TextContent.ShouldBe("Lưu");
         cut.FindAll(".button--quiet").Where(b => b.TextContent == "Bỏ qua").ShouldBeEmpty();
         cut.Markup.ShouldNotContain("Bỏ qua thì app");
@@ -576,5 +577,60 @@ public class HouseholdSetupTests : BunitContext
         cut.FindAll("[role=group]")[0].GetAttribute("aria-labelledby").ShouldBe("household-add-label");
         cut.Find("#household-add-label").TextContent.ShouldBe("Thêm người");
         cut.FindAll("button").ShouldAllBe(b => b.GetAttribute("type") == "button");
+    }
+
+    // ---- the stoves (ADR-028) ----------------------------------------------------------------------------------------------
+
+    private static IReadOnlyList<IElement> Stoves(IRenderedComponent<HouseholdSetup> cut) => cut.FindAll("[aria-labelledby=household-stoves-label] button");
+
+    [Fact]
+    public void The_stoves_are_asked_as_one_to_four_with_the_usual_two_shown_as_chosen_and_the_rice_cooker_left_out()
+    {
+        var cut = Show();
+
+        Stoves(cut).Select(b => b.TextContent.Words()).ShouldBe(["1 bếp", "2 bếp", "3 bếp", "4 bếp"]);
+        Stoves(cut).Select(b => b.GetAttribute("aria-checked")).ShouldBe(["false", "true", "false", "false"]);
+        Stoves(cut).ShouldAllBe(b => b.GetAttribute("role") == "radio");
+        cut.Find("[aria-labelledby=household-stoves-label]").GetAttribute("role").ShouldBe("radiogroup");
+        cut.Find("#household-stoves-label").TextContent.ShouldBe("Nhà mình có mấy bếp?");
+        cut.Find("[aria-labelledby=household-stoves-label]").NextElementSibling!.TextContent.ShouldContain("Không tính nồi cơm điện.");
+        Stoves(cut)[0].TextContent.ShouldContain("1\u00a0bếp");
+    }
+
+    [Fact]
+    public void A_household_that_never_chose_keeps_no_number_and_one_that_chose_keeps_its_own()
+    {
+        var cut = Show();
+        AddChip(cut, "Bố").Click();
+        Start(cut).Click();
+        _done.Single().Stoves.ShouldBeNull();   // the usual number of the config, which can change
+
+        var again = Show();
+        AddChip(again, "Bố").Click();
+        Stoves(again)[0].Click();
+        Stoves(again).Select(b => b.GetAttribute("aria-checked")).ShouldBe(["true", "false", "false", "false"]);
+        Start(again).Click();
+        _done[1].Stoves.ShouldBe(1);
+    }
+
+    [Fact]
+    public void Skipping_keeps_the_stoves_that_were_chosen()
+    {
+        var cut = Show();
+        Stoves(cut)[2].Click();
+
+        Skip(cut).Click();
+
+        _skipped.Single().Stoves.ShouldBe(3);
+    }
+
+    [Fact]
+    public void A_saved_household_shows_its_stoves()
+    {
+        var saved = new Household(Region.North, BowlSize.Medium, [new Member("Bố", AgeGroup.Adult, 2, [], [])], Stoves: 4);
+
+        var cut = Show(saved, firstRun: false);
+
+        Stoves(cut).Select(b => b.GetAttribute("aria-checked")).ShouldBe(["false", "false", "false", "true"]);
     }
 }

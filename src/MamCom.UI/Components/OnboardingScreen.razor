@@ -12,7 +12,7 @@
 
 @if (Data.Bundle is { } bundle && _loaded)
 {
-    <HouseholdSetup Portion="bundle.Config.Portion" Initial="_saved" IsFirstRun="_saved is null" Busy="_saving" OnDone="SaveAsync" OnSkip="SaveAsync" />
+    <HouseholdSetup Portion="bundle.Config.Portion" Cooking="bundle.Config.Cooking" Initial="_saved" IsFirstRun="_saved is null" Busy="_saving" OnDone="SaveAsync" OnSkip="SaveAsync" />
 }
 
 @code {

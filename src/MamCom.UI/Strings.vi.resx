@@ -584,4 +584,9 @@
   <data name="Settings_ClearAsk" xml:space="preserve"><value>Xoá hết? Không lấy lại được.</value></data>
   <data name="Settings_ClearConfirm" xml:space="preserve"><value>Xoá hết</value></data>
   <data name="Settings_ClearCancel" xml:space="preserve"><value>Thôi</value></data>
+
+  <!-- Số bếp (ADR-028) -->
+  <data name="Household_StovesLabel" xml:space="preserve"><value>Nhà mình có mấy bếp?</value></data>
+  <data name="Household_StovesHint" xml:space="preserve"><value>Không tính nồi cơm điện. Ít bếp thì các món phải nấu lần lượt, cả mâm lâu hơn.</value></data>
+  <data name="Household_StovesFormat" xml:space="preserve"><value>{0} bếp</value></data>
 </root>

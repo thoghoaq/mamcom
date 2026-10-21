@@ -46,6 +46,18 @@
             }
         </div>
         <p class="field__hint">@BowlHint(bundle)</p>
+
+        <p class="field__label" id="settings-stoves-label">@Strings.Household_StovesLabel</p>
+        <div class="chips" role="radiogroup" aria-labelledby="settings-stoves-label">
+            @for (var stoves = 1; stoves <= bundle.Config.Cooking.MaxStoves; stoves++)
+            {
+                var current = stoves;
+                <button type="button" class="chip" role="radio" aria-checked="@(bundle.Config.Cooking.StovesOf(_household) == current ? "true" : "false")" @onclick="() => SetStovesAsync(current)">
+                    @HouseholdFormat.Stoves(current)
+                </button>
+            }
+        </div>
+        <p class="field__hint">@Strings.Household_StovesHint</p>
     </section>
 
     <section class="card settings__section" aria-labelledby="settings-blocked">
@@ -129,6 +141,8 @@
     private Task SetRegionAsync(Region region) => SaveHouseholdAsync(_household with { Region = region });
 
     private Task SetBowlSizeAsync(BowlSize size) => SaveHouseholdAsync(_household with { BowlSize = size });
+
+    private Task SetStovesAsync(int stoves) => SaveHouseholdAsync(_household with { Stoves = stoves });
 
     private async Task SaveHouseholdAsync(Household household)
     {

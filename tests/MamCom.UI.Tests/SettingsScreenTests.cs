@@ -209,6 +209,31 @@ public class SettingsScreenTests : BunitContext
         _households.Saved.BowlSize.ShouldBe(BowlSize.Small);
     }
 
+    private static IReadOnlyList<IElement> StoveChips(IRenderedComponent<SettingsScreen> cut) => Group(cut, "settings-stoves-label");
+
+    [Fact]
+    public void The_stoves_of_the_household_are_the_chip_that_is_chosen_and_the_usual_two_when_it_never_said()
+    {
+        StoveChips(Show()).Select(Words).ShouldBe(["1 bếp", "2 bếp", "3 bếp", "4 bếp"]);
+        Checked(StoveChips(Show())).ShouldBe(["2 bếp"]);
+        Checked(StoveChips(Show(TwoAdults() with { Stoves = 3 }))).ShouldBe(["3 bếp"]);
+    }
+
+    [Fact]
+    public async Task A_tap_on_a_number_of_stoves_keeps_it_at_once_and_changes_nothing_else()
+    {
+        var cut = Show(TwoAdults(Region.South, BowlSize.Large));
+
+        await Chip(StoveChips(cut), "1 bếp").ClickAsync(new());
+
+        _households.Saved!.Stoves.ShouldBe(1);
+        _households.Saved.Region.ShouldBe(Region.South);
+        _households.Saved.BowlSize.ShouldBe(BowlSize.Large);
+        Checked(StoveChips(cut)).ShouldBe(["1 bếp"]);
+        Status(cut).ShouldBe("Đã lưu.");
+        Hint(cut.Find("[aria-labelledby=settings-stoves-label]")).ShouldStartWith("Không tính nồi cơm điện.");
+    }
+
     // ---- the blocked dishes ------------------------------------------------------------------------------------------------
 
     [Fact]
