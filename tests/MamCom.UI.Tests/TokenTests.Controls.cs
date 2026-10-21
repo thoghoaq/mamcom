@@ -143,12 +143,55 @@ public partial class TokenTests
     }
 
     [Fact]
-    public void The_link_to_the_settings_is_a_square_of_at_least_the_tap_size_and_the_name_takes_the_room_before_it()
+    public void The_link_to_the_settings_is_a_square_of_at_least_the_tap_size_at_the_far_edge_and_the_header_lets_it_drop_under_the_name()
     {
         var layout = File.ReadAllText(Path.Combine(Wwwroot, "layout.css"));
 
         PropertyValue(Rule(layout, ".app-header__action {"), "min-width").ShouldBe("var(--tap-size)");
-        PropertyValue(Rule(layout, ".app-header__brand {"), "margin-inline-end").ShouldBe("auto");
+        PropertyValue(Rule(layout, ".app-header__action {"), "margin-inline-start").ShouldBe("auto");
+        PropertyValue(Rule(layout, ".app-header {"), "flex-wrap").ShouldBe("wrap");
+    }
+
+    [Fact]
+    public void When_the_text_is_set_large_the_header_and_the_bar_of_actions_stop_sticking_and_the_buttons_go_under_each_other()
+    {
+        var layout = File.ReadAllText(Path.Combine(Wwwroot, "layout.css"));
+
+        PropertyValue(Rule(layout, ".app {"), "container-type").ShouldBe("inline-size");
+        var narrow = Rule(layout, "@container (max-width: 20rem)");
+        PropertyValue(Rule(narrow, ".app-header,\n    .app-actions {"), "position").ShouldBe("static");
+        PropertyValue(Rule(narrow, ".app-actions > * {"), "flex-basis").ShouldBe("100%");
+        PropertyValue(Rule(narrow, ".app-actions .button {"), "white-space").ShouldBe("normal");
+        PropertyValue(Rule(layout, ".app-actions .button {"), "white-space").ShouldBe("nowrap");   // at the usual size a word stays on one line
+    }
+
+    [Fact]
+    public void When_the_text_is_set_large_a_dish_card_stacks_and_a_row_of_the_shopping_list_gives_up_its_picture()
+    {
+        PropertyValue(Rule(Base, ".tray {"), "container-type").ShouldBe("inline-size");
+        PropertyValue(Rule(Base, ".shop-items {"), "container-type").ShouldBe("inline-size");
+
+        // Both rules ask the list the same question: is there less than 15 times the size of the text across?
+        var first = Base.IndexOf("@container (max-width: 15rem)", StringComparison.Ordinal);
+        var second = Base.IndexOf("@container (max-width: 15rem)", first + 1, StringComparison.Ordinal);
+        first.ShouldBeGreaterThan(0);
+        second.ShouldBeGreaterThan(first);
+
+        var cards = Rule(Base[first..], "@container (max-width: 15rem)");
+        PropertyValue(Rule(cards, ".dish-card {"), "grid-template-columns").ShouldBe("1fr");
+        PropertyValue(Rule(cards, ".dish-card__actions {"), "justify-content").ShouldBe("flex-start");
+
+        var rows = Rule(Base[second..], "@container (max-width: 15rem)");
+        PropertyValue(Rule(rows, ".shop-item__label {"), "grid-template-columns").ShouldBe("1.75rem minmax(0, 1fr)");
+        PropertyValue(Rule(rows, ".shop-item__label > .picture,\n    .shop-item__label > .tile {"), "display").ShouldBe("none");
+    }
+
+    [Fact]
+    public void Rows_that_hold_a_word_and_its_number_or_two_buttons_and_a_number_may_wrap_when_they_do_not_fit()
+    {
+        PropertyValue(Rule(Base, ".stepper {"), "flex-wrap").ShouldBe("wrap");
+        PropertyValue(Rule(Base, ".tray-summary__row {"), "flex-wrap").ShouldBe("wrap");
+        PropertyValue(Rule(Base, ".tray-history {"), "flex-wrap").ShouldBe("wrap");
     }
 
     [Fact]

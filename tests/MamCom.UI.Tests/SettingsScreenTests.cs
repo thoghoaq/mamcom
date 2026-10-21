@@ -335,6 +335,55 @@ public class SettingsScreenTests : BunitContext
         navigation.Options.ForceLoad.ShouldBeTrue();
     }
 
+    /// <summary>The elements that took the focus from the page, as the id bUnit gives each element on the page.</summary>
+    private IReadOnlyList<string?> Focused() =>
+        [.. JSInterop.Invocations.Where(i => i.Identifier == "Blazor._internal.domWrapper.focus").Select(i => ((ElementReference)i.Arguments[0]!).Id)];
+
+    private static string? ReferenceOf(IElement element) => element.GetAttribute("blazor:elementreference");
+
+    [Fact]
+    public async Task The_question_gives_the_focus_to_the_safe_answer_and_withdrawing_it_gives_the_focus_back_to_the_button()
+    {
+        var cut = Show();
+        Focused().ShouldBeEmpty();   // nothing takes the focus when the page opens
+
+        await ClearButton(cut).ClickAsync(new());
+
+        var cancel = Section(cut, "settings-clear").QuerySelectorAll("button")[1];
+        Focused().ShouldBe([ReferenceOf(cancel)]);
+
+        await cancel.ClickAsync(new());
+
+        Focused().ShouldBe([ReferenceOf(cancel), ReferenceOf(ClearButton(cut))]);
+    }
+
+    [Fact]
+    public async Task The_focus_is_moved_once_and_not_again_each_time_the_page_is_drawn_after_that()
+    {
+        var cut = Show();
+        await ClearButton(cut).ClickAsync(new());
+        Focused().Count.ShouldBe(1);
+
+        await Chip(Regions(cut), "Nam").ClickAsync(new());   // draws the page again, with the question still on it
+        await Chip(Bowls(cut), "To").ClickAsync(new());
+        var cancel = Section(cut, "settings-clear").QuerySelectorAll("button")[1];
+        await cancel.ClickAsync(new());
+        await Chip(Regions(cut), "Trung").ClickAsync(new());
+
+        Focused().Count.ShouldBe(2);   // the one for the question and the one for its withdrawal, nothing else
+    }
+
+    [Fact]
+    public async Task Taps_that_change_nothing_about_the_buttons_do_not_move_the_focus()
+    {
+        var cut = Show();
+
+        await Chip(Regions(cut), "Nam").ClickAsync(new());
+        await Chip(Bowls(cut), "To").ClickAsync(new());
+
+        Focused().ShouldBeEmpty();
+    }
+
     [Fact]
     public async Task While_it_is_clearing_both_buttons_of_the_question_are_off()
     {

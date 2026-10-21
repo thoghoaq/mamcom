@@ -100,6 +100,7 @@ public class IngredientPictureTests : BunitContext
         image.GetAttribute("src").ShouldBe(ThumbPreloader.ThumbUrl("rau muong-200.webp"));
         image.GetAttribute("alt").ShouldBe(string.Empty);   // the name is written next to it
         image.GetAttribute("loading").ShouldBe("lazy");
+        image.GetAttribute("draggable").ShouldBe("false");   // a swipe over a row is not the drag of an image
         cut.FindAll(".tile").ShouldBeEmpty();
         cut.FindAll("figcaption").ShouldBeEmpty();
         cut.Find("figure").HasAttribute("title").ShouldBeFalse();

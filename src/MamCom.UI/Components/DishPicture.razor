@@ -6,7 +6,7 @@
 @if (ShownFile is { } file && !_broken)
 {
     <figure class="picture">
-        <img class="picture__image" src="@ThumbPreloader.ThumbUrl(file)" alt="" loading="lazy" @onerror="OnBroken" />
+        <img class="picture__image" src="@ThumbPreloader.ThumbUrl(file)" alt="" loading="lazy" draggable="false" @onerror="OnBroken" />
         @if (Dish.Image.IsIllustration)
         {
             <figcaption class="badge picture__badge">@Strings.Picture_Illustration</figcaption>

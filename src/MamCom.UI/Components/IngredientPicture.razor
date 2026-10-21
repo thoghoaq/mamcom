@@ -6,7 +6,7 @@
 @if (Ingredient.Image.Thumb is { } thumb && !_broken)
 {
     <figure class="picture picture--ingredient" title="@(Ingredient.Image.IsIllustration ? Strings.Picture_Illustration : null)">
-        <img class="picture__image" src="@ThumbPreloader.ThumbUrl(thumb)" alt="" loading="lazy" @onerror="OnBroken" />
+        <img class="picture__image" src="@ThumbPreloader.ThumbUrl(thumb)" alt="" loading="lazy" draggable="false" @onerror="OnBroken" />
         @if (Ingredient.Image.IsIllustration)
         {
             <figcaption class="visually-hidden">@Strings.Picture_Illustration</figcaption>

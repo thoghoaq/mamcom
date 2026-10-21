@@ -82,13 +82,13 @@
                 <p role="alert">@Strings.Settings_ClearAsk</p>
                 <div class="notice__actions">
                     <button type="button" class="button button--danger" disabled="@_clearing" @onclick="ClearAsync">@Strings.Settings_ClearConfirm</button>
-                    <button type="button" class="button button--quiet" disabled="@_clearing" @onclick="() => _asking = false">@Strings.Settings_ClearCancel</button>
+                    <button type="button" class="button button--quiet" disabled="@_clearing" @ref="_cancelButton" @onclick="CancelClear">@Strings.Settings_ClearCancel</button>
                 </div>
             </div>
         }
         else
         {
-            <button type="button" class="button button--danger" @onclick="() => _asking = true">@Strings.Settings_Clear</button>
+            <button type="button" class="button button--danger" @ref="_clearButton" @onclick="AskToClear">@Strings.Settings_Clear</button>
         }
     </section>
 
@@ -102,6 +102,10 @@
     private bool _loaded;
     private bool _asking;
     private bool _clearing;
+    private ElementReference _clearButton;
+    private ElementReference _cancelButton;
+    private bool _focusCancelNext;
+    private bool _focusClearNext;
 
     /// <summary>The household of this device; the gate hands it over once it knows there is one.</summary>
     [Parameter, EditorRequired]
@@ -138,6 +142,35 @@
         _taste = TasteDesk.Unblock(_taste, dishId);
         await Tastes.SaveAsync(_taste);
         _status = string.Format(CultureInfo.InvariantCulture, Strings.Settings_Unblocked, name);
+    }
+
+    // The button that was tapped is gone from the page, and the focus would fall to the top of it: it goes to the safe answer of the question
+    // (Enter must not delete everything), and back to the button when the question is withdrawn.
+    private void AskToClear()
+    {
+        _asking = true;
+        _focusCancelNext = true;
+    }
+
+    private void CancelClear()
+    {
+        _asking = false;
+        _focusClearNext = true;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        // The reference of an element is only known once it is on the page, so the focus moves after the page was drawn.
+        if (_focusCancelNext)
+        {
+            _focusCancelNext = false;
+            await _cancelButton.FocusAsync();
+        }
+        else if (_focusClearNext)
+        {
+            _focusClearNext = false;
+            await _clearButton.FocusAsync();
+        }
     }
 
     private async Task ClearAsync()

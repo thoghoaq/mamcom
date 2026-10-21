@@ -89,6 +89,14 @@ public partial class ServiceWorkerTests
         blazor.ShouldBeGreaterThan(device);
     }
 
+    [Fact]
+    public void The_start_page_names_its_own_icon_so_the_browser_does_not_ask_for_a_favicon_that_is_not_there()
+    {
+        var page = File.ReadAllText(Path.Combine(JsFolder, "index.html"));
+
+        page.ShouldContain("<link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"icon-192.png\" />");
+    }
+
     private sealed record NodeResult(int ExitCode, string Output);
 
     /// <summary>Runs node with the arguments; null when there is no node to run.</summary>

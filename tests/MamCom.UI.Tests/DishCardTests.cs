@@ -141,6 +141,15 @@ public class DishCardTests : BunitContext
     }
 
     [Fact]
+    public void The_name_and_the_picture_cannot_be_dragged_so_a_swipe_with_a_mouse_that_starts_on_them_is_not_taken_for_a_drag_of_a_link_or_an_image()
+    {
+        var cut = Show(Soup with { Image = new ImageRef("canh-200.webp", "canh-800.webp", "tự chụp", "CC0", false) });
+
+        cut.Find("a.dish-card__link").GetAttribute("draggable").ShouldBe("false");
+        cut.Find("img.picture__image").GetAttribute("draggable").ShouldBe("false");
+    }
+
+    [Fact]
     public void A_dish_with_a_picture_shows_the_picture_from_the_images_folder_and_not_the_tile()
     {
         var withPicture = Soup with { Image = new ImageRef("canh chua-200.webp", "canh chua-800.webp", "tự chụp", "CC0", false) };

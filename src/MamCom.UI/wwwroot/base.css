@@ -398,6 +398,7 @@ small,
 
 .stepper {
     display: flex;
+    flex-wrap: wrap;   /* at twice the text size the two buttons and the number do not fit side by side: they go under each other rather than off the screen */
     align-items: center;
     gap: var(--space-3);
 }
@@ -433,6 +434,7 @@ small,
     margin: 0 0 var(--space-3);
     padding: 0;
     list-style: none;
+    container-type: inline-size;   /* the cards ask how much room the list has, below */
 }
 
 .dish-card {
@@ -464,6 +466,23 @@ small,
     display: flex;
     justify-content: space-between;
     align-self: end;
+}
+
+/* Text set at twice the size leaves no room beside the picture. A rem is the size of the text, so this asks about the text and not about the phone:
+   on a phone of 360px it applies from about one and a half times the usual size, and never at the usual one. The card then stacks. */
+@container (max-width: 15rem) {
+    .dish-card {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "picture"
+            "body"
+            "actions";
+    }
+
+    .dish-card__actions {
+        justify-content: flex-start;
+        gap: var(--space-3);
+    }
 }
 
 .dish-card__slot {
@@ -557,6 +576,7 @@ small,
 
 .tray-history {
     display: flex;
+    flex-wrap: wrap;   /* two buttons and the number of the tray: under each other when the text is large */
     align-items: center;
     justify-content: space-between;
     gap: var(--space-2);
@@ -586,6 +606,7 @@ small,
 
 .tray-summary__row {
     display: flex;
+    flex-wrap: wrap;   /* the word and its number go under each other when the text is large */
     justify-content: space-between;
     gap: var(--space-3);
     padding: var(--space-1) 0;
@@ -891,6 +912,7 @@ small,
     margin: 0;
     padding: 0;
     list-style: none;
+    container-type: inline-size;
 }
 
 .shop-item {
@@ -922,6 +944,18 @@ small,
 .shop-item__label > .picture,
 .shop-item__label > .tile {
     --tile-width: 3.5rem;
+}
+
+/* The same for a row of the list: with the text at twice the size the picture, which only decorates, gives its place to the words. */
+@container (max-width: 15rem) {
+    .shop-item__label {
+        grid-template-columns: 1.75rem minmax(0, 1fr);
+    }
+
+    .shop-item__label > .picture,
+    .shop-item__label > .tile {
+        display: none;
+    }
 }
 
 /* A thumbnail of an ingredient is square, like the tile of its kind that stands in for it. */

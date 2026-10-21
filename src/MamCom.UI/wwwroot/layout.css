@@ -8,6 +8,7 @@
     flex-direction: column;
     min-height: 100vh;
     min-height: 100dvh;
+    container-type: inline-size;   /* asked below how much room the page has */
 }
 
 .app-header {
@@ -15,6 +16,7 @@
     top: 0;
     z-index: 10;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: var(--space-3);
     min-height: var(--tap-size);
@@ -25,16 +27,17 @@
     font-weight: var(--font-weight-strong);
 }
 
-/* The name leads home and takes the room; the link to the settings sits at the far edge. Both are targets of at least 48px. */
+/* The name leads home; the link to the settings sits at the far edge, and under the name when the text is set so large that both do not fit
+   side by side. Both are targets of at least 48px. */
 .app-header__brand {
     display: inline-flex;
     align-items: center;
     min-height: var(--tap-size);
-    margin-inline-end: auto;
 }
 
 .app-header__action {
     display: inline-flex;
+    margin-inline-start: auto;
     align-items: center;
     justify-content: center;
     min-width: var(--tap-size);
@@ -79,6 +82,24 @@
 .app-actions .button {
     padding-inline: var(--space-3);
     white-space: nowrap;
+}
+
+/* With the text set a good deal larger than usual (a rem is the size of the text; on a phone of 360px this is from about one and a half times the usual
+   size, and never at the usual one) a header and a bar that stay in place would leave no room for the page, and two buttons side by side
+   would no longer hold an icon and a word each. The header and the bar then scroll with the page, and the buttons go under each other. */
+@container (max-width: 20rem) {
+    .app-header,
+    .app-actions {
+        position: static;
+    }
+
+    .app-actions > * {
+        flex-basis: 100%;
+    }
+
+    .app-actions .button {
+        white-space: normal;
+    }
 }
 
 /* Small helpers for laying a page out. */
