@@ -1,7 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <!-- Kestrel serves the published app to the browser (SiteFixture). -->
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.Playwright.Xunit.v3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The app is published from its own project (so it is built before the tests run) and the bundle is made by the real DataBuilder. -->
+    <ProjectReference Include="..\..\src\MamCom.Web\MamCom.Web.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\..\tools\MamCom.DataBuilder\MamCom.DataBuilder.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The data folder the bundle is made from: the live schemas and config and the frozen seed (ADR-018), so what the browser shows
+         does not move when a dish is approved in Studio. -->
+    <None Include="..\..\data\schemas\*.json" Link="data\schemas\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\data\config\*.json" Link="data\config\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\fixtures\seed\ingredients\*.json" Link="data\ingredients\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\fixtures\seed\dishes\*.json" Link="data\dishes\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

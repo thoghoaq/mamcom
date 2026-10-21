@@ -33,6 +33,12 @@ jobs:
       - name: Build
         run: dotnet build MamCom.sln --configuration Release --no-restore
 
+      # The end-to-end tests (tests/MamCom.E2E) publish the app, make a bundle of the frozen seed, serve both and drive them in a browser at
+      # 360x740. CI has no browser of its own that the tests can rely on, so the one Playwright fetches is installed; a missing browser fails the
+      # run here (the tests skip on a machine that has none, and only here, where CI is set, do they fail).
+      - name: Install the browser of the end-to-end tests
+        run: pwsh tests/MamCom.E2E/bin/Release/net10.0/playwright.ps1 install --with-deps chromium
+
       - name: Test
         run: dotnet test --solution MamCom.sln --configuration Release --no-build
 
