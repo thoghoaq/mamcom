@@ -74,11 +74,19 @@ jobs:
             echo "::notice title=Staging not deployed::The secret VERCEL_TOKEN is not set. Everything was built; the upload was skipped (docs/deploy-staging.md)."
           fi
 
+      # From a folder outside the checkout: inside it the CLI sends the commit with the deployment, and the Hobby plan blocks a deployment whose
+      # commit author is not on the Vercel team (the commits here are signed with another address). Outside it, the deployment is the token's.
       - name: Upload to Vercel
         if: steps.token.outputs.present == 'true'
+        timeout-minutes: 10
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: npx --yes vercel@50.1.3 deploy publish/wwwroot --prod --yes --token "$VERCEL_TOKEN"
+        run: |
+          site="$RUNNER_TEMP/site"
+          mkdir -p "$site"
+          cp -r publish/wwwroot/. "$site/"
+          cd "$site"
+          npx --yes vercel@50.1.3 deploy --prod --yes --token "$VERCEL_TOKEN"
 
       - name: The site answers with the app and the data
         if: steps.token.outputs.present == 'true'
