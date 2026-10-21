@@ -1,0 +1,66 @@
+{
+  "ingredientId": "bi-do",
+  "query": "pumpkin raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1571,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 2515380,
+      "description": "Seeds, pumpkin seeds (pepitas), raw",
+      "dataType": "Foundation",
+      "foodCategory": "Nut and Seed Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2515380/nutrients",
+      "per100g": {
+        "kcal": 515,
+        "proteinG": 29.9,
+        "fatG": 40,
+        "carbG": 18.7,
+        "fiberG": 5.08,
+        "sodiumMg": 0
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    },
+    {
+      "rank": 2,
+      "fdcId": 168448,
+      "description": "Pumpkin, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168448/nutrients",
+      "per100g": {
+        "kcal": 26,
+        "proteinG": 1,
+        "fatG": 0.1,
+        "carbG": 6.5,
+        "fiberG": 0.5,
+        "sodiumMg": 1
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 175151,
+      "description": "Fish, sunfish, pumpkin seed, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/175151/nutrients",
+      "per100g": {
+        "kcal": 89,
+        "proteinG": 19.4,
+        "fatG": 0.7,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 80
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    }
+  ]
+}

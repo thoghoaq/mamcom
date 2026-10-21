@@ -1,0 +1,66 @@
+{
+  "ingredientId": "banh-trang",
+  "query": "rice paper",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 141,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 169726,
+      "description": "Wild rice, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169726/nutrients",
+      "per100g": {
+        "kcal": 357,
+        "proteinG": 14.7,
+        "fatG": 1.08,
+        "carbG": 74.9,
+        "fiberG": 6.2,
+        "sodiumMg": 7
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 173161,
+      "description": "Rice crackers",
+      "dataType": "SR Legacy",
+      "foodCategory": "Snacks",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173161/nutrients",
+      "per100g": {
+        "kcal": 416,
+        "proteinG": 10,
+        "fatG": 5,
+        "carbG": 82.6,
+        "fiberG": 0,
+        "sodiumMg": 233
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 167966,
+      "description": "Snacks, rice cracker brown rice, plain",
+      "dataType": "SR Legacy",
+      "foodCategory": "Snacks",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167966/nutrients",
+      "per100g": {
+        "kcal": 387,
+        "proteinG": 8.2,
+        "fatG": 2.8,
+        "carbG": 81.5,
+        "fiberG": 4.2,
+        "sodiumMg": 166
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/2 từ khoá."
+    }
+  ]
+}

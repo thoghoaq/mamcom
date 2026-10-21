@@ -1,0 +1,66 @@
+{
+  "ingredientId": "bap-cai",
+  "query": "cabbage raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1566,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 2685572,
+      "description": "Cabbage, bok choy, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2685572/nutrients",
+      "per100g": {
+        "kcal": 17,
+        "proteinG": 1.02,
+        "fatG": 0.234,
+        "carbG": 3.51,
+        "fiberG": 1.26,
+        "sodiumMg": 14.3
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169975,
+      "description": "Cabbage, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169975/nutrients",
+      "per100g": {
+        "kcal": 25,
+        "proteinG": 1.28,
+        "fatG": 0.1,
+        "carbG": 5.8,
+        "fiberG": 2.5,
+        "sodiumMg": 18
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 169977,
+      "description": "Cabbage, red, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169977/nutrients",
+      "per100g": {
+        "kcal": 31,
+        "proteinG": 1.43,
+        "fatG": 0.16,
+        "carbG": 7.37,
+        "fiberG": 2.1,
+        "sodiumMg": 27
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    }
+  ]
+}

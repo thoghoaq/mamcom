@@ -1,0 +1,66 @@
+{
+  "ingredientId": "bau",
+  "query": "gourd white-flowered raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1768,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 169232,
+      "description": "Gourd, white-flowered (calabash), raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169232/nutrients",
+      "per100g": {
+        "kcal": 14,
+        "proteinG": 0.62,
+        "fatG": 0.02,
+        "carbG": 3.39,
+        "fiberG": 0.5,
+        "sodiumMg": 2
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 1104962,
+      "description": "Onions, white, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/1104962/nutrients",
+      "per100g": {
+        "kcal": 35,
+        "proteinG": 0.89,
+        "fatG": 0.13,
+        "carbG": 7.68,
+        "fiberG": 1.2,
+        "sodiumMg": 2
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 168414,
+      "description": "Gourd, dishcloth (towelgourd), raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168414/nutrients",
+      "per100g": {
+        "kcal": 20,
+        "proteinG": 1.2,
+        "fatG": 0.2,
+        "carbG": 4.35,
+        "fiberG": 1.1,
+        "sodiumMg": 3
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/4 từ khoá."
+    }
+  ]
+}

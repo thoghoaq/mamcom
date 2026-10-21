@@ -1,0 +1,66 @@
+{
+  "ingredientId": "bo",
+  "query": "butter salted",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 731,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 173410,
+      "description": "Butter, salted",
+      "dataType": "SR Legacy",
+      "foodCategory": "Dairy and Egg Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173410/nutrients",
+      "per100g": {
+        "kcal": 717,
+        "proteinG": 0.85,
+        "fatG": 81.1,
+        "carbG": 0.06,
+        "fiberG": 0,
+        "sodiumMg": 643
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 2262074,
+      "description": "Almond butter, creamy",
+      "dataType": "Foundation",
+      "foodCategory": "Nut and Seed Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2262074/nutrients",
+      "per100g": {
+        "kcal": 603,
+        "proteinG": 20.8,
+        "fatG": 53,
+        "carbG": 21.2,
+        "fiberG": 9.72,
+        "sodiumMg": 0.996
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/2 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    },
+    {
+      "rank": 3,
+      "fdcId": 173411,
+      "description": "Butter, whipped, with salt",
+      "dataType": "SR Legacy",
+      "foodCategory": "Dairy and Egg Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173411/nutrients",
+      "per100g": {
+        "kcal": 731,
+        "proteinG": 0.49,
+        "fatG": 78.3,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 583
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/2 từ khoá."
+    }
+  ]
+}
