@@ -47,14 +47,14 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 - **Công cụ nội dung:** `MamCom.Studio` là Blazor Server chạy local, đọc/ghi trực tiếp `/data`.
 - **Ảnh:** SkiaSharp (MIT) để resize và encode WebP. Không dùng ImageSharp vì vướng giấy phép.
 - **Test:** xUnit, Shouldly, bUnit, Playwright for .NET. Luật cache của service worker (`service-worker.data.js`) là JavaScript và được test bằng `node:test` trong `tests/js`; `dotnet test` chạy chúng qua `MamCom.Data.Tests` (bỏ qua và nói rõ nếu máy chưa cài Node).
-- **CI và host:** GitHub Actions; host Azure Static Web Apps, gói free.
+- **CI và host:** GitHub Actions (`ci.yml`; `deploy-staging.yml` chạy sau khi CI xanh trên `main`, cần secret `AZURE_STATIC_WEB_APPS_API_TOKEN`); host Azure Static Web Apps, gói free, luật ở `src/MamCom.Web/wwwroot/staticwebapp.config.json` (ADR-029).
 
 ## Cấu trúc repo
 
 ```
 /
 ├─ CLAUDE.md, THIRD-PARTY-NOTICES.md (font, icon và giấy phép của chúng)
-├─ docs/  SPEC.md, PLAN.md, decisions/, beta-notes.md
+├─ docs/  SPEC.md, PLAN.md, decisions/, beta-notes.md, deploy-staging.md (việc của chủ dự án để có staging)
 ├─ data/
 │  ├─ schemas/        ingredient.schema.json, dish.schema.json, <tên file config>.schema.json
 │  ├─ config/         portion-defaults.json, nutrition-defaults.json, spinner-defaults.json, cooking-defaults.json, validation-defaults.json
