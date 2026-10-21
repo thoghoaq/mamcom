@@ -111,7 +111,7 @@
       "additionalProperties": false,
       "required": ["kcal", "proteinG", "fatG", "carbG", "fiberG", "sodiumMg"],
       "properties": {
-        "kcal": { "type": ["number", "null"], "minimum": 0, "maximum": 900 },
+        "kcal": { "type": ["number", "null"], "minimum": 0, "maximum": 902, "description": "At most 100 g of fat at the 9.02 kcal/g USDA counts for it (lard is 902)." },
         "proteinG": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
         "fatG": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
         "carbG": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },

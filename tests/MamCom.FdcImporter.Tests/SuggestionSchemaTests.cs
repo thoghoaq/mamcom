@@ -141,7 +141,7 @@ public class SuggestionSchemaTests
             ("empty reason", o => o["candidates"]![0]!["reason"] = "", "/candidates/0/reason"),
             ("negative nutrient", o => o["candidates"]![0]!["per100g"]!["fatG"] = -1, "/candidates/0/per100g/fatG"),
             ("more than 100 g of protein in 100 g", o => o["candidates"]![0]!["per100g"]!["proteinG"] = 101, "/candidates/0/per100g/proteinG"),
-            ("more energy than pure fat", o => o["candidates"]![0]!["per100g"]!["kcal"] = 901, "/candidates/0/per100g/kcal"),
+            ("more energy than pure fat", o => o["candidates"]![0]!["per100g"]!["kcal"] = 903, "/candidates/0/per100g/kcal"),
             ("unknown missing nutrient", o => o["candidates"]![0]!["missing"] = new JsonArray("vitaminC"), "/candidates/0/missing/0"),
             ("missing nutrient listed twice", o => o["candidates"]![0]!["missing"] = new JsonArray("kcal", "kcal"), "/candidates/0/missing"),
             ("extra property on a candidate", o => o["candidates"]![0]!["note"] = "x", "/candidates/0/note"),
