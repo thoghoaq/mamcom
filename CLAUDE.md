@@ -94,6 +94,7 @@ dotnet user-secrets set "Claude:ApiKey" "<khoá>" --project tools/MamCom.RecipeD
 dotnet run --project tools/MamCom.Studio    # http://localhost:5194, duyệt món (ADR-014), xác nhận dinh dưỡng nguyên liệu (ADR-015) và ghi nhận nấu thử (ADR-016); --Studio:DataFolder=<thư mục data>, --Studio:Reviewer=<tên>
 dotnet run --project tools/MamCom.ImageTool -- process --source "<nguồn>" --license "<giấy phép>"   # ảnh gốc data/images/raw/<id>.jpg → data/images/out/<id>-200.webp và -800.webp, ghi vào JSON (ADR-017)
 dotnet run --project src/MamCom.Web
+dotnet test --project tests/MamCom.E2E   # E2E: publish + gói seed + Kestrel + trình duyệt (Chromium, Edge hoặc Chrome); MAMCOM_E2E_BROWSER=chromium|msedge|chrome, MAMCOM_E2E_SITE=<thư mục đã publish và có gói> (ADR-027)
 ```
 
 ## Quy ước code

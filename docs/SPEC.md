@@ -527,6 +527,7 @@ Làm rõ khi hiện thực phản hồi sau bữa và Cài đặt (ADR-026):
 - **Màu:** nền kem ấm, màu nhấn đỏ gạch, màu phụ xanh lá chuối. Màu theo ô: canh xanh dương, mặn cam, rau xanh lá. **Dark mode bắt buộc.**
 - **Chữ:** font Be Vietnam Pro. Line-height ≥ 1.5 vì tiếng Việt có dấu chồng. Chữ cơ bản 16px, chế độ nấu từ 22px. Tôn trọng cỡ chữ hệ thống.
 - **Vùng chạm** ≥ 48px.
+- **Chữ lớn (ADR-027):** mọi cỡ chữ và khoảng cách tính bằng `rem`, nên chữ lớn lên theo cỡ chữ người dùng đặt cho máy. Khi chữ lớn hơn khoảng 1,5 lần cỡ thường trên điện thoại 360px (truy vấn container tính bằng `rem`, không bao giờ bật ở cỡ thường): header và thanh nút ở đáy thôi dính, các nút xếp dọc, thẻ món xếp dọc, hàng đi chợ bỏ ảnh trang trí, các hàng chữ-và-số xuống dòng; không bao giờ cuộn ngang.
 - **Gamification nhẹ:** không streak, không thông báo gây áp lực.
 - **Lời văn:** tiếng Việt ngắn, thân mật, động từ đứng đầu ("Quay mâm", "Chốt mâm", "Gửi Zalo").
 
@@ -581,6 +582,11 @@ Zalo Mini App là phương án phân phối **sau v1**. Trước khi chọn cầ
 | Accessibility | Kiểm tay + E2E | Contrast, vùng chạm, nhãn cho icon-only button |
 
 Mục tiêu coverage: `MamCom.Core` ≥ 85% line.
+
+Làm rõ khi hiện thực E2E và accessibility (ADR-027):
+- **E2E chạy trên bản publish của `MamCom.Web`** với gói dữ liệu làm từ seed đóng băng, do chính bộ test dựng và phục vụ (Kestrel trên `127.0.0.1`); mỗi test một phiên điện thoại 360×740 với localStorage trống. Trình duyệt: Chromium của Playwright, không có thì Edge, rồi Chrome (`MAMCOM_E2E_BROWSER` chọn một); không có trình duyệt thì bỏ qua và nói rõ ở máy dev, thất bại khi có biến `CI`.
+- **Luồng chính** ngoài chuỗi của bảng trên còn đi tiếp qua hẹn giờ (còn sau khi tải lại), "Xong bữa", chấm sau bữa và mâm đã chốt; kèm các ca: tải lại giữ mâm và ô khoá, vuốt, món bị chặn không bao giờ ra, `@key` của ô tên và thẻ người, Cài đặt, và **offline** (sau một lần mở có mạng, tải lại không mạng vẫn mở được và mâm vẫn đó).
+- **Accessibility** do một script chạy trong trang, ở mọi màn, ở cả sáng và tối và ở các trạng thái có màu riêng: tên cho mọi điều khiển, mục tiêu từ 48px, chữ từ 16px, tương phản WCAG tính từ màu và nền thật, không cuộn ngang (so với bề rộng điện thoại), một `main` và một `h1`, tiêu đề trang; thêm một lượt ở `font-size: 200%`. Một test chèn lỗi có chủ ý để chắc script bắt được.
 
 Test không đọc thư mục `data/` thật, trừ `MamCom.LiveData.Tests`: mọi test khác dùng seed đóng băng ở `tests/fixtures/seed` (cùng schemas và config lấy từ `data/`), để duyệt món hay xác nhận nguyên liệu trong Studio không làm test của code đổi kết quả (ADR-018).
 
