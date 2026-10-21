@@ -1,4 +1,121 @@
-name,slot,regions
-Cá lóc kho tộ,man,south
-Đậu phụ sốt cà chua,man,north;south
-Canh cải ngọt nấu thịt bằm,canh,
+name,slot,regions,id
+Canh bầu nấu tôm,canh,south;central,canh-bau-tom
+Canh cải ngọt nấu thịt bằm,canh,,canh-cai-ngot-nau-thit-bam
+Canh chua cá lóc,canh,south,canh-chua-ca-loc
+Canh củ cải hầm sườn,canh,north,canh-cu-cai-suon
+Canh nấm đậu phụ,canh,central;south,canh-nam-dau-phu
+Canh rau củ,canh,north;central;south,canh-rau-cu-thap-cam
+Canh rau ngót thịt bằm,canh,north;central;south,canh-rau-ngot-thit-bam
+Canh trứng cà chua,canh,north,canh-trung-ca-chua
+Canh cua rau đay,canh,north,
+Canh mồng tơi nấu tôm,canh,north;central;south,
+Canh bí đao nấu tôm,canh,north;central;south,
+Canh bí đỏ nấu thịt bằm,canh,north;central;south,
+Canh mướp nấu tôm,canh,north;central;south,
+Canh khổ qua nhồi thịt,canh,south;central,
+Canh chua tôm,canh,south,
+Canh cá nấu chua,canh,north,
+Canh sườn nấu sấu,canh,north,
+Canh khoai tây cà rốt hầm sườn,canh,north;central;south,
+Canh cải xanh nấu cá rô,canh,north,
+Canh dưa chua nấu sườn,canh,north,
+Canh hến rau răm,canh,central;north,
+Canh ngao nấu chua,canh,north,
+Canh rau dền nấu tôm,canh,north;central;south,
+Canh bắp cải cuộn thịt,canh,north;south,
+Canh su hào nấu sườn,canh,north,
+Canh hẹ đậu phụ thịt bằm,canh,south;central,
+Canh cải bẹ xanh thịt bằm,canh,south,
+Canh khoai mỡ nấu tôm,canh,south,
+Canh rong biển đậu phụ,canh,north;central;south,
+Canh gà lá giang,canh,south,
+Canh khổ qua cá thác lác,canh,south,
+Canh mọc,canh,north,
+Canh rau má nấu tôm,canh,south;central,
+Canh đậu phụ cà chua,canh,north,
+Canh khoai sọ nấu sườn,canh,north,
+Bò xào hành tây,man,south;north,bo-xao-hanh-tay
+Cá lóc kho tộ,man,south,ca-loc-kho-to
+Cá thu chiên,man,central;north,ca-thu-chien
+Đậu phụ chiên sả ớt,man,south,dau-phu-chien-sa
+Đậu phụ sốt cà chua,man,north;south,dau-phu-sot-ca-chua
+Gà xào sả ớt,man,south;central,ga-xao-sa-ot
+Sườn rim mặn ngọt,man,north;central,suon-rim-man-ngot
+Thịt kho trứng,man,south;central,thit-kho-trung
+Tôm rim mặn ngọt,man,south;central,tom-rim-man-ngot
+Trứng chiên hành,man,north;central;south,trung-chien-hanh
+Thịt kho tiêu,man,south,
+Thịt ba chỉ rang cháy cạnh,man,north,
+Thịt luộc,man,north;central,
+Tôm rang thịt ba chỉ,man,north,
+Thịt viên sốt cà chua,man,north;central;south,
+Đậu phụ nhồi thịt sốt cà chua,man,north,
+Trứng đúc thịt,man,south,
+Chả trứng hấp,man,south,
+Trứng xào cà chua,man,north;central;south,
+Cá nục kho cà chua,man,central,
+Cá rô phi sốt cà chua,man,north,
+Cá kho riềng,man,north,
+Cá thu sốt cà chua,man,central;north,
+Cá bống kho tiêu,man,south,
+Cá ngừ kho thơm,man,central;south,
+Mực xào hành cần,man,central;north,
+Tôm rang me,man,south,
+Tôm hấp nước dừa,man,south,
+Gà kho gừng,man,north;central;south,
+Gà luộc lá chanh,man,north,
+Gà chiên nước mắm,man,south,
+Gà xào nấm,man,north;central;south,
+Vịt om sấu,man,north,
+Bò xào cần tây,man,north,
+Bò lúc lắc,man,south,
+Bò xào thơm,man,south,
+Chả lá lốt,man,north,
+Sườn xào chua ngọt,man,north;central;south,
+Sườn ram,man,central;south,
+Thịt kho đậu phụ,man,north,
+Thịt ram mặn,man,central;south,
+Thịt xào mắm ruốc,man,central,
+Đậu phụ rán,man,north,
+Đậu phụ kho nấm,man,north;central;south,
+Đậu phụ hấp thịt bằm,man,north;south,
+Nem rán,man,north,
+Chả giò,man,south,
+Chả cá chiên,man,north;central;south,
+Cá kho dưa chua,man,north,
+Tép rang,man,north,
+Mực chiên nước mắm,man,central;south,
+Thịt heo xào sả ớt,man,south;central,
+Cá hú kho,man,south,
+Mắm chưng,man,south,
+Cá sốt chua ngọt,man,south,
+Bắp cải luộc,rau,north,bap-cai-luoc
+Dưa leo cà chua trộn,rau,south;central,dua-leo-ca-chua-tron
+Rau muống luộc,rau,north;central;south,rau-muong-luoc
+Rau muống xào tỏi,rau,south;central,rau-muong-xao-toi
+Su su xào tỏi,rau,north;south,su-su-xao-toi
+Cải ngọt xào tỏi,rau,north;central;south,
+Cải thìa xào tỏi,rau,south,
+Bông cải xanh xào tỏi,rau,north;central;south,
+Su su luộc,rau,north,
+Rau củ luộc thập cẩm,rau,north;central;south,
+Đậu que xào tỏi,rau,north;central;south,
+Đậu bắp luộc,rau,south;central,
+Rau lang luộc,rau,south,
+Rau lang xào tỏi,rau,south,
+Mồng tơi xào tỏi,rau,north,
+Rau dền xào tỏi,rau,south,
+Bí đỏ xào tỏi,rau,north;central;south,
+Mướp xào tỏi,rau,north,
+Giá đỗ xào,rau,north;central;south,
+Cà tím xào mỡ hành,rau,south;north,
+Khổ qua xào trứng,rau,south,
+Nộm su hào cà rốt,rau,north,
+Gỏi bắp cải,rau,south,
+Cải thảo xào,rau,north;central;south,
+Măng xào tỏi,rau,north;central,
+Ngọn su su xào tỏi,rau,north,
+Cải xanh luộc,rau,north,
+Bầu xào,rau,south;central,
+Bí đao xào tỏi,rau,north;central;south,
+Nấm xào tỏi,rau,north;central;south,

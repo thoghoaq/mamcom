@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\tools\MamCom.DataBuilder\MamCom.DataBuilder.csproj" />
+    <ProjectReference Include="..\..\tools\MamCom.RecipeDrafter\MamCom.RecipeDrafter.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,6 +15,7 @@
     <None Include="..\..\data\ingredients\*.json" Link="data\ingredients\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\data\dishes\*.json" Link="data\dishes\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\data\dishes\_drafts\*.json" Link="data\dishes\_drafts\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\data\plan\dish-list.csv" Link="data\plan\dish-list.csv" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\data\_suggestions\nutrition\*.json" Link="data\_suggestions\nutrition\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
