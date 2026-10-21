@@ -77,8 +77,21 @@ public class TraySummaryBuilderTests
         summary.KcalPerPerson.Known().ShouldBe((253 * 3.7875 + 320) / 4, 1e-9);
         summary.RawRiceGrams.ShouldBe(320);
         summary.ItemsToBuy.ShouldBe(6);   // pork, egg, water spinach, fish, tomato, taro stem; the rice is a pantry item
-        summary.MealMinutes.ShouldBe(new CookPlanScheduler(Cooking).EstimateMealMinutes(dishes));
+        summary.MealMinutes.ShouldBe(new CookPlanScheduler(Cooking).EstimateMealMinutes(dishes, Cooking.DefaultStoves));   // the family did not say how many stoves
         summary.MealMinutes.ShouldBeGreaterThan(Cooking.RiceActiveMinutes + Cooking.RicePassiveMinutes - 1);
+    }
+
+    [Fact]
+    public void The_time_of_the_whole_meal_is_planned_for_the_stoves_of_the_household()
+    {
+        var dishes = ShoppingFixtures.Tray.Select(d => WithSteps(d, Hands(1, 10, 20))).ToArray();
+        var scheduler = new CookPlanScheduler(Cooking);
+
+        int Minutes(int stoves) => Builder().Build(ShoppingFixtures.Family(Region.North) with { Stoves = stoves }, dishes, OneKcalPerGram()).MealMinutes;
+
+        Minutes(1).ShouldBe(scheduler.EstimateMealMinutes(dishes, 1));
+        Minutes(3).ShouldBe(scheduler.EstimateMealMinutes(dishes, 3));
+        Minutes(1).ShouldBeGreaterThan(Minutes(3));   // three dishes on one stove go one after another
     }
 
     [Fact]
@@ -139,6 +152,13 @@ public class TrayEngineTests
         Catalog());
 
     private static TrayEngine Engine(FixedClock? clock = null, ulong seed = 1) => TrayEngine.Create(Bundle, new SeededRandomSource(seed), clock ?? new FixedClock(Today));
+
+    [Fact]
+    public void The_context_of_a_spin_has_the_stoves_of_the_household_or_the_usual_number_of_the_config()
+    {
+        Engine().ContextFor(SmallHome(), EatenLog.Empty).Stoves.ShouldBe(2);
+        Engine().ContextFor(SmallHome() with { Stoves = 1 }, EatenLog.Empty).Stoves.ShouldBe(1);
+    }
 
     private static TraySession SessionWith(DateOnly date, params string[] ids) => TraySession.Empty with
     {

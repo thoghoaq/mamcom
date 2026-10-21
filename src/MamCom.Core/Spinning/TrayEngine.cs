@@ -63,7 +63,7 @@ public sealed class TrayEngine
         ArgumentNullException.ThrowIfNull(eaten);
 
         taste ??= TasteProfile.Empty;
-        return new SpinContext(household, _bundle.Dishes, IngredientsById, TasteDesk.BlockedSet(taste), eaten.Until(_clock.Today), taste.Preferences);
+        return new SpinContext(household, _bundle.Dishes, IngredientsById, TasteDesk.BlockedSet(taste), eaten.Until(_clock.Today), taste.Preferences, _bundle.Config.Cooking.StovesOf(household));
     }
 
     /// <summary>The session of an earlier visit can go on today: it is for today and every dish on its tray is still in the catalog.</summary>

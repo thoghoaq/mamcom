@@ -15,4 +15,5 @@ public sealed record SpinContext(
     IReadOnlyDictionary<string, Ingredient> Ingredients,
     IReadOnlySet<string> BlockedDishIds,
     IReadOnlyDictionary<string, DateOnly> LastEatenOn,
-    IReadOnlyDictionary<string, DishPreference> Preferences);
+    IReadOnlyDictionary<string, DishPreference> Preferences,
+    int Stoves = Cooking.CookPlanScheduler.AnyNumberOfStoves);

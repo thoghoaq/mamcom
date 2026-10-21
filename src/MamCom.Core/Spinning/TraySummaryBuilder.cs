@@ -60,7 +60,7 @@ public sealed class TraySummaryBuilder
         var items = _shopping.Build(household, portions, dishes, ingredients);
 
         return new TraySummary(
-            _scheduler.EstimateMealMinutes(dishes),
+            _scheduler.EstimateMealMinutes(dishes, _scheduler.StovesOf(household)),
             household.Members.Count == 0 ? null : meal.Total.Kcal / household.Members.Count,
             portions.RawRiceGrams,
             items.Count(item => !item.IsPantry));

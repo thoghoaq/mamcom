@@ -10,7 +10,8 @@ namespace MamCom.Core.Cooking;
 public interface IMealTimeEstimator
 {
     /// <summary>The planned meal time for exactly these dishes.</summary>
-    int EstimateMealMinutes(IReadOnlyList<Dish> dishes);
+    /// <param name="stoves">The stoves of the kitchen (ADR-028); <see cref="CookPlanScheduler.AnyNumberOfStoves"/> when they do not matter.</param>
+    int EstimateMealMinutes(IReadOnlyList<Dish> dishes, int stoves = CookPlanScheduler.AnyNumberOfStoves);
 
     /// <summary>
     /// A time no plan for these dishes, or for any larger set of dishes, can beat. It never decreases when a dish is
@@ -18,5 +19,5 @@ public interface IMealTimeEstimator
     /// estimate can shrink when a dish is added, so the spinner relies on this bound, not on the estimate, to tell
     /// when a time limit can no longer be met.
     /// </summary>
-    int MinimumMealMinutes(IReadOnlyList<Dish> dishes);
+    int MinimumMealMinutes(IReadOnlyList<Dish> dishes, int stoves = CookPlanScheduler.AnyNumberOfStoves);
 }

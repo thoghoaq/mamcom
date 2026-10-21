@@ -1,13 +1,15 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Cooking defaults",
-  "description": "data/config/cooking-defaults.json (SPEC 5.6): the rice pseudo-dish that opens every cook plan.",
+  "description": "data/config/cooking-defaults.json (SPEC 5.6): the rice pseudo-dish that opens every cook plan, and the stoves of a kitchen (ADR-028).",
   "type": "object",
   "additionalProperties": false,
-  "required": ["riceActiveMinutes", "ricePassiveMinutes", "riceStepText"],
+  "required": ["riceActiveMinutes", "ricePassiveMinutes", "riceStepText", "defaultStoves", "maxStoves"],
   "properties": {
     "riceActiveMinutes": { "type": "integer", "minimum": 0, "maximum": 60 },
     "ricePassiveMinutes": { "type": "integer", "minimum": 0, "maximum": 240 },
-    "riceStepText": { "type": "string", "minLength": 1 }
+    "riceStepText": { "type": "string", "minLength": 1 },
+    "defaultStoves": { "type": "integer", "minimum": 1, "maximum": 8, "description": "The stoves of a kitchen whose household has not said." },
+    "maxStoves": { "type": "integer", "minimum": 1, "maximum": 8, "description": "The most stoves a household can choose; the choices are 1 to this." }
   }
 }

@@ -258,7 +258,7 @@ public sealed class MealSpinner
     private bool Violates(RelaxedRule rule, Dish[] dishes, SpinState state) => rule switch
     {
         RelaxedRule.AvailableMinutes =>
-            state.Context.Household.AvailableMinutes is { } limit && _mealTime.EstimateMealMinutes(dishes) > limit,
+            state.Context.Household.AvailableMinutes is { } limit && _mealTime.EstimateMealMinutes(dishes, state.Context.Stoves) > limit,
         RelaxedRule.SingleFriedDish =>
             dishes.Count(d => d.CookingMethod == CookingMethod.Fry) > _config.MaxFriedDishes,
         RelaxedRule.DistinctProteinSources =>
@@ -277,7 +277,7 @@ public sealed class MealSpinner
     private bool CannotBeMetBy(RelaxedRule rule, Dish[] fixedDishes, SpinState state) => rule switch
     {
         RelaxedRule.AvailableMinutes =>
-            state.Context.Household.AvailableMinutes is { } limit && _mealTime.MinimumMealMinutes(fixedDishes) > limit,
+            state.Context.Household.AvailableMinutes is { } limit && _mealTime.MinimumMealMinutes(fixedDishes, state.Context.Stoves) > limit,
         _ => Violates(rule, fixedDishes, state),
     };
 

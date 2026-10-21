@@ -42,7 +42,7 @@ public class CookPlanSchedulerTests
     [Fact]
     public void Rice_minutes_and_text_come_from_the_config()
     {
-        var config = new CookingConfig(7, 45, "Nấu cơm.");
+        var config = new CookingConfig(7, 45, "Nấu cơm.", 2, 4);
 
         var plan = Scheduler(config).Schedule([]);
 
@@ -54,7 +54,7 @@ public class CookPlanSchedulerTests
     [Fact]
     public void Rice_with_no_unattended_time_has_no_timer()
     {
-        var plan = Scheduler(new CookingConfig(5, 0, "Nấu cơm.")).Schedule([]);
+        var plan = Scheduler(new CookingConfig(5, 0, "Nấu cơm.", 2, 4)).Schedule([]);
 
         plan.Steps[0].TimerMinutes.ShouldBeNull();
         plan.MealTimeMinutes.ShouldBe(5);

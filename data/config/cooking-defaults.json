@@ -1,5 +1,7 @@
 {
   "riceActiveMinutes": 5,
   "ricePassiveMinutes": 30,
-  "riceStepText": "Vo gạo và bắc nồi cơm."
+  "riceStepText": "Vo gạo và bắc nồi cơm.",
+  "defaultStoves": 2,
+  "maxStoves": 4
 }

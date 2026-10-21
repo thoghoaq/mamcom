@@ -47,6 +47,9 @@ public sealed class HouseholdEditor
 
     public BowlSize BowlSize { get; set; } = BowlSize.Medium;
 
+    /// <summary>The stoves of the kitchen; null until the household says (the config then has the usual number, ADR-028).</summary>
+    public int? Stoves { get; set; }
+
     public bool CanAdd => _members.Count < MaxMembers;
 
     public bool IsComplete => _members.Count > 0;
@@ -73,7 +76,7 @@ public sealed class HouseholdEditor
             return null;
         }
 
-        var editor = new HouseholdEditor(config) { Region = household.Region, BowlSize = household.BowlSize };
+        var editor = new HouseholdEditor(config) { Region = household.Region, BowlSize = household.BowlSize, Stoves = household.Stoves };
         foreach (var member in household.Members)
         {
             editor._members.Add(new DraftMember(editor._nextId++, member.DisplayName.Trim(), member.AgeGroup, member.BowlsPerMeal, member.Tags, member.Avoid));
@@ -94,6 +97,7 @@ public sealed class HouseholdEditor
         return household.Members is { Count: > 0 and <= MaxMembers }
             && Enum.IsDefined(household.Region)
             && Enum.IsDefined(household.BowlSize)
+            && household.Stoves is null or >= 1
             && household.Members.All(m =>
                 m is not null
                 && !string.IsNullOrWhiteSpace(m.DisplayName)
@@ -198,7 +202,8 @@ public sealed class HouseholdEditor
         return new Household(
             Region,
             BowlSize,
-            [.. _members.Select(m => new Member(m.Name, m.AgeGroup, m.BowlsPerMeal, m.Tags, m.Avoid))]);
+            [.. _members.Select(m => new Member(m.Name, m.AgeGroup, m.BowlsPerMeal, m.Tags, m.Avoid))],
+            Stoves: Stoves);
     }
 
     private int IndexOf(int id) => _members.FindIndex(m => m.Id == id);

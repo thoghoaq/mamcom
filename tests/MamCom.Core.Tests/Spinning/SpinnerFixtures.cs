@@ -15,11 +15,17 @@ internal sealed class FixedClock(DateOnly today) : IClock
 /// <summary>Cooking time as the sum of every step of every dish; simple enough to set up exact cases.</summary>
 internal sealed class SumOfStepsEstimator : IMealTimeEstimator
 {
-    public int EstimateMealMinutes(IReadOnlyList<Dish> dishes) =>
-        dishes.Sum(d => d.Steps.Sum(s => s.ActiveMinutes + s.PassiveMinutes));
+    /// <summary>The stoves each call was asked about, in order.</summary>
+    public List<int> StovesAsked { get; } = [];
+
+    public int EstimateMealMinutes(IReadOnlyList<Dish> dishes, int stoves = CookPlanScheduler.AnyNumberOfStoves)
+    {
+        StovesAsked.Add(stoves);
+        return dishes.Sum(d => d.Steps.Sum(s => s.ActiveMinutes + s.PassiveMinutes));
+    }
 
     // A sum only grows as dishes are added, so it is its own lower bound.
-    public int MinimumMealMinutes(IReadOnlyList<Dish> dishes) => EstimateMealMinutes(dishes);
+    public int MinimumMealMinutes(IReadOnlyList<Dish> dishes, int stoves = CookPlanScheduler.AnyNumberOfStoves) => EstimateMealMinutes(dishes, stoves);
 }
 
 /// <summary>Same estimate as the sum, but a lower bound of zero: the spinner can never prove a limit is lost early.</summary>
@@ -27,9 +33,9 @@ internal sealed class SumWithNoBoundEstimator : IMealTimeEstimator
 {
     private readonly SumOfStepsEstimator _sum = new();
 
-    public int EstimateMealMinutes(IReadOnlyList<Dish> dishes) => _sum.EstimateMealMinutes(dishes);
+    public int EstimateMealMinutes(IReadOnlyList<Dish> dishes, int stoves = CookPlanScheduler.AnyNumberOfStoves) => _sum.EstimateMealMinutes(dishes, stoves);
 
-    public int MinimumMealMinutes(IReadOnlyList<Dish> dishes) => 0;
+    public int MinimumMealMinutes(IReadOnlyList<Dish> dishes, int stoves = CookPlanScheduler.AnyNumberOfStoves) => 0;
 }
 
 /// <summary>Returns the given values in turn, then 0 forever: lets a test decide exactly which candidate is picked.</summary>

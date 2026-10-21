@@ -94,7 +94,7 @@ public sealed class CookingDesk
         ArgumentNullException.ThrowIfNull(ingredients);
 
         var portions = _portions.Calculate(household);
-        var plan = _scheduler.Schedule(dishes);
+        var plan = _scheduler.Schedule(dishes, _scheduler.StovesOf(household));
         var dishesById = dishes.GroupBy(dish => dish.Id, StringComparer.Ordinal).ToDictionary(group => group.Key, group => group.First(), StringComparer.Ordinal);
         var scaledByDish = new Dictionary<string, IReadOnlyDictionary<string, ScaledIngredient>>(StringComparer.Ordinal);
         var named = new HashSet<(string DishId, string IngredientId)>();
