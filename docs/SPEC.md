@@ -71,6 +71,7 @@ Bối cảnh Việt Nam: Zalo là kênh nhắn tin chính, đặc biệt với n
 - `Region`: `north` | `central` | `south`. Ảnh hưởng tên nguyên liệu, đơn vị chợ và trọng số món.
 - `BowlSize`: `small` 35g | `medium` 40g *(mặc định)* | `large` 50g gạo sống mỗi chén.
 - `AvailableMinutes`: tuỳ chọn, nhập theo từng lần quay.
+- `Stoves`: số bếp của nhà (1 đến 4, không tính nồi cơm điện); để trống là chưa nói, dùng `defaultStoves` của `cooking-defaults.json` (ADR-028).
 
 ### 4.2 Công thức tính
 
@@ -177,6 +178,7 @@ Làm rõ khi hiện thực (ADR-009):
 - **Món thường** xếp trước. Khi tay rảnh, người nấu lấy bước đã sẵn sàng của món có tổng thời gian dài nhất (hoà thì theo `id`); chưa có bước nào sẵn sàng thì đợi bước sớm nhất. Kết quả không phụ thuộc thứ tự món đưa vào.
 - **Món `serveHot`** xếp sau cùng, mỗi món nhắm kết thúc đúng lúc mâm kết thúc. Món dài nhất xếp trước nên món ngắn nhất kết thúc cuối. Một người nấu chỉ xong từng món một: một món `serveHot` kết thúc cách `mealTime` không quá tổng thời gian của các món `serveHot` kết thúc sau nó, nên "trong 10 phút cuối" đúng khi tổng đó không quá 10 phút. Món `serveHot` không bao giờ kết thúc trước phần còn lại của mâm.
 - **Cơm:** vo gạo 5 phút và nồi cơm 30 phút cùng câu hướng dẫn nằm trong `data/config/cooking-defaults.json`.
+- **Số bếp (ADR-028):** mỗi món có cách nấu khác "trộn" giữ một bếp từ đầu bước đầu đến hết bước cuối, và không bao giờ có nhiều món đang nấu hơn số bếp của nhà; nồi cơm điện không phải bếp. Món chưa bắt đầu chờ bếp trống; món `serveHot` hết bếp thì lùi tới lúc một bếp được trả. Cận dưới `MinimumMealMinutes` thêm vế tổng thời gian giữ bếp chia cho số bếp. Thời gian cả mâm, chế độ nấu và luật thời gian của bộ quay đều tính với số bếp của nhà.
 - **`mealTime` là kết quả của một thuật toán tham lam**, không phải tối ưu, và có thể ngắn lại khi thêm một món. Vì vậy có thêm cận dưới `MinimumMealMinutes`: lớn nhất của thời gian cơm, thời gian món dài nhất và tổng thời gian cần tay. Cận dưới không bao giờ giảm khi thêm món và mọi lịch đều không ngắn hơn nó. `MealSpinner` (§5.5) dùng cận dưới để biết giới hạn thời gian đã mất.
 
 ---
@@ -483,6 +485,7 @@ Cấu trúc bundle (ADR-011), kiểu `DataBundle` trong `MamCom.Core`:
 Làm rõ khi hiện thực màn hình đầu tiên (ADR-021):
 - **Vai trò chỉ chọn nhóm tuổi ban đầu:** Bố, Mẹ là người lớn; Ông, Bà từ 60 tuổi; Bé 2–5 tuổi; Con trai, Con gái bắt đầu là 6–11 tuổi. Thẻ nào cũng có ô chọn tuổi (năm nhóm của §4.1). Đổi nhóm tuổi thì số chén chưa ai chỉnh đi theo số mặc định của nhóm mới.
 - **Mỗi thẻ có:** tên (sửa được, trùng thì thêm số, tối đa 30 ký tự), tuổi, stepper "Thường ăn mấy chén cơm?" (bước, khoảng và số mặc định lấy từ `portion-defaults.json`), nút bỏ. Tối đa 12 người. Dưới các thẻ có dòng "Mỗi bữa nấu cho ≈ 3,8 suất, gạo ≈ 320 g".
+- **Số bếp hỏi trên màn hình đầu và ở Cài đặt (ADR-028):** "Nhà mình có mấy bếp?" với chip 1 bếp đến 4 bếp; chip của số mặc định hiện là đã chọn khi nhà chưa nói, và chỉ khi chạm mới lưu.
 - **Miền hỏi ngay trên màn hình (ba chip, mặc định Bắc, xem §13);** cỡ chén để Cài đặt, mặc định vừa. Kiêng khem, khẩu vị và `tag` không hỏi ở đây, nhưng sửa một nhà đã lưu thì giữ nguyên `tag` và `avoid`.
 - **Bỏ qua** lưu một nhà hai người lớn (Bố, Mẹ) với miền đã chọn. Trang chủ chưa có nhà dùng được thì chuyển sang `/nha-minh` (thay mục lịch sử); nhà được lưu ở khoá `household.v1`.
 
@@ -520,7 +523,7 @@ Làm rõ khi hiện thực phản hồi sau bữa và Cài đặt (ADR-026):
 - **Khẩu vị** là một hồ sơ ở khoá `taste.v1`: các món thích hoặc không thích và danh sách món đã chặn. "Bình thường" là không có mục nào, bằng chưa từng hỏi. Bộ quay đọc cả hai: món chặn bị loại hẳn, món thích ×2,0, món không thích ×0,2 (§5.4).
 - **Sau bữa (`/sau-bua`)** hỏi **mâm đã chốt hôm nay** (không có thì nói vậy): một hàng "Thích / Bình thường / Không" cho cả mâm và một hàng cho từng món. Ghi ngay khi chạm, không có nút Lưu; "Bình thường" chỉ hiện đã chọn sau khi người dùng chạm vào nó. Vào từ "Xong bữa" của chế độ nấu và từ "Chấm bữa này" trong khung "Đã chốt mâm hôm nay".
 - **Chặn món** ở cuối trang chi tiết món ("Không bao giờ quay món này", rồi "Cho quay lại"); chỉ ảnh hưởng lần quay sau, món chặn đang nằm trên mâm hay đang khoá thì ở nguyên đến khi bị đổi.
-- **Cài đặt (`/cai-dat`, bánh răng ở đầu mọi trang):** tóm tắt nhà mình kèm "Sửa nhà mình" (sang màn hình đầu); miền và cỡ chén (Nhỏ, Vừa, To, kèm số gam gạo sống mỗi chén) là chip lưu ngay, giữ nguyên người trong nhà; danh sách món đã chặn kèm "Bỏ chặn" (món không còn trong dữ liệu vẫn bỏ chặn được); "Xoá dữ liệu của tôi" hai bước, xoá mọi khoá `mamcom.state.*` (không xoá gói dữ liệu món) rồi tải lại trang để mở màn hình đầu.
+- **Cài đặt (`/cai-dat`, bánh răng ở đầu mọi trang):** tóm tắt nhà mình kèm "Sửa nhà mình" (sang màn hình đầu); miền, số bếp (ADR-028) và cỡ chén (Nhỏ, Vừa, To, kèm số gam gạo sống mỗi chén) là chip lưu ngay, giữ nguyên người trong nhà; danh sách món đã chặn kèm "Bỏ chặn" (món không còn trong dữ liệu vẫn bỏ chặn được); "Xoá dữ liệu của tôi" hai bước, xoá mọi khoá `mamcom.state.*` (không xoá gói dữ liệu món) rồi tải lại trang để mở màn hình đầu.
 
 ### 8.2 Ngôn ngữ thị giác
 
