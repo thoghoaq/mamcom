@@ -1,0 +1,44 @@
+{
+  "id": "rau-om",
+  "names": {
+    "default": "Rau om",
+    "south": "Ngò om"
+  },
+  "aliases": [
+    "ngò om"
+  ],
+  "category": "rau-la",
+  "aisle": "rau-cu-qua",
+  "proteinSource": null,
+  "marketUnit": {
+    "default": {
+      "display": "bó",
+      "gramsPerUnit": 30,
+      "step": 1
+    }
+  },
+  "wasteRatio": 0.15,
+  "isPantry": false,
+  "nutritionPer100gEdible": {
+    "kcal": null,
+    "proteinG": null,
+    "fatG": null,
+    "carbG": null,
+    "fiberG": null,
+    "sodiumMg": null
+  },
+  "nutritionSource": {
+    "db": "placeholder",
+    "ref": null,
+    "matchedName": null,
+    "verifiedBy": null,
+    "verifiedAt": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

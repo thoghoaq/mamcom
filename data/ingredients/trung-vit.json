@@ -1,0 +1,41 @@
+{
+  "id": "trung-vit",
+  "names": {
+    "default": "Trứng vịt"
+  },
+  "aliases": [],
+  "category": "trung",
+  "aisle": "trung-dau-phu",
+  "proteinSource": "trung",
+  "marketUnit": {
+    "default": {
+      "display": "quả",
+      "gramsPerUnit": 70,
+      "step": 1
+    }
+  },
+  "wasteRatio": 0.12,
+  "isPantry": false,
+  "nutritionPer100gEdible": {
+    "kcal": null,
+    "proteinG": null,
+    "fatG": null,
+    "carbG": null,
+    "fiberG": null,
+    "sodiumMg": null
+  },
+  "nutritionSource": {
+    "db": "placeholder",
+    "ref": null,
+    "matchedName": null,
+    "verifiedBy": null,
+    "verifiedAt": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

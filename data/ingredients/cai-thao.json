@@ -1,0 +1,42 @@
+{
+  "id": "cai-thao",
+  "names": {
+    "default": "Cải thảo"
+  },
+  "aliases": [],
+  "category": "rau-la",
+  "aisle": "rau-cu-qua",
+  "proteinSource": null,
+  "marketUnit": {
+    "default": {
+      "display": "cây",
+      "gramsPerUnit": 800,
+      "step": 1,
+      "showApproxGrams": true
+    }
+  },
+  "wasteRatio": 0.1,
+  "isPantry": false,
+  "nutritionPer100gEdible": {
+    "kcal": null,
+    "proteinG": null,
+    "fatG": null,
+    "carbG": null,
+    "fiberG": null,
+    "sodiumMg": null
+  },
+  "nutritionSource": {
+    "db": "placeholder",
+    "ref": null,
+    "matchedName": null,
+    "verifiedBy": null,
+    "verifiedAt": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

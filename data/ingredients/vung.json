@@ -1,0 +1,44 @@
+{
+  "id": "vung",
+  "names": {
+    "default": "Vừng",
+    "south": "Mè"
+  },
+  "aliases": [
+    "mè"
+  ],
+  "category": "ngu-coc",
+  "aisle": "kho-gia-vi",
+  "proteinSource": null,
+  "marketUnit": {
+    "default": {
+      "display": "gói",
+      "gramsPerUnit": 100,
+      "step": 1
+    }
+  },
+  "wasteRatio": 0,
+  "isPantry": true,
+  "nutritionPer100gEdible": {
+    "kcal": null,
+    "proteinG": null,
+    "fatG": null,
+    "carbG": null,
+    "fiberG": null,
+    "sodiumMg": null
+  },
+  "nutritionSource": {
+    "db": "placeholder",
+    "ref": null,
+    "matchedName": null,
+    "verifiedBy": null,
+    "verifiedAt": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

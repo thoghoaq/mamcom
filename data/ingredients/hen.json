@@ -1,0 +1,46 @@
+{
+  "id": "hen",
+  "names": {
+    "default": "Hến"
+  },
+  "aliases": [],
+  "category": "hai-san",
+  "aisle": "thit-ca",
+  "proteinSource": "hai-san",
+  "marketUnit": {
+    "north": {
+      "display": "lạng",
+      "gramsPerUnit": 100,
+      "step": 0.5
+    },
+    "default": {
+      "display": "g",
+      "gramsPerUnit": 1,
+      "step": 50
+    }
+  },
+  "wasteRatio": 0.75,
+  "isPantry": false,
+  "nutritionPer100gEdible": {
+    "kcal": null,
+    "proteinG": null,
+    "fatG": null,
+    "carbG": null,
+    "fiberG": null,
+    "sodiumMg": null
+  },
+  "nutritionSource": {
+    "db": "placeholder",
+    "ref": null,
+    "matchedName": null,
+    "verifiedBy": null,
+    "verifiedAt": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

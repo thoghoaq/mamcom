@@ -1,0 +1,41 @@
+{
+  "id": "nghe",
+  "names": {
+    "default": "Nghệ"
+  },
+  "aliases": [],
+  "category": "rau-cu",
+  "aisle": "rau-cu-qua",
+  "proteinSource": null,
+  "marketUnit": {
+    "default": {
+      "display": "củ",
+      "gramsPerUnit": 30,
+      "step": 1
+    }
+  },
+  "wasteRatio": 0.1,
+  "isPantry": false,
+  "nutritionPer100gEdible": {
+    "kcal": null,
+    "proteinG": null,
+    "fatG": null,
+    "carbG": null,
+    "fiberG": null,
+    "sodiumMg": null
+  },
+  "nutritionSource": {
+    "db": "placeholder",
+    "ref": null,
+    "matchedName": null,
+    "verifiedBy": null,
+    "verifiedAt": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

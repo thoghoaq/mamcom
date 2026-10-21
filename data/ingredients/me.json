@@ -1,0 +1,44 @@
+{
+  "id": "me",
+  "names": {
+    "default": "Me"
+  },
+  "aliases": [
+    "me vắt",
+    "me chua"
+  ],
+  "category": "gia-vi",
+  "aisle": "kho-gia-vi",
+  "proteinSource": null,
+  "marketUnit": {
+    "default": {
+      "display": "gói",
+      "gramsPerUnit": 200,
+      "step": 1
+    }
+  },
+  "wasteRatio": 0.2,
+  "isPantry": true,
+  "nutritionPer100gEdible": {
+    "kcal": null,
+    "proteinG": null,
+    "fatG": null,
+    "carbG": null,
+    "fiberG": null,
+    "sodiumMg": null
+  },
+  "nutritionSource": {
+    "db": "placeholder",
+    "ref": null,
+    "matchedName": null,
+    "verifiedBy": null,
+    "verifiedAt": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

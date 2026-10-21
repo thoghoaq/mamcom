@@ -1,0 +1,41 @@
+{
+  "id": "mo-hanh",
+  "names": {
+    "default": "Mỡ hành"
+  },
+  "aliases": [],
+  "category": "gia-vi",
+  "aisle": "kho-gia-vi",
+  "proteinSource": null,
+  "marketUnit": {
+    "default": {
+      "display": "hũ",
+      "gramsPerUnit": 100,
+      "step": 1
+    }
+  },
+  "wasteRatio": 0,
+  "isPantry": false,
+  "nutritionPer100gEdible": {
+    "kcal": null,
+    "proteinG": null,
+    "fatG": null,
+    "carbG": null,
+    "fiberG": null,
+    "sodiumMg": null
+  },
+  "nutritionSource": {
+    "db": "placeholder",
+    "ref": null,
+    "matchedName": null,
+    "verifiedBy": null,
+    "verifiedAt": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}
