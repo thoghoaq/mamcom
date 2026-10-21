@@ -298,3 +298,16 @@ public class CookPlanSchedulerStoveTests
         HouseholdEditor.IsUsable(SmallHome() with { Stoves = stoves }, portions).ShouldBe(usable);
     }
 }
+
+public class CookingConfigOfAnOlderBundleTests
+{
+    [Fact]
+    public void A_bundle_made_before_the_stoves_were_known_still_opens_with_two_stoves_and_a_choice_up_to_four()
+    {
+        var older = CookingConfig.Parse("""{ "riceActiveMinutes": 5, "ricePassiveMinutes": 30, "riceStepText": "Vo gạo." }""");
+
+        older.DefaultStoves.ShouldBe(2);
+        older.MaxStoves.ShouldBe(4);
+        Should.NotThrow(older.Validate);
+    }
+}

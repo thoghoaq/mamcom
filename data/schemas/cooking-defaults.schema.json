@@ -4,12 +4,12 @@
   "description": "data/config/cooking-defaults.json (SPEC 5.6): the rice pseudo-dish that opens every cook plan, and the stoves of a kitchen (ADR-028).",
   "type": "object",
   "additionalProperties": false,
-  "required": ["riceActiveMinutes", "ricePassiveMinutes", "riceStepText", "defaultStoves", "maxStoves"],
+  "required": ["riceActiveMinutes", "ricePassiveMinutes", "riceStepText"],
   "properties": {
     "riceActiveMinutes": { "type": "integer", "minimum": 0, "maximum": 60 },
     "ricePassiveMinutes": { "type": "integer", "minimum": 0, "maximum": 240 },
     "riceStepText": { "type": "string", "minLength": 1 },
-    "defaultStoves": { "type": "integer", "minimum": 1, "maximum": 8, "description": "The stoves of a kitchen whose household has not said." },
-    "maxStoves": { "type": "integer", "minimum": 1, "maximum": 8, "description": "The most stoves a household can choose; the choices are 1 to this." }
+    "defaultStoves": { "type": "integer", "minimum": 1, "maximum": 8, "description": "The stoves of a kitchen whose household has not said; 2 when left out (a bundle made before ADR-028)." },
+    "maxStoves": { "type": "integer", "minimum": 1, "maximum": 8, "description": "The most stoves a household can choose; the choices are 1 to this; 4 when left out." }
   }
 }

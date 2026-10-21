@@ -182,7 +182,7 @@ public sealed class BundleLoader(HttpClient http, IKeyValueStorage storage, Bund
         try
         {
             var bundle = DataBundle.Parse(text!);
-            return string.IsNullOrWhiteSpace(bundle.Version) || !bundle.VersionMatchesContent()
+            return string.IsNullOrWhiteSpace(bundle.Version) || !DataBundle.TextMatchesVersion(text!, bundle.Version)
                 ? new(FetchStatus.Invalid, null)
                 : new(FetchStatus.Ok, bundle);
         }

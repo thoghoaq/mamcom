@@ -51,4 +51,24 @@ public sealed record DataBundle(
 
     /// <summary>True when <see cref="Version"/> is the hash of the content: the file was not edited by hand. A method, not a property, so it is never written to the JSON.</summary>
     public bool VersionMatchesContent() => string.Equals(Version, ComputeVersion(), StringComparison.Ordinal);
+
+    /// <summary>
+    /// True when the text of a <c>data-bundle.json</c>, as it came, is the one its version was made from: the hash of the text with the
+    /// version left empty. The text is hashed as it came, not as this app would write it again, so a bundle made before the app learned a
+    /// field it can do without (ADR-028) is still whole: written again it would have the new field, and another hash.
+    /// </summary>
+    public static bool TextMatchesVersion(string text, string version)
+    {
+        ArgumentNullException.ThrowIfNull(text);
+
+        var stamp = $"\"version\": \"{version}\"";
+        var at = string.IsNullOrEmpty(version) ? -1 : text.IndexOf(stamp, StringComparison.Ordinal);
+        if (at < 0)
+        {
+            return false;
+        }
+
+        var unstamped = string.Concat(text.AsSpan(0, at), "\"version\": \"\"", text.AsSpan(at + stamp.Length));
+        return string.Equals(version, Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(unstamped)))[..VersionLength], StringComparison.Ordinal);
+    }
 }

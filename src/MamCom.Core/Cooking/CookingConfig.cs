@@ -10,8 +10,17 @@ namespace MamCom.Core.Cooking;
 /// <param name="RiceStepText">The one instruction of the rice pseudo-dish, as shown in cooking mode.</param>
 /// <param name="DefaultStoves">The stoves of a kitchen whose household has not said (ADR-028).</param>
 /// <param name="MaxStoves">The most stoves a household can choose.</param>
-public sealed record CookingConfig(int RiceActiveMinutes, int RicePassiveMinutes, string RiceStepText, int DefaultStoves, int MaxStoves)
+/// <remarks>
+/// The two stove values have defaults for bundles made before ADR-028: a phone keeps the bundle it has, and an app that was updated
+/// must still open with it. <c>cooking-defaults.json</c> says both all the same, so the numbers can be changed there.
+/// </remarks>
+public sealed record CookingConfig(int RiceActiveMinutes, int RicePassiveMinutes, string RiceStepText, int DefaultStoves = CookingConfig.StovesBeforeAdr028, int MaxStoves = CookingConfig.MaxStovesBeforeAdr028)
 {
+    /// <summary>What a bundle made before the stoves were known is read as.</summary>
+    public const int StovesBeforeAdr028 = 2;
+
+    public const int MaxStovesBeforeAdr028 = 4;
+
     /// <summary>The stoves of a household's kitchen: what it said, or <see cref="DefaultStoves"/>.</summary>
     public int StovesOf(Household household)
     {
