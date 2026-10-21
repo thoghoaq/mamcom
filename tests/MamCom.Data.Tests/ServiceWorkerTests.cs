@@ -90,6 +90,14 @@ public partial class ServiceWorkerTests
     }
 
     [Fact]
+    public void The_start_page_does_not_preload_the_runtime_because_the_worker_answers_for_it_and_chromium_then_warns_that_the_preload_was_not_used()
+    {
+        var page = File.ReadAllText(Path.Combine(JsFolder, "index.html"));
+
+        page.ShouldNotContain("rel=\"preload\"");
+    }
+
+    [Fact]
     public void The_start_page_names_its_own_icon_so_the_browser_does_not_ask_for_a_favicon_that_is_not_there()
     {
         var page = File.ReadAllText(Path.Combine(JsFolder, "index.html"));
