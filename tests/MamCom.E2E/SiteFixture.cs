@@ -170,6 +170,10 @@ public sealed class SiteFixture : IAsyncLifetime
         }
 
         File.Delete(Path.Combine(site, "data-report.md"));   // the report is not part of what is served (ADR-020)
+
+        // The host keeps its config to itself and answers 404 for it (Vercel, ADR-029); so does this server, or a worker that tries to keep
+        // the file would pass here and fail to install on the real site.
+        File.Delete(Path.Combine(site, "vercel.json"));
         return site;
     }
 

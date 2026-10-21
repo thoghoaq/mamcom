@@ -11,7 +11,10 @@ self.addEventListener('fetch', event => event.respondWith(onFetch(event)));
 const cacheNamePrefix = 'offline-cache-';
 const cacheName = `${cacheNamePrefix}${self.assetsManifest.version}`;
 const offlineAssetsInclude = [ /\.dll$/, /\.pdb$/, /\.wasm/, /\.html/, /\.js$/, /\.json$/, /\.css$/, /\.woff2?$/, /\.svg$/, /\.png$/, /\.jpe?g$/, /\.gif$/, /\.ico$/, /\.blat$/, /\.dat$/, /\.webmanifest$/ ];
-const offlineAssetsExclude = [ /^service-worker\.js$/ ];
+// Not kept by this worker: itself; the files of the data, which service-worker.data.js keeps by their version (ADR-020) and which the build of the
+// app may have seen in another version than the one deployed; and the config of the host, which the host does not serve (ADR-029), so that one
+// file missing does not make the whole install fail.
+const offlineAssetsExclude = [ /^service-worker\.js$/, /^data-/, /^images\//, /^vercel\.json$/ ];
 
 // Replace with your base path if you are hosting on a subfolder. Ensure there is a trailing '/'.
 const base = "/";

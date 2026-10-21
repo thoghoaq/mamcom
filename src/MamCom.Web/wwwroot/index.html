@@ -39,8 +39,12 @@
         <span class="dismiss">🗙</span>
     </div>
     <script src="device.js"></script>
-    <script src="_framework/blazor.webassembly#[.{fingerprint}].js"></script>
-    <script>navigator.serviceWorker.register('service-worker.js', { updateViaCache: 'none' });</script>
+    <script src="_framework/blazor.webassembly#[.{fingerprint}].js" autostart="false"></script>
+    <script>
+        // The worker that keeps the app for offline use downloads every file of the app when it is installed. On a first visit over a slow
+        // connection that would race the app for the same files, so it is registered once the app has started (ADR-029).
+        Blazor.start().then(() => navigator.serviceWorker.register('service-worker.js', { updateViaCache: 'none' }));
+    </script>
 </body>
 
 </html>

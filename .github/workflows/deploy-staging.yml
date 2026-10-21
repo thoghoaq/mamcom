@@ -1,8 +1,8 @@
 name: deploy-staging
 
-# The app and a bundle of the data, to the Azure Static Web Apps resource of staging (PLAN 3.10, ADR-029).
-# Runs after ci is green on main, or by hand. Until the owner has added the deployment token as the secret
-# AZURE_STATIC_WEB_APPS_API_TOKEN, it builds everything and says it skipped the upload, instead of failing.
+# The app and a bundle of the data, to the Vercel project of staging (PLAN 3.10, ADR-029): https://mamcom-pi.vercel.app
+# Runs after ci is green on main, or by hand. Until the owner has added a Vercel token as the secret VERCEL_TOKEN, it builds
+# everything and says it skipped the upload, instead of failing.
 
 on:
   workflow_run:
@@ -21,6 +21,10 @@ permissions:
 env:
   DOTNET_NOLOGO: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
+  # Which Vercel project: not secrets, the same ids `vercel link` writes to .vercel/project.json.
+  VERCEL_ORG_ID: team_yIhL8XHKZfi4dWdUeM4CfOIA
+  VERCEL_PROJECT_ID: prj_Vig05ORc1yTAMopaAOXiuPsjIo1j
+  SITE: https://mamcom-pi.vercel.app
 
 jobs:
   deploy:
@@ -40,9 +44,9 @@ jobs:
       - name: Publish the app
         run: dotnet publish src/MamCom.Web/MamCom.Web.csproj --configuration Release --output publish
 
-      # The bundle is deployed beside the app, not inside it (ADR-020). A published folder may carry a bundle of a local run and its
-      # compressed copies; they go, and the bundle of the data in the repository takes their place. Staging takes the dev bundle: no dish
-      # is reviewed yet, so a release bundle would be empty (ADR-011), and the app says "dữ liệu thử" on every page.
+      # The bundle is deployed beside the app, not inside it (ADR-020). A published folder may carry a bundle of a local run; it goes, and the
+      # bundle of the data in the repository takes its place. Staging takes the dev bundle: no dish is reviewed yet, so a release bundle would
+      # be empty (ADR-011), and the app says "dữ liệu thử" on every page. Vercel compresses what it serves, so the precompressed copies stay home.
       - name: Build the data bundle
         run: |
           rm -f publish/wwwroot/data-*
@@ -50,6 +54,7 @@ jobs:
           dotnet run --project tools/MamCom.DataBuilder --configuration Release -- build --out publish/wwwroot
           mkdir -p reports
           mv publish/wwwroot/data-report.md reports/data-report.md
+          find publish/wwwroot \( -name '*.br' -o -name '*.gz' \) -delete
 
       - name: Keep the data report
         uses: actions/upload-artifact@v7
@@ -57,34 +62,26 @@ jobs:
           name: data-report
           path: reports/data-report.md
 
-      - name: Is there a deployment token?
+      - name: Is there a Vercel token?
         id: token
         env:
-          TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
           if [ -n "$TOKEN" ]; then
             echo "present=true" >> "$GITHUB_OUTPUT"
           else
             echo "present=false" >> "$GITHUB_OUTPUT"
-            echo "::notice title=Staging not deployed::The secret AZURE_STATIC_WEB_APPS_API_TOKEN is not set. Everything was built; the upload was skipped (docs/deploy-staging.md)."
+            echo "::notice title=Staging not deployed::The secret VERCEL_TOKEN is not set. Everything was built; the upload was skipped (docs/deploy-staging.md)."
           fi
 
-      - name: Upload to Azure Static Web Apps
-        id: deploy
+      - name: Upload to Vercel
         if: steps.token.outputs.present == 'true'
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          action: upload
-          app_location: publish/wwwroot
-          output_location: ''
-          skip_app_build: true
-          skip_api_build: true
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: npx --yes vercel@50.1.3 deploy publish/wwwroot --prod --yes --token "$VERCEL_TOKEN"
 
       - name: The site answers with the app and the data
         if: steps.token.outputs.present == 'true'
-        env:
-          SITE: ${{ steps.deploy.outputs.static_web_app_url }}
         run: |
           set -e
           curl --fail --silent --show-error "$SITE/" | grep -q '_framework/blazor.webassembly'

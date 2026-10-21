@@ -105,6 +105,23 @@ public partial class ServiceWorkerTests
         page.ShouldContain("<link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"icon-192.png\" />");
     }
 
+    [Fact]
+    public void The_app_worker_does_not_keep_the_data_the_pictures_or_the_config_of_the_host_so_one_of_them_missing_cannot_fail_its_install()
+    {
+        var worker = File.ReadAllText(Path.Combine(JsFolder, "service-worker.published.js"));
+
+        worker.ShouldContain(@"const offlineAssetsExclude = [ /^service-worker\.js$/, /^data-/, /^images\//, /^vercel\.json$/ ];");
+    }
+
+    [Fact]
+    public void The_app_worker_is_registered_once_the_app_has_started_so_it_does_not_race_the_app_for_its_files()
+    {
+        var page = File.ReadAllText(Path.Combine(JsFolder, "index.html"));
+
+        page.ShouldContain("autostart=\"false\"");
+        page.ShouldContain("Blazor.start().then(() => navigator.serviceWorker.register('service-worker.js', { updateViaCache: 'none' }));");
+    }
+
     private sealed record NodeResult(int ExitCode, string Output);
 
     /// <summary>Runs node with the arguments; null when there is no node to run.</summary>
