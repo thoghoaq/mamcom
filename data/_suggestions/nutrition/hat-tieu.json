@@ -1,0 +1,66 @@
+{
+  "ingredientId": "hat-tieu",
+  "query": "spices pepper black",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 163,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 170931,
+      "description": "Spices, pepper, black",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170931/nutrients",
+      "per100g": {
+        "kcal": 251,
+        "proteinG": 10.4,
+        "fatG": 3.26,
+        "carbG": 64,
+        "fiberG": 25.3,
+        "sodiumMg": 20
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 170933,
+      "description": "Spices, pepper, white",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170933/nutrients",
+      "per100g": {
+        "kcal": 296,
+        "proteinG": 10.4,
+        "fatG": 2.12,
+        "carbG": 68.6,
+        "fiberG": 26.2,
+        "sodiumMg": 5
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 170932,
+      "description": "Spices, pepper, red or cayenne",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170932/nutrients",
+      "per100g": {
+        "kcal": 318,
+        "proteinG": 12,
+        "fatG": 17.3,
+        "carbG": 56.6,
+        "fiberG": 27.2,
+        "sodiumMg": 30
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

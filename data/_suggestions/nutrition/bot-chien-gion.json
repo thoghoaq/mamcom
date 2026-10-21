@@ -1,0 +1,66 @@
+{
+  "ingredientId": "bot-chien-gion",
+  "query": "flour wheat all purpose",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 579,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 790018,
+      "description": "Flour, wheat, all-purpose, unenriched, unbleached",
+      "dataType": "Foundation",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/790018/nutrients",
+      "per100g": {
+        "kcal": 362,
+        "proteinG": 12,
+        "fatG": 1.7,
+        "carbG": 74.6,
+        "fiberG": 3,
+        "sodiumMg": 2
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169761,
+      "description": "Wheat flour, white, all-purpose, unenriched",
+      "dataType": "SR Legacy",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169761/nutrients",
+      "per100g": {
+        "kcal": 364,
+        "proteinG": 10.3,
+        "fatG": 0.98,
+        "carbG": 76.3,
+        "fiberG": 2.7,
+        "sodiumMg": 2
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 168894,
+      "description": "Wheat flour, white, all-purpose, enriched, bleached",
+      "dataType": "SR Legacy",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168894/nutrients",
+      "per100g": {
+        "kcal": 364,
+        "proteinG": 10.3,
+        "fatG": 0.98,
+        "carbG": 76.3,
+        "fiberG": 2.7,
+        "sodiumMg": 2
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 4/4 từ khoá."
+    }
+  ]
+}

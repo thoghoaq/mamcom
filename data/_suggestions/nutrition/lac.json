@@ -1,0 +1,66 @@
+{
+  "ingredientId": "lac",
+  "query": "peanuts dry roasted",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1100,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 174262,
+      "description": "Peanuts, all types, dry-roasted, with salt",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174262/nutrients",
+      "per100g": {
+        "kcal": 587,
+        "proteinG": 24.4,
+        "fatG": 49.7,
+        "carbG": 21.3,
+        "fiberG": 8.4,
+        "sodiumMg": 410
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 173806,
+      "description": "Peanuts, all types, dry-roasted, without salt",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173806/nutrients",
+      "per100g": {
+        "kcal": 587,
+        "proteinG": 24.4,
+        "fatG": 49.7,
+        "carbG": 21.3,
+        "fiberG": 8.4,
+        "sodiumMg": 6
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 168599,
+      "description": "Nuts, mixed nuts, dry roasted, with peanuts, with salt added",
+      "dataType": "SR Legacy",
+      "foodCategory": "Nut and Seed Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168599/nutrients",
+      "per100g": {
+        "kcal": 594,
+        "proteinG": 17.3,
+        "fatG": 51.4,
+        "carbG": 25.4,
+        "fiberG": 9,
+        "sodiumMg": 345
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    }
+  ]
+}

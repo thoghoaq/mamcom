@@ -1,0 +1,66 @@
+{
+  "ingredientId": "dua-leo",
+  "query": "cucumber with peel raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1561,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 168409,
+      "description": "Cucumber, with peel, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168409/nutrients",
+      "per100g": {
+        "kcal": 15,
+        "proteinG": 0.65,
+        "fatG": 0.11,
+        "carbG": 3.63,
+        "fiberG": 0.5,
+        "sodiumMg": 2
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169225,
+      "description": "Cucumber, peeled, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169225/nutrients",
+      "per100g": {
+        "kcal": 10,
+        "proteinG": 0.59,
+        "fatG": 0.16,
+        "carbG": 2.16,
+        "fiberG": 0.7,
+        "sodiumMg": 2
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 167749,
+      "description": "Lemon peel, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Fruits and Fruit Juices",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167749/nutrients",
+      "per100g": {
+        "kcal": 47,
+        "proteinG": 1.5,
+        "fatG": 0.3,
+        "carbG": 16,
+        "fiberG": 10.6,
+        "sodiumMg": 6
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

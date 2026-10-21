@@ -1,66 +1,66 @@
 {
   "ingredientId": "bi-dao",
-  "query": "wax gourd raw",
+  "query": "waxgourd chinese preserving melon raw",
   "retrievedAt": "2026-10-21",
   "source": "usda-fdc",
-  "totalHits": 1561,
+  "totalHits": 1598,
   "candidates": [
     {
       "rank": 1,
-      "fdcId": 2747660,
-      "description": "Peppers, banana or Hungarian wax, seeded, raw",
-      "dataType": "Foundation",
+      "fdcId": 170069,
+      "description": "Waxgourd, (chinese preserving melon), raw",
+      "dataType": "SR Legacy",
       "foodCategory": "Vegetables and Vegetable Products",
-      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2747660/nutrients",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170069/nutrients",
       "per100g": {
-        "kcal": 23.9,
-        "proteinG": 0.723,
-        "fatG": 0.131,
-        "carbG": 4.97,
-        "fiberG": 1.79,
-        "sodiumMg": 0
+        "kcal": 13,
+        "proteinG": 0.4,
+        "fatG": 0.2,
+        "carbG": 3,
+        "fiberG": 2.9,
+        "sodiumMg": 111
       },
-      "kcalSource": "Energy (Atwater General Factors)",
+      "kcalSource": "Energy",
       "missing": [],
-      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá; năng lượng lấy từ 'Energy (Atwater General Factors)'."
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 5/5 từ khoá."
     },
     {
       "rank": 2,
-      "fdcId": 168414,
-      "description": "Gourd, dishcloth (towelgourd), raw",
-      "dataType": "SR Legacy",
-      "foodCategory": "Vegetables and Vegetable Products",
-      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168414/nutrients",
+      "fdcId": 746770,
+      "description": "Melons, cantaloupe, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Fruits and Fruit Juices",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/746770/nutrients",
       "per100g": {
-        "kcal": 20,
-        "proteinG": 1.2,
-        "fatG": 0.2,
-        "carbG": 4.35,
-        "fiberG": 1.1,
-        "sodiumMg": 3
+        "kcal": 34,
+        "proteinG": 0.82,
+        "fatG": 0.18,
+        "carbG": 8.16,
+        "fiberG": 0.8,
+        "sodiumMg": 30
       },
       "kcalSource": "Energy",
       "missing": [],
-      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/5 từ khoá."
     },
     {
       "rank": 3,
-      "fdcId": 169232,
-      "description": "Gourd, white-flowered (calabash), raw",
+      "fdcId": 169404,
+      "description": "Broccoli, chinese, raw",
       "dataType": "SR Legacy",
       "foodCategory": "Vegetables and Vegetable Products",
-      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169232/nutrients",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169404/nutrients",
       "per100g": {
-        "kcal": 14,
-        "proteinG": 0.62,
-        "fatG": 0.02,
-        "carbG": 3.39,
-        "fiberG": 0.5,
-        "sodiumMg": 2
+        "kcal": 26,
+        "proteinG": 1.2,
+        "fatG": 0.76,
+        "carbG": 4.67,
+        "fiberG": 2.6,
+        "sodiumMg": 7
       },
       "kcalSource": "Energy",
       "missing": [],
-      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/5 từ khoá."
     }
   ]
 }

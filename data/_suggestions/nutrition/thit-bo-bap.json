@@ -1,0 +1,66 @@
+{
+  "ingredientId": "thit-bo-bap",
+  "query": "beef shank raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 2295,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 169441,
+      "description": "Beef, shank crosscuts, separable lean only, trimmed to 1/4\" fat, choice, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Beef Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169441/nutrients",
+      "per100g": {
+        "kcal": 128,
+        "proteinG": 21.8,
+        "fatG": 3.85,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 63
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 172645,
+      "description": "Veal, shank, separable lean only, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Lamb, Veal, and Game Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172645/nutrients",
+      "per100g": {
+        "kcal": 94,
+        "proteinG": 19.8,
+        "fatG": 1.64,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 109
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 172648,
+      "description": "Veal, shank, separable lean and fat, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Lamb, Veal, and Game Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172648/nutrients",
+      "per100g": {
+        "kcal": 107,
+        "proteinG": 19.3,
+        "fatG": 3.3,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 107
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

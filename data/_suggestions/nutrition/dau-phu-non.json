@@ -1,0 +1,66 @@
+{
+  "ingredientId": "dau-phu-non",
+  "query": "tofu silken",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 34,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 172461,
+      "description": "MORI-NU, Tofu, silken, firm",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172461/nutrients",
+      "per100g": {
+        "kcal": 62,
+        "proteinG": 6.9,
+        "fatG": 2.7,
+        "carbG": 2.4,
+        "fiberG": 0.1,
+        "sodiumMg": 36
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 173786,
+      "description": "Vitasoy USA Azumaya, Silken Tofu",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173786/nutrients",
+      "per100g": {
+        "kcal": 43,
+        "proteinG": 4.82,
+        "fatG": 2.4,
+        "carbG": 0.58,
+        "fiberG": 0.2,
+        "sodiumMg": 2
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 174292,
+      "description": "MORI-NU, Tofu, silken, soft",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174292/nutrients",
+      "per100g": {
+        "kcal": 55,
+        "proteinG": 4.8,
+        "fatG": 2.7,
+        "carbG": 2.9,
+        "fiberG": 0.1,
+        "sodiumMg": 5
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/2 từ khoá."
+    }
+  ]
+}

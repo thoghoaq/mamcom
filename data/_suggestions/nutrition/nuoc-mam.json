@@ -1,0 +1,66 @@
+{
+  "ingredientId": "nuoc-mam",
+  "query": "sauce fish ready-to-serve",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 815,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 174531,
+      "description": "Sauce, fish, ready-to-serve",
+      "dataType": "SR Legacy",
+      "foodCategory": "Soups, Sauces, and Gravies",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174531/nutrients",
+      "per100g": {
+        "kcal": 35,
+        "proteinG": 5.06,
+        "fatG": 0.01,
+        "carbG": 3.64,
+        "fiberG": 0,
+        "sodiumMg": 7850
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 5/5 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 746777,
+      "description": "Sauce, salsa, ready-to-serve",
+      "dataType": "Foundation",
+      "foodCategory": "Soups, Sauces, and Gravies",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/746777/nutrients",
+      "per100g": {
+        "kcal": 29,
+        "proteinG": 1.44,
+        "fatG": 0.19,
+        "carbG": 6.74,
+        "fiberG": 1.8,
+        "sodiumMg": 656
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 4/5 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 332282,
+      "description": "Sauce, pasta, spaghetti/marinara, ready-to-serve",
+      "dataType": "Foundation",
+      "foodCategory": "Soups, Sauces, and Gravies",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/332282/nutrients",
+      "per100g": {
+        "kcal": 45,
+        "proteinG": 1.41,
+        "fatG": 1.48,
+        "carbG": 8.05,
+        "fiberG": 1.8,
+        "sodiumMg": 419
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 4/5 từ khoá."
+    }
+  ]
+}

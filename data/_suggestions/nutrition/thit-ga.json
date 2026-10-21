@@ -1,0 +1,66 @@
+{
+  "ingredientId": "thit-ga",
+  "query": "chicken broilers or fryers meat only raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 2692,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 171052,
+      "description": "Chicken, broilers or fryers, meat only, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171052/nutrients",
+      "per100g": {
+        "kcal": 119,
+        "proteinG": 21.4,
+        "fatG": 3.08,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 77
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 6/6 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 171073,
+      "description": "Chicken, broilers or fryers, back, meat only, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171073/nutrients",
+      "per100g": {
+        "kcal": 137,
+        "proteinG": 19.6,
+        "fatG": 5.92,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 82
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 6/6 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 173619,
+      "description": "Chicken, broilers or fryers, leg, meat only, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173619/nutrients",
+      "per100g": {
+        "kcal": 120,
+        "proteinG": 19.2,
+        "fatG": 4.22,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 96
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 6/6 từ khoá."
+    }
+  ]
+}

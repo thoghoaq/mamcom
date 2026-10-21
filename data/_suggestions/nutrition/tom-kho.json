@@ -1,0 +1,66 @@
+{
+  "ingredientId": "tom-kho",
+  "query": "Crustaceans, shrimp, mixed species, cooked, moist heat",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 2180,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 174206,
+      "description": "Crustaceans, crayfish, mixed species, wild, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174206/nutrients",
+      "per100g": {
+        "kcal": 77,
+        "proteinG": 16,
+        "fatG": 0.95,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 58
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/7 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 174211,
+      "description": "Crustaceans, spiny lobster, mixed species, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174211/nutrients",
+      "per100g": {
+        "kcal": 112,
+        "proteinG": 20.6,
+        "fatG": 1.51,
+        "carbG": 2.43,
+        "fiberG": 0,
+        "sodiumMg": 177
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/7 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 175169,
+      "description": "Crustaceans, crayfish, mixed species, farmed, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/175169/nutrients",
+      "per100g": {
+        "kcal": 72,
+        "proteinG": 14.8,
+        "fatG": 0.97,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 62
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/7 từ khoá."
+    }
+  ]
+}

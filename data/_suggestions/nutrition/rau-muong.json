@@ -1,0 +1,66 @@
+{
+  "ingredientId": "rau-muong",
+  "query": "water spinach raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1794,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 168462,
+      "description": "Spinach, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168462/nutrients",
+      "per100g": {
+        "kcal": 23,
+        "proteinG": 2.86,
+        "fatG": 0.39,
+        "carbG": 3.63,
+        "fiberG": 2.2,
+        "sodiumMg": 79
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169301,
+      "description": "Water convolvulus,raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169301/nutrients",
+      "per100g": {
+        "kcal": 19,
+        "proteinG": 2.6,
+        "fatG": 0.2,
+        "carbG": 3.13,
+        "fiberG": 2.1,
+        "sodiumMg": 113
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 168438,
+      "description": "Mustard spinach, (tendergreen), raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168438/nutrients",
+      "per100g": {
+        "kcal": 22,
+        "proteinG": 2.2,
+        "fatG": 0.3,
+        "carbG": 3.9,
+        "fiberG": 2.8,
+        "sodiumMg": 21
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

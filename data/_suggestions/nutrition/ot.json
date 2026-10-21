@@ -1,0 +1,66 @@
+{
+  "ingredientId": "ot",
+  "query": "peppers hot chili raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1646,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 170106,
+      "description": "Peppers, hot chili, red, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170106/nutrients",
+      "per100g": {
+        "kcal": 40,
+        "proteinG": 1.87,
+        "fatG": 0.44,
+        "carbG": 8.81,
+        "fiberG": 1.5,
+        "sodiumMg": 9
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 170497,
+      "description": "Peppers, hot chili, green, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170497/nutrients",
+      "per100g": {
+        "kcal": 40,
+        "proteinG": 2,
+        "fatG": 0.2,
+        "carbG": 9.46,
+        "fiberG": 1.5,
+        "sodiumMg": 7
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 2258588,
+      "description": "Peppers, bell, green, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2258588/nutrients",
+      "per100g": {
+        "kcal": 19.7,
+        "proteinG": 0.715,
+        "fatG": 0.106,
+        "carbG": 4.78,
+        "fiberG": 0.942,
+        "sodiumMg": 0
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/4 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    }
+  ]
+}

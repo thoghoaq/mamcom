@@ -1,0 +1,66 @@
+{
+  "ingredientId": "dau-an",
+  "query": "oil soybean salad or cooking",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 2106,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 171411,
+      "description": "Oil, soybean, salad or cooking",
+      "dataType": "SR Legacy",
+      "foodCategory": "Fats and Oils",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171411/nutrients",
+      "per100g": {
+        "kcal": 884,
+        "proteinG": 0,
+        "fatG": 100,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 0
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 171012,
+      "description": "Oil, soybean, salad or cooking, (partially hydrogenated)",
+      "dataType": "SR Legacy",
+      "foodCategory": "Fats and Oils",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171012/nutrients",
+      "per100g": {
+        "kcal": 884,
+        "proteinG": 0,
+        "fatG": 100,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 0
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 173565,
+      "description": "Oil, soybean, salad or cooking, (partially hydrogenated) and cottonseed",
+      "dataType": "SR Legacy",
+      "foodCategory": "Fats and Oils",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173565/nutrients",
+      "per100g": {
+        "kcal": 884,
+        "proteinG": 0,
+        "fatG": 100,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 0
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 4/4 từ khoá."
+    }
+  ]
+}

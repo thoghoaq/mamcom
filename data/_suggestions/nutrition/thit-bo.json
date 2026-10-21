@@ -1,0 +1,66 @@
+{
+  "ingredientId": "thit-bo",
+  "query": "beef round raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 2275,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 172128,
+      "description": "Beef, round, outside round, bottom round, steak, separable lean and fat, trimmed to 0\" fat, choice, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Beef Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172128/nutrients",
+      "per100g": {
+        "kcal": 150,
+        "proteinG": 21.2,
+        "fatG": 6.59,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 63
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 172130,
+      "description": "Beef, round, outside round, bottom round, steak, separable lean and fat, trimmed to 0\" fat, select, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Beef Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172130/nutrients",
+      "per100g": {
+        "kcal": 129,
+        "proteinG": 22.2,
+        "fatG": 3.83,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 62
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 173371,
+      "description": "Beef, round, outside round, bottom round, steak, separable lean and fat, trimmed to 0\" fat, all grades, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Beef Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173371/nutrients",
+      "per100g": {
+        "kcal": 142,
+        "proteinG": 21.6,
+        "fatG": 5.53,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 62
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    }
+  ]
+}

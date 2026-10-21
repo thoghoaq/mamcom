@@ -1,0 +1,66 @@
+{
+  "ingredientId": "tom",
+  "query": "shrimp raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1568,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 174210,
+      "description": "Crustaceans, shrimp, mixed species, raw (may contain additives to retain moisture)",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174210/nutrients",
+      "per100g": {
+        "kcal": 71,
+        "proteinG": 13.6,
+        "fatG": 1.01,
+        "carbG": 0.91,
+        "fiberG": 0,
+        "sodiumMg": 566
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 747447,
+      "description": "Broccoli, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/747447/nutrients",
+      "per100g": {
+        "kcal": 31,
+        "proteinG": 2.57,
+        "fatG": 0.34,
+        "carbG": 6.27,
+        "fiberG": 2.4,
+        "sodiumMg": 36
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 2685576,
+      "description": "Beets, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2685576/nutrients",
+      "per100g": {
+        "kcal": 41,
+        "proteinG": 1.69,
+        "fatG": 0.302,
+        "carbG": 8.79,
+        "fiberG": 3.12,
+        "sodiumMg": 112
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/2 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    }
+  ]
+}

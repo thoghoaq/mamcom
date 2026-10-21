@@ -1,0 +1,66 @@
+{
+  "ingredientId": "mang-tuoi",
+  "query": "bamboo shoots raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1560,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 169210,
+      "description": "Bamboo shoots, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169210/nutrients",
+      "per100g": {
+        "kcal": 27,
+        "proteinG": 2.6,
+        "fatG": 0.3,
+        "carbG": 5.2,
+        "fiberG": 2.2,
+        "sodiumMg": 4
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 170432,
+      "description": "Pokeberry shoots, (poke), raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170432/nutrients",
+      "per100g": {
+        "kcal": 23,
+        "proteinG": 2.6,
+        "fatG": 0.4,
+        "carbG": 3.7,
+        "fiberG": 1.7,
+        "sodiumMg": 23
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 2685576,
+      "description": "Beets, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2685576/nutrients",
+      "per100g": {
+        "kcal": 41,
+        "proteinG": 1.69,
+        "fatG": 0.302,
+        "carbG": 8.79,
+        "fiberG": 3.12,
+        "sodiumMg": 112
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/3 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    }
+  ]
+}

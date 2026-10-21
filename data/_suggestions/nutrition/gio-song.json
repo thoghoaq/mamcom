@@ -1,0 +1,66 @@
+{
+  "ingredientId": "gio-song",
+  "query": "pork sausage raw ground",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 2106,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 173859,
+      "description": "Sausage, pork, chorizo, link or ground, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Sausages and Luncheon Meats",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173859/nutrients",
+      "per100g": {
+        "kcal": 296,
+        "proteinG": 13.6,
+        "fatG": 25.1,
+        "carbG": 3.78,
+        "fiberG": 0,
+        "sodiumMg": 788
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 167902,
+      "description": "Pork, fresh, ground, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Pork Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167902/nutrients",
+      "per100g": {
+        "kcal": 263,
+        "proteinG": 16.9,
+        "fatG": 21.2,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 56
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 171631,
+      "description": "Sausage, Italian, pork, mild, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Sausages and Luncheon Meats",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171631/nutrients",
+      "per100g": {
+        "kcal": 290,
+        "proteinG": 13.9,
+        "fatG": 24.3,
+        "carbG": 2.97,
+        "fiberG": 0,
+        "sodiumMg": 563
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/4 từ khoá."
+    }
+  ]
+}

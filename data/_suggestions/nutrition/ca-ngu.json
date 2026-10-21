@@ -1,0 +1,66 @@
+{
+  "ingredientId": "ca-ngu",
+  "query": "tuna fresh skipjack raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1759,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 175156,
+      "description": "Fish, tuna, fresh, skipjack, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/175156/nutrients",
+      "per100g": {
+        "kcal": 103,
+        "proteinG": 22,
+        "fatG": 1.01,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 37
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 173706,
+      "description": "Fish, tuna, fresh, bluefin, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173706/nutrients",
+      "per100g": {
+        "kcal": 144,
+        "proteinG": 23.3,
+        "fatG": 4.9,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 39
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 175159,
+      "description": "Fish, tuna, fresh, yellowfin, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/175159/nutrients",
+      "per100g": {
+        "kcal": 109,
+        "proteinG": 24.4,
+        "fatG": 0.49,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 45
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/4 từ khoá."
+    }
+  ]
+}

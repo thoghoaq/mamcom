@@ -1,0 +1,66 @@
+{
+  "ingredientId": "dua",
+  "query": "Nuts, coconut water (liquid from coconuts)",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 730,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 170172,
+      "description": "Nuts, coconut milk, raw (liquid expressed from grated meat and water)",
+      "dataType": "SR Legacy",
+      "foodCategory": "Nut and Seed Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170172/nutrients",
+      "per100g": {
+        "kcal": 230,
+        "proteinG": 2.29,
+        "fatG": 23.8,
+        "carbG": 5.54,
+        "fiberG": 2.2,
+        "sodiumMg": 15
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 5/5 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 170580,
+      "description": "Nuts, coconut cream, raw (liquid expressed from grated meat)",
+      "dataType": "SR Legacy",
+      "foodCategory": "Nut and Seed Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170580/nutrients",
+      "per100g": {
+        "kcal": 330,
+        "proteinG": 3.63,
+        "fatG": 34.7,
+        "carbG": 6.65,
+        "fiberG": 2.2,
+        "sodiumMg": 4
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/5 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 170169,
+      "description": "Nuts, coconut meat, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Nut and Seed Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170169/nutrients",
+      "per100g": {
+        "kcal": 354,
+        "proteinG": 3.33,
+        "fatG": 33.5,
+        "carbG": 15.2,
+        "fiberG": 9,
+        "sodiumMg": 20
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/5 từ khoá."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "ingredientId": "kho-qua",
+  "query": "balsam-pear bitter gourd pods raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1604,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 168393,
+      "description": "Balsam-pear (bitter gourd), pods, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168393/nutrients",
+      "per100g": {
+        "kcal": 17,
+        "proteinG": 1,
+        "fatG": 0.17,
+        "carbG": 3.7,
+        "fiberG": 2.8,
+        "sodiumMg": 5
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 6/6 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 746773,
+      "description": "Pears, raw, bartlett",
+      "dataType": "Foundation",
+      "foodCategory": "Fruits and Fruit Juices",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/746773/nutrients",
+      "per100g": {
+        "kcal": 57,
+        "proteinG": 0.38,
+        "fatG": 0.16,
+        "carbG": 15.1,
+        "fiberG": 3.1,
+        "sodiumMg": 7
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/6 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 2710836,
+      "description": "Pear, Anjou, green, with skin, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Fruits and Fruit Juices",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2710836/nutrients",
+      "per100g": {
+        "kcal": 57.3,
+        "proteinG": 0.312,
+        "fatG": 0.371,
+        "carbG": 14.8,
+        "fiberG": 2.64,
+        "sodiumMg": 0.398
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/6 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    }
+  ]
+}

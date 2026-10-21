@@ -1,0 +1,66 @@
+{
+  "ingredientId": "gia-do",
+  "query": "mung bean sprouts raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1787,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 169957,
+      "description": "Mung beans, mature seeds, sprouted, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169957/nutrients",
+      "per100g": {
+        "kcal": 30,
+        "proteinG": 3.04,
+        "fatG": 0.18,
+        "carbG": 5.94,
+        "fiberG": 1.8,
+        "sodiumMg": 6
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 174256,
+      "description": "Mung beans, mature seeds, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174256/nutrients",
+      "per100g": {
+        "kcal": 347,
+        "proteinG": 23.9,
+        "fatG": 1.15,
+        "carbG": 62.6,
+        "fiberG": 16.3,
+        "sodiumMg": 15
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 2685575,
+      "description": "Brussels sprouts, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2685575/nutrients",
+      "per100g": {
+        "kcal": 48.8,
+        "proteinG": 3.98,
+        "fatG": 0.565,
+        "carbG": 9.62,
+        "fiberG": 4.78,
+        "sodiumMg": 25.7
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/4 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    }
+  ]
+}

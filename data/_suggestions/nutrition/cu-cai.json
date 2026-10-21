@@ -1,0 +1,66 @@
+{
+  "ingredientId": "cu-cai",
+  "query": "radishes oriental raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1558,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 168451,
+      "description": "Radishes, oriental, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168451/nutrients",
+      "per100g": {
+        "kcal": 18,
+        "proteinG": 0.6,
+        "fatG": 0.1,
+        "carbG": 4.1,
+        "fiberG": 1.6,
+        "sodiumMg": 21
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 2747665,
+      "description": "Radishes, red, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2747665/nutrients",
+      "per100g": {
+        "kcal": 19.6,
+        "proteinG": 0.656,
+        "fatG": 0.0831,
+        "carbG": 4.06,
+        "fiberG": 1.31,
+        "sodiumMg": 51.2
+      },
+      "kcalSource": "Energy (Atwater General Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá; năng lượng lấy từ 'Energy (Atwater General Factors)'."
+    },
+    {
+      "rank": 3,
+      "fdcId": 169276,
+      "description": "Radishes, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169276/nutrients",
+      "per100g": {
+        "kcal": 16,
+        "proteinG": 0.68,
+        "fatG": 0.1,
+        "carbG": 3.4,
+        "fiberG": 1.6,
+        "sodiumMg": 39
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

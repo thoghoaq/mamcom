@@ -1,0 +1,66 @@
+{
+  "ingredientId": "thit-bo-than",
+  "query": "beef tenderloin raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 2272,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 173109,
+      "description": "Beef, New Zealand, imported, tenderloin, separable lean and fat, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Beef Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173109/nutrients",
+      "per100g": {
+        "kcal": 146,
+        "proteinG": 21,
+        "fatG": 6.88,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 39
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 174736,
+      "description": "Beef, New Zealand, imported, tenderloin, separable lean only, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Beef Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174736/nutrients",
+      "per100g": {
+        "kcal": 140,
+        "proteinG": 21.2,
+        "fatG": 6.1,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 39
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 169547,
+      "description": "Beef, tenderloin, separable lean and fat, trimmed to 1/8\" fat, prime, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Beef Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169547/nutrients",
+      "per100g": {
+        "kcal": 274,
+        "proteinG": 18.2,
+        "fatG": 21.8,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 49
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    }
+  ]
+}

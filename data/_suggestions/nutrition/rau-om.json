@@ -1,0 +1,66 @@
+{
+  "ingredientId": "rau-om",
+  "query": "rice paddy herb raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1749,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 2710821,
+      "description": "Wild rice, dry, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2710821/nutrients",
+      "per100g": {
+        "kcal": 359,
+        "proteinG": 12.8,
+        "fatG": 1.7,
+        "carbG": 75.7,
+        "fiberG": 4.26,
+        "sodiumMg": 1.01
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/4 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    },
+    {
+      "rank": 2,
+      "fdcId": 2710825,
+      "description": "Rice, black, unenriched, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2710825/nutrients",
+      "per100g": {
+        "kcal": 361,
+        "proteinG": 7.57,
+        "fatG": 3.44,
+        "carbG": 77.2,
+        "fiberG": 4.18,
+        "sodiumMg": 0
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/4 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    },
+    {
+      "rank": 3,
+      "fdcId": 2710838,
+      "description": "Rice, red, unenriched, dry, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2710838/nutrients",
+      "per100g": {
+        "kcal": 360,
+        "proteinG": 8.56,
+        "fatG": 3.44,
+        "carbG": 76.2,
+        "fiberG": 4.2,
+        "sodiumMg": 0.438
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/4 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    }
+  ]
+}

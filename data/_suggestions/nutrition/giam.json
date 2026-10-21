@@ -1,0 +1,66 @@
+{
+  "ingredientId": "giam",
+  "query": "vinegar",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 5,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 172237,
+      "description": "Vinegar, distilled",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172237/nutrients",
+      "per100g": {
+        "kcal": 18,
+        "proteinG": 0,
+        "fatG": 0,
+        "carbG": 0.04,
+        "fiberG": 0,
+        "sodiumMg": 2
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/1 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 173469,
+      "description": "Vinegar, cider",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173469/nutrients",
+      "per100g": {
+        "kcal": 21,
+        "proteinG": 0,
+        "fatG": 0,
+        "carbG": 0.93,
+        "fiberG": 0,
+        "sodiumMg": 5
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/1 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 172240,
+      "description": "Vinegar, red wine",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172240/nutrients",
+      "per100g": {
+        "kcal": 19,
+        "proteinG": 0.04,
+        "fatG": 0,
+        "carbG": 0.27,
+        "fiberG": 0,
+        "sodiumMg": 8
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/1 từ khoá."
+    }
+  ]
+}

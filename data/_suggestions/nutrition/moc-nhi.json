@@ -1,0 +1,68 @@
+{
+  "ingredientId": "moc-nhi",
+  "query": "fungi cloud ears dried",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 131,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 169237,
+      "description": "Jew's ear, (pepeao), raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169237/nutrients",
+      "per100g": {
+        "kcal": 25,
+        "proteinG": 0.48,
+        "fatG": 0.04,
+        "carbG": 6.75,
+        "fiberG": null,
+        "sodiumMg": 9
+      },
+      "kcalSource": "Energy",
+      "missing": [
+        "fiberG"
+      ],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; thiếu: chất xơ; khớp 1/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 168581,
+      "description": "Fungi, Cloud ears, dried",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168581/nutrients",
+      "per100g": {
+        "kcal": 284,
+        "proteinG": 9.25,
+        "fatG": 0.73,
+        "carbG": 73,
+        "fiberG": 70.1,
+        "sodiumMg": 35
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 746768,
+      "description": "Figs, dried, uncooked",
+      "dataType": "Foundation",
+      "foodCategory": "Fruits and Fruit Juices",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/746768/nutrients",
+      "per100g": {
+        "kcal": 249,
+        "proteinG": 3.3,
+        "fatG": 0.92,
+        "carbG": 63.9,
+        "fiberG": 9.8,
+        "sodiumMg": 10
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/4 từ khoá."
+    }
+  ]
+}

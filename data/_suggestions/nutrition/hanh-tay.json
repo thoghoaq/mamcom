@@ -1,0 +1,66 @@
+{
+  "ingredientId": "hanh-tay",
+  "query": "onions raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1601,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 790577,
+      "description": "Onions, red, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/790577/nutrients",
+      "per100g": {
+        "kcal": 44,
+        "proteinG": 0.94,
+        "fatG": 0.1,
+        "carbG": 9.93,
+        "fiberG": 2.2,
+        "sodiumMg": 1
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 790646,
+      "description": "Onions, yellow, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/790646/nutrients",
+      "per100g": {
+        "kcal": 38,
+        "proteinG": 0.83,
+        "fatG": 0.05,
+        "carbG": 8.61,
+        "fiberG": 1.9,
+        "sodiumMg": 1
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 1104962,
+      "description": "Onions, white, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/1104962/nutrients",
+      "per100g": {
+        "kcal": 35,
+        "proteinG": 0.89,
+        "fatG": 0.13,
+        "carbG": 7.68,
+        "fiberG": 1.2,
+        "sodiumMg": 2
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    }
+  ]
+}

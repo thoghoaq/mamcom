@@ -1,0 +1,66 @@
+{
+  "ingredientId": "ca-thu",
+  "query": "mackerel raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1558,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 173673,
+      "description": "Fish, mackerel, spanish, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173673/nutrients",
+      "per100g": {
+        "kcal": 139,
+        "proteinG": 19.3,
+        "fatG": 6.3,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 59
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 175119,
+      "description": "Fish, mackerel, Atlantic, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/175119/nutrients",
+      "per100g": {
+        "kcal": 205,
+        "proteinG": 18.6,
+        "fatG": 13.9,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 90
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 175122,
+      "description": "Fish, mackerel, king, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/175122/nutrients",
+      "per100g": {
+        "kcal": 105,
+        "proteinG": 20.3,
+        "fatG": 2,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 158
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    }
+  ]
+}

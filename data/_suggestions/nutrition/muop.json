@@ -1,0 +1,66 @@
+{
+  "ingredientId": "muop",
+  "query": "loofah gourd raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1561,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 168414,
+      "description": "Gourd, dishcloth (towelgourd), raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168414/nutrients",
+      "per100g": {
+        "kcal": 20,
+        "proteinG": 1.2,
+        "fatG": 0.2,
+        "carbG": 4.35,
+        "fiberG": 1.1,
+        "sodiumMg": 3
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169232,
+      "description": "Gourd, white-flowered (calabash), raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169232/nutrients",
+      "per100g": {
+        "kcal": 14,
+        "proteinG": 0.62,
+        "fatG": 0.02,
+        "carbG": 3.39,
+        "fiberG": 0.5,
+        "sodiumMg": 2
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 168393,
+      "description": "Balsam-pear (bitter gourd), pods, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168393/nutrients",
+      "per100g": {
+        "kcal": 17,
+        "proteinG": 1,
+        "fatG": 0.17,
+        "carbG": 3.7,
+        "fiberG": 2.8,
+        "sodiumMg": 5
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

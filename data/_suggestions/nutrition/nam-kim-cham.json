@@ -1,0 +1,66 @@
+{
+  "ingredientId": "nam-kim-cham",
+  "query": "mushrooms enoki raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1593,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 169382,
+      "description": "Mushrooms, enoki, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169382/nutrients",
+      "per100g": {
+        "kcal": 37,
+        "proteinG": 2.66,
+        "fatG": 0.29,
+        "carbG": 7.81,
+        "fiberG": 2.7,
+        "sodiumMg": 3
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 168422,
+      "description": "Mushrooms, Chanterelle, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168422/nutrients",
+      "per100g": {
+        "kcal": 32,
+        "proteinG": 1.49,
+        "fatG": 0.53,
+        "carbG": 6.86,
+        "fiberG": 3.8,
+        "sodiumMg": 9
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 168423,
+      "description": "Mushrooms, morel, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168423/nutrients",
+      "per100g": {
+        "kcal": 31,
+        "proteinG": 3.12,
+        "fatG": 0.57,
+        "carbG": 5.1,
+        "fiberG": 2.8,
+        "sodiumMg": 21
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

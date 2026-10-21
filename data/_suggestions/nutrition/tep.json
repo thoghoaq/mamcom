@@ -1,0 +1,66 @@
+{
+  "ingredientId": "tep",
+  "query": "crustaceans shrimp raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1580,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 174210,
+      "description": "Crustaceans, shrimp, mixed species, raw (may contain additives to retain moisture)",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174210/nutrients",
+      "per100g": {
+        "kcal": 71,
+        "proteinG": 13.6,
+        "fatG": 1.01,
+        "carbG": 0.91,
+        "fiberG": 0,
+        "sodiumMg": 566
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 171968,
+      "description": "Crustaceans, crab, dungeness, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171968/nutrients",
+      "per100g": {
+        "kcal": 86,
+        "proteinG": 17.4,
+        "fatG": 0.97,
+        "carbG": 0.74,
+        "fiberG": 0,
+        "sodiumMg": 295
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 171969,
+      "description": "Crustaceans, crab, queen, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171969/nutrients",
+      "per100g": {
+        "kcal": 90,
+        "proteinG": 18.5,
+        "fatG": 1.18,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 539
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

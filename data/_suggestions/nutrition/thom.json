@@ -1,0 +1,66 @@
+{
+  "ingredientId": "thom",
+  "query": "pineapple raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1591,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 2346398,
+      "description": "Pineapple, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Fruits and Fruit Juices",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2346398/nutrients",
+      "per100g": {
+        "kcal": 54,
+        "proteinG": 0.461,
+        "fatG": 0.211,
+        "carbG": 14.1,
+        "fiberG": 0.935,
+        "sodiumMg": 0
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169124,
+      "description": "Pineapple, raw, all varieties",
+      "dataType": "SR Legacy",
+      "foodCategory": "Fruits and Fruit Juices",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169124/nutrients",
+      "per100g": {
+        "kcal": 50,
+        "proteinG": 0.54,
+        "fatG": 0.12,
+        "carbG": 13.1,
+        "fiberG": 1.4,
+        "sodiumMg": 1
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 168194,
+      "description": "Pineapple, raw, extra sweet variety",
+      "dataType": "SR Legacy",
+      "foodCategory": "Fruits and Fruit Juices",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168194/nutrients",
+      "per100g": {
+        "kcal": 51,
+        "proteinG": 0.53,
+        "fatG": 0.11,
+        "carbG": 13.5,
+        "fiberG": 1.4,
+        "sodiumMg": 1
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    }
+  ]
+}

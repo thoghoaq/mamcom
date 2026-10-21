@@ -1,0 +1,66 @@
+{
+  "ingredientId": "ca-tim",
+  "query": "eggplant raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1555,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 2685577,
+      "description": "Eggplant, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2685577/nutrients",
+      "per100g": {
+        "kcal": 22.4,
+        "proteinG": 0.852,
+        "fatG": 0.12,
+        "carbG": 5.4,
+        "fiberG": 2.45,
+        "sodiumMg": 0.442
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169228,
+      "description": "Eggplant, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169228/nutrients",
+      "per100g": {
+        "kcal": 25,
+        "proteinG": 0.98,
+        "fatG": 0.18,
+        "carbG": 5.88,
+        "fiberG": 3,
+        "sodiumMg": 2
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 747447,
+      "description": "Broccoli, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/747447/nutrients",
+      "per100g": {
+        "kcal": 31,
+        "proteinG": 2.57,
+        "fatG": 0.34,
+        "carbG": 6.27,
+        "fiberG": 2.4,
+        "sodiumMg": 36
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/2 từ khoá."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "ingredientId": "ca-bong",
+  "query": "goby fish raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1716,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 171949,
+      "description": "Fish, bluefish, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171949/nutrients",
+      "per100g": {
+        "kcal": 124,
+        "proteinG": 20,
+        "fatG": 4.24,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 60
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 171950,
+      "description": "Fish, burbot, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171950/nutrients",
+      "per100g": {
+        "kcal": 90,
+        "proteinG": 19.3,
+        "fatG": 0.81,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 97
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 171951,
+      "description": "Fish, butterfish, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171951/nutrients",
+      "per100g": {
+        "kcal": 146,
+        "proteinG": 17.3,
+        "fatG": 8.02,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 89
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

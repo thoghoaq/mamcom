@@ -1,0 +1,66 @@
+{
+  "ingredientId": "thit-vit",
+  "query": "duck meat and skin raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 2188,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 172408,
+      "description": "Duck, domesticated, meat and skin, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172408/nutrients",
+      "per100g": {
+        "kcal": 404,
+        "proteinG": 11.5,
+        "fatG": 39.3,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 63
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 174468,
+      "description": "Duck, wild, meat and skin, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174468/nutrients",
+      "per100g": {
+        "kcal": 211,
+        "proteinG": 17.4,
+        "fatG": 15.2,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 56
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 172410,
+      "description": "Duck, domesticated, meat only, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172410/nutrients",
+      "per100g": {
+        "kcal": 135,
+        "proteinG": 18.3,
+        "fatG": 5.95,
+        "carbG": 0.94,
+        "fiberG": 0,
+        "sodiumMg": 74
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/4 từ khoá."
+    }
+  ]
+}

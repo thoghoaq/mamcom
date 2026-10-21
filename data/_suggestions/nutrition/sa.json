@@ -1,0 +1,66 @@
+{
+  "ingredientId": "sa",
+  "query": "lemon grass citronella raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1598,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 168608,
+      "description": "Beef, grass-fed, ground, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Beef Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168608/nutrients",
+      "per100g": {
+        "kcal": 198,
+        "proteinG": 19.4,
+        "fatG": 12.7,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 68
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 175293,
+      "description": "Bison, ground, grass-fed, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Lamb, Veal, and Game Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/175293/nutrients",
+      "per100g": {
+        "kcal": 146,
+        "proteinG": 20.2,
+        "fatG": 7.21,
+        "carbG": 0.05,
+        "fiberG": 0,
+        "sodiumMg": 70
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 167747,
+      "description": "Lemon juice, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Fruits and Fruit Juices",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167747/nutrients",
+      "per100g": {
+        "kcal": 22,
+        "proteinG": 0.35,
+        "fatG": 0.24,
+        "carbG": 6.9,
+        "fiberG": 0.3,
+        "sodiumMg": 1
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/4 từ khoá."
+    }
+  ]
+}

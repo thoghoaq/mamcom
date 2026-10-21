@@ -1,0 +1,66 @@
+{
+  "ingredientId": "suon-non",
+  "query": "pork spareribs raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1906,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 167853,
+      "description": "Pork, fresh, spareribs, separable lean and fat, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Pork Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167853/nutrients",
+      "per100g": {
+        "kcal": 277,
+        "proteinG": 15.5,
+        "fatG": 23.4,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 81
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 167888,
+      "description": "Pork, fresh, composite of trimmed retail cuts (leg, loin, shoulder, and spareribs), separable lean and fat, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Pork Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167888/nutrients",
+      "per100g": {
+        "kcal": 216,
+        "proteinG": 19,
+        "fatG": 15,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 55
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 167811,
+      "description": "Pork, fresh, backfat, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Pork Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167811/nutrients",
+      "per100g": {
+        "kcal": 812,
+        "proteinG": 2.92,
+        "fatG": 88.7,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 11
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

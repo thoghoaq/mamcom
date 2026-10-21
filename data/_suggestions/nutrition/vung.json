@@ -1,0 +1,66 @@
+{
+  "ingredientId": "vung",
+  "query": "seeds sesame seeds whole dried",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 803,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 170144,
+      "description": "Seeds, breadfruit seeds, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Nut and Seed Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170144/nutrients",
+      "per100g": {
+        "kcal": 191,
+        "proteinG": 7.4,
+        "fatG": 5.59,
+        "carbG": 29.2,
+        "fiberG": 5.2,
+        "sodiumMg": 25
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 170150,
+      "description": "Seeds, sesame seeds, whole, dried",
+      "dataType": "SR Legacy",
+      "foodCategory": "Nut and Seed Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170150/nutrients",
+      "per100g": {
+        "kcal": 573,
+        "proteinG": 17.7,
+        "fatG": 49.7,
+        "carbG": 23.4,
+        "fiberG": 11.8,
+        "sodiumMg": 11
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 169412,
+      "description": "Seeds, sesame seed kernels, dried (decorticated)",
+      "dataType": "SR Legacy",
+      "foodCategory": "Nut and Seed Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169412/nutrients",
+      "per100g": {
+        "kcal": 631,
+        "proteinG": 20.4,
+        "fatG": 61.2,
+        "carbG": 11.7,
+        "fiberG": 11.6,
+        "sodiumMg": 47
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/4 từ khoá."
+    }
+  ]
+}

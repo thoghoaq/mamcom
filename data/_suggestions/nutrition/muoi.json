@@ -1,0 +1,66 @@
+{
+  "ingredientId": "muoi",
+  "query": "salt table",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 678,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 173468,
+      "description": "Salt, table",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173468/nutrients",
+      "per100g": {
+        "kcal": 0,
+        "proteinG": 0,
+        "fatG": 0,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 38800
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169578,
+      "description": "Syrups, table blends, pancake",
+      "dataType": "SR Legacy",
+      "foodCategory": "Sweets",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169578/nutrients",
+      "per100g": {
+        "kcal": 234,
+        "proteinG": 0,
+        "fatG": 0,
+        "carbG": 61.5,
+        "fiberG": 0,
+        "sodiumMg": 82
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 167584,
+      "description": "Syrups, table blends, pancake, with butter",
+      "dataType": "SR Legacy",
+      "foodCategory": "Sweets",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167584/nutrients",
+      "per100g": {
+        "kcal": 291,
+        "proteinG": 0,
+        "fatG": 0.09,
+        "carbG": 72.4,
+        "fiberG": 0,
+        "sodiumMg": 287
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/2 từ khoá."
+    }
+  ]
+}

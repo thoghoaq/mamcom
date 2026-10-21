@@ -1,0 +1,66 @@
+{
+  "ingredientId": "nam-dui-ga",
+  "query": "mushrooms king oyster raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1636,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 168580,
+      "description": "Mushrooms, oyster, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168580/nutrients",
+      "per100g": {
+        "kcal": 33,
+        "proteinG": 3.31,
+        "fatG": 0.41,
+        "carbG": 6.09,
+        "fiberG": 2.3,
+        "sodiumMg": 18
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 172838,
+      "description": "Emu, oyster, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172838/nutrients",
+      "per100g": {
+        "kcal": 141,
+        "proteinG": 22.8,
+        "fatG": 4.86,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 150
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 174487,
+      "description": "Ostrich, oyster, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174487/nutrients",
+      "per100g": {
+        "kcal": 125,
+        "proteinG": 21.6,
+        "fatG": 3.67,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 83
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/4 từ khoá."
+    }
+  ]
+}

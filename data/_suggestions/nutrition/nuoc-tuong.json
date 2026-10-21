@@ -1,0 +1,68 @@
+{
+  "ingredientId": "nuoc-tuong",
+  "query": "soy sauce",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 378,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 172445,
+      "description": "Soy meal, defatted, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172445/nutrients",
+      "per100g": {
+        "kcal": 337,
+        "proteinG": 49.2,
+        "fatG": 2.39,
+        "carbG": 35.9,
+        "fiberG": null,
+        "sodiumMg": 3
+      },
+      "kcalSource": "Energy",
+      "missing": [
+        "fiberG"
+      ],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; thiếu: chất xơ; khớp 1/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 174278,
+      "description": "Soy sauce made from soy (tamari)",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174278/nutrients",
+      "per100g": {
+        "kcal": 60,
+        "proteinG": 10.5,
+        "fatG": 0.1,
+        "carbG": 5.57,
+        "fiberG": 0.8,
+        "sodiumMg": 5590
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 174277,
+      "description": "Soy sauce made from soy and wheat (shoyu)",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174277/nutrients",
+      "per100g": {
+        "kcal": 53,
+        "proteinG": 8.14,
+        "fatG": 0.57,
+        "carbG": 4.93,
+        "fiberG": 0.8,
+        "sodiumMg": 5490
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/2 từ khoá."
+    }
+  ]
+}

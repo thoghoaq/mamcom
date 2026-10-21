@@ -1,0 +1,66 @@
+{
+  "ingredientId": "nuoc-mau",
+  "query": "caramel syrup",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 112,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 169685,
+      "description": "Popcorn, sugar syrup/caramel, fat-free",
+      "dataType": "SR Legacy",
+      "foodCategory": "Snacks",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169685/nutrients",
+      "per100g": {
+        "kcal": 381,
+        "proteinG": 2,
+        "fatG": 1.4,
+        "carbG": 90.1,
+        "fiberG": 2.5,
+        "sodiumMg": 286
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 167743,
+      "description": "Syrup, Cane",
+      "dataType": "SR Legacy",
+      "foodCategory": "Sweets",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167743/nutrients",
+      "per100g": {
+        "kcal": 269,
+        "proteinG": 0,
+        "fatG": 0,
+        "carbG": 73.1,
+        "fiberG": 0,
+        "sodiumMg": 58
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 167953,
+      "description": "Fruit syrup",
+      "dataType": "SR Legacy",
+      "foodCategory": "Sweets",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167953/nutrients",
+      "per100g": {
+        "kcal": 341,
+        "proteinG": 0,
+        "fatG": 0,
+        "carbG": 85.1,
+        "fiberG": 0.1,
+        "sodiumMg": 0
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/2 từ khoá."
+    }
+  ]
+}

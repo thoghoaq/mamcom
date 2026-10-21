@@ -1,0 +1,66 @@
+{
+  "ingredientId": "thit-nac-vai",
+  "query": "pork shoulder raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1995,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 169187,
+      "description": "Pork, Shoulder breast, boneless, separable lean and fat, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Pork Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169187/nutrients",
+      "per100g": {
+        "kcal": 127,
+        "proteinG": 22.5,
+        "fatG": 3.4,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 54
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 167843,
+      "description": "Pork, fresh, shoulder, whole, separable lean and fat, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Pork Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167843/nutrients",
+      "per100g": {
+        "kcal": 236,
+        "proteinG": 17.2,
+        "fatG": 18,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 65
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 167845,
+      "description": "Pork, fresh, shoulder, whole, separable lean only, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Pork Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167845/nutrients",
+      "per100g": {
+        "kcal": 148,
+        "proteinG": 19.6,
+        "fatG": 7.14,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 76
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    }
+  ]
+}

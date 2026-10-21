@@ -1,0 +1,66 @@
+{
+  "ingredientId": "rieng",
+  "query": "galangal root raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1559,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 168583,
+      "description": "Wasabi, root, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168583/nutrients",
+      "per100g": {
+        "kcal": 109,
+        "proteinG": 4.8,
+        "fatG": 0.63,
+        "carbG": 23.5,
+        "fiberG": 7.8,
+        "sodiumMg": 17
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169231,
+      "description": "Ginger root, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169231/nutrients",
+      "per100g": {
+        "kcal": 80,
+        "proteinG": 1.82,
+        "fatG": 0.75,
+        "carbG": 17.8,
+        "fiberG": 2,
+        "sodiumMg": 13
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 169250,
+      "description": "Lotus root, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169250/nutrients",
+      "per100g": {
+        "kcal": 74,
+        "proteinG": 2.6,
+        "fatG": 0.1,
+        "carbG": 17.2,
+        "fiberG": 4.9,
+        "sodiumMg": 40
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

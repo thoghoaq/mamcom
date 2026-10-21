@@ -1,0 +1,66 @@
+{
+  "ingredientId": "rau-lang",
+  "query": "sweet potato leaves raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 2155,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 169303,
+      "description": "Sweet potato leaves, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169303/nutrients",
+      "per100g": {
+        "kcal": 42,
+        "proteinG": 2.49,
+        "fatG": 0.51,
+        "carbG": 8.82,
+        "fiberG": 5.3,
+        "sodiumMg": 6
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 168482,
+      "description": "Sweet potato, raw, unprepared (Includes foods for USDA's Food Distribution Program)",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168482/nutrients",
+      "per100g": {
+        "kcal": 86,
+        "proteinG": 1.57,
+        "fatG": 0.05,
+        "carbG": 20.1,
+        "fiberG": 3,
+        "sodiumMg": 55
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 168416,
+      "description": "Drumstick leaves, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168416/nutrients",
+      "per100g": {
+        "kcal": 64,
+        "proteinG": 9.4,
+        "fatG": 1.4,
+        "carbG": 8.28,
+        "fiberG": 2,
+        "sodiumMg": 9
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/4 từ khoá."
+    }
+  ]
+}

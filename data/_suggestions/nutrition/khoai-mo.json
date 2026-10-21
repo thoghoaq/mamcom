@@ -1,0 +1,66 @@
+{
+  "ingredientId": "khoai-mo",
+  "query": "yam raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1556,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 170071,
+      "description": "Yam, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170071/nutrients",
+      "per100g": {
+        "kcal": 118,
+        "proteinG": 1.53,
+        "fatG": 0.17,
+        "carbG": 27.9,
+        "fiberG": 4.1,
+        "sodiumMg": 9
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 168432,
+      "description": "Mountain yam, hawaii, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168432/nutrients",
+      "per100g": {
+        "kcal": 67,
+        "proteinG": 1.34,
+        "fatG": 0.1,
+        "carbG": 16.3,
+        "fiberG": 2.5,
+        "sodiumMg": 13
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 747447,
+      "description": "Broccoli, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/747447/nutrients",
+      "per100g": {
+        "kcal": 31,
+        "proteinG": 2.57,
+        "fatG": 0.34,
+        "carbG": 6.27,
+        "fiberG": 2.4,
+        "sodiumMg": 36
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/2 từ khoá."
+    }
+  ]
+}

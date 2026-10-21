@@ -1,0 +1,66 @@
+{
+  "ingredientId": "khoai-tay",
+  "query": "potatoes raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1701,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 170032,
+      "description": "Potatoes, raw, skin",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170032/nutrients",
+      "per100g": {
+        "kcal": 58,
+        "proteinG": 2.57,
+        "fatG": 0.1,
+        "carbG": 12.4,
+        "fiberG": 2.5,
+        "sodiumMg": 10
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169303,
+      "description": "Sweet potato leaves, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169303/nutrients",
+      "per100g": {
+        "kcal": 42,
+        "proteinG": 2.49,
+        "fatG": 0.51,
+        "carbG": 8.82,
+        "fiberG": 5.3,
+        "sodiumMg": 6
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 170026,
+      "description": "Potatoes, flesh and skin, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170026/nutrients",
+      "per100g": {
+        "kcal": 77,
+        "proteinG": 2.05,
+        "fatG": 0.09,
+        "carbG": 17.5,
+        "fiberG": 2.1,
+        "sodiumMg": 6
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    }
+  ]
+}

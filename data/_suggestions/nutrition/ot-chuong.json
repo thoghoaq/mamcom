@@ -1,0 +1,66 @@
+{
+  "ingredientId": "ot-chuong",
+  "query": "peppers sweet green raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 2119,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 170427,
+      "description": "Peppers, sweet, green, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170427/nutrients",
+      "per100g": {
+        "kcal": 20,
+        "proteinG": 0.86,
+        "fatG": 0.17,
+        "carbG": 4.64,
+        "fiberG": 1.7,
+        "sodiumMg": 3
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 2258588,
+      "description": "Peppers, bell, green, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2258588/nutrients",
+      "per100g": {
+        "kcal": 19.7,
+        "proteinG": 0.715,
+        "fatG": 0.106,
+        "carbG": 4.78,
+        "fiberG": 0.942,
+        "sodiumMg": 0
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/4 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    },
+    {
+      "rank": 3,
+      "fdcId": 169383,
+      "description": "Peppers, sweet, yellow, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169383/nutrients",
+      "per100g": {
+        "kcal": 27,
+        "proteinG": 1,
+        "fatG": 0.21,
+        "carbG": 6.32,
+        "fiberG": 0.9,
+        "sodiumMg": 2
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/4 từ khoá."
+    }
+  ]
+}

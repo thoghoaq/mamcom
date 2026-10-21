@@ -1,0 +1,66 @@
+{
+  "ingredientId": "canh-ga",
+  "query": "chicken wing raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1907,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 172390,
+      "description": "Chicken, broilers or fryers, wing, meat and skin, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172390/nutrients",
+      "per100g": {
+        "kcal": 191,
+        "proteinG": 17.5,
+        "fatG": 12.8,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 84
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 173632,
+      "description": "Chicken, broilers or fryers, wing, meat only, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173632/nutrients",
+      "per100g": {
+        "kcal": 126,
+        "proteinG": 22,
+        "fatG": 3.54,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 81
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 171497,
+      "description": "Turkey, whole, wing, meat only, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171497/nutrients",
+      "per100g": {
+        "kcal": 115,
+        "proteinG": 23.7,
+        "fatG": 1.48,
+        "carbG": 0.14,
+        "fiberG": 0,
+        "sodiumMg": 113
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

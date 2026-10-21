@@ -1,0 +1,66 @@
+{
+  "ingredientId": "cai-thia",
+  "query": "bok choy raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1554,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 2685572,
+      "description": "Cabbage, bok choy, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2685572/nutrients",
+      "per100g": {
+        "kcal": 17,
+        "proteinG": 1.02,
+        "fatG": 0.234,
+        "carbG": 3.51,
+        "fiberG": 1.26,
+        "sodiumMg": 14.3
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    },
+    {
+      "rank": 2,
+      "fdcId": 747447,
+      "description": "Broccoli, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/747447/nutrients",
+      "per100g": {
+        "kcal": 31,
+        "proteinG": 2.57,
+        "fatG": 0.34,
+        "carbG": 6.27,
+        "fiberG": 2.4,
+        "sodiumMg": 36
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 2685576,
+      "description": "Beets, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2685576/nutrients",
+      "per100g": {
+        "kcal": 41,
+        "proteinG": 1.69,
+        "fatG": 0.302,
+        "carbG": 8.79,
+        "fiberG": 3.12,
+        "sodiumMg": 112
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/3 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    }
+  ]
+}

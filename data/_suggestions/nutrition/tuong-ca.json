@@ -1,0 +1,68 @@
+{
+  "ingredientId": "tuong-ca",
+  "query": "catsup",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 3,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 168556,
+      "description": "Catsup",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168556/nutrients",
+      "per100g": {
+        "kcal": 101,
+        "proteinG": 1.04,
+        "fatG": 0.1,
+        "carbG": 27.4,
+        "fiberG": 0.3,
+        "sodiumMg": 907
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/1 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169381,
+      "description": "Catsup, low sodium",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169381/nutrients",
+      "per100g": {
+        "kcal": 101,
+        "proteinG": 1.04,
+        "fatG": 0.1,
+        "carbG": 27.4,
+        "fiberG": 0.3,
+        "sodiumMg": 20
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/1 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 747693,
+      "description": "Ketchup, restaurant",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/747693/nutrients",
+      "per100g": {
+        "kcal": 117,
+        "proteinG": 1.11,
+        "fatG": 0.55,
+        "carbG": 26.8,
+        "fiberG": null,
+        "sodiumMg": 949
+      },
+      "kcalSource": "Energy",
+      "missing": [
+        "fiberG"
+      ],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả không nói sống hay chín; thiếu: chất xơ; khớp 0/1 từ khoá."
+    }
+  ]
+}

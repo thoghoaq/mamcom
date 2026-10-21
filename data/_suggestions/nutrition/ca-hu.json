@@ -1,0 +1,66 @@
+{
+  "ingredientId": "ca-hu",
+  "query": "catfish raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1556,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 174186,
+      "description": "Fish, catfish, channel, wild, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174186/nutrients",
+      "per100g": {
+        "kcal": 95,
+        "proteinG": 16.4,
+        "fatG": 2.82,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 43
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 175165,
+      "description": "Fish, catfish, channel, farmed, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Finfish and Shellfish Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/175165/nutrients",
+      "per100g": {
+        "kcal": 119,
+        "proteinG": 15.2,
+        "fatG": 5.94,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 98
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 747447,
+      "description": "Broccoli, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/747447/nutrients",
+      "per100g": {
+        "kcal": 31,
+        "proteinG": 2.57,
+        "fatG": 0.34,
+        "carbG": 6.27,
+        "fiberG": 2.4,
+        "sodiumMg": 36
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/2 từ khoá."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "ingredientId": "can-ta",
+  "query": "water celery raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1777,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 169988,
+      "description": "Celery, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169988/nutrients",
+      "per100g": {
+        "kcal": 14,
+        "proteinG": 0.69,
+        "fatG": 0.17,
+        "carbG": 2.97,
+        "fiberG": 1.6,
+        "sodiumMg": 80
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169301,
+      "description": "Water convolvulus,raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169301/nutrients",
+      "per100g": {
+        "kcal": 19,
+        "proteinG": 2.6,
+        "fatG": 0.2,
+        "carbG": 3.13,
+        "fiberG": 2.1,
+        "sodiumMg": 113
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 175299,
+      "description": "Game meat, buffalo, water, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Lamb, Veal, and Game Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/175299/nutrients",
+      "per100g": {
+        "kcal": 99,
+        "proteinG": 20.4,
+        "fatG": 1.37,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 53
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

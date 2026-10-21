@@ -1,0 +1,66 @@
+{
+  "ingredientId": "nam-rom",
+  "query": "mushrooms straw canned",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 559,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 168582,
+      "description": "Mushrooms, straw, canned, drained solids",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168582/nutrients",
+      "per100g": {
+        "kcal": 32,
+        "proteinG": 3.83,
+        "fatG": 0.68,
+        "carbG": 4.64,
+        "fiberG": 2.5,
+        "sodiumMg": 384
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 171170,
+      "description": "Gravy, mushroom, canned",
+      "dataType": "SR Legacy",
+      "foodCategory": "Soups, Sauces, and Gravies",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171170/nutrients",
+      "per100g": {
+        "kcal": 50,
+        "proteinG": 1.26,
+        "fatG": 2.71,
+        "carbG": 5.47,
+        "fiberG": 0.4,
+        "sodiumMg": 570
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 169254,
+      "description": "Mushrooms, canned, drained solids",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169254/nutrients",
+      "per100g": {
+        "kcal": 25,
+        "proteinG": 1.87,
+        "fatG": 0.29,
+        "carbG": 5.09,
+        "fiberG": 2.4,
+        "sodiumMg": 425
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

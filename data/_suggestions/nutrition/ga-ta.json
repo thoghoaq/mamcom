@@ -1,0 +1,66 @@
+{
+  "ingredientId": "ga-ta",
+  "query": "chicken broilers or fryers meat and skin raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 2334,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 171447,
+      "description": "Chicken, broilers or fryers, meat and skin, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171447/nutrients",
+      "per100g": {
+        "kcal": 215,
+        "proteinG": 18.6,
+        "fatG": 15.1,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 70
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 6/6 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 171469,
+      "description": "Chicken, broilers or fryers, back, meat and skin, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171469/nutrients",
+      "per100g": {
+        "kcal": 319,
+        "proteinG": 14,
+        "fatG": 28.7,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 64
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 6/6 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 171474,
+      "description": "Chicken, broilers or fryers, breast, meat and skin, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171474/nutrients",
+      "per100g": {
+        "kcal": 172,
+        "proteinG": 20.8,
+        "fatG": 9.25,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 63
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 6/6 từ khoá."
+    }
+  ]
+}

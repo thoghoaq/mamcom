@@ -7,22 +7,22 @@ ca-loc,snakehead fish raw
 ca-rot,carrots raw
 ca-thu,mackerel raw
 cu-cai,radishes oriental raw
-dau-an,soybean oil
+dau-an,oil soybean salad or cooking
 dau-phu,tofu raw firm
 dua-leo,cucumber with peel raw
-duong,sugar granulated
+duong,sugars granulated
 gao,rice white long-grain raw
 hanh-la,onions spring or scallions raw
 hanh-tay,onions raw
 hanh-tim,shallots raw
-hat-tieu,pepper black
+hat-tieu,spices pepper black
 muoi,salt table
-nam-rom,mushrooms raw
-nuoc-mam,fish sauce
+nam-rom,mushrooms straw canned
+nuoc-mam,sauce fish ready-to-serve
 ot,peppers hot chili raw
 rau-muong,water spinach raw
 rau-ngot,katuk raw
-sa,lemon grass raw
+sa,"Lemon grass (citronella), raw"
 su-su,chayote raw
 suon-heo,pork spareribs raw
 thit-ba-chi,pork fresh belly raw
@@ -38,7 +38,7 @@ suon-non,pork spareribs raw
 gio-song,pork sausage raw ground
 thit-bo-bap,beef shank raw
 thit-bo-than,beef tenderloin raw
-ga-ta,chicken whole raw meat and skin
+ga-ta,chicken broilers or fryers meat and skin raw
 canh-ga,chicken wing raw
 dui-ga,chicken thigh raw
 thit-vit,duck meat and skin raw
@@ -49,12 +49,12 @@ ca-nuc,scad mackerel raw
 ca-bong,goby fish raw
 ca-ngu,tuna fresh skipjack raw
 ca-hu,catfish raw
-ca-basa,pangasius basa fillet raw
-ca-dieu-hong,tilapia red raw
-cha-ca-thac-lac,fish paste raw
-cha-ca,fish cake fried
-tom-kho,shrimp dried
-tep,shrimp small raw
+ca-basa,catfish channel farmed raw
+ca-dieu-hong,tilapia raw
+cha-ca-thac-lac,"Fish, surimi"
+cha-ca,"Fish, surimi"
+tom-kho,"Crustaceans, shrimp, mixed species, cooked, moist heat"
+tep,crustaceans shrimp raw
 muc,squid raw
 cua-dong,crab freshwater raw
 hen,clam small raw
@@ -64,9 +64,9 @@ mam-ruoc,shrimp paste fermented
 mam-ca,fish paste fermented
 trung-vit,egg duck whole raw
 dau-phu-non,tofu silken
-rau-day,jute leaves raw
-mong-toi,malabar spinach basella raw
-rau-den,amaranth leaves raw
+rau-day,"Jute, potherb, raw"
+mong-toi,"Vinespinach, (basella), raw"
+rau-den,"Amaranth leaves, raw"
 cai-ngot,choy sum raw
 cai-xanh,mustard greens raw
 cai-thia,bok choy raw
@@ -84,16 +84,16 @@ rau-ram,vietnamese coriander raw
 rau-mui,coriander leaves raw
 ngo-gai,culantro raw
 rau-om,rice paddy herb raw
-thi-la,dill raw
-rau-thom,basil fresh
+thi-la,"Dill weed, fresh"
+rau-thom,"Basil, fresh"
 la-chanh,lime leaves raw
 gung,ginger root raw
 rieng,galangal root raw
-nghe,turmeric root raw
-bi-dao,wax gourd raw
+nghe,"Spices, turmeric, ground"
+bi-dao,waxgourd chinese preserving melon raw
 bi-do,pumpkin raw
 muop,loofah gourd raw
-kho-qua,bitter melon raw
+kho-qua,balsam-pear bitter gourd pods raw
 dau-bap,okra raw
 dau-que,green beans snap raw
 ca-tim,eggplant raw
@@ -102,7 +102,7 @@ thom,pineapple raw
 khe,carambola starfruit raw
 sau,dracontomelon sour fruit
 chanh,lime raw
-dua,coconut water
+dua,"Nuts, coconut water (liquid from coconuts)"
 khoai-tay,potatoes raw
 khoai-so,taro raw
 khoai-mon,taro raw
@@ -114,23 +114,23 @@ gia-do,mung bean sprouts raw
 ot-hiem,peppers hot chili red raw
 hanh-phi,onions fried
 nam-huong,mushrooms shiitake dried
-moc-nhi,mushrooms wood ear dried
+moc-nhi,fungi cloud ears dried
 nam-kim-cham,mushrooms enoki raw
 nam-dui-ga,mushrooms king oyster raw
-banh-da-nem,rice paper
-banh-trang,rice paper
-mien,noodles cellophane dry
-bot-nang,tapioca starch
+banh-da-nem,spring rolls wrapper rice
+banh-trang,spring rolls wrapper rice
+mien,"Noodles, chinese, cellophane or long rice (mung beans), dehydrated"
+bot-nang,"Tapioca, pearl, dry"
 bot-chien-gion,flour wheat all purpose
 lac,peanuts dry roasted
-vung,sesame seeds
+vung,seeds sesame seeds whole dried
 hat-nem,bouillon granules chicken
 bot-ngot,monosodium glutamate
-dau-hao,oyster sauce
+dau-hao,sauce oyster ready-to-serve
 nuoc-tuong,soy sauce
 giam,vinegar
 tuong-ca,catsup
-tuong-ot,chili sauce
+tuong-ot,sauce hot chile sriracha
 me,tamarinds raw
 nuoc-mau,caramel syrup
 bo,butter salted

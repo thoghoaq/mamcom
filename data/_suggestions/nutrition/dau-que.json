@@ -1,0 +1,66 @@
+{
+  "ingredientId": "dau-que",
+  "query": "green beans snap raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1847,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 2346400,
+      "description": "Beans, snap, green, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2346400/nutrients",
+      "per100g": {
+        "kcal": 33.6,
+        "proteinG": 1.97,
+        "fatG": 0.275,
+        "carbG": 7.41,
+        "fiberG": 3.01,
+        "sodiumMg": 0
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169961,
+      "description": "Beans, snap, green, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169961/nutrients",
+      "per100g": {
+        "kcal": 31,
+        "proteinG": 1.83,
+        "fatG": 0.22,
+        "carbG": 6.97,
+        "fiberG": 2.7,
+        "sodiumMg": 6
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 169320,
+      "description": "Beans, snap, yellow, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169320/nutrients",
+      "per100g": {
+        "kcal": 31,
+        "proteinG": 1.82,
+        "fatG": 0.12,
+        "carbG": 7.13,
+        "fiberG": 3.4,
+        "sodiumMg": 6
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/4 từ khoá."
+    }
+  ]
+}

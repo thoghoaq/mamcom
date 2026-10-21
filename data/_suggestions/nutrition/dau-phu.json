@@ -1,0 +1,66 @@
+{
+  "ingredientId": "dau-phu",
+  "query": "tofu raw firm",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1584,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 172461,
+      "description": "MORI-NU, Tofu, silken, firm",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172461/nutrients",
+      "per100g": {
+        "kcal": 62,
+        "proteinG": 6.9,
+        "fatG": 2.7,
+        "carbG": 2.4,
+        "fiberG": 0.1,
+        "sodiumMg": 36
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 173788,
+      "description": "HOUSE FOODS Premium Firm Tofu",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173788/nutrients",
+      "per100g": {
+        "kcal": 85,
+        "proteinG": 10.9,
+        "fatG": 4.19,
+        "carbG": 0.97,
+        "fiberG": 0.9,
+        "sodiumMg": 33
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 175236,
+      "description": "Vitasoy USA Azumaya, Firm Tofu",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/175236/nutrients",
+      "per100g": {
+        "kcal": 80,
+        "proteinG": 9.08,
+        "fatG": 4.2,
+        "carbG": 1.52,
+        "fiberG": 0.6,
+        "sodiumMg": 23
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "ingredientId": "dui-ga",
+  "query": "chicken thigh raw",
+  "retrievedAt": "2026-10-21",
+  "source": "usda-fdc",
+  "totalHits": 1901,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 172855,
+      "description": "Chicken, skin (drumsticks and thighs), raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172855/nutrients",
+      "per100g": {
+        "kcal": 440,
+        "proteinG": 9.58,
+        "fatG": 44.2,
+        "carbG": 0.79,
+        "fiberG": 0,
+        "sodiumMg": 51
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 172385,
+      "description": "Chicken, broilers or fryers, thigh, meat and skin, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172385/nutrients",
+      "per100g": {
+        "kcal": 221,
+        "proteinG": 16.5,
+        "fatG": 16.6,
+        "carbG": 0.25,
+        "fiberG": 0,
+        "sodiumMg": 81
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 174502,
+      "description": "Chicken, skin (drumsticks and thighs), with added solution, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Poultry Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174502/nutrients",
+      "per100g": {
+        "kcal": 386,
+        "proteinG": 11.1,
+        "fatG": 37.9,
+        "carbG": 0.01,
+        "fiberG": 0,
+        "sodiumMg": 139
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/3 từ khoá."
+    }
+  ]
+}
