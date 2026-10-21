@@ -40,6 +40,9 @@
                 <BackLink />
                 <p class="cook__position">@position</p>
             </div>
+            <button type="button" class="button button--quiet cook__overview-toggle" aria-expanded="@(_overview ? "true" : "false")" @onclick="ToggleOverview">
+                @(_overview ? Strings.Cook_BackToStep : Strings.Cook_ShowAll)
+            </button>
             <h1 class="visually-hidden">@Strings.Cook_Title</h1>
 
             <p class="visually-hidden" role="status">@_stepNote</p>
@@ -66,93 +69,134 @@
                 </ul>
             }
 
-            <section class="cook__stage" aria-label="@position">
-                <p class="@DishClass(step)">@CookingFormat.DishLabel(step.DishName, step.IsRice)</p>
-                <p class="cook__text">@step.Text</p>
-
-                @if (step.ActiveMinutes > 0 || step.TimerMinutes > 0)
-                {
-                    <p class="cook__times">
-                        @if (step.ActiveMinutes > 0)
+            @if (_overview)
+            {
+                <section class="cook-overview" aria-labelledby="cook-overview-title">
+                    <h2 id="cook-overview-title" tabindex="-1" @ref="_overviewTitle">@Strings.Cook_AllStepsTitle</h2>
+                    <p class="text-muted">@CookingFormat.AllStepsTotal(_guide.Steps.Count, _guide.MealMinutes)</p>
+                    <ol class="cook-overview__list">
+                        @foreach (var item in _guide.Steps)
                         {
-                            <span class="cook__time"><Icon Name="clock" />@DishFormat.StepActive(step.ActiveMinutes)</span>
-                        }
-                        @if (step.TimerMinutes > 0)
-                        {
-                            <span class="cook__time"><Icon Name="clock" />@DishFormat.StepPassive(step.TimerMinutes)</span>
-                        }
-                    </p>
-                }
-
-                @if (ownTimer is not null)
-                {
-                    <p class="@(ownTimer.IsDone ? "cook__countdown cook__countdown--done" : "cook__countdown")" role="timer">@(ownTimer.IsDone ? Strings.Cook_TimerDone : CookingFormat.Countdown(ownTimer.RemainingSeconds))</p>
-                }
-
-                @if (step.Ingredients.Count > 0)
-                {
-                    <ul class="cook__ingredients" aria-label="@Strings.Cook_IngredientsLabel">
-                        @foreach (var ingredient in step.Ingredients)
-                        {
-                            <li>
-                                <span class="cook__ingredient-name">@ingredient.Line.Name</span>@(" ")
-                                @if (ingredient.ShowAmount)
-                                {
-                                    <strong class="cook__ingredient-amount">@DishFormat.Amount(ingredient.Line)</strong>
-                                    @if (!string.IsNullOrWhiteSpace(ingredient.Line.Note))
+                            var index = item.Index;
+                            var current = index == _state.StepIndex;
+                            <li @key="index">
+                                <button type="button" class="@(current ? "cook-overview__step cook-overview__step--current" : "cook-overview__step")" aria-current="@(current ? "step" : null)" @onclick="() => JumpAsync(index)">
+                                    <span class="cook-overview__position">@CookingFormat.Position(index, _guide.Steps.Count)</span>
+                                    @if (current)
                                     {
-                                        <span class="cook__ingredient-note"> (@ingredient.Line.Note)</span>
+                                        <span class="badge badge--info">@Strings.Cook_CurrentStep</span>
                                     }
-                                }
+                                    <span class="@DishClass(item)">@CookingFormat.DishLabel(item.DishName, item.IsRice)</span>
+                                    <span class="cook-overview__text">@item.Text</span>
+                                    @if (item.ActiveMinutes > 0 || item.TimerMinutes > 0)
+                                    {
+                                        <span class="cook-overview__times">
+                                            @if (item.ActiveMinutes > 0)
+                                            {
+                                                <span>@DishFormat.StepActive(item.ActiveMinutes)</span>
+                                            }
+                                            @if (item.TimerMinutes > 0)
+                                            {
+                                                <span>@DishFormat.StepPassive(item.TimerMinutes)</span>
+                                            }
+                                        </span>
+                                    }
+                                </button>
                             </li>
                         }
-                    </ul>
-                }
+                    </ol>
+                </section>
+            }
+            else
+            {
+                <section class="cook__stage" aria-label="@position">
+                    <p class="@DishClass(step)">@CookingFormat.DishLabel(step.DishName, step.IsRice)</p>
+                    <p class="cook__text">@step.Text</p>
 
-                @* A tap on a half of the stage moves; the buttons below do the same for a keyboard and a screen reader, so these stay out of both. *@
-                <button type="button" class="cook-zone cook-zone--back" tabindex="-1" aria-hidden="true" @onclick="PreviousAsync"></button>
-                <button type="button" class="cook-zone cook-zone--next" tabindex="-1" aria-hidden="true" @onclick="NextOrFinishAsync"></button>
-            </section>
+                    @if (step.ActiveMinutes > 0 || step.TimerMinutes > 0)
+                    {
+                        <p class="cook__times">
+                            @if (step.ActiveMinutes > 0)
+                            {
+                                <span class="cook__time"><Icon Name="clock" />@DishFormat.StepActive(step.ActiveMinutes)</span>
+                            }
+                            @if (step.TimerMinutes > 0)
+                            {
+                                <span class="cook__time"><Icon Name="clock" />@DishFormat.StepPassive(step.TimerMinutes)</span>
+                            }
+                        </p>
+                    }
 
-            <p class="text-muted cook__hint">@Strings.Cook_Hint</p>
+                    @if (ownTimer is not null)
+                    {
+                        <p class="@(ownTimer.IsDone ? "cook__countdown cook__countdown--done" : "cook__countdown")" role="timer">@(ownTimer.IsDone ? Strings.Cook_TimerDone : CookingFormat.Countdown(ownTimer.RemainingSeconds))</p>
+                    }
 
-            <div class="app-actions cook-actions">
-                @if (step.TimerMinutes > 0)
-                {
-                    @if (ownTimer is null)
+                    @if (step.Ingredients.Count > 0)
                     {
-                        <button type="button" class="button button--primary cook-actions__timer" @onclick="() => StartTimerAsync(step.Index)">
-                            <Icon Name="clock" />@CookingFormat.StartTimer(step.TimerMinutes)
-                        </button>
+                        <ul class="cook__ingredients" aria-label="@Strings.Cook_IngredientsLabel">
+                            @foreach (var ingredient in step.Ingredients)
+                            {
+                                <li>
+                                    <span class="cook__ingredient-name">@ingredient.Line.Name</span>@(" ")
+                                    @if (ingredient.ShowAmount)
+                                    {
+                                        <strong class="cook__ingredient-amount">@DishFormat.Amount(ingredient.Line)</strong>
+                                        @if (!string.IsNullOrWhiteSpace(ingredient.Line.Note))
+                                        {
+                                            <span class="cook__ingredient-note"> (@ingredient.Line.Note)</span>
+                                        }
+                                    }
+                                </li>
+                            }
+                        </ul>
                     }
-                    else if (ownTimer.IsDone)
-                    {
-                        <button type="button" class="button button--primary cook-actions__timer" @onclick="() => CancelTimerAsync(step.Index)">
-                            <Icon Name="check" />@Strings.Cook_DismissTimer
-                        </button>
-                    }
-                    else
-                    {
-                        <button type="button" class="button button--quiet cook-actions__timer" @onclick="() => CancelTimerAsync(step.Index)">
-                            <Icon Name="x" />@Strings.Cook_CancelTimer
-                        </button>
-                    }
-                }
 
-                <button type="button" class="button button--quiet" disabled="@isFirst" @onclick="PreviousAsync">
-                    <Icon Name="chevron-left" />@Strings.Cook_Previous
-                </button>
-                <button type="button" class="button @(isLast ? "button--primary" : string.Empty)" @onclick="NextOrFinishAsync">
-                    @if (isLast)
+                    @* A tap on a half of the stage moves; the buttons below do the same for a keyboard and a screen reader, so these stay out of both. *@
+                    <button type="button" class="cook-zone cook-zone--back" tabindex="-1" aria-hidden="true" @onclick="PreviousAsync"></button>
+                    <button type="button" class="cook-zone cook-zone--next" tabindex="-1" aria-hidden="true" @onclick="NextOrFinishAsync"></button>
+                </section>
+
+                <p class="text-muted cook__hint">@Strings.Cook_Hint</p>
+
+                <div class="app-actions cook-actions">
+                    @if (step.TimerMinutes > 0)
                     {
-                        <Icon Name="check" />@Strings.Cook_Finish
+                        @if (ownTimer is null)
+                        {
+                            <button type="button" class="button button--primary cook-actions__timer" @onclick="() => StartTimerAsync(step.Index)">
+                                <Icon Name="clock" />@CookingFormat.StartTimer(step.TimerMinutes)
+                            </button>
+                        }
+                        else if (ownTimer.IsDone)
+                        {
+                            <button type="button" class="button button--primary cook-actions__timer" @onclick="() => CancelTimerAsync(step.Index)">
+                                <Icon Name="check" />@Strings.Cook_DismissTimer
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="button" class="button button--quiet cook-actions__timer" @onclick="() => CancelTimerAsync(step.Index)">
+                                <Icon Name="x" />@Strings.Cook_CancelTimer
+                            </button>
+                        }
                     }
-                    else
-                    {
-                        @Strings.Cook_Next<Icon Name="chevron-left" Class="icon--flip" />
-                    }
-                </button>
-            </div>
+
+                    <button type="button" class="button button--quiet" disabled="@isFirst" @onclick="PreviousAsync">
+                        <Icon Name="chevron-left" />@Strings.Cook_Previous
+                    </button>
+                    <button type="button" class="button @(isLast ? "button--primary" : string.Empty)" @onclick="NextOrFinishAsync">
+                        @if (isLast)
+                        {
+                            <Icon Name="check" />@Strings.Cook_Finish
+                        }
+                        else
+                        {
+                            @Strings.Cook_Next<Icon Name="chevron-left" Class="icon--flip" />
+                        }
+                    </button>
+                </div>
+            }
         </div>
     }
 }
@@ -171,6 +215,9 @@
     private string _timerNote = string.Empty;
     private bool _ready;
     private bool _disposed;
+    private bool _overview;
+    private bool _focusOverview;
+    private ElementReference _overviewTitle;
 
     /// <summary>The household the quantities are for; the gate hands it over once it knows there is one.</summary>
     [Parameter, EditorRequired]
@@ -261,6 +308,28 @@
     }
 
     private Task PreviousAsync() => GoToAsync(_state.StepIndex - 1);
+
+    // The list of every step, to see the whole meal ahead; a tap on one goes to it. The step on the screen does not change by looking.
+    private void ToggleOverview()
+    {
+        _overview = !_overview;
+        _focusOverview = _overview;
+    }
+
+    private async Task JumpAsync(int index)
+    {
+        _overview = false;
+        await GoToAsync(index);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (_focusOverview)
+        {
+            _focusOverview = false;
+            await _overviewTitle.FocusAsync();
+        }
+    }
 
     private async Task NextOrFinishAsync()
     {

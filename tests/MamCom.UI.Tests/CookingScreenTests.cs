@@ -11,6 +11,7 @@ using MamCom.Data.Bundles;
 using MamCom.Data.Device;
 using MamCom.Data.State;
 using MamCom.UI.Components;
+using MamCom.UI.Formatting;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -719,5 +720,65 @@ public class CookingScreenTests : BunitContext
 
         Words(cut, ".cook__position").ShouldStartWith("Bước 1/");
         _cooking.Saved.StepIndex.ShouldBe(4);
+    }
+
+    // ---- every step at a glance ------------------------------------------------------------------------------------------------
+
+    private static IElement Toggle(IRenderedComponent<CookingScreen> cut) => cut.Find(".cook__overview-toggle");
+
+    private static IReadOnlyList<IElement> Overview(IRenderedComponent<CookingScreen> cut) => cut.FindAll(".cook-overview__step");
+
+    [Fact]
+    public async Task Every_step_can_be_seen_at_once_in_order_with_the_one_the_cook_is_on_marked()
+    {
+        var cut = Show();
+        await Button(cut, "Tiếp").ClickAsync(new());
+        var guide = TheGuide();
+        Toggle(cut).TextContent.Words().ShouldBe("Xem tất cả bước");
+        Toggle(cut).GetAttribute("aria-expanded").ShouldBe("false");
+
+        await Toggle(cut).ClickAsync(new());
+
+        Overview(cut).Count.ShouldBe(guide.Steps.Count);
+        AllWords(cut, ".cook-overview__text").ShouldBe([.. guide.Steps.Select(s => s.Text.Words())]);
+        AllWords(cut, ".cook-overview__position").ShouldBe([.. guide.Steps.Select(s => $"Bước {s.Index + 1}/{guide.Steps.Count}")]);
+        Overview(cut).Select(b => b.GetAttribute("aria-current")).ShouldBe([.. guide.Steps.Select(s => s.Index == 1 ? "step" : null)]);
+        Overview(cut)[1].TextContent.Words().ShouldContain("Đang làm");
+        Words(cut, ".cook-overview p").ShouldBe($"{guide.Steps.Count} bước, cả mâm ≈ {TrayFormat.Minutes(guide.MealMinutes).Words()}. Chạm một bước để đến bước đó.");
+        cut.FindAll(".cook__stage").ShouldBeEmpty();
+        cut.FindAll(".cook-actions").ShouldBeEmpty();
+        Toggle(cut).TextContent.Words().ShouldBe("Về bước đang làm");
+        Toggle(cut).GetAttribute("aria-expanded").ShouldBe("true");
+        JSInterop.Invocations.Count(i => i.Identifier == "Blazor._internal.domWrapper.focus").ShouldBe(1);   // the list takes the focus, by its heading
+    }
+
+    [Fact]
+    public async Task A_tap_on_a_step_of_the_list_goes_to_that_step_and_keeps_it()
+    {
+        var cut = Show();
+        var guide = TheGuide();
+        await Toggle(cut).ClickAsync(new());
+
+        await Overview(cut)[guide.Steps.Count - 1].ClickAsync(new());
+
+        Words(cut, ".cook__text").ShouldBe(guide.Steps[^1].Text.Words());
+        Words(cut, ".cook__position").ShouldBe($"Bước {guide.Steps.Count}/{guide.Steps.Count}");
+        _cooking.Saved!.StepIndex.ShouldBe(guide.Steps.Count - 1);
+        cut.FindAll(".cook-overview").ShouldBeEmpty();
+    }
+
+    [Fact]
+    public async Task Looking_at_the_list_and_going_back_changes_nothing()
+    {
+        var cut = Show();
+        await Button(cut, "Tiếp").ClickAsync(new());
+        var saves = _cooking.Saves;
+
+        await Toggle(cut).ClickAsync(new());
+        await Toggle(cut).ClickAsync(new());
+
+        Words(cut, ".cook__position").ShouldBe($"Bước 2/{TheGuide().Steps.Count}");
+        _cooking.Saves.ShouldBe(saves);
+        Navigation.History.ShouldBeEmpty();
     }
 }

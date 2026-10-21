@@ -208,6 +208,10 @@ public class AccessibilityTests(SiteFixture site)
         await app.Button("Hẹn giờ", exact: false).ClickAsync();
         await Assertions.Expect(app.Page.Locator(".cook-chip")).ToHaveCountAsync(1);
         await AuditAsync(app, "nau (a timer running)", findings);
+        await app.Button("Xem tất cả bước").ClickAsync();
+        await app.Page.Locator(".cook-overview__step").First.WaitForAsync();
+        await AuditAsync(app, "nau (every step at a glance)", findings);
+        await app.Button("Về bước đang làm").ClickAsync();
 
         await app.GotoAsync("sau-bua");
         await app.Heading("Cả nhà thích không?").WaitForAsync();

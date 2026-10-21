@@ -589,4 +589,11 @@
   <data name="Household_StovesLabel" xml:space="preserve"><value>Nhà mình có mấy bếp?</value></data>
   <data name="Household_StovesHint" xml:space="preserve"><value>Không tính nồi cơm điện. Ít bếp thì các món phải nấu lần lượt, cả mâm lâu hơn.</value></data>
   <data name="Household_StovesFormat" xml:space="preserve"><value>{0} bếp</value></data>
+
+  <!-- Xem trước các bước của chế độ nấu -->
+  <data name="Cook_ShowAll" xml:space="preserve"><value>Xem tất cả bước</value></data>
+  <data name="Cook_AllStepsTitle" xml:space="preserve"><value>Tất cả các bước</value></data>
+  <data name="Cook_AllStepsTotalFormat" xml:space="preserve"><value>{0} bước, cả mâm ≈ {1}. Chạm một bước để đến bước đó.</value></data>
+  <data name="Cook_BackToStep" xml:space="preserve"><value>Về bước đang làm</value></data>
+  <data name="Cook_CurrentStep" xml:space="preserve"><value>Đang làm</value></data>
 </root>

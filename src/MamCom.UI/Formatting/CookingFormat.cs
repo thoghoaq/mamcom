@@ -5,6 +5,10 @@ namespace MamCom.UI.Formatting;
 /// <summary>The words of the cooking mode: where the cook is, what a timer says, what a timer button offers (SPEC §8.1-5).</summary>
 public static class CookingFormat
 {
+    /// <summary>"12 bước, cả mâm ≈ 1 giờ 5 phút. …": what the list of every step says above it.</summary>
+    public static string AllStepsTotal(int steps, int mealMinutes) =>
+        string.Format(CultureInfo.InvariantCulture, Strings.Cook_AllStepsTotalFormat, steps, TrayFormat.Minutes(mealMinutes));
+
     /// <summary>"24:12" for a timer with 24 minutes and 12 seconds left; "1:05:00" from an hour.</summary>
     public static string Countdown(int seconds)
     {

@@ -1247,6 +1247,66 @@ small,
     font-weight: var(--font-weight-strong);
 }
 
+/* ---- Every step of the cooking mode at a glance (components/CookingScreen.razor): a list, a tap on a step goes to it ---- */
+
+.cook__overview-toggle {
+    margin-bottom: var(--space-3);
+}
+
+.cook-overview h2 {
+    margin: 0 0 var(--space-1);
+    font-size: var(--font-size-large);
+}
+
+.cook-overview__list {
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.cook-overview__list > li + li {
+    margin-top: var(--space-2);
+}
+
+.cook-overview__step {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-1) var(--space-3);
+    inline-size: 100%;
+    min-height: var(--tap-size);
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+    text-align: start;
+    cursor: pointer;
+}
+
+/* The step the cook is on: the accent all round, and a word that says it, not the colour alone. */
+.cook-overview__step--current {
+    border: 2px solid var(--color-accent);
+}
+
+.cook-overview__position {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.cook-overview__text {
+    flex: 1 0 100%;
+}
+
+.cook-overview__times {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
 /* ---- Placeholder tile: stands in for a picture that does not exist yet, one look per kind of ingredient or dish ---- */
 
 .tile {

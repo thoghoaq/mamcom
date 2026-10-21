@@ -518,6 +518,7 @@ Làm rõ khi hiện thực chế độ nấu (ADR-025):
 - **Hẹn giờ** do người nấu bắt đầu ("Hẹn giờ N phút" ở bước có phần chờ), nhiều hẹn giờ chạy cùng lúc, mỗi cái một chip (cái sắp hết đứng trước, bấm chip để sang bước đó). Lưu bằng giờ kết thúc nên đúng cả khi rời màn hình hay mở lại trang (`cooking.v1`). Hết giờ: rung, ba tiếng bíp (cần một lần chạm trước, nên chuẩn bị ở lần bắt đầu hẹn giờ), chip và dòng chữ "Hết giờ", kêu một lần; "Đã xong" tắt chip.
 - **Giữ màn hình sáng** bằng Screen Wake Lock (xin lại khi trang trở về phía trước, nhả khi rời màn hình); máy không có hoặc từ chối thì có thông báo.
 - **Chạm nửa phải sang bước tiếp, nửa trái quay lại;** thanh dưới đáy có "Trước" và "Tiếp" cho bàn phím và trình đọc màn hình. Bước cuối có "Xong bữa" sang màn sau bữa (ADR-026).
+- **Xem tất cả bước:** nút "Xem tất cả bước" ở đầu màn nấu thay màn bước bằng danh sách mọi bước theo thứ tự (vị trí, món, lời, phút làm và chờ; bước đang làm có viền và chữ "Đang làm"), kèm số bước và thời gian cả mâm. Chạm một bước để đến bước đó; "Về bước đang làm" quay lại mà không đổi gì. Hẹn giờ vẫn chạy và chip vẫn hiện.
 
 Làm rõ khi hiện thực phản hồi sau bữa và Cài đặt (ADR-026):
 - **Khẩu vị** là một hồ sơ ở khoá `taste.v1`: các món thích hoặc không thích và danh sách món đã chặn. "Bình thường" là không có mục nào, bằng chưa từng hỏi. Bộ quay đọc cả hai: món chặn bị loại hẳn, món thích ×2,0, món không thích ×0,2 (§5.4).
