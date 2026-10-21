@@ -1,0 +1,93 @@
+name: deploy-staging
+
+# The app and a bundle of the data, to the Azure Static Web Apps resource of staging (PLAN 3.10, ADR-029).
+# Runs after ci is green on main, or by hand. Until the owner has added the deployment token as the secret
+# AZURE_STATIC_WEB_APPS_API_TOKEN, it builds everything and says it skipped the upload, instead of failing.
+
+on:
+  workflow_run:
+    workflows: [ci]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # The commit ci tested, not whatever main is by now.
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Publish the app
+        run: dotnet publish src/MamCom.Web/MamCom.Web.csproj --configuration Release --output publish
+
+      # The bundle is deployed beside the app, not inside it (ADR-020). A published folder may carry a bundle of a local run and its
+      # compressed copies; they go, and the bundle of the data in the repository takes their place. Staging takes the dev bundle: no dish
+      # is reviewed yet, so a release bundle would be empty (ADR-011), and the app says "dữ liệu thử" on every page.
+      - name: Build the data bundle
+        run: |
+          rm -f publish/wwwroot/data-*
+          rm -rf publish/wwwroot/images
+          dotnet run --project tools/MamCom.DataBuilder --configuration Release -- build --out publish/wwwroot
+          mkdir -p reports
+          mv publish/wwwroot/data-report.md reports/data-report.md
+
+      - name: Keep the data report
+        uses: actions/upload-artifact@v7
+        with:
+          name: data-report
+          path: reports/data-report.md
+
+      - name: Is there a deployment token?
+        id: token
+        env:
+          TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Staging not deployed::The secret AZURE_STATIC_WEB_APPS_API_TOKEN is not set. Everything was built; the upload was skipped (docs/deploy-staging.md)."
+          fi
+
+      - name: Upload to Azure Static Web Apps
+        id: deploy
+        if: steps.token.outputs.present == 'true'
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: upload
+          app_location: publish/wwwroot
+          output_location: ''
+          skip_app_build: true
+          skip_api_build: true
+
+      - name: The site answers with the app and the data
+        if: steps.token.outputs.present == 'true'
+        env:
+          SITE: ${{ steps.deploy.outputs.static_web_app_url }}
+        run: |
+          set -e
+          curl --fail --silent --show-error "$SITE/" | grep -q '_framework/blazor.webassembly'
+          curl --fail --silent --show-error "$SITE/nha-minh" | grep -q '_framework/blazor.webassembly'
+          curl --fail --silent --show-error "$SITE/data-version.json" | grep -q '"version"'
+          echo "Staging: $SITE" >> "$GITHUB_STEP_SUMMARY"

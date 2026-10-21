@@ -20,6 +20,7 @@
     <None Include="..\..\src\MamCom.Web\wwwroot\service-worker.published.js" Link="js\service-worker.published.js" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\src\MamCom.Web\wwwroot\device.js" Link="js\device.js" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\src\MamCom.Web\wwwroot\index.html" Link="js\index.html" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\src\MamCom.Web\wwwroot\staticwebapp.config.json" Link="js\staticwebapp.config.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
