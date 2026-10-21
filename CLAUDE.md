@@ -47,7 +47,7 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 - **Công cụ nội dung:** `MamCom.Studio` là Blazor Server chạy local, đọc/ghi trực tiếp `/data`.
 - **Ảnh:** SkiaSharp (MIT) để resize và encode WebP. Không dùng ImageSharp vì vướng giấy phép.
 - **Test:** xUnit, Shouldly, bUnit, Playwright for .NET. Luật cache của service worker (`service-worker.data.js`) là JavaScript và được test bằng `node:test` trong `tests/js`; `dotnet test` chạy chúng qua `MamCom.Data.Tests` (bỏ qua và nói rõ nếu máy chưa cài Node).
-- **CI và host:** GitHub Actions (`ci.yml`; `deploy-staging.yml` chạy sau khi CI xanh trên `main`, cần secret `AZURE_STATIC_WEB_APPS_API_TOKEN`); host Azure Static Web Apps, gói free, luật ở `src/MamCom.Web/wwwroot/staticwebapp.config.json` (ADR-029).
+- **CI và host:** GitHub Actions (`ci.yml`; `deploy-staging.yml` chạy sau khi CI xanh trên `main`, cần secret `VERCEL_TOKEN`); host staging là Vercel (https://mamcom-pi.vercel.app), luật ở `src/MamCom.Web/wwwroot/vercel.json` (ADR-029; thay Azure Static Web Apps).
 
 ## Cấu trúc repo
 

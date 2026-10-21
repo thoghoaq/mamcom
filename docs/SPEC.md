@@ -618,7 +618,7 @@ Test không đọc thư mục `data/` thật, trừ `MamCom.LiveData.Tests`: m�
 ## 13. Câu hỏi mở `[QUYẾT ĐỊNH]`
 
 - Tên app chính thức. Mặc định: tên tạm "MâmCơm", namespace `MamCom`.
-- Hosting: Azure Static Web Apps *(mặc định)* hay GitHub Pages.
+- Hosting: staging chạy trên Vercel (gói Hobby, https://mamcom-pi.vercel.app, ADR-029) thay cho Azure Static Web Apps *(mặc định cũ)*; host của bản chính thức chốt khi biết có thương mại hoá không.
 - Có thương mại hoá không. Ảnh hưởng tới điều khoản dùng dữ liệu của Viện Dinh dưỡng.
 - Vùng miền ưu tiên khi ra mắt. Mặc định cho đến khi chốt: Bắc, người dùng chọn lại bằng một chạm ở màn hình đầu tiên (ADR-021).
 
