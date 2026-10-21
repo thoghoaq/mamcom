@@ -1,6 +1,6 @@
 # ADR-027: Kiểm thử E2E trên bản publish và kiểm accessibility ngay trong trình duyệt
 
-- Trạng thái: Đã áp dụng trong code (CI chưa chạy: chờ lần push đầu tiên)
+- Trạng thái: Đã áp dụng trong code, CI xanh
 - Ngày: 2026-10-21
 - Liên quan: [SPEC §8.2, §10](../SPEC.md), [PLAN 3.9](../PLAN.md), ADR-018 (seed đóng băng), ADR-020 (gói dữ liệu riêng với app), ADR-025 (chế độ nấu), ADR-026 (khẩu vị và Cài đặt)
 
@@ -37,9 +37,9 @@ PLAN 3.9: kiểm contrast, vùng chạm, `aria-label` cho nút chỉ có icon, c
 
 ## Hệ quả
 
+- **CI:** lần chạy đầu đỏ trên Ubuntu với Chromium vì một cảnh báo của console mà Edge ở máy dev không báo ("A preload for dotnet.js is found, but is not used because it is a cross-world service worker resource mismatch"): worker đã trả lời cho runtime nên gợi ý preload của Blazor chỉ tải thừa. Đã bỏ `<link rel="preload" id="webassembly" />` khỏi `index.html`; lần chạy sau xanh, 3466 test, không test nào bị bỏ qua, E2E mất 1 phút 8 giây. Việc đòi console sạch ở các luồng chính chính là thứ bắt được nó.
 - **Đã chạy trên máy này:** 14 test E2E xanh ở cấu hình Debug và ở Release (khoảng 40 và 55 giây, trong đó phần lớn là dựng và nạp), trên Edge, ở cả giao diện sáng và tối.
 - **Chưa kiểm:**
-  - CI: bước cài Chromium và lần chạy đầu trên Ubuntu chỉ biết sau lần push.
   - Safari và iOS (Playwright dùng Chromium; WebKit cần cài riêng), Firefox, thiết bị thật.
   - Trình đọc màn hình thật (TalkBack, VoiceOver): tên và vai trò đúng, nhưng chưa nghe; cỡ chữ lớn thật của Android và iOS (ta giả bằng `font-size: 200%`).
 - **Giới hạn đã biết:**
