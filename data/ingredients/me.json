@@ -20,19 +20,19 @@
   "wasteRatio": 0.2,
   "isPantry": true,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 239,
+    "proteinG": 2.8,
+    "fatG": 0.6,
+    "carbG": 62.5,
+    "fiberG": 5.1,
+    "sodiumMg": 28
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "167763",
+    "matchedName": "Tamarinds, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

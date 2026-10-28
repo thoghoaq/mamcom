@@ -25,19 +25,19 @@
   "wasteRatio": 0.3,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 71,
+    "proteinG": 13.6,
+    "fatG": 1.01,
+    "carbG": 0.91,
+    "fiberG": 0,
+    "sodiumMg": 566
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "174210",
+    "matchedName": "Crustaceans, shrimp, mixed species, raw (may contain additives to retain moisture)",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

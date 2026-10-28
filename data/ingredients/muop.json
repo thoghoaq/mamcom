@@ -19,19 +19,19 @@
   "wasteRatio": 0.2,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 20,
+    "proteinG": 1.2,
+    "fatG": 0.2,
+    "carbG": 4.35,
+    "fiberG": 1.1,
+    "sodiumMg": 3
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "168414",
+    "matchedName": "Gourd, dishcloth (towelgourd), raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

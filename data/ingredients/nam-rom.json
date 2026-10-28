@@ -22,19 +22,19 @@
   "wasteRatio": 0.1,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 32,
+    "proteinG": 3.83,
+    "fatG": 0.68,
+    "carbG": 4.64,
+    "fiberG": 2.5,
+    "sodiumMg": 384
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "168582",
+    "matchedName": "Mushrooms, straw, canned, drained solids",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

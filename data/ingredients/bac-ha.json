@@ -19,19 +19,19 @@
   "wasteRatio": 0.2,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 42,
+    "proteinG": 4.98,
+    "fatG": 0.74,
+    "carbG": 6.7,
+    "fiberG": 3.7,
+    "sodiumMg": 3
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "168487",
+    "matchedName": "Taro leaves, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

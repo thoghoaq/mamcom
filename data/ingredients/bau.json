@@ -18,19 +18,19 @@
   "wasteRatio": 0.2,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 14,
+    "proteinG": 0.62,
+    "fatG": 0.02,
+    "carbG": 3.39,
+    "fiberG": 0.5,
+    "sodiumMg": 2
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "169232",
+    "matchedName": "Gourd, white-flowered (calabash), raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

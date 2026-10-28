@@ -22,19 +22,19 @@
   "wasteRatio": 0.2,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 112,
+    "proteinG": 1.5,
+    "fatG": 0.2,
+    "carbG": 26.5,
+    "fiberG": 4.1,
+    "sodiumMg": 11
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "169308",
+    "matchedName": "Taro, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

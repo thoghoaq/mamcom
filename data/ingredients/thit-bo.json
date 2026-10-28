@@ -25,19 +25,19 @@
   "wasteRatio": 0,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 150,
+    "proteinG": 21.2,
+    "fatG": 6.59,
+    "carbG": 0,
+    "fiberG": 0,
+    "sodiumMg": 63
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "172128",
+    "matchedName": "Beef, round, outside round, bottom round, steak, separable lean and fat, trimmed to 0\" fat, choice, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

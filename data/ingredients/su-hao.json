@@ -17,19 +17,19 @@
   "wasteRatio": 0.25,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 27,
+    "proteinG": 1.7,
+    "fatG": 0.1,
+    "carbG": 6.2,
+    "fiberG": 3.6,
+    "sodiumMg": 20
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "168424",
+    "matchedName": "Kohlrabi, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

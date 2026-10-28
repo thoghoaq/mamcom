@@ -26,19 +26,19 @@
   "wasteRatio": 0.15,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 119,
+    "proteinG": 21.4,
+    "fatG": 3.08,
+    "carbG": 0,
+    "fiberG": 0,
+    "sodiumMg": 77
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "171052",
+    "matchedName": "Chicken, broilers or fryers, meat only, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

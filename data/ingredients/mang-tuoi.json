@@ -24,19 +24,19 @@
   "wasteRatio": 0.1,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 27,
+    "proteinG": 2.6,
+    "fatG": 0.3,
+    "carbG": 5.2,
+    "fiberG": 2.2,
+    "sodiumMg": 4
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "169210",
+    "matchedName": "Bamboo shoots, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

@@ -17,19 +17,19 @@
   "wasteRatio": 0.1,
   "isPantry": true,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 149,
+    "proteinG": 6.36,
+    "fatG": 0.5,
+    "carbG": 33.1,
+    "fiberG": 2.1,
+    "sodiumMg": 17
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "169230",
+    "matchedName": "Garlic, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

@@ -22,19 +22,19 @@
   "wasteRatio": 0.1,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 33,
+    "proteinG": 1.93,
+    "fatG": 0.19,
+    "carbG": 7.45,
+    "fiberG": 3.2,
+    "sodiumMg": 7
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "169260",
+    "matchedName": "Okra, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

@@ -25,19 +25,19 @@
   "wasteRatio": 0.7,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 86,
+    "proteinG": 14.7,
+    "fatG": 0.96,
+    "carbG": 3.57,
+    "fiberG": 0,
+    "sodiumMg": 601
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "174214",
+    "matchedName": "Mollusks, clam, mixed species, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

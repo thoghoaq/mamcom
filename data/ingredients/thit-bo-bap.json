@@ -24,19 +24,19 @@
   "wasteRatio": 0,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 128,
+    "proteinG": 21.8,
+    "fatG": 3.85,
+    "carbG": 0,
+    "fiberG": 0,
+    "sodiumMg": 63
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "169441",
+    "matchedName": "Beef, shank crosscuts, separable lean only, trimmed to 1/4\" fat, choice, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

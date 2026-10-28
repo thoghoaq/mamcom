@@ -23,19 +23,19 @@
   "wasteRatio": 0.45,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 54,
+    "proteinG": 0.461,
+    "fatG": 0.211,
+    "carbG": 14.1,
+    "fiberG": 0.935,
+    "sodiumMg": 0
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "2346398",
+    "matchedName": "Pineapple, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

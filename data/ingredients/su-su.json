@@ -17,19 +17,19 @@
   "wasteRatio": 0.25,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 19,
+    "proteinG": 0.82,
+    "fatG": 0.13,
+    "carbG": 4.51,
+    "fiberG": 1.7,
+    "sodiumMg": 2
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "170402",
+    "matchedName": "Chayote, fruit, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

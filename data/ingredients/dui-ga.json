@@ -24,19 +24,19 @@
   "wasteRatio": 0.25,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 440,
+    "proteinG": 9.58,
+    "fatG": 44.2,
+    "carbG": 0.79,
+    "fiberG": 0,
+    "sodiumMg": 51
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "172855",
+    "matchedName": "Chicken, skin (drumsticks and thighs), raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

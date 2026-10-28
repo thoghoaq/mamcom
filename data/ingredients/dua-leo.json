@@ -20,19 +20,19 @@
   "wasteRatio": 0.08,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 15,
+    "proteinG": 0.65,
+    "fatG": 0.11,
+    "carbG": 3.63,
+    "fiberG": 0.5,
+    "sodiumMg": 2
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "168409",
+    "matchedName": "Cucumber, with peel, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

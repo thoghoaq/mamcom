@@ -17,19 +17,19 @@
   "wasteRatio": 0.5,
   "isPantry": true,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 30,
+    "proteinG": 0.7,
+    "fatG": 0.2,
+    "carbG": 10.5,
+    "fiberG": 2.8,
+    "sodiumMg": 2
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "168155",
+    "matchedName": "Limes, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

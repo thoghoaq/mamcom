@@ -22,19 +22,19 @@
   "wasteRatio": 0.35,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 139,
+    "proteinG": 19.3,
+    "fatG": 6.3,
+    "carbG": 0,
+    "fiberG": 0,
+    "sodiumMg": 59
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "173673",
+    "matchedName": "Fish, mackerel, spanish, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

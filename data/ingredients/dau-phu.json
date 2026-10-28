@@ -21,19 +21,19 @@
   "wasteRatio": 0,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 62,
+    "proteinG": 6.9,
+    "fatG": 2.7,
+    "carbG": 2.4,
+    "fiberG": 0.1,
+    "sodiumMg": 36
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "172461",
+    "matchedName": "MORI-NU, Tofu, silken, firm",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

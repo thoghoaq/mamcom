@@ -24,19 +24,19 @@
   "wasteRatio": 0.25,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 92,
+    "proteinG": 15.6,
+    "fatG": 1.38,
+    "carbG": 3.08,
+    "fiberG": 0,
+    "sodiumMg": 44
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "174223",
+    "matchedName": "Mollusks, squid, mixed species, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

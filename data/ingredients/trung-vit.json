@@ -17,19 +17,19 @@
   "wasteRatio": 0.12,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 185,
+    "proteinG": 12.8,
+    "fatG": 13.8,
+    "carbG": 1.45,
+    "fiberG": 0,
+    "sodiumMg": 146
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "172189",
+    "matchedName": "Egg, duck, whole, fresh, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

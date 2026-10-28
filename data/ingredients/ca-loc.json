@@ -21,19 +21,19 @@
   "wasteRatio": 0.45,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 124,
+    "proteinG": 20,
+    "fatG": 4.24,
+    "carbG": 0,
+    "fiberG": 0,
+    "sodiumMg": 60
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "171949",
+    "matchedName": "Fish, bluefish, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

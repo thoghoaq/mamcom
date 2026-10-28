@@ -19,19 +19,19 @@
   "wasteRatio": 0.6,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 230,
+    "proteinG": 2.29,
+    "fatG": 23.8,
+    "carbG": 5.54,
+    "fiberG": 2.2,
+    "sodiumMg": 15
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "170172",
+    "matchedName": "Nuts, coconut milk, raw (liquid expressed from grated meat and water)",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

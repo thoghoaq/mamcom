@@ -22,19 +22,19 @@
   "wasteRatio": 0.05,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 33,
+    "proteinG": 3.31,
+    "fatG": 0.41,
+    "carbG": 6.09,
+    "fiberG": 2.3,
+    "sodiumMg": 18
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "168580",
+    "matchedName": "Mushrooms, oyster, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

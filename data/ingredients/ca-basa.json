@@ -24,19 +24,19 @@
   "wasteRatio": 0.05,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 119,
+    "proteinG": 15.2,
+    "fatG": 5.94,
+    "carbG": 0,
+    "fiberG": 0,
+    "sodiumMg": 98
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "175165",
+    "matchedName": "Fish, catfish, channel, farmed, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

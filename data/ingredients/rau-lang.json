@@ -19,19 +19,19 @@
   "wasteRatio": 0.35,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 42,
+    "proteinG": 2.49,
+    "fatG": 0.51,
+    "carbG": 8.82,
+    "fiberG": 5.3,
+    "sodiumMg": 6
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "169303",
+    "matchedName": "Sweet potato leaves, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

@@ -22,19 +22,19 @@
   "wasteRatio": 0.15,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 58,
+    "proteinG": 2.57,
+    "fatG": 0.1,
+    "carbG": 12.4,
+    "fiberG": 2.5,
+    "sodiumMg": 10
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "170032",
+    "matchedName": "Potatoes, raw, skin",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

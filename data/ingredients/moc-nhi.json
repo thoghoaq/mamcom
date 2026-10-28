@@ -20,19 +20,19 @@
   "wasteRatio": 0.05,
   "isPantry": true,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
+    "kcal": 25,
+    "proteinG": 0.48,
+    "fatG": 0.04,
+    "carbG": 6.75,
     "fiberG": null,
-    "sodiumMg": null
+    "sodiumMg": 9
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "169237",
+    "matchedName": "Jew's ear, (pepeao), raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

@@ -25,19 +25,19 @@
   "wasteRatio": 0.05,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 30,
+    "proteinG": 3.04,
+    "fatG": 0.18,
+    "carbG": 5.94,
+    "fiberG": 1.8,
+    "sodiumMg": 6
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "169957",
+    "matchedName": "Mung beans, mature seeds, sprouted, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,
