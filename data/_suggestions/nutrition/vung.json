@@ -1,31 +1,12 @@
 {
   "ingredientId": "vung",
   "query": "seeds sesame seeds whole dried",
-  "retrievedAt": "2026-10-21",
+  "retrievedAt": "2026-10-28",
   "source": "usda-fdc",
   "totalHits": 803,
   "candidates": [
     {
       "rank": 1,
-      "fdcId": 170144,
-      "description": "Seeds, breadfruit seeds, raw",
-      "dataType": "SR Legacy",
-      "foodCategory": "Nut and Seed Products",
-      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170144/nutrients",
-      "per100g": {
-        "kcal": 191,
-        "proteinG": 7.4,
-        "fatG": 5.59,
-        "carbG": 29.2,
-        "fiberG": 5.2,
-        "sodiumMg": 25
-      },
-      "kcalSource": "Energy",
-      "missing": [],
-      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/4 từ khoá."
-    },
-    {
-      "rank": 2,
       "fdcId": 170150,
       "description": "Seeds, sesame seeds, whole, dried",
       "dataType": "SR Legacy",
@@ -44,7 +25,7 @@
       "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 4/4 từ khoá."
     },
     {
-      "rank": 3,
+      "rank": 2,
       "fdcId": 169412,
       "description": "Seeds, sesame seed kernels, dried (decorticated)",
       "dataType": "SR Legacy",
@@ -61,6 +42,27 @@
       "kcalSource": "Energy",
       "missing": [],
       "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 168587,
+      "description": "Seeds, sisymbrium sp. seeds, whole, dried",
+      "dataType": "SR Legacy",
+      "foodCategory": "Nut and Seed Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168587/nutrients",
+      "per100g": {
+        "kcal": 318,
+        "proteinG": 12.1,
+        "fatG": 4.6,
+        "carbG": 58.3,
+        "fiberG": null,
+        "sodiumMg": 92
+      },
+      "kcalSource": "Energy",
+      "missing": [
+        "fiberG"
+      ],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; thiếu: chất xơ; khớp 3/4 từ khoá."
     }
   ]
 }

@@ -1,33 +1,12 @@
 {
   "ingredientId": "nuoc-tuong",
   "query": "soy sauce",
-  "retrievedAt": "2026-10-21",
+  "retrievedAt": "2026-10-28",
   "source": "usda-fdc",
   "totalHits": 378,
   "candidates": [
     {
       "rank": 1,
-      "fdcId": 172445,
-      "description": "Soy meal, defatted, raw",
-      "dataType": "SR Legacy",
-      "foodCategory": "Legumes and Legume Products",
-      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172445/nutrients",
-      "per100g": {
-        "kcal": 337,
-        "proteinG": 49.2,
-        "fatG": 2.39,
-        "carbG": 35.9,
-        "fiberG": null,
-        "sodiumMg": 3
-      },
-      "kcalSource": "Energy",
-      "missing": [
-        "fiberG"
-      ],
-      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; thiếu: chất xơ; khớp 1/2 từ khoá."
-    },
-    {
-      "rank": 2,
       "fdcId": 174278,
       "description": "Soy sauce made from soy (tamari)",
       "dataType": "SR Legacy",
@@ -46,7 +25,7 @@
       "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/2 từ khoá."
     },
     {
-      "rank": 3,
+      "rank": 2,
       "fdcId": 174277,
       "description": "Soy sauce made from soy and wheat (shoyu)",
       "dataType": "SR Legacy",
@@ -59,6 +38,25 @@
         "carbG": 4.93,
         "fiberG": 0.8,
         "sodiumMg": 5490
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 172473,
+      "description": "Soy sauce made from soy and wheat (shoyu), low sodium",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172473/nutrients",
+      "per100g": {
+        "kcal": 57,
+        "proteinG": 9.05,
+        "fatG": 0.3,
+        "carbG": 5.59,
+        "fiberG": 0.7,
+        "sodiumMg": 3600
       },
       "kcalSource": "Energy",
       "missing": [],

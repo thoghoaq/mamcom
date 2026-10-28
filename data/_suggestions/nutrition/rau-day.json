@@ -1,66 +1,68 @@
 {
   "ingredientId": "rau-day",
   "query": "Jute, potherb, raw",
-  "retrievedAt": "2026-10-21",
+  "retrievedAt": "2026-10-28",
   "source": "usda-fdc",
   "totalHits": 1554,
   "candidates": [
     {
       "rank": 1,
-      "fdcId": 747447,
-      "description": "Broccoli, raw",
-      "dataType": "Foundation",
+      "fdcId": 168419,
+      "description": "Jute, potherb, raw",
+      "dataType": "SR Legacy",
       "foodCategory": "Vegetables and Vegetable Products",
-      "detailsUrl": "https://fdc.nal.usda.gov/food-details/747447/nutrients",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168419/nutrients",
       "per100g": {
-        "kcal": 31,
-        "proteinG": 2.57,
-        "fatG": 0.34,
-        "carbG": 6.27,
-        "fiberG": 2.4,
-        "sodiumMg": 36
+        "kcal": 34,
+        "proteinG": 4.65,
+        "fatG": 0.25,
+        "carbG": 5.8,
+        "fiberG": null,
+        "sodiumMg": 8
       },
       "kcalSource": "Energy",
-      "missing": [],
-      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/3 từ khoá."
+      "missing": [
+        "fiberG"
+      ],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; thiếu: chất xơ; khớp 3/3 từ khoá."
     },
     {
       "rank": 2,
-      "fdcId": 2685573,
-      "description": "Cauliflower, raw",
-      "dataType": "Foundation",
+      "fdcId": 169354,
+      "description": "Jute, potherb, cooked, boiled, drained, with salt",
+      "dataType": "SR Legacy",
       "foodCategory": "Vegetables and Vegetable Products",
-      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2685573/nutrients",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169354/nutrients",
       "per100g": {
-        "kcal": 22.9,
-        "proteinG": 1.64,
-        "fatG": 0.238,
-        "carbG": 4.72,
-        "fiberG": 1.95,
-        "sodiumMg": 20
+        "kcal": 37,
+        "proteinG": 3.68,
+        "fatG": 0.2,
+        "carbG": 7.29,
+        "fiberG": 2,
+        "sodiumMg": 247
       },
-      "kcalSource": "Energy (Atwater Specific Factors)",
+      "kcalSource": "Energy",
       "missing": [],
-      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/3 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'cooked': đã chế biến, cần cân nhắc; đủ 6 chất; khớp 2/3 từ khoá."
     },
     {
       "rank": 3,
-      "fdcId": 2685576,
-      "description": "Beets, raw",
-      "dataType": "Foundation",
+      "fdcId": 168420,
+      "description": "Jute, potherb, cooked, boiled, drained, without salt",
+      "dataType": "SR Legacy",
       "foodCategory": "Vegetables and Vegetable Products",
-      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2685576/nutrients",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168420/nutrients",
       "per100g": {
-        "kcal": 41,
-        "proteinG": 1.69,
-        "fatG": 0.302,
-        "carbG": 8.79,
-        "fiberG": 3.12,
-        "sodiumMg": 112
+        "kcal": 37,
+        "proteinG": 3.68,
+        "fatG": 0.2,
+        "carbG": 7.29,
+        "fiberG": 2,
+        "sodiumMg": 11
       },
-      "kcalSource": "Energy (Atwater Specific Factors)",
+      "kcalSource": "Energy",
       "missing": [],
-      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/3 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'cooked': đã chế biến, cần cân nhắc; đủ 6 chất; khớp 2/3 từ khoá."
     }
   ]
 }

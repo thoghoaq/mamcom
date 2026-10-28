@@ -16,7 +16,7 @@ PLAN 2.3 yêu cầu `FdcImporter` tìm USDA FoodData Central theo tên tiếng A
 
 - **Tên tiếng Anh nằm trong `data/plan/ingredient-names-en.csv`** (cột `id`, `english`). Đó là từ khoá tìm kiếm, không phải dữ liệu, nên không thêm trường vào file nguyên liệu (làm vậy phải đổi kiểu `Ingredient` và schema). File này do tôi soạn cho 33 nguyên liệu seed; chủ dự án sửa được.
 - **Chỉ tìm trong Foundation và SR Legacy**: bảng giá trị trên 100g của thực phẩm tươi sống, khớp với cách SPEC §6.3 cộng từ nguyên liệu sống. Thực phẩm Branded (sản phẩm) và Survey (món ăn) bị loại. Ghi nhận khi thử API: giá trị `dataType` có dấu ngoặc (`Survey (FNDDS)`) làm cổng trả 400 nên không dùng.
-- **Thứ tự xếp hạng**, mạnh nhất trước:
+- **Thứ tự xếp hạng**, mạnh nhất trước (ADR-031 đã đưa "khớp nhiều từ khoá" lên đầu):
   1. mô tả có `raw`, rồi không nói gì, rồi có chữ chế biến (`cooked`, `canned`, `dried`…; chữ nào chính câu tìm kiếm nêu thì không bị tính);
   2. ít chất còn thiếu hơn (một chất thiếu làm tổng của cả món thành không biết, ADR-006);
   3. khớp nhiều từ khoá hơn (hỏi "white" thì gạo lứt đứng sau, dù là dữ liệu mới hơn);

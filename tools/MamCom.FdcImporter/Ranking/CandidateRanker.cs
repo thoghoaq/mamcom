@@ -14,10 +14,11 @@ internal enum DescriptionState
 
 /// <summary>
 /// Chooses the few FDC foods worth showing a person. The order, strongest first (ADR-012):
-/// 1. State: a description that says raw, then one that says nothing, then one that says cooked, canned, dried…
+/// 1. More of the query's words in the description: it has to be the food asked for before anything else counts, so
+///    "turmeric, ground" is never beaten by "chicken, ground, raw" (ADR-031); asking for "white" rice puts brown rice later.
+/// 2. State: a description that says raw, then one that says nothing, then one that says cooked, canned, dried…
 ///    (SPEC §6.3 adds nutrients from raw ingredients, so a cooked entry would count them twice).
-/// 2. Completeness: fewer of the six nutrients missing; an unknown nutrient makes every dish total unknown.
-/// 3. More of the query's words in the description: asking for "white" rice means brown rice comes later.
+/// 3. Completeness: fewer of the six nutrients missing; an unknown nutrient makes every dish total unknown.
 /// 4. Data type: Foundation (recent analytical data) before SR Legacy.
 /// 5. FDC's own relevance score, then the lower <c>fdcId</c>, so the result never depends on arrival order.
 /// </summary>
@@ -47,9 +48,9 @@ public static partial class CandidateRanker
 
         var scored = foods
             .Select(food => Score(food, queryWords))
-            .OrderBy(s => s.State)
+            .OrderByDescending(s => s.Matched)
+            .ThenBy(s => s.State)
             .ThenBy(s => s.Extracted.Missing.Count)
-            .ThenByDescending(s => s.Matched)
             .ThenBy(s => DataTypeOrder(s.Food.DataType))
             .ThenByDescending(s => s.Food.Score ?? 0)
             .ThenBy(s => s.Food.FdcId)

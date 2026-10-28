@@ -1,12 +1,31 @@
 {
   "ingredientId": "rau-thom",
   "query": "Basil, fresh",
-  "retrievedAt": "2026-10-21",
+  "retrievedAt": "2026-10-28",
   "source": "usda-fdc",
   "totalHits": 320,
   "candidates": [
     {
       "rank": 1,
+      "fdcId": 172232,
+      "description": "Basil, fresh",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172232/nutrients",
+      "per100g": {
+        "kcal": 23,
+        "proteinG": 3.15,
+        "fatG": 0.64,
+        "carbG": 2.65,
+        "fiberG": 1.6,
+        "sodiumMg": 4
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 2,
       "fdcId": 167811,
       "description": "Pork, fresh, backfat, raw",
       "dataType": "SR Legacy",
@@ -25,7 +44,7 @@
       "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/2 từ khoá."
     },
     {
-      "rank": 2,
+      "rank": 3,
       "fdcId": 167812,
       "description": "Pork, fresh, belly, raw",
       "dataType": "SR Legacy",
@@ -38,25 +57,6 @@
         "carbG": 0,
         "fiberG": 0,
         "sodiumMg": 32
-      },
-      "kcalSource": "Energy",
-      "missing": [],
-      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/2 từ khoá."
-    },
-    {
-      "rank": 3,
-      "fdcId": 167902,
-      "description": "Pork, fresh, ground, raw",
-      "dataType": "SR Legacy",
-      "foodCategory": "Pork Products",
-      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167902/nutrients",
-      "per100g": {
-        "kcal": 263,
-        "proteinG": 16.9,
-        "fatG": 21.2,
-        "carbG": 0,
-        "fiberG": 0,
-        "sodiumMg": 56
       },
       "kcalSource": "Energy",
       "missing": [],

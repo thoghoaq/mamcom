@@ -1,12 +1,33 @@
 {
   "ingredientId": "rau-den",
   "query": "Amaranth leaves, raw",
-  "retrievedAt": "2026-10-21",
+  "retrievedAt": "2026-10-28",
   "source": "usda-fdc",
   "totalHits": 1570,
   "candidates": [
     {
       "rank": 1,
+      "fdcId": 168385,
+      "description": "Amaranth leaves, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168385/nutrients",
+      "per100g": {
+        "kcal": 23,
+        "proteinG": 2.46,
+        "fatG": 0.33,
+        "carbG": 4.02,
+        "fiberG": null,
+        "sodiumMg": 20
+      },
+      "kcalSource": "Energy",
+      "missing": [
+        "fiberG"
+      ],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; thiếu: chất xơ; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
       "fdcId": 168416,
       "description": "Drumstick leaves, raw",
       "dataType": "SR Legacy",
@@ -25,7 +46,7 @@
       "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
     },
     {
-      "rank": 2,
+      "rank": 3,
       "fdcId": 168487,
       "description": "Taro leaves, raw",
       "dataType": "SR Legacy",
@@ -38,25 +59,6 @@
         "carbG": 6.7,
         "fiberG": 3.7,
         "sodiumMg": 3
-      },
-      "kcalSource": "Energy",
-      "missing": [],
-      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/3 từ khoá."
-    },
-    {
-      "rank": 3,
-      "fdcId": 168491,
-      "description": "Chrysanthemum leaves, raw",
-      "dataType": "SR Legacy",
-      "foodCategory": "Vegetables and Vegetable Products",
-      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168491/nutrients",
-      "per100g": {
-        "kcal": 24,
-        "proteinG": 3.36,
-        "fatG": 0.56,
-        "carbG": 3.01,
-        "fiberG": 3,
-        "sodiumMg": 118
       },
       "kcalSource": "Energy",
       "missing": [],

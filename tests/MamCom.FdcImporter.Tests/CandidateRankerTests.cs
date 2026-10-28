@@ -16,7 +16,7 @@ public class CandidateRankerTests
     // ---- the order -----------------------------------------------------------------------------------------------
 
     [Fact]
-    public void Raw_comes_before_unspecified_and_unspecified_before_cooked_whatever_else_they_have()
+    public void Raw_comes_before_unspecified_and_unspecified_before_cooked_whatever_their_completeness_type_and_score()
     {
         var foods = new[]
         {
@@ -87,6 +87,18 @@ public class CandidateRankerTests
         };
 
         Ids(foods, "rice white long-grain raw").ShouldBe([2L, 1L]);
+    }
+
+    [Fact]
+    public void Matching_more_of_the_query_beats_being_raw_and_being_complete()
+    {
+        var foods = new[]
+        {
+            Food(1, "Chicken, ground, raw", "Foundation", score: 9000),
+            Food(2, "Spices, turmeric, ground", complete: false, score: 1),
+        };
+
+        Ids(foods, "Spices, turmeric, ground").ShouldBe([2L, 1L]);
     }
 
     [Fact]

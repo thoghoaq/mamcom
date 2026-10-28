@@ -1,12 +1,31 @@
 {
   "ingredientId": "mien",
   "query": "Noodles, chinese, cellophane or long rice (mung beans), dehydrated",
-  "retrievedAt": "2026-10-21",
+  "retrievedAt": "2026-10-28",
   "source": "usda-fdc",
   "totalHits": 499,
   "candidates": [
     {
       "rank": 1,
+      "fdcId": 174258,
+      "description": "Noodles, chinese, cellophane or long rice (mung beans), dehydrated",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174258/nutrients",
+      "per100g": {
+        "kcal": 351,
+        "proteinG": 0.16,
+        "fatG": 0.06,
+        "carbG": 86.1,
+        "fiberG": 0.5,
+        "sodiumMg": 10
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 8/8 từ khoá."
+    },
+    {
+      "rank": 2,
       "fdcId": 2512380,
       "description": "Rice, brown, long grain, unenriched, raw",
       "dataType": "Foundation",
@@ -25,7 +44,7 @@
       "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/8 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
     },
     {
-      "rank": 2,
+      "rank": 3,
       "fdcId": 2512381,
       "description": "Rice, white, long grain, unenriched, raw",
       "dataType": "Foundation",
@@ -42,25 +61,6 @@
       "kcalSource": "Energy (Atwater Specific Factors)",
       "missing": [],
       "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/8 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
-    },
-    {
-      "rank": 3,
-      "fdcId": 174256,
-      "description": "Mung beans, mature seeds, raw",
-      "dataType": "SR Legacy",
-      "foodCategory": "Legumes and Legume Products",
-      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174256/nutrients",
-      "per100g": {
-        "kcal": 347,
-        "proteinG": 23.9,
-        "fatG": 1.15,
-        "carbG": 62.6,
-        "fiberG": 16.3,
-        "sodiumMg": 15
-      },
-      "kcalSource": "Energy",
-      "missing": [],
-      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/8 từ khoá."
     }
   ]
 }
