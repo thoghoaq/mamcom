@@ -37,6 +37,7 @@ builder.Services.AddSingleton<IngredientStore>();
 builder.Services.AddSingleton<ImageLibrary>();
 builder.Services.AddSingleton<IngredientReviewer>();
 builder.Services.AddSingleton(new ReviewerIdentity(options.Reviewer));
+builder.Services.AddScoped<ReviewFlash>();
 
 var app = builder.Build();
 var contentTypes = new Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider();

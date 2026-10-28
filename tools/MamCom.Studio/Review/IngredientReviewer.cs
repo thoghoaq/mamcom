@@ -103,6 +103,10 @@ public sealed class IngredientReviewer(IngredientStore store, KitchenLoader load
         return new IngredientCatalog(kitchen, entries);
     }
 
+    /// <summary>The ingredients that still have no numbers, seen from <paramref name="id"/>: the one to open after it, and how many are left.</summary>
+    public ReviewQueue<IngredientEntry> QueueAfter(string id) =>
+        ReviewQueue<IngredientEntry>.Of(Catalog().Entries, e => e.Id == id, e => e.Problem is null && e.IsPlaceholder);
+
     /// <summary>The checks for an ingredient as it would be written, and the dishes that use it.</summary>
     public static IngredientEvaluation Evaluate(Kitchen kitchen, Ingredient ingredient)
     {

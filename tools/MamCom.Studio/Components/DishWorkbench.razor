@@ -7,6 +7,7 @@
 @inject MamCom.Core.IClock Clock
 @inject ImageLibrary Images
 @inject NavigationManager Nav
+@inject ReviewFlash Flash
 
 <p><a class="back-link" href="/dishes" data-back>@Strings.Studio_Dish_Back</a></p>
 
@@ -46,6 +47,8 @@ else
             <span class="text-muted text-small">@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Dish_File, _stored.File)</span>
         </p>
     </header>
+
+    <QueueBar Waiting="@QueueText" NextHref="@_queue.Next?.Href" NextName="@(_queue.Next?.Name ?? _queue.Next?.Id)" />
 
     <KitchenProblems Kitchen="_kitchen" />
 
@@ -229,6 +232,7 @@ else
     private string? _cookNote;
     private IReadOnlyList<string> _imageFiles = [];
     private DishLocation _loadedLocation;
+    private ReviewQueue<DishEntry> _queue = new(null, 0);
 
     [Parameter, EditorRequired]
     public string Id { get; set; } = string.Empty;
@@ -248,6 +252,10 @@ else
         : string.IsNullOrWhiteSpace(_reviewer) ? Strings.Studio_Action_NeedReviewer
         : null;
 
+    private string QueueText => _queue.Waiting == 0
+        ? Strings.Studio_Queue_DishNone
+        : string.Format(CultureInfo.InvariantCulture, Strings.Studio_Queue_DishWaitingFormat, _queue.Waiting);
+
     protected override void OnParametersSet()
     {
         if (_loadedId == Id && _loadedLocation == Location)
@@ -259,6 +267,12 @@ else
         _loadedLocation = Location;
         _message = null;
         Load();
+
+        // Studio moved here by itself after the last dish was approved; say what was done there.
+        if (Flash.Take() is { } line)
+        {
+            (_message, _tone) = line;
+        }
     }
 
     /// <summary>Reads the kitchen, the dish and its note from disk again and starts the form over from the file.</summary>
@@ -269,6 +283,7 @@ else
         _note = Location == DishLocation.Draft ? Reviewer.Store.ReadNote(Id) : null;
         _reviewer = Identity.Name;
         _imageFiles = Images.Files();
+        _queue = Reviewer.QueueAfter(Location, Id);
         ResetForm();
     }
 
@@ -305,13 +320,29 @@ else
         ResetForm();
     }
 
+    /// <summary>Approves the dish, then opens the next one still waiting; after the last one a draft goes to its new page as a dish.</summary>
     private void Approve()
     {
+        var done = _stored!.Dish!.Name;
         Identity.Name = _reviewer.Trim();
-        var result = Reviewer.Approve(Location, Id, _reviewer, _stored!.Version);
+        var result = Reviewer.Approve(Location, Id, _reviewer, _stored.Version);
         Apply(result);
-        if (result.Status == ReviewStatus.Approved && Location == DishLocation.Draft)
+        if (result.Status != ReviewStatus.Approved)
         {
+            return;
+        }
+
+        if (_queue.Next is { } next)
+        {
+            Flash.Set(string.Format(CultureInfo.InvariantCulture, Strings.Studio_Queue_DishDoneFormat, done), "ok");
+            Nav.NavigateTo(next.Href);
+            return;
+        }
+
+        _message = string.Format(CultureInfo.InvariantCulture, Strings.Studio_Queue_DishAllDoneFormat, done);
+        if (Location == DishLocation.Draft)
+        {
+            Flash.Set(_message, "ok");
             Nav.NavigateTo($"/dishes/{Id}");
         }
     }
@@ -358,6 +389,7 @@ else
         {
             case ReviewStatus.Saved or ReviewStatus.Approved or ReviewStatus.Reopened or ReviewStatus.CookTested or ReviewStatus.CookTestUndone when result.Stored is not null:
                 _stored = result.Stored;
+                _queue = Reviewer.QueueAfter(Location == DishLocation.Draft && result.Status == ReviewStatus.Approved ? DishLocation.Data : Location, Id);
                 ResetForm();
                 break;
 

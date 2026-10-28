@@ -351,16 +351,107 @@ public class IngredientWorkbenchTests : PageTestBase
     }
 
     [Fact]
-    public void Choosing_is_off_while_there_are_changes_that_are_not_saved()
+    public void Choosing_with_changes_that_are_not_saved_saves_them_with_the_numbers()
+    {
+        SuggestRice();
+        Identity.Name = "Mẹ Lan";
+        var cut = OpenIngredient();
+        cut.Find("[data-name=default]").Change("Gạo tẻ");
+
+        cut.FindAll("[data-choose-hint]").ShouldBeEmpty();
+        cut.Find("[data-candidate='222'] [data-choose]").Click();
+
+        var ingredient = IngredientFile.Parse(Disk());
+        ingredient.Names[RegionKeys.Default].ShouldBe("Gạo tẻ");
+        ingredient.NutritionSource.Ref.ShouldBe("222");
+        cut.FindAll("[data-unsaved]").ShouldBeEmpty();
+        Flash.Take()!.Value.Message.ShouldBe("Đã ghi số liệu cho Gạo tẻ. Đây là nguyên liệu tiếp theo chưa có số liệu.");
+    }
+
+    [Fact]
+    public void Choosing_with_a_change_that_cannot_be_saved_is_off()
     {
         SuggestRice();
         Identity.Name = "Mẹ Lan";
         var cut = OpenIngredient();
 
-        cut.Find("[data-name=default]").Change("Gạo tẻ");
+        cut.Find("#ing-waste").Change("1.5");
 
         cut.FindAll("[data-choose]").ShouldAllBe(b => b.HasAttribute("disabled"));
-        Text(cut, "[data-choose-hint]").ShouldBe("Lưu thay đổi trước khi chọn số liệu.");
+        Text(cut, "[data-choose-hint]").ShouldBe("Sửa hết lỗi trước khi chọn số liệu.");
+    }
+
+    // ---- going on to the next one -----------------------------------------------------------------------------------------------
+
+    [Fact]
+    public void Says_how_many_are_left_and_offers_to_skip_to_the_next_one()
+    {
+        var cut = OpenIngredient();
+
+        Text(cut, "[data-waiting]").ShouldBe("Còn 33 nguyên liệu chưa có số liệu.");
+        cut.Find("[data-skip]").GetAttribute("href").ShouldBe("/ingredients/hanh-la");
+        Text(cut, "[data-skip]").ShouldBe("Bỏ qua, sang Hành lá →");
+    }
+
+    [Fact]
+    public void Choosing_opens_the_next_ingredient_without_numbers_and_tells_it_what_was_done()
+    {
+        SuggestRice();
+        Identity.Name = "Mẹ Lan";
+        Data.EditJson("ingredients/hanh-la.json", o => o["nutritionSource"]!["db"] = "vn-fct-2017");   // already has numbers: passed over
+
+        OpenIngredient().Find("[data-candidate='222'] [data-choose]").Click();
+
+        Navigation.Uri.ShouldEndWith("/ingredients/hanh-tay");
+        var next = OpenIngredient("hanh-tay");
+        Text(next, "[data-message]").ShouldBe("Đã ghi số liệu cho Gạo. Đây là nguyên liệu tiếp theo chưa có số liệu.");
+        next.Find("[data-message]").ClassList.ShouldContain("notice--ok");
+        Text(next, "[data-waiting]").ShouldBe("Còn 31 nguyên liệu chưa có số liệu.");
+    }
+
+    [Fact]
+    public void The_message_is_said_once()
+    {
+        Flash.Set("Đã ghi số liệu cho Gạo.", "ok");
+        OpenIngredient("hanh-la").Find("[data-message]").ShouldNotBeNull();
+
+        OpenIngredient("hanh-tay").FindAll("[data-message]").ShouldBeEmpty();
+    }
+
+    [Fact]
+    public void After_the_last_one_it_stays_and_says_all_are_done()
+    {
+        SuggestRice();
+        Identity.Name = "Mẹ Lan";
+        foreach (var file in Directory.GetFiles(Data.PathOf("ingredients"), "*.json").Where(f => Path.GetFileNameWithoutExtension(f) != Ing))
+        {
+            Data.EditJson($"ingredients/{Path.GetFileName(file)}", o => o["nutritionSource"]!["db"] = "vn-fct-2017");
+        }
+
+        var cut = OpenIngredient();
+        cut.FindAll("[data-skip]").ShouldBeEmpty();
+        var address = Navigation.Uri;
+
+        cut.Find("[data-candidate='222'] [data-choose]").Click();
+
+        Navigation.Uri.ShouldBe(address);
+        Text(cut, "[data-message]").ShouldBe("Đã ghi số liệu cho Gạo. Không còn nguyên liệu nào chưa có số liệu.");
+        Text(cut, "[data-waiting]").ShouldBe("Không còn nguyên liệu nào chưa có số liệu.");
+    }
+
+    [Fact]
+    public void A_choice_that_fails_stays_on_the_ingredient()
+    {
+        SuggestRice();
+        Identity.Name = "Mẹ Lan";
+        var cut = OpenIngredient();
+        var address = Navigation.Uri;
+        Data.WriteText("ingredients/gao.json", Disk().Replace("\"Gạo\"", "\"Gạo (đã sửa nơi khác)\""));
+
+        cut.Find("[data-candidate='222'] [data-choose]").Click();
+
+        Navigation.Uri.ShouldBe(address);
+        Flash.Take().ShouldBeNull();
     }
 
     [Fact]
@@ -460,7 +551,7 @@ public class IngredientWorkbenchTests : PageTestBase
 
         cut.Find("[data-name=default]").Change("Gạo tẻ");
 
-        Text(cut, "[data-unsaved]").ShouldBe("Có thay đổi chưa lưu. Lưu rồi mới chọn được số liệu dinh dưỡng.");
+        Text(cut, "[data-unsaved]").ShouldBe("Có thay đổi chưa lưu. Bấm \"Lưu\", hoặc chọn một ứng viên thì thay đổi được lưu cùng.");
         Disabled(cut, "save").ShouldBeFalse();
         Disabled(cut, "discard").ShouldBeFalse();
 

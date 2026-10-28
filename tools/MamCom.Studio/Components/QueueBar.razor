@@ -1,0 +1,22 @@
+@using System.Globalization
+
+<nav class="queue" aria-label="@Strings.Studio_Queue_Label" data-queue>
+    <span class="queue__waiting" data-waiting>@Waiting</span>
+    @if (NextHref is not null)
+    {
+        <a class="button button--quiet queue__skip" href="@NextHref" data-skip>@string.Format(CultureInfo.InvariantCulture, Strings.Studio_Queue_SkipFormat, NextName)</a>
+    }
+</nav>
+
+@code {
+    /// <summary>How many are left, said as a sentence.</summary>
+    [Parameter, EditorRequired]
+    public string Waiting { get; set; } = string.Empty;
+
+    /// <summary>Where the next one waiting is; null when this is the last one.</summary>
+    [Parameter]
+    public string? NextHref { get; set; }
+
+    [Parameter]
+    public string? NextName { get; set; }
+}

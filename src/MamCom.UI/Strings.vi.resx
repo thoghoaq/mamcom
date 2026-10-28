@@ -205,7 +205,7 @@
   <data name="Studio_Ing_Back" xml:space="preserve"><value>← Danh sách nguyên liệu</value></data>
   <data name="Studio_Ing_NotFound" xml:space="preserve"><value>Không tìm thấy nguyên liệu này.</value></data>
   <data name="Studio_Ing_BrokenText" xml:space="preserve"><value>File này không đọc được thành một nguyên liệu. Sửa file bằng tay, rồi tải lại trang.</value></data>
-  <data name="Studio_Ing_Unsaved" xml:space="preserve"><value>Có thay đổi chưa lưu. Lưu rồi mới chọn được số liệu dinh dưỡng.</value></data>
+  <data name="Studio_Ing_Unsaved" xml:space="preserve"><value>Có thay đổi chưa lưu. Bấm "Lưu", hoặc chọn một ứng viên thì thay đổi được lưu cùng.</value></data>
   <data name="Studio_Ing_Names" xml:space="preserve"><value>Tên theo vùng</value></data>
   <data name="Studio_Ing_NamesHint" xml:space="preserve"><value>Cần tên mặc định, hoặc đủ tên của ba vùng. Để trống thì vùng đó dùng tên mặc định.</value></data>
   <data name="Studio_Ing_Key_default" xml:space="preserve"><value>Mặc định (mọi vùng)</value></data>
@@ -596,4 +596,14 @@
   <data name="Cook_AllStepsTotalFormat" xml:space="preserve"><value>{0} bước, cả mâm ≈ {1}. Chạm một bước để đến bước đó.</value></data>
   <data name="Cook_BackToStep" xml:space="preserve"><value>Về bước đang làm</value></data>
   <data name="Cook_CurrentStep" xml:space="preserve"><value>Đang làm</value></data>
+  <data name="Studio_Queue_IngWaitingFormat" xml:space="preserve"><value>Còn {0} nguyên liệu chưa có số liệu.</value></data>
+  <data name="Studio_Queue_IngNone" xml:space="preserve"><value>Không còn nguyên liệu nào chưa có số liệu.</value></data>
+  <data name="Studio_Queue_IngDoneFormat" xml:space="preserve"><value>Đã ghi số liệu cho {0}. Đây là nguyên liệu tiếp theo chưa có số liệu.</value></data>
+  <data name="Studio_Queue_IngAllDoneFormat" xml:space="preserve"><value>Đã ghi số liệu cho {0}. Không còn nguyên liệu nào chưa có số liệu.</value></data>
+  <data name="Studio_Queue_DishWaitingFormat" xml:space="preserve"><value>Còn {0} món chờ duyệt.</value></data>
+  <data name="Studio_Queue_DishNone" xml:space="preserve"><value>Không còn món nào chờ duyệt.</value></data>
+  <data name="Studio_Queue_DishDoneFormat" xml:space="preserve"><value>Đã duyệt {0}. Đây là món tiếp theo chờ duyệt.</value></data>
+  <data name="Studio_Queue_DishAllDoneFormat" xml:space="preserve"><value>Đã duyệt {0}. Không còn món nào chờ duyệt.</value></data>
+  <data name="Studio_Queue_SkipFormat" xml:space="preserve"><value>Bỏ qua, sang {0} →</value></data>
+  <data name="Studio_Queue_Label" xml:space="preserve"><value>Tiến độ</value></data>
 </root>

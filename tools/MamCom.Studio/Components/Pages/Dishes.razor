@@ -31,7 +31,7 @@ else
         @foreach (var entry in Shown)
         {
             <li class="dish-row" data-dish="@entry.Id" data-location="@entry.Location.ToString().ToLowerInvariant()">
-                <a class="dish-row__link" href="@Href(entry)">
+                <a class="dish-row__link" href="@entry.Href">
                     <span class="dish-row__name">@(entry.Name ?? entry.Id)</span>
                     <span class="dish-row__meta">
                         @if (entry.Slot is { } slot)
@@ -77,7 +77,4 @@ else
         _filter is { } status ? [.. _catalog.Entries.Where(e => e.Status == status)] : _catalog.Entries;
 
     protected override void OnInitialized() => _catalog = Reviewer.Catalog();
-
-    private static string Href(DishEntry entry) =>
-        entry.Location == DishLocation.Data ? $"/dishes/{entry.Id}" : $"/drafts/{entry.Id}";
 }

@@ -24,11 +24,14 @@ public abstract class PageTestBase : BunitContext
         Services.AddSingleton(_data.IngredientReviewer);
         Services.AddSingleton<MamCom.Core.IClock>(_data.Clock);
         Services.AddSingleton(Identity);
+        Services.AddSingleton(Flash);
     }
 
     internal StudioData Data => _data;
 
     protected ReviewerIdentity Identity { get; } = new();
+
+    protected ReviewFlash Flash { get; } = new();
 
     protected NavigationManager Navigation => Services.GetRequiredService<NavigationManager>();
 

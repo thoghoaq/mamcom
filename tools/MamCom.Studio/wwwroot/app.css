@@ -259,12 +259,46 @@ h1:focus {
 
 /* ---- Ingredients ---- */
 
+/* The candidates stand side by side so their numbers can be compared at a glance; the buttons line up at the bottom. */
+.candidates {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr));
+    gap: var(--space-3);
+}
+
 .candidate {
-    margin-bottom: var(--space-4);
+    display: flex;
+    flex-direction: column;
     padding: var(--space-3);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-small);
     background: var(--color-bg);
+}
+
+.candidate h3 {
+    margin-top: 0;
+}
+
+.candidate p {
+    margin: 0 0 var(--space-2);
+}
+
+.candidate .nutrition__facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.candidate > .button {
+    margin-top: auto;
+}
+
+/* ---- Review queue ---- */
+
+.queue {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-4);
+    margin-bottom: var(--space-4);
 }
 
 .picture {

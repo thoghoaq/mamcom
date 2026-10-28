@@ -537,7 +537,7 @@ public class DishWorkbenchTests : PageTestBase
 
         Button(cut, "approve").Click();
 
-        Navigation.Uri.ShouldBe(address);   // only a draft moves to its new page
+        Navigation.Uri.ShouldNotBe(address);   // on to the next dish; this page still shows the state it was left in
 
         var after = Disk();
         before.Split('\n').Length.ShouldBe(after.Split('\n').Length);
@@ -572,8 +572,61 @@ public class DishWorkbenchTests : PageTestBase
     }
 
     [Fact]
-    public void Approving_a_draft_makes_it_a_dish_and_goes_to_the_dish()
+    public void Approving_opens_the_next_dish_waiting_and_tells_it_what_was_done()
     {
+        Identity.Name = "Mẹ Lan";
+        Data.EditJson("dishes/rau-muong-xao-toi.json", d => d["status"] = "reviewed");   // not waiting: passed over
+
+        Button(Open(), "approve").Click();
+
+        Navigation.Uri.ShouldEndWith("/dishes/su-su-xao-toi");
+        var next = Open("su-su-xao-toi");
+        Text(next, "[data-message]").ShouldBe("Đã duyệt Rau muống luộc. Đây là món tiếp theo chờ duyệt.");
+        next.Find("[data-message]").ClassList.ShouldContain("notice--ok");
+    }
+
+    [Fact]
+    public void Says_how_many_dishes_wait_and_offers_to_skip_to_the_next_one()
+    {
+        Data.MakeDraft("ca-thu-chien");
+
+        var cut = Open();
+
+        Text(cut, "[data-waiting]").ShouldBe("Còn 20 món chờ duyệt.");   // the draft counts once, as a draft
+        cut.Find("[data-skip]").GetAttribute("href").ShouldBe("/dishes/rau-muong-xao-toi");
+        Text(cut, "[data-skip]").ShouldBe("Bỏ qua, sang Rau muống xào tỏi →");
+        Open("trung-chien-hanh").Find("[data-skip]").GetAttribute("href").ShouldBe("/dishes/bap-cai-luoc");   // round to the start
+        Open("bo-xao-hanh-tay").Find("[data-skip]").GetAttribute("href").ShouldBe("/drafts/ca-thu-chien");   // a draft has its own page
+    }
+
+    [Fact]
+    public void After_the_last_dish_it_stays_and_says_all_are_done()
+    {
+        Identity.Name = "Mẹ Lan";
+        OnlyThisDishWaits();
+        var cut = Open();
+        cut.FindAll("[data-skip]").ShouldBeEmpty();
+        var address = Navigation.Uri;
+
+        Button(cut, "approve").Click();
+
+        Navigation.Uri.ShouldBe(address);
+        Text(cut, "[data-message]").ShouldBe("Đã duyệt Rau muống luộc. Không còn món nào chờ duyệt.");
+        Text(cut, "[data-waiting]").ShouldBe("Không còn món nào chờ duyệt.");
+    }
+
+    private void OnlyThisDishWaits()
+    {
+        foreach (var file in Directory.GetFiles(Data.PathOf("dishes"), "*.json").Where(f => Path.GetFileNameWithoutExtension(f) != Id))
+        {
+            Data.EditJson($"dishes/{Path.GetFileName(file)}", d => d["status"] = "reviewed");
+        }
+    }
+
+    [Fact]
+    public void Approving_the_last_draft_makes_it_a_dish_and_goes_to_the_dish()
+    {
+        OnlyThisDishWaits();
         Data.MakeDraft(Id);
         Data.WriteReport(Id, "valid");
         Identity.Name = "Mẹ Lan";
@@ -582,6 +635,7 @@ public class DishWorkbenchTests : PageTestBase
         Button(cut, "approve").Click();
 
         Navigation.Uri.ShouldEndWith($"/dishes/{Id}");
+        Flash.Take()!.Value.Message.ShouldBe("Đã duyệt Rau muống luộc. Không còn món nào chờ duyệt.");
         Data.Exists($"dishes/{Id}.json").ShouldBeTrue();
         Data.Exists($"dishes/_drafts/{Id}.json").ShouldBeFalse();
         Data.Exists($"dishes/_drafts/{Id}.report.json").ShouldBeFalse();
@@ -697,9 +751,9 @@ public class DishWorkbenchTests : PageTestBase
     [Fact]
     public void A_message_about_one_dish_does_not_follow_the_reader_to_the_next()
     {
-        Identity.Name = "Mẹ Lan";
         var cut = Open();
-        Button(cut, "approve").Click();
+        cut.Find("#dish-name").Change("Rau muống luộc chấm tương");
+        Button(cut, "save").Click();
         cut.Find("[data-message]").ShouldNotBeNull();
 
         cut.Render(p => p.Add(x => x.Id, "canh-bau-tom").Add(x => x.Location, DishLocation.Data));

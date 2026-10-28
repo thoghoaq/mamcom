@@ -90,7 +90,14 @@ public sealed record DishEntry(
     int Errors,
     int Warnings,
     string? Problem,
-    DraftNote? Note);
+    DraftNote? Note)
+{
+    /// <summary>The page of the dish in Studio: a draft has its own address until it is approved.</summary>
+    public string Href => Location == DishLocation.Data ? $"/dishes/{Id}" : $"/drafts/{Id}";
+
+    /// <summary>A dish a person still has to approve: readable, and neither reviewed nor cook-tested.</summary>
+    public bool AwaitsReview => Problem is null && Status is DishStatus.Draft or DishStatus.Validated;
+}
 
 /// <param name="FailedDrafts">Ids RecipeDrafter tried and failed, which have no draft and no dish: the next run of it tries them again.</param>
 public sealed record DishCatalog(Kitchen Kitchen, IReadOnlyList<DishEntry> Entries, IReadOnlyList<string> FailedDrafts);
@@ -133,6 +140,10 @@ public sealed class DishReviewer(DishStore store, KitchenLoader loader, IClock c
         // OrderBy is stable, so a dish stays ahead of a draft with the same id (the dishes were added first).
         return new DishCatalog(kitchen, [.. entries.OrderBy(e => e.Id, StringComparer.Ordinal)], failed);
     }
+
+    /// <summary>The dishes still to approve, seen from the one at <paramref name="location"/>/<paramref name="id"/>: the one to open after it, and how many are left.</summary>
+    public ReviewQueue<DishEntry> QueueAfter(DishLocation location, string id) =>
+        ReviewQueue<DishEntry>.Of(Catalog().Entries, e => e.Location == location && e.Id == id, e => e.AwaitsReview);
 
     /// <summary>The checks and the nutrition for a dish as it would be written to the file of <paramref name="location"/>.</summary>
     public static Evaluation Evaluate(Kitchen kitchen, DishLocation location, Dish dish)
