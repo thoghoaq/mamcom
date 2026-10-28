@@ -20,19 +20,19 @@
   "wasteRatio": 0,
   "isPantry": true,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 573,
+    "proteinG": 17.7,
+    "fatG": 49.7,
+    "carbG": 23.4,
+    "fiberG": 11.8,
+    "sodiumMg": 11
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "170150",
+    "matchedName": "Seeds, sesame seeds, whole, dried",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

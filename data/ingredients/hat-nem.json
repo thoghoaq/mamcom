@@ -17,19 +17,19 @@
   "wasteRatio": 0,
   "isPantry": true,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 267,
+    "proteinG": 16.7,
+    "fatG": 13.9,
+    "carbG": 18,
+    "fiberG": 0,
+    "sodiumMg": 23900
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "171562",
+    "matchedName": "Soup, chicken broth or bouillon, dry",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

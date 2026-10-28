@@ -17,19 +17,19 @@
   "wasteRatio": 0.35,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
+    "kcal": 34,
+    "proteinG": 4.65,
+    "fatG": 0.25,
+    "carbG": 5.8,
     "fiberG": null,
-    "sodiumMg": null
+    "sodiumMg": 8
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "168419",
+    "matchedName": "Jute, potherb, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

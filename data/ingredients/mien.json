@@ -20,19 +20,19 @@
   "wasteRatio": 0,
   "isPantry": true,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 351,
+    "proteinG": 0.16,
+    "fatG": 0.06,
+    "carbG": 86.1,
+    "fiberG": 0.5,
+    "sodiumMg": 10
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "174258",
+    "matchedName": "Noodles, chinese, cellophane or long rice (mung beans), dehydrated",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

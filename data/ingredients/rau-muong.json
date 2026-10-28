@@ -17,19 +17,19 @@
   "wasteRatio": 0.25,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 19,
+    "proteinG": 2.6,
+    "fatG": 0.2,
+    "carbG": 3.13,
+    "fiberG": 2.1,
+    "sodiumMg": 113
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "169301",
+    "matchedName": "Water convolvulus,raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

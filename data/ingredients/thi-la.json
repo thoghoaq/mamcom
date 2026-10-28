@@ -17,19 +17,19 @@
   "wasteRatio": 0.2,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 43,
+    "proteinG": 3.46,
+    "fatG": 1.12,
+    "carbG": 7.02,
+    "fiberG": 2.1,
+    "sodiumMg": 61
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "172233",
+    "matchedName": "Dill weed, fresh",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

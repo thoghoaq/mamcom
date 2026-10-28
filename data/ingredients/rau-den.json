@@ -17,19 +17,19 @@
   "wasteRatio": 0.3,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
+    "kcal": 23,
+    "proteinG": 2.46,
+    "fatG": 0.33,
+    "carbG": 4.02,
     "fiberG": null,
-    "sodiumMg": null
+    "sodiumMg": 20
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "168385",
+    "matchedName": "Amaranth leaves, raw",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

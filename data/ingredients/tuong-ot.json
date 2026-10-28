@@ -17,19 +17,19 @@
   "wasteRatio": 0,
   "isPantry": true,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 93,
+    "proteinG": 1.93,
+    "fatG": 0.93,
+    "carbG": 19.2,
+    "fiberG": 2.2,
+    "sodiumMg": 2120
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "171186",
+    "matchedName": "Sauce, hot chile, sriracha",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

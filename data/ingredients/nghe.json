@@ -17,19 +17,19 @@
   "wasteRatio": 0.1,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 312,
+    "proteinG": 9.68,
+    "fatG": 3.25,
+    "carbG": 67.1,
+    "fiberG": 22.7,
+    "sodiumMg": 27
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "172231",
+    "matchedName": "Spices, turmeric, ground",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,

@@ -21,19 +21,19 @@
   "wasteRatio": 0.3,
   "isPantry": false,
   "nutritionPer100gEdible": {
-    "kcal": null,
-    "proteinG": null,
-    "fatG": null,
-    "carbG": null,
-    "fiberG": null,
-    "sodiumMg": null
+    "kcal": 23,
+    "proteinG": 3.15,
+    "fatG": 0.64,
+    "carbG": 2.65,
+    "fiberG": 1.6,
+    "sodiumMg": 4
   },
   "nutritionSource": {
-    "db": "placeholder",
-    "ref": null,
-    "matchedName": null,
-    "verifiedBy": null,
-    "verifiedAt": null
+    "db": "usda-fdc",
+    "ref": "172232",
+    "matchedName": "Basil, fresh",
+    "verifiedBy": "Hoang Thong",
+    "verifiedAt": "2026-10-28"
   },
   "image": {
     "thumb": null,
