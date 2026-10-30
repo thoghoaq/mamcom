@@ -1,0 +1,117 @@
+{
+  "id": "rau-lang-xao-toi",
+  "name": "Rau lang xào tỏi",
+  "slot": "rau",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "xao",
+  "proteinSource": "none",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "rau-lang",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt lấy ngọn và lá non, rửa sạch, để ráo"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, đập dập rồi băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Nhặt rau lang lấy phần ngọn non, rửa sạch và để thật ráo nước.",
+      "activeMinutes": 6,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "rau-lang"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Bóc tỏi, đập dập rồi băm nhỏ.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "toi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Đun nóng dầu, cho một nửa tỏi vào phi đến khi vàng thơm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "toi"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Cho rau lang vào, để lửa lớn và đảo nhanh tay đến khi rau vừa chín tới.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "rau-lang"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Nêm hạt nêm và nước mắm, cho phần tỏi còn lại vào, đảo đều rồi tắt bếp và dọn ra ngay.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hat-nem",
+        "nuoc-mam",
+        "toi"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

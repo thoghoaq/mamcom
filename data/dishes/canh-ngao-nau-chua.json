@@ -1,0 +1,165 @@
+{
+  "id": "canh-ngao-nau-chua",
+  "name": "Canh ngao nấu chua",
+  "slot": "canh",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "summer"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "hai-san",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "ngao",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm nước vo gạo cho nhả cát, rửa sạch"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 50,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "bổ múi cau"
+    },
+    {
+      "ingredientId": "me",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "dầm lấy nước, bỏ hạt"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "thi-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm ngao cho nhả hết cát rồi rửa lại thật sạch.",
+      "activeMinutes": 3,
+      "passiveMinutes": 30,
+      "ingredientIds": [
+        "ngao"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Luộc ngao đến khi vỏ há miệng, tách lấy thịt và lọc nước luộc để riêng.",
+      "activeMinutes": 7,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "ngao"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Dầm me với chút nước nóng, lọc lấy nước chua.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "me"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi thơm hành tím với dầu, cho cà chua vào xào mềm, nêm chút muối.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "ca-chua",
+        "muoi"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Đổ nước luộc ngao vào nồi cà chua, đun sôi rồi thêm nước me.",
+      "activeMinutes": 2,
+      "passiveMinutes": 4,
+      "ingredientIds": [
+        "me"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Thả thịt ngao vào, nêm nước mắm cho vừa rồi tắt bếp ngay khi sôi lại.",
+      "activeMinutes": 2,
+      "passiveMinutes": 1,
+      "ingredientIds": [
+        "ngao",
+        "nuoc-mam"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Rắc thì là và hành lá lên rồi múc ra bát.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thi-la",
+        "hanh-la"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "ingredientId": "xa-lach",
+  "query": "lettuce green leaf raw",
+  "retrievedAt": "2026-10-30",
+  "source": "usda-fdc",
+  "totalHits": 1686,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 169249,
+      "description": "Lettuce, green leaf, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169249/nutrients",
+      "per100g": {
+        "kcal": 15,
+        "proteinG": 1.36,
+        "fatG": 0.15,
+        "carbG": 2.87,
+        "fiberG": 1.3,
+        "sodiumMg": 28
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 2346391,
+      "description": "Lettuce, leaf, green, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2346391/nutrients",
+      "per100g": {
+        "kcal": 18.5,
+        "proteinG": 1.09,
+        "fatG": 0.156,
+        "carbG": 4.07,
+        "fiberG": null,
+        "sodiumMg": 28.9
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [
+        "fiberG"
+      ],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; thiếu: chất xơ; khớp 4/4 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    },
+    {
+      "rank": 3,
+      "fdcId": 168431,
+      "description": "Lettuce, red leaf, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168431/nutrients",
+      "per100g": {
+        "kcal": 13,
+        "proteinG": 1.33,
+        "fatG": 0.22,
+        "carbG": 2.26,
+        "fiberG": 0.9,
+        "sodiumMg": 25
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/4 từ khoá."
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "id": "dau-phu-nhoi-thit-sot-ca-chua",
+  "name": "Đậu phụ nhồi thịt sốt cà chua",
+  "slot": "man",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "chien",
+  "proteinSource": "chay",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "dau-phu",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt miếng vuông, khoét rãnh giữa"
+    },
+    {
+      "ingredientId": "thit-nac-bam",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "moc-nhi",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm nở, băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 100,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "bỏ cuống, thái múi cau"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc, giữ riêng đầu trắng"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Trộn thịt bằm với mộc nhĩ, nửa phần hành tím, một ít nước mắm và hạt tiêu rồi để ngấm.",
+      "activeMinutes": 5,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "thit-nac-bam",
+        "moc-nhi",
+        "hanh-tim",
+        "nuoc-mam",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Khoét rãnh giữa từng miếng đậu rồi nhồi nhân thịt vào cho chặt.",
+      "activeMinutes": 7,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-phu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Chiên đậu nhồi trong dầu nóng, mặt có thịt xuống trước, đến khi vàng đều các mặt.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi thơm phần hành tím còn lại và đầu hành lá, cho cà chua vào xào nhừ thành sốt, nêm nước mắm, đường, muối.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-tim",
+        "hanh-la",
+        "ca-chua",
+        "nuoc-mam",
+        "duong",
+        "muoi",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Xếp đậu vào chảo sốt, đun nhỏ lửa cho đậu ngấm sốt và thịt chín kỹ.",
+      "activeMinutes": 2,
+      "passiveMinutes": 7,
+      "ingredientIds": [
+        "dau-phu",
+        "ca-chua"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Rắc hành lá và hạt tiêu lên rồi dọn ra ăn nóng.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

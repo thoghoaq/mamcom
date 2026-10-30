@@ -1,0 +1,151 @@
+{
+  "id": "canh-he-dau-phu-thit-bam",
+  "name": "Canh hẹ đậu phụ thịt bằm",
+  "slot": "canh",
+  "regions": [
+    "south",
+    "central"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "heo",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "thit-nac-bam",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ướp chút hạt nêm, tiêu"
+    },
+    {
+      "ingredientId": "dau-phu",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt miếng vuông vừa ăn"
+    },
+    {
+      "ingredientId": "he",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc 3 cm"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ướp thịt bằm với một ít hạt nêm và tiêu.",
+      "activeMinutes": 2,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "thit-nac-bam",
+        "hat-nem",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Rửa sạch hẹ, cắt khúc; cắt đậu phụ thành miếng vuông.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "he",
+        "dau-phu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm hành tím với dầu rồi cho thịt bằm vào xào săn.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-tim",
+        "dau-an",
+        "thit-nac-bam"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Đổ nước vào nồi, đun sôi rồi hớt bọt.",
+      "activeMinutes": 1,
+      "passiveMinutes": 5,
+      "ingredientIds": []
+    },
+    {
+      "order": 5,
+      "text": "Cho đậu phụ vào, nêm nước mắm và hạt nêm, đun nhỏ lửa.",
+      "activeMinutes": 1,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "dau-phu",
+        "nuoc-mam",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Thả hẹ vào, đun sôi lại rồi tắt bếp, rắc tiêu.",
+      "activeMinutes": 1,
+      "passiveMinutes": 1,
+      "ingredientIds": [
+        "he",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

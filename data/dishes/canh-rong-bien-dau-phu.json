@@ -1,0 +1,167 @@
+{
+  "id": "canh-rong-bien-dau-phu",
+  "name": "Canh rong biển đậu phụ",
+  "slot": "canh",
+  "regions": [
+    "north",
+    "central",
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "chay",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "rong-bien",
+      "gramsEdiblePerServing": 5,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm nước cho nở, rửa sạch, cắt ngắn"
+    },
+    {
+      "ingredientId": "dau-phu",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khối vuông nhỏ"
+    },
+    {
+      "ingredientId": "thit-nac-bam",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm rong biển trong nước khoảng mười phút cho nở mềm rồi rửa sạch, cắt ngắn.",
+      "activeMinutes": 2,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "rong-bien"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Cắt đậu phụ thành khối nhỏ, băm hành tím và thái hành lá trong lúc chờ rong biển nở.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-phu",
+        "hanh-tim",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm hành tím với dầu ăn rồi cho thịt bằm vào xào săn.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "thit-nac-bam"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Đổ nước vào nồi, đun sôi rồi hớt bọt.",
+      "activeMinutes": 1,
+      "passiveMinutes": 5,
+      "ingredientIds": []
+    },
+    {
+      "order": 5,
+      "text": "Thả đậu phụ vào nấu nhỏ lửa cho đậu ngấm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "dau-phu"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Cho rong biển vào, nêm nước mắm và hạt nêm, đun thêm hai phút rồi tắt bếp.",
+      "activeMinutes": 1,
+      "passiveMinutes": 2,
+      "ingredientIds": [
+        "rong-bien",
+        "nuoc-mam",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Múc canh ra bát, rắc hành lá và hạt tiêu lên trên.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

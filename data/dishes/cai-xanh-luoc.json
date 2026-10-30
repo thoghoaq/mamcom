@@ -1,0 +1,125 @@
+{
+  "id": "cai-xanh-luoc",
+  "name": "Cải xanh luộc",
+  "slot": "rau",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "winter",
+    "spring"
+  ],
+  "spicy": "none",
+  "cookingMethod": "luoc",
+  "proteinSource": "none",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "cai-xanh",
+      "gramsEdiblePerServing": 150,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt bỏ lá úa, rửa sạch, cắt khúc vừa ăn"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "cho vào nồi nước luộc"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "pha bát chấm"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "vắt lấy nước"
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Nhặt cải xanh, rửa sạch nhiều lần rồi cắt khúc, để ráo.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "cai-xanh"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Đun sôi một nồi nước nhiều với chút muối.",
+      "activeMinutes": 1,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "muoi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Pha nước mắm với tỏi băm, đường và nước cốt chanh làm bát chấm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "toi",
+        "duong",
+        "chanh"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Thả phần cuộng vào trước, sau đó cho lá vào, mở vung luộc đến khi rau vừa chín xanh.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "cai-xanh"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Vớt rau ra đĩa và dọn ngay cùng bát nước chấm, giữ lại nước luộc để làm canh nếu muốn.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "cai-xanh"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

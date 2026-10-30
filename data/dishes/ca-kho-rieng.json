@@ -1,0 +1,168 @@
+{
+  "id": "ca-kho-rieng",
+  "name": "Cá kho riềng",
+  "slot": "man",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "kho",
+  "proteinSource": "ca",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "ca-chep",
+      "gramsEdiblePerServing": 130,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "đánh vảy, bỏ ruột, cắt khúc dày khoảng 3 cm"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "để chà rửa cá cho bớt tanh"
+    },
+    {
+      "ingredientId": "rieng",
+      "gramsEdiblePerServing": 25,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "cạo vỏ, thái lát mỏng, đập dập một nửa"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 12,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mau",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "xay thô"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "để nguyên quả hoặc thái lát, có thể bỏ"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Chà cá với muối, rửa sạch rồi để ráo.",
+      "activeMinutes": 8,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "ca-chep",
+        "muoi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp cá với nước mắm, nước màu, đường, hạt tiêu, hành tím và một nửa lượng riềng.",
+      "activeMinutes": 4,
+      "passiveMinutes": 30,
+      "ingredientIds": [
+        "ca-chep",
+        "nuoc-mam",
+        "nuoc-mau",
+        "duong",
+        "hat-tieu",
+        "hanh-tim",
+        "rieng"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi phần riềng còn lại với dầu cho thơm rồi lót dưới đáy nồi.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "rieng"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Xếp cá cùng nước ướp lên lớp riềng, chế nước sôi xấp mặt cá rồi đun sôi.",
+      "activeMinutes": 3,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "ca-chep"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Hạ nhỏ lửa, kho liu riu không đảo cho cá săn và thấm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 45,
+      "ingredientIds": [
+        "ca-chep"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Thả ớt vào, nêm lại cho vừa và kho thêm đến khi nước sánh sệt thì tắt bếp.",
+      "activeMinutes": 2,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "ot",
+        "nuoc-mam",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

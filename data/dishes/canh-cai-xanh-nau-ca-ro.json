@@ -1,0 +1,189 @@
+{
+  "id": "canh-cai-xanh-nau-ca-ro",
+  "name": "Canh cải xanh nấu cá rô",
+  "slot": "canh",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "winter",
+    "spring"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "ca",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "ca-ro-dong",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "làm sạch, bỏ ruột, khứa nhẹ thân"
+    },
+    {
+      "ingredientId": "cai-xanh",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt rửa, cắt khúc vừa ăn"
+    },
+    {
+      "ingredientId": "gung",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "nửa đập dập luộc cá, nửa thái sợi"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "một ít để sát cá cho bớt tanh"
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Sát muối lên cá rô rồi rửa sạch, để ráo.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-ro-dong",
+        "muoi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Nhặt rửa cải xanh, cắt khúc; thái gừng, băm hành tím, thái hành lá.",
+      "activeMinutes": 6,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "cai-xanh",
+        "gung",
+        "hanh-tim",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Luộc cá với gừng đập dập trong nồi nước nhỏ lửa đến khi chín.",
+      "activeMinutes": 1,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "ca-ro-dong",
+        "gung"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Vớt cá ra, gỡ lấy thịt, bỏ xương; lọc nước luộc cá để riêng.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-ro-dong"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Phi thơm hành tím với dầu ăn, cho thịt cá vào, nêm chút nước mắm rồi đảo nhẹ cho săn.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "ca-ro-dong",
+        "nuoc-mam"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Đổ nước luộc cá vào nồi, đun sôi rồi thả cải xanh và gừng sợi vào nấu chín tới.",
+      "activeMinutes": 2,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "cai-xanh",
+        "gung"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Cho cá đã xào vào nồi, nêm hạt nêm và nước mắm cho vừa, tắt bếp.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-ro-dong",
+        "hat-nem",
+        "nuoc-mam"
+      ]
+    },
+    {
+      "order": 8,
+      "text": "Múc canh ra bát, rắc hành lá và hạt tiêu.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

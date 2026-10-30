@@ -1,0 +1,185 @@
+{
+  "id": "ca-kho-dua-chua",
+  "name": "Cá kho dưa chua",
+  "slot": "man",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "kho",
+  "proteinSource": "ca",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "ca-chep",
+      "gramsEdiblePerServing": 130,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "làm sạch, cắt khúc dày khoảng 3 cm"
+    },
+    {
+      "ingredientId": "dua-cai-chua",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái khúc ngắn, vắt bớt nước chua"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 50,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "bổ múi cau"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "gung",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "cạo vỏ, một phần đập dập, một phần thái sợi"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "dùng chà khử tanh cá"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "xay"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, có thể bỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái khúc ngắn"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Chà cá với muối và gừng đập dập, rửa sạch rồi để ráo.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-chep",
+        "muoi",
+        "gung"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp cá với nước mắm, đường, hạt tiêu và một nửa hành tím.",
+      "activeMinutes": 2,
+      "passiveMinutes": 20,
+      "ingredientIds": [
+        "ca-chep",
+        "nuoc-mam",
+        "duong",
+        "hat-tieu",
+        "hanh-tim"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Rửa nhanh dưa cải chua rồi vắt thật ráo nước.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dua-cai-chua"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi thơm phần hành tím còn lại với dầu, cho cà chua và dưa vào xào đến khi cà chua mềm.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "ca-chua",
+        "dua-cai-chua"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Xếp cá lên trên lớp dưa, rắc gừng sợi và ớt, thêm nước xâm xấp rồi kho nhỏ lửa đến khi cá săn và nước sánh lại.",
+      "activeMinutes": 3,
+      "passiveMinutes": 40,
+      "ingredientIds": [
+        "ca-chep",
+        "gung",
+        "ot"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm lại cho vừa, rắc hành lá và hạt tiêu rồi tắt bếp.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "hanh-la",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

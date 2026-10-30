@@ -1,0 +1,197 @@
+{
+  "id": "ga-xao-nam",
+  "name": "Gà xào nấm",
+  "slot": "man",
+  "regions": [
+    "north",
+    "central",
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "xao",
+  "proteinSource": "ga",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "thit-ga",
+      "gramsEdiblePerServing": 110,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bỏ da, thái miếng mỏng vừa ăn"
+    },
+    {
+      "ingredientId": "nam-rom",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt chân, rửa sạch, bổ đôi"
+    },
+    {
+      "ingredientId": "nam-huong",
+      "gramsEdiblePerServing": 15,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm nở, bỏ chân, thái lát"
+    },
+    {
+      "ingredientId": "hanh-tay",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, thái múi cau"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "dau-hao",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm nấm hương trong nước ấm cho nở mềm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "nam-huong"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Sơ chế gà, nấm rơm, hành tây, tỏi và hành lá.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-ga",
+        "nam-rom",
+        "nam-huong",
+        "hanh-tay",
+        "toi",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Ướp gà với một nửa tỏi, nước mắm, hạt nêm và tiêu.",
+      "activeMinutes": 2,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "thit-ga",
+        "toi",
+        "nuoc-mam",
+        "hat-nem",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi thơm phần tỏi còn lại với dầu rồi xào gà đến khi săn và vàng nhẹ.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "toi",
+        "thit-ga"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Cho nấm rơm, nấm hương và hành tây vào đảo nhanh tay trên lửa lớn.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nam-rom",
+        "nam-huong",
+        "hanh-tay"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm dầu hào và đường, đảo đều đến khi gà chín và nấm vừa mềm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-hao",
+        "duong"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Thêm hành lá, đảo qua rồi tắt bếp và dọn ra đĩa ngay.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

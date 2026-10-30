@@ -1,0 +1,156 @@
+{
+  "id": "canh-dua-chua-nau-suon",
+  "name": "Canh dưa chua nấu sườn",
+  "slot": "canh",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "winter",
+    "autumn"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "heo",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "suon-non",
+      "gramsEdiblePerServing": 70,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chặt miếng nhỏ, chần sơ"
+    },
+    {
+      "ingredientId": "dua-cai-chua",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "vắt bớt nước chua, thái khúc ngắn"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 50,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "bổ múi cau"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Chần sườn qua nước sôi có chút muối rồi rửa sạch.",
+      "activeMinutes": 5,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "suon-non",
+        "muoi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Cho sườn vào nồi nước, đun sôi rồi hạ lửa ninh cho mềm, hớt bọt.",
+      "activeMinutes": 2,
+      "passiveMinutes": 30,
+      "ingredientIds": [
+        "suon-non"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm hành tím với dầu, cho cà chua vào xào mềm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-tim",
+        "dau-an",
+        "ca-chua"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Thêm dưa chua vào xào cùng cho ngấm rồi đổ vào nồi sườn.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dua-cai-chua"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Đun sôi lại thêm vài phút, nêm nước mắm và hạt nêm vừa ăn.",
+      "activeMinutes": 2,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "nuoc-mam",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Tắt bếp, rắc hành lá rồi múc ra bát.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

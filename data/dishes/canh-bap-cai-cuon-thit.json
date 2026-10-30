@@ -1,0 +1,163 @@
+{
+  "id": "canh-bap-cai-cuon-thit",
+  "name": "Canh bắp cải cuộn thịt",
+  "slot": "canh",
+  "regions": [
+    "north",
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "heo",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "bap-cai",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "tách từng lá to, chần mềm"
+    },
+    {
+      "ingredientId": "thit-nac-bam",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "moc-nhi",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm nở, thái nhỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 8,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "dùng cọng hành buộc cuộn, phần lá thái nhỏ"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "rau-mui",
+      "gramsEdiblePerServing": 2,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm mộc nhĩ cho nở rồi thái nhỏ, băm hành tím.",
+      "activeMinutes": 3,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "moc-nhi",
+        "hanh-tim"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Trộn thịt bằm với mộc nhĩ, hành tím, một nửa nước mắm và hạt tiêu, để thấm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "thit-nac-bam",
+        "moc-nhi",
+        "hanh-tim",
+        "nuoc-mam",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Tách lá bắp cải, chần cùng cọng hành lá trong nước sôi cho mềm rồi vớt ra.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "bap-cai",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Đặt nhân thịt lên lá bắp cải, cuộn chặt và buộc lại bằng cọng hành.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "bap-cai",
+        "thit-nac-bam",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Đun sôi nước, thả cuộn bắp cải vào, hạ lửa nhỏ nấu cho thịt chín.",
+      "activeMinutes": 2,
+      "passiveMinutes": 12,
+      "ingredientIds": [
+        "bap-cai"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm hạt nêm và phần nước mắm còn lại, rắc hành lá, rau mùi rồi tắt bếp.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hat-nem",
+        "nuoc-mam",
+        "hanh-la",
+        "rau-mui"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "id": "cai-thia-xao-toi",
+  "name": "Cải thìa xào tỏi",
+  "slot": "rau",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "xao",
+  "proteinSource": "none",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "cai-thia",
+      "gramsEdiblePerServing": 150,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt bỏ gốc, tách bẹ, rửa sạch, bổ đôi bẹ to"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, đập dập rồi băm"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-hao",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.2,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "rắc khi tắt bếp"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Cắt gốc, tách bẹ cải thìa, rửa sạch và để ráo.",
+      "activeMinutes": 4,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "cai-thia"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Bóc vỏ tỏi, đập dập rồi băm nhỏ.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "toi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Đun nóng dầu, phi tỏi đến khi vàng thơm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "toi"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Cho phần bẹ cải vào xào lửa lớn khoảng một phút, rồi thêm phần lá.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "cai-thia"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Nêm dầu hào, hạt nêm và đường, đảo nhanh đến khi cải vừa chín tới, còn xanh giòn.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-hao",
+        "hat-nem",
+        "duong"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Tắt bếp, rắc tiêu và dọn ra đĩa ăn ngay.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

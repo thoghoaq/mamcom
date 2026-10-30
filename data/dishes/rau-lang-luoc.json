@@ -1,0 +1,132 @@
+{
+  "id": "rau-lang-luoc",
+  "name": "Rau lang luộc",
+  "slot": "rau",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "luoc",
+  "proteinSource": "none",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "rau-lang",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt lấy ngọn và lá non, rửa sạch"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "cho vào nồi nước luộc"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "làm nước chấm"
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "làm nước chấm"
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "vắt lấy nước"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 2,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "băm nhỏ, có thể bỏ"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Nhặt rau lang lấy ngọn non, rửa sạch và để ráo.",
+      "activeMinutes": 7,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "rau-lang"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Pha nước mắm với đường, nước cốt chanh, tỏi và ớt băm thành chén nước chấm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "duong",
+        "chanh",
+        "toi",
+        "ot"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Đun sôi nồi nước, thêm chút muối.",
+      "activeMinutes": 1,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "muoi"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Thả rau lang vào luộc khoảng hai phút đến khi rau vừa chín, còn xanh.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "rau-lang"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Vớt rau ra đĩa, dọn ngay cùng chén nước mắm chấm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "rau-lang"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

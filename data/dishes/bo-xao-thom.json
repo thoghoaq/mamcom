@@ -1,0 +1,208 @@
+{
+  "id": "bo-xao-thom",
+  "name": "Bò xào thơm",
+  "slot": "man",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "xao",
+  "proteinSource": "bo",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "thit-bo",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát mỏng ngang thớ"
+    },
+    {
+      "ingredientId": "thom",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, bỏ lõi, thái miếng vừa ăn"
+    },
+    {
+      "ingredientId": "hanh-tay",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái múi cau"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 40,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "cắt múi cau"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 8,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "rau-mui",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "nhặt lá"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, có thể bỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-hao",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "bot-nang",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Thái thịt bò, gọt và thái thơm, cắt hành tây, cà chua, hành lá, ớt, băm tỏi.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-bo",
+        "thom",
+        "hanh-tay",
+        "ca-chua",
+        "hanh-la",
+        "ot",
+        "toi",
+        "rau-mui"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp bò với một nửa tỏi, nửa nước mắm, dầu hào, tiêu, bột năng và chút dầu ăn.",
+      "activeMinutes": 2,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "thit-bo",
+        "toi",
+        "nuoc-mam",
+        "dau-hao",
+        "hat-tieu",
+        "bot-nang",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm phần tỏi còn lại, xào bò lửa lớn đến khi vừa tái rồi trút ra đĩa.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "toi",
+        "thit-bo"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Xào thơm, hành tây và cà chua với đường và phần nước mắm còn lại đến khi hơi mềm.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thom",
+        "hanh-tay",
+        "ca-chua",
+        "duong",
+        "nuoc-mam"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Cho bò trở lại chảo cùng hành lá và ớt, đảo nhanh rồi tắt bếp.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-bo",
+        "hanh-la",
+        "ot"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Dọn ra đĩa, rắc rau mùi và tiêu, ăn nóng với cơm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "rau-mui",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

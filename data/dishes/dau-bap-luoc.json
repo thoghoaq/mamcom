@@ -1,0 +1,133 @@
+{
+  "id": "dau-bap-luoc",
+  "name": "Đậu bắp luộc",
+  "slot": "rau",
+  "regions": [
+    "south",
+    "central"
+  ],
+  "seasons": [
+    "summer"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "luoc",
+  "proteinSource": "none",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "dau-bap",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "rửa sạch, gọt bỏ phần cuống cứng, để nguyên trái"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "cho vào nồi nước luộc"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 12,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "pha nước chấm"
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "pha nước chấm"
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "vắt lấy nước"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, có thể bỏ hoặc để riêng"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Rửa sạch đậu bắp, gọt phần cuống cứng nhưng không cắt vào ruột trái.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-bap"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Đun sôi một nồi nước, cho chút muối vào.",
+      "activeMinutes": 1,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "muoi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Trong lúc chờ nước sôi, băm tỏi, thái ớt rồi pha nước mắm với đường, nước cốt chanh, tỏi và ớt.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "duong",
+        "chanh",
+        "toi",
+        "ot"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Thả đậu bắp vào nồi nước sôi, luộc đến khi trái chuyển xanh đậm và vừa mềm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "dau-bap"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Vớt đậu bắp ra đĩa, dọn ngay cùng chén nước mắm chấm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-bap"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

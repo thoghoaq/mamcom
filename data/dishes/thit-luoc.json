@@ -1,0 +1,159 @@
+{
+  "id": "thit-luoc",
+  "name": "Thịt luộc",
+  "slot": "man",
+  "regions": [
+    "north",
+    "central"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "luoc",
+  "proteinSource": "heo",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "thit-ba-chi",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "để nguyên miếng, cạo sạch bì"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "đập dập"
+    },
+    {
+      "ingredientId": "gung",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "đập dập"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "pha nước chấm"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, để riêng cho ai ăn cay"
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "vắt lấy nước"
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Rửa sạch thịt, chần qua nước sôi 2 phút rồi xả lại nước lạnh cho hết bọt bẩn.",
+      "activeMinutes": 4,
+      "passiveMinutes": 2,
+      "ingredientIds": [
+        "thit-ba-chi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Cho thịt vào nồi nước mới cùng hành tím, gừng và chút muối, đun sôi rồi hạ lửa nhỏ, hớt bọt.",
+      "activeMinutes": 3,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "thit-ba-chi",
+        "hanh-tim",
+        "gung",
+        "muoi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Luộc lửa nhỏ đến khi xiên đũa vào không thấy nước hồng chảy ra.",
+      "activeMinutes": 0,
+      "passiveMinutes": 20,
+      "ingredientIds": [
+        "thit-ba-chi"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Tắt bếp, ngâm thịt trong nồi thêm vài phút rồi vớt ra để ráo cho thịt không bị thâm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "thit-ba-chi"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Pha nước chấm từ nước mắm, đường, nước cốt chanh, tỏi băm và ớt để riêng.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "duong",
+        "chanh",
+        "toi",
+        "ot"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Thái thịt thành lát mỏng vừa ăn, xếp ra đĩa và dọn kèm nước chấm.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-ba-chi"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

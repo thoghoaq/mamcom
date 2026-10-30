@@ -1,0 +1,176 @@
+{
+  "id": "canh-kho-qua-ca-thac-lac",
+  "name": "Canh khổ qua cá thác lác",
+  "slot": "canh",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "summer"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "ca",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "kho-qua",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bổ dọc, bỏ ruột, cắt khoanh vừa ăn"
+    },
+    {
+      "ingredientId": "cha-ca-thac-lac",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ, để riêng phần đầu hành"
+    },
+    {
+      "ingredientId": "rau-mui",
+      "gramsEdiblePerServing": 2,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Bổ đôi khổ qua, nạo sạch ruột rồi cắt khoanh mỏng vừa ăn.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "kho-qua"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Trộn chả cá thác lác với hành tím băm, đầu hành lá, tiêu và một chút hạt nêm cho dậy mùi.",
+      "activeMinutes": 3,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "cha-ca-thac-lac",
+        "hanh-tim",
+        "hanh-la",
+        "hat-tieu",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm phần hành tím còn lại với dầu ăn rồi đổ nước vào đun sôi.",
+      "activeMinutes": 2,
+      "passiveMinutes": 4,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Dùng muỗng vo chả cá thành viên nhỏ thả vào nồi nước sôi, nấu đến khi viên chả nổi lên.",
+      "activeMinutes": 4,
+      "passiveMinutes": 2,
+      "ingredientIds": [
+        "cha-ca-thac-lac"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Cho khổ qua vào nấu lửa vừa đến khi vừa mềm, hớt bọt cho nước trong.",
+      "activeMinutes": 1,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "kho-qua"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm nước mắm, muối, hạt nêm cho vừa rồi tắt bếp.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "muoi",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Múc canh ra tô, rắc hành lá, rau mùi và tiêu lên trên.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "rau-mui",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "id": "cha-trung-hap",
+  "name": "Chả trứng hấp",
+  "slot": "man",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "hap",
+  "proteinSource": "trung",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "trung-vit",
+      "gramsEdiblePerServing": 55,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "đập ra bát, tách riêng một ít lòng đỏ để phết mặt"
+    },
+    {
+      "ingredientId": "thit-nac-bam",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chọn thịt có chút mỡ cho chả mềm"
+    },
+    {
+      "ingredientId": "mien",
+      "gramsEdiblePerServing": 8,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm mềm, cắt khúc ngắn"
+    },
+    {
+      "ingredientId": "moc-nhi",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm nở, bỏ chân, thái sợi"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "thoa lòng bát hấp"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm miến và mộc nhĩ trong nước ấm cho mềm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "mien",
+        "moc-nhi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Cắt ngắn miến, thái sợi mộc nhĩ, băm hành tím và thái hành lá.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "mien",
+        "moc-nhi",
+        "hanh-tim",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Đập trứng ra bát, tách riêng khoảng một thìa lòng đỏ để phết mặt.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "trung-vit"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Trộn đều thịt bằm với phần trứng còn lại, miến, mộc nhĩ, hành tím, hành lá và gia vị.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-nac-bam",
+        "trung-vit",
+        "mien",
+        "moc-nhi",
+        "hanh-tim",
+        "hanh-la",
+        "nuoc-mam",
+        "hat-nem",
+        "duong",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Thoa dầu vào bát hấp, cho hỗn hợp vào và nén nhẹ cho phẳng mặt.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Hấp cách thủy lửa vừa đến khi chả chín và săn lại.",
+      "activeMinutes": 1,
+      "passiveMinutes": 20,
+      "ingredientIds": []
+    },
+    {
+      "order": 7,
+      "text": "Phết lòng đỏ trứng đã tách lên mặt chả và hấp tiếp đến khi mặt vàng đẹp.",
+      "activeMinutes": 1,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "trung-vit"
+      ]
+    },
+    {
+      "order": 8,
+      "text": "Để chả nguội bớt rồi cắt miếng, dọn ăn cùng cơm và nước mắm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 5,
+      "ingredientIds": []
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

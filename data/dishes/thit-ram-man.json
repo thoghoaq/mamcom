@@ -1,0 +1,152 @@
+{
+  "id": "thit-ram-man",
+  "name": "Thịt ram mặn",
+  "slot": "man",
+  "regions": [
+    "central",
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "kho",
+  "proteinSource": "heo",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "thit-ba-chi",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái miếng mỏng vừa ăn"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 12,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, có thể bỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc ngắn"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Rửa sạch thịt ba chỉ, để ráo rồi thái miếng mỏng.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-ba-chi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp thịt với một nửa hành tím, tỏi, nước mắm và hạt tiêu.",
+      "activeMinutes": 2,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "thit-ba-chi",
+        "hanh-tim",
+        "toi",
+        "nuoc-mam",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm phần hành tím còn lại với dầu ăn, cho thịt vào đảo đến khi săn và ra mỡ.",
+      "activeMinutes": 6,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "thit-ba-chi"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Cho đường vào, đảo đều ở lửa vừa nhỏ cho thịt rim đến khi nước cạn, sệt và thịt vàng óng.",
+      "activeMinutes": 8,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "duong",
+        "thit-ba-chi"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Nêm lại cho mặn ngọt đậm đà, thêm ớt và hành lá, đảo nhanh rồi tắt bếp.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ot",
+        "hanh-la",
+        "nuoc-mam"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

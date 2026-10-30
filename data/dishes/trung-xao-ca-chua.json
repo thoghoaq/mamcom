@@ -1,0 +1,155 @@
+{
+  "id": "trung-xao-ca-chua",
+  "name": "Trứng xào cà chua",
+  "slot": "man",
+  "regions": [
+    "north",
+    "central",
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "xao",
+  "proteinSource": "trung",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "trung-ga",
+      "gramsEdiblePerServing": 100,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "đập ra bát, đánh tan"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 120,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "bổ múi cau"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc ngắn"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Đánh tan trứng với một nửa nước mắm và một chút muối.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "trung-ga",
+        "nuoc-mam",
+        "muoi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Bổ cà chua, băm hành tím và cắt hành lá.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-chua",
+        "hanh-tim",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Đun nóng một nửa dầu, đổ trứng vào đảo nhẹ đến khi vừa se mặt rồi trút ra bát.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "trung-ga"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi thơm hành tím với phần dầu còn lại, cho cà chua vào xào mềm, nêm phần nước mắm còn lại và đường.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "ca-chua",
+        "nuoc-mam",
+        "duong"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Cho trứng trở lại chảo, đảo đều một phút, thêm hành lá, rắc tiêu rồi tắt bếp và dọn ngay.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "trung-ga",
+        "hanh-la",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

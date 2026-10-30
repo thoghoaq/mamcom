@@ -1,0 +1,173 @@
+{
+  "id": "ca-ngu-kho-thom",
+  "name": "Cá ngừ kho thơm",
+  "slot": "man",
+  "regions": [
+    "central",
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "kho",
+  "proteinSource": "ca",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "ca-ngu",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc dày, rửa nước muối loãng, để ráo"
+    },
+    {
+      "ingredientId": "thom",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, bỏ lõi, thái miếng vừa ăn"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mau",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, có thể bỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc ngắn"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Sơ chế cá ngừ, gọt thơm, băm hành tỏi và thái ớt, hành lá.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-ngu",
+        "thom",
+        "hanh-tim",
+        "toi",
+        "ot",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp cá với nước mắm, đường, nước màu, tiêu và một nửa hành tỏi băm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "ca-ngu",
+        "nuoc-mam",
+        "duong",
+        "nuoc-mau",
+        "hat-tieu",
+        "hanh-tim",
+        "toi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm phần hành tỏi còn lại với dầu rồi cho thơm vào xào săn.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "toi",
+        "thom"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Xếp cá lên trên thơm, đổ nước ướp và chút nước sấp mặt cá, đun sôi rồi hạ lửa nhỏ kho.",
+      "activeMinutes": 2,
+      "passiveMinutes": 25,
+      "ingredientIds": [
+        "ca-ngu"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Trở cá cho thấm, nêm lại vừa ăn, rắc ớt và hành lá rồi tắt bếp.",
+      "activeMinutes": 2,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "ot",
+        "hanh-la",
+        "nuoc-mam"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

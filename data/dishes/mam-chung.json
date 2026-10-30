@@ -1,0 +1,179 @@
+{
+  "id": "mam-chung",
+  "name": "Mắm chưng",
+  "slot": "man",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "hap",
+  "proteinSource": "heo",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "thit-nac-bam",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chọn loại có chút mỡ cho mềm"
+    },
+    {
+      "ingredientId": "mam-ca",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "lọc bỏ xương, băm nhuyễn"
+    },
+    {
+      "ingredientId": "trung-vit",
+      "gramsEdiblePerServing": 55,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "tách riêng một lòng đỏ để phết mặt"
+    },
+    {
+      "ingredientId": "mien",
+      "gramsEdiblePerServing": 8,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm mềm, cắt ngắn"
+    },
+    {
+      "ingredientId": "moc-nhi",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm nở, thái sợi"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "thái lát, có thể bỏ"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm miến và mộc nhĩ vào nước ấm cho mềm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "mien",
+        "moc-nhi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Lọc sạch xương mắm cá rồi băm nhuyễn phần thịt mắm.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "mam-ca"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Băm hành tím, tỏi, cắt ngắn miến và thái sợi mộc nhĩ.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-tim",
+        "toi",
+        "mien",
+        "moc-nhi"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Đập trứng, giữ lại một lòng đỏ, rồi trộn đều phần trứng còn lại với thịt bằm, mắm, miến, mộc nhĩ, hành tỏi, đường và tiêu.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "trung-vit",
+        "thit-nac-bam",
+        "mam-ca",
+        "mien",
+        "moc-nhi",
+        "hanh-tim",
+        "toi",
+        "duong",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Cho hỗn hợp vào tô, nén phẳng mặt và hấp cách thủy đến khi chín.",
+      "activeMinutes": 2,
+      "passiveMinutes": 25,
+      "ingredientIds": [
+        "thit-nac-bam"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Phết lòng đỏ trứng lên mặt, rắc hành lá và ớt rồi hấp thêm cho lòng đỏ se lại.",
+      "activeMinutes": 2,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "trung-vit",
+        "hanh-la",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

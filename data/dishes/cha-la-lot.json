@@ -1,0 +1,176 @@
+{
+  "id": "cha-la-lot",
+  "name": "Chả lá lốt",
+  "slot": "man",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "chien",
+  "proteinSource": "heo",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "thit-nac-vai",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "xay hoặc băm nhỏ"
+    },
+    {
+      "ingredientId": "thit-ba-chi",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ để chả mềm, không khô"
+    },
+    {
+      "ingredientId": "la-lot",
+      "gramsEdiblePerServing": 15,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chọn lá to, rửa sạch, cắt cuống, lau khô"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ phần trắng"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Rửa sạch lá lốt, cắt cuống, để ráo rồi thái nhỏ vài lá lẻ cho vào nhân.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "la-lot"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Trộn thịt nạc vai, ba chỉ băm với hành tím, tỏi, hành lá, nước mắm, hạt nêm, đường và hạt tiêu cho thật đều.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-nac-vai",
+        "thit-ba-chi",
+        "hanh-tim",
+        "toi",
+        "hanh-la",
+        "nuoc-mam",
+        "hat-nem",
+        "duong",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Để nhân thịt nghỉ cho ngấm gia vị.",
+      "activeMinutes": 0,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "thit-nac-vai",
+        "thit-ba-chi"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Đặt mặt bóng lá lốt xuống dưới, cho một thìa nhân vào rồi cuộn chặt tay thành từng cuốn nhỏ.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "la-lot",
+        "thit-nac-vai",
+        "thit-ba-chi"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Đun nóng dầu, xếp chả với mép lá úp xuống, rán lửa vừa và lật đều đến khi chín vàng.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Gắp chả ra đĩa, thấm bớt dầu rồi dọn ngay khi còn nóng.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "la-lot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

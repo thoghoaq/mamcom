@@ -1,0 +1,167 @@
+{
+  "id": "ca-bong-kho-tieu",
+  "name": "Cá bống kho tiêu",
+  "slot": "man",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "kho",
+  "proteinSource": "ca",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "ca-bong",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "làm sạch, bỏ ruột, để nguyên con"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 12,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mau",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "đập dập hoặc xay thô"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "để nguyên trái, có thể bỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc ngắn"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "dùng chà rửa cá"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Chà cá bống với muối cho hết nhớt, rửa sạch và để ráo.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-bong",
+        "muoi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp cá với nước mắm, đường, nước màu, một nửa hành tỏi băm và một nửa tiêu.",
+      "activeMinutes": 3,
+      "passiveMinutes": 20,
+      "ingredientIds": [
+        "ca-bong",
+        "nuoc-mam",
+        "duong",
+        "nuoc-mau",
+        "hanh-tim",
+        "toi",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm phần hành tỏi còn lại với dầu ăn trong nồi đất.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "toi"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Xếp cá vào nồi, đổ nước ướp và chút nước sâm sấp, thêm ớt rồi đun lửa nhỏ.",
+      "activeMinutes": 3,
+      "passiveMinutes": 20,
+      "ingredientIds": [
+        "ca-bong",
+        "ot"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Trở nhẹ cá, rim đến khi nước sánh keo, rắc phần tiêu còn lại và hành lá rồi tắt bếp.",
+      "activeMinutes": 5,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "hat-tieu",
+        "hanh-la"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

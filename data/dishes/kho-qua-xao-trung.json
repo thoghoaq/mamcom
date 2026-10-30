@@ -1,0 +1,158 @@
+{
+  "id": "kho-qua-xao-trung",
+  "name": "Khổ qua xào trứng",
+  "slot": "rau",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "summer"
+  ],
+  "spicy": "none",
+  "cookingMethod": "xao",
+  "proteinSource": "trung",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "kho-qua",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bổ dọc, bỏ ruột, thái lát mỏng"
+    },
+    {
+      "ingredientId": "trung-ga",
+      "gramsEdiblePerServing": 50,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "đập ra bát, đánh tan"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóp khổ qua cho bớt đắng"
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc ngắn"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Bổ khổ qua, nạo bỏ ruột rồi thái lát mỏng.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "kho-qua"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Bóp khổ qua với chút muối, để 10 phút rồi rửa lại và để ráo.",
+      "activeMinutes": 2,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "kho-qua",
+        "muoi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Đánh tan trứng với một ít nước mắm và tiêu.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "trung-ga",
+        "nuoc-mam",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi thơm hành tím với dầu ăn trên chảo nóng.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Cho khổ qua vào xào lửa lớn đến khi vừa chín tới, nêm phần nước mắm còn lại và đường.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "kho-qua",
+        "nuoc-mam",
+        "duong"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Đổ trứng vào, đảo nhẹ cho trứng bám đều và chín, rắc hành lá rồi tắt bếp, dọn ngay.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "trung-ga",
+        "hanh-la"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

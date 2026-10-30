@@ -1,0 +1,264 @@
+{
+  "id": "nem-ran",
+  "name": "Nem rán",
+  "slot": "man",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "chien",
+  "proteinSource": "heo",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "thit-nac-bam",
+      "gramsEdiblePerServing": 70,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chọn loại có chút mỡ cho nhân mềm"
+    },
+    {
+      "ingredientId": "trung-ga",
+      "gramsEdiblePerServing": 20,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "đập vào nhân để kết dính"
+    },
+    {
+      "ingredientId": "banh-da-nem",
+      "gramsEdiblePerServing": 15,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "khoảng 4 lá nhỏ"
+    },
+    {
+      "ingredientId": "mien",
+      "gramsEdiblePerServing": 8,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm mềm, cắt ngắn"
+    },
+    {
+      "ingredientId": "moc-nhi",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "khô; ngâm nở, bỏ chân, thái nhỏ"
+    },
+    {
+      "ingredientId": "nam-huong",
+      "gramsEdiblePerServing": 2,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "khô; ngâm nở, thái nhỏ"
+    },
+    {
+      "ingredientId": "ca-rot",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, thái sợi nhỏ"
+    },
+    {
+      "ingredientId": "su-hao",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, thái sợi, vắt bớt nước"
+    },
+    {
+      "ingredientId": "gia-do",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt ngắn, để ráo"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 12,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "chia phần ướp nhân và phần pha nước chấm"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "lượng thấm vào nem khi rán"
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "pha nước chấm"
+    },
+    {
+      "ingredientId": "giam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "pha nước chấm"
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "vắt lấy nước"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "thái lát, có thể bỏ"
+    },
+    {
+      "ingredientId": "rau-thom",
+      "gramsEdiblePerServing": 15,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt, rửa sạch, để ráo"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm miến, mộc nhĩ và nấm hương trong nước ấm cho nở mềm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "mien",
+        "moc-nhi",
+        "nam-huong"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Thái sợi cà rốt, su hào, cắt ngắn giá và miến, thái nhỏ mộc nhĩ, nấm hương, hành lá, băm hành tím.",
+      "activeMinutes": 12,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-rot",
+        "su-hao",
+        "gia-do",
+        "mien",
+        "moc-nhi",
+        "nam-huong",
+        "hanh-la",
+        "hanh-tim"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Trộn đều thịt bằm với rau củ, miến, nấm, trứng, một phần nước mắm và hạt tiêu rồi để nhân ngấm.",
+      "activeMinutes": 4,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "thit-nac-bam",
+        "trung-ga",
+        "ca-rot",
+        "su-hao",
+        "gia-do",
+        "mien",
+        "moc-nhi",
+        "nam-huong",
+        "hanh-la",
+        "hanh-tim",
+        "nuoc-mam",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Đặt nhân lên lá bánh đa nem, gấp hai mép rồi cuốn chặt tay.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "banh-da-nem",
+        "thit-nac-bam"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Rán nem trong dầu nóng lửa vừa, lật đều đến khi vàng giòn rồi vớt ra để ráo dầu.",
+      "activeMinutes": 12,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "banh-da-nem",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Pha nước chấm từ nước mắm, đường, giấm, nước chanh, tỏi băm và ớt.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "duong",
+        "giam",
+        "chanh",
+        "toi",
+        "ot"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Dọn nem nóng kèm rau thơm và nước chấm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "rau-thom"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "id": "tom-rang-me",
+  "name": "Tôm rang me",
+  "slot": "man",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "xao",
+  "proteinSource": "tom",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "tom",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt râu, rút chỉ lưng, để nguyên vỏ"
+    },
+    {
+      "ingredientId": "me",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "ngâm nước ấm, dầm lấy nước cốt, bỏ hạt"
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt lát, có thể bỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc ngắn"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Rửa sạch tôm, cắt râu, rút chỉ lưng rồi để ráo.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "tom"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp tôm với hạt nêm, một nửa tỏi và hành tím băm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "tom",
+        "hat-nem",
+        "toi",
+        "hanh-tim"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Ngâm me với chút nước ấm, dầm kỹ rồi lọc lấy nước cốt, khuấy cùng đường và nước mắm.",
+      "activeMinutes": 4,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "me",
+        "duong",
+        "nuoc-mam"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi thơm phần tỏi và hành tím còn lại với dầu ăn, cho tôm vào rang lửa lớn đến khi tôm đỏ.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "toi",
+        "hanh-tim",
+        "tom"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Đổ hỗn hợp nước me vào, đảo đều đến khi sốt sệt bám quanh tôm.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "tom",
+        "me",
+        "duong",
+        "nuoc-mam"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Rắc hành lá và ớt, đảo nhanh rồi tắt bếp, dọn ra ăn nóng.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

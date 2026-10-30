@@ -1,0 +1,208 @@
+{
+  "id": "dau-phu-kho-nam",
+  "name": "Đậu phụ kho nấm",
+  "slot": "man",
+  "regions": [
+    "north",
+    "central",
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "kho",
+  "proteinSource": "chay",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "dau-phu",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt miếng vuông vừa ăn"
+    },
+    {
+      "ingredientId": "nam-huong",
+      "gramsEdiblePerServing": 15,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm nở, bỏ chân, cắt đôi"
+    },
+    {
+      "ingredientId": "nam-rom",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt gốc, rửa sạch, bổ đôi"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-tuong",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-hao",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, có thể bỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái khúc ngắn"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm nấm hương trong nước ấm cho nở mềm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "nam-huong"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Sơ chế nấm rơm, cắt đậu phụ, băm hành tím và tỏi, thái ớt và hành lá.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nam-rom",
+        "dau-phu",
+        "hanh-tim",
+        "toi",
+        "ot",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Chiên đậu phụ trong dầu nóng đến khi vàng đều các mặt rồi vớt ra.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-phu",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi thơm hành tím và tỏi với chút dầu còn lại, cho nấm hương và nấm rơm vào xào săn.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-tim",
+        "toi",
+        "dau-an",
+        "nam-huong",
+        "nam-rom"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Cho đậu phụ vào, nêm nước tương, dầu hào, đường, hạt nêm và thêm ít nước, đảo nhẹ cho đều.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-phu",
+        "nuoc-tuong",
+        "dau-hao",
+        "duong",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Đun lửa nhỏ, kho đến khi nước sánh lại và đậu thấm màu.",
+      "activeMinutes": 1,
+      "passiveMinutes": 12,
+      "ingredientIds": [
+        "dau-phu",
+        "nam-huong",
+        "nam-rom"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Rắc hạt tiêu, hành lá và ớt lên rồi tắt bếp.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hat-tieu",
+        "hanh-la",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

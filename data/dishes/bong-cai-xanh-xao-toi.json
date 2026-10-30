@@ -1,0 +1,135 @@
+{
+  "id": "bong-cai-xanh-xao-toi",
+  "name": "Bông cải xanh xào tỏi",
+  "slot": "rau",
+  "regions": [
+    "north",
+    "central",
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "xao",
+  "proteinSource": "none",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "bong-cai-xanh",
+      "gramsEdiblePerServing": 150,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "tách bông nhỏ, ngâm nước muối loãng rồi rửa sạch"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, đập dập rồi băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-hao",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "một nhúm cho vào nồi nước chần"
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Tách bông cải thành bông nhỏ, ngâm nước muối loãng rồi rửa sạch, để ráo; bóc và băm tỏi.",
+      "activeMinutes": 5,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "bong-cai-xanh",
+        "toi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Đun sôi nồi nước với chút muối, chần bông cải khoảng 1 phút rồi vớt ra thả vào nước nguội cho giữ màu xanh, để ráo.",
+      "activeMinutes": 3,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "bong-cai-xanh",
+        "muoi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm tỏi với dầu ăn trên lửa vừa đến khi vàng nhạt.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "toi"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Cho bông cải vào, tăng lửa lớn, nêm dầu hào và hạt nêm rồi đảo nhanh khoảng 2 phút.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "bong-cai-xanh",
+        "dau-hao",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Tắt bếp, rắc hạt tiêu và dọn ra đĩa ăn nóng ngay.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

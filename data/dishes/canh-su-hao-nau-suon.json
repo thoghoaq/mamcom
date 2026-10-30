@@ -1,0 +1,159 @@
+{
+  "id": "canh-su-hao-nau-suon",
+  "name": "Canh su hào nấu sườn",
+  "slot": "canh",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "winter",
+    "autumn"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "heo",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "suon-heo",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chặt miếng nhỏ, chần sơ cho sạch"
+    },
+    {
+      "ingredientId": "su-hao",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, thái miếng vừa ăn"
+    },
+    {
+      "ingredientId": "ca-rot",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, thái lát"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, đập dập"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Chần sườn qua nước sôi rồi rửa lại cho sạch.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "suon-heo"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Cho sườn, hành tím và chút muối vào nồi nước, ninh nhỏ lửa cho sườn mềm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 30,
+      "ingredientIds": [
+        "suon-heo",
+        "hanh-tim",
+        "muoi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Trong lúc chờ, gọt và thái su hào, cà rốt, thái hành lá.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "su-hao",
+        "ca-rot",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Cho su hào và cà rốt vào nồi, nấu đến khi củ vừa chín mềm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "su-hao",
+        "ca-rot"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Nêm hạt nêm, nước mắm cho vừa rồi tắt bếp.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hat-nem",
+        "nuoc-mam"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Múc canh ra bát, rắc hành lá và hạt tiêu.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

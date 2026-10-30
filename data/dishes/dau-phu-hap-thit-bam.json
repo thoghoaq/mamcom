@@ -1,0 +1,168 @@
+{
+  "id": "dau-phu-hap-thit-bam",
+  "name": "Đậu phụ hấp thịt bằm",
+  "slot": "man",
+  "regions": [
+    "north",
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "hap",
+  "proteinSource": "chay",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "dau-phu",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt miếng vuông dày khoảng 2 cm"
+    },
+    {
+      "ingredientId": "thit-nac-bam",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "moc-nhi",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm nở, thái nhỏ"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-hao",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm mộc nhĩ cho nở rồi rửa sạch, thái nhỏ.",
+      "activeMinutes": 2,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "moc-nhi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Trộn thịt bằm với mộc nhĩ, một nửa hành tím, nước mắm, hạt nêm và hạt tiêu, để thấm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "thit-nac-bam",
+        "moc-nhi",
+        "hanh-tim",
+        "nuoc-mam",
+        "hat-nem",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Cắt đậu phụ thành miếng, xếp vào đĩa sâu lòng rồi phủ đều thịt lên trên.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-phu",
+        "thit-nac-bam"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Hấp đĩa đậu trong nồi nước sôi đến khi thịt chín.",
+      "activeMinutes": 1,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "dau-phu",
+        "thit-nac-bam"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Phi thơm hành tím còn lại với dầu ăn, thêm dầu hào và chút nước hấp trong đĩa, đun sệt.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "dau-hao"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Rưới nước sốt lên đậu, rắc hành lá và dọn ngay khi còn nóng.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

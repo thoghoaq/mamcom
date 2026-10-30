@@ -1,0 +1,186 @@
+{
+  "id": "canh-kho-qua-nhoi-thit",
+  "name": "Canh khổ qua nhồi thịt",
+  "slot": "canh",
+  "regions": [
+    "south",
+    "central"
+  ],
+  "seasons": [
+    "summer"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "heo",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "kho-qua",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc 4 cm, khoét bỏ ruột"
+    },
+    {
+      "ingredientId": "thit-nac-bam",
+      "gramsEdiblePerServing": 70,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "moc-nhi",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm nở, băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "rau-mui",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt nhỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm mộc nhĩ cho nở rồi rửa sạch và băm nhỏ.",
+      "activeMinutes": 2,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "moc-nhi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Rửa khổ qua, cắt khúc, khoét ruột rồi ngâm nước muối loãng cho bớt đắng.",
+      "activeMinutes": 5,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "kho-qua",
+        "muoi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Trộn thịt bằm với mộc nhĩ, hành tím, một ít nước mắm và hạt tiêu cho thấm.",
+      "activeMinutes": 4,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "thit-nac-bam",
+        "moc-nhi",
+        "hanh-tim",
+        "nuoc-mam",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Nhồi nhân thịt chặt vào từng khúc khổ qua.",
+      "activeMinutes": 6,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "kho-qua",
+        "thit-nac-bam"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Đun sôi nước, thả khổ qua nhồi vào, hạ lửa nhỏ và hớt bọt.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "kho-qua"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Hầm lửa nhỏ đến khi khổ qua mềm và nhân chín.",
+      "activeMinutes": 1,
+      "passiveMinutes": 20,
+      "ingredientIds": [
+        "kho-qua"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Nêm hạt nêm, nước mắm còn lại, thả hành lá rồi tắt bếp.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hat-nem",
+        "nuoc-mam",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 8,
+      "text": "Múc ra tô, rắc rau mùi và hạt tiêu.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "rau-mui",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

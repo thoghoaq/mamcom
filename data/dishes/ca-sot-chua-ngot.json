@@ -1,0 +1,241 @@
+{
+  "id": "ca-sot-chua-ngot",
+  "name": "Cá sốt chua ngọt",
+  "slot": "man",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "chien",
+  "proteinSource": "ca",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "ca-dieu-hong",
+      "gramsEdiblePerServing": 130,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "làm sạch, khứa hai bên thân, thấm khô"
+    },
+    {
+      "ingredientId": "bot-nang",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "áo mỏng quanh cá"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 25,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "dùng để chiên cá và phi tỏi"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 60,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "bỏ hạt, cắt múi cau"
+    },
+    {
+      "ingredientId": "thom",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, cắt miếng nhỏ"
+    },
+    {
+      "ingredientId": "hanh-tay",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt múi cau"
+    },
+    {
+      "ingredientId": "ot-chuong",
+      "gramsEdiblePerServing": 25,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bỏ hạt, cắt miếng vuông"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "tuong-ca",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "giam",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt lát, có thể bỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "rau-mui",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "nhặt lá"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ướp cá với muối và tiêu khoảng 10 phút.",
+      "activeMinutes": 2,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "ca-dieu-hong",
+        "muoi",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Sơ chế cà chua, dứa, hành tây, ớt chuông, tỏi, ớt và rau thơm trong lúc chờ cá thấm.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-chua",
+        "thom",
+        "hanh-tay",
+        "ot-chuong",
+        "toi",
+        "ot",
+        "hanh-la",
+        "rau-mui"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Pha tương cà, đường, giấm, nước mắm với một ít nước thành chén sốt.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "tuong-ca",
+        "duong",
+        "giam",
+        "nuoc-mam"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Lăn cá qua bột năng rồi chiên vàng giòn hai mặt, vớt ra đĩa.",
+      "activeMinutes": 12,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-dieu-hong",
+        "bot-nang",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Phi thơm tỏi, cho cà chua và dứa vào xào mềm rồi đổ chén sốt vào đun sánh.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "toi",
+        "ca-chua",
+        "thom",
+        "tuong-ca",
+        "duong",
+        "giam",
+        "nuoc-mam"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Thả hành tây, ớt chuông và ớt vào đảo nhanh một phút cho vừa chín tới.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-tay",
+        "ot-chuong",
+        "ot"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Rưới sốt lên cá, rắc hành lá và rau mùi rồi dọn ngay khi còn nóng.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-dieu-hong",
+        "hanh-la",
+        "rau-mui"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

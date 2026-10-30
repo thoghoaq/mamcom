@@ -1,0 +1,251 @@
+{
+  "id": "cha-gio",
+  "name": "Chả giò",
+  "slot": "man",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "chien",
+  "proteinSource": "heo",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "thit-nac-bam",
+      "gramsEdiblePerServing": 70,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "tom",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, bỏ chỉ, băm nhỏ"
+    },
+    {
+      "ingredientId": "khoai-mon",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, bào sợi"
+    },
+    {
+      "ingredientId": "ca-rot",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bào sợi"
+    },
+    {
+      "ingredientId": "mien",
+      "gramsEdiblePerServing": 8,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm mềm, cắt ngắn"
+    },
+    {
+      "ingredientId": "moc-nhi",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm nở, thái nhỏ"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ, chia đôi cho nhân và nước chấm"
+    },
+    {
+      "ingredientId": "trung-ga",
+      "gramsEdiblePerServing": 15,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "đánh tan"
+    },
+    {
+      "ingredientId": "banh-trang",
+      "gramsEdiblePerServing": 15,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "loại mỏng để cuốn"
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 12,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "một ít cho nhân, phần còn lại pha nước chấm"
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "vắt lấy nước"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ, có thể bỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 20,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "lượng dầu thấm khi chiên ngập"
+    },
+    {
+      "ingredientId": "rau-thom",
+      "gramsEdiblePerServing": 10,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "rửa sạch, ăn kèm"
+    },
+    {
+      "ingredientId": "xa-lach",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "rửa sạch, cuốn ăn kèm"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm miến và mộc nhĩ trong nước ấm cho mềm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "mien",
+        "moc-nhi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Gọt và bào sợi khoai môn, cà rốt; bóc vỏ và băm tôm; băm hành tím, tỏi.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "khoai-mon",
+        "ca-rot",
+        "tom",
+        "hanh-tim",
+        "toi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Trộn thịt bằm, tôm, khoai môn, cà rốt, miến, mộc nhĩ, hành tỏi với trứng và gia vị cho đều.",
+      "activeMinutes": 4,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "thit-nac-bam",
+        "tom",
+        "khoai-mon",
+        "ca-rot",
+        "mien",
+        "moc-nhi",
+        "hanh-tim",
+        "toi",
+        "trung-ga",
+        "hat-nem",
+        "hat-tieu",
+        "nuoc-mam"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Làm ẩm bánh tráng, đặt nhân vào rồi cuốn chặt tay, gập kín hai đầu.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "banh-trang"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Chiên ngập dầu ở lửa vừa, trở đều đến khi chả giò vàng giòn rồi vớt ra để ráo dầu.",
+      "activeMinutes": 12,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Pha nước mắm với đường, nước chanh, tỏi, ớt và chút nước ấm để làm nước chấm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "duong",
+        "chanh",
+        "toi",
+        "ot"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Dọn chả giò nóng cùng rau thơm, xà lách và nước chấm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "rau-thom",
+        "xa-lach"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

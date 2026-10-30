@@ -1,0 +1,162 @@
+{
+  "id": "ca-tim-xao-mo-hanh",
+  "name": "Cà tím xào mỡ hành",
+  "slot": "rau",
+  "regions": [
+    "south",
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "xao",
+  "proteinSource": "none",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "ca-tim",
+      "gramsEdiblePerServing": 150,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc dài, chẻ đôi, ngâm nước muối loãng"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 15,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "pha nước ngâm cà"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, có thể bỏ"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Cắt cà tím thành khúc, ngâm vào nước pha muối cho cà khỏi thâm.",
+      "activeMinutes": 4,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "ca-tim",
+        "muoi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Thái hành lá, băm tỏi, thái ớt trong lúc chờ ngâm cà.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "toi",
+        "ot"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi hành lá với một ít dầu nóng để làm mỡ hành rồi múc ra bát.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Vớt cà ra, vắt nhẹ cho ráo rồi phi thơm tỏi với dầu còn lại.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-tim",
+        "toi",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Cho cà tím vào xào lửa vừa, đảo đều đến khi cà mềm.",
+      "activeMinutes": 6,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-tim"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm nước mắm và đường, đảo thêm một phút cho thấm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "duong"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Tắt bếp, rưới mỡ hành, rắc ớt rồi dọn ngay khi còn nóng.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

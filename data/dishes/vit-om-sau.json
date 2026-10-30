@@ -1,0 +1,218 @@
+{
+  "id": "vit-om-sau",
+  "name": "Vịt om sấu",
+  "slot": "man",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "summer"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nau",
+  "proteinSource": "vit",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "thit-vit",
+      "gramsEdiblePerServing": 130,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chặt miếng vừa ăn"
+    },
+    {
+      "ingredientId": "sau",
+      "gramsEdiblePerServing": 40,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "rửa sạch, khía nhẹ quanh quả"
+    },
+    {
+      "ingredientId": "khoai-so",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, cắt miếng vừa"
+    },
+    {
+      "ingredientId": "gung",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "nửa đập dập, nửa thái sợi"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "chà vịt khử mùi"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "rau-mui",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt nhỏ"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, để riêng nếu không ăn cay"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Chà vịt với muối và gừng đập dập, rửa lại thật sạch rồi để ráo.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-vit",
+        "muoi",
+        "gung"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp vịt với nước mắm, hạt nêm, đường, hạt tiêu, một nửa hành tím và tỏi băm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 20,
+      "ingredientIds": [
+        "thit-vit",
+        "nuoc-mam",
+        "hat-nem",
+        "duong",
+        "hat-tieu",
+        "hanh-tim",
+        "toi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Gọt khoai sọ, cắt miếng và rửa sấu trong lúc chờ ướp.",
+      "activeMinutes": 6,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "khoai-so",
+        "sau"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi thơm phần hành tỏi và gừng sợi còn lại với dầu ăn, cho vịt vào đảo săn.",
+      "activeMinutes": 6,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "toi",
+        "gung",
+        "thit-vit"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Thêm sấu và nước xâm xấp, đun sôi rồi hạ lửa om liu riu.",
+      "activeMinutes": 2,
+      "passiveMinutes": 25,
+      "ingredientIds": [
+        "sau"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Dầm nhẹ cho sấu ra vị chua, cho khoai sọ vào om tiếp đến khi khoai bở mềm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "sau",
+        "khoai-so"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Nêm lại cho vừa chua mặn ngọt, rắc hành lá, rau mùi và ớt rồi tắt bếp.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "rau-mui",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

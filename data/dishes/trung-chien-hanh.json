@@ -75,11 +75,11 @@
       ]
     }
   ],
-  "status": "draft",
+  "status": "reviewed",
   "provenance": {
     "draftedBy": "llm",
-    "reviewedBy": null,
-    "reviewedAt": null,
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
     "cookTestedAt": null,
     "measuredTotalMinutes": null
   },

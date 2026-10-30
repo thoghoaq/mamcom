@@ -1,0 +1,195 @@
+{
+  "id": "ca-ro-phi-sot-ca-chua",
+  "name": "Cá rô phi sốt cà chua",
+  "slot": "man",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "chien",
+  "proteinSource": "ca",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "ca-ro-phi",
+      "gramsEdiblePerServing": 130,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "làm sạch, khứa vài đường hai bên thân"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 100,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "bỏ cuống, thái múi cau"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc ngắn"
+    },
+    {
+      "ingredientId": "thi-la",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc ngắn"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "xát cá cho sạch nhớt và ướp"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "để chiên cá và phi thơm"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, có thể bỏ"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Xát muối lên cá cho sạch nhớt, rửa lại rồi để ráo.",
+      "activeMinutes": 5,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "ca-ro-phi",
+        "muoi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Sơ chế cà chua, hành tím, tỏi, hành lá, thì là và ớt.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-chua",
+        "hanh-tim",
+        "toi",
+        "hanh-la",
+        "thi-la",
+        "ot"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Đun nóng dầu, chiên cá vàng đều hai mặt rồi gắp ra đĩa.",
+      "activeMinutes": 12,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-ro-phi",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi thơm hành tím và tỏi với ít dầu còn lại trong chảo.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-tim",
+        "toi",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Cho cà chua vào đảo đến khi nhừ, nêm nước mắm và đường, thêm chút nước cho sốt sánh.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-chua",
+        "nuoc-mam",
+        "duong"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Cho cá vào chảo, rưới sốt lên mặt cá và đun nhỏ lửa cho cá ngấm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 6,
+      "ingredientIds": [
+        "ca-ro-phi"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Thả hành lá, thì là, ớt và rắc tiêu rồi tắt bếp, dọn ăn nóng.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "thi-la",
+        "ot",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "id": "canh-khoai-so-nau-suon",
+  "name": "Canh khoai sọ nấu sườn",
+  "slot": "canh",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "autumn",
+    "winter"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "heo",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "suon-non",
+      "gramsEdiblePerServing": 70,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chặt miếng nhỏ, chần sơ"
+    },
+    {
+      "ingredientId": "khoai-so",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, cắt miếng vừa ăn"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, đập dập"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "rau-mui",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Rửa sườn, chần qua nước sôi có chút muối rồi vớt ra rửa sạch.",
+      "activeMinutes": 5,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "suon-non",
+        "muoi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Gọt vỏ khoai sọ, cắt miếng, ngâm nước muối loãng cho bớt nhớt.",
+      "activeMinutes": 7,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "khoai-so",
+        "muoi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Cho sườn và hành tím vào nồi nước, đun sôi, hớt bọt rồi hầm nhỏ lửa.",
+      "activeMinutes": 3,
+      "passiveMinutes": 25,
+      "ingredientIds": [
+        "suon-non",
+        "hanh-tim"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Thả khoai sọ vào nồi, nấu đến khi khoai chín bở.",
+      "activeMinutes": 2,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "khoai-so"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Nêm nước mắm, hạt nêm cho vừa miệng rồi tắt bếp.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Múc canh ra bát, rắc hành lá, rau mùi và hạt tiêu.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "rau-mui",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

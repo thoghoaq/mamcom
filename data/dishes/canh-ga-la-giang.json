@@ -1,0 +1,150 @@
+{
+  "id": "canh-ga-la-giang",
+  "name": "Canh gà lá giang",
+  "slot": "canh",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nau",
+  "proteinSource": "ga",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "ga-ta",
+      "gramsEdiblePerServing": 90,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chặt miếng vừa ăn, rửa sạch"
+    },
+    {
+      "ingredientId": "la-giang",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "tuốt lá, rửa sạch, vò nhẹ"
+    },
+    {
+      "ingredientId": "sa",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "đập dập, cắt khúc"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt lát, để riêng cho ai ăn cay"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ướp gà với nửa phần hành tím, nước mắm, đường và hạt nêm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "ga-ta",
+        "hanh-tim",
+        "nuoc-mam",
+        "duong",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Phi thơm tỏi, hành tím còn lại và sả với dầu ăn rồi cho gà vào xào săn.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "toi",
+        "hanh-tim",
+        "sa",
+        "ga-ta"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Đổ nước ngập gà, đun sôi, hớt bọt rồi hạ lửa nấu đến khi gà mềm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 20,
+      "ingredientIds": [
+        "ga-ta"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Cho lá giang vào, nêm lại vừa chua mặn ngọt rồi tắt bếp, ăn kèm ớt.",
+      "activeMinutes": 2,
+      "passiveMinutes": 2,
+      "ingredientIds": [
+        "la-giang",
+        "nuoc-mam",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

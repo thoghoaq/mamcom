@@ -1,0 +1,187 @@
+{
+  "id": "muc-xao-hanh-can",
+  "name": "Mực xào hành cần",
+  "slot": "man",
+  "regions": [
+    "central",
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "xao",
+  "proteinSource": "hai-san",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "muc",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "làm sạch, khứa vảy rồng, cắt miếng vừa ăn"
+    },
+    {
+      "ingredientId": "can-tay",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc 4 cm"
+    },
+    {
+      "ingredientId": "hanh-tay",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bổ múi cau"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 15,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc 4 cm"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "gung",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "đập dập, thái sợi"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, có thể bỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-hao",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Làm sạch mực, khứa vảy rồng rồi cắt miếng vừa ăn.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "muc"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp mực với gừng, một nửa tỏi, nước mắm và hạt tiêu.",
+      "activeMinutes": 2,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "muc",
+        "gung",
+        "toi",
+        "nuoc-mam",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Cắt cần tây, hành lá, bổ hành tây và thái ớt trong lúc chờ ướp.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "can-tay",
+        "hanh-la",
+        "hanh-tay",
+        "ot"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi thơm phần tỏi còn lại với dầu, cho mực vào xào lửa lớn đến khi vừa săn rồi trút ra đĩa.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "toi",
+        "muc"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Xào hành tây và cần tây lửa lớn khoảng hai phút.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-tay",
+        "can-tay"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Cho mực trở lại chảo, nêm dầu hào và đường, thêm hành lá và ớt, đảo nhanh rồi tắt bếp dọn ngay.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "muc",
+        "dau-hao",
+        "duong",
+        "hanh-la",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "id": "rau-cu-luoc-thap-cam",
+  "name": "Rau củ luộc thập cẩm",
+  "slot": "rau",
+  "regions": [
+    "north",
+    "central",
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "luoc",
+  "proteinSource": "none",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "ca-rot",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, thái khoanh xéo"
+    },
+    {
+      "ingredientId": "su-hao",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, thái thanh"
+    },
+    {
+      "ingredientId": "bong-cai-xanh",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt nhánh nhỏ, ngâm nước muối"
+    },
+    {
+      "ingredientId": "dau-que",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "tước xơ, cắt khúc"
+    },
+    {
+      "ingredientId": "bap-cai",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt miếng vừa"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "cho vào nước luộc"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "pha nước chấm"
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "pha nước chấm"
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "vắt lấy nước"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Rửa sạch và sơ chế cà rốt, su hào, bông cải, đậu que, bắp cải.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-rot",
+        "su-hao",
+        "bong-cai-xanh",
+        "dau-que",
+        "bap-cai"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Đun sôi nồi nước với chút muối.",
+      "activeMinutes": 1,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "muoi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Luộc cà rốt và su hào trước khoảng ba phút.",
+      "activeMinutes": 1,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "ca-rot",
+        "su-hao"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Cho đậu que, bông cải và bắp cải vào luộc thêm đến khi vừa chín tới.",
+      "activeMinutes": 1,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "dau-que",
+        "bong-cai-xanh",
+        "bap-cai"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Pha nước mắm với đường, nước cốt chanh và tỏi băm làm nước chấm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "duong",
+        "chanh",
+        "toi"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Vớt rau củ ra để ráo, xếp đĩa và dọn ngay cùng nước chấm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-rot",
+        "su-hao",
+        "bong-cai-xanh",
+        "dau-que",
+        "bap-cai"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "id": "bo-luc-lac",
+  "name": "Bò lúc lắc",
+  "slot": "man",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "xao",
+  "proteinSource": "bo",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "thit-bo-than",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khối vuông khoảng 2 cm"
+    },
+    {
+      "ingredientId": "ot-chuong",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bỏ hạt, cắt miếng vuông"
+    },
+    {
+      "ingredientId": "hanh-tay",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt miếng vuông, tách lớp"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-hao",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-tuong",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "xay"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "bo",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "xa-lach",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "rửa sạch, lót đĩa"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 60,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "thái lát, bày kèm"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "pha với tiêu và chanh làm chén chấm"
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 10,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "vắt lấy nước"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Cắt bò thành khối vuông, ướp với nửa phần tỏi, dầu hào, nước tương, đường và tiêu.",
+      "activeMinutes": 5,
+      "passiveMinutes": 20,
+      "ingredientIds": [
+        "thit-bo-than",
+        "toi",
+        "dau-hao",
+        "nuoc-tuong",
+        "duong",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Trong lúc chờ, cắt ớt chuông, hành tây; xếp xà lách và cà chua thái lát ra đĩa.",
+      "activeMinutes": 6,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ot-chuong",
+        "hanh-tay",
+        "ca-chua",
+        "xa-lach"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Xào nhanh ớt chuông và hành tây với chút dầu trên lửa lớn rồi trút ra.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "ot-chuong",
+        "hanh-tay"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Đun nóng già dầu với bơ và tỏi còn lại, cho bò vào áp chảo rồi lắc chảo cho bò xém đều các mặt.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "bo",
+        "toi",
+        "thit-bo-than"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Trút ớt chuông và hành tây trở lại chảo, lắc đều thêm nửa phút rồi tắt bếp.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ot-chuong",
+        "hanh-tay"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Pha muối, tiêu và nước chanh làm chén chấm, dọn bò ngay lên đĩa xà lách, cà chua.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "muoi",
+        "hat-tieu",
+        "chanh",
+        "ca-chua",
+        "xa-lach"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

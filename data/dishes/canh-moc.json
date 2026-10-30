@@ -1,0 +1,183 @@
+{
+  "id": "canh-moc",
+  "name": "Canh mọc",
+  "slot": "canh",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "heo",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "gio-song",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "thit-nac-bam",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chọn loại có chút mỡ cho mọc mềm"
+    },
+    {
+      "ingredientId": "nam-huong",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nấm khô, ngâm nở rồi băm nhỏ"
+    },
+    {
+      "ingredientId": "moc-nhi",
+      "gramsEdiblePerServing": 2,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "khô, ngâm nở, bỏ chân, băm nhỏ"
+    },
+    {
+      "ingredientId": "ca-rot",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, tỉa hoa, thái lát mỏng"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "xay"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "rau-mui",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "nhặt rửa, cắt khúc ngắn"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm nấm hương và mộc nhĩ vào nước ấm cho nở mềm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "nam-huong",
+        "moc-nhi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Băm nhỏ nấm hương, mộc nhĩ và hành tím, trộn đều với giò sống, thịt bằm, một nửa nước mắm và hạt tiêu.",
+      "activeMinutes": 8,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "nam-huong",
+        "moc-nhi",
+        "hanh-tim",
+        "gio-song",
+        "thit-nac-bam",
+        "nuoc-mam",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Gọt cà rốt, tỉa hoa và thái lát mỏng.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-rot"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Đun sôi nước làm nước dùng, nêm hạt nêm và phần nước mắm còn lại rồi thả cà rốt vào.",
+      "activeMinutes": 2,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "hat-nem",
+        "nuoc-mam",
+        "ca-rot"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Dùng thìa nhúng nước lạnh xúc từng viên mọc thả vào nồi, giữ lửa vừa đến khi mọc nổi và chín.",
+      "activeMinutes": 5,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "gio-song",
+        "thit-nac-bam"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Hớt bọt, rắc hành lá và rau mùi rồi tắt bếp.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "rau-mui"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

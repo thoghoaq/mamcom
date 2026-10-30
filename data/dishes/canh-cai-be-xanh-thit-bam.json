@@ -1,0 +1,171 @@
+{
+  "id": "canh-cai-be-xanh-thit-bam",
+  "name": "Canh cải bẹ xanh thịt bằm",
+  "slot": "canh",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "heo",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "cai-xanh",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt bỏ lá úa, cắt khúc 3 cm"
+    },
+    {
+      "ingredientId": "thit-nac-bam",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "gung",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "cạo vỏ, đập dập, thái sợi"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Rửa sạch cải xanh, cắt khúc; bóc và băm hành tím, thái sợi gừng, thái nhỏ hành lá.",
+      "activeMinutes": 7,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "cai-xanh",
+        "hanh-tim",
+        "gung",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp thịt bằm với một nửa hành tím, một ít hạt nêm và tiêu.",
+      "activeMinutes": 2,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "thit-nac-bam",
+        "hanh-tim",
+        "hat-nem",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm phần hành tím còn lại với dầu, cho thịt vào xào tơi đến khi săn lại.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "thit-nac-bam"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Đổ khoảng 350 ml nước vào nồi, đun sôi rồi hớt bọt và nấu thêm cho ngọt nước.",
+      "activeMinutes": 2,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "thit-nac-bam"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Cho cải xanh và gừng vào, nấu đến khi cải vừa chín mềm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "cai-xanh",
+        "gung"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm nước mắm và hạt nêm cho vừa ăn rồi tắt bếp.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Múc canh ra tô, rắc hành lá và tiêu lên trên.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

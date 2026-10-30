@@ -1,0 +1,176 @@
+{
+  "id": "canh-bi-dao-nau-tom",
+  "name": "Canh bí đao nấu tôm",
+  "slot": "canh",
+  "regions": [
+    "north",
+    "central",
+    "south"
+  ],
+  "seasons": [
+    "summer"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "tom",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "bi-dao",
+      "gramsEdiblePerServing": 150,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, bỏ ruột, thái miếng vừa ăn"
+    },
+    {
+      "ingredientId": "tom",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, bỏ chỉ lưng, băm hoặc giã dập"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 1.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "rau-mui",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "nhặt sạch, cắt khúc ngắn"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Bóc vỏ tôm, bỏ chỉ lưng rồi băm sơ.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "tom"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp tôm với một ít nước mắm và hạt tiêu.",
+      "activeMinutes": 1,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "tom",
+        "nuoc-mam",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Gọt vỏ bí đao, bỏ ruột và thái miếng vừa ăn.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "bi-dao"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi thơm hành tím với dầu ăn rồi cho tôm vào xào săn.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "tom"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Đổ nước vào nồi, đun sôi rồi cho bí đao vào nấu đến khi bí trong và mềm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 8,
+      "ingredientIds": [
+        "bi-dao"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm hạt nêm, muối và phần nước mắm còn lại cho vừa ăn.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hat-nem",
+        "muoi",
+        "nuoc-mam"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Tắt bếp, rắc hành lá và rau mùi lên rồi múc ra tô.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "rau-mui"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

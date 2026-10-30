@@ -1,0 +1,126 @@
+{
+  "id": "ngon-su-su-xao-toi",
+  "name": "Ngọn su su xào tỏi",
+  "slot": "rau",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "xao",
+  "proteinSource": "none",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "ngon-su-su",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt lấy phần ngọn non, tước xơ, cắt khúc"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, đập dập, băm"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 1.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Nhặt ngọn su su, tước xơ, cắt khúc rồi rửa sạch và để ráo.",
+      "activeMinutes": 6,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "ngon-su-su"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Bóc vỏ tỏi rồi băm nhỏ.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "toi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Chần ngọn su su qua nồi nước sôi khoảng 30 giây rồi vớt ra để ráo.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ngon-su-su"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi một nửa lượng tỏi với dầu ăn cho thơm vàng.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "toi"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Cho ngọn su su vào xào nhanh trên lửa lớn, nêm hạt nêm và nước mắm, đảo đều.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ngon-su-su",
+        "hat-nem",
+        "nuoc-mam"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Thêm phần tỏi còn lại, đảo vài giây rồi tắt bếp và dọn ra ăn ngay.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "toi"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

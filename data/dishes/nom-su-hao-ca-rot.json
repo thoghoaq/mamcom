@@ -1,0 +1,189 @@
+{
+  "id": "nom-su-hao-ca-rot",
+  "name": "Nộm su hào cà rốt",
+  "slot": "rau",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "winter",
+    "spring"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "tron",
+  "proteinSource": "none",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "su-hao",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, thái sợi"
+    },
+    {
+      "ingredientId": "ca-rot",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, thái sợi"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "để bóp su hào cho ra nước"
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "giam",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "có thể thay bằng nước cốt chanh"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "thái lát, có thể bỏ hoặc để riêng"
+    },
+    {
+      "ingredientId": "lac",
+      "gramsEdiblePerServing": 10,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "rang chín, bỏ vỏ lụa, giã dập"
+    },
+    {
+      "ingredientId": "rau-thom",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "rau-ram",
+      "gramsEdiblePerServing": 2,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Gọt vỏ su hào và cà rốt rồi thái hoặc bào thành sợi.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "su-hao",
+        "ca-rot"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Bóp su hào và cà rốt với muối, để khoảng 15 phút cho ra nước.",
+      "activeMinutes": 1,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "su-hao",
+        "ca-rot",
+        "muoi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Rang lạc trên chảo nhỏ lửa đến khi chín vàng, để nguội, xát vỏ rồi giã dập.",
+      "activeMinutes": 7,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "lac"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Pha đường, giấm, nước mắm, tỏi băm và ớt thành nước trộn chua ngọt, khuấy tan đường.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "duong",
+        "giam",
+        "nuoc-mam",
+        "toi",
+        "ot"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Rửa lại su hào, cà rốt bằng nước sạch rồi vắt thật ráo.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "su-hao",
+        "ca-rot"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Trộn su hào, cà rốt với nước trộn, để ngấm khoảng 10 phút.",
+      "activeMinutes": 1,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "su-hao",
+        "ca-rot",
+        "duong",
+        "giam",
+        "nuoc-mam"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Thêm rau thơm, rau răm, trộn nhẹ, bày ra đĩa và rắc lạc lên trên.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "rau-thom",
+        "rau-ram",
+        "lac"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

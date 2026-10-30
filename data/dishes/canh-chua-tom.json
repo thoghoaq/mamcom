@@ -1,0 +1,220 @@
+{
+  "id": "canh-chua-tom",
+  "name": "Canh chua tôm",
+  "slot": "canh",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "summer"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nau",
+  "proteinSource": "tom",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "tom",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, chừa đuôi, rút chỉ"
+    },
+    {
+      "ingredientId": "me",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "ngâm nước ấm, dầm lấy nước cốt"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 40,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "bổ múi cau"
+    },
+    {
+      "ingredientId": "thom",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt miếng mỏng"
+    },
+    {
+      "ingredientId": "dau-bap",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt xéo"
+    },
+    {
+      "ingredientId": "bac-ha",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "tước vỏ, cắt xéo"
+    },
+    {
+      "ingredientId": "gia-do",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt rễ, rửa sạch"
+    },
+    {
+      "ingredientId": "ngo-gai",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "rau-om",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, có thể để riêng"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm me với nước ấm rồi dầm lọc lấy nước cốt.",
+      "activeMinutes": 2,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "me"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Sơ chế tôm, cà chua, thơm, đậu bắp, bạc hà, giá và rau thơm.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "tom",
+        "ca-chua",
+        "thom",
+        "dau-bap",
+        "bac-ha",
+        "gia-do",
+        "ngo-gai",
+        "rau-om"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm tỏi với dầu, cho tôm vào xào săn rồi múc ra.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "toi",
+        "dau-an",
+        "tom"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Cho cà chua và thơm vào nồi xào sơ, đổ nước vào đun sôi.",
+      "activeMinutes": 2,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "ca-chua",
+        "thom"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Thêm nước cốt me, nêm nước mắm, đường, hạt nêm cho vừa chua ngọt.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "me",
+        "nuoc-mam",
+        "duong",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Cho đậu bắp, bạc hà và tôm vào nấu thêm cho chín.",
+      "activeMinutes": 1,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "dau-bap",
+        "bac-ha",
+        "tom"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Thả giá vào, tắt bếp, rắc ngò gai, rau om và ớt.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "gia-do",
+        "ngo-gai",
+        "rau-om",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

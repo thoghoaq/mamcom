@@ -1,0 +1,176 @@
+{
+  "id": "canh-khoai-mo-nau-tom",
+  "name": "Canh khoai mỡ nấu tôm",
+  "slot": "canh",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "tom",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "khoai-mo",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, nạo hoặc giã nhuyễn một nửa, nửa còn lại cắt hạt lựu"
+    },
+    {
+      "ingredientId": "tom",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, bỏ chỉ lưng, băm sơ"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ngo-gai",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "rau-om",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Đeo găng tay, gọt vỏ khoai mỡ, rửa sạch rồi nạo nhuyễn một nửa, cắt hạt lựu nửa còn lại.",
+      "activeMinutes": 7,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "khoai-mo"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Bóc vỏ tôm, băm sơ rồi ướp với một ít nước mắm, hạt tiêu và hành tím băm.",
+      "activeMinutes": 5,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "tom",
+        "nuoc-mam",
+        "hat-tieu",
+        "hanh-tim"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm phần hành tím còn lại với dầu ăn rồi xào tôm đến khi săn và đỏ.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "tom"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Cho nước vào nồi tôm, đun sôi rồi thả khoai mỡ cắt hạt lựu vào nấu đến khi mềm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 8,
+      "ingredientIds": [
+        "khoai-mo"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Cho khoai mỡ nạo vào, khuấy đều liên tục để canh sánh và không khét đáy.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "khoai-mo"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm nước mắm và hạt nêm vừa ăn, tắt bếp.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Múc canh ra tô, rắc ngò gai, rau om, hành lá và hạt tiêu lên trên.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ngo-gai",
+        "rau-om",
+        "hanh-la",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

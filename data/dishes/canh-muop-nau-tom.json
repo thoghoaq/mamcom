@@ -1,0 +1,163 @@
+{
+  "id": "canh-muop-nau-tom",
+  "name": "Canh mướp nấu tôm",
+  "slot": "canh",
+  "regions": [
+    "north",
+    "central",
+    "south"
+  ],
+  "seasons": [
+    "summer"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "tom",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "muop",
+      "gramsEdiblePerServing": 150,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, cắt miếng vừa ăn"
+    },
+    {
+      "ingredientId": "tom",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, bỏ chỉ lưng, đập dập hoặc băm sơ"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Bóc vỏ tôm, bỏ chỉ lưng, đập dập rồi ướp với chút nước mắm và hạt tiêu.",
+      "activeMinutes": 5,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "tom",
+        "nuoc-mam",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Gọt vỏ mướp, cắt miếng vừa ăn; băm hành tím và thái hành lá.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "muop",
+        "hanh-tim",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm hành tím với dầu ăn rồi cho tôm vào xào đến khi tôm đỏ.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "tom"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Đổ nước vào nồi, đun sôi rồi hớt bọt.",
+      "activeMinutes": 1,
+      "passiveMinutes": 4,
+      "ingredientIds": [
+        "tom"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Cho mướp vào, nêm nước mắm, hạt nêm và muối, đun đến khi mướp vừa chín mềm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "muop",
+        "nuoc-mam",
+        "hat-nem",
+        "muoi"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Tắt bếp, rắc hành lá và hạt tiêu rồi múc ra tô.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

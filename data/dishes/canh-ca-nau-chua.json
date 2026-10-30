@@ -1,0 +1,190 @@
+{
+  "id": "canh-ca-nau-chua",
+  "name": "Canh cá nấu chua",
+  "slot": "canh",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nau",
+  "proteinSource": "ca",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "ca-chep",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "làm sạch, cắt khúc vừa ăn"
+    },
+    {
+      "ingredientId": "gung",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "giã nhỏ để khử tanh"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 60,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "bổ múi cau"
+    },
+    {
+      "ingredientId": "giam",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "thay cho mẻ; thêm dần đến khi vừa chua"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "thi-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc ngắn"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc ngắn"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 2,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, để riêng nếu không ăn cay"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Xát cá với muối và gừng giã, rửa lại rồi để ráo.",
+      "activeMinutes": 5,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "ca-chep",
+        "muoi",
+        "gung"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp cá với chút nước mắm và hạt nêm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "ca-chep",
+        "nuoc-mam",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm hành tím với dầu, cho cà chua vào xào mềm.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "ca-chua"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Đổ nước vào nồi, thêm giấm cho vừa chua rồi đun sôi.",
+      "activeMinutes": 2,
+      "passiveMinutes": 4,
+      "ingredientIds": [
+        "giam"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Thả cá vào, nấu lửa vừa đến khi cá chín, hớt bọt.",
+      "activeMinutes": 2,
+      "passiveMinutes": 8,
+      "ingredientIds": [
+        "ca-chep"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm lại nước mắm, hạt nêm cho vừa chua mặn.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Tắt bếp, thả thì là, hành lá và ớt rồi múc ra bát.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thi-la",
+        "hanh-la",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

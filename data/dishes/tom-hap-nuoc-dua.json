@@ -1,0 +1,159 @@
+{
+  "id": "tom-hap-nuoc-dua",
+  "name": "Tôm hấp nước dừa",
+  "slot": "man",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "hap",
+  "proteinSource": "tom",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "tom",
+      "gramsEdiblePerServing": 130,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt râu, rút chỉ lưng, để nguyên vỏ"
+    },
+    {
+      "ingredientId": "dua",
+      "gramsEdiblePerServing": 150,
+      "scale": "integer",
+      "consumedRatio": 0.1,
+      "note": "chỉ lấy nước để hấp; phần lớn nước không ăn, ước chừng 10% thấm vào tôm"
+    },
+    {
+      "ingredientId": "sa",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "đập dập, cắt khúc"
+    },
+    {
+      "ingredientId": "gung",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "thái lát mỏng"
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "dùng pha muối chấm"
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 15,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "vắt lấy nước"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "thái lát, để riêng cho ai ăn cay"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Rửa sạch tôm, cắt râu và rút chỉ lưng rồi để ráo.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "tom"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Chặt dừa lấy nước, đập dập sả và thái lát gừng.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dua",
+        "sa",
+        "gung"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Lót sả và gừng dưới đáy nồi, đổ nước dừa vào, nêm hạt nêm rồi đun sôi.",
+      "activeMinutes": 2,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "sa",
+        "gung",
+        "dua",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Cho tôm vào nồi, đậy nắp hấp đến khi tôm đỏ đều thì tắt bếp.",
+      "activeMinutes": 1,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "tom"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Trộn muối, tiêu với nước cốt chanh làm chén chấm, để ớt riêng bên cạnh.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "muoi",
+        "hat-tieu",
+        "chanh",
+        "ot"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Gắp tôm ra đĩa và dọn ngay khi còn nóng cùng chén muối tiêu chanh.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "tom"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "id": "ga-kho-gung",
+  "name": "Gà kho gừng",
+  "slot": "man",
+  "regions": [
+    "north",
+    "central",
+    "south"
+  ],
+  "seasons": [
+    "autumn",
+    "winter"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "kho",
+  "proteinSource": "ga",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "ga-ta",
+      "gramsEdiblePerServing": 130,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chặt miếng vừa ăn, rửa sạch, để ráo"
+    },
+    {
+      "ingredientId": "gung",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "cạo vỏ, thái sợi"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mau",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, có thể bỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc ngắn"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Sơ chế gà, gừng, hành tím, tỏi, ớt và hành lá.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ga-ta",
+        "gung",
+        "hanh-tim",
+        "toi",
+        "ot",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp gà với nước mắm, đường, nước màu, một nửa hành tỏi và một nửa gừng.",
+      "activeMinutes": 3,
+      "passiveMinutes": 20,
+      "ingredientIds": [
+        "ga-ta",
+        "nuoc-mam",
+        "duong",
+        "nuoc-mau",
+        "hanh-tim",
+        "toi",
+        "gung"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm phần hành tỏi và gừng còn lại với dầu ăn.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "toi",
+        "gung"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Cho gà vào đảo săn khoảng năm phút cho thấm màu.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ga-ta"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Thêm chút nước xâm xấp, đậy nắp kho lửa nhỏ đến khi gà mềm và nước sệt lại.",
+      "activeMinutes": 2,
+      "passiveMinutes": 20,
+      "ingredientIds": [
+        "ga-ta"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm lại cho vừa, rắc tiêu, ớt và hành lá rồi tắt bếp.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hat-tieu",
+        "ot",
+        "hanh-la"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

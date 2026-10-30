@@ -1,0 +1,163 @@
+{
+  "id": "trung-duc-thit",
+  "name": "Trứng đúc thịt",
+  "slot": "man",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "chien",
+  "proteinSource": "trung",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "trung-ga",
+      "gramsEdiblePerServing": 80,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "khoảng 1,5 quả, đập ra tô"
+    },
+    {
+      "ingredientId": "thit-nac-bam",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "moc-nhi",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm nở, thái sợi"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm mộc nhĩ cho nở rồi rửa sạch, thái sợi.",
+      "activeMinutes": 3,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "moc-nhi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Băm hành tím, thái hành lá.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-tim",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Trộn thịt bằm với hành tím, mộc nhĩ, nửa phần nước mắm, đường và tiêu rồi để thấm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "thit-nac-bam",
+        "hanh-tim",
+        "moc-nhi",
+        "nuoc-mam",
+        "duong",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Đánh tan trứng với phần nước mắm còn lại và hành lá, rồi cho thịt vào trộn đều.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "trung-ga",
+        "nuoc-mam",
+        "hanh-la",
+        "thit-nac-bam"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Làm nóng dầu trong chảo, đổ hỗn hợp vào, dàn đều và chiên lửa nhỏ có đậy nắp đến khi mặt dưới vàng.",
+      "activeMinutes": 2,
+      "passiveMinutes": 6,
+      "ingredientIds": [
+        "dau-an",
+        "trung-ga",
+        "thit-nac-bam"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Lật mặt, chiên thêm cho chín vàng rồi cắt miếng, dọn ngay khi còn nóng.",
+      "activeMinutes": 3,
+      "passiveMinutes": 4,
+      "ingredientIds": [
+        "trung-ga",
+        "thit-nac-bam"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

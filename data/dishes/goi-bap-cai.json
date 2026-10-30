@@ -1,0 +1,193 @@
+{
+  "id": "goi-bap-cai",
+  "name": "Gỏi bắp cải",
+  "slot": "rau",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "tron",
+  "proteinSource": "none",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "bap-cai",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bỏ lõi, thái sợi thật mỏng"
+    },
+    {
+      "ingredientId": "ca-rot",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, bào sợi"
+    },
+    {
+      "ingredientId": "hanh-tay",
+      "gramsEdiblePerServing": 15,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái mỏng, ngâm nước đá"
+    },
+    {
+      "ingredientId": "rau-ram",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "nhặt lá, thái nhỏ"
+    },
+    {
+      "ingredientId": "lac",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "rang chín, bỏ vỏ lụa, giã dập"
+    },
+    {
+      "ingredientId": "hanh-phi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "vắt lấy nước"
+    },
+    {
+      "ingredientId": "giam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ, có thể bỏ"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Thái sợi bắp cải, bào cà rốt, thái mỏng hành tây.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "bap-cai",
+        "ca-rot",
+        "hanh-tay"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Bóp bắp cải và cà rốt với chút muối, để yên rồi vắt ráo.",
+      "activeMinutes": 2,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "bap-cai",
+        "ca-rot",
+        "muoi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Ngâm hành tây với giấm cho bớt hăng rồi vớt ra.",
+      "activeMinutes": 1,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "hanh-tay",
+        "giam"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Rang lạc chín vàng, để nguội rồi giã dập.",
+      "activeMinutes": 6,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "lac"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Khuấy nước mắm, đường, nước chanh, tỏi và ớt thành nước trộn.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "duong",
+        "chanh",
+        "toi",
+        "ot"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Trộn rau củ với nước trộn và rau răm, để thấm rồi rắc lạc và hành phi lên.",
+      "activeMinutes": 3,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "bap-cai",
+        "ca-rot",
+        "hanh-tay",
+        "rau-ram",
+        "lac",
+        "hanh-phi"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-10-31",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}
