@@ -13,7 +13,7 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 ## Cách làm việc
 
 1. Đầu mỗi phiên: đọc `docs/PLAN.md` và chọn **task đầu tiên chưa tick** mà các task phụ thuộc đã xong.
-2. Task gắn `[NGƯỜI]` là việc của chủ dự án: duyệt món, nấu thử, chụp ảnh, xác nhận dữ liệu dinh dưỡng, tạo tài nguyên cloud.
+2. Task gắn `[NGƯỜI]` là việc của chủ dự án: nấu thử, chụp ảnh, xác nhận dữ liệu dinh dưỡng, tạo tài nguyên cloud.
    - Không làm thay.
    - Chuẩn bị công cụ hoặc file hỗ trợ, rồi dừng lại và nói rõ cần người làm gì.
 3. Task gắn `[QUYẾT ĐỊNH]`: hỏi chủ dự án. Nếu task có ghi "mặc định", dùng mặc định và đi tiếp, không chặn.
@@ -29,7 +29,7 @@ App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh 
 - **Không bao giờ tự bịa số dinh dưỡng.**
   - Giá trị chỉ đến từ nguồn có tham chiếu: USDA FoodData Central `fdcId`, hoặc Bảng thành phần thực phẩm Việt Nam kèm mã/trang.
   - Nếu chưa có nguồn: để `null` và ghi `source: "placeholder"`. Placeholder chỉ dùng cho dev; build `--release` phải fail nếu còn placeholder.
-- **Không tự đặt trạng thái món** `reviewed` hoặc `cooktested`. Chỉ người làm qua MamCom.Studio.
+- **Không tự đặt trạng thái món** `cooktested`; chỉ người nấu thử ghi qua MamCom.Studio. `reviewed` thì Claude được duyệt thay chủ dự án (ADR-032): đọc kỹ từng món trước, duyệt qua `DishReviewer.Approve`, `reviewedBy` = `Claude`.
 - **Không lấy công thức từ nguồn khác.** Không copy hay diễn đạt lại từ Cookpad, Cooky hay website khác; soạn mới.
 - **Không thu thập ảnh hàng loạt từ web.**
   - Mỗi ảnh phải có `source` và `license`.

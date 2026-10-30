@@ -319,7 +319,7 @@ Mỗi `marketUnit` có thêm trường tuỳ chọn `showApproxGrams` (mặc đ�
 - `spicy`: `none` | `optional` | `required`
 - `cookingMethod`: `luoc` | `hap` | `nau` | `kho` | `xao` | `chien` | `nuong` | `tron`
 
-**Vòng đời món:** `draft` → `validated` (máy kiểm) → `reviewed` (người duyệt) → `cooktested` (đã nấu thử). Bản release chỉ gồm món từ `reviewed` trở lên. Studio (ADR-014) đặt `validated` khi lưu một món mà máy kiểm không còn lỗi; `reviewed` chỉ đặt khi người bấm "Duyệt" (kèm `reviewedBy`, `reviewedAt`); "Mở lại để sửa" đưa `reviewed` về `draft` và xoá dấu duyệt. `cooktested` chỉ đặt khi người ghi nhận một lần nấu thử cho món `reviewed` (ADR-016).
+**Vòng đời món:** `draft` → `validated` (máy kiểm) → `reviewed` (người hoặc Claude duyệt, ADR-032) → `cooktested` (đã nấu thử). Bản release chỉ gồm món từ `reviewed` trở lên. Studio (ADR-014) đặt `validated` khi lưu một món mà máy kiểm không còn lỗi; `reviewed` chỉ đặt khi người bấm "Duyệt" hoặc Claude duyệt thay chủ dự án qua cùng đường đó (`reviewedBy` = `Claude`, ADR-032), kèm `reviewedBy`, `reviewedAt`; "Mở lại để sửa" đưa `reviewed` về `draft` và xoá dấu duyệt. `cooktested` chỉ đặt khi người ghi nhận một lần nấu thử cho món `reviewed` (ADR-016).
 
 `provenance` còn hai trường **tuỳ chọn**, chỉ có trong file khi món có nấu thử và không ghi ra khi chưa có: `measuredServings` (số suất đã nấu, 1–100) và `measuredFinishedGrams` (cân cả mẻ như dọn ra, gồm cả nước canh, 1–50.000 g). Hai trường đi cùng nhau. Ví dụ món đã nấu thử:
 
