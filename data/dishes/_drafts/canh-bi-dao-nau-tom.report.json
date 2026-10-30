@@ -1,0 +1,22 @@
+{
+  "dishId": "canh-bi-dao-nau-tom",
+  "model": "claude-opus-5-5",
+  "draftedAt": "2026-10-30",
+  "validation": "warnings",
+  "stopReason": "end_turn",
+  "problems": [
+    {
+      "severity": "warning",
+      "code": "sodium-high",
+      "location": "",
+      "message": "≈1262 mg natri mỗi suất, vượt 1000 mg."
+    }
+  ],
+  "missingIngredients": [],
+  "usage": {
+    "inputTokens": 93,
+    "outputTokens": 1174,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 8898
+  }
+}

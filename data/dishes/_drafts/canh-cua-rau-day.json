@@ -1,0 +1,162 @@
+{
+  "id": "canh-cua-rau-day",
+  "name": "Canh cua rau đay",
+  "slot": "canh",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "summer"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "hai-san",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "cua-dong",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bỏ yếm, mai, tách gạch riêng; giã hoặc xay phần thân, lọc lấy nước"
+    },
+    {
+      "ingredientId": "rau-day",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt lấy lá và ngọn non, rửa sạch, thái nhỏ"
+    },
+    {
+      "ingredientId": "muop",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, cắt miếng vừa ăn"
+    },
+    {
+      "ingredientId": "mong-toi",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt lá non, thái nhỏ"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Rửa sạch cua, bỏ yếm và mai, khều gạch cua để riêng.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "cua-dong"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Giã hoặc xay thân cua với chút muối, hòa nước lạnh rồi lọc lấy nước cua, bỏ bã.",
+      "activeMinutes": 7,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "cua-dong",
+        "muoi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Nhặt, rửa và thái nhỏ rau đay, mồng tơi; gọt mướp và cắt miếng.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "rau-day",
+        "mong-toi",
+        "muop"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi thơm hành tím với dầu, cho gạch cua vào xào sơ rồi múc ra.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "cua-dong"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Đun nước cua lửa vừa, khuấy nhẹ một chiều đến khi gạch cua đóng váng nổi lên.",
+      "activeMinutes": 4,
+      "passiveMinutes": 6,
+      "ingredientIds": [
+        "cua-dong"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Cho mướp, rau đay và mồng tơi vào, đun sôi lại khoảng ba phút, không đậy vung.",
+      "activeMinutes": 2,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "muop",
+        "rau-day",
+        "mong-toi"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Nêm nước mắm và muối vừa ăn, thêm gạch cua đã xào rồi tắt bếp.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "muoi",
+        "cua-dong"
+      ]
+    }
+  ],
+  "status": "draft",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}
