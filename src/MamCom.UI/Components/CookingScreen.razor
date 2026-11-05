@@ -37,7 +37,7 @@
         var ownTimer = timers.FirstOrDefault(t => t.StepIndex == step.Index);
         var position = CookingFormat.Position(_state.StepIndex, _guide.Steps.Count);
 
-        <div class="cook">
+        <div class="cook" data-theme="dark">
             <div class="cook__head">
                 <BackLink />
                 <p class="cook__position">@position</p>

@@ -93,7 +93,7 @@ small,
     min-height: var(--tap-size);
     padding: var(--space-2) var(--space-4);
     border: 2px solid var(--color-accent);
-    border-radius: var(--radius);
+    border-radius: 999px;
     background: transparent;
     color: var(--color-accent);
     font: inherit;
@@ -191,7 +191,7 @@ small,
     margin-bottom: var(--space-4);
     padding: var(--space-4);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-large);
     background: var(--color-surface);
     box-shadow: var(--shadow);
 }
@@ -250,6 +250,14 @@ small,
 .notice--danger {
     border-left-color: var(--color-danger);
     background: var(--color-danger-soft);
+}
+
+/* A notice that only informs (the trial data): it says so without taking the top of the screen. */
+.notice--compact {
+    padding: var(--space-2) var(--space-3);
+    border-left-width: 4px;
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-tight);
 }
 
 /* A notice may carry one action under its text; the notices of the data package (components/DataNotices.razor) do. */
@@ -419,7 +427,10 @@ small,
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--space-2) var(--space-4);
+    gap: 0 var(--space-3);
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
 }
 
 .household-home a {
@@ -438,21 +449,26 @@ small,
 }
 
 .dish-card {
+    border-radius: var(--radius-large);
     display: grid;
-    grid-template-columns: 6.5rem 1fr;
-    grid-template-areas:
-        "picture body"
-        "actions body";
+    grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+    grid-template-areas: "picture body actions";
+    align-items: center;
     gap: var(--space-3);
+    margin-bottom: var(--space-3);
+    padding: var(--space-3);
     /* The page scrolls up and down under a finger; a swipe along the card is the card's (it swaps the dish). */
     touch-action: pan-y;
 }
 
+/* The picture is a round plate, as on the tray above. */
 .dish-card > .tile,
 .dish-card > .picture {
-    --tile-width: 6.5rem;
+    --tile-width: 3.5rem;
     grid-area: picture;
-    align-self: start;
+    aspect-ratio: 1 / 1;
+    padding: var(--space-2);
+    border-radius: 50%;
 }
 
 .dish-card__body {
@@ -460,12 +476,12 @@ small,
     min-inline-size: 0;
 }
 
-/* The lock and the swap sit under the picture: two 48px buttons fill the width of the picture, so a card is no taller than its words. */
+/* The lock and the swap stand at the edge of the card, one over the other, where a right thumb finds them; the card is no taller than its words. */
 .dish-card__actions {
     grid-area: actions;
     display: flex;
-    justify-content: space-between;
-    align-self: end;
+    flex-direction: column;
+    gap: var(--space-2);
 }
 
 /* Text set at twice the size leaves no room beside the picture. A rem is the size of the text, so this asks about the text and not about the phone:
@@ -480,20 +496,28 @@ small,
     }
 
     .dish-card__actions {
+        flex-direction: row;
         justify-content: flex-start;
         gap: var(--space-3);
+    }
+
+    .dish-card > .tile,
+    .dish-card > .picture {
+        --tile-width: 3.5rem;
     }
 }
 
 .dish-card__slot {
-    margin: 0 0 var(--space-1);
+    margin: 0;
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-strong);
+    line-height: var(--line-height-tight);
 }
 
 .dish-card__name {
-    margin: 0 0 var(--space-1);
+    margin: 0;
     font-size: var(--font-size-base);
+    line-height: var(--line-height-tight);
 }
 
 .dish-card__facts {
@@ -579,16 +603,117 @@ small,
     flex-wrap: wrap;   /* two buttons and the number of the tray: under each other when the text is large */
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-2);
-    margin-bottom: var(--space-3);
+    gap: 0;
+    margin: var(--space-2) 0 0;
+}
+
+/* Going through the last trays is a side road: quiet buttons that keep to one row on a phone. */
+.tray-history .button {
+    padding-inline: var(--space-1);
+    border-color: transparent;
+    font-size: var(--font-size-small);
 }
 
 .tray-history__position {
     color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.tray-title {
+    margin-bottom: 0;
+}
+
+.tray-date {
+    margin: 0 0 var(--space-2);
+    color: var(--color-text-muted);
+}
+
+/* ---- The tray seen from above (components/TrayPlate.razor) ---- */
+
+.mam {
+    position: relative;
+    inline-size: min(13.5rem, 100%);
+    aspect-ratio: 1 / 1;
+    margin: var(--space-3) auto var(--space-4);
+    border-radius: 50%;
+    background: var(--color-tray-rim);
+    box-shadow: var(--shadow-raised);
+}
+
+.mam__wood {
+    position: absolute;
+    inset: 4%;
+    border-radius: 50%;
+    background: var(--color-tray-wood);
+}
+
+.mam__rice,
+.mam__plate {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 28%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    box-shadow: var(--shadow-raised);
+}
+
+.mam__rice {
+    inset-block-start: 36%;
+    inset-inline-start: 36%;
+    flex-direction: column;
+    background: var(--color-tray-rice);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-strong);
+    line-height: 1.2;
+}
+
+.mam__rice .icon {
+    width: 40%;
+    height: 40%;
+}
+
+.mam__plate .icon {
+    width: 50%;
+    height: 50%;
+    stroke-width: 1.75;
+}
+
+/* Up to four plates around the rice: the top, the two lower corners, and a fourth on the right for a second main dish. */
+.mam__plate--1 { inset-block-start: 5%; inset-inline-start: 36%; }
+.mam__plate--2 { inset-block-start: 55%; inset-inline-start: 9%; }
+.mam__plate--3 { inset-block-start: 55%; inset-inline-start: 63%; }
+.mam__plate--4 { inset-block-start: 22%; inset-inline-start: 66%; }
+
+.mam__plate--soup { background: var(--color-slot-soup-soft); color: var(--color-slot-soup); }
+.mam__plate--main { background: var(--color-slot-main-soft); color: var(--color-slot-main); }
+.mam__plate--veg { background: var(--color-slot-veg-soft); color: var(--color-slot-veg); }
+
+/* A locked dish keeps its plate: a ring in the accent colour, as its card has. */
+.mam__plate--locked {
+    box-shadow: 0 0 0 3px var(--color-accent);
+}
+
+.mam--rolling {
+    animation: mam-turn 0.9s cubic-bezier(0.3, 0.9, 0.3, 1);
+}
+
+@keyframes mam-turn {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mam--rolling {
+        animation: none;
+    }
 }
 
 .tray-hint {
     font-size: var(--font-size-small);
+    text-align: center;
 }
 
 .tray-notices {
@@ -596,32 +721,56 @@ small,
     padding-inline-start: var(--space-4);
 }
 
+/* Four numbers of the whole tray, each in its own tile: the number large, what it is under it. */
 .tray-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3) var(--space-2);
     margin: 0 0 var(--space-4);
-    padding: var(--space-3) var(--space-4);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
+    padding: var(--space-4) var(--space-3);
+    border-radius: var(--radius-large);
     background: var(--color-surface-raised);
 }
 
 .tray-summary__row {
     display: flex;
-    flex-wrap: wrap;   /* the word and its number go under each other when the text is large */
-    justify-content: space-between;
-    gap: var(--space-3);
-    padding: var(--space-1) 0;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+    text-align: center;
+}
+
+.tray-summary dt {
+    justify-content: center;
 }
 
 .tray-summary dt {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: var(--space-1);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-tight);
+}
+
+/* The tiles are words and numbers only, as in the design; the icons stay for the cards. */
+.tray-summary dt .icon {
+    display: none;
 }
 
 .tray-summary dd {
     margin: 0;
+    font-size: var(--font-size-large);
     font-weight: var(--font-weight-strong);
-    text-align: end;
+    line-height: var(--line-height-tight);
+}
+
+/* Large text: one tile a row. */
+@container (max-width: 17rem) {
+    .tray-summary {
+        grid-template-columns: 1fr;
+    }
 }
 
 .tray-filters {
@@ -639,6 +788,14 @@ small,
     display: inline-flex;
     align-items: center;
     min-height: var(--tap-size);
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.dish-card__link:hover,
+.dish-card__link:focus-visible {
+    color: var(--color-accent-strong);
+    text-decoration: underline;
 }
 
 .back {
@@ -656,6 +813,7 @@ small,
 .detail > .tile {
     max-inline-size: 28rem;
     margin: 0 auto var(--space-4);
+    border-radius: var(--radius-large);
 }
 
 .detail__head {
@@ -675,15 +833,20 @@ small,
 .detail__facts {
     display: flex;
     flex-wrap: wrap;
-    gap: 0 var(--space-4);
+    gap: var(--space-2);
     margin: 0;
-    color: var(--color-text-muted);
 }
 
+/* The time and the energy, each a chip. */
 .detail__fact {
     display: inline-flex;
     align-items: center;
     gap: var(--space-1);
+    padding: var(--space-1) var(--space-3);
+    border-radius: 999px;
+    background: var(--color-surface-raised);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-strong);
 }
 
 .detail__aside {
@@ -759,16 +922,34 @@ small,
     font-weight: var(--font-weight-normal);
 }
 
+/* The steps are numbered in a round badge, the way a hand-written recipe counts them. */
 .steps {
     margin: 0;
-    padding-inline-start: var(--space-5);
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
 }
 
 .step {
-    padding: var(--space-2) 0;
+    position: relative;
+    padding: var(--space-2) 0 var(--space-2) 2.75rem;
+    counter-increment: step;
 }
 
-.step::marker {
+.step::before {
+    content: counter(step);
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: var(--space-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 2rem;
+    block-size: 2rem;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    font-size: var(--font-size-small);
     font-weight: var(--font-weight-strong);
 }
 
@@ -903,6 +1084,32 @@ small,
     font-weight: var(--font-weight-strong);
 }
 
+.shop-bar {
+    block-size: 0.625rem;
+    margin: 0 0 var(--space-3);
+    border-radius: 999px;
+    background: var(--color-surface-raised);
+    overflow: hidden;
+}
+
+.shop-bar__done {
+    inline-size: var(--done, 0%);
+    block-size: 100%;
+    border-radius: 999px;
+    background: var(--color-leaf);
+    transition: inline-size 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .shop-bar__done {
+        transition: none;
+    }
+}
+
+.shop-group {
+    border-radius: var(--radius-large);
+}
+
 .shop-group h2 {
     margin: 0 0 var(--space-2);
     font-size: var(--font-size-large);
@@ -930,7 +1137,7 @@ small,
     align-items: center;
     gap: var(--space-3);
     min-height: var(--tap-size);
-    padding: var(--space-2) 0;
+    padding: var(--space-3) 0;
     cursor: pointer;
 }
 
@@ -938,7 +1145,7 @@ small,
     inline-size: 1.75rem;
     block-size: 1.75rem;
     margin: 0;
-    accent-color: var(--color-accent);
+    accent-color: var(--color-leaf);
 }
 
 .shop-item__label > .picture,
@@ -989,9 +1196,19 @@ small,
 
 /* ---- The cooking mode (components/CookingScreen.razor): one step at a time in large type, its timer, and the timers that run beside it ---- */
 
+/* The whole page of the cooking mode is in the dark theme, from edge to edge under the header. */
 .cook {
     display: flex;
     flex-direction: column;
+    min-block-size: calc(100dvh - var(--tap-size) - var(--space-4));
+    margin: calc(-1 * var(--space-4)) calc(-1 * (var(--space-4) + var(--safe-right))) calc(-1 * var(--space-5)) calc(-1 * (var(--space-4) + var(--safe-left)));
+    padding: var(--space-3) calc(var(--space-4) + var(--safe-right)) 0 calc(var(--space-4) + var(--safe-left));
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.cook a {
+    color: var(--color-text);
 }
 
 .cook__head {
@@ -1048,11 +1265,21 @@ small,
     padding: var(--space-3) 0;
 }
 
+/* The dish the step is for, as a pill in the colour of its part of the meal. */
 .cook__dish {
-    margin: 0 0 var(--space-2);
+    align-self: flex-start;
+    display: inline-block;
+    margin: 0 0 var(--space-3);
+    padding: 0 var(--space-3);
+    border-radius: 999px;
+    background: var(--color-surface-raised);
     font-size: var(--font-size-large);
     font-weight: var(--font-weight-strong);
 }
+
+.cook__dish.slot--soup { background: var(--color-slot-soup-soft); }
+.cook__dish.slot--main { background: var(--color-slot-main-soft); }
+.cook__dish.slot--veg { background: var(--color-slot-veg-soft); }
 
 .cook__dish--rice {
     color: var(--color-text-muted);
@@ -1061,6 +1288,7 @@ small,
 .cook__text {
     margin: 0 0 var(--space-4);
     font-size: var(--font-size-cooking);
+    font-weight: var(--font-weight-strong);
     line-height: var(--line-height-tight);
 }
 

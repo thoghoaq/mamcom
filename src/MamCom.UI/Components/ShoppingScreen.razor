@@ -34,6 +34,7 @@
 
         <p class="text-muted">@ShoppingFormat.Meta(_sheet.MemberCount)</p>
         <p class="shop-progress" role="status">@ShoppingFormat.Progress(progress)</p>
+        <div class="shop-bar" aria-hidden="true"><div class="shop-bar__done" style="@($"--done: {(progress.Total == 0 ? 0 : 100 * progress.Done / progress.Total)}%")"></div></div>
 
         <div class="chips">
             <button type="button" class="chip" aria-pressed="@(_state.ShowPantry ? "true" : "false")" @onclick="TogglePantryAsync">@Strings.Shop_ShowPantry</button>

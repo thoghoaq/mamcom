@@ -1,6 +1,10 @@
-<span class="app-brand">@Name</span>
+<span class="app-brand"><Icon Name="soup" Class="app-brand__icon" /><span>@Name<span class="app-brand__accent">@Accent</span></span></span>
 
 @code {
     [Parameter, EditorRequired]
     public string Name { get; set; } = string.Empty;
+
+    /// <summary>The end of the name, in the accent colour ("Cơm" of "MâmCơm").</summary>
+    [Parameter]
+    public string? Accent { get; set; }
 }

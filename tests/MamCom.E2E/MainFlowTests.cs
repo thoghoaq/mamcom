@@ -106,6 +106,8 @@ public class MainFlowTests(SiteFixture site)
         var before = await app.DishNamesAsync();
 
         // The swipe starts on the name of the dish: the most natural place, and one where a mouse used to start the drag of a link.
+        // The tray drawn above the cards puts them lower on the page, so the card is brought into view first.
+        await app.Cards.Nth(1).ScrollIntoViewIfNeededAsync();
         var box = (await app.Cards.Nth(1).Locator(".dish-card__link").BoundingBoxAsync()).ShouldNotBeNull();
         var y = box.Y + (box.Height / 2);
 

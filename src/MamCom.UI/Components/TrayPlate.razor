@@ -1,0 +1,42 @@
+@using MamCom.Core.Models
+
+@* The tray seen from above (ADR-033): the rice in the middle and a plate for each dish around it, in the colour of its part of the meal.
+   A picture of what the cards below say, so it is hidden from a screen reader. It turns once while the dice roll. *@
+<div class="@CssClass" aria-hidden="true">
+    <div class="mam__wood">
+        <span class="mam__rice"><Icon Name="soup" />@Strings.Tray_PlateRice</span>
+        @for (var index = 0; index < Slots.Count && index < 4; index++)
+        {
+            var (slot, locked) = Slots[index];
+            <span class="@PlateClass(index, slot, locked)"><Icon Name="@IconOf(slot)" /></span>
+        }
+    </div>
+</div>
+
+@code {
+    /// <summary>The dishes of the tray in order: what part of the meal each is, and whether it is locked.</summary>
+    [Parameter, EditorRequired]
+    public IReadOnlyList<(DishSlot Slot, bool Locked)> Slots { get; set; } = [];
+
+    [Parameter]
+    public bool Rolling { get; set; }
+
+    private string CssClass => Rolling ? "mam mam--rolling" : "mam";
+
+    private static string PlateClass(int index, DishSlot slot, bool locked) =>
+        $"mam__plate mam__plate--{index + 1} mam__plate--{SlotName(slot)}" + (locked ? " mam__plate--locked" : string.Empty);
+
+    private static string SlotName(DishSlot slot) => slot switch
+    {
+        DishSlot.Soup => "soup",
+        DishSlot.Main => "main",
+        _ => "veg",
+    };
+
+    private static string IconOf(DishSlot slot) => slot switch
+    {
+        DishSlot.Soup => "soup",
+        DishSlot.Main => "meat",
+        _ => "leaf",
+    };
+}

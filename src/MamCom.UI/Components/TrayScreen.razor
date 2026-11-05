@@ -20,7 +20,9 @@
 
 <PageTitle>@Strings.Tray_Title</PageTitle>
 
-<h1>@Strings.Tray_Title</h1>
+<h1 class="tray-title">@Strings.Tray_Title</h1>
+<p class="tray-date">@TrayFormat.Day(Clock.Today)</p>
+<HouseholdSummary Household="Household" />
 
 @if (_engine is not null && _session.Viewed is { } viewed)
 {
@@ -58,6 +60,8 @@
     }
     else
     {
+        <TrayPlate Slots="@(viewed.Tray.Slots.Select(s => (s.Slot, s.IsLocked)).ToArray())" Rolling="_rolling" />
+
         <ul class="tray" aria-label="@Strings.Tray_ListLabel" aria-busy="@(_rolling ? "true" : "false")">
             @for (var index = 0; index < viewed.Tray.Slots.Count; index++)
             {
@@ -91,8 +95,6 @@
     {
         <QuickFilterBar Filters="_session.Filters" MaxMinutes="_engine.QuickFilters.MaxMinutes" Disabled="_busy" OnToggle="ToggleFilterAsync" />
     }
-
-    <HouseholdSummary Household="Household" />
 
     <div class="app-actions">
         @if (_session.IsConfirmed)

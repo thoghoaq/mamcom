@@ -56,5 +56,22 @@ public static class TrayFormat
     }
 
     /// <summary>"Cần mua 9 thứ": a count and its word, kept on one line.</summary>
+    /// <summary>"Thứ Năm, 5 tháng 11": the day the tray is for, under the title.</summary>
+    public static string Day(DateOnly day) => string.Format(
+        CultureInfo.InvariantCulture,
+        Strings.Tray_DayFormat,
+        day.DayOfWeek switch
+        {
+            DayOfWeek.Monday => Strings.Day_Monday,
+            DayOfWeek.Tuesday => Strings.Day_Tuesday,
+            DayOfWeek.Wednesday => Strings.Day_Wednesday,
+            DayOfWeek.Thursday => Strings.Day_Thursday,
+            DayOfWeek.Friday => Strings.Day_Friday,
+            DayOfWeek.Saturday => Strings.Day_Saturday,
+            _ => Strings.Day_Sunday,
+        },
+        day.Day,
+        day.Month);
+
     public static string Items(int count) => string.Format(CultureInfo.InvariantCulture, Strings.Tray_ItemsFormat, count);
 }

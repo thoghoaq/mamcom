@@ -833,7 +833,7 @@ public class TrayScreenTests : BunitContext
     [Fact]
     public void The_swipe_is_explained_while_the_tray_can_still_be_changed()
     {
-        Show().Find(".tray-hint").TextContent.ShouldBe("Vuốt thẻ sang trái hoặc phải để đổi món đó.");
+        Show().Find(".tray-hint").TextContent.ShouldBe("Khoá món muốn giữ · vuốt ngang một món để đổi riêng món đó");
     }
 
     // ---- what the household said about dishes ------------------------------------------------------------------------------

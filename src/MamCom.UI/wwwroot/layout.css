@@ -33,6 +33,24 @@
     display: inline-flex;
     align-items: center;
     min-height: var(--tap-size);
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.app-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.app-brand__accent {
+    color: var(--color-accent);
+}
+
+.app-brand__icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    color: var(--color-accent);
 }
 
 .app-header__action {
@@ -80,8 +98,14 @@
 
 /* Two or three buttons share the width of a phone: a word and its icon stay on one line. */
 .app-actions .button {
+    min-height: 3.5rem;
     padding-inline: var(--space-3);
     white-space: nowrap;
+}
+
+/* The thing to do next is the wider button, under the right thumb. */
+.app-actions > .button--primary:not(.cook-actions__timer) {
+    flex: 1.25;
 }
 
 /* With the text set a good deal larger than usual (a rem is the size of the text; on a phone of 360px this is from about one and a half times the usual

@@ -439,7 +439,8 @@
   <data name="Tray_Reopen" xml:space="preserve"><value>Chọn mâm khác</value></data>
   <data name="Tray_Confirmed" xml:space="preserve"><value>Đã chốt mâm hôm nay.</value></data>
   <data name="Tray_ListLabel" xml:space="preserve"><value>Các món của mâm</value></data>
-  <data name="Tray_SwipeHint" xml:space="preserve"><value>Vuốt thẻ sang trái hoặc phải để đổi món đó.</value></data>
+  <data name="Tray_PlateRice" xml:space="preserve"><value>Cơm</value></data>
+  <data name="Tray_SwipeHint" xml:space="preserve"><value>Khoá món muốn giữ · vuốt ngang một món để đổi riêng món đó</value></data>
   <data name="Tray_AnnounceFormat" xml:space="preserve"><value>Mâm: {0}.</value></data>
   <data name="Tray_Empty" xml:space="preserve"><value>Chưa có món nào hợp để quay.</value></data>
   <data name="Tray_HistoryLabel" xml:space="preserve"><value>Các mâm đã quay</value></data>
@@ -599,6 +600,14 @@
   <data name="About_CreditFont" xml:space="preserve"><value>Phông chữ Be Vietnam Pro, giấy phép SIL Open Font License 1.1.</value></data>
   <data name="About_CreditIcons" xml:space="preserve"><value>Biểu tượng Tabler Icons, giấy phép MIT.</value></data>
   <data name="About_DataVersionFormat" xml:space="preserve"><value>Phiên bản dữ liệu: {0}.</value></data>
+  <data name="Tray_DayFormat" xml:space="preserve"><value>{0}, {1} tháng {2}</value></data>
+  <data name="Day_Monday" xml:space="preserve"><value>Thứ Hai</value></data>
+  <data name="Day_Tuesday" xml:space="preserve"><value>Thứ Ba</value></data>
+  <data name="Day_Wednesday" xml:space="preserve"><value>Thứ Tư</value></data>
+  <data name="Day_Thursday" xml:space="preserve"><value>Thứ Năm</value></data>
+  <data name="Day_Friday" xml:space="preserve"><value>Thứ Sáu</value></data>
+  <data name="Day_Saturday" xml:space="preserve"><value>Thứ Bảy</value></data>
+  <data name="Day_Sunday" xml:space="preserve"><value>Chủ nhật</value></data>
   <data name="Settings_UsageHeading" xml:space="preserve"><value>Xuất phản hồi</value></data>
   <data name="Settings_UsageText" xml:space="preserve"><value>App ghi lại trên máy này những việc bạn làm: mở app, quay, đổi món, khoá, chốt mâm, mở danh sách đi chợ, mở chế độ nấu và chấm món, kèm thời điểm. Không ghi tên, không ghi món nào, không gửi đi đâu. Bấm nút dưới đây để gửi cho người làm app khi bạn muốn.</value></data>
   <data name="Settings_UsageShareText" xml:space="preserve"><value>Gửi bản tóm tắt</value></data>

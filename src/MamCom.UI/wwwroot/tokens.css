@@ -60,7 +60,13 @@
     --color-macro-fat: #a56a00;
     --color-macro-carb: #1f5a85;
 
+    /* The tray: a wooden rim, the wood, and the bowl of rice in the middle. */
+    --color-tray-rim: #cfa978;
+    --color-tray-wood: #e9d2ac;
+    --color-tray-rice: #fffdf8;
+
     --shadow: 0 1px 2px rgb(43 33 24 / 12%);
+    --shadow-raised: 0 8px 20px rgb(90 60 30 / 18%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -112,7 +118,12 @@
         --color-macro-fat: #f0c565;
         --color-macro-carb: #93c4ee;
 
+        --color-tray-rim: #6b5238;
+        --color-tray-wood: #4a3a2a;
+        --color-tray-rice: #3a3027;
+
         --shadow: 0 1px 2px rgb(0 0 0 / 50%);
+        --shadow-raised: 0 8px 20px rgb(0 0 0 / 45%);
     }
 }
 
@@ -164,18 +175,23 @@
     --color-macro-fat: #f0c565;
     --color-macro-carb: #93c4ee;
 
+    --color-tray-rim: #6b5238;
+    --color-tray-wood: #4a3a2a;
+    --color-tray-rice: #3a3027;
+
     --shadow: 0 1px 2px rgb(0 0 0 / 50%);
+    --shadow-raised: 0 8px 20px rgb(0 0 0 / 45%);
 }
 
 /* What does not change with the theme: type, space, shape, touch and the safe area. */
 :root {
-    /* Type. The base size is 18px, the smallest text 16px, the cooking mode 24px. */
+    /* Type. The base size is 18px, the smallest text 16px, the step of the cooking mode 28px. */
     --font-family: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-size-small: 1rem;
     --font-size-base: 1.125rem;
     --font-size-large: 1.375rem;
     --font-size-title: 1.75rem;
-    --font-size-cooking: 1.5rem;
+    --font-size-cooking: 1.75rem;
     --font-weight-normal: 400;
     --font-weight-strong: 600;
     --line-height: 1.6;
@@ -190,6 +206,7 @@
     --space-6: 2rem;
     --radius: 0.75rem;
     --radius-small: 0.5rem;
+    --radius-large: 1rem;
     --tap-size: 3rem;
     --content-width: 64rem;
 

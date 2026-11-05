@@ -541,6 +541,7 @@ Làm rõ khi hiện thực (ADR-019):
 - **Tương phản được đo** bằng test cho cả hai chế độ: chữ 4,5:1; nét vẽ của ô giữ chỗ, màu focus và viền ô nhập 3:1. Viền ô nhập dùng `--color-border-strong`, không dùng `--color-border` (chỉ để kẻ đường).
 - **Font** Be Vietnam Pro 400 và 600, bộ `latin` và `vietnamese`, tự host trong `wwwroot/fonts` (OFL 1.1), `font-display: swap`. **Icon** là một sprite SVG `wwwroot/icons/icons.svg` (Tabler Icons, MIT, cùng vài icon tự vẽ), vẽ bằng `currentColor`; nguồn và giấy phép ở `THIRD-PARTY-NOTICES.md`.
 - **Khung màn hình** (`layout.css`): đầu trang 48 px, trang giữa dừng ở `--content-width`, thanh nút dính đáy, chừa vùng an toàn của điện thoại (`viewport-fit=cover`, biến `--safe-*`).
+- **"Mâm gỗ ấm" (ADR-033):** màn "Mâm hôm nay" có hình cái mâm nhìn từ trên xuống (bát cơm giữa, mỗi món một đĩa theo màu ô, chỉ để trang trí) và dòng ngày dưới tiêu đề; thẻ món gọn với đĩa tròn, nút khoá và đổi xếp dọc ở mép phải; tóm tắt là 4 ô số; nút bo tròn. Chế độ nấu luôn ở nền tối, chữ của bước 28px. Đi chợ có thanh tiến độ. Bản thiết kế nằm trên canvas Claude Design, ghi ở ADR-033.
 - **Trang `/styleguide`** của app hiện màu, chữ, nút, ô nhập, thẻ, nhãn, thông báo, icon và mọi ô giữ chỗ, mỗi thứ hai lần: một trong khung sáng, một trong khung tối.
 
 ---
