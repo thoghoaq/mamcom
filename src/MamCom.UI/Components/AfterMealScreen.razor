@@ -3,9 +3,11 @@
 @using MamCom.Core.Models
 @using MamCom.Core.Spinning
 @using MamCom.Core.Taste
+@using MamCom.Core.Usage
 @using MamCom.Data.State
 @inherits AppDataComponentBase
 @inject ITrayStore Trays
+@inject IUsageLog Usage
 @inject ITasteStore Tastes
 @inject IClock Clock
 @inject IRandomSource RandomSource
@@ -123,6 +125,7 @@
             _ => Strings.AfterMeal_SavedNeutral,
         };
         await Tastes.SaveAsync(_taste);
+        await Usage.RecordAsync(UsageEventKind.FeedbackGiven);
     }
 
     // "Bình thường" is also what a dish that was never asked about is, so it only shows as chosen once the person chose it.

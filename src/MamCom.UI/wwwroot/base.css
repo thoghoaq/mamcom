@@ -1180,6 +1180,12 @@ small,
     font-size: var(--font-size-small);
 }
 
+/* The summary "Xuất phản hồi" would send, one fact a line as it is pasted. */
+.settings__usage {
+    white-space: pre-line;
+    color: var(--color-text-muted);
+}
+
 .settings__status {
     margin: 0 0 var(--space-4);
     font-weight: var(--font-weight-strong);

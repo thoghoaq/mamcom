@@ -18,6 +18,8 @@ namespace MamCom.UI.Tests;
 
 public class ShoppingScreenTests : BunitContext
 {
+    private FakeUsageLog Usage { get; } = new();
+
     private static readonly DateOnly Today = new(2026, 10, 20);   // a Tuesday
 
     private readonly FakeAppData _data = new() { Bundle = Bundle() };
@@ -28,6 +30,7 @@ public class ShoppingScreenTests : BunitContext
     public ShoppingScreenTests()
     {
         Services.AddSingleton<IAppData>(_data);
+        Services.AddSingleton<IUsageLog>(Usage);
         Services.AddSingleton<ITrayStore>(_trays);
         Services.AddSingleton<IShoppingStore>(_shopping);
         Services.AddSingleton<IDeviceFeatures>(_device);

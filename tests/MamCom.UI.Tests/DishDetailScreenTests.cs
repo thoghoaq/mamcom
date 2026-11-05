@@ -15,12 +15,15 @@ namespace MamCom.UI.Tests;
 
 public class DishDetailScreenTests : BunitContext
 {
+    private FakeUsageLog Usage { get; } = new();
+
     private readonly FakeAppData _data = new() { Bundle = TestConfig.SeedBundle };
     private readonly FakeTasteStore _taste = new();
 
     public DishDetailScreenTests()
     {
         Services.AddSingleton<IAppData>(_data);
+        Services.AddSingleton<IUsageLog>(Usage);
         Services.AddSingleton<ITasteStore>(_taste);
     }
 

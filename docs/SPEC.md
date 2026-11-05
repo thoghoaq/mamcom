@@ -605,6 +605,11 @@ Test không đọc thư mục `data/` thật, trừ `MamCom.LiveData.Tests`: m�
 
 **Beta:** 5 người nấu chính thật. Event log cục bộ, ẩn danh, không thu thập thông tin cá nhân, có nút "Xuất phản hồi".
 
+Làm rõ khi hiện thực (PLAN 5.1):
+- **Sự kiện** (chỉ loại và thời điểm, không tên người, không mã món): mở app (một lần mỗi lần tải trang), quay lại (không tính lượt tự quay khi mở), đổi một món, khoá món, chốt mâm, mở đi chợ, mở chế độ nấu, chấm món sau bữa. Lưu ở `usage.v1` qua `IUserStateStore`, giữ 5.000 sự kiện gần nhất; "Xoá dữ liệu của tôi" xoá luôn.
+- **Tóm tắt** (`UsageReport`): số ngày dùng, lần mở, mâm đã chốt, số lần quay và đổi món trung bình trước khi chốt, trung vị số giây từ mở app đến chốt (chỉ mâm chốt trong lần mở đó), mâm đã chốt có mở đi chợ hoặc nấu sau đó, số lần chấm món, có quay lại sau 7 và 30 ngày không.
+- **"Xuất phản hồi"** nằm trong Cài đặt: hiện bản tóm tắt, và gửi qua khung chia sẻ của máy (hoặc chép vào bộ nhớ tạm) bản tóm tắt dạng chữ hoặc bản đầy đủ dạng JSON (tóm tắt và mọi sự kiện). App không tự gửi đi đâu.
+
 ## 12. Rủi ro
 
 | Rủi ro | Giảm thiểu |

@@ -3,11 +3,13 @@
 @using MamCom.Core.Models
 @using MamCom.Core.Spinning
 @using MamCom.Data.Device
+@using MamCom.Core.Usage
 @using MamCom.Data.State
 @using MamCom.UI.Formatting
 @implements IAsyncDisposable
 @inherits AppDataComponentBase
 @inject ITrayStore Trays
+@inject IUsageLog Usage
 @inject ICookingStore Cooking
 @inject IDeviceFeatures Device
 @inject IClock Clock
@@ -226,6 +228,8 @@
     protected override async Task OnInitializedAsync()
     {
         await Data.InitializeAsync();
+        await Usage.RecordOpenedAsync();
+        await Usage.RecordAsync(UsageEventKind.CookingOpened);
         await LoadAsync();
     }
 

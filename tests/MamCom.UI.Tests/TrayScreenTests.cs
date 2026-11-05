@@ -1,3 +1,4 @@
+using MamCom.Core.Usage;
 using AngleSharp.Dom;
 using Bunit.TestDoubles;
 using MamCom.Core;
@@ -16,6 +17,8 @@ namespace MamCom.UI.Tests;
 
 public class TrayScreenTests : BunitContext
 {
+    private FakeUsageLog Usage { get; } = new();
+
     private static readonly DateOnly Today = new(2026, 10, 20);
 
     private readonly FakeAppData _data = new() { Bundle = TestConfig.SeedBundle };
@@ -29,6 +32,7 @@ public class TrayScreenTests : BunitContext
     public TrayScreenTests()
     {
         Services.AddSingleton<IAppData>(_data);
+        Services.AddSingleton<IUsageLog>(Usage);
         Services.AddSingleton<ITrayStore>(_trays);
         Services.AddSingleton<IEatenLogStore>(_eaten);
         Services.AddSingleton<ITasteStore>(_taste);
@@ -292,6 +296,19 @@ public class TrayScreenTests : BunitContext
         cut.Find(".notice--ok").ShouldNotBeNull();
         _trays.Saved!.IsConfirmed.ShouldBeTrue();
         _eaten.Saved.LastEatenOn.Keys.Order(StringComparer.Ordinal).ShouldBe(_trays.Saved.Viewed!.Tray.Slots.Select(s => s.DishId).Order(StringComparer.Ordinal));
+    }
+
+    [Fact]
+    public async Task What_was_done_goes_into_the_usage_log_and_the_tray_spun_on_opening_does_not_count()
+    {
+        var cut = Show();
+        await Spin(cut);
+        Lock(cut, 1).Click();
+        Lock(cut, 1).Click();   // unlocking is not counted
+        Swap(cut, 0).Click();
+        ConfirmButton(cut).Click();
+
+        Usage.Kinds.ShouldBe([UsageEventKind.AppOpened, UsageEventKind.Spun, UsageEventKind.Locked, UsageEventKind.Swapped, UsageEventKind.Confirmed]);
     }
 
     [Fact]

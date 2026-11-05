@@ -578,8 +578,27 @@
   <data name="Settings_Unblock" xml:space="preserve"><value>Bỏ chặn</value></data>
   <data name="Settings_UnblockAria" xml:space="preserve"><value>Bỏ chặn {0}</value></data>
   <data name="Settings_Unblocked" xml:space="preserve"><value>Đã bỏ chặn {0}.</value></data>
+  <data name="Settings_UsageHeading" xml:space="preserve"><value>Xuất phản hồi</value></data>
+  <data name="Settings_UsageText" xml:space="preserve"><value>App ghi lại trên máy này những việc bạn làm: mở app, quay, đổi món, khoá, chốt mâm, mở danh sách đi chợ, mở chế độ nấu và chấm món, kèm thời điểm. Không ghi tên, không ghi món nào, không gửi đi đâu. Bấm nút dưới đây để gửi cho người làm app khi bạn muốn.</value></data>
+  <data name="Settings_UsageShareText" xml:space="preserve"><value>Gửi bản tóm tắt</value></data>
+  <data name="Settings_UsageShareJson" xml:space="preserve"><value>Gửi dữ liệu đầy đủ (JSON)</value></data>
+  <data name="Settings_UsageCopied" xml:space="preserve"><value>Đã chép vào bộ nhớ tạm. Dán vào Zalo hoặc email để gửi.</value></data>
+  <data name="Settings_UsageFailed" xml:space="preserve"><value>Không gửi hay chép được. Thử lại sau.</value></data>
+  <data name="Usage_TextTitle" xml:space="preserve"><value>Phản hồi MâmCơm</value></data>
+  <data name="Usage_DaysFormat" xml:space="preserve"><value>Đã dùng {0} ngày, từ {1} đến {2}.</value></data>
+  <data name="Usage_VisitsFormat" xml:space="preserve"><value>Mở app {0} lần.</value></data>
+  <data name="Usage_TraysFormat" xml:space="preserve"><value>Chốt {0} mâm; quay lại {1} lần, đổi món {2} lần, khoá món {3} lần.</value></data>
+  <data name="Usage_AverageSpinsFormat" xml:space="preserve"><value>Trung bình số lần quay và đổi món trước khi chốt: {0}.</value></data>
+  <data name="Usage_TimeToConfirmFormat" xml:space="preserve"><value>Thời gian thường gặp từ lúc mở app đến khi chốt: {0} giây.</value></data>
+  <data name="Usage_FollowUpFormat" xml:space="preserve"><value>Mâm đã chốt có mở đi chợ hoặc chế độ nấu: {0}/{1}.</value></data>
+  <data name="Usage_FeedbackFormat" xml:space="preserve"><value>Chấm món sau bữa: {0} lần.</value></data>
+  <data name="Usage_CameBackFormat" xml:space="preserve"><value>Quay lại sau 7 ngày: {0}; sau 30 ngày: {1}.</value></data>
+  <data name="Usage_None" xml:space="preserve"><value>chưa có</value></data>
+  <data name="Usage_Yes" xml:space="preserve"><value>có</value></data>
+  <data name="Usage_No" xml:space="preserve"><value>không</value></data>
+  <data name="Usage_NotYet" xml:space="preserve"><value>chưa đến lúc</value></data>
   <data name="Settings_ClearHeading" xml:space="preserve"><value>Xoá dữ liệu của tôi</value></data>
-  <data name="Settings_ClearText" xml:space="preserve"><value>Xoá nhà mình, mâm đã quay, danh sách đi chợ, món đã chấm và món đã chặn khỏi máy này. Dữ liệu món ăn của app không bị xoá.</value></data>
+  <data name="Settings_ClearText" xml:space="preserve"><value>Xoá nhà mình, mâm đã quay, danh sách đi chợ, món đã chấm, món đã chặn và nhật ký dùng app khỏi máy này. Dữ liệu món ăn của app không bị xoá.</value></data>
   <data name="Settings_Clear" xml:space="preserve"><value>Xoá dữ liệu của tôi</value></data>
   <data name="Settings_ClearAsk" xml:space="preserve"><value>Xoá hết? Không lấy lại được.</value></data>
   <data name="Settings_ClearConfirm" xml:space="preserve"><value>Xoá hết</value></data>

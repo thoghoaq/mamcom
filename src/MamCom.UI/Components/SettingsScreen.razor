@@ -1,13 +1,19 @@
 @using System.Globalization
+@using MamCom.Core
 @using MamCom.Core.Data
 @using MamCom.Core.Models
 @using MamCom.Core.Taste
+@using MamCom.Core.Usage
+@using MamCom.Data.Device
 @using MamCom.Data.State
 @using MamCom.UI.Formatting
 @inherits AppDataComponentBase
 @inject IHouseholdStore Households
 @inject ITasteStore Tastes
 @inject IUserStateStore UserState
+@inject IUsageLog Usage
+@inject IDeviceFeatures Device
+@inject IClock Clock
 @inject NavigationManager Navigation
 
 @* "Cài đặt" (SPEC §8.1-7). The people of the house have their own screen (a link to it); the region and the bowl size are a tap each and are kept at once. *@
@@ -85,6 +91,16 @@
         }
     </section>
 
+    <section class="card settings__section" aria-labelledby="settings-usage">
+        <h2 id="settings-usage">@Strings.Settings_UsageHeading</h2>
+        <p>@Strings.Settings_UsageText</p>
+        <p class="settings__usage" data-usage-summary>@_usageText</p>
+        <div class="notice__actions">
+            <button type="button" class="button" disabled="@_sharing" @onclick="() => ShareUsageAsync(json: false)">@Strings.Settings_UsageShareText</button>
+            <button type="button" class="button button--quiet" disabled="@_sharing" @onclick="() => ShareUsageAsync(json: true)">@Strings.Settings_UsageShareJson</button>
+        </div>
+    </section>
+
     <section class="card settings__section" aria-labelledby="settings-clear">
         <h2 id="settings-clear">@Strings.Settings_ClearHeading</h2>
         <p>@Strings.Settings_ClearText</p>
@@ -118,6 +134,9 @@
     private ElementReference _cancelButton;
     private bool _focusCancelNext;
     private bool _focusClearNext;
+    private UsageLog _usage = UsageLog.Empty;
+    private string _usageText = string.Empty;
+    private bool _sharing;
 
     /// <summary>The household of this device; the gate hands it over once it knows there is one.</summary>
     [Parameter, EditorRequired]
@@ -128,6 +147,8 @@
         _household = Household;   // kept here: the region and the bowl size change it
         await Data.InitializeAsync();
         _taste = await Tastes.LoadAsync();
+        _usage = await Usage.LoadAsync();
+        _usageText = UsageFormat.Text(UsageReport.Summarize(_usage, Clock.Today));
         _loaded = true;
     }
 
@@ -156,6 +177,31 @@
         _taste = TasteDesk.Unblock(_taste, dishId);
         await Tastes.SaveAsync(_taste);
         _status = string.Format(CultureInfo.InvariantCulture, Strings.Settings_Unblocked, name);
+    }
+
+    private async Task ShareUsageAsync(bool json)
+    {
+        if (_sharing)
+        {
+            return;
+        }
+
+        _sharing = true;
+        try
+        {
+            var export = UsageReport.Export(await Usage.LoadAsync(), Clock);
+            var outcome = await Device.ShareTextAsync(json ? UsageReport.ToJson(export) : UsageFormat.Text(export.Summary));
+            _status = outcome switch
+            {
+                ShareOutcome.Copied => Strings.Settings_UsageCopied,
+                ShareOutcome.Failed => Strings.Settings_UsageFailed,
+                _ => string.Empty,   // shared: the share sheet said so; cancelled: the person knows
+            };
+        }
+        finally
+        {
+            _sharing = false;
+        }
     }
 
     // The button that was tapped is gone from the page, and the focus would fall to the top of it: it goes to the safe answer of the question

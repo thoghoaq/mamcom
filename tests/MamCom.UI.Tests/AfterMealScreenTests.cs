@@ -15,6 +15,8 @@ namespace MamCom.UI.Tests;
 
 public class AfterMealScreenTests : BunitContext
 {
+    private FakeUsageLog Usage { get; } = new();
+
     private static readonly DateOnly Today = new(2026, 10, 20);
 
     private const string Soup = "canh-chua-ca-loc";
@@ -28,6 +30,7 @@ public class AfterMealScreenTests : BunitContext
     public AfterMealScreenTests()
     {
         Services.AddSingleton<IAppData>(_data);
+        Services.AddSingleton<IUsageLog>(Usage);
         Services.AddSingleton<ITrayStore>(_trays);
         Services.AddSingleton<ITasteStore>(_taste);
         Services.AddSingleton<IClock>(new FixedClock(Today));

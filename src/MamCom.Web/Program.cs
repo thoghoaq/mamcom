@@ -24,6 +24,7 @@ builder.Services.AddScoped<IEatenLogStore, EatenLogStore>();
 builder.Services.AddScoped<IShoppingStore, ShoppingStore>();
 builder.Services.AddScoped<ICookingStore, CookingStore>();
 builder.Services.AddScoped<ITasteStore, TasteStore>();
+builder.Services.AddScoped<IUsageLog, UsageStore>();
 builder.Services.AddScoped<IDeviceFeatures, BrowserDeviceFeatures>();
 builder.Services.AddScoped<IClock, SystemClock>();
 builder.Services.AddScoped<IRandomSource>(_ => new SeededRandomSource((ulong)Random.Shared.NextInt64()));   // every visit draws differently; tests give a seed

@@ -19,6 +19,8 @@ namespace MamCom.UI.Tests;
 
 public class CookingScreenTests : BunitContext
 {
+    private FakeUsageLog Usage { get; } = new();
+
     private static readonly DateOnly Today = new(2026, 10, 21);
 
     private static readonly DateTimeOffset Noon = new(2026, 10, 21, 12, 0, 0, TimeSpan.Zero);
@@ -33,6 +35,7 @@ public class CookingScreenTests : BunitContext
     public CookingScreenTests()
     {
         Services.AddSingleton<IAppData>(_data);
+        Services.AddSingleton<IUsageLog>(Usage);
         Services.AddSingleton<ITrayStore>(_trays);
         Services.AddSingleton<ICookingStore>(_cooking);
         Services.AddSingleton<IDeviceFeatures>(_device);

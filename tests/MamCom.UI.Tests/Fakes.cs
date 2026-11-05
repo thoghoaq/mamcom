@@ -9,6 +9,7 @@ using MamCom.Core.Portions;
 using MamCom.Core.Shopping;
 using MamCom.Core.Spinning;
 using MamCom.Core.Taste;
+using MamCom.Core.Usage;
 using MamCom.UI;
 using MamCom.Data;
 using MamCom.Data.Bundles;
@@ -384,4 +385,34 @@ internal sealed class FakeUserStateStore : IUserStateStore
         Clears++;
         return ValueTask.CompletedTask;
     }
+}
+
+/// <summary>The usage log in memory, with a clock of its own so a test can say when each event happened.</summary>
+internal sealed class FakeUsageLog(IClock? clock = null) : IUsageLog
+{
+    private readonly IClock _clock = clock ?? new FixedClock(new DateOnly(2026, 10, 20));
+    private bool _opened;
+
+    public UsageLog Log { get; set; } = UsageLog.Empty;
+
+    public IEnumerable<UsageEventKind> Kinds => Log.Events.Select(e => e.Kind);
+
+    public ValueTask RecordAsync(UsageEventKind kind)
+    {
+        Log = Log.Append(kind, _clock.Now);
+        return ValueTask.CompletedTask;
+    }
+
+    public ValueTask RecordOpenedAsync()
+    {
+        if (!_opened)
+        {
+            _opened = true;
+            Log = Log.Append(UsageEventKind.AppOpened, _clock.Now);
+        }
+
+        return ValueTask.CompletedTask;
+    }
+
+    public ValueTask<UsageLog> LoadAsync() => ValueTask.FromResult(Log);
 }

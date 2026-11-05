@@ -1,8 +1,11 @@
 using System.Reflection;
 using AngleSharp.Dom;
 using Bunit.TestDoubles;
+using MamCom.Core;
 using MamCom.Core.Models;
 using MamCom.Core.Taste;
+using MamCom.Core.Usage;
+using MamCom.Data.Device;
 using MamCom.Data;
 using MamCom.Data.State;
 using MamCom.UI.Components;
@@ -13,17 +16,23 @@ namespace MamCom.UI.Tests;
 
 public class SettingsScreenTests : BunitContext
 {
+    private FakeUsageLog Usage { get; } = new();
+
     private readonly FakeAppData _data = new() { Bundle = TestConfig.SeedBundle };
     private readonly FakeHouseholdStore _households = new();
     private readonly FakeTasteStore _taste = new();
     private readonly FakeUserStateStore _userState = new();
+    private readonly FakeDeviceFeatures _device = new();
 
     public SettingsScreenTests()
     {
         Services.AddSingleton<IAppData>(_data);
+        Services.AddSingleton<IUsageLog>(Usage);
         Services.AddSingleton<IHouseholdStore>(_households);
         Services.AddSingleton<ITasteStore>(_taste);
         Services.AddSingleton<IUserStateStore>(_userState);
+        Services.AddSingleton<IDeviceFeatures>(_device);
+        Services.AddSingleton<IClock>(new FixedClock(new DateOnly(2026, 10, 20)));
     }
 
     private static Member Adult(string name) => new(name, AgeGroup.Adult, 2, [], []);
@@ -89,7 +98,7 @@ public class SettingsScreenTests : BunitContext
         var cut = Show();
 
         Words(cut.Find(".back__link")).ShouldBe("Về mâm hôm nay");
-        cut.FindAll("section.settings__section h2").Select(Words).ShouldBe(["Nhà mình", "Món đã chặn", "Xoá dữ liệu của tôi"]);
+        cut.FindAll("section.settings__section h2").Select(Words).ShouldBe(["Nhà mình", "Món đã chặn", "Xuất phản hồi", "Xoá dữ liệu của tôi"]);
         cut.FindAll("section.settings__section").ShouldAllBe(s => s.GetAttribute("aria-labelledby") == s.QuerySelector("h2")!.Id);
         _data.Initialized.ShouldBe(1);
     }
@@ -310,7 +319,7 @@ public class SettingsScreenTests : BunitContext
     {
         var section = Section(Show(), "settings-clear");
 
-        Words(section).ShouldContain("Xoá nhà mình, mâm đã quay, danh sách đi chợ, món đã chấm và món đã chặn khỏi máy này. Dữ liệu món ăn của app không bị xoá.");
+        Words(section).ShouldContain("Xoá nhà mình, mâm đã quay, danh sách đi chợ, món đã chấm, món đã chặn và nhật ký dùng app khỏi máy này. Dữ liệu món ăn của app không bị xoá.");
         section.QuerySelectorAll("button").Select(Words).ShouldBe(["Xoá dữ liệu của tôi"]);
         section.QuerySelector("button")!.ClassList.ShouldContain("button--danger");
         section.QuerySelector(".notice").ShouldBeNull();
@@ -444,5 +453,25 @@ public class SettingsScreenTests : BunitContext
         await DisposeComponentsAsync();
 
         _data.Listeners.ShouldBe(0);
+    }
+
+    [Fact]
+    public async Task Export_shows_the_summary_and_sends_it_as_text_or_as_json()
+    {
+        var at = new DateTimeOffset(2026, 10, 20, 18, 0, 0, TimeSpan.FromHours(7));
+        Usage.Log = UsageLog.Empty.Append(UsageEventKind.AppOpened, at).Append(UsageEventKind.Spun, at.AddSeconds(10)).Append(UsageEventKind.Confirmed, at.AddSeconds(40));
+        var cut = Show();
+
+        cut.Find("[data-usage-summary]").TextContent.ShouldContain("Chốt 1 mâm; quay lại 1 lần, đổi món 0 lần, khoá món 0 lần.");
+        cut.Find("[data-usage-summary]").TextContent.ShouldContain("Thời gian thường gặp từ lúc mở app đến khi chốt: 40 giây.");
+
+        await cut.FindAll("button").Single(b => b.TextContent == "Gửi bản tóm tắt").ClickAsync(new());
+        _device.ShareResult = ShareOutcome.Copied;
+        await cut.FindAll("button").Single(b => b.TextContent == "Gửi dữ liệu đầy đủ (JSON)").ClickAsync(new());
+
+        _device.Shared[0].ShouldStartWith("Phản hồi MâmCơm\n");
+        _device.Shared[1].ShouldContain("\"kind\": \"Confirmed\"");
+        _device.Shared[1].ShouldContain("\"medianSecondsToConfirm\": 40");
+        cut.Find(".settings__status").TextContent.ShouldBe("Đã chép vào bộ nhớ tạm. Dán vào Zalo hoặc email để gửi.");
     }
 }

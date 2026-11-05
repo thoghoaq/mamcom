@@ -12,12 +12,15 @@ namespace MamCom.UI.Tests;
 
 public class OnboardingScreenTests : BunitContext
 {
+    private FakeUsageLog Usage { get; } = new();
+
     private readonly FakeAppData _data = new() { Bundle = TestConfig.Bundle };
     private readonly FakeHouseholdStore _store = new();
 
     public OnboardingScreenTests()
     {
         Services.AddSingleton<IAppData>(_data);
+        Services.AddSingleton<IUsageLog>(Usage);
         Services.AddSingleton<IHouseholdStore>(_store);
     }
 
@@ -158,12 +161,15 @@ public class OnboardingScreenTests : BunitContext
 
 public class HouseholdGateTests : BunitContext
 {
+    private FakeUsageLog Usage { get; } = new();
+
     private readonly FakeAppData _data = new() { Bundle = TestConfig.Bundle };
     private readonly FakeHouseholdStore _store = new();
 
     public HouseholdGateTests()
     {
         Services.AddSingleton<IAppData>(_data);
+        Services.AddSingleton<IUsageLog>(Usage);
         Services.AddSingleton<IHouseholdStore>(_store);
     }
 
@@ -243,11 +249,14 @@ public class HouseholdGateTests : BunitContext
 
 public class HouseholdSummaryTests : BunitContext
 {
+    private FakeUsageLog Usage { get; } = new();
+
     private readonly FakeAppData _data = new() { Bundle = TestConfig.Bundle };
 
     public HouseholdSummaryTests()
     {
         Services.AddSingleton<IAppData>(_data);
+        Services.AddSingleton<IUsageLog>(Usage);
     }
 
     private static Household SpecFamily() => new(
