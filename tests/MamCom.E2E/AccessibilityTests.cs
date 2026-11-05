@@ -230,6 +230,11 @@ public class AccessibilityTests(SiteFixture site)
         await app.Button("Xoá dữ liệu của tôi").ClickAsync();
         await AuditAsync(app, "cai-dat (asking to delete)", findings);
 
+        await app.GotoAsync("gioi-thieu");
+        await app.Heading("Giới thiệu và nguồn dữ liệu").WaitForAsync();
+        await app.Page.Locator("[data-source-counts]").WaitForAsync();
+        await AuditAsync(app, "gioi-thieu", findings);
+
         await app.GotoAsync("/");
         await app.Page.Locator(".notice--ok").WaitForAsync();
         await AuditAsync(app, "/ (tray confirmed)", findings);

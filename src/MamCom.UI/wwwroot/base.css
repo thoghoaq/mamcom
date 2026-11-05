@@ -1180,6 +1180,26 @@ small,
     font-size: var(--font-size-small);
 }
 
+/* The lists of "Giới thiệu": sources, what stays on the device, the font and the icons. */
+.about__list {
+    margin: 0 0 var(--space-3);
+    padding-left: var(--space-5);
+}
+
+.about__list li + li {
+    margin-top: var(--space-2);
+}
+
+/* The version of the data is one long word, and the link names a site: both wrap rather than push the page sideways at a large text size. */
+.about__version {
+    overflow-wrap: anywhere;
+}
+
+.about__link {
+    max-width: 100%;
+    text-align: center;
+}
+
 /* The summary "Xuất phản hồi" would send, one fact a line as it is pasted. */
 .settings__usage {
     white-space: pre-line;

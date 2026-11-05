@@ -578,6 +578,27 @@
   <data name="Settings_Unblock" xml:space="preserve"><value>Bỏ chặn</value></data>
   <data name="Settings_UnblockAria" xml:space="preserve"><value>Bỏ chặn {0}</value></data>
   <data name="Settings_Unblocked" xml:space="preserve"><value>Đã bỏ chặn {0}.</value></data>
+  <data name="About_Title" xml:space="preserve"><value>Giới thiệu và nguồn dữ liệu</value></data>
+  <data name="About_Link" xml:space="preserve"><value>Giới thiệu và nguồn dữ liệu</value></data>
+  <data name="About_EstimateHeading" xml:space="preserve"><value>Số liệu là ước tính</value></data>
+  <data name="About_Disclaimer" xml:space="preserve"><value>Số liệu ước tính, không thay tư vấn y tế.</value></data>
+  <data name="About_EstimateText" xml:space="preserve"><value>Kcal và các chất được cộng từ nguyên liệu sống theo lượng trong công thức, nên chỉ gần đúng: cách nấu, cỡ con cá hay độ béo của thịt đều làm số thay đổi. Kcal luôn có dấu "≈" và làm tròn đến 10.</value></data>
+  <data name="About_SourcesHeading" xml:space="preserve"><value>Nguồn số liệu dinh dưỡng</value></data>
+  <data name="About_SourceUsda" xml:space="preserve"><value>USDA FoodData Central</value></data>
+  <data name="About_SourceUsdaText" xml:space="preserve"><value>cơ sở dữ liệu thành phần thực phẩm của Bộ Nông nghiệp Hoa Kỳ. Mỗi nguyên liệu ghi mã FDC đã dùng.</value></data>
+  <data name="About_UsdaLink" xml:space="preserve"><value>Mở trang USDA FoodData Central</value></data>
+  <data name="About_SourceVn" xml:space="preserve"><value>Bảng thành phần thực phẩm Việt Nam</value></data>
+  <data name="About_SourceVnText" xml:space="preserve"><value>của Viện Dinh dưỡng (2017), dùng cho nguyên liệu Việt mà USDA không có.</value></data>
+  <data name="About_CountsFormat" xml:space="preserve"><value>Trong {0} nguyên liệu của app: {1} lấy số từ USDA, {2} từ Bảng thành phần thực phẩm Việt Nam, {3} chưa có số liệu (món dùng chúng không tính được đủ).</value></data>
+  <data name="About_RecipesText" xml:space="preserve"><value>Công thức được soạn riêng cho app, không chép từ trang web hay sách nào.</value></data>
+  <data name="About_PrivacyHeading" xml:space="preserve"><value>Quyền riêng tư</value></data>
+  <data name="About_PrivacyDevice" xml:space="preserve"><value>Nhà mình, mâm đã quay, danh sách đi chợ, món đã chấm và nhật ký dùng app chỉ lưu trên máy này. App không có tài khoản.</value></data>
+  <data name="About_PrivacyNothingSent" xml:space="preserve"><value>App không gửi gì đi. "Xuất phản hồi" trong Cài đặt chỉ gửi khi bạn bấm, và chỉ đến nơi bạn chọn.</value></data>
+  <data name="About_PrivacyDelete" xml:space="preserve"><value>Bạn xoá được tất cả bằng "Xoá dữ liệu của tôi" trong Cài đặt.</value></data>
+  <data name="About_CreditsHeading" xml:space="preserve"><value>Phông chữ và biểu tượng</value></data>
+  <data name="About_CreditFont" xml:space="preserve"><value>Phông chữ Be Vietnam Pro, giấy phép SIL Open Font License 1.1.</value></data>
+  <data name="About_CreditIcons" xml:space="preserve"><value>Biểu tượng Tabler Icons, giấy phép MIT.</value></data>
+  <data name="About_DataVersionFormat" xml:space="preserve"><value>Phiên bản dữ liệu: {0}.</value></data>
   <data name="Settings_UsageHeading" xml:space="preserve"><value>Xuất phản hồi</value></data>
   <data name="Settings_UsageText" xml:space="preserve"><value>App ghi lại trên máy này những việc bạn làm: mở app, quay, đổi món, khoá, chốt mâm, mở danh sách đi chợ, mở chế độ nấu và chấm món, kèm thời điểm. Không ghi tên, không ghi món nào, không gửi đi đâu. Bấm nút dưới đây để gửi cho người làm app khi bạn muốn.</value></data>
   <data name="Settings_UsageShareText" xml:space="preserve"><value>Gửi bản tóm tắt</value></data>

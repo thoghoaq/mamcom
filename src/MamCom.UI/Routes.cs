@@ -20,6 +20,9 @@ public static class Routes
     /// <summary>"Cài đặt": the household, the region, the bowls, the blocked dishes, deleting the data (SPEC §8.1-7).</summary>
     public const string Settings = "cai-dat";
 
+    /// <summary>"Giới thiệu và nguồn dữ liệu": the sources of the numbers, that they are estimates, privacy (PLAN 6.2).</summary>
+    public const string About = "gioi-thieu";
+
     /// <summary>The folder of the detail screens: one page for each dish, <c>mon/&lt;dish id&gt;</c>.</summary>
     public const string DishFolder = "mon";
 

@@ -1,0 +1,64 @@
+@page "/gioi-thieu"
+@using System.Globalization
+@inherits AppDataComponentBase
+
+@* "Giới thiệu và nguồn dữ liệu" (PLAN 6.2): where the numbers come from, that they are estimates, and what stays on the device. *@
+<PageTitle>@Strings.About_Title</PageTitle>
+
+<BackLink />
+
+<h1>@Strings.About_Title</h1>
+
+<section class="card settings__section" aria-labelledby="about-estimate">
+    <h2 id="about-estimate">@Strings.About_EstimateHeading</h2>
+    <p data-disclaimer>@Strings.About_Disclaimer</p>
+    <p>@Strings.About_EstimateText</p>
+</section>
+
+<section class="card settings__section" aria-labelledby="about-sources">
+    <h2 id="about-sources">@Strings.About_SourcesHeading</h2>
+    <ul class="about__list">
+        <li>@Strings.About_SourceUsda: @Strings.About_SourceUsdaText</li>
+        <li>@Strings.About_SourceVn: @Strings.About_SourceVnText</li>
+    </ul>
+    <p><a class="button button--quiet about__link" href="https://fdc.nal.usda.gov/" rel="noopener" target="_blank">@Strings.About_UsdaLink</a></p>
+    @if (Data.Bundle is { } bundle)
+    {
+        <p data-source-counts>@Counts(bundle)</p>
+    }
+    <p>@Strings.About_RecipesText</p>
+</section>
+
+<section class="card settings__section" aria-labelledby="about-privacy">
+    <h2 id="about-privacy">@Strings.About_PrivacyHeading</h2>
+    <ul class="about__list">
+        <li>@Strings.About_PrivacyDevice</li>
+        <li>@Strings.About_PrivacyNothingSent</li>
+        <li>@Strings.About_PrivacyDelete</li>
+    </ul>
+</section>
+
+<section class="card settings__section" aria-labelledby="about-credits">
+    <h2 id="about-credits">@Strings.About_CreditsHeading</h2>
+    <ul class="about__list">
+        <li>@Strings.About_CreditFont</li>
+        <li>@Strings.About_CreditIcons</li>
+    </ul>
+    @if (Data.Bundle is { } current)
+    {
+        <p class="text-muted about__version">@string.Format(CultureInfo.InvariantCulture, Strings.About_DataVersionFormat, current.Version)</p>
+    }
+</section>
+
+@code {
+    protected override async Task OnInitializedAsync() => await Data.InitializeAsync();
+
+    /// <summary>How many ingredients take their numbers from each source, as the data the app holds says.</summary>
+    private static string Counts(MamCom.Core.Data.DataBundle bundle)
+    {
+        var usda = bundle.Ingredients.Count(i => i.NutritionSource.Db == "usda-fdc");
+        var vn = bundle.Ingredients.Count(i => i.NutritionSource.Db == "vn-fct-2017");
+        var none = bundle.Ingredients.Count(i => i.NutritionSource.Db == "placeholder");
+        return string.Format(CultureInfo.InvariantCulture, Strings.About_CountsFormat, bundle.Ingredients.Count, usda, vn, none);
+    }
+}
