@@ -440,6 +440,16 @@
   <data name="Tray_Confirmed" xml:space="preserve"><value>Đã chốt mâm hôm nay.</value></data>
   <data name="Tray_ListLabel" xml:space="preserve"><value>Các món của mâm</value></data>
   <data name="Tray_PlateRice" xml:space="preserve"><value>Cơm</value></data>
+  <data name="Tray_SizeLabel" xml:space="preserve"><value>Số món của mâm</value></data>
+  <data name="Tray_AddDish" xml:space="preserve"><value>Thêm món</value></data>
+  <data name="Tray_RemoveDish" xml:space="preserve"><value>Bớt món</value></data>
+  <data name="Tray_DishCountFormat" xml:space="preserve"><value>{0} món</value></data>
+  <data name="Settings_TraySizeLabel" xml:space="preserve"><value>Mâm mấy món?</value></data>
+  <data name="Settings_TraySizeHint" xml:space="preserve"><value>Tự theo nhà mình: 3 món, nhà từ 5 suất mỗi bữa thì 4 món. Thêm món thì mỗi món nấu ít đi, bớt món thì mỗi món nhiều lên. Áp dụng từ lần quay sau.</value></data>
+  <data name="TraySize_Auto" xml:space="preserve"><value>Tự theo nhà mình</value></data>
+  <data name="TraySize_Two" xml:space="preserve"><value>2 món</value></data>
+  <data name="TraySize_Three" xml:space="preserve"><value>3 món</value></data>
+  <data name="TraySize_Four" xml:space="preserve"><value>4 món</value></data>
   <data name="Tray_SwipeHint" xml:space="preserve"><value>Khoá món muốn giữ · vuốt ngang một món để đổi riêng món đó</value></data>
   <data name="Tray_AnnounceFormat" xml:space="preserve"><value>Mâm: {0}.</value></data>
   <data name="Tray_Empty" xml:space="preserve"><value>Chưa có món nào hợp để quay.</value></data>

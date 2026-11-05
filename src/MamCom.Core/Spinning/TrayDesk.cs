@@ -35,7 +35,8 @@ public sealed class TrayDesk
         ArgumentNullException.ThrowIfNull(context);
 
         var current = !session.IsConfirmed && session.Viewed?.Tray is { } tray && tray.Date == _clock.Today ? tray : null;
-        var result = _spinner.Spin(Narrow(context, session.Filters, LockedIds(current)), current);
+        var sized = SizeToday(session) is { } size ? context with { Size = size } : context;
+        var result = _spinner.Spin(Narrow(sized, session.Filters, LockedIds(current)), current);
 
         return session with
         {
@@ -60,6 +61,81 @@ public sealed class TrayDesk
 
         return Replace(session, result);
     }
+
+    /// <summary>The tray on the screen can take one more dish: it has fewer than four.</summary>
+    public bool CanAddDish(TraySession session)
+    {
+        ArgumentNullException.ThrowIfNull(session);
+        return !session.IsConfirmed && session.Viewed is { } viewed && viewed.Tray.Slots.Count is > 0 and < 4;
+    }
+
+    /// <summary>The tray on the screen can do with one dish less: it has more than two.</summary>
+    public bool CanRemoveDish(TraySession session)
+    {
+        ArgumentNullException.ThrowIfNull(session);
+        return !session.IsConfirmed && session.Viewed is { } viewed && viewed.Tray.Slots.Count > 2;
+    }
+
+    /// <summary>
+    /// "Thêm món" (ADR-034): the tray gets the dish the next size has (a vegetable on a tray of two, a second main on a tray of three),
+    /// drawn under the usual rules; every dish already on it stays, with its lock. Later spins of today keep the new size.
+    /// </summary>
+    /// <exception cref="InvalidOperationException">There is no tray on the screen, it is confirmed, or it has four dishes already.</exception>
+    public TraySession AddDish(TraySession session, SpinContext context)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+
+        var viewed = Open(session);
+        if (!CanAddDish(session))
+        {
+            throw new InvalidOperationException("The tray cannot take another dish.");
+        }
+
+        var size = viewed.Tray.Slots.Count == 2 ? TraySize.Three : TraySize.Four;
+        var kept = viewed.Tray with { Slots = [.. viewed.Tray.Slots.Select(slot => slot with { IsLocked = true })] };
+        var drawn = _spinner.Spin(Narrow(context with { Size = size }, session.Filters, kept.Slots.Select(s => s.DishId)), kept);
+
+        // The dishes that were there come back in the same order of kinds; they get their own locks back, the new one is unlocked.
+        var locks = new Queue<SlotResult>(viewed.Tray.Slots);
+        var slots = drawn.Tray.Slots.Select(slot =>
+            locks.Count > 0 && locks.Peek().DishId == slot.DishId ? slot with { IsLocked = locks.Dequeue().IsLocked } : slot with { IsLocked = false }).ToArray();
+
+        return Replace(session, drawn with { Tray = drawn.Tray with { Slots = slots } }) with { SizeToday = size, SizeDate = _clock.Today };
+    }
+
+    /// <summary>
+    /// "Bớt món" (ADR-034): a tray of four gives up a main (the one not locked, else the last), a tray of three its vegetable. Later
+    /// spins of today keep the smaller size.
+    /// </summary>
+    /// <exception cref="InvalidOperationException">There is no tray on the screen, it is confirmed, or it has two dishes only.</exception>
+    public TraySession RemoveDish(TraySession session)
+    {
+        var viewed = Open(session);
+        if (!CanRemoveDish(session))
+        {
+            throw new InvalidOperationException("The tray cannot do with fewer dishes.");
+        }
+
+        var slots = viewed.Tray.Slots;
+        int drop;
+        TraySize size;
+        if (slots.Count == 4)
+        {
+            var mains = slots.Select((slot, index) => (slot, index)).Where(p => p.slot.Slot == DishSlot.Main).ToArray();
+            drop = mains.LastOrDefault(p => !p.slot.IsLocked, mains[^1]).index;
+            size = TraySize.Three;
+        }
+        else
+        {
+            drop = slots.Select((slot, index) => (slot, index)).Last(p => p.slot.Slot == DishSlot.Vegetable).index;
+            size = TraySize.Two;
+        }
+
+        var tray = viewed.Tray with { Slots = [.. slots.Where((_, index) => index != drop)] };
+        return Replace(session, viewed with { Tray = tray }) with { SizeToday = size, SizeDate = _clock.Today };
+    }
+
+    private TraySize? SizeToday(TraySession session) => session.SizeDate == _clock.Today ? session.SizeToday : null;
 
     /// <summary>Locks the slot, or unlocks it when it was locked. A locked slot is kept by the next spin and cannot be swapped.</summary>
     /// <exception cref="InvalidOperationException">There is no tray on the screen, or it is confirmed.</exception>

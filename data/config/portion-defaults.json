@@ -27,5 +27,9 @@
   },
   "minBowlsPerMeal": 0.5,
   "maxBowlsPerMeal": 5,
-  "bowlsStep": 0.5
+  "bowlsStep": 0.5,
+  "trayShares": {
+    "sameSlotTotal": 1.2,
+    "withoutVegetable": 1.2
+  }
 }

@@ -11,7 +11,8 @@ public class NutritionCalculatorTests
 
     private static readonly NutritionConfig NutritionConfig = NutritionConfig.Parse(TestFiles.Config("nutrition-defaults.json"));
 
-    private static readonly PortionConfig PortionConfig = PortionConfig.Parse(TestFiles.Config("portion-defaults.json"));
+    // Without the shares of ADR-034: these tests are about summing the dishes, which TrayShareTests share out.
+    private static readonly PortionConfig PortionConfig = PortionConfig.Parse(TestFiles.Config("portion-defaults.json")) with { TrayShares = null };
 
     private static NutritionCalculator Calculator(NutritionConfig? nutrition = null, PortionConfig? portions = null) =>
         new(nutrition ?? NutritionConfig, portions ?? PortionConfig);

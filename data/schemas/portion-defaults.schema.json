@@ -41,7 +41,17 @@
     "defaultBowlsPerMeal": { "$ref": "#/$defs/bowls" },
     "minBowlsPerMeal": { "type": "number", "exclusiveMinimum": 0, "maximum": 10 },
     "maxBowlsPerMeal": { "type": "number", "exclusiveMinimum": 0, "maximum": 10 },
-    "bowlsStep": { "type": "number", "exclusiveMinimum": 0, "maximum": 5 }
+    "bowlsStep": { "type": "number", "exclusiveMinimum": 0, "maximum": 5 },
+    "trayShares": {
+      "description": "ADR-034: two dishes of one kind are cooked to sameSlotTotal times one dish's servings between them; a tray without a vegetable dish cooks the others withoutVegetable times larger.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sameSlotTotal", "withoutVegetable"],
+      "properties": {
+        "sameSlotTotal": { "type": "number", "minimum": 1, "maximum": 2 },
+        "withoutVegetable": { "type": "number", "minimum": 1, "maximum": 2 }
+      }
+    }
   },
   "$defs": {
     "perAgeGroup": {

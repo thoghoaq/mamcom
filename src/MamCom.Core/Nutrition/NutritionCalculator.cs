@@ -82,7 +82,11 @@ public sealed class NutritionCalculator
         }
 
         var dishNutrition = dishes.Select(dish => ForDish(dish, ingredients)).ToArray();
-        var allDishesPerServing = dishNutrition.Aggregate(NutritionFacts.Zero, (sum, dish) => sum + dish.PerServing);
+        // Each person eats a serving of every dish, less of each of two mains and more of each when there is no vegetable dish (ADR-034).
+        var slots = dishes.Select(dish => dish.Slot).ToArray();
+        var allDishesPerServing = dishNutrition
+            .Select((dish, index) => dish.PerServing.Times(TrayShares.For(dishes[index].Slot, slots, _portions.TrayShares)))
+            .Aggregate(NutritionFacts.Zero, (sum, dish) => sum + dish);
         var gramsPerBowl = _portions.GramsRawRicePerBowl.For(household.BowlSize);
 
         var perMember = new NutritionFacts[household.Members.Count];

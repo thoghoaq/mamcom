@@ -15,6 +15,7 @@ public sealed class DishDetailBuilder
     private readonly IngredientScaler _scaler;
     private readonly NutritionCalculator _nutrition;
     private readonly RecommendedShares _recommended;
+    private readonly TrayShareConfig? _shares;
 
     /// <exception cref="ArgumentException">A config has a value the formulas cannot use.</exception>
     public DishDetailBuilder(PortionConfig portions, NutritionConfig nutrition)
@@ -23,6 +24,7 @@ public sealed class DishDetailBuilder
         ArgumentNullException.ThrowIfNull(nutrition);
 
         _portions = new PortionCalculator(portions);
+        _shares = portions.TrayShares;
         _scaler = new IngredientScaler(portions);
         _nutrition = new NutritionCalculator(nutrition, portions);
         _recommended = nutrition.RecommendedEnergyShare;
@@ -30,14 +32,16 @@ public sealed class DishDetailBuilder
 
     /// <exception cref="InvalidOperationException">The dish uses an ingredient that is not in <paramref name="ingredients"/>, or a whole-unit line has no market unit for the region.</exception>
     /// <exception cref="ArgumentOutOfRangeException">A member's bowls per meal is outside the configured range.</exception>
-    public DishDetail Build(Dish dish, Household household, IReadOnlyDictionary<string, Ingredient> ingredients)
+    /// <param name="traySlots">The kinds of dish of the tray the dish is on, so it is cooked to its share of that tray (ADR-034); null for a dish seen on its own.</param>
+    public DishDetail Build(Dish dish, Household household, IReadOnlyDictionary<string, Ingredient> ingredients, IReadOnlyCollection<DishSlot>? traySlots = null)
     {
         ArgumentNullException.ThrowIfNull(dish);
         ArgumentNullException.ThrowIfNull(household);
         ArgumentNullException.ThrowIfNull(ingredients);
 
         var portions = _portions.Calculate(household);
-        var servings = portions.ServingsFor(dish.Slot);
+        var share = TrayShares.For(dish.Slot, traySlots, _shares);
+        var servings = portions.ServingsFor(dish.Slot) * share;
 
         var lines = _scaler.ScaleDish(dish, ingredients, household.Region, servings)
             .Select(scaled => new IngredientLine(
@@ -61,8 +65,8 @@ public sealed class DishDetailBuilder
             MacrosOf(nutrition.PerServing),
             [.. household.Members.Select((member, index) => new MemberEnergy(
                 member.DisplayName,
-                portions.MemberServings[index],
-                nutrition.PerServing.Kcal * portions.MemberServings[index]))],
+                portions.MemberServings[index] * share,
+                nutrition.PerServing.Kcal * portions.MemberServings[index] * share))],
             [.. nutrition.IngredientIdsMissingData.Select(id => ingredients[id].NameFor(household.Region))]);
     }
 

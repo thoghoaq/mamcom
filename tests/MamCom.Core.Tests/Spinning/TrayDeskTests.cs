@@ -591,4 +591,70 @@ public class TrayDeskTests
         Should.Throw<ArgumentNullException>(() => desk.Narrow(Home(), null!, []));
         Should.Throw<ArgumentNullException>(() => desk.Narrow(Home(), QuickFilters.None, null!));
     }
+
+    // ---- one dish more, one dish less (ADR-034) -----------------------------------------------------------------------------------
+
+    private static DishSlot[] Kinds(TraySession session) => [.. session.Viewed!.Tray.Slots.Select(s => s.Slot)];
+
+    [Fact]
+    public void The_size_of_the_household_decides_the_tray_and_two_three_or_four_can_be_asked_for()
+    {
+        Kinds(Spun(Desk())).ShouldBe([DishSlot.Soup, DishSlot.Main, DishSlot.Vegetable]);
+        Kinds(Spun(Desk(), context: Context(BigHome()))).ShouldBe([DishSlot.Soup, DishSlot.Main, DishSlot.Main, DishSlot.Vegetable]);
+        Kinds(Spun(Desk(), context: Home() with { Size = TraySize.Two })).ShouldBe([DishSlot.Soup, DishSlot.Main]);
+        Kinds(Spun(Desk(), context: Home() with { Size = TraySize.Four })).ShouldBe([DishSlot.Soup, DishSlot.Main, DishSlot.Main, DishSlot.Vegetable]);
+        Kinds(Spun(Desk(), context: Context(BigHome()) with { Size = TraySize.Three })).ShouldBe([DishSlot.Soup, DishSlot.Main, DishSlot.Vegetable]);
+    }
+
+    [Fact]
+    public void A_dish_more_keeps_every_dish_and_lock_adds_a_second_main_and_the_next_spins_of_today_keep_four()
+    {
+        var desk = Desk();
+        var session = desk.ToggleLock(Spun(desk), 2);
+        var before = session.Viewed!.Tray.Slots;
+
+        session = desk.AddDish(session, Home());
+
+        var slots = session.Viewed!.Tray.Slots;
+        Kinds(session).ShouldBe([DishSlot.Soup, DishSlot.Main, DishSlot.Main, DishSlot.Vegetable]);
+        new[] { slots[0], slots[1], slots[3] }.ShouldBe([before[0], before[1], before[2]]);
+        slots[2].IsLocked.ShouldBeFalse();
+        slots.Select(s => s.DishId).Distinct().Count().ShouldBe(4);
+        session.History.Items.Count.ShouldBe(1);   // the tray is changed, not added
+        desk.CanAddDish(session).ShouldBeFalse();
+
+        Kinds(desk.Spin(session, Home())).Length.ShouldBe(4);
+    }
+
+    [Fact]
+    public void A_dish_less_drops_a_main_that_is_not_locked_from_four_and_the_vegetable_from_three()
+    {
+        var desk = Desk();
+        var four = desk.ToggleLock(Spun(desk, context: Home() with { Size = TraySize.Four }), 2);
+        var keptMain = four.Viewed!.Tray.Slots[2].DishId;
+
+        var three = desk.RemoveDish(four);
+        Kinds(three).ShouldBe([DishSlot.Soup, DishSlot.Main, DishSlot.Vegetable]);
+        three.Viewed!.Tray.Slots[1].DishId.ShouldBe(keptMain);
+
+        var two = desk.RemoveDish(three);
+        Kinds(two).ShouldBe([DishSlot.Soup, DishSlot.Main]);
+        desk.CanRemoveDish(two).ShouldBeFalse();
+        Kinds(desk.Spin(two, Home())).ShouldBe([DishSlot.Soup, DishSlot.Main]);
+        Should.Throw<InvalidOperationException>(() => desk.RemoveDish(two));
+    }
+
+    [Fact]
+    public void The_size_of_one_day_is_not_the_size_of_the_next_and_a_confirmed_tray_cannot_change_size()
+    {
+        var desk = Desk();
+        var two = desk.RemoveDish(Spun(desk));
+
+        Kinds(Desk(clock: new FixedClock(Tomorrow)).Spin(two, Home())).Length.ShouldBe(3);
+
+        var (confirmed, _) = desk.Confirm(two, EatenLog.Empty);
+        desk.CanAddDish(confirmed).ShouldBeFalse();
+        desk.CanRemoveDish(confirmed).ShouldBeFalse();
+        Should.Throw<InvalidOperationException>(() => desk.AddDish(confirmed, Home()));
+    }
 }

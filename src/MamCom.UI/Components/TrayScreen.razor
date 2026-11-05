@@ -83,6 +83,16 @@
         @if (!_session.IsConfirmed)
         {
             <p class="text-muted tray-hint">@Strings.Tray_SwipeHint</p>
+
+            <div class="tray-size" role="group" aria-label="@Strings.Tray_SizeLabel">
+                <button type="button" class="button button--quiet" disabled="@(_busy || !_engine.Desk.CanRemoveDish(_session))" @onclick="RemoveDishAsync">
+                    <Icon Name="minus" />@Strings.Tray_RemoveDish
+                </button>
+                <span class="tray-size__count">@TrayFormat.DishCount(viewed.Tray.Slots.Count)</span>
+                <button type="button" class="button button--quiet" disabled="@(_busy || !_engine.Desk.CanAddDish(_session))" @onclick="AddDishAsync">
+                    <Icon Name="plus" />@Strings.Tray_AddDish
+                </button>
+            </div>
         }
     }
 
@@ -241,6 +251,32 @@
         Announce();
     }
 
+    private async Task AddDishAsync()
+    {
+        if (_busy || !_engine!.Desk.CanAddDish(_session))
+        {
+            return;
+        }
+
+        _session = _engine.Desk.AddDish(_session, Context());
+        await SaveSessionAsync();
+        Refresh();
+        Announce();
+    }
+
+    private async Task RemoveDishAsync()
+    {
+        if (_busy || !_engine!.Desk.CanRemoveDish(_session))
+        {
+            return;
+        }
+
+        _session = _engine.Desk.RemoveDish(_session);
+        await SaveSessionAsync();
+        Refresh();
+        Announce();
+    }
+
     private async Task PreviousAsync()
     {
         _session = _engine!.Desk.Previous(_session);
@@ -290,7 +326,12 @@
         await SpinAsync(animate: true);
     }
 
-    private async Task SaveSessionAsync() => await Trays.SaveAsync(_session);
+    // The screen is drawn again while the browser stores the session, so what it shows of the new tray is worked out before, not after.
+    private async Task SaveSessionAsync()
+    {
+        Refresh();
+        await Trays.SaveAsync(_session);
+    }
 
     /// <summary>Works out what the cards and the summary say for the tray on the screen.</summary>
     private void Refresh()

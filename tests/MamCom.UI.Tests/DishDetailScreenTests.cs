@@ -19,12 +19,16 @@ public class DishDetailScreenTests : BunitContext
 
     private readonly FakeAppData _data = new() { Bundle = TestConfig.SeedBundle };
     private readonly FakeTasteStore _taste = new();
+    private readonly FakeTrayStore _trays = new();
+    private static readonly DateOnly Today = new(2026, 10, 20);
 
     public DishDetailScreenTests()
     {
         Services.AddSingleton<IAppData>(_data);
         Services.AddSingleton<IUsageLog>(Usage);
         Services.AddSingleton<ITasteStore>(_taste);
+        Services.AddSingleton<ITrayStore>(_trays);
+        Services.AddSingleton<MamCom.Core.IClock>(new FixedClock(Today));
     }
 
     private static Member Adult(string name, params MemberTag[] tags) => new(name, AgeGroup.Adult, 2, tags, []);
@@ -592,5 +596,27 @@ public class DishDetailScreenTests : BunitContext
     public void A_dish_that_is_not_there_has_no_such_section()
     {
         Show("khong-co-mon-nay").FindAll("section").ShouldBeEmpty();
+    }
+
+    [Fact]
+    public void A_dish_of_todays_tray_of_two_mains_is_cooked_to_its_share_and_one_of_another_day_to_its_full_servings()
+    {
+        static MamCom.Core.Spinning.TraySession On(DateOnly day) => MamCom.Core.Spinning.TraySession.Empty with
+        {
+            History = new MamCom.Core.Spinning.SpinHistory([new SpinResult(new MealTray(day,
+            [
+                new SlotResult(DishSlot.Soup, "canh-trung-ca-chua", false),
+                new SlotResult(DishSlot.Main, "thit-kho-trung", false),
+                new SlotResult(DishSlot.Main, "ga-xao-sa-ot", false),
+                new SlotResult(DishSlot.Vegetable, "rau-muong-luoc", false),
+            ]), [], [])]),
+        };
+
+        _trays.Saved = On(Today);
+        Texts(Show(), ".detail__subtitle")[0].ShouldBe("cho ≈ 1,2 suất");
+        Texts(Show("rau-muong-luoc"), ".detail__subtitle")[0].ShouldBe("cho ≈ 2 suất");
+
+        _trays.Saved = On(Today.AddDays(-1));
+        Texts(Show(), ".detail__subtitle")[0].ShouldBe("cho ≈ 2 suất");
     }
 }

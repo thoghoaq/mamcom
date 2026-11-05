@@ -1,4 +1,5 @@
 @using System.Globalization
+@using MamCom.Core
 @using MamCom.Core.Details
 @using MamCom.Core.Models
 @using MamCom.Core.Taste
@@ -6,6 +7,8 @@
 @using MamCom.UI.Formatting
 @inherits AppDataComponentBase
 @inject ITasteStore Tastes
+@inject ITrayStore Trays
+@inject IClock Clock
 
 @if (_notFound)
 {
@@ -146,6 +149,7 @@ else if (_detail is { } detail)
     private bool _notFound;
     private bool _noSpicyAtTable;
     private TasteProfile _taste = TasteProfile.Empty;
+    private MealTray? _tray;
 
     /// <summary>The household the recipe is scaled to; the gate hands it over once it knows there is one.</summary>
     [Parameter, EditorRequired]
@@ -158,6 +162,8 @@ else if (_detail is { } detail)
     {
         await Data.InitializeAsync();
         _taste = await Tastes.LoadAsync();
+        _tray = (await Trays.LoadAsync())?.Viewed?.Tray;
+        Rebuild();
     }
 
     protected override void OnParametersSet()
@@ -191,7 +197,11 @@ else if (_detail is { } detail)
         }
 
         var ingredients = bundle.Ingredients.ToDictionary(i => i.Id, StringComparer.Ordinal);
-        _detail = new DishDetailBuilder(bundle.Config.Portion, bundle.Config.Nutrition).Build(dish, Household, ingredients);
+        // A dish of today's tray is cooked to its share of that tray (ADR-034); seen on its own, to its full servings.
+        var traySlots = _tray is { } tray && tray.Date == Clock.Today && tray.Slots.Any(s => s.DishId == dish.Id)
+            ? tray.Slots.Select(s => s.Slot).ToArray()
+            : null;
+        _detail = new DishDetailBuilder(bundle.Config.Portion, bundle.Config.Nutrition).Build(dish, Household, ingredients, traySlots);
     }
 
     private bool IsBlocked(Dish dish) => TasteDesk.IsBlocked(_taste, dish.Id);

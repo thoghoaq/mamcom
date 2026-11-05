@@ -12,6 +12,15 @@ public static class HouseholdFormat
         string.Format(CultureInfo.InvariantCulture, Strings.Household_BowlsFormat, VietnameseNumber.Decimal(bowls));
 
     /// <summary>"2 bếp", with the number and the word on one line.</summary>
+    public static string TraySizeName(TraySize size) => size switch
+    {
+        TraySize.Auto => Strings.TraySize_Auto,
+        TraySize.Two => Strings.TraySize_Two,
+        TraySize.Three => Strings.TraySize_Three,
+        TraySize.Four => Strings.TraySize_Four,
+        _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
+    };
+
     public static string Stoves(int stoves) => string.Format(CultureInfo.InvariantCulture, Strings.Household_StovesFormat, stoves);
 
     /// <summary>The servings with one decimal, "3,8"; the screen writes the "≈" and "suất" around it.</summary>

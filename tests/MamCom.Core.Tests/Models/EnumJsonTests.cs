@@ -21,7 +21,7 @@ public class EnumJsonTests
         ModelEnums.Select(t => t.Name).Order().ShouldBe(
         [
             "AgeGroup", "Aisle", "BowlSize", "CookingMethod", "DishPreference", "DishSlot", "DishStatus", "DraftAuthor",
-            "MemberTag", "Region", "RelaxedRule", "ScaleKind", "SpicyLevel",
+            "MemberTag", "Region", "RelaxedRule", "ScaleKind", "SpicyLevel", "TraySize",
         ]);
     }
 
@@ -48,6 +48,7 @@ public class EnumJsonTests
     [InlineData(typeof(DraftAuthor), "llm,human")]
     [InlineData(typeof(Region), "north,central,south")]
     [InlineData(typeof(BowlSize), "small,medium,large")]
+    [InlineData(typeof(TraySize), "auto,two,three,four")]
     [InlineData(typeof(AgeGroup), "toddler,child,teen,adult,senior")]
     [InlineData(typeof(MemberTag), "moreProtein,moreVeg,noSpicy")]
     [InlineData(typeof(DishPreference), "liked,neutral,disliked")]

@@ -474,4 +474,20 @@ public class SettingsScreenTests : BunitContext
         _device.Shared[1].ShouldContain("\"medianSecondsToConfirm\": 40");
         cut.Find(".settings__status").TextContent.ShouldBe("Đã chép vào bộ nhớ tạm. Dán vào Zalo hoặc email để gửi.");
     }
+
+    [Fact]
+    public void How_many_dishes_the_tray_has_is_a_choice_that_is_kept_with_the_household()
+    {
+        var cut = Show();
+        var group = cut.Find("[aria-labelledby=settings-size-label]");
+
+        group.QuerySelectorAll("[role=radio]").Select(r => r.TextContent.Trim()).ShouldBe(["Tự theo nhà mình", "2 món", "3 món", "4 món"]);
+        group.QuerySelector("[aria-checked=true]")!.TextContent.Trim().ShouldBe("Tự theo nhà mình");
+
+        cut.FindAll("[aria-labelledby=settings-size-label] [role=radio]")[1].Click();
+        _households.Saved!.TraySize.ShouldBe(TraySize.Two);
+
+        cut.FindAll("[aria-labelledby=settings-size-label] [role=radio]")[0].Click();
+        _households.Saved!.TraySize.ShouldBeNull();   // automatic is the same as never said
+    }
 }

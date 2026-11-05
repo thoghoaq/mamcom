@@ -53,6 +53,18 @@
         </div>
         <p class="field__hint">@BowlHint(bundle)</p>
 
+        <p class="field__label" id="settings-size-label">@Strings.Settings_TraySizeLabel</p>
+        <div class="chips" role="radiogroup" aria-labelledby="settings-size-label">
+            @foreach (var size in Enum.GetValues<TraySize>())
+            {
+                var current = size;
+                <button type="button" class="chip" role="radio" aria-checked="@((_household.TraySize ?? TraySize.Auto) == size ? "true" : "false")" @onclick="() => SetTraySizeAsync(current)">
+                    @HouseholdFormat.TraySizeName(size)
+                </button>
+            }
+        </div>
+        <p class="field__hint">@Strings.Settings_TraySizeHint</p>
+
         <p class="field__label" id="settings-stoves-label">@Strings.Household_StovesLabel</p>
         <div class="chips" role="radiogroup" aria-labelledby="settings-stoves-label">
             @for (var stoves = 1; stoves <= bundle.Config.Cooking.MaxStoves; stoves++)
@@ -166,6 +178,8 @@
     private Task SetBowlSizeAsync(BowlSize size) => SaveHouseholdAsync(_household with { BowlSize = size });
 
     private Task SetStovesAsync(int stoves) => SaveHouseholdAsync(_household with { Stoves = stoves });
+
+    private Task SetTraySizeAsync(TraySize size) => SaveHouseholdAsync(_household with { TraySize = size == TraySize.Auto ? null : size });
 
     private async Task SaveHouseholdAsync(Household household)
     {

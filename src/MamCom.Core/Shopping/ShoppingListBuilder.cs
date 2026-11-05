@@ -64,9 +64,11 @@ public sealed class ShoppingListBuilder
             Need(_portions.RiceIngredientId, portions.RawRiceGrams);
         }
 
+        var slots = dishes.Select(dish => dish.Slot).ToArray();
         foreach (var dish in dishes)
         {
-            foreach (var line in _scaler.ScaleDish(dish, ingredients, household.Region, portions.ServingsFor(dish.Slot)))
+            var servings = portions.ServingsFor(dish.Slot) * TrayShares.For(dish.Slot, slots, _portions.TrayShares);
+            foreach (var line in _scaler.ScaleDish(dish, ingredients, household.Region, servings))
             {
                 Need(line.IngredientId, line.GramsEdible);
             }

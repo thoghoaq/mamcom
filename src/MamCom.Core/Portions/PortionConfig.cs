@@ -43,6 +43,7 @@ public sealed record BowlSizeValues(double Small, double Medium, double Large)
 /// <param name="RiceIngredientId">Id of the raw-rice ingredient: rice is a pseudo-dish, so its nutrition and its shopping line come from this ingredient.</param>
 /// <param name="DefaultBowlsPerMeal">Pre-filled bowls per meal for a new member of each age group.</param>
 /// <param name="BowlsStep">Step of the bowls stepper in the UI; not enforced by the calculator.</param>
+/// <param name="TrayShares">How the food is shared out on a tray of two or four dishes (ADR-034); without it every dish is cooked to its full servings.</param>
 public sealed record PortionConfig(
     double ServingsBase,
     double ServingsPerBowl,
@@ -56,7 +57,8 @@ public sealed record PortionConfig(
     AgeGroupValues DefaultBowlsPerMeal,
     double MinBowlsPerMeal,
     double MaxBowlsPerMeal,
-    double BowlsStep)
+    double BowlsStep,
+    TrayShareConfig? TrayShares = null)
 {
     /// <summary>Reads the content of <c>portion-defaults.json</c>. Does not validate values; see <see cref="Validate"/>.</summary>
     public static PortionConfig Parse(string json) =>
@@ -82,6 +84,7 @@ public sealed record PortionConfig(
             DefaultBowlsPerMeal.All.All(v => v >= MinBowlsPerMeal && v <= MaxBowlsPerMeal),
             nameof(DefaultBowlsPerMeal),
             "every default must lie between the minimum and maximum bowls");
+        TrayShares?.Validate();
     }
 
     private static bool IsPositive(double value) => double.IsFinite(value) && value > 0;

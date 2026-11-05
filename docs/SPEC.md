@@ -113,6 +113,8 @@ Mức thông dụng khác:
 
 Mâm gồm cơm + 1 canh + 1 món mặn + 1 rau. Nếu `baseServings ≥ 5` *(mặc định)* thì thêm 1 món mặn thứ hai.
 
+Nhà mình chọn được "Mâm mấy món" trong Cài đặt: tự theo nhà mình (như trên), 2 món (canh, mặn), 3 món, hoặc 4 món (canh, hai món mặn, rau). Màn "Mâm hôm nay" có "Bớt món" và "Thêm món" cho riêng hôm nay. Hai món cùng loại chia nhau 1,2 lần lượng một món, mâm 2 món nấu mỗi món nhiều hơn 1,2 lần (`portion-defaults.json`, mục `trayShares`). Chi tiết ở ADR-034.
+
 ### 5.2 Ràng buộc cứng (không bao giờ nới)
 
 1. Món chứa nguyên liệu hoặc nhóm nằm trong `Avoid` của bất kỳ ai → loại.
@@ -474,6 +476,7 @@ Cấu trúc bundle (ADR-011), kiểu `DataBundle` trong `MamCom.Core`:
    - Tóm tắt: thời gian cả mâm, kcal/suất (gồm cơm), số món cần mua.
    - Nút "Mâm trước" (lưu 5 mâm). Quay quá 5 lần chưa chốt thì gợi ý lọc nhanh: dưới 30 phút / không thịt đỏ / ít dầu mỡ.
    - Nút "Chốt mâm" mở đi chợ và chế độ nấu.
+   - "Bớt món" / "Thêm món" đổi mâm hôm nay giữa 2 và 4 món (ADR-034).
 3. **Chi tiết món.** Ảnh và 3 phần xếp dọc: Nguyên liệu ("cho 3,8 suất"), Cách làm, Dinh dưỡng (thanh đạm/béo/bột đường và kcal theo từng người).
 4. **Đi chợ.** Nhóm theo quầy, thumbnail nguyên liệu, checkbox 48px, tương phản cao, chạy offline, nút "Gửi Zalo".
 5. **Chế độ nấu.**

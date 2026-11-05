@@ -901,4 +901,40 @@ public class TrayScreenTests : BunitContext
         actions.QuerySelector("a")!.GetAttribute("href").ShouldBe(Routes.AfterMeal);
         actions.QuerySelector("button")!.ClassList.ShouldContain("notice__action");
     }
+
+    [Fact]
+    public void A_dish_more_and_a_dish_less_change_the_tray_of_today_between_two_and_four()
+    {
+        var cut = Show();
+        IElement Button(string words) => cut.FindAll(".tray-size button").Single(b => b.TextContent.Trim() == words);
+
+        cut.Find(".tray-size__count").TextContent.ShouldBe("3 món");
+        Button("Thêm món").Click();
+        Cards(cut).Count.ShouldBe(4);
+        cut.Find(".tray-size__count").TextContent.ShouldBe("4 món");
+        Button("Thêm món").HasAttribute("disabled").ShouldBeTrue();
+        cut.FindAll(".mam__plate").Count.ShouldBe(4);
+
+        Button("Bớt món").Click();
+        Button("Bớt món").Click();
+        Cards(cut).Count.ShouldBe(2);
+        Button("Bớt món").HasAttribute("disabled").ShouldBeTrue();
+        _trays.Saved!.SizeToday.ShouldBe(TraySize.Two);
+    }
+
+    [Fact]
+    public async Task While_the_browser_stores_the_session_the_screen_draws_the_new_dishes_without_failing()
+    {
+        _trays.Yields = true;   // the screen is drawn again in the middle of saving, as in the browser
+        var cut = Show();
+        await cut.InvokeAsync(() => { });
+        var before = Names(cut);
+
+        await Swap(cut, 0).ClickAsync(new());
+        cut.FindAll(".tray-size button").Single(b => b.TextContent.Trim() == "Thêm món").Click();
+        await Spin(cut);
+
+        cut.WaitForAssertion(() => Cards(cut).Count.ShouldBe(4));
+        Names(cut)[0].ShouldNotBe(before[0]);
+    }
 }

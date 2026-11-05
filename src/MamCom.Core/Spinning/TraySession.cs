@@ -21,7 +21,16 @@ public sealed record QuickFilters(bool Short, bool NoRedMeat, bool LowFat)
 /// <param name="ViewIndex">Which entry of <paramref name="History"/> is on the screen; 0 is the newest.</param>
 /// <param name="SpinsSinceConfirm">Spins since the last tray was confirmed (or since the session began).</param>
 /// <param name="ConfirmedOn">The day the tray on the screen was confirmed, or null while it is still being chosen.</param>
-public sealed record TraySession(SpinHistory History, int ViewIndex, int SpinsSinceConfirm, QuickFilters Filters, DateOnly? ConfirmedOn)
+/// <param name="SizeToday">The size "Thêm món" or "Bớt món" gave the tray of <see cref="SizeDate"/> (ADR-034); later spins of that day keep it.</param>
+/// <param name="SizeDate">The day <see cref="SizeToday"/> is for; on another day the household's own size counts again.</param>
+public sealed record TraySession(
+    SpinHistory History,
+    int ViewIndex,
+    int SpinsSinceConfirm,
+    QuickFilters Filters,
+    DateOnly? ConfirmedOn,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] TraySize? SizeToday = null,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] DateOnly? SizeDate = null)
 {
     public static TraySession Empty { get; } = new(SpinHistory.Empty, 0, 0, QuickFilters.None, null);
 

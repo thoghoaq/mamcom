@@ -44,7 +44,8 @@ public sealed class MealSpinner
 
     /// <summary>
     /// Fills every slot that is not locked. The slots are soup, main, vegetable, and a second main when the household
-    /// needs at least <see cref="SpinnerConfig.SecondMainMinBaseServings"/> base servings. Locks are matched from
+    /// needs at least <see cref="SpinnerConfig.SecondMainMinBaseServings"/> base servings, unless <see cref="SpinContext.Size"/>
+    /// asks for two (soup and main), three or four dishes (ADR-034). Locks are matched from
     /// <paramref name="current"/> by dish kind and position; a locked dish that is no longer in the catalog is drawn again.
     /// </summary>
     /// <exception cref="InvalidOperationException">A dish uses an ingredient that is not in the ingredient list.</exception>
@@ -54,7 +55,7 @@ public sealed class MealSpinner
         ArgumentNullException.ThrowIfNull(context);
 
         var state = new SpinState(this, context);
-        var layout = LayoutFor(_portions.Calculate(context.Household).BaseServings);
+        var layout = LayoutFor(context.Size, _portions.Calculate(context.Household).BaseServings);
         var seen = new Dictionary<DishSlot, int>();
 
         var plan = layout.Select(kind =>
@@ -123,11 +124,21 @@ public sealed class MealSpinner
         return state.BaseWeight(dish) * state.SeasonRegionFactor(dish);
     }
 
-    // Servings are summed in member order, so exactly 5 can come out as 4.999999999999999; round off that noise.
-    private DishSlot[] LayoutFor(double baseServings) =>
-        Math.Round(baseServings, 9) >= _config.SecondMainMinBaseServings
-            ? [DishSlot.Soup, DishSlot.Main, DishSlot.Main, DishSlot.Vegetable]
-            : [DishSlot.Soup, DishSlot.Main, DishSlot.Vegetable];
+    /// <summary>The kinds of dish of a tray of this size, in tray order.</summary>
+    public static IReadOnlyList<DishSlot> Layout(TraySize size) => size switch
+    {
+        TraySize.Two => [DishSlot.Soup, DishSlot.Main],
+        TraySize.Four => [DishSlot.Soup, DishSlot.Main, DishSlot.Main, DishSlot.Vegetable],
+        _ => [DishSlot.Soup, DishSlot.Main, DishSlot.Vegetable],
+    };
+
+    /// <summary>The size an automatic tray has for a household of these base servings.</summary>
+    public TraySize AutoSize(double baseServings) =>
+        // Servings are summed in member order, so exactly 5 can come out as 4.999999999999999; round off that noise.
+        Math.Round(baseServings, 9) >= _config.SecondMainMinBaseServings ? TraySize.Four : TraySize.Three;
+
+    private IReadOnlyList<DishSlot> LayoutFor(TraySize size, double baseServings) =>
+        Layout(size == TraySize.Auto ? AutoSize(baseServings) : size);
 
     private SpinResult Run(SpinState state, SlotPlan[] plan)
     {

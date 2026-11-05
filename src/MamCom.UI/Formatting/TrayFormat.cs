@@ -73,5 +73,8 @@ public static class TrayFormat
         day.Day,
         day.Month);
 
+    /// <summary>"3 món": how many dishes the tray has besides the rice.</summary>
+    public static string DishCount(int count) => string.Format(CultureInfo.InvariantCulture, Strings.Tray_DishCountFormat, count);
+
     public static string Items(int count) => string.Format(CultureInfo.InvariantCulture, Strings.Tray_ItemsFormat, count);
 }

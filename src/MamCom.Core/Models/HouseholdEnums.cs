@@ -31,6 +31,16 @@ public enum BowlSize
     [JsonStringEnumMemberName("large")] Large,
 }
 
+/// <summary>How many dishes the tray has besides the rice (ADR-034). Auto: three, and a second main for a household of five servings or more.</summary>
+[JsonConverter(typeof(StrictStringEnumConverter<TraySize>))]
+public enum TraySize
+{
+    [JsonStringEnumMemberName("auto")] Auto,
+    [JsonStringEnumMemberName("two")] Two,
+    [JsonStringEnumMemberName("three")] Three,
+    [JsonStringEnumMemberName("four")] Four,
+}
+
 [JsonConverter(typeof(StrictStringEnumConverter<Region>))]
 public enum Region
 {

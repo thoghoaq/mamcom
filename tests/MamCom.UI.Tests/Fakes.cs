@@ -118,11 +118,19 @@ internal sealed class FakeTrayStore : ITrayStore
 
     public ValueTask<TraySession?> LoadAsync() => ValueTask.FromResult(Saved);
 
-    public ValueTask<bool> SaveAsync(TraySession session)
+    /// <summary>When set, saving gives the screen a chance to draw in the middle, as the browser's storage does.</summary>
+    public bool Yields { get; set; }
+
+    public async ValueTask<bool> SaveAsync(TraySession session)
     {
         Saves++;
         Saved = session;
-        return ValueTask.FromResult(true);
+        if (Yields)
+        {
+            await Task.Yield();
+        }
+
+        return true;
     }
 }
 

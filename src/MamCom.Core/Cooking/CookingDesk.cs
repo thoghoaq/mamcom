@@ -98,6 +98,7 @@ public sealed class CookingDesk
         var dishesById = dishes.GroupBy(dish => dish.Id, StringComparer.Ordinal).ToDictionary(group => group.Key, group => group.First(), StringComparer.Ordinal);
         var scaledByDish = new Dictionary<string, IReadOnlyDictionary<string, ScaledIngredient>>(StringComparer.Ordinal);
         var named = new HashSet<(string DishId, string IngredientId)>();
+        var slots = dishes.Select(dish => dish.Slot).ToArray();
         var steps = new List<CookingStep>();
 
         foreach (var planStep in plan.Steps)
@@ -111,7 +112,7 @@ public sealed class CookingDesk
             var dish = dishesById[planStep.DishId];
             if (!scaledByDish.TryGetValue(dish.Id, out var scaled))
             {
-                scaled = _scaler.ScaleDish(dish, ingredients, household.Region, portions.ServingsFor(dish.Slot))
+                scaled = _scaler.ScaleDish(dish, ingredients, household.Region, portions.ServingsFor(dish.Slot) * TrayShares.For(dish.Slot, slots, _portionConfig.TrayShares))
                     .GroupBy(line => line.IngredientId, StringComparer.Ordinal)
                     .ToDictionary(group => group.Key, group => group.First(), StringComparer.Ordinal);
                 scaledByDish[dish.Id] = scaled;

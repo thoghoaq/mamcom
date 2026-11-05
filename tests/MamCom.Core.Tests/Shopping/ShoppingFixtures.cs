@@ -10,7 +10,8 @@ namespace MamCom.Core.Tests.Shopping;
 /// </summary>
 internal static class ShoppingFixtures
 {
-    public static readonly PortionConfig PortionSettings = PortionConfig.Parse(TestFiles.Config("portion-defaults.json"));
+    // Without the shares of ADR-034: the shopping tests sum the dishes of made-up trays; TrayShareTests share them out.
+    public static readonly PortionConfig PortionSettings = PortionConfig.Parse(TestFiles.Config("portion-defaults.json")) with { TrayShares = null };
 
     public static MarketUnit Unit(string display, double gramsPerUnit, double step = 1, bool approx = false) =>
         new(display, gramsPerUnit, step, approx);
