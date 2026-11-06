@@ -3,11 +3,15 @@
 @using MamCom.Core.Spinning
 @using MamCom.UI.Formatting
 
-@* One dish of the tray (SPEC §8.1-2): its picture, what kind it is, how long it takes, its energy, a lock and a swap. A swipe along the card swaps it too. *@
+@* One dish of the tray (SPEC §8.1-2, ADR-038): its picture, what kind it is, how long it takes, its energy. It is kept by a tap on its plate
+   on the tray; a swipe along the card swaps it. *@
 <li class="@CssClass" @onpointerdown="PointerDown" @onpointerup="PointerUp" @onpointercancel="PointerCancel">
     <DishPicture Dish="Dish" Compact="true" />
     <div class="dish-card__body">
-        <p class="dish-card__slot @SlotClass">@TrayFormat.Slot(Dish.Slot)</p>
+        <p class="dish-card__slot @SlotClass">@TrayFormat.Slot(Dish.Slot)@if (IsLocked)
+            {
+                <span class="dish-card__kept"><Icon Name="lock" />@Strings.Tray_Kept</span>
+            }</p>
         <h2 class="dish-card__name"><a class="dish-card__link" href="@Routes.Dish(Dish.Id)" draggable="false">@Dish.Name</a></h2>
         <p class="dish-card__facts">
             <span class="dish-card__fact"><Icon Name="clock" />@TrayFormat.Minutes(Facts.Minutes)</span>
@@ -17,14 +21,6 @@
         {
             <p class="dish-card__aside">@Strings.Tray_SpicyAside</p>
         }
-    </div>
-    <div class="dish-card__actions">
-        <button type="button" class="button button--quiet button--icon dish-card__lock" aria-pressed="@(IsLocked ? "true" : "false")" aria-label="@string.Format(CultureInfo.InvariantCulture, Strings.Tray_LockFormat, Dish.Name)" disabled="@Disabled" @onclick="() => OnToggleLock.InvokeAsync()">
-            <Icon Name="@(IsLocked ? "lock" : "lock-open")" />
-        </button>
-        <button type="button" class="button button--quiet button--icon dish-card__swap" aria-label="@string.Format(CultureInfo.InvariantCulture, Strings.Tray_SwapFormat, Dish.Name)" disabled="@(Disabled || IsLocked)" @onclick="() => OnSwap.InvokeAsync()">
-            <Icon Name="refresh" />
-        </button>
     </div>
 </li>
 
@@ -59,8 +55,6 @@
     [Parameter]
     public bool ShowSpicyNote { get; set; }
 
-    [Parameter]
-    public EventCallback OnToggleLock { get; set; }
 
     [Parameter]
     public EventCallback OnSwap { get; set; }

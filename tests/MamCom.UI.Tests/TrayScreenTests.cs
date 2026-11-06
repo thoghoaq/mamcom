@@ -65,9 +65,15 @@ public class TrayScreenTests : BunitContext
 
     private static async Task Spin(IRenderedComponent<TrayScreen> cut) => await SpinButton(cut).ClickAsync(new());
 
-    private static IElement Lock(IRenderedComponent<TrayScreen> cut, int card) => Cards(cut)[card].QuerySelector(".dish-card__lock")!;
+    /// <summary>The plate of a dish on the tray: a tap keeps the dish or lets it go (ADR-038).</summary>
+    private static IElement Lock(IRenderedComponent<TrayScreen> cut, int card) => cut.FindAll(".mam__plate")[card];
 
-    private static IElement Swap(IRenderedComponent<TrayScreen> cut, int card) => Cards(cut)[card].QuerySelector(".dish-card__swap")!;
+    /// <summary>A swipe along the card of a dish, which swaps it.</summary>
+    private static void Swap(IRenderedComponent<TrayScreen> cut, int card)
+    {
+        Cards(cut)[card].PointerDown(new PointerEventArgs { ClientX = 260, ClientY = 40 });
+        Cards(cut)[card].PointerUp(new PointerEventArgs { ClientX = 120, ClientY = 44 });
+    }
 
     private static MealTray TrayOf(params (DishSlot Slot, string Id, bool Locked)[] slots) =>
         new(Today, [.. slots.Select(s => new SlotResult(s.Slot, s.Id, s.Locked))]);
@@ -169,8 +175,8 @@ public class TrayScreenTests : BunitContext
 
         var again = Show();
 
-        again.Find(".notice--ok p").TextContent.ShouldBe("Đã chốt mâm hôm nay.");
-        again.FindAll(".notice--ok button").Select(b => b.TextContent.Trim()).ShouldBe(["Chọn mâm khác"]);
+        again.Find(".done__line").TextContent.ShouldBe("Đã chốt mâm hôm nay.");
+        again.FindAll(".done__more button").Select(b => b.TextContent.Trim()).ShouldBe(["Quay mâm khác"]);
     }
 
     [Fact]
@@ -203,7 +209,8 @@ public class TrayScreenTests : BunitContext
         SpinButton(cut).TextContent.Trim().ShouldBe("Đang quay…");
         SpinButton(cut).HasAttribute("disabled").ShouldBeTrue();
         ConfirmButton(cut).HasAttribute("disabled").ShouldBeTrue();
-        Cards(cut).ShouldAllBe(c => c.QuerySelector(".dish-card__lock")!.HasAttribute("disabled") && c.QuerySelector(".dish-card__swap")!.HasAttribute("disabled"));
+        cut.FindAll(".mam__plate").ShouldAllBe(p => p.HasAttribute("disabled"));
+        cut.Find(".mam").ClassList.ShouldContain("mam--rolling");
         Names(cut).ShouldBe(before);   // the old tray is still the one shown
 
         _pacer.Gate.SetResult();
@@ -211,7 +218,7 @@ public class TrayScreenTests : BunitContext
 
         Cards(cut).ShouldAllBe(c => !c.ClassList.Contains("dish-card--rolling"));
         cut.Find(".tray").GetAttribute("aria-busy").ShouldBe("false");
-        SpinButton(cut).TextContent.Trim().ShouldBe("Quay mâm");
+        SpinButton(cut).TextContent.Trim().ShouldBe("Quay!");
         Names(cut).ShouldNotBe(before);
         _device.Vibrations.ShouldBe([TrayScreen.VibrationMilliseconds]);
         _pacer.Waits.ShouldBe(1);
@@ -293,7 +300,7 @@ public class TrayScreenTests : BunitContext
 
         ConfirmButton(cut).Click();
 
-        cut.Find(".notice--ok").ShouldNotBeNull();
+        cut.Find(".done").ShouldNotBeNull();
         _trays.Saved!.IsConfirmed.ShouldBeTrue();
         _eaten.Saved.LastEatenOn.Keys.Order(StringComparer.Ordinal).ShouldBe(_trays.Saved.Viewed!.Tray.Slots.Select(s => s.DishId).Order(StringComparer.Ordinal));
     }
@@ -305,7 +312,7 @@ public class TrayScreenTests : BunitContext
         await Spin(cut);
         Lock(cut, 1).Click();
         Lock(cut, 1).Click();   // unlocking is not counted
-        Swap(cut, 0).Click();
+        Swap(cut, 0);
         ConfirmButton(cut).Click();
 
         Usage.Kinds.ShouldBe([UsageEventKind.AppOpened, UsageEventKind.Spun, UsageEventKind.Locked, UsageEventKind.Swapped, UsageEventKind.Confirmed]);
@@ -318,11 +325,14 @@ public class TrayScreenTests : BunitContext
 
         Lock(cut, 0).Click();
         _trays.Saved!.Viewed!.Tray.Slots[0].IsLocked.ShouldBeTrue();
-        Swap(cut, 0).HasAttribute("disabled").ShouldBeTrue();
+        Lock(cut, 0).GetAttribute("aria-pressed").ShouldBe("true");
+        Cards(cut)[0].QuerySelector(".dish-card__kept").ShouldNotBeNull();
+        cut.Find(".tray-hint").TextContent.ShouldStartWith("Món có ổ khoá vàng");
 
         Lock(cut, 0).Click();
         _trays.Saved!.Viewed!.Tray.Slots[0].IsLocked.ShouldBeFalse();
-        Swap(cut, 0).HasAttribute("disabled").ShouldBeFalse();
+        Lock(cut, 0).GetAttribute("aria-pressed").ShouldBe("false");
+        Cards(cut)[0].QuerySelector(".dish-card__kept").ShouldBeNull();
     }
 
     [Fact]
@@ -331,7 +341,7 @@ public class TrayScreenTests : BunitContext
         var cut = Show();
         var before = Names(cut);
 
-        Swap(cut, 2).Click();
+        Swap(cut, 2);
 
         var after = Names(cut);
         after[0].ShouldBe(before[0]);
@@ -361,19 +371,6 @@ public class TrayScreenTests : BunitContext
         await Cards(cut)[1].TriggerEventAsync("onpointerup", new PointerEventArgs { ClientX = 120, ClientY = 44 });
 
         Names(cut)[1].ShouldBe(locked);
-    }
-
-    [Fact]
-    public async Task A_swap_asked_for_on_a_card_that_cannot_be_swapped_is_ignored()
-    {
-        var cut = Show();
-        Lock(cut, 0).Click();
-        var before = Names(cut);
-
-        await Swap(cut, 0).ClickAsync(new());   // the browser keeps a disabled button quiet; the screen does not rely on that
-
-        Names(cut).ShouldBe(before);
-        _trays.Saved!.History.Items.Count.ShouldBe(1);
     }
 
     // ---- the summary ------------------------------------------------------------------------------------------------------
@@ -493,11 +490,13 @@ public class TrayScreenTests : BunitContext
 
         ConfirmButton(cut).Click();
 
-        cut.Find(".notice--ok p").TextContent.ShouldBe("Đã chốt mâm hôm nay.");
-        cut.Find(".notice--ok p").GetAttribute("role").ShouldBe("status");
-        cut.FindAll(".notice--ok button").Select(b => b.TextContent.Trim()).ShouldBe(["Chọn mâm khác"]);
-        cut.FindAll(".app-actions button").ShouldBeEmpty();   // the bar leads on: to the list and to the cooking
-        Cards(cut).ShouldAllBe(c => c.QuerySelector(".dish-card__lock")!.HasAttribute("disabled") && c.QuerySelector(".dish-card__swap")!.HasAttribute("disabled"));
+        cut.Find(".done__title").TextContent.ShouldBe("Ngon rồi!");
+        cut.Find(".done__title").GetAttribute("role").ShouldBe("status");
+        cut.Find(".done__line").TextContent.ShouldBe("Đã chốt mâm hôm nay.");
+        cut.FindAll(".done__more button").Select(b => b.TextContent.Trim()).ShouldBe(["Quay mâm khác"]);
+        cut.FindAll(".app-actions").ShouldBeEmpty();   // the panel leads on: to the list and to the cooking
+        cut.FindAll(".mam__plate").ShouldAllBe(p => p.HasAttribute("disabled"));
+        cut.FindAll(".confetti__piece").Count.ShouldBe(TrayScreen.ConfettiPieces);
         cut.FindAll(".tray-hint").ShouldBeEmpty();
         _eaten.Saves.ShouldBe(1);
         _eaten.Saved.LastEatenOn.Count.ShouldBe(3);
@@ -505,20 +504,22 @@ public class TrayScreenTests : BunitContext
     }
 
     [Fact]
-    public void Confirming_opens_the_shopping_list_and_the_way_back_finds_the_tray_confirmed_with_a_way_to_the_list_again()
+    public void Confirming_stays_on_the_tray_with_two_ways_on_and_the_way_back_finds_it_confirmed_without_the_confetti()
     {
         var cut = Show();
         Navigation.History.ShouldBeEmpty();
 
         ConfirmButton(cut).Click();
 
-        Navigation.History.ShouldHaveSingleItem().Uri.ShouldBe(Routes.Shopping);
-        Routes.Shopping.ShouldBe("di-cho");
+        Navigation.History.ShouldBeEmpty();
+        var links = cut.FindAll(".done__card");
+        links.Select(l => (l.GetAttribute("href"), l.QuerySelector(".done__card-title")!.TextContent)).ShouldBe([(Routes.Shopping, "Đi chợ"), (Routes.Cooking, "Nấu ngay")]);
+        links.ShouldAllBe(l => l.QuerySelector(".done__card-line") != null);
+        links[1].ClassList.ShouldContain("done__card--cook");   // cooking is what comes next
+
         var again = Show();
-        again.Find(".notice--ok p").TextContent.ShouldBe("Đã chốt mâm hôm nay.");
-        var links = again.FindAll(".app-actions a");
-        links.Select(l => (l.GetAttribute("href"), l.TextContent.Trim())).ShouldBe([(Routes.Shopping, "Đi chợ"), (Routes.Cooking, "Nấu")]);
-        links[1].ClassList.ShouldContain("button--primary");   // cooking is what comes next
+        again.Find(".done__line").TextContent.ShouldBe("Đã chốt mâm hôm nay.");
+        again.FindAll(".confetti").ShouldBeEmpty();
     }
 
     [Fact]
@@ -527,7 +528,7 @@ public class TrayScreenTests : BunitContext
         var cut = Show();
         await Spin(cut);
 
-        cut.FindAll(".app-actions a").ShouldBeEmpty();
+        cut.FindAll(".done").ShouldBeEmpty();
         Navigation.History.ShouldBeEmpty();
     }
 
@@ -538,10 +539,11 @@ public class TrayScreenTests : BunitContext
         var names = Names(cut);
         ConfirmButton(cut).Click();
 
-        cut.Find(".notice--ok button").Click();
+        cut.Find(".done__more button").Click();
 
-        cut.FindAll(".notice--ok").ShouldBeEmpty();
-        cut.FindAll(".app-actions button").Select(b => b.TextContent.Trim()).ShouldBe(["Quay mâm", "Chốt mâm"]);
+        cut.FindAll(".done").ShouldBeEmpty();
+        cut.FindAll(".confetti").ShouldBeEmpty();
+        cut.FindAll(".app-actions button").Select(b => b.TextContent.Trim()).ShouldBe(["Quay!", "Chốt!"]);
         Names(cut).ShouldBe(names);
         Lock(cut, 0).HasAttribute("disabled").ShouldBeFalse();
         _eaten.Saved.LastEatenOn.Count.ShouldBe(3);
@@ -554,7 +556,7 @@ public class TrayScreenTests : BunitContext
         await Spin(cut);
         ConfirmButton(cut).Click();
         var eaten = _eaten.Saved.LastEatenOn.Keys.ToHashSet();
-        cut.Find(".notice--ok button").Click();
+        cut.Find(".done__more button").Click();
 
         for (var i = 0; i < 4; i++)
         {
@@ -833,7 +835,7 @@ public class TrayScreenTests : BunitContext
     [Fact]
     public void The_swipe_is_explained_while_the_tray_can_still_be_changed()
     {
-        Show().Find(".tray-hint").TextContent.ShouldBe("Khoá món muốn giữ · vuốt ngang một món để đổi riêng món đó");
+        Show().Find(".tray-hint").TextContent.ShouldBe("Chạm một đĩa để giữ món · vuốt ngang một món để đổi riêng món đó");
     }
 
     // ---- what the household said about dishes ------------------------------------------------------------------------------
@@ -875,7 +877,7 @@ public class TrayScreenTests : BunitContext
 
         for (var i = 0; i < 10; i++)
         {
-            await Swap(cut, 0).ClickAsync(new());
+            Swap(cut, 0);
             Names(cut)[0].ShouldBe("Canh chua cá lóc");
         }
     }
@@ -885,7 +887,7 @@ public class TrayScreenTests : BunitContext
     {
         var cut = Show();
 
-        cut.FindAll(".notice--ok").ShouldBeEmpty();
+        cut.FindAll(".done").ShouldBeEmpty();
         cut.FindAll("a").Select(a => a.GetAttribute("href")).ShouldNotContain(Routes.AfterMeal);
     }
 
@@ -896,30 +898,9 @@ public class TrayScreenTests : BunitContext
 
         ConfirmButton(cut).Click();
 
-        var actions = cut.Find(".notice--ok .notice__actions");
-        actions.Children.Select(e => (e.TagName, e.TextContent.Words())).ShouldBe([("A", "Chấm bữa này"), ("BUTTON", "Chọn mâm khác")]);
+        var actions = cut.Find(".done__more");
+        actions.Children.Select(e => (e.TagName, e.TextContent.Words())).ShouldBe([("A", "Chấm bữa này"), ("BUTTON", "Quay mâm khác")]);
         actions.QuerySelector("a")!.GetAttribute("href").ShouldBe(Routes.AfterMeal);
-        actions.QuerySelector("button")!.ClassList.ShouldContain("notice__action");
-    }
-
-    [Fact]
-    public void A_dish_more_and_a_dish_less_change_the_tray_of_today_between_two_and_four()
-    {
-        var cut = Show();
-        IElement Button(string words) => cut.FindAll(".tray-size button").Single(b => b.TextContent.Trim() == words);
-
-        cut.Find(".tray-size__count").TextContent.ShouldBe("3 món");
-        Button("Thêm món").Click();
-        Cards(cut).Count.ShouldBe(4);
-        cut.Find(".tray-size__count").TextContent.ShouldBe("4 món");
-        Button("Thêm món").HasAttribute("disabled").ShouldBeTrue();
-        cut.FindAll(".mam__plate").Count.ShouldBe(4);
-
-        Button("Bớt món").Click();
-        Button("Bớt món").Click();
-        Cards(cut).Count.ShouldBe(2);
-        Button("Bớt món").HasAttribute("disabled").ShouldBeTrue();
-        _trays.Saved!.SizeToday.ShouldBe(TraySize.Two);
     }
 
     [Fact]
@@ -930,28 +911,28 @@ public class TrayScreenTests : BunitContext
         await cut.InvokeAsync(() => { });
         var before = Names(cut);
 
-        await Swap(cut, 0).ClickAsync(new());
-        cut.FindAll(".tray-size button").Single(b => b.TextContent.Trim() == "Thêm món").Click();
+        await Cards(cut)[0].TriggerEventAsync("onpointerdown", new PointerEventArgs { ClientX = 260, ClientY = 40 });
+        await Cards(cut)[0].TriggerEventAsync("onpointerup", new PointerEventArgs { ClientX = 120, ClientY = 44 });
+        cut.WaitForAssertion(() => Names(cut)[0].ShouldNotBe(before[0]));
+        await Lock(cut, 1).ClickAsync(new());
         await Spin(cut);
 
-        cut.WaitForAssertion(() => Cards(cut).Count.ShouldBe(4));
-        Names(cut)[0].ShouldNotBe(before[0]);
+        cut.WaitForAssertion(() => Cards(cut)[1].QuerySelector(".dish-card__kept").ShouldNotBeNull());
     }
 
     [Fact]
-    public async Task The_meal_of_today_is_chosen_above_the_tray_and_a_bowl_has_no_dish_more_or_less()
+    public async Task The_meal_of_today_is_chosen_above_the_tray_with_a_tile_each()
     {
         var cut = Show();
         var chips = cut.FindAll(".tray-meal [role=radio]");
 
         chips.Select(c => c.TextContent.Trim()).ShouldBe(["Mâm cơm", "Một tô", "Lẩu", "Bữa sáng"]);
         cut.Find(".tray-meal [aria-checked=true]").TextContent.Trim().ShouldBe("Mâm cơm");
-        cut.FindAll(".tray-size").Count.ShouldBe(1);
+        chips.ShouldAllBe(c => c.ClassList.Contains("meal-tile") && c.QuerySelector("svg") != null);
 
         await chips[1].ClickAsync(new());
 
         cut.WaitForAssertion(() => cut.Find(".tray-meal [aria-checked=true]").TextContent.Trim().ShouldBe("Một tô"));
         _trays.Saved!.MealToday.ShouldBe(MealKind.Bowl);
-        cut.FindAll(".tray-size").ShouldBeEmpty();
     }
 }

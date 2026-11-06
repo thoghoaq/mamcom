@@ -67,6 +67,15 @@
     --color-macro-fat: #a56a00;
     --color-macro-carb: #1f5a85;
 
+    /* The game (ADR-038): the ink of outlines and hard shadows, the yellow "Quay!", the green "Chốt!", the dots of the table, the glow. */
+    --color-ink: #2b2118;
+    --color-spin: #ffc93c;
+    --color-on-spin: #2b2118;
+    --color-go: #2d7d3a;
+    --color-on-go: #ffffff;
+    --color-dot: #f1dcb4;
+    --color-glow: #ffd970;
+
     /* The tray: a wooden rim, the wood, and the bowl of rice in the middle. */
     --color-tray-rim: #cfa978;
     --color-tray-wood: #e9d2ac;
@@ -131,6 +140,14 @@
         --color-macro-fat: #f0c565;
         --color-macro-carb: #93c4ee;
 
+        --color-ink: #0b0807;
+        --color-spin: #f0b429;
+        --color-on-spin: #2b2118;
+        --color-go: #3fa34d;
+        --color-on-go: #10210f;
+        --color-dot: #2a221b;
+        --color-glow: #6b4e12;
+
         --color-tray-rim: #6b5238;
         --color-tray-wood: #4a3a2a;
         --color-tray-rice: #3a3027;
@@ -194,6 +211,14 @@
     --color-macro-fat: #f0c565;
     --color-macro-carb: #93c4ee;
 
+    --color-ink: #0b0807;
+    --color-spin: #f0b429;
+    --color-on-spin: #2b2118;
+    --color-go: #3fa34d;
+    --color-on-go: #10210f;
+    --color-dot: #2a221b;
+    --color-glow: #6b4e12;
+
     --color-tray-rim: #6b5238;
     --color-tray-wood: #4a3a2a;
     --color-tray-rice: #3a3027;
@@ -226,6 +251,10 @@
     --radius: 0.75rem;
     --radius-small: 0.5rem;
     --radius-large: 1rem;
+    --radius-xl: 1.5rem;
+    --outline: 2.5px;
+    --shadow-pop: 0 4px 0 var(--color-ink);
+    --shadow-pop-big: 0 6px 0 var(--color-ink);
     --tap-size: 3rem;
     --content-width: 64rem;
 

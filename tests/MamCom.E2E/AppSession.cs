@@ -96,10 +96,10 @@ public sealed class AppSession : IAsyncDisposable
         await Page.Locator(".tray[aria-busy=false]").WaitForAsync();
     }
 
-    /// <summary>"Quay mâm": taps it and waits for the dice to stop. The label says "Đang quay…" while they roll, so the wait cannot end before the spin has begun.</summary>
+    /// <summary>"Quay!": taps it and waits for the dice to stop. The label says "Đang quay…" while they roll, so the wait cannot end before the spin has begun.</summary>
     public async Task SpinAsync()
     {
-        await Button("Quay mâm").ClickAsync();
+        await Button("Quay!").ClickAsync();
         var rolling = Page.GetByRole(AriaRole.Button, new PageGetByRoleOptions { Name = "Đang quay…" });
         await rolling.WaitForAsync();
         await rolling.WaitForAsync(new LocatorWaitForOptions { State = WaitForSelectorState.Detached });
@@ -114,10 +114,12 @@ public sealed class AppSession : IAsyncDisposable
         await WaitForTrayAsync();
     }
 
-    /// <summary>The tray on the screen is confirmed: the shopping list opens.</summary>
+    /// <summary>The tray on the screen is confirmed ("Chốt!"), then "Đi chợ" on the panel that comes up opens the shopping list (ADR-038).</summary>
     public async Task ConfirmTrayAsync()
     {
-        await Button("Chốt mâm").ClickAsync();
+        await Button("Chốt!").ClickAsync();
+        await Page.Locator(".done").WaitForAsync();
+        await Page.Locator(".done__card").First.ClickAsync();
         await WaitForPathAsync("di-cho");
         await Heading("Đi chợ").WaitForAsync();
     }

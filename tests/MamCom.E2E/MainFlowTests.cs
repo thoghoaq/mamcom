@@ -31,7 +31,7 @@ public class MainFlowTests(SiteFixture site)
 
         // Spin, lock the middle dish, spin again: the locked one stays.
         var lockedName = (await app.DishNamesAsync())[1];
-        var lockButton = app.Page.Locator(".dish-card__lock").Nth(1);
+        var lockButton = app.Page.Locator(".mam__plate").Nth(1);
         await lockButton.ClickAsync();
         await Assertions.Expect(lockButton).ToHaveAttributeAsync("aria-pressed", "true");
         for (var spin = 0; spin < 3; spin++)
@@ -40,7 +40,7 @@ public class MainFlowTests(SiteFixture site)
             (await app.DishNamesAsync())[1].ShouldBe(lockedName);
         }
 
-        // Confirm: the shopping list of this tray opens, a tick is kept across a reload.
+        // Confirm, then on to the shopping list of this tray, a tick is kept across a reload.
         await app.ConfirmTrayAsync();
         var tick = app.Page.Locator(".shop-item__check").First;
         await tick.CheckAsync();
@@ -87,7 +87,7 @@ public class MainFlowTests(SiteFixture site)
     {
         await using var app = await site.OpenAsync();
         await app.StartWithTwoAdultsAsync();
-        await app.Page.Locator(".dish-card__lock").Nth(0).ClickAsync();
+        await app.Page.Locator(".mam__plate").Nth(0).ClickAsync();
         await app.SpinAsync();
         var names = await app.DishNamesAsync();
 
@@ -95,7 +95,7 @@ public class MainFlowTests(SiteFixture site)
         await app.WaitForTrayAsync();
 
         (await app.DishNamesAsync()).ShouldBe(names);
-        await Assertions.Expect(app.Page.Locator(".dish-card__lock").Nth(0)).ToHaveAttributeAsync("aria-pressed", "true");
+        await Assertions.Expect(app.Page.Locator(".mam__plate").Nth(0)).ToHaveAttributeAsync("aria-pressed", "true");
     }
 
     [Fact]

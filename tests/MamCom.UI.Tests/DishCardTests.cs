@@ -16,7 +16,6 @@ public class DishCardTests : BunitContext
 
     private static Dish Seed(string id) => TestConfig.SeedBundle.Dishes.Single(d => d.Id == id);
 
-    private int _locks;
     private int _swaps;
 
     private IRenderedComponent<DishCard> Show(Dish? dish = null, DishFacts? facts = null, bool locked = false, bool rolling = false, bool disabled = false, bool spicy = false)
@@ -29,7 +28,6 @@ public class DishCardTests : BunitContext
             .Add(c => c.Rolling, rolling)
             .Add(c => c.Disabled, disabled)
             .Add(c => c.ShowSpicyNote, spicy)
-            .Add(c => c.OnToggleLock, EventCallback.Factory.Create(this, () => _locks++))
             .Add(c => c.OnSwap, EventCallback.Factory.Create(this, () => _swaps++)));
     }
 
@@ -194,79 +192,24 @@ public class DishCardTests : BunitContext
         cut.Find("img").GetAttribute("src").ShouldBe("images/other-200.webp");
     }
 
-    // ---- the lock ---------------------------------------------------------------------------------------------------------
+    // ---- a kept dish -------------------------------------------------------------------------------------------------------
 
     [Fact]
-    public void An_unlocked_card_offers_to_lock_and_shows_an_open_lock()
+    public void A_kept_card_says_so_beside_its_kind_and_has_its_outline_and_a_card_not_kept_does_not()
     {
-        var cut = Show();
+        var kept = Show(locked: true);
+        kept.Find(".dish-card__kept").TextContent.Trim().ShouldBe("Đang giữ");
+        kept.Find("li").ClassList.ShouldContain("dish-card--locked");
 
-        var button = cut.Find(".dish-card__lock");
-        button.GetAttribute("aria-pressed").ShouldBe("false");
-        button.GetAttribute("aria-label").ShouldBe($"Khoá {Soup.Name}");
-        button.QuerySelector("use")!.GetAttribute("href")!.ShouldEndWith("#lock-open");
-        cut.Find("li").ClassList.ShouldNotContain("dish-card--locked");
+        var free = Show();
+        free.FindAll(".dish-card__kept").ShouldBeEmpty();
+        free.Find("li").ClassList.ShouldNotContain("dish-card--locked");
     }
 
     [Fact]
-    public void A_locked_card_says_so_by_the_state_of_its_button_the_picture_of_a_closed_lock_and_its_outline()
+    public void The_card_has_no_button_of_its_own_because_a_dish_is_kept_on_its_plate_and_swapped_by_a_swipe()
     {
-        var cut = Show(locked: true);
-
-        var button = cut.Find(".dish-card__lock");
-        button.GetAttribute("aria-pressed").ShouldBe("true");
-        button.QuerySelector("use")!.GetAttribute("href")!.ShouldEndWith("#lock");
-        cut.Find("li").ClassList.ShouldContain("dish-card--locked");
-    }
-
-    [Fact]
-    public void Tapping_the_lock_asks_to_lock_or_unlock_and_does_not_swap()
-    {
-        var cut = Show();
-
-        cut.Find(".dish-card__lock").Click();
-
-        _locks.ShouldBe(1);
-        _swaps.ShouldBe(0);
-    }
-
-    // ---- the swap ---------------------------------------------------------------------------------------------------------
-
-    [Fact]
-    public void Tapping_the_swap_asks_to_swap_the_dish()
-    {
-        var cut = Show();
-
-        cut.Find(".dish-card__swap").Click();
-
-        _swaps.ShouldBe(1);
-        cut.Find(".dish-card__swap").GetAttribute("aria-label").ShouldBe($"Đổi món {Soup.Name}");
-    }
-
-    [Fact]
-    public void A_locked_dish_cannot_be_swapped_and_a_disabled_card_cannot_be_changed_at_all()
-    {
-        var locked = Show(locked: true);
-        locked.Find(".dish-card__swap").HasAttribute("disabled").ShouldBeTrue();
-        locked.Find(".dish-card__lock").HasAttribute("disabled").ShouldBeFalse();   // it can be unlocked
-
-        var disabled = Show(disabled: true);
-        disabled.Find(".dish-card__swap").HasAttribute("disabled").ShouldBeTrue();
-        disabled.Find(".dish-card__lock").HasAttribute("disabled").ShouldBeTrue();
-
-        Show().Find(".dish-card__swap").HasAttribute("disabled").ShouldBeFalse();
-    }
-
-    [Fact]
-    public void The_buttons_are_plain_buttons_with_a_picture_only()
-    {
-        foreach (var button in Show().FindAll("button"))
-        {
-            button.GetAttribute("type").ShouldBe("button");
-            button.ClassList.ShouldContain("button--icon");
-            button.TextContent.Trim().ShouldBeEmpty();
-            button.GetAttribute("aria-label").ShouldNotBeNullOrWhiteSpace();
-        }
+        Show().FindAll("button").ShouldBeEmpty();
     }
 
     // ---- the swipe --------------------------------------------------------------------------------------------------------
@@ -367,17 +310,6 @@ public class DishCardTests : BunitContext
         await cut.Find("li").TriggerEventAsync("onpointerup", new PointerEventArgs { ClientX = 100, ClientY = 50 });   // a second release
 
         _swaps.ShouldBe(1);
-    }
-
-    [Fact]
-    public async Task Pressing_the_lock_button_and_letting_go_on_it_is_not_a_swipe()
-    {
-        var cut = Show();
-
-        await cut.Find(".dish-card__lock").TriggerEventAsync("onpointerdown", new PointerEventArgs { ClientX = 300, ClientY = 90 });
-        await cut.Find(".dish-card__lock").TriggerEventAsync("onpointerup", new PointerEventArgs { ClientX = 301, ClientY = 90 });
-
-        _swaps.ShouldBe(0);
     }
 
     // ---- while the dice roll ----------------------------------------------------------------------------------------------

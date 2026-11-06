@@ -27,28 +27,18 @@
 @if (_engine is not null && _session.Viewed is { } viewed)
 {
     var meal = _engine.Desk.MealOf(_session);
-    <div class="chips tray-meal" role="radiogroup" aria-label="@Strings.Tray_MealLabel">
+    <div class="tray-meal" role="radiogroup" aria-label="@Strings.Tray_MealLabel">
         @foreach (var kind in Enum.GetValues<MealKind>())
         {
             var current = kind;
-            <button type="button" class="chip" role="radio" aria-checked="@(meal == kind ? "true" : "false")" disabled="@(_busy || _session.IsConfirmed)" @onclick="() => ChooseMealAsync(current)">
-                @TrayFormat.Meal(kind)
+            <button type="button" class="meal-tile" role="radio" aria-checked="@(meal == kind ? "true" : "false")" disabled="@(_busy || _session.IsConfirmed)" @onclick="() => ChooseMealAsync(current)">
+                <Icon Name="@TrayFormat.MealIcon(kind)" />
+                <span class="meal-tile__label">@TrayFormat.Meal(kind)</span>
             </button>
         }
     </div>
 
     <p class="visually-hidden" role="status">@_announcement</p>
-
-    @if (_session.IsConfirmed)
-    {
-        <div class="notice notice--ok">
-            <p role="status">@Strings.Tray_Confirmed</p>
-            <div class="notice__actions">
-                <a class="button button--quiet" href="@Routes.AfterMeal">@Strings.Tray_RateMeal</a>
-                <button type="button" class="button button--quiet notice__action" @onclick="ReopenAsync">@Strings.Tray_Reopen</button>
-            </div>
-        </div>
-    }
 
     @if (_session.History.Items.Count > 1)
     {
@@ -71,7 +61,7 @@
     }
     else
     {
-        <TrayPlate Slots="@(viewed.Tray.Slots.Select(s => (s.Slot, s.IsLocked)).ToArray())" Rolling="_rolling" />
+        <TrayPlate Dishes="@Plates(viewed)" Reels="_reels" Rolling="_rolling" Disabled="@(_busy || _session.IsConfirmed)" OnToggle="ToggleLockAsync" />
 
         <ul class="tray" aria-label="@Strings.Tray_ListLabel" aria-busy="@(_rolling ? "true" : "false")">
             @for (var index = 0; index < viewed.Tray.Slots.Count; index++)
@@ -86,27 +76,13 @@
                           Rolling="_rolling"
                           Disabled="@(_busy || _session.IsConfirmed)"
                           ShowSpicyNote="@(_noSpicyAtTable && dish.Spicy == SpicyLevel.Optional)"
-                          OnToggleLock="() => ToggleLockAsync(slotIndex)"
                           OnSwap="() => SwapAsync(slotIndex)" />
             }
         </ul>
 
         @if (!_session.IsConfirmed)
         {
-            <p class="text-muted tray-hint">@Strings.Tray_SwipeHint</p>
-
-            @if (meal == MealKind.Tray)
-            {
-            <div class="tray-size" role="group" aria-label="@Strings.Tray_SizeLabel">
-                <button type="button" class="button button--quiet" disabled="@(_busy || !_engine.Desk.CanRemoveDish(_session))" @onclick="RemoveDishAsync">
-                    <Icon Name="minus" />@Strings.Tray_RemoveDish
-                </button>
-                <span class="tray-size__count">@TrayFormat.DishCount(viewed.Tray.Slots.Count)</span>
-                <button type="button" class="button button--quiet" disabled="@(_busy || !_engine.Desk.CanAddDish(_session))" @onclick="AddDishAsync">
-                    <Icon Name="plus" />@Strings.Tray_AddDish
-                </button>
-            </div>
-            }
+            <p class="text-muted tray-hint">@Hint(meal, viewed)</p>
         }
     }
 
@@ -120,22 +96,55 @@
         <QuickFilterBar Filters="_session.Filters" MaxMinutes="_engine.QuickFilters.MaxMinutes" Disabled="_busy" OnToggle="ToggleFilterAsync" />
     }
 
-    <div class="app-actions">
-        @if (_session.IsConfirmed)
+    @if (_session.IsConfirmed)
+    {
+        @if (_celebrate)
         {
-            <a class="button" href="@Routes.Shopping"><Icon Name="shopping-cart" />@Strings.Tray_Shopping</a>
-            <a class="button button--primary" href="@Routes.Cooking"><Icon Name="tools-kitchen-2" />@Strings.Tray_Cook</a>
+            <div class="confetti" aria-hidden="true">
+                @for (var piece = 0; piece < ConfettiPieces; piece++)
+                {
+                    <span class="@($"confetti__piece confetti__piece--{piece % 6}")" style="@ConfettiStyle(piece)"></span>
+                }
+            </div>
         }
-        else
-        {
-            <button type="button" class="button" disabled="@_busy" aria-busy="@(_rolling ? "true" : "false")" @onclick="() => SpinAsync(animate: true)">
+        <section class="done" aria-labelledby="done-title">
+            <p class="done__title" id="done-title" role="status">@Strings.Tray_Done</p>
+            <p class="done__line">@Strings.Tray_Confirmed</p>
+            <div class="done__cards">
+                <a class="done__card" href="@Routes.Shopping">
+                    <Icon Name="shopping-cart" />
+                    <span class="done__card-title">@Strings.Tray_Shopping</span>
+                    @if (_summary is not null)
+                    {
+                        <span class="done__card-line">@TrayFormat.Items(_summary.ItemsToBuy)</span>
+                    }
+                </a>
+                <a class="done__card done__card--cook" href="@Routes.Cooking">
+                    <Icon Name="hotpot" />
+                    <span class="done__card-title">@Strings.Tray_Cook</span>
+                    @if (_summary is not null)
+                    {
+                        <span class="done__card-line">@TrayFormat.Minutes(_summary.MealMinutes)</span>
+                    }
+                </a>
+            </div>
+            <div class="done__more">
+                <a class="button button--quiet" href="@Routes.AfterMeal">@Strings.Tray_RateMeal</a>
+                <button type="button" class="button button--quiet notice__action" @onclick="ReopenAsync">@Strings.Tray_Reopen</button>
+            </div>
+        </section>
+    }
+    else
+    {
+        <div class="app-actions">
+            <button type="button" class="button button--spin" disabled="@_busy" aria-busy="@(_rolling ? "true" : "false")" @onclick="() => SpinAsync(animate: true)">
                 <Icon Name="dice" />@(_rolling ? Strings.Tray_Spinning : Strings.Tray_Spin)
             </button>
-            <button type="button" class="button button--primary" disabled="@(_busy || viewed.Tray.Slots.Count == 0)" @onclick="ConfirmAsync">
+            <button type="button" class="button button--go" disabled="@(_busy || viewed.Tray.Slots.Count == 0)" @onclick="ConfirmAsync">
                 <Icon Name="check" />@Strings.Tray_Confirm
             </button>
-        }
-    </div>
+        </div>
+    }
 }
 
 @code {
@@ -153,6 +162,11 @@
     private bool _busy;
     private bool _rolling;
     private bool _noSpicyAtTable;
+    private bool _celebrate;
+    private IReadOnlyList<IReadOnlyList<string>> _reels = [];
+
+    /// <summary>How many pieces of confetti fall when the tray is confirmed.</summary>
+    public const int ConfettiPieces = 28;
 
     /// <summary>The household the tray is for; the gate hands it over once it knows there is one.</summary>
     [Parameter, EditorRequired]
@@ -291,31 +305,7 @@
         }
     }
 
-    private async Task AddDishAsync()
-    {
-        if (_busy || !_engine!.Desk.CanAddDish(_session))
-        {
-            return;
-        }
 
-        _session = _engine.Desk.AddDish(_session, Context());
-        await SaveSessionAsync();
-        Refresh();
-        Announce();
-    }
-
-    private async Task RemoveDishAsync()
-    {
-        if (_busy || !_engine!.Desk.CanRemoveDish(_session))
-        {
-            return;
-        }
-
-        _session = _engine.Desk.RemoveDish(_session);
-        await SaveSessionAsync();
-        Refresh();
-        Announce();
-    }
 
     private async Task PreviousAsync()
     {
@@ -342,11 +332,12 @@
         await SaveSessionAsync();
         await Usage.RecordAsync(UsageEventKind.Confirmed);
         Refresh();
-        Navigation.NavigateTo(Routes.Shopping);   // a confirmed tray is one to shop for (SPEC §8.1-2); the way back finds it confirmed
+        _celebrate = true;   // the confetti and the two cards say what comes next (ADR-038); the person chooses the list or the cooking
     }
 
     private async Task ReopenAsync()
     {
+        _celebrate = false;
         _session = _engine!.Desk.Reopen(_session);
         await SaveSessionAsync();
         Refresh();
@@ -374,8 +365,43 @@
     }
 
     /// <summary>Works out what the cards and the summary say for the tray on the screen.</summary>
+    private IReadOnlyList<TrayPlate.Plate> Plates(SpinResult viewed) =>
+        [.. viewed.Tray.Slots.Select(slot => new TrayPlate.Plate(slot.Slot, _engine!.DishesById[slot.DishId].Name, slot.IsLocked))];
+
+    private string Hint(MealKind meal, SpinResult viewed) =>
+        meal != MealKind.Tray ? Strings.Tray_HintOneDish
+        : viewed.Tray.Slots.Any(s => s.IsLocked) ? Strings.Tray_HintKept
+        : Strings.Tray_HintKeep;
+
+    // Each piece falls from its own place, drifts its own way and turns its own amount; worked out from its number, so a test sees the same.
+    private static string ConfettiStyle(int piece) => string.Format(
+        CultureInfo.InvariantCulture,
+        "--x: {0}%; --dx: {1}px; --turn: {2}deg; --delay: {3:0.00}s; --fall: {4:0.00}s",
+        piece * 37 % 100,
+        (piece * 53 % 120) - 60,
+        (piece * 97 % 720) - 360,
+        piece % 7 * 0.06,
+        1.4 + (piece % 5 * 0.25));
+
+    /// <summary>The names that run past on each plate while the dice roll: up to eight dishes of the same kind, by id.</summary>
+    private void RefreshReels()
+    {
+        if (_engine is null || _session.Viewed is not { } viewed)
+        {
+            _reels = [];
+            return;
+        }
+
+        _reels = [.. viewed.Tray.Slots.Select(slot => (IReadOnlyList<string>)[.. _engine.DishesById.Values
+            .Where(d => d.Slot == slot.Slot)
+            .OrderBy(d => d.Id, StringComparer.Ordinal)
+            .Take(8)
+            .Select(d => d.Name)])];
+    }
+
     private void Refresh()
     {
+        RefreshReels();
         _facts = new Dictionary<string, DishFacts>();
         _summary = null;
 

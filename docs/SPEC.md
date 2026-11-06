@@ -115,7 +115,7 @@ Mâm gồm cơm + 1 canh + 1 món mặn + 1 rau. Nếu `baseServings ≥ 5` *(m�
 
 **Loại bữa (ADR-037).** Trên màn mâm, người dùng chọn "Hôm nay ăn: Mâm cơm · Một tô · Lẩu · Bữa sáng" (mặc định mâm cơm, giữ trong ngày). Bữa một tô, lẩu hay bữa sáng là đúng một món của loại `to`, `lau` hay `sang`; một suất là cả bữa của một người. Bữa có cơm khi và chỉ khi có món của mâm (canh, mặn, rau); bữa khác không có gạo, bước nấu cơm hay kcal của cơm.
 
-Nhà mình chọn được "Mâm mấy món" trong Cài đặt: tự theo nhà mình (như trên), 2 món (canh, mặn), 3 món, hoặc 4 món (canh, hai món mặn, rau). Màn "Mâm hôm nay" có "Bớt món" và "Thêm món" cho riêng hôm nay. Hai món cùng loại chia nhau 1,2 lần lượng một món, mâm 2 món nấu mỗi món nhiều hơn 1,2 lần (`portion-defaults.json`, mục `trayShares`). Chi tiết ở ADR-034.
+Nhà mình chọn được "Mâm mấy món" trong Cài đặt: tự theo nhà mình (như trên), 2 món (canh, mặn), 3 món, hoặc 4 món (canh, hai món mặn, rau). Số món chỉ chỉnh trong Cài đặt (ADR-038). Hai món cùng loại chia nhau 1,2 lần lượng một món, mâm 2 món nấu mỗi món nhiều hơn 1,2 lần (`portion-defaults.json`, mục `trayShares`). Chi tiết ở ADR-034.
 
 ### 5.2 Ràng buộc cứng (không bao giờ nới)
 
@@ -475,12 +475,12 @@ Cấu trúc bundle (ADR-011), kiểu `DataBundle` trong `MamCom.Core`:
    - Chạm chip vai trò (Bố, Mẹ, Ông, Bà, Con trai, Con gái, Bé) để thêm thẻ thành viên. Mỗi thẻ có nút tăng giảm "mấy chén cơm".
    - Không hỏi dồn: câu về kiêng khem và khẩu vị hỏi sau lần dùng thứ 3. Cho phép bỏ qua và dùng mặc định.
 2. **Mâm hôm nay.**
-   - 3–4 thẻ món: icon theo loại, tên, thời gian, kcal/suất, nút khoá 48px. Vuốt ngang để đổi riêng món đó.
-   - Nút "Quay mâm" ở vùng ngón cái, hiệu ứng khoảng 1 giây, rung nhẹ nếu thiết bị hỗ trợ.
+   - Hình mâm nhìn từ trên xuống, mỗi món một đĩa. Chạm đĩa để giữ món (ADR-038).
+   - 3–4 thẻ món: icon theo loại, tên, thời gian, kcal/suất. Vuốt ngang để đổi riêng món đó.
+   - Nút "Quay!" ở vùng ngón cái, hiệu ứng khoảng 1 giây (các đĩa chạy tên món như máy xèng), rung nhẹ nếu thiết bị hỗ trợ.
    - Tóm tắt: thời gian cả mâm, kcal/suất (gồm cơm), số món cần mua.
    - Nút "Mâm trước" (lưu 5 mâm). Quay quá 5 lần chưa chốt thì gợi ý lọc nhanh: dưới 30 phút / không thịt đỏ / ít dầu mỡ.
-   - Nút "Chốt mâm" mở đi chợ và chế độ nấu.
-   - "Bớt món" / "Thêm món" đổi mâm hôm nay giữa 2 và 4 món (ADR-034).
+   - Nút "Chốt!": pháo giấy, rồi khung "Ngon rồi!" với hai thẻ "Đi chợ" và "Nấu ngay" (ADR-038).
 3. **Chi tiết món.** Ảnh và 3 phần xếp dọc: Nguyên liệu ("cho 3,8 suất"), Cách làm, Dinh dưỡng (thanh đạm/béo/bột đường và kcal theo từng người).
 4. **Đi chợ.** Nhóm theo quầy, thumbnail nguyên liệu, checkbox 48px, tương phản cao, chạy offline, nút "Gửi Zalo".
 5. **Chế độ nấu.**
@@ -499,12 +499,12 @@ Làm rõ khi hiện thực màn hình đầu tiên (ADR-021):
 
 Làm rõ khi hiện thực màn "Mâm hôm nay" (ADR-022):
 - **Trang chủ là màn này.** Mở app thì tiếp tục mâm hôm nay (khoá `tray.v1`); sang ngày mới, hay khi một món của mâm không còn trong dữ liệu, thì tự quay một mâm mới ngay, không hiệu ứng và không rung. Ô khoá không sang ngày mới và không sang sau lần chốt.
-- **Thẻ món:** ảnh `thumb` nếu có, không thì ô giữ chỗ theo loại (ảnh lỗi cũng thay bằng ô giữ chỗ); tên món (là liên kết sang chi tiết món, §8.1-3); loại món (canh, món mặn, rau) theo màu của ô; tổng thời gian các bước; kcal một suất (chưa đủ số liệu thì nói là chưa đủ); "Để ớt riêng" cho món có ớt tuỳ chọn khi trong nhà có người không ăn cay. Mỗi thẻ có nút khoá và nút đổi món, cao 48px, và vuốt ngang thẻ (ít nhất 60px, xa gấp đôi chiều dọc) cũng đổi món; thẻ đã khoá không đổi.
-- **Quay** mất khoảng 1 giây (thẻ chưa khoá rung nhẹ và mờ đi, nút bị khoá); người dùng đã xin bớt chuyển động (`prefers-reduced-motion`) thì hiện ngay. Máy rung 30 ms khi kết quả hiện, nếu máy làm được. Quay giữ ô khoá và lấy món theo luật của §5; đổi một món không thêm mâm vào lịch sử.
+- **Thẻ món:** ảnh `thumb` nếu có, không thì ô giữ chỗ theo loại (ảnh lỗi cũng thay bằng ô giữ chỗ); tên món (là liên kết sang chi tiết món, §8.1-3); loại món (canh, món mặn, rau) theo màu của ô; tổng thời gian các bước; kcal một suất (chưa đủ số liệu thì nói là chưa đủ); "Để ớt riêng" cho món có ớt tuỳ chọn khi trong nhà có người không ăn cay. Thẻ không có nút: chạm đĩa của món trên hình mâm để giữ hay bỏ giữ (đĩa có vòng và ổ khoá vàng, thẻ ghi "Đang giữ"); vuốt ngang thẻ (ít nhất 60px, xa gấp đôi chiều dọc) đổi món; thẻ đang giữ không đổi (ADR-038).
+- **Quay** mất khoảng 1 giây (đĩa chưa giữ chạy qua tên các món cùng loại rồi đáp xuống lần lượt, thẻ chưa giữ rung nhẹ và mờ đi, nút bị khoá); người dùng đã xin bớt chuyển động (`prefers-reduced-motion`) thì hiện ngay. Máy rung 30 ms khi kết quả hiện, nếu máy làm được. Quay giữ ô khoá và lấy món theo luật của §5; đổi một món không thêm mâm vào lịch sử.
 - **Tóm tắt:** thời gian cả mâm (§5.6), năng lượng cho một người cả cơm, gạo, và số thứ cần mua không kể đồ có sẵn. Luật đã nới (§5.3) và ô không điền được hiện thành thông báo trên các thẻ.
 - **"Mâm trước" và "Mâm sau"** đi qua 5 mâm gần nhất ("Mâm 4/5"); hiện khi có từ hai mâm.
 - **Lọc nhanh** hiện sau 5 lần quay (kể cả lần tự quay lúc mở) chưa chốt, và ở lại khi còn bật; bật hay tắt thì quay lại ngay. "Không thịt đỏ" bỏ món có đạm heo hoặc bò; "Ít dầu mỡ" bỏ món chiên (theo cách nấu, chưa theo số chất béo vì số dinh dưỡng chưa đủ); **"Dưới 45 phút"** (không phải 30: nồi cơm đã mất 35 phút nên mâm nào cũng từ 35 phút trở lên). Các giá trị nằm trong `data/config/spinner-defaults.json`, mục `quickFilters`. Món đang khoá và món đang có trên mâm không bị bộ lọc loại.
-- **Chốt mâm** ghi các món vào nhật ký đã ăn (`eaten.v1`, cho luật §5.2 và §5.4), đưa mâm lên đầu lịch sử và khoá các nút; "Chọn mâm khác" bỏ chốt nhưng các món vẫn ghi là đã ăn. Ngày ăn lần cuối ở tương lai được đọc là hôm nay. Chốt xong thì mở **Đi chợ** (§8.1-4, ADR-024); khi quay lại trang này, mâm đã chốt có thanh nút "Đi chợ" và "Nấu" (§8.1-5, ADR-025), còn "Chọn mâm khác" nằm trong khung "Đã chốt mâm hôm nay."
+- **Chốt mâm** ghi các món vào nhật ký đã ăn (`eaten.v1`, cho luật §5.2 và §5.4), đưa mâm lên đầu lịch sử và khoá các nút; "Quay mâm khác" bỏ chốt nhưng các món vẫn ghi là đã ăn. Ngày ăn lần cuối ở tương lai được đọc là hôm nay. Chốt xong thì **ở lại màn mâm** (ADR-038): pháo giấy rơi một lần, rồi khung "Ngon rồi!" ở đáy có hai thẻ lớn "Đi chợ" (số thứ cần mua, §8.1-4) và "Nấu ngay" (thời gian cả bữa, §8.1-5), dưới là "Chấm bữa này" và "Quay mâm khác". Quay lại trang này thì mâm đã chốt có khung đó, không có pháo giấy.
 
 Làm rõ khi hiện thực màn chi tiết món (ADR-023):
 - **Mỗi món có một trang, `/mon/<mã món>`;** tên món trên thẻ của mâm là liên kết sang đó, và đầu trang có "Về mâm hôm nay" (48px). Trang định lượng cho nhà của máy này nên đứng sau cổng "Nhà mình có ai?" như trang chủ. Món không còn trong dữ liệu thì trang nói rõ và chỉ đường về mâm.
@@ -515,7 +515,7 @@ Làm rõ khi hiện thực màn chi tiết món (ADR-023):
 - **Chân trang:** "Số liệu ước tính, không thay tư vấn y tế."
 
 Làm rõ khi hiện thực màn đi chợ (ADR-024):
-- **Trang `/di-cho`** là danh sách của mâm đang hiện trên màn "Mâm hôm nay" (mâm của hôm nay, đủ món); chưa có mâm thì trang nói vậy và không có nút gửi. "Chốt mâm" mở trang này; không đòi mâm phải đã chốt.
+- **Trang `/di-cho`** là danh sách của mâm đang hiện trên màn "Mâm hôm nay" (mâm của hôm nay, đủ món); chưa có mâm thì trang nói vậy và không có nút gửi. Thẻ "Đi chợ" sau khi chốt mở trang này; không đòi mâm phải đã chốt.
 - **Mỗi quầy một thẻ** (Thịt cá, Rau củ quả, Trứng đậu phụ, Khô và gia vị, Khác), mỗi dòng là một nhãn cao 72px bọc ô tick, thumbnail 56px (ô giữ chỗ theo loại khi chưa có ảnh), số lượng đậm rồi tên, "(≈ N g)" cho thứ có `showApproxGrams`, nhãn "Có sẵn" cho đồ bếp luôn có. Dòng đã tick ở nguyên chỗ, gạch ngang và nhạt. "Đã mua 2/7" đếm các dòng đang hiện.
 - **Tick giữ theo mâm** (khoá `shopping.v1`): tên mâm là ngày và các món theo thứ tự ô; mâm khác thì không có tick; chỉ giữ mâm gần nhất. Nút **"Hiện đồ có sẵn"** (ẩn mặc định) được nhớ qua các mâm.
 - **"Gửi Zalo"** gửi text của §6.2 cho cả danh sách (tick không đổi text; đồ có sẵn chỉ có khi đang hiện) qua bảng chia sẻ của máy; không có bảng thì chép vào bộ nhớ tạm và nói "Đã chép danh sách. Mở Zalo và dán vào để gửi."; người dùng đóng bảng thì không chép gì; không gửi được thì nói rõ. Chạy offline như mọi màn khác. Thanh nút của màn này có thêm "Bắt đầu nấu" (§8.1-5).
@@ -541,7 +541,7 @@ Làm rõ khi hiện thực phản hồi sau bữa và Cài đặt (ADR-026):
 - **Vùng chạm** ≥ 48px.
 - **Chữ lớn (ADR-027):** mọi cỡ chữ và khoảng cách tính bằng `rem`, nên chữ lớn lên theo cỡ chữ người dùng đặt cho máy. Khi chữ lớn hơn khoảng 1,5 lần cỡ thường trên điện thoại 360px (truy vấn container tính bằng `rem`, không bao giờ bật ở cỡ thường): header và thanh nút ở đáy thôi dính, các nút xếp dọc, thẻ món xếp dọc, hàng đi chợ bỏ ảnh trang trí, các hàng chữ-và-số xuống dòng; không bao giờ cuộn ngang.
 - **Gamification nhẹ:** không streak, không thông báo gây áp lực.
-- **Lời văn:** tiếng Việt ngắn, thân mật, động từ đứng đầu ("Quay mâm", "Chốt mâm", "Gửi Zalo").
+- **Lời văn:** tiếng Việt ngắn, thân mật, động từ đứng đầu ("Quay!", "Chốt!", "Gửi Zalo").
 
 Làm rõ khi hiện thực (ADR-019):
 - **Token** nằm trong `MamCom.UI/wwwroot/tokens.css`; component chỉ dùng biến, không viết màu hay cỡ chữ riêng (có test). Chế độ sáng là mặc định; chế độ tối theo hệ thống (`prefers-color-scheme`), hoặc theo `data-theme="dark"` (`"light"`) đặt trên trang hay trên một phần tử.
@@ -549,6 +549,7 @@ Làm rõ khi hiện thực (ADR-019):
 - **Font** Be Vietnam Pro 400 và 600, bộ `latin` và `vietnamese`, tự host trong `wwwroot/fonts` (OFL 1.1), `font-display: swap`. **Icon** là một sprite SVG `wwwroot/icons/icons.svg` (Tabler Icons, MIT, cùng vài icon tự vẽ), vẽ bằng `currentColor`; nguồn và giấy phép ở `THIRD-PARTY-NOTICES.md`.
 - **Khung màn hình** (`layout.css`): đầu trang 48 px, trang giữa dừng ở `--content-width`, thanh nút dính đáy, chừa vùng an toàn của điện thoại (`viewport-fit=cover`, biến `--safe-*`).
 - **"Mâm gỗ ấm" (ADR-033):** màn "Mâm hôm nay" có hình cái mâm nhìn từ trên xuống (bát cơm giữa, mỗi món một đĩa theo màu ô, chỉ để trang trí) và dòng ngày dưới tiêu đề; thẻ món gọn với đĩa tròn, nút khoá và đổi xếp dọc ở mép phải; tóm tắt là 4 ô số; nút bo tròn. Chế độ nấu luôn ở nền tối, chữ của bước 28px. Đi chợ có thanh tiến độ. Bản thiết kế nằm trên canvas Claude Design, ghi ở ADR-033.
+- **"Bàn quay bữa ăn" (ADR-038):** màn mâm như một trò chơi. Viền mực đậm và bóng cứng cho nút, thẻ và chip; nền chấm như bàn cờ; loại bữa là bốn ô lớn có biểu tượng; mâm to có quầng sáng; "Quay!" vàng và "Chốt!" xanh lá; thẻ món hiện dần lần lượt; pháo giấy khi chốt. Mọi hiệu ứng tắt khi người dùng xin bớt chuyển động. Bản thử nằm trên canvas Claude Design (artboard `Game`).
 - **Trang `/styleguide`** của app hiện màu, chữ, nút, ô nhập, thẻ, nhãn, thông báo, icon và mọi ô giữ chỗ, mỗi thứ hai lần: một trong khung sáng, một trong khung tối.
 
 ---

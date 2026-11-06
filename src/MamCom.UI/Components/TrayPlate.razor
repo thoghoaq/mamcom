@@ -1,31 +1,73 @@
+@using System.Globalization
 @using MamCom.Core.Models
 
-@* The tray seen from above (ADR-033): the rice in the middle and a plate for each dish around it, in the colour of its part of the meal.
-   A picture of what the cards below say, so it is hidden from a screen reader. It turns once while the dice roll. *@
-<div class="@CssClass" aria-hidden="true">
-    <div class="mam__wood">
-        @if (HasRice)
-        {
-            <span class="mam__rice"><Icon Name="soup" />@Strings.Tray_PlateRice</span>
-        }
-        @for (var index = 0; index < Slots.Count && index < 4; index++)
-        {
-            var (slot, locked) = Slots[index];
-            <span class="@PlateClass(index, slot, locked)"><Icon Name="@IconOf(slot)" /></span>
-        }
-    </div>
+@* The tray seen from above (ADR-033, ADR-038): the rice in the middle and a plate for each dish around it, in the colour of its part of the
+   meal. Each plate is a button: a tap keeps that dish (a gold lock) when the tray is spun again. While the dice roll, the plates that are
+   not kept run through dish names like the reel of a slot machine, then land one after the other. *@
+<div class="@CssClass" role="group" aria-label="@Strings.Tray_PlateLabel">
+    <div class="mam__wood" aria-hidden="true"></div>
+    @if (HasRice)
+    {
+        <span class="mam__rice" aria-hidden="true"><Icon Name="soup" />@Strings.Tray_PlateRice</span>
+    }
+    @for (var index = 0; index < Dishes.Count && index < 4; index++)
+    {
+        var slotIndex = index;
+        var dish = Dishes[index];
+        var reeling = Rolling && !dish.Locked;
+        <button type="button"
+                class="@PlateClass(index, dish.Slot, dish.Locked)"
+                style="@($"--i: {index.ToString(CultureInfo.InvariantCulture)}")"
+                aria-pressed="@(dish.Locked ? "true" : "false")"
+                aria-label="@string.Format(CultureInfo.InvariantCulture, dish.Locked ? Strings.Tray_UnkeepFormat : Strings.Tray_KeepFormat, dish.Name)"
+                disabled="@Disabled"
+                @onclick="() => OnToggle.InvokeAsync(slotIndex)">
+            @if (reeling && index < Reels.Count && Reels[index].Count > 0)
+            {
+                <span class="mam__reel" aria-hidden="true">
+                    @foreach (var name in Reels[index].Concat(Reels[index]))
+                    {
+                        <span class="mam__reel-item">@name</span>
+                    }
+                </span>
+            }
+            else
+            {
+                <span class="@(Rolling ? "mam__dish" : "mam__dish mam__dish--landed")" aria-hidden="true"><Icon Name="@IconOf(dish.Slot)" /></span>
+            }
+            @if (dish.Locked)
+            {
+                <span class="mam__lock" aria-hidden="true"><Icon Name="lock" /></span>
+            }
+        </button>
+    }
 </div>
 
 @code {
-    /// <summary>The dishes of the tray in order: what part of the meal each is, and whether it is locked.</summary>
+    /// <summary>One plate of the tray: what part of the meal, the name for a screen reader, whether it is kept.</summary>
+    public sealed record Plate(DishSlot Slot, string Name, bool Locked);
+
+    /// <summary>The dishes of the tray in order.</summary>
     [Parameter, EditorRequired]
-    public IReadOnlyList<(DishSlot Slot, bool Locked)> Slots { get; set; } = [];
+    public IReadOnlyList<Plate> Dishes { get; set; } = [];
+
+    /// <summary>For each plate, the names that run past while the dice roll: dishes of the same kind.</summary>
+    [Parameter]
+    public IReadOnlyList<IReadOnlyList<string>> Reels { get; set; } = [];
 
     [Parameter]
     public bool Rolling { get; set; }
 
+    /// <summary>Nothing can be kept now: a spin is going on or the tray is confirmed.</summary>
+    [Parameter]
+    public bool Disabled { get; set; }
+
+    /// <summary>A plate was tapped: keep its dish, or let it go.</summary>
+    [Parameter]
+    public EventCallback<int> OnToggle { get; set; }
+
     // A meal of one dish (a bowl, a hot pot, a breakfast) has no rice; its plate sits in the middle (ADR-037).
-    private bool HasRice => Slots.Select(s => s.Slot).HasRice();
+    private bool HasRice => Dishes.Select(d => d.Slot).HasRice();
 
     private string CssClass => "mam" + (HasRice ? string.Empty : " mam--single") + (Rolling ? " mam--rolling" : string.Empty);
 

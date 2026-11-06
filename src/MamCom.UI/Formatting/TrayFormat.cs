@@ -68,6 +68,15 @@ public static class TrayFormat
         _ => throw new ArgumentOutOfRangeException(nameof(meal), meal, null),
     };
 
+    public static string MealIcon(MealKind meal) => meal switch
+    {
+        MealKind.Tray => "soup",
+        MealKind.Bowl => "bowl-chopsticks",
+        MealKind.Hotpot => "hotpot",
+        MealKind.Breakfast => "baguette",
+        _ => throw new ArgumentOutOfRangeException(nameof(meal), meal, null),
+    };
+
     /// <summary>The class that colours a word by the kind of dish: soup blue, main orange, vegetable green, and the one-dish meals.</summary>
     public static string SlotClass(DishSlot slot) => slot switch
     {

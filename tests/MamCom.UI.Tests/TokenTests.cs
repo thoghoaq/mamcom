@@ -111,6 +111,8 @@ public partial class TokenTests
 
             data.Add(theme, "on-accent", "accent", 4.5);   // the primary button
             data.Add(theme, "on-accent", "accent-strong", 4.5);   // and when it is hovered
+            data.Add(theme, "on-spin", "spin", 4.5);   // "Quay!" and the lock of a kept dish (ADR-038)
+            data.Add(theme, "on-go", "go", 4.5);   // "Chốt!"
             data.Add(theme, "accent-strong", "accent-soft", 4.5);   // an outline button when it is hovered
 
             // The words of a badge, and the words of a notice.

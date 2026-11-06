@@ -236,7 +236,7 @@ public class AccessibilityTests(SiteFixture site)
         await AuditAsync(app, "gioi-thieu", findings);
 
         await app.GotoAsync("/");
-        await app.Page.Locator(".notice--ok").WaitForAsync();
+        await app.Page.Locator(".done").WaitForAsync();
         await AuditAsync(app, "/ (tray confirmed)", findings);
 
         findings.ShouldBeEmpty(string.Join(Environment.NewLine, findings));
@@ -306,6 +306,10 @@ public class AccessibilityTests(SiteFixture site)
     {
         // The screen draws before its data is in; the audit looks at the finished screen.
         await app.Page.WaitForLoadStateAsync(LoadState.NetworkIdle);
+
+        // The cards pop in and the panel rises (ADR-038): a card half faded in is not what a person reads, so the audit waits for every
+        // animation that ends. The glow of the tray and the wobble of "Quay!" never end, and change no colour of a word.
+        await app.Page.EvaluateAsync("() => Promise.all(document.getAnimations().filter(a => a.effect.getTiming().iterations !== Infinity).map(a => a.finished.catch(() => null)))");
 
         findings.AddRange((await app.EvaluateAsync<string[]>(Audit, SiteFixture.PhoneWidth)).Select(problem => $"[{where}] {problem}"));
         findings.AddRange((await app.EvaluateAsync<string[]>(AuditLargeText, SiteFixture.PhoneWidth)).Select(problem => $"[{where}] {problem}"));
