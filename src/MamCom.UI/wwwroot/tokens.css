@@ -1,5 +1,5 @@
 /*
- * Design tokens of MâmCơm. Components never write a colour, a size or a spacing of their own: they use these variables,
+ * Design tokens of Bowlo. Components never write a colour, a size or a spacing of their own: they use these variables,
  * so dark mode and the cooking-mode sizes are decided in one place.
  *
  * Light and dark. The page follows the system (prefers-color-scheme). An element can force one with data-theme="light" or

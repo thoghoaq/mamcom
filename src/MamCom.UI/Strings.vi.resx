@@ -18,7 +18,7 @@
   <data name="Nutrition_EstimateNote" xml:space="preserve"><value>Các con số chỉ là ước tính.</value></data>
 
   <!-- Studio: khung trang -->
-  <data name="Studio_Name" xml:space="preserve"><value>MâmCơm Studio</value></data>
+  <data name="Studio_Name" xml:space="preserve"><value>Bowlo Studio</value></data>
   <data name="Studio_NavLabel" xml:space="preserve"><value>Điều hướng chính</value></data>
   <data name="Studio_NavHome" xml:space="preserve"><value>Tổng quan</value></data>
   <data name="Studio_NavDishes" xml:space="preserve"><value>Món ăn</value></data>
@@ -624,7 +624,7 @@
   <data name="Settings_UsageShareJson" xml:space="preserve"><value>Gửi dữ liệu đầy đủ (JSON)</value></data>
   <data name="Settings_UsageCopied" xml:space="preserve"><value>Đã chép vào bộ nhớ tạm. Dán vào Zalo hoặc email để gửi.</value></data>
   <data name="Settings_UsageFailed" xml:space="preserve"><value>Không gửi hay chép được. Thử lại sau.</value></data>
-  <data name="Usage_TextTitle" xml:space="preserve"><value>Phản hồi MâmCơm</value></data>
+  <data name="Usage_TextTitle" xml:space="preserve"><value>Phản hồi Bowlo</value></data>
   <data name="Usage_DaysFormat" xml:space="preserve"><value>Đã dùng {0} ngày, từ {1} đến {2}.</value></data>
   <data name="Usage_VisitsFormat" xml:space="preserve"><value>Mở app {0} lần.</value></data>
   <data name="Usage_TraysFormat" xml:space="preserve"><value>Chốt {0} mâm; quay lại {1} lần, đổi món {2} lần, khoá món {3} lần.</value></data>

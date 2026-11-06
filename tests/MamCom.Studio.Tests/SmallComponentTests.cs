@@ -143,7 +143,7 @@ public class LayoutAndErrorPageTests : BunitContext
     {
         var cut = Render<MainLayout>(p => p.Add(x => x.Body, builder => builder.AddMarkupContent(0, "<p id=\"inner\">nội dung</p>")));
 
-        cut.Find(".app-brand").TextContent.ShouldBe("MâmCơm Studio");
+        cut.Find(".app-brand").TextContent.Trim().ShouldBe("Bowlo Studio");
         cut.Find(".site-header__brand").GetAttribute("href").ShouldBe("/");
         cut.FindAll(".site-nav a").Select(a => (a.TextContent, a.GetAttribute("href"))).ShouldBe([("Tổng quan", "/"), ("Món ăn", "/dishes"), ("Nguyên liệu", "/ingredients")]);
         cut.Find("nav").GetAttribute("aria-label").ShouldBe("Điều hướng chính");

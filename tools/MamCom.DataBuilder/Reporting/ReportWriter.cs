@@ -20,7 +20,7 @@ public static class ReportWriter
 
         void Line(string line = "") => text.Append(line).Append('\n');
 
-        Line("# Báo cáo dữ liệu MâmCơm");
+        Line("# Báo cáo dữ liệu Bowlo");
         Line();
         Line($"- Chế độ: {(report.Mode == ValidationMode.Release ? "release" : "dev")}");
         Line($"- Phiên bản dữ liệu: {(bundle is null ? "không tạo bundle" : $"`{bundle.Version}`")}");

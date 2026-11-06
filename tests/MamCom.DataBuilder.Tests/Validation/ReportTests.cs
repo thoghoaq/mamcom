@@ -21,7 +21,7 @@ public class ReportTests
 
         var text = ReportWriter.Render(report, bundle);
 
-        text.ShouldStartWith("# Báo cáo dữ liệu MâmCơm\n");
+        text.ShouldStartWith("# Báo cáo dữ liệu Bowlo\n");
         text.ShouldContain("- Chế độ: dev\n");
         text.ShouldContain($"- Phiên bản dữ liệu: `{bundle.Version}`\n");
         text.ShouldContain("- Kết quả: 0 lỗi, 0 cảnh báo\n");

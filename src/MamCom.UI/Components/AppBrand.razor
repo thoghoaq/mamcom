@@ -1,10 +1,18 @@
-<span class="app-brand"><Icon Name="soup" Class="app-brand__icon" /><span>@Name<span class="app-brand__accent">@Accent</span></span></span>
+@* The mark of Bowlo (ADR-036): a porcelain rice bowl with a blue band and a heap of rice, in the colours of the theme. Decoration: the name says it. *@
+<span class="app-brand">
+    <svg class="brand-mark" viewBox="14 32 72 54" focusable="false" aria-hidden="true">
+        <path class="brand-mark__rice" d="M24 49 C24 35 76 35 76 49 Z" />
+        <path class="brand-mark__bowl" d="M17 49 H83 C83 66 69 77 50 77 C31 77 17 66 17 49 Z" />
+        <path class="brand-mark__band" d="M19.2 57 H80.8 C80.1 59.6 79 62 77.6 64 H22.4 C21 62 19.9 59.6 19.2 57 Z" />
+        <rect class="brand-mark__bowl" x="38" y="76" width="24" height="7" rx="3" />
+    </svg><span>@Name<span class="app-brand__accent">@Accent</span></span>
+</span>
 
 @code {
     [Parameter, EditorRequired]
     public string Name { get; set; } = string.Empty;
 
-    /// <summary>The end of the name, in the accent colour ("Cơm" of "MâmCơm").</summary>
+    /// <summary>The end of the name, in the accent colour (the last "o" of "Bowlo").</summary>
     [Parameter]
     public string? Accent { get; set; }
 }

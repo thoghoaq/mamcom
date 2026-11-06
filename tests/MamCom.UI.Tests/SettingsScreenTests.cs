@@ -469,7 +469,7 @@ public class SettingsScreenTests : BunitContext
         _device.ShareResult = ShareOutcome.Copied;
         await cut.FindAll("button").Single(b => b.TextContent == "Gửi dữ liệu đầy đủ (JSON)").ClickAsync(new());
 
-        _device.Shared[0].ShouldStartWith("Phản hồi MâmCơm\n");
+        _device.Shared[0].ShouldStartWith("Phản hồi Bowlo\n");
         _device.Shared[1].ShouldContain("\"kind\": \"Confirmed\"");
         _device.Shared[1].ShouldContain("\"medianSecondsToConfirm\": 40");
         cut.Find(".settings__status").TextContent.ShouldBe("Đã chép vào bộ nhớ tạm. Dán vào Zalo hoặc email để gửi.");

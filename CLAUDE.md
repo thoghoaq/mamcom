@@ -1,4 +1,4 @@
-# CLAUDE.md — MâmCơm (tên tạm)
+# CLAUDE.md — Bowlo (trước đây MâmCơm; trong code vẫn là MamCom, ADR-036)
 
 App giúp gia đình Việt **quay ngẫu nhiên một mâm cơm** (cơm + canh + món mặn + rau) vừa với số người và sức ăn của từng người. Sau khi quay, app cho thấy:
 - công thức đã định lượng cho nhà mình;

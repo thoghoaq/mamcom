@@ -185,6 +185,33 @@ small,
     accent-color: var(--color-accent);
 }
 
+/* ---- The mark of Bowlo (components/AppBrand.razor, ADR-036): the bowl in the colours of the theme, in the app and in Studio ---- */
+
+.app-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+/* Only the bowl, without the square of the app icon: 4 wide for 3 high. */
+.brand-mark {
+    flex: none;
+    width: 2.25rem;
+    height: 1.6875rem;
+}
+
+.brand-mark__rice {
+    fill: var(--color-surface-raised);
+}
+
+.brand-mark__bowl {
+    fill: var(--color-accent);
+}
+
+.brand-mark__band {
+    fill: var(--color-slot-soup);
+}
+
 /* ---- Cards, badges, notices ---- */
 
 .card {

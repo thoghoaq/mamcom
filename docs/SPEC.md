@@ -1,4 +1,4 @@
-# SPEC — MâmCơm (tên tạm)
+# SPEC — Bowlo (trước đây MâmCơm, ADR-036)
 
 Tài liệu này tổng hợp toàn bộ phần phân tích trước khi làm. Các con số đánh dấu *(mặc định)* là giá trị khởi điểm, nằm trong `data/config/` và sẽ tinh chỉnh sau beta.
 

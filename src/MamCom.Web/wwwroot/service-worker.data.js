@@ -1,4 +1,4 @@
-// How the service worker keeps the data package of MâmCơm (ADR-020).
+// How the service worker keeps the data package of Bowlo (ADR-020).
 //
 // The app and its data are deployed apart (SPEC §7.6), so they are cached apart. Blazor's own code caches the app. This file is
 // the rest: three kinds of file, three rules.

@@ -12,7 +12,7 @@ public class AppHeaderTests : BunitContext
         cut.Find("header.app-header").ShouldNotBeNull();
         var brand = cut.Find("a.app-header__brand");
         brand.GetAttribute("href").ShouldBe("/");
-        brand.TextContent.ShouldBe("MâmCơm");
+        brand.TextContent.Trim().ShouldBe("Bowlo");
         cut.Find("a.app-header__action").GetAttribute("href").ShouldBe(Routes.Settings);
     }
 

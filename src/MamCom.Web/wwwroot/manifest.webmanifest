@@ -1,6 +1,7 @@
 {
-  "name": "MâmCơm",
-  "short_name": "MâmCơm",
+  "name": "Bowlo",
+  "short_name": "Bowlo",
+  "description": "Hôm nay ăn gì? Quay một mâm cơm vừa cả nhà, kèm danh sách đi chợ và trình tự nấu.",
   "id": "./",
   "start_url": "./",
   "display": "standalone",
