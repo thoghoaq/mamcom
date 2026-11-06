@@ -2,7 +2,7 @@
 
 - Trạng thái: Đã áp dụng trong code
 - Ngày: 2026-11-06
-- Liên quan: [ADR-002](002-blazor-wasm-pwa-truoc-maui-sau.md), [PLAN 3.10](../PLAN.md), [SPEC §1 mục tiêu UX](../SPEC.md)
+- Liên quan: [ADR-002](002-blazor-wasm-pwa-truoc.md), [PLAN 3.10](../PLAN.md), [SPEC §1 mục tiêu UX](../SPEC.md)
 
 ## Bối cảnh
 
