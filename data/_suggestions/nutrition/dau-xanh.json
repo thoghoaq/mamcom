@@ -1,0 +1,66 @@
+{
+  "ingredientId": "dau-xanh",
+  "query": "mung beans mature seeds raw",
+  "retrievedAt": "2026-11-06",
+  "source": "usda-fdc",
+  "totalHits": 1962,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 174256,
+      "description": "Mung beans, mature seeds, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174256/nutrients",
+      "per100g": {
+        "kcal": 347,
+        "proteinG": 23.9,
+        "fatG": 1.15,
+        "carbG": 62.6,
+        "fiberG": 16.3,
+        "sodiumMg": 15
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 5/5 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169957,
+      "description": "Mung beans, mature seeds, sprouted, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169957/nutrients",
+      "per100g": {
+        "kcal": 30,
+        "proteinG": 3.04,
+        "fatG": 0.18,
+        "carbG": 5.94,
+        "fiberG": 1.8,
+        "sodiumMg": 6
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 5/5 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 173727,
+      "description": "Beans, adzuki, mature seeds, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173727/nutrients",
+      "per100g": {
+        "kcal": 329,
+        "proteinG": 19.9,
+        "fatG": 0.53,
+        "carbG": 62.9,
+        "fiberG": 12.7,
+        "sodiumMg": 5
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/5 từ khoá."
+    }
+  ]
+}

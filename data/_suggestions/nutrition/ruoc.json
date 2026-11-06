@@ -1,0 +1,68 @@
+{
+  "ingredientId": "ruoc",
+  "query": "pork floss",
+  "retrievedAt": "2026-11-06",
+  "source": "usda-fdc",
+  "totalHits": 445,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 167811,
+      "description": "Pork, fresh, backfat, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Pork Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167811/nutrients",
+      "per100g": {
+        "kcal": 812,
+        "proteinG": 2.92,
+        "fatG": 88.7,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 11
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 167812,
+      "description": "Pork, fresh, belly, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Pork Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167812/nutrients",
+      "per100g": {
+        "kcal": 518,
+        "proteinG": 9.34,
+        "fatG": 53,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 32
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 2514745,
+      "description": "Pork, ground, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Pork Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2514745/nutrients",
+      "per100g": {
+        "kcal": 233,
+        "proteinG": 17.8,
+        "fatG": 17.5,
+        "carbG": 0,
+        "fiberG": null,
+        "sodiumMg": 53.6
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [
+        "fiberG"
+      ],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; thiếu: chất xơ; khớp 1/2 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    }
+  ]
+}

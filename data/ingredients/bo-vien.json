@@ -1,0 +1,41 @@
+{
+  "id": "bo-vien",
+  "names": {
+    "default": "Bò viên"
+  },
+  "aliases": [],
+  "category": "thit-bo",
+  "aisle": "thit-ca",
+  "proteinSource": "bo",
+  "marketUnit": {
+    "default": {
+      "display": "gói",
+      "gramsPerUnit": 500,
+      "step": 1
+    }
+  },
+  "wasteRatio": 0,
+  "isPantry": false,
+  "nutritionPer100gEdible": {
+    "kcal": null,
+    "proteinG": null,
+    "fatG": null,
+    "carbG": null,
+    "fiberG": null,
+    "sodiumMg": null
+  },
+  "nutritionSource": {
+    "db": "placeholder",
+    "ref": null,
+    "matchedName": null,
+    "verifiedBy": null,
+    "verifiedAt": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

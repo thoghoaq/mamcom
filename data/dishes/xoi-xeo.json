@@ -1,0 +1,144 @@
+{
+  "id": "xoi-xeo",
+  "name": "Xôi xéo",
+  "slot": "sang",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "hap",
+  "proteinSource": "chay",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "gao-nep",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "vo sạch, ngâm qua đêm"
+    },
+    {
+      "ingredientId": "dau-xanh",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "loại đã cà vỏ, ngâm mềm"
+    },
+    {
+      "ingredientId": "nghe",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "giã nhỏ, lọc lấy nước"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "mo-hanh",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "làm nóng trước khi rưới"
+    },
+    {
+      "ingredientId": "hanh-phi",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm gạo nếp với nước nghệ và chút muối qua đêm cho hạt vàng đều.",
+      "activeMinutes": 5,
+      "passiveMinutes": 360,
+      "ingredientIds": [
+        "gao-nep",
+        "nghe",
+        "muoi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ngâm đậu xanh cho nở mềm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 120,
+      "ingredientIds": [
+        "dau-xanh"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Hấp đậu xanh với chút muối đến khi chín bở.",
+      "activeMinutes": 3,
+      "passiveMinutes": 25,
+      "ingredientIds": [
+        "dau-xanh",
+        "muoi"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Giã nhuyễn đậu xanh khi còn nóng rồi nắm chặt thành nắm tròn.",
+      "activeMinutes": 7,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-xanh"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Xả ráo gạo nếp rồi đồ xôi đến khi hạt chín dẻo, giữa chừng đảo xôi một lần.",
+      "activeMinutes": 5,
+      "passiveMinutes": 30,
+      "ingredientIds": [
+        "gao-nep"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Xới xôi ra đĩa, dùng dao thái mỏng nắm đậu xanh rải lên mặt xôi.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "gao-nep",
+        "dau-xanh"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Rưới mỡ hành nóng lên và rắc hành phi, ăn ngay khi còn ấm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "mo-hanh",
+        "hanh-phi"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "id": "lau-rieu-cua-bap-bo",
+  "name": "Lẩu riêu cua bắp bò",
+  "slot": "lau",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "autumn",
+    "winter"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nau",
+  "proteinSource": "hai-san",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "cua-dong",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bỏ yếm, tách mai lấy gạch, giã nhuyễn lọc lấy nước"
+    },
+    {
+      "ingredientId": "thit-bo-bap",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái mỏng ngang thớ"
+    },
+    {
+      "ingredientId": "dau-phu",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt miếng vuông"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 70,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "bổ múi cau"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, thái mỏng"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "mam-tom",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "giam",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "thay giấm bỗng"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "bun",
+      "gramsEdiblePerServing": 150,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "rau-muong",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt ngọn, chẻ nhỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, để riêng"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Rửa sạch cua, tách mai lấy gạch để riêng, giã thân cua với chút muối rồi lọc lấy nước.",
+      "activeMinutes": 15,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "cua-dong",
+        "muoi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Đun nước cua lửa vừa, khuấy nhẹ một chiều đến khi riêu đóng mảng thì vặn nhỏ lửa.",
+      "activeMinutes": 5,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "cua-dong"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Chiên đậu phụ vàng đều các mặt rồi vớt ra.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-phu",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi thơm hành tím, cho gạch cua và cà chua vào xào mềm.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-tim",
+        "dau-an",
+        "cua-dong",
+        "ca-chua"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Đổ phần cà chua xào và đậu vào nồi riêu, nêm mắm tôm, nước mắm, hạt nêm và giấm cho vừa chua.",
+      "activeMinutes": 3,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "ca-chua",
+        "dau-phu",
+        "mam-tom",
+        "nuoc-mam",
+        "hat-nem",
+        "giam"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Ướp bắp bò thái mỏng với hạt tiêu và vài giọt nước mắm.",
+      "activeMinutes": 5,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "thit-bo-bap",
+        "hat-tieu",
+        "nuoc-mam"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Rửa và để ráo rau muống, hành lá và ớt.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "rau-muong",
+        "hanh-la",
+        "ot"
+      ]
+    },
+    {
+      "order": 8,
+      "text": "Trụng bún qua nước sôi rồi để ráo.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "bun"
+      ]
+    },
+    {
+      "order": 9,
+      "text": "Đặt nồi lẩu lên bếp, rắc hành lá, nhúng bắp bò và rau chín tới rồi ăn cùng bún và ớt.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-bo-bap",
+        "rau-muong",
+        "hanh-la",
+        "bun",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

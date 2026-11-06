@@ -1,0 +1,274 @@
+{
+  "id": "pho-bo",
+  "name": "Phở bò",
+  "slot": "to",
+  "regions": [],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nau",
+  "proteinSource": "bo",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "xuong-bo",
+      "gramsEdiblePerServing": 300,
+      "scale": "linear",
+      "consumedRatio": 0.1,
+      "note": "ninh lấy nước dùng; xương không ăn, chỉ tính phần ngấm vào nước"
+    },
+    {
+      "ingredientId": "banh-pho",
+      "gramsEdiblePerServing": 200,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bánh phở tươi"
+    },
+    {
+      "ingredientId": "thit-bo-than",
+      "gramsEdiblePerServing": 70,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái thật mỏng ngang thớ để làm tái"
+    },
+    {
+      "ingredientId": "thit-bo-bap",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "để nguyên miếng, ninh chín rồi thái mỏng"
+    },
+    {
+      "ingredientId": "gung",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "nướng cháy vỏ, cạo sạch, đập dập"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "nướng cháy vỏ, bóc sạch"
+    },
+    {
+      "ingredientId": "hanh-tay",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nửa nướng thả nồi, nửa thái mỏng ăn kèm"
+    },
+    {
+      "ingredientId": "hoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "rang thơm"
+    },
+    {
+      "ingredientId": "que",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "rang thơm"
+    },
+    {
+      "ingredientId": "thao-qua",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "nướng, đập dập"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "ưu tiên đường phèn"
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "xay"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 10,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "rau-mui",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "ngo-gai",
+      "gramsEdiblePerServing": 5,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ăn kèm"
+    },
+    {
+      "ingredientId": "gia-do",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt rễ, rửa sạch"
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 10,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "cắt múi"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát, để riêng"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Chần xương bò trong nước sôi có chút muối rồi rửa sạch.",
+      "activeMinutes": 5,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "muoi",
+        "xuong-bo"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Nướng gừng, hành tím, nửa củ hành tây cho cháy vỏ rồi rang hồi, quế, thảo quả đến thơm.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "gung",
+        "hanh-tim",
+        "hanh-tay",
+        "hoi",
+        "que",
+        "thao-qua"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Cho xương, bắp bò và gừng hành nướng vào nồi nước, ninh lửa nhỏ, hớt bọt thường xuyên.",
+      "activeMinutes": 10,
+      "passiveMinutes": 60,
+      "ingredientIds": [
+        "thit-bo-bap",
+        "gung",
+        "hanh-tim",
+        "hanh-tay",
+        "xuong-bo"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Vớt bắp bò ngâm nước nguội, thả túi hồi quế thảo quả vào nồi và ninh tiếp lửa liu riu.",
+      "activeMinutes": 5,
+      "passiveMinutes": 120,
+      "ingredientIds": [
+        "thit-bo-bap",
+        "hoi",
+        "que",
+        "thao-qua"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Lọc nước dùng, nêm nước mắm, muối, đường cho vừa và giữ sôi lăn tăn.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "muoi",
+        "duong"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Thái mỏng thăn bò, bắp bò, hành tây còn lại; thái hành lá, rau mùi, ớt và cắt chanh.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-bo-than",
+        "thit-bo-bap",
+        "hanh-tay",
+        "hanh-la",
+        "rau-mui",
+        "ot",
+        "chanh"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Trụng bánh phở cho vào tô, xếp bắp bò, thăn bò tái, hành tây, chan nước dùng thật sôi rồi rắc hành lá, rau mùi, tiêu.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "banh-pho",
+        "thit-bo-bap",
+        "thit-bo-than",
+        "hanh-tay",
+        "hanh-la",
+        "rau-mui",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 8,
+      "text": "Dọn ngay kèm giá, ngò gai, chanh và ớt.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "gia-do",
+        "ngo-gai",
+        "chanh",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

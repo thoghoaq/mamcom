@@ -1,0 +1,200 @@
+{
+  "id": "banh-mi-thit",
+  "name": "Bánh mì thịt",
+  "slot": "sang",
+  "regions": [],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "tron",
+  "proteinSource": "heo",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "banh-mi",
+      "gramsEdiblePerServing": 80,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "1 ổ vừa"
+    },
+    {
+      "ingredientId": "cha-lua",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát mỏng"
+    },
+    {
+      "ingredientId": "pate",
+      "gramsEdiblePerServing": 25,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "bo",
+      "gramsEdiblePerServing": 5,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "để mềm ở nhiệt độ phòng"
+    },
+    {
+      "ingredientId": "ca-rot",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, thái sợi"
+    },
+    {
+      "ingredientId": "cu-cai",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, thái sợi"
+    },
+    {
+      "ingredientId": "giam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dua-leo",
+      "gramsEdiblePerServing": 25,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái thanh dài"
+    },
+    {
+      "ingredientId": "rau-mui",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "nhặt rửa sạch"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, có thể bỏ"
+    },
+    {
+      "ingredientId": "nuoc-tuong",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Bóp cà rốt và củ cải với chút muối rồi rửa lại, vắt ráo.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-rot",
+        "cu-cai",
+        "muoi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ngâm cà rốt và củ cải vào hỗn hợp giấm pha đường cho thấm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "ca-rot",
+        "cu-cai",
+        "giam",
+        "duong"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Thái chả lụa, dưa leo và ớt trong lúc chờ đồ chua.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "cha-lua",
+        "dua-leo",
+        "ot"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Nướng lại bánh mì cho vỏ giòn.",
+      "activeMinutes": 1,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "banh-mi"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Rạch dọc bánh mì, phết bơ và pa tê vào hai mặt trong.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "banh-mi",
+        "bo",
+        "pate"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Xếp chả lụa, dưa leo, đồ chua, rau mùi, ớt vào bánh, rưới nước tương, rắc tiêu rồi ăn ngay.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "cha-lua",
+        "dua-leo",
+        "ca-rot",
+        "cu-cai",
+        "rau-mui",
+        "ot",
+        "nuoc-tuong",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

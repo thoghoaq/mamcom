@@ -1,0 +1,233 @@
+{
+  "id": "lau-bo-nhung-giam",
+  "name": "Lẩu bò nhúng giấm",
+  "slot": "lau",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "luoc",
+  "proteinSource": "bo",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "thit-bo-than",
+      "gramsEdiblePerServing": 150,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát thật mỏng ngang thớ"
+    },
+    {
+      "ingredientId": "dua",
+      "gramsEdiblePerServing": 250,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "lấy nước dừa tươi"
+    },
+    {
+      "ingredientId": "giam",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "sa",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "đập dập, cắt khúc"
+    },
+    {
+      "ingredientId": "hanh-tay",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái múi cau"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "pha nước chấm"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "bun",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "banh-trang",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "xa-lach",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt, rửa sạch"
+    },
+    {
+      "ingredientId": "rau-thom",
+      "gramsEdiblePerServing": 10,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt, rửa sạch"
+    },
+    {
+      "ingredientId": "dua-leo",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát xéo"
+    },
+    {
+      "ingredientId": "khe",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát mỏng"
+    },
+    {
+      "ingredientId": "thom",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, băm nhỏ để pha mắm nêm"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "băm, để riêng"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Thái mỏng thịt bò, xếp ra đĩa và để ngăn mát.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-bo-than"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Rửa và xếp xà lách, rau thơm, dưa leo, khế ra đĩa rau ăn kèm.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "xa-lach",
+        "rau-thom",
+        "dua-leo",
+        "khe"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm một nửa tỏi với dầu ăn rồi cho sả và hành tây vào đảo sơ.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "toi",
+        "sa",
+        "hanh-tay"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Đổ nước dừa và giấm vào, nêm đường, muối rồi đun sôi liu riu cho thơm sả.",
+      "activeMinutes": 2,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "dua",
+        "giam",
+        "duong",
+        "muoi"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Pha nước mắm với dứa băm, phần tỏi còn lại, chút đường và ớt làm nước chấm để riêng.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thom",
+        "toi",
+        "ot",
+        "duong",
+        "nuoc-mam"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Đặt nồi nước giấm lên bếp lẩu, nhúng từng lát bò vừa chín tới rồi cuốn với bánh tráng, bún, rau và chấm nước mắm dứa.",
+      "activeMinutes": 20,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-bo-than",
+        "banh-trang",
+        "bun",
+        "xa-lach",
+        "rau-thom",
+        "dua-leo",
+        "khe"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

@@ -4,14 +4,14 @@
 @* Under the tray (SPEC §8.1-2): how long the whole meal takes, the energy for one person with the rice, the rice, and what to buy. *@
 <dl class="tray-summary" aria-label="@Strings.Tray_SummaryLabel">
     <div class="tray-summary__row">
-        <dt><Icon Name="clock" />@Strings.Tray_SummaryTime</dt>
+        <dt><Icon Name="clock" />@(HasRice ? Strings.Tray_SummaryTime : Strings.Tray_SummaryTimeOneDish)</dt>
         <dd>@TrayFormat.Minutes(Summary.MealMinutes)</dd>
     </div>
     <div class="tray-summary__row">
-        <dt><Icon Name="flame" />@Strings.Tray_SummaryKcal</dt>
+        <dt><Icon Name="flame" />@(HasRice ? Strings.Tray_SummaryKcal : Strings.Tray_SummaryKcalOneDish)</dt>
         <dd>@NutritionFormat.Kcal(Summary.KcalPerPerson)</dd>
     </div>
-    @if (Summary.RawRiceGrams > 0)
+    @if (HasRice)
     {
         <div class="tray-summary__row">
             <dt><Icon Name="wheat" />@Strings.Tray_SummaryRice</dt>
@@ -27,4 +27,7 @@
 @code {
     [Parameter, EditorRequired]
     public TraySummary Summary { get; set; } = null!;
+
+    // A meal of one dish (a bowl, a hot pot, a breakfast) cooks no rice (ADR-037): the words say so.
+    private bool HasRice => Summary.RawRiceGrams > 0;
 }

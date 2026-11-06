@@ -1,0 +1,202 @@
+{
+  "id": "mien-ga",
+  "name": "Miến gà",
+  "slot": "to",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nau",
+  "proteinSource": "ga",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "ga-ta",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "làm sạch, để nguyên con hoặc chặt đôi"
+    },
+    {
+      "ingredientId": "mien",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm nước ấm cho mềm"
+    },
+    {
+      "ingredientId": "moc-nhi",
+      "gramsEdiblePerServing": 5,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm nở, thái sợi"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, nướng thơm"
+    },
+    {
+      "ingredientId": "gung",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "nướng, đập dập"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 10,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "rau-mui",
+      "gramsEdiblePerServing": 5,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, để riêng"
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 10,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "cắt múi, để riêng"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Nướng hành tím và gừng cho thơm rồi đập dập.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-tim",
+        "gung"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Chà gà với muối, rửa sạch rồi luộc cùng hành tím, gừng ở lửa nhỏ, hớt bọt.",
+      "activeMinutes": 5,
+      "passiveMinutes": 30,
+      "ingredientIds": [
+        "ga-ta",
+        "muoi",
+        "hanh-tim",
+        "gung"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Trong lúc chờ, ngâm miến và mộc nhĩ, thái hành lá và rau mùi.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "mien",
+        "moc-nhi",
+        "hanh-la",
+        "rau-mui"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Vớt gà ra để nguội rồi xé hoặc thái miếng vừa ăn.",
+      "activeMinutes": 7,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "ga-ta"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Nêm nước dùng với nước mắm và hạt nêm, cho mộc nhĩ vào đun sôi lại.",
+      "activeMinutes": 3,
+      "passiveMinutes": 2,
+      "ingredientIds": [
+        "nuoc-mam",
+        "hat-nem",
+        "moc-nhi"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Trụng miến qua nước dùng sôi rồi cho vào tô.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "mien"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Xếp gà lên miến, chan nước dùng nóng, rắc hành lá, rau mùi, hạt tiêu và dọn kèm ớt, chanh.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ga-ta",
+        "hanh-la",
+        "rau-mui",
+        "hat-tieu",
+        "ot",
+        "chanh"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

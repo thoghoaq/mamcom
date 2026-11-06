@@ -1,0 +1,298 @@
+{
+  "id": "lau-thai-hai-san",
+  "name": "Lẩu thái hải sản",
+  "slot": "lau",
+  "regions": [],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "required",
+  "cookingMethod": "nau",
+  "proteinSource": "hai-san",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "tom",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, chừa đuôi, rút chỉ lưng"
+    },
+    {
+      "ingredientId": "muc",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "làm sạch, cắt khoanh"
+    },
+    {
+      "ingredientId": "ngao",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm nhả cát, rửa sạch vỏ"
+    },
+    {
+      "ingredientId": "sa",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "đập dập, cắt khúc"
+    },
+    {
+      "ingredientId": "rieng",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "thái lát mỏng"
+    },
+    {
+      "ingredientId": "la-chanh",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "vò nhẹ"
+    },
+    {
+      "ingredientId": "ot-hiem",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "đập dập"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, thái lát"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 60,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "cắt múi cau"
+    },
+    {
+      "ingredientId": "thom",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, thái miếng"
+    },
+    {
+      "ingredientId": "me",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "dầm nước ấm, lọc bỏ hạt"
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 10,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "vắt lấy nước"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nam-rom",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt chân, chẻ đôi"
+    },
+    {
+      "ingredientId": "nam-kim-cham",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt gốc, tách sợi"
+    },
+    {
+      "ingredientId": "rau-muong",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt cọng non, chẻ sợi"
+    },
+    {
+      "ingredientId": "cai-thao",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "ngo-gai",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc ngắn"
+    },
+    {
+      "ingredientId": "bun",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm ngao trong nước muối loãng cho nhả hết cát.",
+      "activeMinutes": 2,
+      "passiveMinutes": 30,
+      "ingredientIds": [
+        "ngao",
+        "muoi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Bóc vỏ tôm, làm sạch và cắt khoanh mực, để riêng trong đĩa.",
+      "activeMinutes": 12,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "tom",
+        "muc"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Sơ chế sả, riềng, ớt, hành tím, cà chua, thơm, me, nấm và các loại rau.",
+      "activeMinutes": 15,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "sa",
+        "rieng",
+        "ot-hiem",
+        "hanh-tim",
+        "ca-chua",
+        "thom",
+        "me",
+        "nam-rom",
+        "nam-kim-cham",
+        "rau-muong",
+        "cai-thao",
+        "ngo-gai",
+        "chanh"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi thơm hành tím và sả với dầu rồi cho cà chua vào xào mềm.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "sa",
+        "ca-chua"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Đổ nước vào, thêm riềng, lá chanh, thơm và nước me rồi đun sôi liu riu.",
+      "activeMinutes": 2,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "rieng",
+        "la-chanh",
+        "thom",
+        "me"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm nước lẩu với nước mắm, đường, muối, ớt hiểm và nước cốt chanh cho vị chua cay hài hòa.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "duong",
+        "muoi",
+        "ot-hiem",
+        "chanh"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Bày bún, rau, nấm và hải sản ra đĩa, đặt nồi lẩu lên bếp để bàn.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "bun",
+        "rau-muong",
+        "cai-thao",
+        "nam-rom",
+        "nam-kim-cham",
+        "tom",
+        "muc",
+        "ngao",
+        "ngo-gai"
+      ]
+    },
+    {
+      "order": 8,
+      "text": "Nhúng hải sản, nấm và rau vào nồi lẩu sôi, chín tới thì gắp ra ăn kèm bún.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "tom",
+        "muc",
+        "ngao",
+        "nam-rom",
+        "nam-kim-cham",
+        "rau-muong",
+        "cai-thao",
+        "ngo-gai",
+        "bun"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

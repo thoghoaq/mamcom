@@ -1,0 +1,275 @@
+{
+  "id": "lau-ga-nam",
+  "name": "Lẩu gà nấm",
+  "slot": "lau",
+  "regions": [],
+  "seasons": [
+    "autumn",
+    "winter"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nau",
+  "proteinSource": "ga",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "ga-ta",
+      "gramsEdiblePerServing": 180,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chặt miếng vừa ăn"
+    },
+    {
+      "ingredientId": "nam-kim-cham",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt gốc, tách nhỏ"
+    },
+    {
+      "ingredientId": "nam-dui-ga",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát dọc"
+    },
+    {
+      "ingredientId": "nam-rom",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt chân, bổ đôi"
+    },
+    {
+      "ingredientId": "nam-huong",
+      "gramsEdiblePerServing": 10,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm mềm, bỏ chân"
+    },
+    {
+      "ingredientId": "cai-thao",
+      "gramsEdiblePerServing": 70,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "cai-ngot",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "bun",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "gung",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "thái sợi"
+    },
+    {
+      "ingredientId": "sa",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "đập dập, cắt khúc"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "một phần để pha chấm"
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 10,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "vắt lấy nước"
+    },
+    {
+      "ingredientId": "la-chanh",
+      "gramsEdiblePerServing": 1,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái chỉ"
+    },
+    {
+      "ingredientId": "ot-hiem",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "để riêng, tùy khẩu vị"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ướp gà với hạt nêm và hạt tiêu cho ngấm.",
+      "activeMinutes": 5,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "ga-ta",
+        "hat-nem",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Sơ chế các loại nấm, rửa và cắt cải thảo, cải ngọt, hành lá.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nam-kim-cham",
+        "nam-dui-ga",
+        "nam-rom",
+        "nam-huong",
+        "cai-thao",
+        "cai-ngot",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm hành tím, tỏi, gừng, sả rồi cho gà vào xào săn.",
+      "activeMinutes": 6,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-tim",
+        "toi",
+        "gung",
+        "sa",
+        "ga-ta"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Đổ nước ngập, thêm nấm hương, ninh lửa nhỏ đến khi gà mềm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 25,
+      "ingredientIds": [
+        "nam-huong"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Nêm nước lẩu bằng nước mắm, đường và muối cho vừa miệng.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "duong",
+        "muoi"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Pha muối tiêu chanh với lá chanh, để ớt riêng làm chén chấm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "muoi",
+        "hat-tieu",
+        "chanh",
+        "la-chanh",
+        "ot-hiem"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Đặt nồi lẩu sôi lên bàn, nhúng nấm và rau, ăn kèm bún.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nam-kim-cham",
+        "nam-dui-ga",
+        "nam-rom",
+        "cai-thao",
+        "cai-ngot",
+        "hanh-la",
+        "bun"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

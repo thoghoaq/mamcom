@@ -1,0 +1,66 @@
+{
+  "ingredientId": "banh-mi",
+  "query": "bread french or vienna",
+  "retrievedAt": "2026-11-06",
+  "source": "usda-fdc",
+  "totalHits": 268,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 172675,
+      "description": "Bread, french or vienna (includes sourdough)",
+      "dataType": "SR Legacy",
+      "foodCategory": "Baked Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172675/nutrients",
+      "per100g": {
+        "kcal": 272,
+        "proteinG": 10.8,
+        "fatG": 2.42,
+        "carbG": 51.9,
+        "fiberG": 2.2,
+        "sodiumMg": 602
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 174091,
+      "description": "Bread, french or vienna, whole wheat",
+      "dataType": "SR Legacy",
+      "foodCategory": "Baked Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174091/nutrients",
+      "per100g": {
+        "kcal": 239,
+        "proteinG": 8.33,
+        "fatG": 1.04,
+        "carbG": 49.1,
+        "fiberG": 4.2,
+        "sodiumMg": 375
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 174911,
+      "description": "Bread, french or vienna, toasted (includes sourdough)",
+      "dataType": "SR Legacy",
+      "foodCategory": "Baked Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174911/nutrients",
+      "per100g": {
+        "kcal": 319,
+        "proteinG": 13,
+        "fatG": 2.14,
+        "carbG": 61.9,
+        "fiberG": 3.1,
+        "sodiumMg": 720
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    }
+  ]
+}

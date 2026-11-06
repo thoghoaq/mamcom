@@ -1,0 +1,66 @@
+{
+  "ingredientId": "thao-qua",
+  "query": "spices cardamom",
+  "retrievedAt": "2026-11-06",
+  "source": "usda-fdc",
+  "totalHits": 72,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 170919,
+      "description": "Spices, cardamom",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170919/nutrients",
+      "per100g": {
+        "kcal": 311,
+        "proteinG": 10.8,
+        "fatG": 6.7,
+        "carbG": 68.5,
+        "fiberG": 28,
+        "sodiumMg": 18
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 171332,
+      "description": "Spices, pumpkin pie spice",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171332/nutrients",
+      "per100g": {
+        "kcal": 342,
+        "proteinG": 5.76,
+        "fatG": 12.6,
+        "carbG": 69.3,
+        "fiberG": 14.8,
+        "sodiumMg": 52
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 170934,
+      "description": "Spices, saffron",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170934/nutrients",
+      "per100g": {
+        "kcal": 310,
+        "proteinG": 11.4,
+        "fatG": 5.85,
+        "carbG": 65.4,
+        "fiberG": 3.9,
+        "sodiumMg": 148
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/2 từ khoá."
+    }
+  ]
+}

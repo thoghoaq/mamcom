@@ -1,0 +1,66 @@
+{
+  "ingredientId": "que",
+  "query": "spices cinnamon ground",
+  "retrievedAt": "2026-11-06",
+  "source": "usda-fdc",
+  "totalHits": 208,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 171320,
+      "description": "Spices, cinnamon, ground",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171320/nutrients",
+      "per100g": {
+        "kcal": 247,
+        "proteinG": 3.99,
+        "fatG": 1.24,
+        "carbG": 80.6,
+        "fiberG": 53.1,
+        "sodiumMg": 10
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 170926,
+      "description": "Spices, ginger, ground",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170926/nutrients",
+      "per100g": {
+        "kcal": 335,
+        "proteinG": 8.98,
+        "fatG": 4.24,
+        "carbG": 71.6,
+        "fiberG": 14.1,
+        "sodiumMg": 27
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 170927,
+      "description": "Spices, mace, ground",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170927/nutrients",
+      "per100g": {
+        "kcal": 475,
+        "proteinG": 6.71,
+        "fatG": 32.4,
+        "carbG": 50.5,
+        "fiberG": 20.2,
+        "sodiumMg": 80
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

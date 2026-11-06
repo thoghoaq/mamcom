@@ -14,7 +14,7 @@ Tài liệu này tổng hợp toàn bộ phần phân tích trước khi làm. C
 
 Chưa có app nào lấy **thành phần gia đình** làm đầu vào để trả ra mâm cơm cân đối kèm định lượng, danh sách đi chợ, dinh dưỡng và trình tự nấu.
 
-**Ý tưởng cốt lõi.** Quay *cả mâm*, không quay một món. App tự tính *nấu bao nhiêu, mua gì* cho đúng nhà mình.
+**Ý tưởng cốt lõi.** Quay *cả mâm*, không quay một món. App tự tính *nấu bao nhiêu, mua gì* cho đúng nhà mình. Ngoài mâm cơm, người dùng chọn được bữa một tô, lẩu hay bữa sáng nhanh (ADR-037).
 
 **Mục tiêu UX.** Từ lúc mở app đến khi biết tối nay nấu gì và mua gì: **dưới 60 giây** (lý tưởng là 30 giây).
 
@@ -112,6 +112,8 @@ Mức thông dụng khác:
 ### 5.1 Khung mâm
 
 Mâm gồm cơm + 1 canh + 1 món mặn + 1 rau. Nếu `baseServings ≥ 5` *(mặc định)* thì thêm 1 món mặn thứ hai.
+
+**Loại bữa (ADR-037).** Trên màn mâm, người dùng chọn "Hôm nay ăn: Mâm cơm · Một tô · Lẩu · Bữa sáng" (mặc định mâm cơm, giữ trong ngày). Bữa một tô, lẩu hay bữa sáng là đúng một món của loại `to`, `lau` hay `sang`; một suất là cả bữa của một người. Bữa có cơm khi và chỉ khi có món của mâm (canh, mặn, rau); bữa khác không có gạo, bước nấu cơm hay kcal của cơm.
 
 Nhà mình chọn được "Mâm mấy món" trong Cài đặt: tự theo nhà mình (như trên), 2 món (canh, mặn), 3 món, hoặc 4 món (canh, hai món mặn, rau). Màn "Mâm hôm nay" có "Bớt món" và "Thêm món" cho riêng hôm nay. Hai món cùng loại chia nhau 1,2 lần lượng một món, mâm 2 món nấu mỗi món nhiều hơn 1,2 lần (`portion-defaults.json`, mục `trayShares`). Chi tiết ở ADR-034.
 
@@ -292,6 +294,8 @@ Mỗi nguyên liệu lưu `nutritionSource` (db, mã gốc, tên khớp, ngườ
 Mỗi `marketUnit` có thêm trường tuỳ chọn `showApproxGrams` (mặc định `false`, không ghi ra file khi `false`). Bật cho đơn vị đếm mà kích cỡ khác nhau nhiều, như `con` cá, để text đi chợ ghi `(~500g)`.
 
 ### 7.2 Món: `data/dishes/<id>.json`
+
+`slot` là một trong: `canh`, `man`, `rau` (món của mâm cơm), `to` (món một tô), `lau` (lẩu), `sang` (bữa sáng nhanh) (ADR-037).
 
 ```json
 {

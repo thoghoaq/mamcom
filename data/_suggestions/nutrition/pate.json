@@ -1,0 +1,66 @@
+{
+  "ingredientId": "pate",
+  "query": "pate liver",
+  "retrievedAt": "2026-11-06",
+  "source": "usda-fdc",
+  "totalHits": 42,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 172928,
+      "description": "Pate, chicken liver, canned",
+      "dataType": "SR Legacy",
+      "foodCategory": "Sausages and Luncheon Meats",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172928/nutrients",
+      "per100g": {
+        "kcal": 201,
+        "proteinG": 13.4,
+        "fatG": 13.1,
+        "carbG": 6.55,
+        "fiberG": 0,
+        "sodiumMg": 386
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'canned': đã chế biến, cần cân nhắc; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 172930,
+      "description": "Pate, liver, not specified, canned",
+      "dataType": "SR Legacy",
+      "foodCategory": "Sausages and Luncheon Meats",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172930/nutrients",
+      "per100g": {
+        "kcal": 319,
+        "proteinG": 14.2,
+        "fatG": 28,
+        "carbG": 1.5,
+        "fiberG": 0,
+        "sodiumMg": 697
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'canned': đã chế biến, cần cân nhắc; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 172929,
+      "description": "Pate, goose liver, smoked, canned",
+      "dataType": "SR Legacy",
+      "foodCategory": "Sausages and Luncheon Meats",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/172929/nutrients",
+      "per100g": {
+        "kcal": 462,
+        "proteinG": 11.4,
+        "fatG": 43.8,
+        "carbG": 4.67,
+        "fiberG": 0,
+        "sodiumMg": 697
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'canned': đã chế biến, cần cân nhắc; đủ 6 chất; khớp 2/2 từ khoá."
+    }
+  ]
+}

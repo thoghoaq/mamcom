@@ -1,0 +1,66 @@
+{
+  "ingredientId": "bo-vien",
+  "query": "beef meatballs",
+  "retrievedAt": "2026-11-06",
+  "source": "usda-fdc",
+  "totalHits": 1134,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 173086,
+      "description": "Beef, New Zealand, imported, manufacturing beef, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Beef Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173086/nutrients",
+      "per100g": {
+        "kcal": 119,
+        "proteinG": 21.2,
+        "fatG": 3.68,
+        "carbG": 0.23,
+        "fiberG": 0,
+        "sodiumMg": 55
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 168630,
+      "description": "Beef, variety meats and by-products, mechanically separated beef, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Beef Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168630/nutrients",
+      "per100g": {
+        "kcal": 276,
+        "proteinG": 15,
+        "fatG": 23.5,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 57
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 1/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 169067,
+      "description": "Meatballs, meatless",
+      "dataType": "SR Legacy",
+      "foodCategory": "Legumes and Legume Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169067/nutrients",
+      "per100g": {
+        "kcal": 197,
+        "proteinG": 21,
+        "fatG": 9,
+        "carbG": 8,
+        "fiberG": 4.6,
+        "sodiumMg": 550
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 1/2 từ khoá."
+    }
+  ]
+}

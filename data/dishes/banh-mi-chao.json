@@ -1,0 +1,200 @@
+{
+  "id": "banh-mi-chao",
+  "name": "Bánh mì chảo",
+  "slot": "sang",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "chien",
+  "proteinSource": "trung",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "banh-mi",
+      "gramsEdiblePerServing": 80,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "1 ổ nhỏ"
+    },
+    {
+      "ingredientId": "trung-ga",
+      "gramsEdiblePerServing": 50,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "1 quả"
+    },
+    {
+      "ingredientId": "pate",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "cha-lua",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát dày"
+    },
+    {
+      "ingredientId": "hanh-tay",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái múi cau"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 40,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "cắt múi cau"
+    },
+    {
+      "ingredientId": "dua-leo",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "bo",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "tuong-ca",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-tuong",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "xay"
+    },
+    {
+      "ingredientId": "tuong-ot",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "để riêng để chấm"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Thái hành tây, chả lụa, cà chua, dưa leo và hành lá.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-tay",
+        "cha-lua",
+        "ca-chua",
+        "dua-leo",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Hâm nóng bánh mì trong lò hoặc chảo cho vỏ giòn lại.",
+      "activeMinutes": 1,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "banh-mi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Đun nóng chảo nhỏ với bơ và dầu ăn, xào hành tây và cà chua với tương cà cho sệt.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "bo",
+        "dau-an",
+        "hanh-tay",
+        "ca-chua",
+        "tuong-ca"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Cho chả lụa vào áp chảo cho vàng hai mặt.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "cha-lua"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Đập trứng vào giữa chảo, thêm pa tê bên cạnh, rưới nước tương, rắc tiêu và để lửa nhỏ đến khi trứng lòng đào.",
+      "activeMinutes": 1,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "trung-ga",
+        "pate",
+        "nuoc-tuong",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Rắc hành lá, bưng nguyên chảo ra ăn ngay kèm bánh mì, dưa leo và tương ớt.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "banh-mi",
+        "dua-leo",
+        "tuong-ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

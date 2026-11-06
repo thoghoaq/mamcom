@@ -1,0 +1,270 @@
+{
+  "id": "lau-nam-chay",
+  "name": "Lẩu nấm chay",
+  "slot": "lau",
+  "regions": [],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nau",
+  "proteinSource": "chay",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "nam-huong",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nấm tươi, cắt bỏ chân, khía hoa trên mũ"
+    },
+    {
+      "ingredientId": "nam-kim-cham",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt gốc, tách sợi"
+    },
+    {
+      "ingredientId": "nam-dui-ga",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát dọc"
+    },
+    {
+      "ingredientId": "nam-rom",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt chân, bổ đôi"
+    },
+    {
+      "ingredientId": "dau-phu",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt miếng vuông"
+    },
+    {
+      "ingredientId": "cu-cai",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, cắt khúc dày để ninh nước dùng"
+    },
+    {
+      "ingredientId": "bap-ngot",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "ca-rot",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, cắt khoanh"
+    },
+    {
+      "ingredientId": "cai-thao",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "cai-ngot",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 50,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "bổ múi cau"
+    },
+    {
+      "ingredientId": "bun",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "gung",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "đập dập"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "dùng loại hạt nêm chay"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-tuong",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "một phần nêm nước lẩu, một phần làm chén chấm"
+    },
+    {
+      "ingredientId": "ot-hiem",
+      "gramsEdiblePerServing": 2,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, để riêng cho ai ăn cay"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Gọt và cắt khúc củ cải, cà rốt cùng bắp ngọt.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "cu-cai",
+        "ca-rot",
+        "bap-ngot"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Cho củ cải, cà rốt, bắp ngọt và gừng vào nồi nước, ninh lửa nhỏ để lấy nước dùng ngọt.",
+      "activeMinutes": 2,
+      "passiveMinutes": 30,
+      "ingredientIds": [
+        "cu-cai",
+        "ca-rot",
+        "gung",
+        "bap-ngot"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Trong lúc chờ, sơ chế các loại nấm, rửa và cắt cải thảo, cải ngọt, bổ cà chua.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nam-huong",
+        "nam-kim-cham",
+        "nam-dui-ga",
+        "nam-rom",
+        "cai-thao",
+        "cai-ngot",
+        "ca-chua"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Chiên đậu phụ với dầu ăn đến khi vàng đều các mặt rồi vớt ra.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-phu",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Xào sơ cà chua với chút dầu còn lại rồi đổ vào nồi nước dùng.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-chua",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm nước lẩu bằng hạt nêm chay, muối, đường và một ít nước tương cho vừa ăn.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hat-nem",
+        "muoi",
+        "duong",
+        "nuoc-tuong"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Trụng bún qua nước sôi, để ráo rồi bày ra đĩa.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "bun"
+      ]
+    },
+    {
+      "order": 8,
+      "text": "Pha chén nước tương với ớt hiểm để riêng làm nước chấm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-tuong",
+        "ot-hiem"
+      ]
+    },
+    {
+      "order": 9,
+      "text": "Đặt nồi lẩu lên bếp tại bàn, nhúng nấm, đậu phụ và rau khi nước sôi, ăn kèm bún.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nam-huong",
+        "nam-kim-cham",
+        "nam-dui-ga",
+        "nam-rom",
+        "dau-phu",
+        "cai-thao",
+        "cai-ngot",
+        "bun"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "id": "bap-ngot",
+  "names": {
+    "default": "Bắp ngọt",
+    "north": "Ngô ngọt"
+  },
+  "aliases": [
+    "ngô ngọt"
+  ],
+  "category": "rau-cu",
+  "aisle": "rau-cu-qua",
+  "proteinSource": null,
+  "marketUnit": {
+    "default": {
+      "display": "trái",
+      "gramsPerUnit": 300,
+      "step": 1
+    },
+    "north": {
+      "display": "bắp",
+      "gramsPerUnit": 300,
+      "step": 1
+    }
+  },
+  "wasteRatio": 0.4,
+  "isPantry": false,
+  "nutritionPer100gEdible": {
+    "kcal": null,
+    "proteinG": null,
+    "fatG": null,
+    "carbG": null,
+    "fiberG": null,
+    "sodiumMg": null
+  },
+  "nutritionSource": {
+    "db": "placeholder",
+    "ref": null,
+    "matchedName": null,
+    "verifiedBy": null,
+    "verifiedAt": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

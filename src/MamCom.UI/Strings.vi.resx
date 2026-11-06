@@ -481,6 +481,8 @@
   <data name="Tray_SummaryLabel" xml:space="preserve"><value>Tóm tắt mâm</value></data>
   <data name="Tray_SummaryTime" xml:space="preserve"><value>Nấu cả mâm</value></data>
   <data name="Tray_SummaryKcal" xml:space="preserve"><value>Mỗi người, cả cơm</value></data>
+  <data name="Tray_SummaryTimeOneDish" xml:space="preserve"><value>Thời gian nấu</value></data>
+  <data name="Tray_SummaryKcalOneDish" xml:space="preserve"><value>Mỗi người</value></data>
   <data name="Tray_SummaryRice" xml:space="preserve"><value>Gạo nấu cơm</value></data>
   <data name="Tray_SummaryShop" xml:space="preserve"><value>Cần mua</value></data>
   <data name="Tray_ItemsFormat" xml:space="preserve"><value>{0} thứ</value></data>

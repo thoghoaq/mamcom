@@ -1,0 +1,66 @@
+{
+  "ingredientId": "banh-canh",
+  "query": "rice noodles cooked",
+  "retrievedAt": "2026-11-06",
+  "source": "usda-fdc",
+  "totalHits": 1967,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 168914,
+      "description": "Rice noodles, cooked",
+      "dataType": "SR Legacy",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168914/nutrients",
+      "per100g": {
+        "kcal": 108,
+        "proteinG": 1.79,
+        "fatG": 0.2,
+        "carbG": 24,
+        "fiberG": 1,
+        "sodiumMg": 19
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169742,
+      "description": "Rice noodles, dry",
+      "dataType": "SR Legacy",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169742/nutrients",
+      "per100g": {
+        "kcal": 364,
+        "proteinG": 5.95,
+        "fatG": 0.56,
+        "carbG": 80.2,
+        "fiberG": 1.6,
+        "sodiumMg": 182
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 169732,
+      "description": "Noodles, egg, enriched, cooked",
+      "dataType": "SR Legacy",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169732/nutrients",
+      "per100g": {
+        "kcal": 138,
+        "proteinG": 4.54,
+        "fatG": 2.07,
+        "carbG": 25.2,
+        "fiberG": 1.2,
+        "sodiumMg": 5
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "id": "chao-suon",
+  "name": "Cháo sườn",
+  "slot": "to",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "nau",
+  "proteinSource": "heo",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "gao",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "ngâm mềm rồi xay hoặc giã vỡ"
+    },
+    {
+      "ingredientId": "suon-heo",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chặt miếng nhỏ, chần sạch"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, đập dập"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ruoc",
+      "gramsEdiblePerServing": 10,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "rắc lên mặt tô"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "xay"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Vo gạo, ngâm nước cho mềm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 60,
+      "ingredientIds": [
+        "gao"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Xay hoặc giã gạo đã ngâm cho vỡ nhỏ.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "gao"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Chần sườn trong nước sôi với chút muối rồi rửa sạch.",
+      "activeMinutes": 5,
+      "passiveMinutes": 3,
+      "ingredientIds": [
+        "suon-heo",
+        "muoi"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Cho sườn và hành tím vào nồi nước, ninh nhỏ lửa, hớt bọt cho nước trong.",
+      "activeMinutes": 5,
+      "passiveMinutes": 50,
+      "ingredientIds": [
+        "suon-heo",
+        "hanh-tim"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Đổ gạo vào nồi nước sườn, khuấy đều và nấu nhỏ lửa đến khi cháo nhừ sánh.",
+      "activeMinutes": 10,
+      "passiveMinutes": 25,
+      "ingredientIds": [
+        "gao",
+        "suon-heo"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm nước mắm và hạt nêm cho vừa ăn rồi tắt bếp.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Múc cháo ra tô, rắc ruốc, hành lá, hạt tiêu và ăn khi còn nóng.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ruoc",
+        "hanh-la",
+        "hat-tieu"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

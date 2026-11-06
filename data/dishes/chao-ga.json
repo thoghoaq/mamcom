@@ -1,0 +1,221 @@
+{
+  "id": "chao-ga",
+  "name": "Cháo gà",
+  "slot": "to",
+  "regions": [],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nau",
+  "proteinSource": "ga",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "ga-ta",
+      "gramsEdiblePerServing": 110,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "phần thịt ăn được, đã bỏ xương sau khi luộc"
+    },
+    {
+      "ingredientId": "gao",
+      "gramsEdiblePerServing": 50,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "vo sạch, để ráo"
+    },
+    {
+      "ingredientId": "gao-nep",
+      "gramsEdiblePerServing": 10,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "vo chung với gạo tẻ cho cháo sánh"
+    },
+    {
+      "ingredientId": "gung",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "một nửa đập dập, một nửa thái sợi"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, đập dập"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 8,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "rau-ram",
+      "gramsEdiblePerServing": 5,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt lá, thái nhỏ"
+    },
+    {
+      "ingredientId": "hanh-phi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "rắc lên khi ăn"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "một ít để chà gà, phần còn lại nêm"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "xay"
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 10,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "cắt múi, ăn kèm"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, để riêng cho ai ăn cay"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Vo sạch gạo tẻ và gạo nếp rồi để ráo.",
+      "activeMinutes": 3,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "gao",
+        "gao-nep"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Chà gà với muối và một ít gừng đập rồi rửa sạch để khử mùi.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ga-ta",
+        "muoi",
+        "gung"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Cho gà vào nồi nước lạnh cùng gừng đập và hành tím, đun sôi rồi hạ lửa luộc đến chín, thỉnh thoảng hớt bọt.",
+      "activeMinutes": 4,
+      "passiveMinutes": 25,
+      "ingredientIds": [
+        "ga-ta",
+        "gung",
+        "hanh-tim"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Vớt gà ra để nguội bớt, lọc giữ lại nước luộc rồi xé thịt gà thành miếng vừa ăn.",
+      "activeMinutes": 10,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "ga-ta"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Cho gạo vào nước luộc gà, nấu lửa nhỏ đến khi hạt gạo nở bung, thỉnh thoảng khuấy cho khỏi dính đáy.",
+      "activeMinutes": 5,
+      "passiveMinutes": 35,
+      "ingredientIds": [
+        "gao",
+        "gao-nep"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm cháo với nước mắm, hạt nêm và muối cho vừa miệng.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "hat-nem",
+        "muoi"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Thái nhỏ hành lá, rau răm, thái sợi phần gừng còn lại và cắt chanh, ớt.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "rau-ram",
+        "gung",
+        "chanh",
+        "ot"
+      ]
+    },
+    {
+      "order": 8,
+      "text": "Múc cháo nóng ra tô, xếp thịt gà lên trên, rắc hành lá, rau răm, gừng sợi, hành phi và tiêu, ăn kèm chanh và ớt.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ga-ta",
+        "hanh-la",
+        "rau-ram",
+        "gung",
+        "hanh-phi",
+        "hat-tieu",
+        "chanh",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

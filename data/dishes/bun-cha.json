@@ -1,0 +1,245 @@
+{
+  "id": "bun-cha",
+  "name": "Bún chả",
+  "slot": "to",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nuong",
+  "proteinSource": "heo",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "bun",
+      "gramsEdiblePerServing": 180,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bún rối hoặc bún lá"
+    },
+    {
+      "ingredientId": "thit-ba-chi",
+      "gramsEdiblePerServing": 70,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái miếng mỏng làm chả miếng"
+    },
+    {
+      "ingredientId": "thit-nac-bam",
+      "gramsEdiblePerServing": 70,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "làm chả viên"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, băm nhỏ; chia phần ướp và phần nước chấm"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 25,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "chia phần ướp và phần nước chấm"
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 20,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "chia phần ướp, nước chấm và đồ chua"
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "xay"
+    },
+    {
+      "ingredientId": "nuoc-mau",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "cho thịt lên màu đẹp"
+    },
+    {
+      "ingredientId": "giam",
+      "gramsEdiblePerServing": 12,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "chia phần nước chấm và đồ chua"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "thái lát, có thể để riêng"
+    },
+    {
+      "ingredientId": "ca-rot",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, thái lát mỏng"
+    },
+    {
+      "ingredientId": "cu-cai",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái mỏng làm đồ chua"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "quét khi nướng"
+    },
+    {
+      "ingredientId": "xa-lach",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "rửa sạch, để ráo"
+    },
+    {
+      "ingredientId": "rau-thom",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt, rửa sạch"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Thái ba chỉ mỏng rồi ướp với một nửa hành tím, tỏi, nước mắm, đường, tiêu và nước màu.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-ba-chi",
+        "hanh-tim",
+        "toi",
+        "nuoc-mam",
+        "duong",
+        "hat-tieu",
+        "nuoc-mau"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Trộn thịt bằm với phần hành tím và gia vị ướp còn lại, vo thành viên dẹt.",
+      "activeMinutes": 7,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-nac-bam",
+        "hanh-tim",
+        "nuoc-mam",
+        "duong",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Để thịt ngấm gia vị.",
+      "activeMinutes": 0,
+      "passiveMinutes": 30,
+      "ingredientIds": [
+        "thit-ba-chi",
+        "thit-nac-bam"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Ngâm cà rốt và củ cải thái mỏng với chút giấm và đường cho thành đồ chua.",
+      "activeMinutes": 5,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "ca-rot",
+        "giam",
+        "duong",
+        "cu-cai"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Pha nước chấm với nước mắm, đường, giấm, nước ấm, rồi cho tỏi băm và ớt vào.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "duong",
+        "giam",
+        "toi",
+        "ot"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Trần bún qua nước sôi cho mềm, rửa và để ráo rau sống.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "bun",
+        "xa-lach",
+        "rau-thom"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Quét dầu lên thịt rồi nướng trên than hoặc lò, trở đều đến khi xém cạnh.",
+      "activeMinutes": 15,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-ba-chi",
+        "thit-nac-bam",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 8,
+      "text": "Thả chả nóng và đồ chua vào bát nước chấm, dọn ngay cùng bún và rau.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-ba-chi",
+        "thit-nac-bam",
+        "ca-rot",
+        "bun",
+        "xa-lach",
+        "rau-thom"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

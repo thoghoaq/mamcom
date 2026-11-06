@@ -1,0 +1,227 @@
+{
+  "id": "bun-moc",
+  "name": "Bún mọc",
+  "slot": "to",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nau",
+  "proteinSource": "heo",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "bun",
+      "gramsEdiblePerServing": 150,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bún rối tươi"
+    },
+    {
+      "ingredientId": "gio-song",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "để lạnh cho dễ vo viên"
+    },
+    {
+      "ingredientId": "suon-non",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chặt miếng nhỏ"
+    },
+    {
+      "ingredientId": "cha-lua",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát mỏng"
+    },
+    {
+      "ingredientId": "xuong-ong-heo",
+      "gramsEdiblePerServing": 150,
+      "scale": "sublinear",
+      "consumedRatio": 0.1,
+      "note": "ninh lấy nước dùng; xương không ăn, chỉ tính phần ngấm vào nước"
+    },
+    {
+      "ingredientId": "nam-huong",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nấm khô, ngâm nở rồi băm"
+    },
+    {
+      "ingredientId": "moc-nhi",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "khô, ngâm nở rồi băm"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "nướng sơ cho thơm"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 8,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "rau-mui",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "xay"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, để riêng"
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 10,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "cắt múi"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Chần xương ống và sườn non qua nước sôi rồi rửa sạch.",
+      "activeMinutes": 5,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "xuong-ong-heo",
+        "suon-non"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ninh xương và sườn với hành tím nướng, chút muối, vớt bọt thường xuyên.",
+      "activeMinutes": 5,
+      "passiveMinutes": 60,
+      "ingredientIds": [
+        "xuong-ong-heo",
+        "suon-non",
+        "hanh-tim",
+        "muoi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Ngâm nấm hương và mộc nhĩ cho nở rồi băm nhỏ.",
+      "activeMinutes": 5,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "nam-huong",
+        "moc-nhi"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Trộn giò sống với nấm, mộc nhĩ, một ít nước mắm và hạt tiêu, để nghỉ cho ngấm.",
+      "activeMinutes": 5,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "gio-song",
+        "nam-huong",
+        "moc-nhi",
+        "nuoc-mam",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Vo mọc thành viên nhỏ, thả vào nồi nước dùng đang sôi và nấu đến khi viên nổi lên.",
+      "activeMinutes": 8,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "gio-song"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm nước dùng bằng hạt nêm và nước mắm cho vừa, thái chả lụa.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hat-nem",
+        "nuoc-mam",
+        "cha-lua"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Chần bún cho vào tô, xếp mọc, sườn, chả, rắc hành lá, rau mùi, chan nước dùng nóng, dọn kèm ớt và chanh.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "bun",
+        "gio-song",
+        "suon-non",
+        "cha-lua",
+        "hanh-la",
+        "rau-mui",
+        "ot",
+        "chanh"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

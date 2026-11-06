@@ -1,0 +1,295 @@
+{
+  "id": "bun-thit-nuong",
+  "name": "Bún thịt nướng",
+  "slot": "to",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nuong",
+  "proteinSource": "heo",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "bun",
+      "gramsEdiblePerServing": 180,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bún tươi, trụng sơ nước sôi"
+    },
+    {
+      "ingredientId": "thit-nac-vai",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát mỏng cỡ 3 mm"
+    },
+    {
+      "ingredientId": "sa",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhuyễn"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhuyễn"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhuyễn, chia đôi cho ướp thịt và pha nước mắm"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 22,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "chia phần ướp thịt và phần pha nước chấm"
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 26,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "chia phần ướp, nước chấm và đồ chua"
+    },
+    {
+      "ingredientId": "nuoc-mau",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "chia phần ướp thịt và làm mỡ hành"
+    },
+    {
+      "ingredientId": "ca-rot",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bào sợi"
+    },
+    {
+      "ingredientId": "cu-cai",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bào sợi"
+    },
+    {
+      "ingredientId": "giam",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóp đồ chua"
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "vắt lấy nước"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm, có thể để riêng"
+    },
+    {
+      "ingredientId": "xa-lach",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "rửa sạch, thái sợi"
+    },
+    {
+      "ingredientId": "rau-thom",
+      "gramsEdiblePerServing": 10,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt lá"
+    },
+    {
+      "ingredientId": "gia-do",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt rễ"
+    },
+    {
+      "ingredientId": "dua-leo",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái sợi"
+    },
+    {
+      "ingredientId": "lac",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "rang chín, bóc vỏ lụa, giã dập"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Trộn thịt với sả, hành tím, nửa phần tỏi, nước mắm, đường, nước màu, tiêu và chút dầu ăn.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-nac-vai",
+        "sa",
+        "hanh-tim",
+        "toi",
+        "nuoc-mam",
+        "duong",
+        "nuoc-mau",
+        "hat-tieu",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp thịt cho thấm.",
+      "activeMinutes": 0,
+      "passiveMinutes": 30,
+      "ingredientIds": [
+        "thit-nac-vai"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Bóp cà rốt và củ cải với muối, vắt ráo rồi ngâm với giấm và đường.",
+      "activeMinutes": 5,
+      "passiveMinutes": 20,
+      "ingredientIds": [
+        "ca-rot",
+        "cu-cai",
+        "muoi",
+        "giam",
+        "duong"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Pha nước mắm với đường, nước chanh, tỏi còn lại, ớt và chút nước ấm cho vừa chua ngọt.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "duong",
+        "chanh",
+        "toi",
+        "ot"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Rang lạc chín vàng rồi giã dập.",
+      "activeMinutes": 6,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "lac"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Đun nóng dầu, rưới lên hành lá làm mỡ hành.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Nướng thịt trên than hoặc lò đến khi chín và xém cạnh, trở đều hai mặt.",
+      "activeMinutes": 12,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-nac-vai"
+      ]
+    },
+    {
+      "order": 8,
+      "text": "Xếp rau sống, giá, dưa leo và bún vào tô, cho thịt nướng lên trên.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "xa-lach",
+        "rau-thom",
+        "gia-do",
+        "dua-leo",
+        "bun",
+        "thit-nac-vai"
+      ]
+    },
+    {
+      "order": 9,
+      "text": "Rưới mỡ hành, rắc lạc, thêm đồ chua và chan nước mắm rồi dọn ngay.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "lac",
+        "ca-rot",
+        "cu-cai",
+        "nuoc-mam"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "ingredientId": "mi-trung",
+  "query": "egg noodles dry",
+  "retrievedAt": "2026-11-06",
+  "source": "usda-fdc",
+  "totalHits": 826,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 169731,
+      "description": "Noodles, egg, dry, enriched",
+      "dataType": "SR Legacy",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169731/nutrients",
+      "per100g": {
+        "kcal": 384,
+        "proteinG": 14.2,
+        "fatG": 4.44,
+        "carbG": 71.3,
+        "fiberG": 3.3,
+        "sodiumMg": 21
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169755,
+      "description": "Noodles, egg, dry, unenriched",
+      "dataType": "SR Legacy",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169755/nutrients",
+      "per100g": {
+        "kcal": 384,
+        "proteinG": 14.2,
+        "fatG": 4.44,
+        "carbG": 71.3,
+        "fiberG": 3.3,
+        "sodiumMg": 21
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 169733,
+      "description": "Noodles, egg, spinach, enriched, dry",
+      "dataType": "SR Legacy",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169733/nutrients",
+      "per100g": {
+        "kcal": 382,
+        "proteinG": 14.6,
+        "fatG": 4.55,
+        "carbG": 70.3,
+        "fiberG": 6.8,
+        "sodiumMg": 72
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    }
+  ]
+}

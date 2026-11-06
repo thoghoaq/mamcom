@@ -1,0 +1,210 @@
+{
+  "id": "com-rang-dua-bo",
+  "name": "Cơm rang dưa bò",
+  "slot": "to",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "xao",
+  "proteinSource": "bo",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "gao",
+      "gramsEdiblePerServing": 90,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nấu thành cơm nguội, để ráo hạt"
+    },
+    {
+      "ingredientId": "thit-bo-than",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát mỏng ngang thớ"
+    },
+    {
+      "ingredientId": "dua-cai-chua",
+      "gramsEdiblePerServing": 70,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "rửa qua, vắt ráo, thái nhỏ"
+    },
+    {
+      "ingredientId": "trung-ga",
+      "gramsEdiblePerServing": 50,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "đập ra bát, đánh tan"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 40,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "bổ múi cau"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 10,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc ngắn"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, để riêng cho ai ăn cay"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Vo gạo rồi nấu cơm, xới tơi và để nguội.",
+      "activeMinutes": 3,
+      "passiveMinutes": 30,
+      "ingredientIds": [
+        "gao"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp thịt bò với một nửa tỏi, nước mắm và hạt tiêu.",
+      "activeMinutes": 3,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "thit-bo-than",
+        "toi",
+        "nuoc-mam",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm hành tím với ít dầu, cho dưa cải và cà chua vào xào, nêm chút đường rồi trút ra đĩa.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-tim",
+        "dau-an",
+        "dua-cai-chua",
+        "ca-chua",
+        "duong"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Đun nóng chảo với ít dầu, xào thịt bò lửa lớn vừa tái thì trút ra.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-bo-than",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Phi phần tỏi còn lại, cho cơm vào rang đến khi hạt cơm săn, đẩy cơm sang một bên rồi đổ trứng vào đảo đều với cơm.",
+      "activeMinutes": 6,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "toi",
+        "gao",
+        "trung-ga",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Cho dưa và thịt bò vào cơm, nêm hạt nêm, đảo nhanh rồi thêm hành lá, tắt bếp.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dua-cai-chua",
+        "thit-bo-than",
+        "hat-nem",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Múc cơm ra tô, rắc hạt tiêu và dọn kèm ớt thái lát ăn nóng.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hat-tieu",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

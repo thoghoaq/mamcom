@@ -1,0 +1,274 @@
+{
+  "id": "bun-bo-hue",
+  "name": "Bún bò Huế",
+  "slot": "to",
+  "regions": [
+    "central"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "required",
+  "cookingMethod": "nau",
+  "proteinSource": "bo",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "bun",
+      "gramsEdiblePerServing": 150,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chọn bún sợi to"
+    },
+    {
+      "ingredientId": "thit-bo-bap",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "để nguyên miếng, buộc dây cho chắc"
+    },
+    {
+      "ingredientId": "gio-heo",
+      "gramsEdiblePerServing": 70,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "chặt khoanh"
+    },
+    {
+      "ingredientId": "xuong-ong-heo",
+      "gramsEdiblePerServing": 150,
+      "scale": "linear",
+      "consumedRatio": 0.1,
+      "note": "ninh lấy nước dùng; xương không ăn, chỉ tính phần ngấm vào nước"
+    },
+    {
+      "ingredientId": "cha-lua",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát"
+    },
+    {
+      "ingredientId": "sa",
+      "gramsEdiblePerServing": 25,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "một phần đập dập, một phần băm nhỏ"
+    },
+    {
+      "ingredientId": "mam-ruoc",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "hòa với nước, để lắng lấy phần trong"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ, nướng sơ hoặc để nguyên củ"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 10,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "hanh-tay",
+      "gramsEdiblePerServing": 20,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát mỏng"
+    },
+    {
+      "ingredientId": "gia-do",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt rễ, rửa sạch"
+    },
+    {
+      "ingredientId": "rau-thom",
+      "gramsEdiblePerServing": 10,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt lá"
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 10,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "cắt múi"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Rửa sạch xương ống, chân giò và bắp bò rồi chần qua nước sôi, vớt ra rửa lại.",
+      "activeMinutes": 10,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "xuong-ong-heo",
+        "thit-bo-bap",
+        "gio-heo"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Cho xương vào nồi nước cùng sả đập và hành tím, ninh lửa nhỏ, thỉnh thoảng hớt bọt.",
+      "activeMinutes": 5,
+      "passiveMinutes": 60,
+      "ingredientIds": [
+        "xuong-ong-heo",
+        "sa",
+        "hanh-tim"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Thả bắp bò và chân giò vào nồi, ninh tiếp đến khi thịt mềm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 45,
+      "ingredientIds": [
+        "thit-bo-bap",
+        "gio-heo"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Hòa mắm ruốc với nước, để lắng rồi chắt phần nước trong vào nồi.",
+      "activeMinutes": 3,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "mam-ruoc"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Phi thơm tỏi, sả băm và ớt với dầu ăn để làm sa tế.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "toi",
+        "sa",
+        "ot"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm nước dùng với nước mắm, đường, muối, hạt nêm và một phần sa tế cho vừa vị.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "duong",
+        "muoi",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Vớt bắp bò ra để nguội bớt rồi thái lát mỏng, thái chả lụa và chân giò.",
+      "activeMinutes": 8,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "thit-bo-bap",
+        "cha-lua",
+        "gio-heo"
+      ]
+    },
+    {
+      "order": 8,
+      "text": "Trụng bún qua nước sôi, cho vào tô, xếp thịt, chả, hành lá, hành tây rồi chan nước dùng thật nóng.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "bun",
+        "thit-bo-bap",
+        "cha-lua",
+        "hanh-la",
+        "hanh-tay"
+      ]
+    },
+    {
+      "order": 9,
+      "text": "Dọn kèm giá, rau thơm, chanh và sa tế để mỗi người tự thêm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "gia-do",
+        "rau-thom",
+        "chanh"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

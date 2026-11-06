@@ -1,0 +1,66 @@
+{
+  "ingredientId": "hoi",
+  "query": "spices anise seed",
+  "retrievedAt": "2026-11-06",
+  "source": "usda-fdc",
+  "totalHits": 434,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 171316,
+      "description": "Spices, anise seed",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171316/nutrients",
+      "per100g": {
+        "kcal": 337,
+        "proteinG": 17.6,
+        "fatG": 15.9,
+        "carbG": 50,
+        "fiberG": 14.6,
+        "sodiumMg": 16
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 170918,
+      "description": "Spices, caraway seed",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170918/nutrients",
+      "per100g": {
+        "kcal": 333,
+        "proteinG": 19.8,
+        "fatG": 14.6,
+        "carbG": 49.9,
+        "fiberG": 38,
+        "sodiumMg": 17
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 170920,
+      "description": "Spices, celery seed",
+      "dataType": "SR Legacy",
+      "foodCategory": "Spices and Herbs",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/170920/nutrients",
+      "per100g": {
+        "kcal": 392,
+        "proteinG": 18.1,
+        "fatG": 25.3,
+        "carbG": 41.4,
+        "fiberG": 11.8,
+        "sodiumMg": 160
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 2/3 từ khoá."
+    }
+  ]
+}

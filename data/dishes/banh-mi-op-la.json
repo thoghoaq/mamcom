@@ -1,0 +1,149 @@
+{
+  "id": "banh-mi-op-la",
+  "name": "Bánh mì trứng ốp la",
+  "slot": "sang",
+  "regions": [],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "chien",
+  "proteinSource": "trung",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "banh-mi",
+      "gramsEdiblePerServing": 80,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "một ổ, xẻ dọc"
+    },
+    {
+      "ingredientId": "trung-ga",
+      "gramsEdiblePerServing": 100,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "hai quả"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "pate",
+      "gramsEdiblePerServing": 15,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "phết mỏng"
+    },
+    {
+      "ingredientId": "dua-leo",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát dọc"
+    },
+    {
+      "ingredientId": "rau-mui",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "nhặt lấy ngọn"
+    },
+    {
+      "ingredientId": "nuoc-tuong",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, để riêng cho ai ăn cay"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Rửa dưa leo và rau mùi, thái dưa leo và ớt thành lát.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dua-leo",
+        "rau-mui",
+        "ot"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Làm nóng bánh mì trong chảo khô hoặc lò cho vỏ giòn rồi xẻ dọc.",
+      "activeMinutes": 1,
+      "passiveMinutes": 2,
+      "ingredientIds": [
+        "banh-mi"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Đun nóng dầu, đập trứng vào chảo, chiên lửa vừa đến khi lòng trắng chín, lòng đỏ còn hơi mềm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "trung-ga"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phết pa tê vào ruột bánh mì, xếp dưa leo và trứng vào trong.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "pate",
+        "banh-mi",
+        "dua-leo",
+        "trung-ga"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Rưới nước tương, rắc hạt tiêu, thêm rau mùi và ớt tùy thích rồi ăn ngay.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-tuong",
+        "hat-tieu",
+        "rau-mui",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

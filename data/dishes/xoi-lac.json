@@ -1,0 +1,121 @@
+{
+  "id": "xoi-lac",
+  "name": "Xôi lạc",
+  "slot": "sang",
+  "regions": [
+    "north"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "hap",
+  "proteinSource": "none",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "gao-nep",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nếp cái hoa vàng, vo sạch"
+    },
+    {
+      "ingredientId": "lac",
+      "gramsEdiblePerServing": 25,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "lạc nhân, nhặt bỏ hạt lép"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "vung",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "vừng trắng hoặc đen, rang làm muối vừng"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Vo sạch gạo nếp rồi ngâm nước lạnh khoảng 6 tiếng hoặc qua đêm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 360,
+      "ingredientIds": [
+        "gao-nep"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ngâm lạc nước ấm cùng lúc với gạo cho hạt mềm và nở.",
+      "activeMinutes": 2,
+      "passiveMinutes": 360,
+      "ingredientIds": [
+        "lac"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Vớt gạo và lạc ra rổ để ráo, trộn đều với một ít muối.",
+      "activeMinutes": 3,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "gao-nep",
+        "lac",
+        "muoi"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Cho hỗn hợp vào chõ hấp khi nước sôi, giữa chừng xới đảo cho chín đều.",
+      "activeMinutes": 3,
+      "passiveMinutes": 30,
+      "ingredientIds": [
+        "gao-nep",
+        "lac"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Rang vừng trên chảo nhỏ lửa đến khi thơm, trộn với chút muối và giã dập để làm muối vừng.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "vung",
+        "muoi"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Xới xôi ra đĩa hoặc lá chuối, rắc muối vừng lên trên khi còn ấm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "gao-nep",
+        "vung"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

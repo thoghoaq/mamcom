@@ -1,0 +1,126 @@
+{
+  "id": "xoi-dau-xanh",
+  "name": "Xôi đậu xanh",
+  "slot": "sang",
+  "regions": [],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "hap",
+  "proteinSource": "chay",
+  "serveHot": false,
+  "ingredients": [
+    {
+      "ingredientId": "gao-nep",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "vo sạch, ngâm nước"
+    },
+    {
+      "ingredientId": "dau-xanh",
+      "gramsEdiblePerServing": 35,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "loại đã cà vỏ, vo sạch, ngâm nước"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-phi",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "rắc lên khi ăn"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Vo sạch gạo nếp và đậu xanh, ngâm riêng trong nước khoảng 4 tiếng.",
+      "activeMinutes": 3,
+      "passiveMinutes": 240,
+      "ingredientIds": [
+        "gao-nep",
+        "dau-xanh"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Vớt gạo nếp và đậu xanh ra rổ cho ráo nước.",
+      "activeMinutes": 2,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "gao-nep",
+        "dau-xanh"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Trộn đều gạo nếp với đậu xanh và muối.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "gao-nep",
+        "dau-xanh",
+        "muoi"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Cho hỗn hợp vào xửng, hấp cách thủy khoảng 30 phút đến khi hạt nếp chín mềm.",
+      "activeMinutes": 3,
+      "passiveMinutes": 30,
+      "ingredientIds": [
+        "gao-nep",
+        "dau-xanh"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Rưới dầu ăn lên xôi, xới tơi rồi hấp thêm 5 phút cho hạt bóng và dẻo.",
+      "activeMinutes": 2,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "dau-an"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Xới xôi ra đĩa, rắc hành phi lên trên rồi dùng khi còn ấm.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-phi"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

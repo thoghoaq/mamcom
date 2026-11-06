@@ -1,0 +1,66 @@
+{
+  "ingredientId": "gio-heo",
+  "query": "pork feet",
+  "retrievedAt": "2026-11-06",
+  "source": "usda-fdc",
+  "totalHits": 446,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 167859,
+      "description": "Pork, fresh, variety meats and by-products, feet, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Pork Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167859/nutrients",
+      "per100g": {
+        "kcal": 212,
+        "proteinG": 23.2,
+        "fatG": 12.6,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 132
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 167870,
+      "description": "Pork, cured, feet, pickled",
+      "dataType": "SR Legacy",
+      "foodCategory": "Pork Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/167870/nutrients",
+      "per100g": {
+        "kcal": 140,
+        "proteinG": 11.6,
+        "fatG": 10,
+        "carbG": 0.01,
+        "fiberG": 0,
+        "sodiumMg": 946
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'pickled': đã chế biến, cần cân nhắc; đủ 6 chất; khớp 2/2 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 168290,
+      "description": "Pork, fresh, variety meats and by-products, feet, cooked, simmered",
+      "dataType": "SR Legacy",
+      "foodCategory": "Pork Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/168290/nutrients",
+      "per100g": {
+        "kcal": 238,
+        "proteinG": 21.9,
+        "fatG": 16,
+        "carbG": 0,
+        "fiberG": 0,
+        "sodiumMg": 73
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'cooked': đã chế biến, cần cân nhắc; đủ 6 chất; khớp 2/2 từ khoá."
+    }
+  ]
+}

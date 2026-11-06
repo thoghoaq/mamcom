@@ -1,0 +1,66 @@
+{
+  "ingredientId": "bap-ngot",
+  "query": "corn sweet yellow raw",
+  "retrievedAt": "2026-11-06",
+  "source": "usda-fdc",
+  "totalHits": 2159,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 2710826,
+      "description": "Corn, sweet, yellow and white kernels, \u00A0fresh, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2710826/nutrients",
+      "per100g": {
+        "kcal": 72.9,
+        "proteinG": 2.79,
+        "fatG": 1.63,
+        "carbG": 14.7,
+        "fiberG": 2.43,
+        "sodiumMg": 0
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    },
+    {
+      "rank": 2,
+      "fdcId": 169998,
+      "description": "Corn, sweet, yellow, raw",
+      "dataType": "SR Legacy",
+      "foodCategory": "Vegetables and Vegetable Products",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/169998/nutrients",
+      "per100g": {
+        "kcal": 86,
+        "proteinG": 3.27,
+        "fatG": 1.35,
+        "carbG": 18.7,
+        "fiberG": 2,
+        "sodiumMg": 15
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 4/4 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 2710835,
+      "description": "Corn flour, masa harina, white or yellow, dry, raw",
+      "dataType": "Foundation",
+      "foodCategory": "Cereal Grains and Pasta",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/2710835/nutrients",
+      "per100g": {
+        "kcal": 366,
+        "proteinG": 7.56,
+        "fatG": 4.34,
+        "carbG": 76.7,
+        "fiberG": 7.04,
+        "sodiumMg": 2.73
+      },
+      "kcalSource": "Energy (Atwater Specific Factors)",
+      "missing": [],
+      "reason": "Foundation Foods (số liệu phân tích mới của USDA); mô tả có 'raw': nguyên liệu sống; đủ 6 chất; khớp 3/4 từ khoá; năng lượng lấy từ 'Energy (Atwater Specific Factors)'."
+    }
+  ]
+}

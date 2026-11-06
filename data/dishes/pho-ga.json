@@ -1,0 +1,268 @@
+{
+  "id": "pho-ga",
+  "name": "Phở gà",
+  "slot": "to",
+  "regions": [],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nau",
+  "proteinSource": "ga",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "ga-ta",
+      "gramsEdiblePerServing": 130,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "phần thịt ăn được; mua nguyên con hoặc nửa con để có xương ninh nước dùng"
+    },
+    {
+      "ingredientId": "banh-pho",
+      "gramsEdiblePerServing": 180,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bánh phở tươi"
+    },
+    {
+      "ingredientId": "gung",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "nướng thơm, cạo vỏ, đập dập"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "nướng thơm, bóc vỏ"
+    },
+    {
+      "ingredientId": "hanh-tay",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nửa cho vào nồi, nửa thái mỏng ngâm nước lạnh"
+    },
+    {
+      "ingredientId": "hoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "rang thơm"
+    },
+    {
+      "ingredientId": "que",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "rang thơm"
+    },
+    {
+      "ingredientId": "thao-qua",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "rang thơm, đập dập"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "một phần để chà sạch gà"
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "có thể thay bằng đường phèn"
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 10,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ, để riêng phần đầu hành"
+    },
+    {
+      "ingredientId": "rau-mui",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt nhỏ"
+    },
+    {
+      "ingredientId": "ngo-gai",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "la-chanh",
+      "gramsEdiblePerServing": 1,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "bỏ gân, thái chỉ thật mảnh"
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 10,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "cắt múi"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát, để riêng"
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "xay"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Chà gà với muối và một lát gừng, rửa sạch rồi để ráo.",
+      "activeMinutes": 8,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ga-ta",
+        "muoi",
+        "gung"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Nướng gừng, hành tím và nửa củ hành tây đến khi thơm, cạo phần cháy đen.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "gung",
+        "hanh-tim",
+        "hanh-tay"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Rang hoa hồi, quế và thảo quả trên chảo khô đến khi dậy mùi, cho vào túi lọc.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hoi",
+        "que",
+        "thao-qua"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Cho gà, gừng và hành nướng vào nồi nước lạnh, đun sôi, hớt bọt rồi hạ lửa liu riu.",
+      "activeMinutes": 5,
+      "passiveMinutes": 30,
+      "ingredientIds": [
+        "ga-ta",
+        "gung",
+        "hanh-tim",
+        "hanh-tay"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Vớt gà ra để nguội bớt, lọc lấy thịt xé hoặc thái miếng, thả xương lại vào nồi.",
+      "activeMinutes": 10,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "ga-ta"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Thả túi gia vị vào nồi, ninh tiếp rồi nêm muối, nước mắm và đường cho vừa.",
+      "activeMinutes": 3,
+      "passiveMinutes": 20,
+      "ingredientIds": [
+        "hoi",
+        "que",
+        "thao-qua",
+        "muoi",
+        "nuoc-mam",
+        "duong"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Thái hành lá, rau mùi, ngò gai, lá chanh, ớt và hành tây còn lại, cắt chanh thành múi.",
+      "activeMinutes": 6,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "rau-mui",
+        "ngo-gai",
+        "la-chanh",
+        "ot",
+        "hanh-tay",
+        "chanh"
+      ]
+    },
+    {
+      "order": 8,
+      "text": "Trụng bánh phở qua nước sôi rồi cho vào tô.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "banh-pho"
+      ]
+    },
+    {
+      "order": 9,
+      "text": "Xếp thịt gà, hành tây, hành lá, rau thơm và lá chanh lên bánh, chan nước dùng đang sôi, rắc tiêu, ăn kèm chanh ớt.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "banh-pho",
+        "ga-ta",
+        "hanh-tay",
+        "hanh-la",
+        "rau-mui",
+        "ngo-gai",
+        "la-chanh",
+        "hat-tieu",
+        "chanh",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

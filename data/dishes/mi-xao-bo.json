@@ -1,0 +1,190 @@
+{
+  "id": "mi-xao-bo",
+  "name": "Mì xào bò rau cải",
+  "slot": "to",
+  "regions": [],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "xao",
+  "proteinSource": "bo",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "mi-trung",
+      "gramsEdiblePerServing": 80,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "mì trứng khô"
+    },
+    {
+      "ingredientId": "thit-bo-than",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái lát mỏng ngang thớ"
+    },
+    {
+      "ingredientId": "cai-ngot",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc 4 cm, tách cọng và lá"
+    },
+    {
+      "ingredientId": "ca-rot",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái sợi"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 6,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-hao",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-tuong",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "bot-nang",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, để riêng tùy thích"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ướp thịt bò với một nửa tỏi, nước tương, hạt tiêu, bột năng và chút dầu ăn.",
+      "activeMinutes": 3,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "thit-bo-than",
+        "toi",
+        "nuoc-tuong",
+        "hat-tieu",
+        "bot-nang",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Trụng mì trứng trong nước sôi cho vừa mềm rồi vớt ra để ráo.",
+      "activeMinutes": 3,
+      "passiveMinutes": 2,
+      "ingredientIds": [
+        "mi-trung"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Phi thơm phần tỏi còn lại, xào bò lửa lớn đến khi tái rồi trút ra đĩa.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "toi",
+        "dau-an",
+        "thit-bo-than"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Xào cà rốt và cọng cải trước, cho lá cải vào đảo nhanh đến khi vừa chín.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-rot",
+        "cai-ngot",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Cho mì vào chảo cùng dầu hào, đường, đảo đều rồi trả bò vào đảo thêm một phút.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "mi-trung",
+        "dau-hao",
+        "duong",
+        "thit-bo-than"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Rắc hành lá, tắt bếp, múc ra tô và ăn kèm ớt nếu thích.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hanh-la",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

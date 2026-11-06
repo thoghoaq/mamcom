@@ -1,0 +1,182 @@
+{
+  "id": "xoi-ga",
+  "name": "Xôi gà",
+  "slot": "sang",
+  "regions": [],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "none",
+  "cookingMethod": "hap",
+  "proteinSource": "ga",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "gao-nep",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "vo sạch, ngâm qua đêm"
+    },
+    {
+      "ingredientId": "dui-ga",
+      "gramsEdiblePerServing": 90,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "phần thịt đã bỏ xương, bỏ da nếu thích"
+    },
+    {
+      "ingredientId": "gung",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "đập dập"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 0.5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-la",
+      "gramsEdiblePerServing": 10,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-phi",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "rau-ram",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Ngâm gạo nếp với chút muối qua đêm rồi để ráo.",
+      "activeMinutes": 3,
+      "passiveMinutes": 360,
+      "ingredientIds": [
+        "gao-nep",
+        "muoi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Trộn nếp với hạt nêm rồi đồ xôi đến khi hạt chín dẻo.",
+      "activeMinutes": 5,
+      "passiveMinutes": 30,
+      "ingredientIds": [
+        "gao-nep",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Luộc đùi gà với gừng và một chút muối đến khi chín, vớt ra để nguội.",
+      "activeMinutes": 5,
+      "passiveMinutes": 20,
+      "ingredientIds": [
+        "dui-ga",
+        "gung",
+        "muoi"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Gỡ thịt gà xé sợi, trộn với nước mắm, đường và hạt tiêu.",
+      "activeMinutes": 7,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dui-ga",
+        "nuoc-mam",
+        "duong",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Đun nóng dầu ăn rồi rưới lên hành lá để làm mỡ hành.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "hanh-la"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Xới xôi ra đĩa, xếp gà lên, rưới mỡ hành, rắc hành phi và rau răm rồi ăn ngay.",
+      "activeMinutes": 2,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "gao-nep",
+        "dui-ga",
+        "hanh-la",
+        "hanh-phi",
+        "rau-ram"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

@@ -1,0 +1,289 @@
+{
+  "id": "hu-tieu-nam-vang",
+  "name": "Hủ tiếu Nam Vang",
+  "slot": "to",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nau",
+  "proteinSource": "heo",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "hu-tieu",
+      "gramsEdiblePerServing": 120,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "hủ tiếu dai loại sợi nhỏ"
+    },
+    {
+      "ingredientId": "xuong-ong-heo",
+      "gramsEdiblePerServing": 150,
+      "scale": "sublinear",
+      "consumedRatio": 0.1,
+      "note": "ninh lấy nước dùng; xương không ăn, chỉ tính phần ngấm vào nước"
+    },
+    {
+      "ingredientId": "thit-heo-nac",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "để nguyên miếng, luộc chín rồi thái mỏng"
+    },
+    {
+      "ingredientId": "thit-nac-bam",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "tom",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bóc vỏ chừa đuôi, bỏ chỉ lưng"
+    },
+    {
+      "ingredientId": "tom-kho",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "ngâm mềm, cho vào nồi nước dùng"
+    },
+    {
+      "ingredientId": "cu-cai",
+      "gramsEdiblePerServing": 50,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "gọt vỏ, cắt khúc to, để ninh nước dùng"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hanh-phi",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 3,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "nên dùng đường phèn nếu có"
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "xay"
+    },
+    {
+      "ingredientId": "gia-do",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt rễ"
+    },
+    {
+      "ingredientId": "he",
+      "gramsEdiblePerServing": 10,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "cắt khúc 3 cm"
+    },
+    {
+      "ingredientId": "can-tay",
+      "gramsEdiblePerServing": 10,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "lấy cọng và lá non, cắt nhỏ"
+    },
+    {
+      "ingredientId": "xa-lach",
+      "gramsEdiblePerServing": 15,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "rửa sạch, để ráo"
+    },
+    {
+      "ingredientId": "chanh",
+      "gramsEdiblePerServing": 10,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "cắt múi"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 3,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, để riêng"
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Rửa xương ống, chần sơ trong nước sôi rồi đổ nước, rửa lại cho sạch.",
+      "activeMinutes": 5,
+      "passiveMinutes": 5,
+      "ingredientIds": [
+        "xuong-ong-heo"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Cho xương, củ cải và tôm khô vào nồi nước, ninh lửa nhỏ, thỉnh thoảng hớt bọt.",
+      "activeMinutes": 5,
+      "passiveMinutes": 90,
+      "ingredientIds": [
+        "xuong-ong-heo",
+        "cu-cai",
+        "tom-kho"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Thả miếng thịt nạc vào nồi nước dùng luộc chín, vớt ra để nguội rồi thái mỏng.",
+      "activeMinutes": 5,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "thit-heo-nac"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Phi tỏi băm với dầu ăn đến vàng thơm, múc riêng ra chén.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "toi",
+        "dau-an"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Xào thịt bằm với một ít nước mắm và tiêu đến khi chín tơi.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-nac-bam",
+        "nuoc-mam",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Nêm nước dùng với nước mắm, hạt nêm, đường và muối cho vừa, giữ sôi lăn tăn.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "nuoc-mam",
+        "hat-nem",
+        "duong",
+        "muoi"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Chần tôm trong nước dùng đến vừa chín rồi vớt ra.",
+      "activeMinutes": 4,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "tom"
+      ]
+    },
+    {
+      "order": 8,
+      "text": "Trụng hủ tiếu và giá trong nước sôi, để ráo rồi cho vào tô.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "hu-tieu",
+        "gia-do"
+      ]
+    },
+    {
+      "order": 9,
+      "text": "Xếp thịt thái, thịt bằm, tôm lên mặt, chan nước dùng thật nóng, rắc hẹ, cần tây, hành phi, tỏi phi và tiêu.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "thit-heo-nac",
+        "thit-nac-bam",
+        "tom",
+        "he",
+        "can-tay",
+        "hanh-phi",
+        "toi",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 10,
+      "text": "Dọn ngay kèm xà lách, chanh và ớt để riêng.",
+      "activeMinutes": 1,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "xa-lach",
+        "chanh",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

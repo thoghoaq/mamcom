@@ -1,0 +1,271 @@
+{
+  "id": "lau-ca",
+  "name": "Lẩu cá",
+  "slot": "lau",
+  "regions": [
+    "south"
+  ],
+  "seasons": [
+    "all"
+  ],
+  "spicy": "optional",
+  "cookingMethod": "nau",
+  "proteinSource": "ca",
+  "serveHot": true,
+  "ingredients": [
+    {
+      "ingredientId": "ca-dieu-hong",
+      "gramsEdiblePerServing": 150,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "làm sạch, cắt khúc dày khoảng 2 cm"
+    },
+    {
+      "ingredientId": "ca-chua",
+      "gramsEdiblePerServing": 60,
+      "scale": "integer",
+      "consumedRatio": 1,
+      "note": "cắt múi cau"
+    },
+    {
+      "ingredientId": "thom",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "gọt mắt, thái miếng mỏng"
+    },
+    {
+      "ingredientId": "me",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "ngâm nước nóng, dầm lọc lấy nước"
+    },
+    {
+      "ingredientId": "bac-ha",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "tước vỏ, thái xéo"
+    },
+    {
+      "ingredientId": "dau-bap",
+      "gramsEdiblePerServing": 30,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "bỏ cuống, cắt xéo"
+    },
+    {
+      "ingredientId": "rau-muong",
+      "gramsEdiblePerServing": 60,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt ngọn, chẻ hoặc cắt khúc"
+    },
+    {
+      "ingredientId": "gia-do",
+      "gramsEdiblePerServing": 40,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "nhặt rễ, rửa sạch"
+    },
+    {
+      "ingredientId": "bun",
+      "gramsEdiblePerServing": 100,
+      "scale": "linear",
+      "consumedRatio": 1,
+      "note": "trụng qua nước sôi"
+    },
+    {
+      "ingredientId": "rau-om",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "cắt khúc ngắn"
+    },
+    {
+      "ingredientId": "ngo-gai",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái nhỏ"
+    },
+    {
+      "ingredientId": "ot",
+      "gramsEdiblePerServing": 5,
+      "scale": "fixed",
+      "consumedRatio": 1,
+      "note": "thái lát, để riêng"
+    },
+    {
+      "ingredientId": "toi",
+      "gramsEdiblePerServing": 5,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "hanh-tim",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "băm nhỏ"
+    },
+    {
+      "ingredientId": "dau-an",
+      "gramsEdiblePerServing": 8,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "nuoc-mam",
+      "gramsEdiblePerServing": 15,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "duong",
+      "gramsEdiblePerServing": 10,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "hat-nem",
+      "gramsEdiblePerServing": 4,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    },
+    {
+      "ingredientId": "muoi",
+      "gramsEdiblePerServing": 2,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": "dùng chà rửa cá và nêm"
+    },
+    {
+      "ingredientId": "hat-tieu",
+      "gramsEdiblePerServing": 1,
+      "scale": "sublinear",
+      "consumedRatio": 1,
+      "note": null
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Chà cá với muối, rửa sạch rồi cắt khúc.",
+      "activeMinutes": 10,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-dieu-hong",
+        "muoi"
+      ]
+    },
+    {
+      "order": 2,
+      "text": "Ướp cá với một ít nước mắm và hạt tiêu cho thấm.",
+      "activeMinutes": 2,
+      "passiveMinutes": 15,
+      "ingredientIds": [
+        "ca-dieu-hong",
+        "nuoc-mam",
+        "hat-tieu"
+      ]
+    },
+    {
+      "order": 3,
+      "text": "Ngâm me với nước nóng rồi dầm, lọc lấy nước chua.",
+      "activeMinutes": 2,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "me"
+      ]
+    },
+    {
+      "order": 4,
+      "text": "Sơ chế và cắt các loại rau, củ, quả theo ghi chú.",
+      "activeMinutes": 12,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "ca-chua",
+        "thom",
+        "bac-ha",
+        "dau-bap",
+        "rau-muong",
+        "gia-do",
+        "rau-om",
+        "ngo-gai",
+        "ot"
+      ]
+    },
+    {
+      "order": 5,
+      "text": "Phi thơm tỏi và hành tím với dầu, cho cà chua và thơm vào xào mềm.",
+      "activeMinutes": 5,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "dau-an",
+        "toi",
+        "hanh-tim",
+        "ca-chua",
+        "thom"
+      ]
+    },
+    {
+      "order": 6,
+      "text": "Đổ nước vào nồi, thêm nước me, nêm nước mắm, đường, hạt nêm cho vừa chua ngọt rồi đun sôi.",
+      "activeMinutes": 3,
+      "passiveMinutes": 10,
+      "ingredientIds": [
+        "me",
+        "nuoc-mam",
+        "duong",
+        "hat-nem"
+      ]
+    },
+    {
+      "order": 7,
+      "text": "Đặt nồi lên bếp lẩu, cho đậu bắp, bạc hà và cá vào nấu đến khi cá chín.",
+      "activeMinutes": 3,
+      "passiveMinutes": 6,
+      "ingredientIds": [
+        "dau-bap",
+        "bac-ha",
+        "ca-dieu-hong"
+      ]
+    },
+    {
+      "order": 8,
+      "text": "Rắc rau om, ngò gai lên nồi và dọn kèm bún, rau muống, giá, ớt để nhúng ăn nóng.",
+      "activeMinutes": 3,
+      "passiveMinutes": 0,
+      "ingredientIds": [
+        "rau-om",
+        "ngo-gai",
+        "bun",
+        "rau-muong",
+        "gia-do",
+        "ot"
+      ]
+    }
+  ],
+  "status": "reviewed",
+  "provenance": {
+    "draftedBy": "llm",
+    "reviewedBy": "Claude",
+    "reviewedAt": "2026-11-06",
+    "cookTestedAt": null,
+    "measuredTotalMinutes": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}

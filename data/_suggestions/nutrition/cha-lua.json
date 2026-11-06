@@ -1,0 +1,66 @@
+{
+  "ingredientId": "cha-lua",
+  "query": "pork sausage cooked",
+  "retrievedAt": "2026-11-06",
+  "source": "usda-fdc",
+  "totalHits": 2205,
+  "candidates": [
+    {
+      "rank": 1,
+      "fdcId": 171632,
+      "description": "Sausage, pork and turkey, pre-cooked",
+      "dataType": "SR Legacy",
+      "foodCategory": "Sausages and Luncheon Meats",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/171632/nutrients",
+      "per100g": {
+        "kcal": 342,
+        "proteinG": 12,
+        "fatG": 30.6,
+        "carbG": 3.63,
+        "fiberG": 0,
+        "sodiumMg": 876
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 2,
+      "fdcId": 173882,
+      "description": "Pork sausage, reduced sodium, cooked",
+      "dataType": "SR Legacy",
+      "foodCategory": "Sausages and Luncheon Meats",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/173882/nutrients",
+      "per100g": {
+        "kcal": 271,
+        "proteinG": 9.41,
+        "fatG": 22.4,
+        "carbG": 8.13,
+        "fiberG": 0,
+        "sodiumMg": 294
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    },
+    {
+      "rank": 3,
+      "fdcId": 174579,
+      "description": "Sausage, pork and beef, fresh, cooked",
+      "dataType": "SR Legacy",
+      "foodCategory": "Sausages and Luncheon Meats",
+      "detailsUrl": "https://fdc.nal.usda.gov/food-details/174579/nutrients",
+      "per100g": {
+        "kcal": 396,
+        "proteinG": 13.8,
+        "fatG": 36.2,
+        "carbG": 2.7,
+        "fiberG": 0,
+        "sodiumMg": 929
+      },
+      "kcalSource": "Energy",
+      "missing": [],
+      "reason": "SR Legacy (bảng cũ của USDA); mô tả không nói sống hay chín; đủ 6 chất; khớp 3/3 từ khoá."
+    }
+  ]
+}

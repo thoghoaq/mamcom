@@ -32,7 +32,16 @@ public class DishListTests
         {
             var dish = JsonNode.Parse(File.ReadAllText(file))!;
             var id = dish["id"]!.GetValue<string>();
-            var slot = dish["slot"]!.GetValue<string>() switch { "canh" => DishSlot.Soup, "man" => DishSlot.Main, _ => DishSlot.Vegetable };
+            var slot = dish["slot"]!.GetValue<string>() switch
+            {
+                "canh" => DishSlot.Soup,
+                "man" => DishSlot.Main,
+                "rau" => DishSlot.Vegetable,
+                "to" => DishSlot.Bowl,
+                "lau" => DishSlot.Hotpot,
+                "sang" => DishSlot.Breakfast,
+                var other => throw new InvalidDataException($"{id}: the slot '{other}' is not one of the six (ADR-037)."),
+            };
 
             if (!listed.TryGetValue(id, out var request))
             {

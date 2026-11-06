@@ -1,0 +1,43 @@
+{
+  "id": "xuong-bo",
+  "names": {
+    "default": "Xương ống bò"
+  },
+  "aliases": [
+    "xương bò"
+  ],
+  "category": "thit-bo",
+  "aisle": "thit-ca",
+  "proteinSource": "bo",
+  "marketUnit": {
+    "default": {
+      "display": "kg",
+      "gramsPerUnit": 1000,
+      "step": 0.5
+    }
+  },
+  "wasteRatio": 0.7,
+  "isPantry": false,
+  "nutritionPer100gEdible": {
+    "kcal": null,
+    "proteinG": null,
+    "fatG": null,
+    "carbG": null,
+    "fiberG": null,
+    "sodiumMg": null
+  },
+  "nutritionSource": {
+    "db": "placeholder",
+    "ref": null,
+    "matchedName": null,
+    "verifiedBy": null,
+    "verifiedAt": null
+  },
+  "image": {
+    "thumb": null,
+    "full": null,
+    "source": null,
+    "license": null,
+    "isIllustration": false
+  }
+}
