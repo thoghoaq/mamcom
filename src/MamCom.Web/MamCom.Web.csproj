@@ -3,6 +3,10 @@
   <PropertyGroup>
     <OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+    <!-- First load (ADR-035): the app formats every number and date itself in Vietnamese and never asks the browser's culture, so the
+         ICU data (about 220 KB compressed) is not downloaded; and the framework is trimmed to what the app uses. -->
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <TrimMode>full</TrimMode>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +18,14 @@
     <ProjectReference Include="..\MamCom.UI\MamCom.UI.csproj" />
     <ProjectReference Include="..\MamCom.Data\MamCom.Data.csproj" />
     <ProjectReference Include="..\MamCom.Core\MamCom.Core.csproj" />
+  </ItemGroup>
+
+  <!-- Full trimming drops what only reflection reaches, such as a page the router is given as a type (NotFound); trimming in the default
+       mode with invariant globalization did the same to the pages (OnboardingScreen). The app's own UI assemblies stay whole; they are
+       small next to the framework, which is trimmed in full. Measured in ADR-035. -->
+  <ItemGroup>
+    <TrimmerRootAssembly Include="MamCom.Web" />
+    <TrimmerRootAssembly Include="MamCom.UI" />
   </ItemGroup>
 
   <ItemGroup>
