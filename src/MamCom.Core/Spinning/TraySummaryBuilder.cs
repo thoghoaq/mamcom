@@ -62,7 +62,7 @@ public sealed class TraySummaryBuilder
         return new TraySummary(
             _scheduler.EstimateMealMinutes(dishes, _scheduler.StovesOf(household)),
             household.Members.Count == 0 ? null : meal.Total.Kcal / household.Members.Count,
-            portions.RawRiceGrams,
+            dishes.Select(dish => dish.Slot).HasRice() ? portions.RawRiceGrams : 0,
             items.Count(item => !item.IsPantry));
     }
 }

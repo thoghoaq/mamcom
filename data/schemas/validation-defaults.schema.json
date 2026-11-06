@@ -10,11 +10,14 @@
       "description": "Plausible energy of one serving of a dish, by slot (canh, man, rau).",
       "type": "object",
       "additionalProperties": false,
-      "required": ["canh", "man", "rau"],
+      "required": ["canh", "man", "rau", "to", "lau", "sang"],
       "properties": {
         "canh": { "$ref": "#/$defs/range" },
         "man": { "$ref": "#/$defs/range" },
-        "rau": { "$ref": "#/$defs/range" }
+        "rau": { "$ref": "#/$defs/range" },
+        "to": { "$ref": "#/$defs/range" },
+        "lau": { "$ref": "#/$defs/range" },
+        "sang": { "$ref": "#/$defs/range" }
       }
     },
     "mainProteinGramsPerServing": { "$ref": "#/$defs/range" },

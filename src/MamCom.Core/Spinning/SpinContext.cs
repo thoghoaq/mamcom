@@ -10,6 +10,7 @@ namespace MamCom.Core.Spinning;
 /// <param name="LastEatenOn">The last day each dish was eaten; dishes never eaten are absent.</param>
 /// <param name="Preferences">Dishes the household rated; dishes absent are neutral.</param>
 /// <param name="Size">How many dishes the tray has (ADR-034); <see cref="TraySize.Auto"/> goes by the servings of the household.</param>
+/// <param name="Meal">The kind of meal to spin (ADR-037): a tray with rice, or one dish that is the whole meal.</param>
 public sealed record SpinContext(
     Household Household,
     IReadOnlyList<Dish> Dishes,
@@ -18,4 +19,5 @@ public sealed record SpinContext(
     IReadOnlyDictionary<string, DateOnly> LastEatenOn,
     IReadOnlyDictionary<string, DishPreference> Preferences,
     int Stoves = Cooking.CookPlanScheduler.AnyNumberOfStoves,
-    TraySize Size = TraySize.Auto);
+    TraySize Size = TraySize.Auto,
+    MealKind Meal = MealKind.Tray);

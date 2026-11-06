@@ -1,3 +1,4 @@
+using MamCom.Core.Models;
 using System.Xml.Linq;
 using MamCom.UI.Components;
 using MamCom.UI.Placeholders;
@@ -27,11 +28,11 @@ public class StyleguideTests : BunitContext
         foreach (var theme in new[] { "light", "dark" })
         {
             var panel = cut.Find($"section[data-specimen={theme}]");
-            panel.QuerySelectorAll("[data-swatch]").Length.ShouldBe(23);
+            panel.QuerySelectorAll("[data-swatch]").Length.ShouldBe(26);
             panel.QuerySelectorAll(".icon-cell").Length.ShouldBe(IconCatalog.Names.Count);
             panel.QuerySelectorAll("[data-grid=ingredients] .tile").Length.ShouldBe(PlaceholderCatalog.KnownCategories.Count);
             panel.QuerySelectorAll("[data-grid=aisles] .tile").Length.ShouldBe(5);
-            panel.QuerySelectorAll("[data-grid=dishes] .tile").Length.ShouldBe(3 * (PlaceholderCatalog.KnownProteinSources.Count + 1));
+            panel.QuerySelectorAll("[data-grid=dishes] .tile").Length.ShouldBe(Enum.GetValues<DishSlot>().Length * (PlaceholderCatalog.KnownProteinSources.Count + 1));
             panel.QuerySelectorAll("[data-grid=thumbs] .tile--compact").Length.ShouldBe(PlaceholderCatalog.KnownCategories.Count);
         }
     }

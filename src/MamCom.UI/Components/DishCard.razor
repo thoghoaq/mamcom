@@ -67,12 +67,7 @@
 
     private string CssClass => "card dish-card" + (IsLocked ? " dish-card--locked" : string.Empty) + (Rolling && !IsLocked ? " dish-card--rolling" : string.Empty);
 
-    private string SlotClass => Dish.Slot switch
-    {
-        DishSlot.Soup => "slot--soup",
-        DishSlot.Main => "slot--main",
-        _ => "slot--veg",
-    };
+    private string SlotClass => TrayFormat.SlotClass(Dish.Slot);
 
     private string KcalText => Facts.KcalPerServing is { } kcal
         ? string.Format(CultureInfo.InvariantCulture, Strings.Tray_KcalPerServingFormat, NutritionFormat.Kcal(kcal))

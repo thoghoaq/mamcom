@@ -26,6 +26,17 @@
 
 @if (_engine is not null && _session.Viewed is { } viewed)
 {
+    var meal = _engine.Desk.MealOf(_session);
+    <div class="chips tray-meal" role="radiogroup" aria-label="@Strings.Tray_MealLabel">
+        @foreach (var kind in Enum.GetValues<MealKind>())
+        {
+            var current = kind;
+            <button type="button" class="chip" role="radio" aria-checked="@(meal == kind ? "true" : "false")" disabled="@(_busy || _session.IsConfirmed)" @onclick="() => ChooseMealAsync(current)">
+                @TrayFormat.Meal(kind)
+            </button>
+        }
+    </div>
+
     <p class="visually-hidden" role="status">@_announcement</p>
 
     @if (_session.IsConfirmed)
@@ -84,6 +95,8 @@
         {
             <p class="text-muted tray-hint">@Strings.Tray_SwipeHint</p>
 
+            @if (meal == MealKind.Tray)
+            {
             <div class="tray-size" role="group" aria-label="@Strings.Tray_SizeLabel">
                 <button type="button" class="button button--quiet" disabled="@(_busy || !_engine.Desk.CanRemoveDish(_session))" @onclick="RemoveDishAsync">
                     <Icon Name="minus" />@Strings.Tray_RemoveDish
@@ -93,6 +106,7 @@
                     <Icon Name="plus" />@Strings.Tray_AddDish
                 </button>
             </div>
+            }
         }
     }
 
@@ -249,6 +263,32 @@
         await Usage.RecordAsync(UsageEventKind.Swapped);
         Refresh();
         Announce();
+    }
+
+    // "Hôm nay ăn: …" (ADR-037): a meal of the chosen kind is spun at once, with the dice, as "Quay mâm" does.
+    private async Task ChooseMealAsync(MealKind meal)
+    {
+        if (_busy || _engine is null || _session.IsConfirmed || _engine.Desk.MealOf(_session) == meal)
+        {
+            return;
+        }
+
+        _busy = true;
+        try
+        {
+            _rolling = true;
+            StateHasChanged();
+            await Pacer.WaitAsync();
+            _session = _engine.Desk.ChooseMeal(_session, Context(), meal);
+            await SaveSessionAsync();
+            await Usage.RecordAsync(UsageEventKind.Spun);
+            Announce();
+        }
+        finally
+        {
+            _rolling = false;
+            _busy = false;
+        }
     }
 
     private async Task AddDishAsync()

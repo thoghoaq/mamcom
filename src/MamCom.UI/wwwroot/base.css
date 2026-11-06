@@ -308,6 +308,18 @@ small,
     color: var(--color-slot-veg);
 }
 
+.slot--bowl {
+    color: var(--color-slot-bowl);
+}
+
+.slot--hotpot {
+    color: var(--color-slot-hotpot);
+}
+
+.slot--breakfast {
+    color: var(--color-slot-breakfast);
+}
+
 /* ---- Nutrition summary ---- */
 
 .nutrition__kcal {
@@ -650,6 +662,11 @@ small,
     margin-bottom: 0;
 }
 
+/* "Hôm nay ăn: Mâm cơm · Một tô · Lẩu · Bữa sáng" (ADR-037), above the tray. */
+.tray-meal {
+    margin: 0 0 var(--space-2);
+}
+
 .tray-date {
     margin: 0 0 var(--space-2);
     color: var(--color-text-muted);
@@ -717,6 +734,16 @@ small,
 .mam__plate--soup { background: var(--color-slot-soup-soft); color: var(--color-slot-soup); }
 .mam__plate--main { background: var(--color-slot-main-soft); color: var(--color-slot-main); }
 .mam__plate--veg { background: var(--color-slot-veg-soft); color: var(--color-slot-veg); }
+.mam__plate--bowl { background: var(--color-slot-bowl-soft); color: var(--color-slot-bowl); }
+.mam__plate--hotpot { background: var(--color-slot-hotpot-soft); color: var(--color-slot-hotpot); }
+.mam__plate--breakfast { background: var(--color-slot-breakfast-soft); color: var(--color-slot-breakfast); }
+
+/* A meal of one dish: the one plate, larger, in the middle of the tray. */
+.mam--single .mam__plate--1 {
+    inset-block-start: 22%;
+    inset-inline-start: 22%;
+    inline-size: 56%;
+}
 
 /* A locked dish keeps its plate: a ring in the accent colour, as its card has. */
 .mam__plate--locked {
@@ -1323,6 +1350,9 @@ small,
 .cook__dish.slot--soup { background: var(--color-slot-soup-soft); }
 .cook__dish.slot--main { background: var(--color-slot-main-soft); }
 .cook__dish.slot--veg { background: var(--color-slot-veg-soft); }
+.cook__dish.slot--bowl { background: var(--color-slot-bowl-soft); }
+.cook__dish.slot--hotpot { background: var(--color-slot-hotpot-soft); }
+.cook__dish.slot--breakfast { background: var(--color-slot-breakfast-soft); }
 
 .cook__dish--rice {
     color: var(--color-text-muted);
@@ -1700,4 +1730,19 @@ small,
 .tile--slot-veg {
     --tile-fg: var(--color-slot-veg);
     --tile-bg: var(--color-slot-veg-soft);
+}
+
+.tile--slot-bowl {
+    --tile-fg: var(--color-slot-bowl);
+    --tile-bg: var(--color-slot-bowl-soft);
+}
+
+.tile--slot-hotpot {
+    --tile-fg: var(--color-slot-hotpot);
+    --tile-bg: var(--color-slot-hotpot-soft);
+}
+
+.tile--slot-breakfast {
+    --tile-fg: var(--color-slot-breakfast);
+    --tile-bg: var(--color-slot-breakfast-soft);
 }

@@ -97,7 +97,10 @@ internal static class Messages
     {
         MamCom.Core.Models.DishSlot.Soup => "canh",
         MamCom.Core.Models.DishSlot.Main => "món mặn",
-        _ => "rau",
+        MamCom.Core.Models.DishSlot.Vegetable => "rau",
+        MamCom.Core.Models.DishSlot.Bowl => "món một tô (cả bữa của một người là một tô)",
+        MamCom.Core.Models.DishSlot.Hotpot => "lẩu (cả bữa, ăn chung một nồi)",
+        _ => "bữa sáng nhanh (cả bữa sáng của một người)",
     };
 
     public static string NoRegion() => "không đặc trưng vùng nào";

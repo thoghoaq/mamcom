@@ -26,7 +26,7 @@
       "allOf": [{ "$ref": "#/$defs/id" }, { "not": { "const": "com" } }]
     },
     "name": { "type": "string", "minLength": 1 },
-    "slot": { "enum": ["canh", "man", "rau"] },
+    "slot": { "enum": ["canh", "man", "rau", "to", "lau", "sang"] },
     "regions": {
       "description": "Regions the dish is typical of. Empty means no particular region.",
       "type": "array",

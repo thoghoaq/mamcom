@@ -41,7 +41,7 @@ public class TrayFormatTests
     [Fact]
     public void Every_slot_has_its_name_and_nothing_else_is_a_slot()
     {
-        Enum.GetValues<DishSlot>().Select(TrayFormat.Slot).ShouldBe(["Canh", "Món mặn", "Rau"]);
+        Enum.GetValues<DishSlot>().Select(TrayFormat.Slot).ShouldBe(["Canh", "Món mặn", "Rau", "Món một tô", "Lẩu", "Bữa sáng"]);
         Should.Throw<ArgumentOutOfRangeException>(() => TrayFormat.Slot((DishSlot)9));
     }
 

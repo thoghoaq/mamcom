@@ -115,7 +115,10 @@ public static partial class DishList
         "canh" => DishSlot.Soup,
         "man" => DishSlot.Main,
         "rau" => DishSlot.Vegetable,
-        _ => throw new FormatException($"line {lineNumber}: the slot '{text}' must be canh, man or rau."),
+        "to" => DishSlot.Bowl,
+        "lau" => DishSlot.Hotpot,
+        "sang" => DishSlot.Breakfast,
+        _ => throw new FormatException($"line {lineNumber}: the slot '{text}' must be canh, man, rau, to, lau or sang."),
     };
 
     private static List<Region> ParseRegions(string text, int lineNumber)

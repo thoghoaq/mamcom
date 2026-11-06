@@ -450,6 +450,20 @@
   <data name="TraySize_Two" xml:space="preserve"><value>2 món</value></data>
   <data name="TraySize_Three" xml:space="preserve"><value>3 món</value></data>
   <data name="TraySize_Four" xml:space="preserve"><value>4 món</value></data>
+  <data name="Tray_Slot_Bowl" xml:space="preserve"><value>Món một tô</value></data>
+  <data name="Tray_Slot_Hotpot" xml:space="preserve"><value>Lẩu</value></data>
+  <data name="Tray_Slot_Breakfast" xml:space="preserve"><value>Bữa sáng</value></data>
+  <data name="Studio_Slot_Bowl" xml:space="preserve"><value>Món một tô</value></data>
+  <data name="Studio_Slot_Hotpot" xml:space="preserve"><value>Lẩu</value></data>
+  <data name="Studio_Slot_Breakfast" xml:space="preserve"><value>Bữa sáng</value></data>
+  <data name="Placeholder_Slot_to" xml:space="preserve"><value>Món một tô</value></data>
+  <data name="Placeholder_Slot_lau" xml:space="preserve"><value>Lẩu</value></data>
+  <data name="Placeholder_Slot_sang" xml:space="preserve"><value>Bữa sáng</value></data>
+  <data name="Tray_MealLabel" xml:space="preserve"><value>Hôm nay ăn</value></data>
+  <data name="Tray_Meal_Tray" xml:space="preserve"><value>Mâm cơm</value></data>
+  <data name="Tray_Meal_Bowl" xml:space="preserve"><value>Một tô</value></data>
+  <data name="Tray_Meal_Hotpot" xml:space="preserve"><value>Lẩu</value></data>
+  <data name="Tray_Meal_Breakfast" xml:space="preserve"><value>Bữa sáng</value></data>
   <data name="Tray_SwipeHint" xml:space="preserve"><value>Khoá món muốn giữ · vuốt ngang một món để đổi riêng món đó</value></data>
   <data name="Tray_AnnounceFormat" xml:space="preserve"><value>Mâm: {0}.</value></data>
   <data name="Tray_Empty" xml:space="preserve"><value>Chưa có món nào hợp để quay.</value></data>

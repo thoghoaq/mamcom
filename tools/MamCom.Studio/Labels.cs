@@ -23,6 +23,9 @@ public static class Labels
         DishSlot.Soup => Strings.Studio_Slot_Soup,
         DishSlot.Main => Strings.Studio_Slot_Main,
         DishSlot.Vegetable => Strings.Studio_Slot_Vegetable,
+        DishSlot.Bowl => Strings.Studio_Slot_Bowl,
+        DishSlot.Hotpot => Strings.Studio_Slot_Hotpot,
+        DishSlot.Breakfast => Strings.Studio_Slot_Breakfast,
         _ => throw new ArgumentOutOfRangeException(nameof(slot), slot, null),
     };
 

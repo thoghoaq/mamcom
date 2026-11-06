@@ -54,7 +54,7 @@ public sealed class ShoppingListBuilder
             }
         }
 
-        if (portions.RawRiceGrams > 0)
+        if (portions.RawRiceGrams > 0 && dishes.Select(dish => dish.Slot).HasRice())
         {
             if (!ingredients.ContainsKey(_portions.RiceIngredientId))
             {

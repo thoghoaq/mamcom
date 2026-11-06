@@ -8,7 +8,7 @@ namespace MamCom.Core.Portions;
 /// <param name="ProteinServings">Member servings with the more-protein factor; used for main dishes.</param>
 /// <param name="VegServings">Member servings with the more-vegetables factor; used for vegetable dishes.</param>
 /// <param name="TotalBowls">Sum of bowls of rice per meal.</param>
-/// <param name="RawRiceGrams">Raw rice to cook, rounded up to the configured multiple.</param>
+/// <param name="RawRiceGrams">Raw rice to cook, rounded up to the configured multiple; only a meal that has rice cooks it (ADR-037).</param>
 public sealed record PortionResult(
     IReadOnlyList<double> MemberServings,
     double BaseServings,
@@ -23,6 +23,7 @@ public sealed record PortionResult(
         DishSlot.Soup => BaseServings,
         DishSlot.Main => ProteinServings,
         DishSlot.Vegetable => VegServings,
+        DishSlot.Bowl or DishSlot.Hotpot or DishSlot.Breakfast => BaseServings,   // the whole meal of each person, as a soup is
         _ => throw new ArgumentOutOfRangeException(nameof(slot), slot, null),
     };
 }

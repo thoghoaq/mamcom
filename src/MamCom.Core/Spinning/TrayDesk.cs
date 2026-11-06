@@ -36,6 +36,7 @@ public sealed class TrayDesk
 
         var current = !session.IsConfirmed && session.Viewed?.Tray is { } tray && tray.Date == _clock.Today ? tray : null;
         var sized = SizeToday(session) is { } size ? context with { Size = size } : context;
+        sized = sized with { Meal = MealOf(session) };
         var result = _spinner.Spin(Narrow(sized, session.Filters, LockedIds(current)), current);
 
         return session with
@@ -62,19 +63,56 @@ public sealed class TrayDesk
         return Replace(session, result);
     }
 
-    /// <summary>The tray on the screen can take one more dish: it has fewer than four.</summary>
+    /// <summary>The kind of meal of today: what was chosen today, else a tray of rice.</summary>
+    public MealKind MealOf(TraySession session)
+    {
+        ArgumentNullException.ThrowIfNull(session);
+        return session.MealDate == _clock.Today && session.MealToday is { } meal ? meal : MealKind.Tray;
+    }
+
+    /// <summary>
+    /// "Hôm nay ăn: …" (ADR-037): the meal of today becomes this kind and a meal of it is spun at once. Locks do not carry over to
+    /// another kind of meal; choosing the kind already chosen changes nothing.
+    /// </summary>
+    public TraySession ChooseMeal(TraySession session, SpinContext context, MealKind meal)
+    {
+        ArgumentNullException.ThrowIfNull(session);
+        ArgumentNullException.ThrowIfNull(context);
+        if (!Enum.IsDefined(meal))
+        {
+            throw new ArgumentOutOfRangeException(nameof(meal), meal, null);
+        }
+
+        if (MealOf(session) == meal && session.Viewed is not null)
+        {
+            return session;
+        }
+
+        var chosen = session with { MealToday = meal, MealDate = _clock.Today };
+        if (chosen.Viewed is { } viewed && !chosen.IsConfirmed)
+        {
+            // the locks of a tray of rice mean nothing for a bowl of phở
+            chosen = Replace(chosen, viewed with { Tray = viewed.Tray with { Slots = [.. viewed.Tray.Slots.Select(slot => slot with { IsLocked = false })] } });
+        }
+
+        return Spin(chosen with { ConfirmedOn = null }, context);
+    }
+
+    /// <summary>The tray on the screen can take one more dish: it is a tray of rice with fewer than four.</summary>
     public bool CanAddDish(TraySession session)
     {
         ArgumentNullException.ThrowIfNull(session);
-        return !session.IsConfirmed && session.Viewed is { } viewed && viewed.Tray.Slots.Count is > 0 and < 4;
+        return !session.IsConfirmed && session.Viewed is { } viewed && IsRiceTray(viewed) && viewed.Tray.Slots.Count is > 0 and < 4;
     }
 
-    /// <summary>The tray on the screen can do with one dish less: it has more than two.</summary>
+    /// <summary>The tray on the screen can do with one dish less: it is a tray of rice with more than two.</summary>
     public bool CanRemoveDish(TraySession session)
     {
         ArgumentNullException.ThrowIfNull(session);
-        return !session.IsConfirmed && session.Viewed is { } viewed && viewed.Tray.Slots.Count > 2;
+        return !session.IsConfirmed && session.Viewed is { } viewed && IsRiceTray(viewed) && viewed.Tray.Slots.Count > 2;
     }
+
+    private static bool IsRiceTray(SpinResult result) => result.Tray.Slots.All(slot => slot.Slot.ComesWithRice());
 
     /// <summary>
     /// "Thêm món" (ADR-034): the tray gets the dish the next size has (a vegetable on a tray of two, a second main on a tray of three),

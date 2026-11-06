@@ -42,6 +42,13 @@
     --color-slot-main-soft: #f9e3d0;
     --color-slot-veg: #2d6a39;
     --color-slot-veg-soft: #dcecd8;
+    /* The meals that are one dish (ADR-037): a bowl, a hot pot, a breakfast. */
+    --color-slot-bowl: #6a3f8f;
+    --color-slot-bowl-soft: #ece1f4;
+    --color-slot-hotpot: #a0282e;
+    --color-slot-hotpot-soft: #f8dcdc;
+    --color-slot-breakfast: #7d5200;
+    --color-slot-breakfast-soft: #fbebc4;
 
     /* One colour per aisle of the market, for an ingredient. */
     --color-aisle-meat: #9c2f3a;
@@ -102,6 +109,12 @@
         --color-slot-main-soft: #4a2e18;
         --color-slot-veg: #8fd09b;
         --color-slot-veg-soft: #1f3a25;
+        --color-slot-bowl: #cfa6ef;
+        --color-slot-bowl-soft: #33243f;
+        --color-slot-hotpot: #ff9b9b;
+        --color-slot-hotpot-soft: #4a1e20;
+        --color-slot-breakfast: #f0c565;
+        --color-slot-breakfast-soft: #44330f;
 
         --color-aisle-meat: #f2a1ab;
         --color-aisle-meat-soft: #4a2328;
@@ -159,6 +172,12 @@
     --color-slot-main-soft: #4a2e18;
     --color-slot-veg: #8fd09b;
     --color-slot-veg-soft: #1f3a25;
+    --color-slot-bowl: #cfa6ef;
+    --color-slot-bowl-soft: #33243f;
+    --color-slot-hotpot: #ff9b9b;
+    --color-slot-hotpot-soft: #4a1e20;
+    --color-slot-breakfast: #f0c565;
+    --color-slot-breakfast-soft: #44330f;
 
     --color-aisle-meat: #f2a1ab;
     --color-aisle-meat-soft: #4a2328;

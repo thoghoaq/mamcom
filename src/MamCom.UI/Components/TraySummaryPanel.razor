@@ -11,10 +11,13 @@
         <dt><Icon Name="flame" />@Strings.Tray_SummaryKcal</dt>
         <dd>@NutritionFormat.Kcal(Summary.KcalPerPerson)</dd>
     </div>
-    <div class="tray-summary__row">
-        <dt><Icon Name="wheat" />@Strings.Tray_SummaryRice</dt>
-        <dd>@NutritionFormat.Grams(Summary.RawRiceGrams)</dd>
-    </div>
+    @if (Summary.RawRiceGrams > 0)
+    {
+        <div class="tray-summary__row">
+            <dt><Icon Name="wheat" />@Strings.Tray_SummaryRice</dt>
+            <dd>@NutritionFormat.Grams(Summary.RawRiceGrams)</dd>
+        </div>
+    }
     <div class="tray-summary__row">
         <dt><Icon Name="shopping-cart" />@Strings.Tray_SummaryShop</dt>
         <dd>@TrayFormat.Items(Summary.ItemsToBuy)</dd>

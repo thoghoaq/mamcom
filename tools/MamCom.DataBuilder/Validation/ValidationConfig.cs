@@ -9,13 +9,16 @@ public sealed record ValueRange(double Min, double Max)
 }
 
 /// <summary>One range per dish slot, named like the slot values in the dish files.</summary>
-public sealed record SlotRanges(ValueRange Canh, ValueRange Man, ValueRange Rau)
+public sealed record SlotRanges(ValueRange Canh, ValueRange Man, ValueRange Rau, ValueRange To, ValueRange Lau, ValueRange Sang)
 {
     public ValueRange For(DishSlot slot) => slot switch
     {
         DishSlot.Soup => Canh,
         DishSlot.Main => Man,
         DishSlot.Vegetable => Rau,
+        DishSlot.Bowl => To,
+        DishSlot.Hotpot => Lau,
+        DishSlot.Breakfast => Sang,
         _ => throw new ArgumentOutOfRangeException(nameof(slot), slot, null),
     };
 }
@@ -47,6 +50,9 @@ public sealed record ValidationConfig(SlotRanges KcalPerServing, ValueRange Main
         Require(IsRange(KcalPerServing.Canh), nameof(KcalPerServing), "canh range must satisfy 0 <= min <= max");
         Require(IsRange(KcalPerServing.Man), nameof(KcalPerServing), "man range must satisfy 0 <= min <= max");
         Require(IsRange(KcalPerServing.Rau), nameof(KcalPerServing), "rau range must satisfy 0 <= min <= max");
+        Require(IsRange(KcalPerServing.To), nameof(KcalPerServing), "to range must satisfy 0 <= min <= max");
+        Require(IsRange(KcalPerServing.Lau), nameof(KcalPerServing), "lau range must satisfy 0 <= min <= max");
+        Require(IsRange(KcalPerServing.Sang), nameof(KcalPerServing), "sang range must satisfy 0 <= min <= max");
         Require(IsRange(MainProteinGramsPerServing), nameof(MainProteinGramsPerServing), "range must satisfy 0 <= min <= max");
         Require(double.IsFinite(MaxSodiumMgPerServing) && MaxSodiumMgPerServing > 0, nameof(MaxSodiumMgPerServing), "must be a positive number");
     }

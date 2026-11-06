@@ -7,7 +7,7 @@ public static class IconCatalog
     [
         // What stands in for a missing picture.
         "carrot", "leaf", "apple", "pig", "cow", "meat", "fish", "shrimp", "egg", "tofu", "mushroom", "salt", "wheat",
-        "steak", "basket", "egg-cracked", "bottle", "package", "soup", "tools-kitchen-2", "salad", "seedling",
+        "steak", "basket", "egg-cracked", "bottle", "package", "soup", "bowl-chopsticks", "hotpot", "baguette", "tools-kitchen-2", "salad", "seedling",
 
         // The app.
         "dice", "lock", "lock-open", "check", "x", "plus", "minus", "share", "clock", "flame", "refresh", "chevron-left",

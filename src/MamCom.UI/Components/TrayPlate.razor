@@ -4,7 +4,10 @@
    A picture of what the cards below say, so it is hidden from a screen reader. It turns once while the dice roll. *@
 <div class="@CssClass" aria-hidden="true">
     <div class="mam__wood">
-        <span class="mam__rice"><Icon Name="soup" />@Strings.Tray_PlateRice</span>
+        @if (HasRice)
+        {
+            <span class="mam__rice"><Icon Name="soup" />@Strings.Tray_PlateRice</span>
+        }
         @for (var index = 0; index < Slots.Count && index < 4; index++)
         {
             var (slot, locked) = Slots[index];
@@ -21,7 +24,10 @@
     [Parameter]
     public bool Rolling { get; set; }
 
-    private string CssClass => Rolling ? "mam mam--rolling" : "mam";
+    // A meal of one dish (a bowl, a hot pot, a breakfast) has no rice; its plate sits in the middle (ADR-037).
+    private bool HasRice => Slots.Select(s => s.Slot).HasRice();
+
+    private string CssClass => "mam" + (HasRice ? string.Empty : " mam--single") + (Rolling ? " mam--rolling" : string.Empty);
 
     private static string PlateClass(int index, DishSlot slot, bool locked) =>
         $"mam__plate mam__plate--{index + 1} mam__plate--{SlotName(slot)}" + (locked ? " mam__plate--locked" : string.Empty);
@@ -30,13 +36,19 @@
     {
         DishSlot.Soup => "soup",
         DishSlot.Main => "main",
-        _ => "veg",
+        DishSlot.Vegetable => "veg",
+        DishSlot.Bowl => "bowl",
+        DishSlot.Hotpot => "hotpot",
+        _ => "breakfast",
     };
 
     private static string IconOf(DishSlot slot) => slot switch
     {
         DishSlot.Soup => "soup",
         DishSlot.Main => "meat",
-        _ => "leaf",
+        DishSlot.Vegetable => "leaf",
+        DishSlot.Bowl => "bowl-chopsticks",
+        DishSlot.Hotpot => "hotpot",
+        _ => "baguette",
     };
 }

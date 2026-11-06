@@ -218,12 +218,7 @@ else if (_detail is { } detail)
         await Tastes.SaveAsync(_taste);
     }
 
-    private static string SlotClass(DishSlot slot) => slot switch
-    {
-        DishSlot.Soup => "slot--soup",
-        DishSlot.Main => "slot--main",
-        _ => "slot--veg",
-    };
+    private static string SlotClass(DishSlot slot) => TrayFormat.SlotClass(slot);
 
     private static string KcalText(DishDetail detail) => detail.PerServing.Kcal is { } kcal
         ? string.Format(CultureInfo.InvariantCulture, Strings.Tray_KcalPerServingFormat, NutritionFormat.Kcal(kcal))

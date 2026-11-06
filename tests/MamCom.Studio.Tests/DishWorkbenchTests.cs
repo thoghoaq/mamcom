@@ -77,7 +77,7 @@ public class DishWorkbenchTests : PageTestBase
     {
         var cut = Open();
 
-        cut.Find("#dish-slot").QuerySelectorAll("option").Select(o => o.TextContent).ShouldBe(["Canh", "Món mặn", "Rau"]);
+        cut.Find("#dish-slot").QuerySelectorAll("option").Select(o => o.TextContent).ShouldBe(["Canh", "Món mặn", "Rau", "Món một tô", "Lẩu", "Bữa sáng"]);
         cut.Find("#dish-spicy").QuerySelectorAll("option").Select(o => o.TextContent).ShouldBe(["Không cay", "Cay tuỳ chọn", "Cay"]);
         cut.Find("[data-line='0'] [data-line-ingredient]").QuerySelectorAll("option").Select(o => o.TextContent).ShouldContain("Rau muống");
         cut.Find("[data-line='0'] [data-line-ingredient]").GetAttribute("value").ShouldBe("rau-muong");

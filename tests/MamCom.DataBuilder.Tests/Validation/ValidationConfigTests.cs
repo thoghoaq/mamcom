@@ -12,7 +12,7 @@ public class ValidationConfigTests
 
     private static ValidationConfig Config(
         ValueRange? canh = null, ValueRange? man = null, ValueRange? rau = null, ValueRange? protein = null, double sodium = 1000) =>
-        new(new SlotRanges(canh ?? Fine, man ?? Fine, rau ?? Fine), protein ?? Fine, sodium);
+        new(new SlotRanges(canh ?? Fine, man ?? Fine, rau ?? Fine, Fine, Fine, Fine), protein ?? Fine, sodium);
 
     [Fact]
     public void The_shipped_file_has_the_numbers_of_the_spec()
@@ -22,6 +22,9 @@ public class ValidationConfigTests
         config.KcalPerServing.Canh.ShouldBe(new ValueRange(30, 250));
         config.KcalPerServing.Man.ShouldBe(new ValueRange(120, 550));
         config.KcalPerServing.Rau.ShouldBe(new ValueRange(20, 220));
+        config.KcalPerServing.To.ShouldBe(new ValueRange(300, 900));   // a meal in one bowl, a hot pot, a breakfast (ADR-037)
+        config.KcalPerServing.Lau.ShouldBe(new ValueRange(300, 1000));
+        config.KcalPerServing.Sang.ShouldBe(new ValueRange(200, 700));
         config.MainProteinGramsPerServing.ShouldBe(new ValueRange(50, 150));
         config.MaxSodiumMgPerServing.ShouldBe(1000);
         Should.NotThrow(config.Validate);

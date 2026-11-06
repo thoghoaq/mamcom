@@ -23,6 +23,8 @@ public sealed record QuickFilters(bool Short, bool NoRedMeat, bool LowFat)
 /// <param name="ConfirmedOn">The day the tray on the screen was confirmed, or null while it is still being chosen.</param>
 /// <param name="SizeToday">The size "Thêm món" or "Bớt món" gave the tray of <see cref="SizeDate"/> (ADR-034); later spins of that day keep it.</param>
 /// <param name="SizeDate">The day <see cref="SizeToday"/> is for; on another day the household's own size counts again.</param>
+/// <param name="MealToday">The kind of meal chosen for <see cref="MealDate"/> (ADR-037); later spins of that day keep it.</param>
+/// <param name="MealDate">The day <see cref="MealToday"/> is for; on another day the meal is a tray of rice again.</param>
 public sealed record TraySession(
     SpinHistory History,
     int ViewIndex,
@@ -30,7 +32,9 @@ public sealed record TraySession(
     QuickFilters Filters,
     DateOnly? ConfirmedOn,
     [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] TraySize? SizeToday = null,
-    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] DateOnly? SizeDate = null)
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] DateOnly? SizeDate = null,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] MealKind? MealToday = null,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] DateOnly? MealDate = null)
 {
     public static TraySession Empty { get; } = new(SpinHistory.Empty, 0, 0, QuickFilters.None, null);
 

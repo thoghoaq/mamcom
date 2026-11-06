@@ -14,7 +14,7 @@ MâmCơm ships the following works that are not its own. Each is used under its 
 - File: `src/MamCom.UI/wwwroot/icons/icons.svg` (an SVG sprite of selected outline icons; the list is in the file's header)
 - Source: the npm package `@tabler/icons` 3.49.0 (https://github.com/tabler/tabler-icons)
 - Licence: MIT
-- The icons `cow`, `shrimp`, `tofu` and `steak` in the same file are not from Tabler; they are drawn for MâmCơm in the same style and belong to this project.
+- The icons `cow`, `shrimp`, `tofu`, `steak`, `bowl-chopsticks`, `hotpot` and `baguette` in the same file are not from Tabler; they are drawn for Bowlo (MâmCơm) in the same style and belong to this project.
 
 ```
 MIT License

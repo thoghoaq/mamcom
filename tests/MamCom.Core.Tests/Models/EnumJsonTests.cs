@@ -21,7 +21,7 @@ public class EnumJsonTests
         ModelEnums.Select(t => t.Name).Order().ShouldBe(
         [
             "AgeGroup", "Aisle", "BowlSize", "CookingMethod", "DishPreference", "DishSlot", "DishStatus", "DraftAuthor",
-            "MemberTag", "Region", "RelaxedRule", "ScaleKind", "SpicyLevel", "TraySize",
+            "MealKind", "MemberTag", "Region", "RelaxedRule", "ScaleKind", "SpicyLevel", "TraySize",
         ]);
     }
 
@@ -39,7 +39,8 @@ public class EnumJsonTests
 
     // The exact strings below are the values SPEC §4.1, §5.3, §6.1, §6.2 and §7.2 define.
     [Theory]
-    [InlineData(typeof(DishSlot), "canh,man,rau")]
+    [InlineData(typeof(DishSlot), "canh,man,rau,to,lau,sang")]
+    [InlineData(typeof(MealKind), "mam,to,lau,sang")]
     [InlineData(typeof(SpicyLevel), "none,optional,required")]
     [InlineData(typeof(CookingMethod), "luoc,hap,nau,kho,xao,chien,nuong,tron")]
     [InlineData(typeof(ScaleKind), "linear,sublinear,integer,fixed")]

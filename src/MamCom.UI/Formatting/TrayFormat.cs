@@ -26,6 +26,9 @@ public static class TrayFormat
         DishSlot.Soup => Strings.Tray_Slot_Soup,
         DishSlot.Main => Strings.Tray_Slot_Main,
         DishSlot.Vegetable => Strings.Tray_Slot_Vegetable,
+        DishSlot.Bowl => Strings.Tray_Slot_Bowl,
+        DishSlot.Hotpot => Strings.Tray_Slot_Hotpot,
+        DishSlot.Breakfast => Strings.Tray_Slot_Breakfast,
         _ => throw new ArgumentOutOfRangeException(nameof(slot), slot, null),
     };
 
@@ -56,6 +59,27 @@ public static class TrayFormat
     }
 
     /// <summary>"Cần mua 9 thứ": a count and its word, kept on one line.</summary>
+    public static string Meal(MealKind meal) => meal switch
+    {
+        MealKind.Tray => Strings.Tray_Meal_Tray,
+        MealKind.Bowl => Strings.Tray_Meal_Bowl,
+        MealKind.Hotpot => Strings.Tray_Meal_Hotpot,
+        MealKind.Breakfast => Strings.Tray_Meal_Breakfast,
+        _ => throw new ArgumentOutOfRangeException(nameof(meal), meal, null),
+    };
+
+    /// <summary>The class that colours a word by the kind of dish: soup blue, main orange, vegetable green, and the one-dish meals.</summary>
+    public static string SlotClass(DishSlot slot) => slot switch
+    {
+        DishSlot.Soup => "slot--soup",
+        DishSlot.Main => "slot--main",
+        DishSlot.Vegetable => "slot--veg",
+        DishSlot.Bowl => "slot--bowl",
+        DishSlot.Hotpot => "slot--hotpot",
+        DishSlot.Breakfast => "slot--breakfast",
+        _ => throw new ArgumentOutOfRangeException(nameof(slot), slot, null),
+    };
+
     /// <summary>"Thứ Năm, 5 tháng 11": the day the tray is for, under the title.</summary>
     public static string Day(DateOnly day) => string.Format(
         CultureInfo.InvariantCulture,

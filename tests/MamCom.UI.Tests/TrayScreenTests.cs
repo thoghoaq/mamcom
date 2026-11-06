@@ -937,4 +937,21 @@ public class TrayScreenTests : BunitContext
         cut.WaitForAssertion(() => Cards(cut).Count.ShouldBe(4));
         Names(cut)[0].ShouldNotBe(before[0]);
     }
+
+    [Fact]
+    public async Task The_meal_of_today_is_chosen_above_the_tray_and_a_bowl_has_no_dish_more_or_less()
+    {
+        var cut = Show();
+        var chips = cut.FindAll(".tray-meal [role=radio]");
+
+        chips.Select(c => c.TextContent.Trim()).ShouldBe(["Mâm cơm", "Một tô", "Lẩu", "Bữa sáng"]);
+        cut.Find(".tray-meal [aria-checked=true]").TextContent.Trim().ShouldBe("Mâm cơm");
+        cut.FindAll(".tray-size").Count.ShouldBe(1);
+
+        await chips[1].ClickAsync(new());
+
+        cut.WaitForAssertion(() => cut.Find(".tray-meal [aria-checked=true]").TextContent.Trim().ShouldBe("Một tô"));
+        _trays.Saved!.MealToday.ShouldBe(MealKind.Bowl);
+        cut.FindAll(".tray-size").ShouldBeEmpty();
+    }
 }

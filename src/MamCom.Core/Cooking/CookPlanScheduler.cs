@@ -80,10 +80,13 @@ public sealed class CookPlanScheduler : IMealTimeEstimator
 
         var timeline = new Timeline();
         var kitchen = new Stoves(stoves);
-        timeline.Place(
-            CookPlan.RiceDishId,
-            new Step(1, _config.RiceStepText, _config.RiceActiveMinutes, _config.RicePassiveMinutes, []),
-            start: 0);
+        if (dishes.Select(dish => dish.Slot).HasRice())   // a bowl of phở, a hot pot or a breakfast is not eaten with rice (ADR-037)
+        {
+            timeline.Place(
+                CookPlan.RiceDishId,
+                new Step(1, _config.RiceStepText, _config.RiceActiveMinutes, _config.RicePassiveMinutes, []),
+                start: 0);
+        }
 
         var jobs = dishes.Select(dish => new Job(dish)).Where(job => job.Steps.Length > 0).ToList();
         var cold = Prioritised(jobs.Where(job => !job.Dish.ServeHot));

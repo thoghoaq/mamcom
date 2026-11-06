@@ -87,7 +87,7 @@ public sealed class NutritionCalculator
         var allDishesPerServing = dishNutrition
             .Select((dish, index) => dish.PerServing.Times(TrayShares.For(dishes[index].Slot, slots, _portions.TrayShares)))
             .Aggregate(NutritionFacts.Zero, (sum, dish) => sum + dish);
-        var gramsPerBowl = _portions.GramsRawRicePerBowl.For(household.BowlSize);
+        var gramsPerBowl = slots.HasRice() ? _portions.GramsRawRicePerBowl.For(household.BowlSize) : 0;   // no rice with a one-dish meal (ADR-037)
 
         var perMember = new NutritionFacts[household.Members.Count];
         for (var i = 0; i < perMember.Length; i++)

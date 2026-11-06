@@ -139,6 +139,9 @@ public static class PlaceholderCatalog
         DishSlot.Soup => "slot-soup",
         DishSlot.Main => "slot-main",
         DishSlot.Vegetable => "slot-veg",
+        DishSlot.Bowl => "slot-bowl",
+        DishSlot.Hotpot => "slot-hotpot",
+        DishSlot.Breakfast => "slot-breakfast",
         _ => throw new ArgumentOutOfRangeException(nameof(slot), slot, null),
     };
 
@@ -147,6 +150,9 @@ public static class PlaceholderCatalog
         DishSlot.Soup => "soup",
         DishSlot.Main => "tools-kitchen-2",
         DishSlot.Vegetable => "salad",
+        DishSlot.Bowl => "bowl-chopsticks",
+        DishSlot.Hotpot => "hotpot",
+        DishSlot.Breakfast => "baguette",
         _ => throw new ArgumentOutOfRangeException(nameof(slot), slot, null),
     };
 
@@ -155,6 +161,9 @@ public static class PlaceholderCatalog
         DishSlot.Soup => "canh",
         DishSlot.Main => "man",
         DishSlot.Vegetable => "rau",
+        DishSlot.Bowl => "to",
+        DishSlot.Hotpot => "lau",
+        DishSlot.Breakfast => "sang",
         _ => throw new ArgumentOutOfRangeException(nameof(slot), slot, null),
     };
 

@@ -3,13 +3,60 @@ using MamCom.Core.Json;
 
 namespace MamCom.Core.Models;
 
-/// <summary>Which part of the meal a dish fills. Rice is not a slot: it is a pseudo-dish in the cook plan.</summary>
+/// <summary>
+/// Which part of the meal a dish fills. Soup, main and vegetable make a tray eaten with rice; the others are a meal on their own
+/// (ADR-037). Rice is not a slot: it is a pseudo-dish in the cook plan.
+/// </summary>
 [JsonConverter(typeof(StrictStringEnumConverter<DishSlot>))]
 public enum DishSlot
 {
     [JsonStringEnumMemberName("canh")] Soup,
     [JsonStringEnumMemberName("man")] Main,
     [JsonStringEnumMemberName("rau")] Vegetable,
+
+    /// <summary>A meal in one bowl: phở, bún, mì, miến, hủ tiếu, cháo, cơm tấm…</summary>
+    [JsonStringEnumMemberName("to")] Bowl,
+
+    /// <summary>A hot pot shared at the table, with its noodles or vegetables in it.</summary>
+    [JsonStringEnumMemberName("lau")] Hotpot,
+
+    /// <summary>A quick breakfast: bánh mì, xôi, trứng…</summary>
+    [JsonStringEnumMemberName("sang")] Breakfast,
+}
+
+/// <summary>What kind of meal is spun (ADR-037): a tray of dishes with rice, or one dish that is the whole meal.</summary>
+[JsonConverter(typeof(StrictStringEnumConverter<MealKind>))]
+public enum MealKind
+{
+    [JsonStringEnumMemberName("mam")] Tray,
+    [JsonStringEnumMemberName("to")] Bowl,
+    [JsonStringEnumMemberName("lau")] Hotpot,
+    [JsonStringEnumMemberName("sang")] Breakfast,
+}
+
+public static class DishSlotExtensions
+{
+    /// <summary>A dish of the rice tray (soup, main, vegetable): a meal with one of them is eaten with rice.</summary>
+    public static bool ComesWithRice(this DishSlot slot) => slot is DishSlot.Soup or DishSlot.Main or DishSlot.Vegetable;
+
+    /// <summary>A meal of these dishes has rice: it has a dish of the tray, or it has no dish at all (the rice alone).</summary>
+    public static bool HasRice(this IEnumerable<DishSlot> slots)
+    {
+        ArgumentNullException.ThrowIfNull(slots);
+
+        var any = false;
+        foreach (var slot in slots)
+        {
+            if (slot.ComesWithRice())
+            {
+                return true;
+            }
+
+            any = true;
+        }
+
+        return !any;
+    }
 }
 
 [JsonConverter(typeof(StrictStringEnumConverter<SpicyLevel>))]

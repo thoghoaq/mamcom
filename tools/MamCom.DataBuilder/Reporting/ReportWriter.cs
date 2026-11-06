@@ -36,6 +36,9 @@ public static class ReportWriter
             ["– canh", Count(dishes.Count(d => d.Slot == DishSlot.Soup))],
             ["– mặn", Count(dishes.Count(d => d.Slot == DishSlot.Main))],
             ["– rau", Count(dishes.Count(d => d.Slot == DishSlot.Vegetable))],
+            ["– món một tô", Count(dishes.Count(d => d.Slot == DishSlot.Bowl))],
+            ["– lẩu", Count(dishes.Count(d => d.Slot == DishSlot.Hotpot))],
+            ["– bữa sáng", Count(dishes.Count(d => d.Slot == DishSlot.Breakfast))],
             .. Enum.GetValues<DishStatus>().Select(status => new[] { $"Món `{StatusName(status)}`", Count(dishes.Count(d => d.Status == status)) }),
         ]);
 

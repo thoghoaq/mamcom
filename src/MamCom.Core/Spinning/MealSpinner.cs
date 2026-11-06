@@ -55,7 +55,9 @@ public sealed class MealSpinner
         ArgumentNullException.ThrowIfNull(context);
 
         var state = new SpinState(this, context);
-        var layout = LayoutFor(context.Size, _portions.Calculate(context.Household).BaseServings);
+        var layout = context.Meal == MealKind.Tray
+            ? LayoutFor(context.Size, _portions.Calculate(context.Household).BaseServings)
+            : Layout(context.Meal);
         var seen = new Dictionary<DishSlot, int>();
 
         var plan = layout.Select(kind =>
@@ -130,6 +132,15 @@ public sealed class MealSpinner
         TraySize.Two => [DishSlot.Soup, DishSlot.Main],
         TraySize.Four => [DishSlot.Soup, DishSlot.Main, DishSlot.Main, DishSlot.Vegetable],
         _ => [DishSlot.Soup, DishSlot.Main, DishSlot.Vegetable],
+    };
+
+    /// <summary>The one dish of a meal that is not a tray of rice (ADR-037).</summary>
+    public static IReadOnlyList<DishSlot> Layout(MealKind meal) => meal switch
+    {
+        MealKind.Bowl => [DishSlot.Bowl],
+        MealKind.Hotpot => [DishSlot.Hotpot],
+        MealKind.Breakfast => [DishSlot.Breakfast],
+        _ => Layout(TraySize.Auto),
     };
 
     /// <summary>The size an automatic tray has for a household of these base servings.</summary>
